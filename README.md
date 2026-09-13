@@ -1,0 +1,49 @@
+# Line-vs-Point Autoresearch
+
+This repository is a durable proof-author, adversary, verifier, and synthesis loop for improving the soundness threshold of the affine line-versus-point low-degree test.
+
+The current primary benchmark is Kominers--Thaler--Zheng's cubic threshold: local agreement
+
+\[
+\varepsilon \ge C(d/q)^{1/3}
+\]
+
+forces agreement \(\Omega(\varepsilon)\) with one total-degree-\(d\) polynomial. The long-term target is a theorem at threshold \((d/q)^{1-o(1)}\), with every quantifier, field restriction, and exponent loss made explicit.
+
+This project deliberately does **not** rank finite experiments as mathematical progress. Small-field computation may falsify a lemma, expose a characteristic-dependent failure, or test an exponent ledger. Only an asymptotic theorem with a complete academic note and an independent line-by-line audit can enter the verified leaderboard.
+
+## Quick start
+
+```bash
+python -m pip install -e .
+python -m unittest discover -s tests -v
+line-point-research campaign-init configs/campaign-300-ultra.yaml
+line-point-research campaign-status configs/campaign-300-ultra.yaml
+line-point-research campaign-launch configs/campaign-300-ultra.yaml
+```
+
+The production campaign queues 300 independent proof researchers, one verifier per successful submission, a global `GENIUS` synthesis job, and a verifier for the synthesis. Four workers run concurrently. Every job is durable and resumable through SQLite.
+
+Results live under `research_state/campaign-300-ultra/`:
+
+- `submissions/`: academic notes and structured theorem manifests;
+- `reviews/`: hostile line-by-line proof audits;
+- `agent_logs/`: exact prompts, schemas, responses, and stderr;
+- `leaderboards/`: promising, verified, and rejected claims plus a bottleneck ledger;
+- `campaign.sqlite3`: the durable job queue.
+
+Read [TARGET.md](TARGET.md) before interpreting any claimed exponent, and [references/LITERATURE.md](references/LITERATURE.md) before launching agents.
+
+## Safety and proof policy
+
+An exponent is not a theorem merely because algebraic manipulations produce it. Every submission must identify:
+
+1. the precise line and point sampling distribution;
+2. whether \(q\) is a prime, prime power, or arbitrary finite-field order;
+3. the domains and dependencies of \(m,d,q,\varepsilon\);
+4. the exact global conclusion and its agreement loss;
+5. every use of interpolation, factorization, list decoding, plurality, and bootstrapping;
+6. all small-characteristic and inseparability cases;
+7. a multiplicative exponent ledger from hypothesis to conclusion.
+
+The verifier must reject a false theorem or construction, request revision for a repairable gap, and accept only the exact SHA-identified claim it audited.

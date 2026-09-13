@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+.cache/
+
+research_state/**/*.sqlite3-shm
+research_state/**/*.sqlite3-wal
+research_state/campaign-*/runner.json
+research_state/campaign-*/campaign.log
+research_state/campaign-*/python-cache/
+research_state/campaign-*/STOP

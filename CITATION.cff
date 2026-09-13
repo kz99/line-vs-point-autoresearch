@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: Line-vs-Point Autoresearch
+message: Please cite this repository and the primary mathematical sources used by any theorem.
+type: software
+authors:
+  - family-names: Zheng
+    given-names: Kai Zhe
+repository-code: https://github.com/kz99/line-vs-point-autoresearch
+license: MIT
+version: 0.1.0
+date-released: 2026-09-13

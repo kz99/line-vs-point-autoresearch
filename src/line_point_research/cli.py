@@ -1,0 +1,49 @@
+from __future__ import annotations
+
+import argparse
+import json
+
+from .campaign import ResearchCampaign, campaign_status, launch_campaign
+
+
+def cmd_campaign_init(args: argparse.Namespace) -> int:
+    campaign = ResearchCampaign(args.config)
+    campaign.initialize()
+    print(json.dumps(campaign.export_status(), indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_campaign_run(args: argparse.Namespace) -> int:
+    print(json.dumps(ResearchCampaign(args.config).run(), indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_campaign_launch(args: argparse.Namespace) -> int:
+    print(json.dumps(launch_campaign(args.config), indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_campaign_status(args: argparse.Namespace) -> int:
+    print(json.dumps(campaign_status(args.config), indent=2, sort_keys=True))
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="line-point-research")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    commands = (
+        ("campaign-init", cmd_campaign_init, "initialize the durable proof campaign"),
+        ("campaign-run", cmd_campaign_run, "run or resume the proof campaign"),
+        ("campaign-launch", cmd_campaign_launch, "launch the campaign in the background"),
+        ("campaign-status", cmd_campaign_status, "show durable campaign progress"),
+    )
+    for name, function, help_text in commands:
+        item = subparsers.add_parser(name, help=help_text)
+        item.add_argument("config")
+        item.set_defaults(func=function)
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    return int(args.func(args))

@@ -1,0 +1,42 @@
+[
+  {
+    "authors": ["Sanjeev Arora", "Madhu Sudan"],
+    "title": "Improved Low-Degree Testing and Its Applications",
+    "year": 2003,
+    "venue": "Combinatorica 23",
+    "url": "https://doi.org/10.1007/s00493-003-0025-0",
+    "role": "foundational low-agreement line-versus-point analysis"
+  },
+  {
+    "authors": ["Prahladh Harsha", "Mrinal Kumar", "Ramprasad Saptharishi", "Madhu Sudan"],
+    "title": "An Improved Line-Point Low-Degree Test",
+    "year": 2024,
+    "venue": "arXiv:2311.12752",
+    "url": "https://arxiv.org/abs/2311.12752",
+    "role": "modern bivariate analysis and bootstrapping"
+  },
+  {
+    "authors": ["Scott Duke Kominers", "Justin Thaler", "Kai Zhe Zheng"],
+    "title": "Improved Soundness for the Line--versus--Point Test",
+    "year": 2026,
+    "venue": "ECCC TR26-147, revision 1",
+    "url": "https://eccc.weizmann.ac.il/report/2026/147/",
+    "role": "current cubic-threshold benchmark"
+  },
+  {
+    "authors": ["Ronitt Rubinfeld", "Madhu Sudan"],
+    "title": "Robust Characterizations of Polynomials with Applications to Program Testing",
+    "year": 1996,
+    "venue": "SIAM Journal on Computing 25",
+    "url": "https://doi.org/10.1137/S0097539793255151",
+    "role": "foundational polynomial testing"
+  },
+  {
+    "authors": ["Ran Raz", "Shmuel Safra"],
+    "title": "A Sub-Constant Error-Probability Low-Degree Test, and a Sub-Constant Error-Probability PCP Characterization of NP",
+    "year": 1997,
+    "venue": "STOC 1997",
+    "url": "https://doi.org/10.1145/258533.258641",
+    "role": "plane-based comparison"
+  }
+]
