@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / ".cache" / "references"
 SOURCES = {
-    "arora-sudan.pdf": "https://www.cs.princeton.edu/~arora/pubs/ld.pdf",
+    "arora-sudan.pdf": "https://people.csail.mit.edu/madhu/papers/1997/arora-conf.pdf",
     "hkss.pdf": "https://arxiv.org/pdf/2311.12752",
     "ktz.pdf": "https://eccc.weizmann.ac.il/report/2026/147/download/",
 }
@@ -31,7 +31,10 @@ def main() -> None:
         target = CACHE / name
         request = urllib.request.Request(url, headers={"User-Agent": "line-point-autoresearch/0.1"})
         with urllib.request.urlopen(request, timeout=60) as response:
-            target.write_bytes(response.read())
+            payload = response.read()
+        if not payload.startswith(b"%PDF-"):
+            raise RuntimeError(f"reference URL did not return a PDF: {url}")
+        target.write_bytes(payload)
         record = {"path": str(target.relative_to(ROOT)), "url": url,
                   "bytes": target.stat().st_size, "sha256": digest(target)}
         if shutil.which("pdftotext"):
