@@ -185,6 +185,37 @@ th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: l
 th { color: #858e9e; font-size: .56rem; letter-spacing: .07em; text-transform: uppercase; }
 td .math-copy p { margin: 0; }
 
+.lemma-book-header > span { white-space: nowrap; }
+.lemma-rule { display: grid; grid-template-columns: 20px 1fr; gap: 11px; padding: 16px 22px; border-bottom: 1px solid var(--line); color: #596579; background: #f8f9fd; font-size: .72rem; line-height: 1.55; }
+.lemma-rule svg { width: 17px; height: 17px; color: var(--indigo); }
+.lemma-rule p { margin: 0; }
+.lemma-rule strong { color: #37445a; }
+.lemma-tools { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 14px 22px; border-bottom: 1px solid var(--line); }
+.lemma-search { position: relative; display: block; flex: 1; max-width: 430px; }
+.lemma-search svg { position: absolute; z-index: 1; top: 50%; left: 10px; width: 14px; height: 14px; color: #8d96a5; transform: translateY(-50%); }
+.lemma-tools input { padding-left: 32px; border-color: var(--line-strong); background: white; font-size: .72rem; }
+.lemma-filters { display: flex; gap: 5px; }
+.lemma-filters button { height: 28px; padding-inline: 9px; border-color: var(--line); font-size: .61rem; text-transform: capitalize; }
+.lemma-list { counter-reset: lemma; }
+.lemma-entry { display: grid; grid-template-columns: 48px minmax(0, 1fr); padding: 22px; border-bottom: 1px solid var(--line); }
+.lemma-entry:last-child { border-bottom: 0; }
+.lemma-number { padding-top: 3px; color: #9099a8; font-family: var(--font-geist-mono), monospace; font-size: .61rem; }
+.lemma-body { min-width: 0; }
+.lemma-body > header { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+.lemma-body h3 { margin: 5px 0 0; font-size: .92rem; font-weight: 680; letter-spacing: -.01em; }
+.lemma-badges { display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+.lemma-badges span { padding: 3px 7px; border: 1px solid var(--line); border-radius: 999px; color: #7c8594; background: #fafbfc; font-size: .52rem; letter-spacing: .04em; text-transform: uppercase; }
+.lemma-badges .lemma-status { color: #526078; font-weight: 700; }
+.lemma-badges .status-proved { border-color: #badbd3; color: #14705e; background: #f1faf7; }
+.lemma-badges .status-conditional, .lemma-badges .status-conjectural { border-color: #ead9af; color: #8a6108; background: #fffaf0; }
+.lemma-badges .status-refuted { border-color: #e5c2be; color: #9b3c35; background: #fff6f5; }
+.lemma-statement { margin-top: 14px; padding: 16px 18px; border-left: 3px solid #6e83dc; border-radius: 0 8px 8px 0; background: #f7f8fc; color: #273754; font-family: Georgia, 'Times New Roman', serif; font-size: .9rem; line-height: 1.7; }
+.lemma-statement .math-copy p { margin: 0; }
+.lemma-proof { margin-top: 12px; }
+.lemma-proof > summary { width: fit-content; cursor: pointer; color: var(--indigo-dark); font-size: .68rem; font-weight: 650; }
+.lemma-proof > .math-copy { margin-top: 12px; color: #4c586c; font-family: Georgia, 'Times New Roman', serif; font-size: .82rem; line-height: 1.7; }
+.lemma-dependencies { margin: 12px 0 0; color: #8991a0; font-family: var(--font-geist-mono), monospace; font-size: .58rem; }
+
 .bottleneck-list article { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: start; padding: 17px 22px; border-bottom: 1px solid var(--line); }
 .bottleneck-list article:last-child { border-bottom: 0; }
 .bottleneck-list article > span { color: #929aa8; font-family: var(--font-geist-mono), monospace; font-size: .62rem; }
@@ -264,6 +295,14 @@ footer { display: flex; justify-content: space-between; padding: 22px 2px 0; col
   .panel-header { min-height: 62px; padding: 0 17px; }
   .candidate-entry { grid-template-columns: 28px 1fr; padding: 20px 16px; }
   .candidate-heading { display: block; }
+  .lemma-tools { display: grid; padding-inline: 16px; }
+  .lemma-search { width: 100%; max-width: none; }
+  .lemma-filters { overflow-x: auto; padding-bottom: 2px; }
+  .lemma-entry { grid-template-columns: 1fr; gap: 8px; padding: 19px 16px; }
+  .lemma-number { padding: 0; }
+  .lemma-body > header { display: grid; gap: 10px; }
+  .lemma-badges { white-space: normal; }
+  .lemma-statement { padding: 14px; }
   .exponent-mark { width: auto; min-width: 0; margin-top: 12px; text-align: left; }
   .quiet-empty { min-height: 220px; padding: 28px 20px; }
   footer { display: grid; gap: 5px; }

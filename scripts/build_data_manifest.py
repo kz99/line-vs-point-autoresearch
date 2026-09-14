@@ -27,6 +27,8 @@ def sha256(path: Path) -> str:
 
 def file_role(path: Path) -> str:
     parts = path.parts
+    if "lemma_book" in parts:
+        return "lemma_book"
     if "leaderboards" in parts:
         return "leaderboard"
     if "submissions" in parts:

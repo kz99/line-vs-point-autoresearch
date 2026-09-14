@@ -61,6 +61,12 @@ Because \(d/p<1\), a larger exponent is a stronger result: it permits smaller lo
 
 The general-dimensional lift is standard once the bivariate statement is known. It is a downstream corollary, not a research milestone, and the campaign spends no agents on it.
 
+## Lemma writing rule
+
+**A lemma statement contains only its quantified objects, hypotheses, and conclusion. It contains no motivation, derivation, commentary, proof sketch, interpretation, history, or explanation; all such material belongs in the proof.**
+
+The dedicated Lemma Writer post-edits every structured proof step without changing its mathematical content or status. It may split a source lemma into ordered pieces when that makes the logical structure easier to understand. Raw submissions remain immutable, and every edited statement is source-linked and checked deterministically with KaTeX before publication in the Lemma Book.
+
 ## Non-results
 
 The following do not count as achieving an exponent milestone:

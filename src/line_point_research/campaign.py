@@ -457,7 +457,10 @@ benchmark_improved=false. Set dimension=2 and field_regime=prime in the structur
 Return a standard academic Markdown note with Abstract, Test and Notation, Prior Results,
 Theorem, Proof or Conditional Proof, Exponent Ledger, Counterexample Attempts,
 Characteristic Audit, and Limitations. Number all proof steps [P1], [P2], ... and mark each as
-proved, conditional, conjectural, or refuted.
+proved, conditional, conjectural, or refuted. RULE: A lemma statement contains only its
+quantified objects, hypotheses, and conclusion. It contains no motivation, derivation,
+commentary, proof sketch, interpretation, history, or explanation; put all such material in the
+proof. A dedicated Lemma Writer will post-edit and may split a lemma without changing its content.
 """
 
     def _genius_prompt(self) -> str:
@@ -484,6 +487,11 @@ inseparability, d near p, adversarial line tables, and conversion from a list to
 polynomial. Work only with m=2 over F_p; do not spend effort on the routine lift to higher
 dimension or on extension fields. Set dimension=2 and field_regime=prime. Do not average
 incompatible lemmas or use finite evidence as proof.
+
+RULE: Every lemma statement must contain only its quantified objects, hypotheses, and conclusion.
+Put all motivation, derivation, commentary, proof sketches, interpretation, history, and
+explanation in the proof. A dedicated Lemma Writer will post-edit and may split a lemma without
+changing its content.
 """
 
     def _verifier_prompt(self, source_id: str) -> str:
@@ -672,8 +680,11 @@ NUMBERED NOTE:
             "researcher_count": int(self.cfg["researcher_count"]),
             "planned_agent_invocations": (
                 int(self.cfg["researcher_count"]) *
-                (2 if self.cfg.get("verifier_enabled", True) else 1) +
-                (2 if self.cfg.get("genius_enabled", True) else 0)),
+                ((2 if self.cfg.get("verifier_enabled", True) else 1) +
+                 (1 if self.cfg.get("lemma_writer_enabled", True) else 0)) +
+                ((2 if self.cfg.get("genius_enabled", True) else 0) +
+                 (1 if self.cfg.get("genius_enabled", True) and
+                  self.cfg.get("lemma_writer_enabled", True) else 0))),
             "counts": counts,
             "roles": roles,
             "updated_at": utc_timestamp(),

@@ -11,3 +11,4 @@ research_state/campaign-*/runner.json
 research_state/campaign-*/campaign.log
 research_state/campaign-*/python-cache/
 research_state/campaign-*/STOP
+research_state/campaign-*/lemma_book/runtime/

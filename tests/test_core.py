@@ -6,6 +6,11 @@ from pathlib import Path
 from line_point_research.agents import CommandAgentProvider
 from line_point_research.campaign import ResearchCampaign
 from line_point_research.exponents import is_stronger_fixed_exponent, parse_rational_exponent
+from line_point_research.lemma_book import (
+    LEMMA_STATEMENT_RULE,
+    canonical_sha256,
+    validate_editorial_response,
+)
 
 
 class ExponentTests(unittest.TestCase):
@@ -50,7 +55,7 @@ campaign:
             self.assertEqual(status["roles"]["researcher"], 10)
             self.assertEqual(status["roles"]["genius"], 1)
             self.assertEqual(status["counts"]["queued"], 11)
-            self.assertEqual(status["planned_agent_invocations"], 22)
+            self.assertEqual(status["planned_agent_invocations"], 33)
             self.assertEqual(status["degree_lower_bound_exclusive"], 100)
 
     def test_campaign_exports_dashboard_snapshot_when_present(self):
@@ -102,7 +107,7 @@ campaign:
             status = campaign.export_status()
             self.assertEqual(status["roles"]["researcher"], 300)
             self.assertEqual(status["roles"]["genius"], 1)
-            self.assertEqual(status["planned_agent_invocations"], 602)
+            self.assertEqual(status["planned_agent_invocations"], 903)
             self.assertEqual(status["benchmark_exponent"], "1/3")
             self.assertEqual(status["target_exponent"], "1-o(1)")
             self.assertEqual(status["dimension"], 2)
@@ -139,6 +144,76 @@ campaign:
             self.assertIn("Do not work on m>2", prompt)
             self.assertIn("routine downstream corollary", prompt)
             self.assertIn("cannot prove an asymptotic", prompt)
+            self.assertIn("A lemma statement contains only its", prompt)
+
+    def test_lemma_writer_rule_and_split_coverage(self):
+        source = {
+            "proof_steps": [
+                {
+                    "id": "P1",
+                    "statement": "A compound statement.",
+                    "proof": "A proof.",
+                    "status": "proved",
+                    "dependencies": [],
+                }
+            ]
+        }
+        response = {
+            "source_job_id": "researcher-0001",
+            "source_response_sha256": canonical_sha256(source),
+            "coverage_complete": True,
+            "omitted_source_step_ids": [],
+            "lemmas": [
+                {
+                    "id": "researcher-0001:P1.1",
+                    "source_step_id": "P1",
+                    "part": 1,
+                    "title": "First part",
+                    "statement_markdown": "If $x=0$, then $x^2=0$.",
+                    "proof_markdown": "This is immediate.",
+                    "status": "proved",
+                    "dependencies": [],
+                },
+                {
+                    "id": "researcher-0001:P1.2",
+                    "source_step_id": "P1",
+                    "part": 2,
+                    "title": "Second part",
+                    "statement_markdown": "If $x^2=0$ in a field, then $x=0$.",
+                    "proof_markdown": "Fields have no nonzero nilpotents.",
+                    "status": "proved",
+                    "dependencies": [],
+                },
+            ],
+        }
+        self.assertEqual(validate_editorial_response(
+            "researcher-0001", source, response), [])
+        self.assertIn("no motivation", LEMMA_STATEMENT_RULE)
+
+    def test_lemma_writer_rejects_omission_and_status_change(self):
+        source = {
+            "proof_steps": [
+                {"id": "P1", "status": "proved"},
+                {"id": "P2", "status": "conditional"},
+            ]
+        }
+        response = {
+            "source_job_id": "researcher-0001",
+            "source_response_sha256": canonical_sha256(source),
+            "coverage_complete": True,
+            "omitted_source_step_ids": [],
+            "lemmas": [{
+                "id": "researcher-0001:P1.1",
+                "source_step_id": "P1",
+                "part": 1,
+                "statement_markdown": "A statement.",
+                "proof_markdown": "A proof.",
+                "status": "conditional",
+            }],
+        }
+        errors = validate_editorial_response("researcher-0001", source, response)
+        self.assertTrue(any("status changed" in error for error in errors))
+        self.assertTrue(any("P2" in error for error in errors))
 
     def test_campaign_rejects_other_dimensions_and_field_regimes(self):
         with tempfile.TemporaryDirectory() as directory:

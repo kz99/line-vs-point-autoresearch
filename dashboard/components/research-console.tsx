@@ -10,6 +10,7 @@ import {
   GitBranch,
   ListTree,
   RefreshCw,
+  Search,
   ShieldCheck,
   Sparkles,
   Trophy,
@@ -21,6 +22,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 type JobStatus = 'queued' | 'running' | 'succeeded' | 'failed';
 
@@ -84,6 +86,30 @@ type Candidate = {
   audit: Audit | null;
 };
 
+type LemmaEntry = {
+  id: string;
+  source_job_id: string;
+  source_step_id: string;
+  part: number;
+  title: string;
+  statement_markdown: string;
+  proof_markdown: string;
+  status: 'proved' | 'conditional' | 'conjectural' | 'refuted';
+  dependencies: string[];
+  editorial_status: 'polished' | 'awaiting edit';
+};
+
+type LemmaBook = {
+  editorial_rule: string;
+  model: string;
+  reasoning_effort: string;
+  source_count: number;
+  edited_source_count: number;
+  lemma_count: number;
+  updated_at: string;
+  lemmas: LemmaEntry[];
+};
+
 type CampaignStatus = {
   campaign_dir: string;
   model: string;
@@ -110,6 +136,7 @@ export type ResearchSnapshot = {
     rejected: Candidate[];
   };
   bottlenecks: ExponentStage[];
+  lemma_book?: LemmaBook;
   jobs: Job[];
 };
 
@@ -294,9 +321,42 @@ function EmptyCandidates() {
   );
 }
 
+function LemmaBookEntry({ lemma, index }: { lemma: LemmaEntry; index: number }) {
+  const splitLabel = lemma.part > 1 ? ` · part ${lemma.part}` : '';
+  return (
+    <article className="lemma-entry">
+      <div className="lemma-number">L{String(index + 1).padStart(3, '0')}</div>
+      <div className="lemma-body">
+        <header>
+          <div>
+            <p className="eyebrow">{lemma.source_job_id} · {lemma.source_step_id}{splitLabel}</p>
+            <h3>{lemma.title}</h3>
+          </div>
+          <div className="lemma-badges">
+            <span className={`lemma-status status-${lemma.status}`}>{lemma.status}</span>
+            <span>{lemma.editorial_status}</span>
+          </div>
+        </header>
+        <section className="lemma-statement" aria-label={`${lemma.title} statement`}>
+          <MathCopy>{lemma.statement_markdown}</MathCopy>
+        </section>
+        <details className="lemma-proof">
+          <summary>Proof</summary>
+          <MathCopy>{lemma.proof_markdown}</MathCopy>
+          {lemma.dependencies.length > 0 && (
+            <p className="lemma-dependencies">Depends on {lemma.dependencies.join(', ')}</p>
+          )}
+        </details>
+      </div>
+    </article>
+  );
+}
+
 export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot }) {
   const [data, setData] = useState(initialData);
   const [refreshing, setRefreshing] = useState(false);
+  const [lemmaQuery, setLemmaQuery] = useState('');
+  const [lemmaStatus, setLemmaStatus] = useState('all');
 
   async function refresh() {
     setRefreshing(true);
@@ -314,6 +374,20 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
   }, []);
 
   const candidates = [...data.candidates.verified, ...data.candidates.promising];
+  const lemmas = data.lemma_book?.lemmas ?? [];
+  const visibleLemmas = (() => {
+    const needle = lemmaQuery.trim().toLowerCase();
+    return lemmas.filter((lemma) => {
+      const matchesStatus = lemmaStatus === 'all' || lemma.status === lemmaStatus;
+      const haystack = [
+        lemma.title,
+        lemma.statement_markdown,
+        lemma.source_job_id,
+        lemma.source_step_id,
+      ].join(' ').toLowerCase();
+      return matchesStatus && (!needle || haystack.includes(needle));
+    });
+  })();
   const researchers = data.jobs.filter((job) => job.role === 'researcher');
   const genius = data.jobs.find((job) => job.role === 'genius');
   const completed = researchers.filter((job) => ['succeeded', 'failed'].includes(job.status)).length;
@@ -351,8 +425,9 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
       <div className="app-layout">
         <aside className="sidebar">
           <nav aria-label="Research dashboard sections">
-            <a href="#overview"><BookOpen /> Overview</a>
+            <a href="#overview"><ListTree /> Overview</a>
             <a href="#candidates"><Trophy /> Candidates <span>{candidates.length}</span></a>
+            <a href="#lemma-book"><BookOpen /> Lemma Book <span>{lemmas.length}</span></a>
             <a href="#bottlenecks"><GitBranch /> Bottlenecks <span>{data.bottlenecks.length}</span></a>
             <a href="#activity"><Users /> Researchers <span>{researchers.length}</span></a>
           </nav>
@@ -396,11 +471,11 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
               <div><span>Promising</span><strong>{data.candidates.promising.length}</strong></div>
               <div><span>Verified</span><strong>{data.candidates.verified.length}</strong></div>
               <div><span>Rejected</span><strong>{data.candidates.rejected.length}</strong></div>
-              <div><span>Max invocations</span><strong>{data.status.planned_agent_invocations}</strong></div>
+              <div><span>Lemmas</span><strong>{lemmas.length}</strong></div>
             </div>
             <div className="progress-track" aria-label={`${progress}% of researchers completed`}><span style={{ width: `${progress}%` }} /></div>
             <div className="pipeline" aria-label="Research review pipeline">
-              <span><Users /> Researcher</span><i>→</i><span><FileCheck2 /> Proof note</span><i>→</i><span><ShieldCheck /> Verifier</span><i>→</i><span><Trophy /> Leaderboard</span>
+              <span><Users /> Researcher</span><i>→</i><span><FileCheck2 /> Proof note</span><i>→</i><span><ShieldCheck /> Verifier</span><i>→</i><span><BookOpen /> Lemma Writer</span>
             </div>
           </section>
 
@@ -416,6 +491,50 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
                     <CandidateEntry key={candidate.job_id} candidate={candidate} rank={index + 1} />
                   )) : <EmptyCandidates />}
                 </div>
+              </section>
+
+              <section className="panel lemma-book" id="lemma-book">
+                <div className="panel-header lemma-book-header">
+                  <div><p className="ui-label">Typeset reference</p><h2>Lemma Book</h2></div>
+                  <span>{data.lemma_book?.edited_source_count ?? 0}/{data.lemma_book?.source_count ?? 0} notes polished</span>
+                </div>
+                <div className="lemma-rule">
+                  <BookOpen aria-hidden="true" />
+                  <p><strong>Statement rule.</strong> {data.lemma_book?.editorial_rule ?? 'Statements contain only hypotheses and conclusions; explanation belongs in the proof.'}</p>
+                </div>
+                <div className="lemma-tools">
+                  <div className="lemma-search">
+                    <Search aria-hidden="true" />
+                    <Input
+                      value={lemmaQuery}
+                      onChange={(event) => setLemmaQuery(event.target.value)}
+                      placeholder="Search lemmas, statements, or sources"
+                      aria-label="Search the lemma book"
+                    />
+                  </div>
+                  <div className="lemma-filters" aria-label="Filter lemmas by status">
+                    {['all', 'proved', 'conditional', 'conjectural', 'refuted'].map((status) => (
+                      <Button
+                        key={status}
+                        type="button"
+                        size="sm"
+                        variant={lemmaStatus === status ? 'default' : 'outline'}
+                        onClick={() => setLemmaStatus(status)}
+                      >
+                        {status}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+                {visibleLemmas.length ? (
+                  <div className="lemma-list">
+                    {visibleLemmas.map((lemma, index) => (
+                      <LemmaBookEntry key={lemma.id} lemma={lemma} index={index} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="compact-empty"><BookOpen /><p><strong>No matching lemmas</strong><span>The Lemma Writer publishes entries only after deterministic math-rendering checks.</span></p></div>
+                )}
               </section>
 
               <section className="panel" id="bottlenecks">

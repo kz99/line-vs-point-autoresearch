@@ -4,6 +4,7 @@ import argparse
 import json
 
 from .campaign import ResearchCampaign, campaign_status, launch_campaign
+from .lemma_book import LemmaBookEditor, launch_lemma_book
 
 
 def cmd_campaign_init(args: argparse.Namespace) -> int:
@@ -19,12 +20,33 @@ def cmd_campaign_run(args: argparse.Namespace) -> int:
 
 
 def cmd_campaign_launch(args: argparse.Namespace) -> int:
-    print(json.dumps(launch_campaign(args.config), indent=2, sort_keys=True))
+    payload = {"campaign": launch_campaign(args.config)}
+    campaign = ResearchCampaign(args.config)
+    if bool(campaign.cfg.get("lemma_writer_enabled", True)):
+        payload["lemma_book"] = launch_lemma_book(args.config)
+    print(json.dumps(payload, indent=2, sort_keys=True))
     return 0
 
 
 def cmd_campaign_status(args: argparse.Namespace) -> int:
     print(json.dumps(campaign_status(args.config), indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_lemma_book_run(args: argparse.Namespace) -> int:
+    print(json.dumps(
+        LemmaBookEditor(args.config).run(watch=args.watch), indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_lemma_book_launch(args: argparse.Namespace) -> int:
+    print(json.dumps(launch_lemma_book(args.config), indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_lemma_book_export(args: argparse.Namespace) -> int:
+    print(json.dumps(
+        LemmaBookEditor(args.config).export_snapshot(), indent=2, sort_keys=True))
     return 0
 
 
@@ -36,11 +58,17 @@ def build_parser() -> argparse.ArgumentParser:
         ("campaign-run", cmd_campaign_run, "run or resume the proof campaign"),
         ("campaign-launch", cmd_campaign_launch, "launch the campaign in the background"),
         ("campaign-status", cmd_campaign_status, "show durable campaign progress"),
+        ("lemma-book-launch", cmd_lemma_book_launch, "launch the lemma-writing agent"),
+        ("lemma-book-export", cmd_lemma_book_export, "refresh the public lemma book"),
     )
     for name, function, help_text in commands:
         item = subparsers.add_parser(name, help=help_text)
         item.add_argument("config")
         item.set_defaults(func=function)
+    item = subparsers.add_parser("lemma-book-run", help="run the lemma-writing agent")
+    item.add_argument("config")
+    item.add_argument("--watch", action="store_true")
+    item.set_defaults(func=cmd_lemma_book_run)
     return parser
 
 

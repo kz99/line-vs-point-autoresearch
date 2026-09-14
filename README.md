@@ -14,14 +14,14 @@ This project deliberately does **not** rank finite experiments as mathematical p
 
 ## Quick start
 
-The initialized 10-researcher test campaign is the recommended first run:
+The initialized 10-researcher test campaign is the recommended first run. Launching it also starts the dedicated Lemma Writer:
 
 ```bash
 line-point-research campaign-status configs/campaign-10-ultra.yaml
 line-point-research campaign-launch configs/campaign-10-ultra.yaml
 ```
 
-Initialization and status inspection do not invoke agents. `campaign-launch` is the explicit start command. The test campaign plans 10 proof researchers, up to 10 corresponding verifiers, one `GENIUS` synthesis, and one synthesis verifier (up to 22 agent invocations). Every role is hard-locked to `gpt-5.6-sol` at its highest supported reasoning level, `ultra`; campaign loading fails if the reasoning level is lowered.
+Initialization and status inspection do not invoke agents. `campaign-launch` is the explicit start command. The test campaign plans 10 proof researchers, up to 10 corresponding verifiers, one `GENIUS` synthesis, one synthesis verifier, and one Lemma Writer pass for every successful research or synthesis submission (up to 33 agent invocations). Every role is hard-locked to `gpt-5.6-sol` at its highest supported reasoning level, `ultra`; campaign loading fails if the reasoning level is lowered.
 
 The separate 300-researcher production campaign remains available:
 
@@ -41,11 +41,12 @@ Results live under `research_state/campaign-10-ultra/` for the test or `research
 - `reviews/`: hostile line-by-line proof audits;
 - `agent_logs/`: exact prompts, schemas, responses, and stderr;
 - `leaderboards/`: promising, verified, and rejected claims plus a bottleneck ledger;
+- `lemma_book/`: immutable, hash-linked editorial versions of every structured lemma;
 - `campaign.sqlite3`: the durable job queue.
 
 ## Research dashboard
 
-The dashboard in `dashboard/` is a live reading interface for the active campaign. It refreshes every ten seconds and shows progress, the verified-first candidate leaderboard, theorem claims, exponent ledgers, full mathematical notes, verifier reports, bottlenecks, and the searchable researcher queue. Every campaign status export refreshes `dashboard/public/research-data.json` automatically.
+The dashboard in `dashboard/` is a live reading interface for the active campaign. It refreshes every ten seconds and shows progress, the verified-first candidate leaderboard, theorem claims, a fully typeset Lemma Book, exponent ledgers, full mathematical notes, verifier reports, bottlenecks, and the searchable researcher queue. Every campaign status export refreshes `dashboard/public/research-data.json` automatically; `lemma-book-export` overlays the latest edited lemma corpus.
 
 The public snapshot is deployed by GitHub Pages at <https://kz99.github.io/line-point-research-observatory/>. Only the read-only dashboard is public; the research repository and its full corpus remain private. The public snapshot is refreshed from `dashboard/public/research-data.json` when the dashboard is published.
 
