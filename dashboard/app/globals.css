@@ -187,7 +187,14 @@ td .math-copy p { margin: 0; }
 .bottleneck-list article > span { color: #929aa8; font-family: var(--font-geist-mono), monospace; font-size: .62rem; }
 .bottleneck-list h3 { margin: 0 0 5px; font-size: .82rem; font-weight: 660; }
 .bottleneck-list .math-copy p { margin: 0; }
-.formula-line { margin: 0; color: #344269; font-size: .75rem; }
+.ledger-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; margin-top: 9px; }
+.ledger-term { min-width: 0; }
+.ledger-term > span, .ledger-loss > span { display: block; margin-bottom: 3px; color: #929aa8; font-family: var(--font-geist-mono), monospace; font-size: .54rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.ledger-term .math-copy { color: #344269; font-size: .74rem; line-height: 1.45; }
+.ledger-term .katex, .ledger-loss .katex { font-size: 1em; }
+.ledger-arrow { color: #a0a8b7; font-size: .9rem; }
+.ledger-loss { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 8px; align-items: baseline; margin-top: 8px; color: #536078; font-size: .69rem; line-height: 1.45; }
+.ledger-loss > span { margin: 0; }
 .bottleneck-list em { color: #87909f; font-size: .58rem; font-style: normal; text-transform: uppercase; }
 .muted-copy { margin-top: 6px; color: var(--ink-muted); font-size: .72rem; line-height: 1.5; }
 
@@ -223,6 +230,11 @@ footer { display: flex; justify-content: space-between; padding: 22px 2px 0; col
   .activity-panel { max-height: none; }
   .job-list { max-height: 420px; }
   .mission-body { grid-template-columns: 1fr; gap: 22px; }
+}
+
+@media (max-width: 640px) {
+  .ledger-flow { grid-template-columns: 1fr; gap: 7px; }
+  .ledger-arrow { transform: rotate(90deg); transform-origin: center; justify-self: start; }
 }
 
 @media (max-width: 760px) {

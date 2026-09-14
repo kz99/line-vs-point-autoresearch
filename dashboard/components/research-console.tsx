@@ -114,7 +114,13 @@ export type ResearchSnapshot = {
 };
 
 function normalizeMathMarkdown(source: string) {
-  return source
+  const repaired = source
+    .split(String.fromCharCode(3)).join('\\n')
+    .split(String.fromCharCode(8)).join('\\b')
+    .split(String.fromCharCode(12)).join('\\f')
+    .split(String.fromCharCode(13)).join('\\r');
+
+  return repaired
     .replace(/\\\[([\s\S]*?)\\\]/g, '\n\n$$$$\n$1\n$$$$\n\n')
     .replace(/\\\(([\s\S]*?)\\\)/g, '$$$1$$')
     .replace(
@@ -419,7 +425,21 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
                         <span>{String(index + 1).padStart(2, '0')}</span>
                         <div>
                           <h3>{item.stage}</h3>
-                          <p className="formula-line"><InlineFormula math={`${item.input_scale} \\longrightarrow ${item.output_scale}`} /></p>
+                          <div className="ledger-flow">
+                            <div className="ledger-term">
+                              <span>Input</span>
+                              <MathCopy>{item.input_scale}</MathCopy>
+                            </div>
+                            <span className="ledger-arrow" aria-hidden="true">→</span>
+                            <div className="ledger-term">
+                              <span>Output</span>
+                              <MathCopy>{item.output_scale}</MathCopy>
+                            </div>
+                          </div>
+                          <div className="ledger-loss">
+                            <span>Loss</span>
+                            <MathCopy>{item.loss}</MathCopy>
+                          </div>
                           <MathCopy className="muted-copy">{item.justification}</MathCopy>
                         </div>
                         <em>{item.status}</em>
