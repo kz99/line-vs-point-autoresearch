@@ -2,11 +2,18 @@
 
 import { useEffect, useState } from 'react';
 import {
+  BookOpen,
   CheckCircle2,
   CircleDashed,
   Clock3,
+  FileCheck2,
+  GitBranch,
+  ListTree,
   RefreshCw,
+  ShieldCheck,
   Sparkles,
+  Trophy,
+  Users,
   XCircle,
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -258,126 +265,149 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
   const progress = researchers.length ? Math.round((completed / researchers.length) * 100) : 0;
 
   return (
-    <main>
-      <header className="site-header">
-        <a className="wordmark" href="#top">Line–Point Research Ledger</a>
-        <nav aria-label="Page sections">
-          <a href="#candidates">Candidates</a>
-          <a href="#bottlenecks">Bottlenecks</a>
-          <a href="#activity">Activity</a>
-        </nav>
-        <Button variant="ghost" size="sm" onClick={refresh} disabled={refreshing}>
+    <main className="research-app" id="top">
+      <header className="topbar">
+        <a className="brand" href="#top">
+          <span>LP</span>
+          <div>
+            <strong>Line–Point</strong>
+            <small>Research observatory</small>
+          </div>
+        </a>
+        <div className="topbar-state">
+          <span className={active ? 'state-dot active' : 'state-dot'} />
+          <span>{campaignState}</span>
+          <small>· Updated {formatTimestamp(data.status.updated_at)}</small>
+        </div>
+        <Button variant="outline" size="sm" onClick={refresh} disabled={refreshing}>
           <RefreshCw className={refreshing ? 'animate-spin' : ''} aria-hidden="true" />
-          Refresh
+          Sync data
         </Button>
       </header>
 
-      <div className="page-shell" id="top">
-        <section className="intro">
-          <div className="intro-copy">
-            <p className="eyebrow">Autonomous proof search · bivariate case</p>
-            <h1>Line versus point over a prime field</h1>
-            <p className="dek">
-              A public record of attempts to improve the soundness exponent for the two-variable
-              low-degree test. Every promoted claim must arrive as a proof and survive an
-              independent line-by-line audit.
-            </p>
-          </div>
-          <div className="problem-statement">
-            <p className="section-kicker">Asymptotic target</p>
-            <MathCopy>{'$$\\operatorname{snd}_{\\mathbb F_p,2}(d) \\leq \\left(\\frac{d}{p}\\right)^{1-o(1)}$$'}</MathCopy>
-            <MathCopy className="comparison-math">
-              {'Current comparison point: $\\left(d/p\\right)^{1/3}$'}
-            </MathCopy>
-          </div>
-        </section>
+      <div className="app-layout">
+        <aside className="sidebar">
+          <nav aria-label="Research dashboard sections">
+            <a href="#overview"><BookOpen /> Overview</a>
+            <a href="#candidates"><Trophy /> Candidates <span>{candidates.length}</span></a>
+            <a href="#bottlenecks"><GitBranch /> Bottlenecks <span>{data.bottlenecks.length}</span></a>
+            <a href="#activity"><Users /> Researchers <span>{researchers.length}</span></a>
+          </nav>
 
-        <section className="status-strip" aria-label="Campaign summary">
-          <div><span>Status</span><strong>{campaignState}</strong></div>
-          <div><span>Researchers</span><strong>{completed}/{researchers.length}</strong></div>
-          <div><span>Verified claims</span><strong>{data.candidates.verified.length}</strong></div>
-          <div><span>Reasoning</span><strong>{data.status.reasoning_effort}</strong></div>
-          <div><span>Field</span><strong>𝔽<sub>p</sub>, m = {data.status.dimension}</strong></div>
-        </section>
-        <div className="progress-line" aria-label={`${progress}% of researchers completed`}>
-          <span style={{ width: `${progress}%` }} />
-        </div>
+          <div className="scope-card">
+            <p className="ui-label">Research scope</p>
+            <dl>
+              <div><dt>Dimension</dt><dd>m = {data.status.dimension}</dd></div>
+              <div><dt>Field</dt><dd>Prime 𝔽<sub>p</sub></dd></div>
+              <div><dt>Model</dt><dd>{data.status.model}</dd></div>
+              <div><dt>Reasoning</dt><dd>{data.status.reasoning_effort}</dd></div>
+            </dl>
+          </div>
 
-        <section className="content-section" id="candidates">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">01 · Main record</p>
-              <h2>Candidate arguments</h2>
+          <div className="review-policy">
+            <ShieldCheck />
+            <p><strong>Proofs before scores.</strong> No result is promoted without a complete note and an independent audit.</p>
+          </div>
+        </aside>
+
+        <div className="workspace">
+          <section className="mission-card" id="overview">
+            <div className="mission-topline">
+              <span className="campaign-tag">{data.campaign}</span>
+              <span>Two-variable prime-field test</span>
             </div>
-            <p>Verified proofs first, followed by promising claims awaiting a final audit.</p>
-          </div>
-          <div className="candidate-list">
-            {candidates.length ? candidates.map((candidate, index) => (
-              <CandidateEntry key={candidate.job_id} candidate={candidate} rank={index + 1} />
-            )) : <EmptyCandidates />}
-          </div>
-        </section>
-
-        <section className="content-section" id="bottlenecks">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">02 · Loss accounting</p>
-              <h2>Exponent bottlenecks</h2>
+            <div className="mission-body">
+              <div>
+                <p className="ui-label">Asymptotic objective</p>
+                <h1>Push line-vs-point soundness to the natural exponent.</h1>
+                <p className="mission-copy">A public, proof-first search for a genuine bivariate argument—without relying on the trivial general-dimension bootstrap.</p>
+              </div>
+              <div className="target-formula">
+                <MathCopy>{'$$\\operatorname{snd}_{\\mathbb F_p,2}(d) \\leq \\left(\\frac{d}{p}\\right)^{1-o(1)}$$'}</MathCopy>
+                <MathCopy className="benchmark-formula">{'Benchmark: $\\left(d/p\\right)^{1/3}$'}</MathCopy>
+              </div>
             </div>
-            <p>The exact step at which each proof architecture loses power.</p>
-          </div>
-          {data.bottlenecks.length ? (
-            <div className="bottleneck-list">
-              {data.bottlenecks.map((item, index) => (
-                <article key={`${item.stage}-${index}`}>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h3>{item.stage}</h3>
-                    <MathCopy>{`$${item.input_scale} \\longrightarrow ${item.output_scale}$`}</MathCopy>
-                    <MathCopy className="muted-copy">{item.justification}</MathCopy>
+            <div className="metric-row">
+              <div><span>Progress</span><strong>{completed}/{researchers.length}</strong></div>
+              <div><span>Promising</span><strong>{data.candidates.promising.length}</strong></div>
+              <div><span>Verified</span><strong>{data.candidates.verified.length}</strong></div>
+              <div><span>Rejected</span><strong>{data.candidates.rejected.length}</strong></div>
+              <div><span>Max invocations</span><strong>{data.status.planned_agent_invocations}</strong></div>
+            </div>
+            <div className="progress-track" aria-label={`${progress}% of researchers completed`}><span style={{ width: `${progress}%` }} /></div>
+            <div className="pipeline" aria-label="Research review pipeline">
+              <span><Users /> Researcher</span><i>→</i><span><FileCheck2 /> Proof note</span><i>→</i><span><ShieldCheck /> Verifier</span><i>→</i><span><Trophy /> Leaderboard</span>
+            </div>
+          </section>
+
+          <div className="content-grid">
+            <div className="main-column">
+              <section className="panel" id="candidates">
+                <div className="panel-header">
+                  <div><p className="ui-label">Proof leaderboard</p><h2>Candidate arguments</h2></div>
+                  <span>{candidates.length} total</span>
+                </div>
+                <div className="candidate-list">
+                  {candidates.length ? candidates.map((candidate, index) => (
+                    <CandidateEntry key={candidate.job_id} candidate={candidate} rank={index + 1} />
+                  )) : <EmptyCandidates />}
+                </div>
+              </section>
+
+              <section className="panel" id="bottlenecks">
+                <div className="panel-header">
+                  <div><p className="ui-label">Loss accounting</p><h2>Exponent bottlenecks</h2></div>
+                  <span>{data.bottlenecks.length} recorded</span>
+                </div>
+                {data.bottlenecks.length ? (
+                  <div className="bottleneck-list">
+                    {data.bottlenecks.map((item, index) => (
+                      <article key={`${item.stage}-${index}`}>
+                        <span>{String(index + 1).padStart(2, '0')}</span>
+                        <div>
+                          <h3>{item.stage}</h3>
+                          <MathCopy>{`$${item.input_scale} \\longrightarrow ${item.output_scale}$`}</MathCopy>
+                          <MathCopy className="muted-copy">{item.justification}</MathCopy>
+                        </div>
+                        <em>{item.status}</em>
+                      </article>
+                    ))}
                   </div>
-                  <em>{item.status}</em>
-                </article>
-              ))}
+                ) : (
+                  <div className="compact-empty"><ListTree /><p><strong>No loss ledger yet</strong><span>The first submitted proof will populate this section.</span></p></div>
+                )}
+              </section>
             </div>
-          ) : (
-            <p className="plain-empty">No exponent ledger has been submitted.</p>
-          )}
-        </section>
 
-        <section className="content-section" id="activity">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">03 · Research queue</p>
-              <h2>Current activity</h2>
-            </div>
-            <p>{data.status.model} · {data.status.planned_agent_invocations} planned invocations</p>
+            <aside className="activity-column" id="activity">
+              <section className="panel activity-panel">
+                <div className="panel-header">
+                  <div><p className="ui-label">Live queue</p><h2>Researchers</h2></div>
+                  <span>{data.status.counts.queued ?? 0} queued</span>
+                </div>
+
+                {genius && (
+                  <article className="genius-card">
+                    <div className="genius-title"><Sparkles /><span>GENIUS</span><em>{genius.status}</em></div>
+                    <p>{genius.direction}</p>
+                  </article>
+                )}
+
+                <div className="job-list">
+                  {researchers.map((job) => (
+                    <article key={job.id} className={`job-row job-${job.status}`}>
+                      <div className="job-state">{jobIcon(job.status)}</div>
+                      <div><strong>{job.id.replace('researcher-', 'R')}</strong><p>{job.direction}</p></div>
+                      <span>{job.status}</span>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </aside>
           </div>
 
-          {genius && (
-            <article className="genius-row">
-              <Sparkles aria-hidden="true" />
-              <div><span>GENIUS synthesis</span><strong>{genius.direction}</strong></div>
-              <em>{genius.status}</em>
-            </article>
-          )}
-
-          <div className="job-list">
-            {researchers.map((job) => (
-              <article key={job.id} className={`job-row job-${job.status}`}>
-                <div className="job-state">{jobIcon(job.status)}<span>{job.status}</span></div>
-                <strong>{job.id}</strong>
-                <p>{job.direction}</p>
-                <span>{job.attempts}/{job.max_attempts}</span>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <footer>
-          <p>Snapshot: {data.campaign}</p>
-          <p>Last synchronized {formatTimestamp(data.status.updated_at)}</p>
-        </footer>
+          <footer><span>Public snapshot · {data.campaign}</span><span>KaTeX-enabled proof rendering</span></footer>
+        </div>
       </div>
     </main>
   );
