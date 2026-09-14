@@ -1,39 +1,19 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  Activity,
-  AlertTriangle,
-  BrainCircuit,
-  Check,
-  ChevronRight,
+  CheckCircle2,
   CircleDashed,
   Clock3,
-  FileText,
-  FlaskConical,
   RefreshCw,
-  Search,
-  ShieldCheck,
-  Sigma,
-  Target,
-  Trophy,
-  Users,
+  Sparkles,
+  XCircle,
 } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Progress, ProgressLabel, ProgressValue } from '@/components/ui/progress';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Separator } from '@/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 type JobStatus = 'queued' | 'running' | 'succeeded' | 'failed';
 
@@ -59,6 +39,7 @@ type ProofStep = {
 };
 
 type ExponentStage = {
+  job_id?: string;
   stage: string;
   input_scale: string;
   output_scale: string;
@@ -124,185 +105,127 @@ export type ResearchSnapshot = {
   jobs: Job[];
 };
 
-function compactTime(value: string) {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime())
-    ? 'unknown'
-    : `${date.toISOString().slice(11, 16)} UTC`;
+function MathCopy({ children, className = '' }: { children: string; className?: string }) {
+  return (
+    <div className={`math-copy ${className}`}>
+      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+        {children}
+      </ReactMarkdown>
+    </div>
+  );
 }
 
-function candidateStatus(candidate: Candidate) {
+function formatTimestamp(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'Unknown';
+  return new Intl.DateTimeFormat('en', {
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZoneName: 'short',
+  }).format(date);
+}
+
+function jobIcon(status: JobStatus) {
+  if (status === 'succeeded') return <CheckCircle2 aria-hidden="true" />;
+  if (status === 'failed') return <XCircle aria-hidden="true" />;
+  if (status === 'running') return <Clock3 aria-hidden="true" />;
+  return <CircleDashed aria-hidden="true" />;
+}
+
+function candidateLabel(candidate: Candidate) {
   if (candidate.audit?.verdict === 'accept') return 'Verified';
   if (candidate.audit?.verdict === 'reject') return 'Rejected';
-  if (candidate.audit?.verdict === 'revise') return 'Needs revision';
-  return candidate.result_status === 'proved' ? 'Awaiting audit' : 'Promising lead';
+  if (candidate.audit?.verdict === 'revise') return 'Revision requested';
+  return 'Awaiting review';
 }
 
-function statusBadge(status: JobStatus) {
-  const variants = {
-    queued: 'border-slate-700 bg-slate-800/70 text-slate-300',
-    running: 'border-sky-500/40 bg-sky-500/10 text-sky-300',
-    succeeded: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',
-    failed: 'border-rose-500/40 bg-rose-500/10 text-rose-300',
-  };
-  return variants[status];
+function CandidateEntry({ candidate, rank }: { candidate: Candidate; rank: number }) {
+  return (
+    <article className="candidate-entry">
+      <div className="candidate-rank">{String(rank).padStart(2, '0')}</div>
+      <div className="candidate-main">
+        <div className="candidate-heading">
+          <div>
+            <p className="eyebrow">{candidateLabel(candidate)} · {candidate.job_id}</p>
+            <h3>{candidate.title}</h3>
+          </div>
+          <div className="exponent-mark">
+            <span>claimed exponent</span>
+            <strong>{candidate.claimed_exponent ?? '—'}</strong>
+          </div>
+        </div>
+
+        <section className="theorem-box" aria-label="Theorem claim">
+          <p className="section-kicker">Claim</p>
+          <MathCopy>{candidate.theorem_statement || 'No theorem statement supplied.'}</MathCopy>
+        </section>
+
+        {candidate.audit && (
+          <section className={`audit-note audit-${candidate.audit.verdict}`}>
+            <p className="section-kicker">Verifier · {candidate.audit.verdict}</p>
+            <MathCopy>{candidate.audit.summary}</MathCopy>
+            {candidate.audit.fatal_obstruction && (
+              <MathCopy className="fatal-obstruction">{candidate.audit.fatal_obstruction}</MathCopy>
+            )}
+          </section>
+        )}
+
+        <details className="proof-details">
+          <summary>Read the proof record</summary>
+          <div className="proof-record">
+            {candidate.exponent_ledger.length > 0 && (
+              <section>
+                <h4>Exponent ledger</h4>
+                <div className="ledger-table-wrap">
+                  <table>
+                    <thead>
+                      <tr><th>Stage</th><th>Input</th><th>Output</th><th>Loss</th></tr>
+                    </thead>
+                    <tbody>
+                      {candidate.exponent_ledger.map((stage, index) => (
+                        <tr key={`${stage.stage}-${index}`}>
+                          <td>{stage.stage}</td>
+                          <td><MathCopy>{stage.input_scale}</MathCopy></td>
+                          <td><MathCopy>{stage.output_scale}</MathCopy></td>
+                          <td><MathCopy>{stage.loss}</MathCopy></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
+            <section>
+              <h4>Mathematical note</h4>
+              <MathCopy className="paper-note">
+                {candidate.note_markdown || 'No full note was supplied.'}
+              </MathCopy>
+            </section>
+          </div>
+        </details>
+      </div>
+    </article>
+  );
 }
 
 function EmptyCandidates() {
   return (
-    <div className="empty-grid flex min-h-[340px] flex-col items-center justify-center rounded-xl border border-dashed border-slate-700/80 px-8 text-center">
-      <div className="mb-5 grid size-14 place-items-center rounded-2xl border border-slate-700 bg-slate-900 text-lime-300 shadow-[0_0_40px_rgba(190,242,100,0.08)]">
-        <FlaskConical className="size-6" />
-      </div>
-      <h3 className="font-heading text-lg font-semibold text-slate-100">No candidates yet</h3>
-      <p className="mt-2 max-w-md text-sm leading-6 text-slate-400">
-        The trial is ready but has not started. As proof notes arrive, candidates will appear here
-        with their claimed exponent, proof status, and independent verifier verdict.
+    <div className="quiet-empty">
+      <p className="eyebrow">No submissions yet</p>
+      <h3>The proof ledger is empty.</h3>
+      <p>
+        The trial has been prepared but not launched. Candidate theorems will be ranked here only
+        after a complete mathematical note is submitted; independent verifier judgments will be
+        shown beside each claim.
       </p>
-      <div className="mt-6 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
-        <CircleDashed className="size-4" /> Waiting for the first submission
-      </div>
     </div>
-  );
-}
-
-function CandidateList({
-  candidates,
-  selectedId,
-  onSelect,
-}: {
-  candidates: Candidate[];
-  selectedId: string | null;
-  onSelect: (id: string) => void;
-}) {
-  if (!candidates.length) return <EmptyCandidates />;
-  return (
-    <div className="space-y-2">
-      {candidates.map((candidate, index) => (
-        <Button
-          key={candidate.job_id}
-          variant="ghost"
-          onClick={() => onSelect(candidate.job_id)}
-          className={`h-auto w-full justify-start rounded-xl border px-4 py-4 text-left ${
-            selectedId === candidate.job_id
-              ? 'border-lime-300/40 bg-lime-300/[0.06]'
-              : 'border-slate-800 bg-slate-900/50 hover:border-slate-700 hover:bg-slate-900'
-          }`}
-        >
-          <span className="mr-3 font-mono text-xs text-slate-600">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="flex items-center gap-2">
-              <span className="truncate font-medium text-slate-100">{candidate.title}</span>
-              {candidate.benchmark_improved && (
-                <Badge className="bg-lime-300 text-slate-950">Beats 1/3</Badge>
-              )}
-            </span>
-            <span className="mt-1 flex gap-3 text-xs text-slate-500">
-              <span>{candidate.job_id}</span>
-              <span>
-                {candidate.claimed_exponent
-                  ? `α = ${candidate.claimed_exponent}`
-                  : 'No exponent claim'}
-              </span>
-              <span>{candidateStatus(candidate)}</span>
-            </span>
-          </span>
-          <ChevronRight className="ml-3 size-4 text-slate-600" />
-        </Button>
-      ))}
-    </div>
-  );
-}
-
-function CandidateDetail({ candidate }: { candidate: Candidate }) {
-  return (
-    <Card className="border border-slate-800 bg-slate-950/65 ring-0">
-      <CardHeader className="border-b border-slate-800 pb-5">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge className="bg-lime-300 text-slate-950">{candidateStatus(candidate)}</Badge>
-          <Badge variant="outline" className="border-slate-700 text-slate-300">
-            {candidate.claim_scope.replaceAll('_', ' ')}
-          </Badge>
-          {candidate.claimed_exponent && (
-            <span className="font-mono text-xs text-sky-300">α = {candidate.claimed_exponent}</span>
-          )}
-        </div>
-        <CardTitle className="mt-3 text-xl text-slate-50">{candidate.title}</CardTitle>
-        <CardDescription className="font-mono text-xs text-slate-500">
-          {candidate.job_id}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6 pt-5">
-        <section>
-          <p className="section-label">Theorem claim</p>
-          <p className="mt-2 text-sm leading-6 text-slate-200">{candidate.theorem_statement}</p>
-        </section>
-        {candidate.global_conclusion && (
-          <section>
-            <p className="section-label">Global conclusion</p>
-            <p className="mt-2 text-sm leading-6 text-slate-300">{candidate.global_conclusion}</p>
-          </section>
-        )}
-        <Separator className="bg-slate-800" />
-        <section>
-          <div className="mb-3 flex items-center justify-between">
-            <p className="section-label">Exponent ledger</p>
-            <span className="text-xs text-slate-500">
-              {candidate.exponent_ledger.length} stages
-            </span>
-          </div>
-          <div className="space-y-2">
-            {candidate.exponent_ledger.map((stage, index) => (
-              <div
-                key={`${stage.stage}-${index}`}
-                className="rounded-lg border border-slate-800 bg-slate-900/70 p-3"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-sm font-medium text-slate-200">{stage.stage}</span>
-                  <Badge variant="outline" className="border-slate-700 text-slate-400">
-                    {stage.status}
-                  </Badge>
-                </div>
-                <p className="mt-2 font-mono text-xs text-sky-300">
-                  {stage.input_scale} → {stage.output_scale} · loss {stage.loss}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-        {candidate.audit && (
-          <section className="rounded-xl border border-sky-500/20 bg-sky-500/[0.06] p-4">
-            <div className="flex items-center gap-2 text-sky-300">
-              <ShieldCheck className="size-4" />
-              <p className="section-label text-sky-300">Verifier report</p>
-            </div>
-            <p className="mt-3 text-sm leading-6 text-slate-300">{candidate.audit.summary}</p>
-            {candidate.audit.fatal_obstruction && (
-              <p className="mt-3 text-sm text-rose-300">{candidate.audit.fatal_obstruction}</p>
-            )}
-          </section>
-        )}
-        <details className="group rounded-xl border border-slate-800 bg-slate-900/40">
-          <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium text-slate-200">
-            <span className="flex items-center gap-2">
-              <FileText className="size-4 text-slate-500" /> Full mathematical note
-            </span>
-          </summary>
-          <pre className="max-h-[520px] overflow-auto whitespace-pre-wrap border-t border-slate-800 px-4 py-5 font-serif text-sm leading-7 text-slate-300">
-            {candidate.note_markdown}
-          </pre>
-        </details>
-      </CardContent>
-    </Card>
   );
 }
 
 export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot }) {
   const [data, setData] = useState(initialData);
-  const [query, setQuery] = useState('');
-  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
 
   async function refresh() {
@@ -320,288 +243,141 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
     return () => window.clearInterval(timer);
   }, []);
 
-  const allCandidates = useMemo(
-    () => [
-      ...data.candidates.verified,
-      ...data.candidates.promising,
-    ],
-    [data],
-  );
-  const selected = allCandidates.find((candidate) => candidate.job_id === selectedId) ?? null;
-  const researcherJobs = data.jobs.filter((job) => job.role === 'researcher');
-  const completedResearchers = researcherJobs.filter((job) =>
-    ['succeeded', 'failed'].includes(job.status),
-  ).length;
-  const runningResearchers = researcherJobs.filter((job) => job.status === 'running').length;
-  const progress = researcherJobs.length ? (completedResearchers / researcherJobs.length) * 100 : 0;
-  const filteredJobs = researcherJobs.filter((job) =>
-    `${job.id} ${job.direction}`.toLowerCase().includes(query.toLowerCase()),
-  );
-  const queuedResearchers = researcherJobs.filter((job) => job.status === 'queued').length;
-  const campaignState = runningResearchers
-    ? `${runningResearchers} active`
-    : completedResearchers === 0
-      ? 'Ready · not launched'
-      : queuedResearchers
-        ? 'Paused'
-        : 'Complete';
-
-  useEffect(() => {
-    if (!selectedId && allCandidates.length) setSelectedId(allCandidates[0].job_id);
-  }, [allCandidates, selectedId]);
+  const candidates = [...data.candidates.verified, ...data.candidates.promising];
+  const researchers = data.jobs.filter((job) => job.role === 'researcher');
+  const genius = data.jobs.find((job) => job.role === 'genius');
+  const completed = researchers.filter((job) => ['succeeded', 'failed'].includes(job.status)).length;
+  const active = researchers.filter((job) => job.status === 'running').length;
+  const campaignState = active > 0
+    ? `${active} active`
+    : completed === 0
+      ? 'Not launched'
+      : completed === researchers.length
+        ? 'Complete'
+        : 'Paused';
+  const progress = researchers.length ? Math.round((completed / researchers.length) * 100) : 0;
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-slate-800/90 bg-slate-950/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-5 py-4 lg:px-8">
-          <div className="flex items-center gap-3">
-            <div className="grid size-9 place-items-center rounded-lg border border-lime-300/30 bg-lime-300/[0.07] text-lime-300">
-              <Sigma className="size-5" />
-            </div>
-            <div>
-              <p className="font-heading text-sm font-semibold tracking-tight text-slate-50">
-                Line↔Point Observatory
-              </p>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
-                bivariate prime-field research
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Badge
-              variant="outline"
-              className={
-                campaignState === 'Ready · not launched'
-                  ? 'border-amber-400/30 bg-amber-400/[0.07] text-amber-300'
-                  : 'border-emerald-400/30 bg-emerald-400/[0.07] text-emerald-300'
-              }
-            >
-              <span
-                className={`mr-1 size-1.5 rounded-full ${
-                  campaignState === 'Ready · not launched'
-                    ? 'bg-amber-300'
-                    : runningResearchers
-                      ? 'animate-pulse bg-emerald-300'
-                      : 'bg-sky-300'
-                }`}
-              />
-              {campaignState}
-            </Badge>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={refresh}
-              disabled={refreshing}
-              className="border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800"
-            >
-              <RefreshCw className={refreshing ? 'animate-spin' : ''} /> Refresh
-            </Button>
-          </div>
-        </div>
+    <main>
+      <header className="site-header">
+        <a className="wordmark" href="#top">Line–Point Research Ledger</a>
+        <nav aria-label="Page sections">
+          <a href="#candidates">Candidates</a>
+          <a href="#bottlenecks">Bottlenecks</a>
+          <a href="#activity">Activity</a>
+        </nav>
+        <Button variant="ghost" size="sm" onClick={refresh} disabled={refreshing}>
+          <RefreshCw className={refreshing ? 'animate-spin' : ''} aria-hidden="true" />
+          Refresh
+        </Button>
       </header>
 
-      <div className="mx-auto max-w-[1600px] px-5 py-6 lg:px-8 lg:py-8">
-        <section className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          <Card className="metric-card">
-            <CardContent className="flex items-center justify-between">
-              <div>
-                <p className="section-label">Research progress</p>
-                <p className="metric-value">
-                  {completedResearchers}<span>/{researcherJobs.length}</span>
-                </p>
-              </div>
-              <Activity className="size-5 text-sky-300" />
-            </CardContent>
-          </Card>
-          <Card className="metric-card">
-            <CardContent className="flex items-center justify-between">
-              <div>
-                <p className="section-label">Promising leads</p>
-                <p className="metric-value">{data.candidates.promising.length}</p>
-              </div>
-              <Target className="size-5 text-violet-300" />
-            </CardContent>
-          </Card>
-          <Card className="metric-card">
-            <CardContent className="flex items-center justify-between">
-              <div>
-                <p className="section-label">Verified results</p>
-                <p className="metric-value">{data.candidates.verified.length}</p>
-              </div>
-              <Trophy className="size-5 text-lime-300" />
-            </CardContent>
-          </Card>
-          <Card className="metric-card">
-            <CardContent className="flex items-center justify-between">
-              <div>
-                <p className="section-label">Reasoning</p>
-                <p className="metric-value capitalize">{data.status.reasoning_effort}</p>
-              </div>
-              <BrainCircuit className="size-5 text-amber-300" />
-            </CardContent>
-          </Card>
+      <div className="page-shell" id="top">
+        <section className="intro">
+          <div className="intro-copy">
+            <p className="eyebrow">Autonomous proof search · bivariate case</p>
+            <h1>Line versus point over a prime field</h1>
+            <p className="dek">
+              A public record of attempts to improve the soundness exponent for the two-variable
+              low-degree test. Every promoted claim must arrive as a proof and survive an
+              independent line-by-line audit.
+            </p>
+          </div>
+          <div className="problem-statement">
+            <p className="section-kicker">Asymptotic target</p>
+            <MathCopy>{'$$\\operatorname{snd}_{\\mathbb F_p,2}(d) \\leq \\left(\\frac{d}{p}\\right)^{1-o(1)}$$'}</MathCopy>
+            <MathCopy className="comparison-math">
+              {'Current comparison point: $\\left(d/p\\right)^{1/3}$'}
+            </MathCopy>
+          </div>
         </section>
 
-        <section className="mb-6 grid gap-4 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <Card className="border border-slate-800 bg-slate-900/45 ring-0">
-            <CardContent className="pt-1">
-              <div className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <p className="section-label">Trial campaign</p>
-                  <h1 className="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-50">
-                    Soundness toward (d/p)<sup>1−o(1)</sup>
-                  </h1>
-                  <p className="mt-2 text-sm text-slate-400">
-                    m = 2 · F<sub>p</sub> · benchmark exponent 1/3
-                  </p>
-                </div>
-                <Badge variant="outline" className="border-slate-700 font-mono text-slate-400">
-                  {data.campaign}
-                </Badge>
-              </div>
-              <Progress value={progress} className="gap-2">
-                <ProgressLabel className="text-xs text-slate-400">Researchers completed</ProgressLabel>
-                <ProgressValue className="text-xs text-slate-400">
-                  {Math.round(progress)}%
-                </ProgressValue>
-              </Progress>
-            </CardContent>
-          </Card>
-
-          <Card className="border border-slate-800 bg-slate-900/45 ring-0">
-            <CardContent className="grid grid-cols-2 gap-x-4 gap-y-3 pt-1 text-sm">
-              <div><p className="section-label">Model</p><p className="mt-1 font-mono text-xs text-slate-200">{data.status.model}</p></div>
-              <div><p className="section-label">Max invocations</p><p className="mt-1 font-mono text-xs text-slate-200">{data.status.planned_agent_invocations}</p></div>
-              <div><p className="section-label">Queued now</p><p className="mt-1 font-mono text-xs text-slate-200">{data.status.counts.queued ?? 0}</p></div>
-              <div><p className="section-label">Last sync</p><p className="mt-1 font-mono text-xs text-slate-200">{compactTime(data.status.updated_at)}</p></div>
-            </CardContent>
-          </Card>
+        <section className="status-strip" aria-label="Campaign summary">
+          <div><span>Status</span><strong>{campaignState}</strong></div>
+          <div><span>Researchers</span><strong>{completed}/{researchers.length}</strong></div>
+          <div><span>Verified claims</span><strong>{data.candidates.verified.length}</strong></div>
+          <div><span>Reasoning</span><strong>{data.status.reasoning_effort}</strong></div>
+          <div><span>Field</span><strong>𝔽<sub>p</sub>, m = {data.status.dimension}</strong></div>
         </section>
+        <div className="progress-line" aria-label={`${progress}% of researchers completed`}>
+          <span style={{ width: `${progress}%` }} />
+        </div>
 
-        <Tabs defaultValue="candidates" className="gap-4">
-          <TabsList variant="line" className="border-b border-slate-800 pb-2">
-            <TabsTrigger value="candidates" className="px-3 text-slate-400 data-active:text-slate-50">
-              Candidates <span className="count-pill">{allCandidates.length}</span>
-            </TabsTrigger>
-            <TabsTrigger value="bottlenecks" className="px-3 text-slate-400 data-active:text-slate-50">
-              Bottlenecks <span className="count-pill">{data.bottlenecks.length}</span>
-            </TabsTrigger>
-            <TabsTrigger value="researchers" className="px-3 text-slate-400 data-active:text-slate-50">
-              Researchers <span className="count-pill">{researcherJobs.length}</span>
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="candidates">
-            <div
-              className={`grid gap-4 ${
-                selected ? 'xl:grid-cols-[minmax(420px,0.9fr)_minmax(520px,1.1fr)]' : ''
-              }`}
-            >
-              <Card className="border border-slate-800 bg-slate-900/35 ring-0">
-                <CardHeader className="border-b border-slate-800 pb-4">
-                  <CardTitle className="flex items-center gap-2 text-slate-100">
-                    <Trophy className="size-4 text-lime-300" /> Candidate leaderboard
-                  </CardTitle>
-                  <CardDescription className="text-slate-500">
-                    Verified proofs first, then promising unaudited or repairable claims.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <CandidateList
-                    candidates={allCandidates}
-                    selectedId={selectedId}
-                    onSelect={setSelectedId}
-                  />
-                </CardContent>
-              </Card>
-              {selected && <CandidateDetail candidate={selected} />}
+        <section className="content-section" id="candidates">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">01 · Main record</p>
+              <h2>Candidate arguments</h2>
             </div>
-          </TabsContent>
+            <p>Verified proofs first, followed by promising claims awaiting a final audit.</p>
+          </div>
+          <div className="candidate-list">
+            {candidates.length ? candidates.map((candidate, index) => (
+              <CandidateEntry key={candidate.job_id} candidate={candidate} rank={index + 1} />
+            )) : <EmptyCandidates />}
+          </div>
+        </section>
 
-          <TabsContent value="bottlenecks">
-            <Card className="border border-slate-800 bg-slate-900/35 ring-0">
-              <CardHeader>
-                <CardTitle className="text-slate-100">Exponent bottleneck ledger</CardTitle>
-                <CardDescription className="text-slate-500">
-                  Every claimed loss, aggregated across submitted proof architectures.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {data.bottlenecks.length ? (
-                  <div className="grid gap-3 lg:grid-cols-2">
-                    {data.bottlenecks.map((item, index) => (
-                      <div key={`${item.stage}-${index}`} className="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
-                        <div className="flex justify-between gap-4">
-                          <h3 className="font-medium text-slate-200">{item.stage}</h3>
-                          <Badge variant="outline" className="border-slate-700 text-slate-400">{item.status}</Badge>
-                        </div>
-                        <p className="mt-2 font-mono text-xs text-sky-300">{item.input_scale} → {item.output_scale}</p>
-                        <p className="mt-3 text-sm leading-6 text-slate-400">{item.justification}</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="empty-grid grid min-h-[300px] place-items-center rounded-xl border border-dashed border-slate-700">
-                    <div className="text-center">
-                      <AlertTriangle className="mx-auto size-6 text-amber-300" />
-                      <p className="mt-3 font-medium text-slate-200">No exponent ledgers submitted</p>
-                      <p className="mt-1 text-sm text-slate-500">Bottlenecks will populate after the first proof note.</p>
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="researchers">
-            <Card className="border border-slate-800 bg-slate-900/35 ring-0">
-              <CardHeader className="border-b border-slate-800 pb-4">
-                <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+        <section className="content-section" id="bottlenecks">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">02 · Loss accounting</p>
+              <h2>Exponent bottlenecks</h2>
+            </div>
+            <p>The exact step at which each proof architecture loses power.</p>
+          </div>
+          {data.bottlenecks.length ? (
+            <div className="bottleneck-list">
+              {data.bottlenecks.map((item, index) => (
+                <article key={`${item.stage}-${index}`}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
                   <div>
-                    <CardTitle className="flex items-center gap-2 text-slate-100">
-                      <Users className="size-4 text-sky-300" /> Researcher queue
-                    </CardTitle>
-                    <CardDescription className="text-slate-500">
-                      Assignments, attempts, and current execution state.
-                    </CardDescription>
+                    <h3>{item.stage}</h3>
+                    <MathCopy>{`$${item.input_scale} \\longrightarrow ${item.output_scale}$`}</MathCopy>
+                    <MathCopy className="muted-copy">{item.justification}</MathCopy>
                   </div>
-                  <div className="relative w-full sm:w-72">
-                    <Search className="absolute left-2.5 top-2 size-4 text-slate-600" />
-                    <Input
-                      value={query}
-                      onChange={(event) => setQuery(event.target.value)}
-                      placeholder="Search directions…"
-                      className="border-slate-700 bg-slate-950 pl-9 text-slate-200"
-                    />
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="pt-2">
-                <ScrollArea className="h-[520px]">
-                  <div className="divide-y divide-slate-800/80">
-                    {filteredJobs.map((job) => (
-                      <div
-                        key={job.id}
-                        className="grid gap-3 px-2 py-4 sm:grid-cols-[130px_1fr_100px] sm:items-center"
-                      >
-                        <div className="font-mono text-xs text-slate-500">{job.id}</div>
-                        <div className="text-sm text-slate-300">{job.direction}</div>
-                        <div className="flex justify-start sm:justify-end">
-                          <Badge variant="outline" className={statusBadge(job.status)}>
-                            {job.status === 'succeeded' && <Check className="size-3" />}
-                            {job.status === 'running' && <RefreshCw className="size-3 animate-spin" />}
-                            {job.status === 'queued' && <Clock3 className="size-3" />}
-                            {job.status}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+                  <em>{item.status}</em>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="plain-empty">No exponent ledger has been submitted.</p>
+          )}
+        </section>
+
+        <section className="content-section" id="activity">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">03 · Research queue</p>
+              <h2>Current activity</h2>
+            </div>
+            <p>{data.status.model} · {data.status.planned_agent_invocations} planned invocations</p>
+          </div>
+
+          {genius && (
+            <article className="genius-row">
+              <Sparkles aria-hidden="true" />
+              <div><span>GENIUS synthesis</span><strong>{genius.direction}</strong></div>
+              <em>{genius.status}</em>
+            </article>
+          )}
+
+          <div className="job-list">
+            {researchers.map((job) => (
+              <article key={job.id} className={`job-row job-${job.status}`}>
+                <div className="job-state">{jobIcon(job.status)}<span>{job.status}</span></div>
+                <strong>{job.id}</strong>
+                <p>{job.direction}</p>
+                <span>{job.attempts}/{job.max_attempts}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <footer>
+          <p>Snapshot: {data.campaign}</p>
+          <p>Last synchronized {formatTimestamp(data.status.updated_at)}</p>
+        </footer>
       </div>
     </main>
   );

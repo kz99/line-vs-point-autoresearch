@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import 'katex/dist/katex.min.css';
 import './globals.css';
 
 const geistSans = Geist({
@@ -13,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Line↔Point Research Observatory',
+  title: 'Line–Point Research Ledger',
   description:
-    'Live proof-candidate, verifier, and exponent-ledger dashboard for bivariate prime-field line-versus-point autoresearch.',
+    'A public proof ledger for bivariate prime-field line-versus-point soundness research.',
 };
 
 export default function RootLayout({
