@@ -4,6 +4,8 @@ campaign_dir: ../research_state/campaign-300-ultra
 
 campaign:
   researcher_count: 300
+  dimension: 2
+  field_regime: prime
   verifier_enabled: true
   genius_enabled: true
   executable: codex

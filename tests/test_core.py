@@ -37,6 +37,8 @@ corpus_root: ./corpus
 campaign_dir: ./state
 campaign:
   researcher_count: 300
+  dimension: 2
+  field_regime: prime
   verifier_enabled: true
   genius_enabled: true
   model: gpt-5.6-sol
@@ -52,6 +54,8 @@ campaign:
             self.assertEqual(status["planned_agent_invocations"], 602)
             self.assertEqual(status["benchmark_exponent"], "1/3")
             self.assertEqual(status["target_exponent"], "1-o(1)")
+            self.assertEqual(status["dimension"], 2)
+            self.assertEqual(status["field_regime"], "prime")
             boards = root / "state" / "leaderboards"
             self.assertTrue((boards / "promising-results.json").exists())
             self.assertEqual(json.loads((boards / "bottleneck-ledger.json").read_text()), [])
@@ -65,6 +69,8 @@ corpus_root: ./corpus
 campaign_dir: ./state
 campaign:
   researcher_count: 300
+  dimension: 2
+  field_regime: prime
   verifier_enabled: true
   genius_enabled: true
   model: gpt-5.6-sol
@@ -73,9 +79,41 @@ campaign:
             campaign = ResearchCampaign(config)
             prompt = campaign._research_prompt({"id": "researcher-0001", "ordinal": 1,
                                                 "direction": "test"})
-            self.assertIn("C(d/q)^(1/3)", prompt)
-            self.assertIn("(d/q)^(1-o(1))", prompt)
+            self.assertIn("m=2 over the prime field F_p", prompt)
+            self.assertIn("C(d/p)^(1/3)", prompt)
+            self.assertIn("(d/p)^(1-o(1))", prompt)
+            self.assertIn("Do not work on m>2", prompt)
+            self.assertIn("routine downstream corollary", prompt)
             self.assertIn("cannot prove an asymptotic", prompt)
+
+    def test_campaign_rejects_other_dimensions_and_field_regimes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            dimension_config = root / "dimension.yaml"
+            dimension_config.write_text("""workspace: .
+corpus_root: ./corpus
+campaign_dir: ./state
+campaign:
+  researcher_count: 300
+  dimension: 3
+  field_regime: prime_power
+  reasoning_effort: ultra
+""")
+            with self.assertRaisesRegex(ValueError, "dimension must be exactly 2"):
+                ResearchCampaign(dimension_config)
+
+            field_config = root / "field.yaml"
+            field_config.write_text("""workspace: .
+corpus_root: ./corpus
+campaign_dir: ./state
+campaign:
+  researcher_count: 300
+  dimension: 2
+  field_regime: prime_power
+  reasoning_effort: ultra
+""")
+            with self.assertRaisesRegex(ValueError, "field_regime must be prime"):
+                ResearchCampaign(field_config)
 
 
 if __name__ == "__main__":

@@ -17,16 +17,16 @@
       "sha256": "3776b8754db483faa2c7b19430500bc460cd681b0eae8ddaaf61aa8c780cd932"
     },
     {
-      "bytes": 73728,
+      "bytes": 81920,
       "path": "research_state/campaign-300-ultra/campaign.sqlite3",
       "role": "campaign_queue",
-      "sha256": "60834b89c82e134efd1706a6eac060b493ec188a2cf200ba063c96a7c647c602"
+      "sha256": "ca400086884a37459006b56a030fd5693faa4e6aa913e5f79a2a113bd7cee2c3"
     },
     {
-      "bytes": 133182,
+      "bytes": 136854,
       "path": "research_state/campaign-300-ultra/jobs.json",
       "role": "campaign_index",
-      "sha256": "5c56417d2282ddc66161cbc500b7498ef2aa931103d458e91aeee88c61407b3a"
+      "sha256": "1ced1bcabc9c95970606769d46ada1221606b75360cd5f2c638be6514ed217d1"
     },
     {
       "bytes": 3,
@@ -53,13 +53,13 @@
       "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
     },
     {
-      "bytes": 422,
+      "bytes": 467,
       "path": "research_state/campaign-300-ultra/status.json",
       "role": "campaign_index",
-      "sha256": "f6af162bde2195cd95e7b3cd384e31c22a632f7d48918d0d3df580fee86c8152"
+      "sha256": "cdd173a722f537e37d778357e51006279d772f9c5f2f0fc38e38e433a90698ca"
     }
   ],
   "hash_algorithm": "sha256",
   "schema": "line-point-research-data-manifest-v1",
-  "total_bytes": 207891
+  "total_bytes": 219800
 }

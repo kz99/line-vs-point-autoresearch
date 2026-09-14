@@ -2,25 +2,27 @@
 
 This file is a navigation aid, not a substitute for the papers. Agents must cite exact theorem and lemma identifiers from the primary sources they actually use.
 
+The active campaign extracts only the \(m=2\), prime-field content of these papers. General-dimensional lifting is standard downstream machinery and is not an active research target.
+
 ## Primary line-versus-point papers
 
 ### Arora--Sudan
 
 Sanjeev Arora and Madhu Sudan, *Improved Low-Degree Testing and Its Applications*, Combinatorica 23 (2003), 365--426. DOI: [10.1007/s00493-003-0025-0](https://doi.org/10.1007/s00493-003-0025-0).
 
-The foundational low-agreement analysis of the Rubinfeld--Sudan test. It combines a low-dimensional algebraic argument, including Hilbert irreducibility, with a dimension-bootstrapping argument. Its field-size requirement is polynomially larger than the degree/agreement parameters.
+The foundational low-agreement analysis of the Rubinfeld--Sudan test. For this campaign, isolate its bivariate algebraic argument over \(\mathbb F_p\), including the use of Hilbert irreducibility and its field-size requirement. Its separate dimension-bootstrapping argument is historical context only.
 
 ### Harsha--Kumar--Saptharishi--Sudan (HKSS)
 
 Prahladh Harsha, Mrinal Kumar, Ramprasad Saptharishi, and Madhu Sudan, *An Improved Line-Point Low-Degree Test*, arXiv:2311.12752. [Primary preprint](https://arxiv.org/abs/2311.12752).
 
-This work replaces the black-box use of Hilbert irreducibility with a more direct bivariate factorization/interpolation analysis and gives a simpler lift from two variables to general dimension. Kominers--Thaler--Zheng estimate the resulting low-agreement exponent as \(1/48\) for general \(m\) and \(1/7\) for \(m=2\); those numerical exponent extractions should be attributed to KTZ unless independently rederived.
+This work replaces the black-box use of Hilbert irreducibility with a more direct bivariate factorization/interpolation analysis. Kominers--Thaler--Zheng estimate the resulting bivariate low-agreement exponent as \(1/7\); that numerical extraction should be attributed to KTZ unless independently rederived. The later lift to general dimension is routine for present purposes and is not assigned to agents.
 
 ### Kominers--Thaler--Zheng (KTZ)
 
 Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, *Improved Soundness for the Line--versus--Point Test*, ECCC TR26-147, revision 1 (2026). [Primary report](https://eccc.weizmann.ac.il/report/2026/147/).
 
-The current benchmark proves a cubic threshold \(C(d/q)^{1/3}\) over every finite field, with global agreement at least a constant times the local agreement. The proof isolates a combinatorial mechanism and an algebraic mechanism; campaign submissions should identify exactly which step currently forces the exponent \(1/3\).
+The current benchmark proves a cubic threshold \(C(d/q)^{1/3}\) over every finite field, hence in particular \(C(d/p)^{1/3}\) on \(\mathbb F_p^2\), with global agreement at least a constant times the local agreement. The campaign uses only this bivariate prime-field specialization. Submissions should identify exactly which combinatorial or algebraic step forces the exponent \(1/3\).
 
 ## Adjacent foundations
 
@@ -33,9 +35,9 @@ The current benchmark proves a cubic threshold \(C(d/q)^{1/3}\) over every finit
 1. Which inequality in the KTZ bivariate argument creates the cubic threshold?
 2. Is the loss algebraic, combinatorial, or caused by converting average line agreement into a structured set of points/directions?
 3. Can multiplicity-sensitive interpolation, Hasse derivatives, or separability arguments reduce the loss?
-4. Can the general-\(m\) bootstrapping preserve an improved bivariate exponent?
-5. What examples show that a threshold below \(\Theta(d/q)\) is impossible?
-6. Which statements fail in small characteristic, for \(d\ge q\), or when affine-line sampling is changed?
+4. Can a direct argument using the geometry of \(\mathbb F_p^2\) avoid a lossy intermediate lemma?
+5. What examples show that a threshold below \(\Theta(d/p)\) is impossible?
+6. Which statements fail in small prime characteristic, for \(d\ge p\), or when affine-line sampling is changed?
 
 ## Citation policy
 

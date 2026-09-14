@@ -11,5 +11,5 @@ def parse_rational_exponent(value: str) -> Fraction:
 
 
 def is_stronger_fixed_exponent(claimed: str, benchmark: str = "1/3") -> bool:
-    """For 0 < d/q < 1, a larger fixed exponent gives a lower threshold."""
+    """For 0 < d/p < 1, a larger fixed exponent gives a lower threshold."""
     return parse_rational_exponent(claimed) > parse_rational_exponent(benchmark)

@@ -66,7 +66,7 @@ LITERATURE_DEPENDENCY = {
 
 RESEARCH_SCHEMA = {
     "type": "object", "additionalProperties": False,
-    "required": ["title", "result_status", "claim_scope", "benchmark_improved",
+    "required": ["title", "dimension", "field_regime", "result_status", "claim_scope", "benchmark_improved",
                  "claimed_exponent", "theorem_statement", "parameter_regime",
                  "sampling_model", "global_conclusion", "literature_dependencies",
                  "proof_steps", "exponent_ledger", "counterexample_attempts",
@@ -74,8 +74,10 @@ RESEARCH_SCHEMA = {
                  "next_tasks", "note_markdown"],
     "properties": {
         "title": {"type": "string"},
+        "dimension": {"type": "integer", "const": 2},
+        "field_regime": {"type": "string", "enum": ["prime"]},
         "result_status": {"type": "string", "enum": ["proved", "conditional", "conjectural", "refuted"]},
-        "claim_scope": {"type": "string", "enum": ["bivariate", "general_dimension", "bootstrapping", "obstruction", "counterexample", "proof_tool"]},
+        "claim_scope": {"type": "string", "enum": ["bivariate_theorem", "algebraic_lemma", "combinatorial_lemma", "obstruction", "counterexample", "proof_tool"]},
         "benchmark_improved": {"type": "boolean"},
         "claimed_exponent": {"type": ["string", "null"]},
         "theorem_statement": {"type": "string"},
@@ -97,13 +99,15 @@ RESEARCH_SCHEMA = {
 
 GENIUS_SCHEMA = {
     "type": "object", "additionalProperties": False,
-    "required": ["title", "snapshot", "evidence_ledger", "bottleneck_map",
+    "required": ["title", "dimension", "field_regime", "snapshot", "evidence_ledger", "bottleneck_map",
                  "architectures", "selected_architecture_id", "integrated_theorem",
                  "claimed_exponent", "proof_steps", "exponent_ledger",
                  "counterexample_attempts", "research_directives", "limitations",
                  "abstain_reason", "note_markdown"],
     "properties": {
         "title": {"type": "string"},
+        "dimension": {"type": "integer", "const": 2},
+        "field_regime": {"type": "string", "enum": ["prime"]},
         "snapshot": {
             "type": "object", "additionalProperties": False,
             "required": ["data_manifest_sha256", "durable_file_count", "examined_paths",
@@ -174,7 +178,8 @@ AUDIT_ITEM = {
 
 AUDIT_SCHEMA = {
     "type": "object", "additionalProperties": False,
-    "required": ["verdict", "unfixable", "verified_claim_sha256", "scope_verified",
+    "required": ["verdict", "unfixable", "verified_claim_sha256", "dimension_verified",
+                 "field_regime_verified", "scope_verified",
                  "benchmark_improved", "verified_exponent", "fatal_obstruction",
                  "coverage_complete", "quantifier_audit", "exponent_audit",
                  "literature_audit", "line_audit", "required_changes",
@@ -183,7 +188,9 @@ AUDIT_SCHEMA = {
         "verdict": {"type": "string", "enum": ["accept", "revise", "reject"]},
         "unfixable": {"type": "boolean"},
         "verified_claim_sha256": {"type": ["string", "null"]},
-        "scope_verified": {"type": "string", "enum": ["none", "bivariate", "general_dimension", "bootstrapping", "obstruction", "proof_tool"]},
+        "dimension_verified": {"type": "boolean"},
+        "field_regime_verified": {"type": "boolean"},
+        "scope_verified": {"type": "string", "enum": ["none", "bivariate_theorem", "algebraic_lemma", "combinatorial_lemma", "obstruction", "counterexample", "proof_tool"]},
         "benchmark_improved": {"type": "boolean"},
         "verified_exponent": {"type": ["string", "null"]},
         "fatal_obstruction": {"type": ["string", "null"]},
@@ -200,36 +207,36 @@ AUDIT_SCHEMA = {
 
 
 DIRECTIONS = [
-    "audit the exact cubic bottleneck in Kominers--Thaler--Zheng",
-    "improve the bivariate combinatorial concentration step",
-    "improve the bivariate algebraic interpolation step",
-    "multiplicity-sensitive interpolation and weighted vanishing conditions",
-    "Hasse derivatives and inseparability in small characteristic",
-    "factorization, discriminants, and absolutely irreducible components",
-    "Bezout and intersection-multiplicity accounting",
-    "incidence bounds for point-line agreement configurations",
+    "audit the exact bivariate prime-field cubic bottleneck in Kominers--Thaler--Zheng",
+    "improve the combinatorial concentration step in the affine plane over F_p",
+    "improve the bivariate algebraic interpolation step over F_p",
+    "multiplicity-sensitive bivariate interpolation and weighted vanishing conditions",
+    "Hasse derivatives and inseparability in small prime characteristic",
+    "bivariate factorization, discriminants, and absolutely irreducible plane curves",
+    "Bezout and intersection-multiplicity accounting for curves in the affine plane",
+    "prime-field incidence bounds for point-line agreement configurations",
     "higher moments and dependent random choice on good incidences",
     "energy increment and popularity refinements",
-    "additive-combinatorial structure of good directions",
-    "polynomial partitioning analogues over finite fields",
-    "list recovery and Reed--Muller list-decoding reductions",
+    "additive-combinatorial structure of good directions in F_p^2",
+    "sum-product and prime-field incidence phenomena in the affine plane",
+    "bivariate Reed--Muller list recovery and list-decoding reductions",
     "local correction and plurality decoding without exponent loss",
     "agreement theorems and direct-product testing analogies",
-    "dimension bootstrapping with no exponent degradation",
-    "random plane restrictions and consistency gluing",
-    "induction on dimension with quantified exceptional sets",
-    "field extension and descent arguments",
-    "prime-field versus non-prime-field obstructions",
-    "low-characteristic counterexamples to derivative arguments",
-    "construct lower-bound examples near the d/q threshold",
+    "direct affine-plane geometry avoiding lossy intermediate lemmas",
+    "structured pencils of good lines through popular points",
+    "direction-by-direction consistency and gluing inside F_p^2",
+    "polynomial-method incidence bounds specialized to F_p^2",
+    "prime-characteristic obstructions when p is small relative to d and epsilon",
+    "low-prime-characteristic counterexamples to derivative arguments",
+    "construct bivariate prime-field lower-bound examples near the d/p threshold",
     "information-theoretic barriers and sharpness constructions",
-    "line-versus-line to line-versus-point reductions",
-    "plane-versus-point insights that preserve query complexity",
-    "hypergraph agreement and high-dimensional expansion methods",
-    "sum-product phenomena and finite-field incidence geometry",
-    "extract every hidden exponent from Arora--Sudan",
-    "extract and optimize the HKSS exponent ledger",
-    "unified proof architecture targeting exponent 1-o(1)",
+    "line-versus-line insights that rigorously preserve the bivariate line-versus-point test",
+    "plane-curve rigidity and polynomial identity mechanisms",
+    "second-moment versus third-moment losses in the bivariate proof",
+    "prime-field character sums or Weil bounds for structured exceptional sets",
+    "extract every bivariate prime-field exponent from Arora--Sudan",
+    "extract and optimize the bivariate prime-field HKSS exponent ledger",
+    "unified bivariate prime-field proof architecture targeting exponent 1-o(1)",
 ]
 
 
@@ -268,6 +275,10 @@ def load_campaign_config(path: Path | str) -> tuple[dict[str, Any], CampaignPath
     effort = str(campaign.get("reasoning_effort", ""))
     if effort not in {"max", "ultra"}:
         raise ValueError("campaign.reasoning_effort must be max or ultra")
+    if int(campaign.get("dimension", 2)) != 2:
+        raise ValueError("campaign.dimension must be exactly 2")
+    if str(campaign.get("field_regime", "prime")) != "prime":
+        raise ValueError("campaign.field_regime must be prime")
     base = config_path.parent
 
     def resolve(value: str) -> Path:
@@ -328,6 +339,11 @@ class ResearchCampaign:
                      int(self.cfg.get("max_attempts", 8)), self.provider.model,
                      self.provider.reasoning_effort, utc_timestamp()),
                 )
+                connection.execute(
+                    "UPDATE campaign_jobs SET direction=? WHERE id=? AND role='researcher' "
+                    "AND status='queued' AND attempts=0",
+                    (direction, job_id),
+                )
             if bool(self.cfg.get("genius_enabled", True)):
                 connection.execute(
                     """INSERT OR IGNORE INTO campaign_jobs
@@ -336,6 +352,11 @@ class ResearchCampaign:
                     ("global proof synthesis toward exponent 1-o(1)",
                      int(self.cfg.get("max_attempts", 8)), self.provider.model,
                      self.provider.reasoning_effort, utc_timestamp()),
+                )
+                connection.execute(
+                    "UPDATE campaign_jobs SET direction=? WHERE id='GENIUS' AND role='genius' "
+                    "AND status='queued' AND attempts=0",
+                    ("global bivariate prime-field proof synthesis toward exponent 1-o(1)",),
                 )
         self.export_status()
 
@@ -409,20 +430,24 @@ test. Your assigned direction is: {row['direction']}. Your mode is {mode}.
 
 {self._corpus_instruction()}
 
-The benchmark is the Kominers--Thaler--Zheng threshold C(d/q)^(1/3), with global agreement
-Omega(local agreement), over every finite field. The long-term target is (d/q)^(1-o(1)). Since
-d/q<1, a larger exponent is stronger. Do genuine mathematical work: isolate one bottleneck,
-attempt a new lemma or counterexample, and write a fully quantified result. Do not silently
-change line sampling, replace total degree by individual degree, restrict to prime fields, assume
+The problem is fixed at m=2 over the prime field F_p, with 0 <= d < p. The benchmark is the
+bivariate specialization of the Kominers--Thaler--Zheng threshold C(d/p)^(1/3), with global
+agreement Omega(local agreement). The long-term target is (d/p)^(1-o(1)). Since d/p<1, a
+larger exponent is stronger. Do genuine mathematical work: isolate one bottleneck, attempt a
+new lemma or counterexample, and write a fully quantified result.
+
+Do not work on m>2, dimension bootstrapping, extension fields, or descent: the standard
+general-dimensional lift is a routine downstream corollary and earns no campaign credit. Do not
+silently change uniform affine-line sampling, replace total degree by individual degree, assume
 fixed d, or return only a large list of candidate global polynomials.
 
-Every exponent manipulation must appear in the exponent ledger. State m,d,q, characteristic,
-local agreement epsilon, all auxiliary parameters, and the final global agreement. Audit
-division by derivatives, discriminants, irreducibility, interpolation multiplicities, and every
-union/Markov/Cauchy--Schwarz loss. For general m, prove the bootstrapping step rather than
-asserting it. Test adversarial tables, subfield phenomena, inseparability, concentrated good
-directions, and smallest legal parameters. A rigorous obstruction or correction to the target is
-valuable. If the benchmark is not improved, set benchmark_improved=false.
+Every exponent manipulation must appear in the exponent ledger. State p,d, local agreement
+epsilon, all auxiliary parameters, and the final global agreement, with m=2 fixed. Audit division
+by derivatives, discriminants, irreducibility, interpolation multiplicities, and every
+union/Markov/Cauchy--Schwarz loss. Test adversarial tables, inseparability, concentrated good
+directions, d near p, and the smallest legal prime-field parameters. A rigorous obstruction or
+correction to the bivariate target is valuable. If the benchmark is not improved, set
+benchmark_improved=false. Set dimension=2 and field_regime=prime in the structured response.
 
 Return a standard academic Markdown note with Abstract, Test and Notation, Prior Results,
 Theorem, Proof or Conditional Proof, Exponent Ledger, Counterexample Attempts,
@@ -433,21 +458,24 @@ proved, conditional, conjectural, or refuted.
     def _genius_prompt(self) -> str:
         return f"""You are GENIUS, the global proof-synthesis mathematician for the
 line-versus-point campaign. You must inspect the complete accumulated corpus and attempt an
-integrated route from the cubic threshold toward exponent 1-o(1).
+integrated bivariate prime-field route from the cubic threshold toward exponent 1-o(1).
 
 {self._corpus_instruction()}
 
 Inspect every submission and audit under {self.paths.campaign_dir}. Produce a coverage receipt
 and abstain from a global theorem if material data are omitted. Reconstruct a single normalized
-exponent ledger for Arora--Sudan, HKSS, KTZ, and every new architecture. Identify whether each
-loss is algebraic, incidence-combinatorial, probabilistic, list-decoding, or bootstrapping.
+exponent ledger for the m=2 prime-field portions of Arora--Sudan, HKSS, KTZ, and every new
+architecture. Identify whether each loss is algebraic, incidence-combinatorial, probabilistic,
+or list-decoding.
 
 Propose at most three compatible proof architectures. For the selected architecture, state one
 exact theorem with all quantifiers and write every dependency as a numbered proof step. A claimed
 exponent improvement requires every stage to be proved; otherwise publish the strongest honest
-conditional theorem and its minimal missing obligations. Red-team small characteristic,
-inseparability, d near q, m=2 versus m>2, adversarial line tables, and conversion from a list to one
-global polynomial. Do not average incompatible lemmas or use finite evidence as proof.
+conditional theorem and its minimal missing obligations. Red-team small prime characteristic,
+inseparability, d near p, adversarial line tables, and conversion from a list to one global
+polynomial. Work only with m=2 over F_p; do not spend effort on the routine lift to higher
+dimension or on extension fields. Set dimension=2 and field_regime=prime. Do not average
+incompatible lemmas or use finite evidence as proof.
 """
 
     def _verifier_prompt(self, source_id: str) -> str:
@@ -463,11 +491,15 @@ global polynomial. Do not average incompatible lemmas or use finite evidence as 
 quantifier, field hypothesis, sampling convention, literature dependency, and proof-step edge.
 Accept only the exact claim whose SHA-256 is {claim_hash}; never silently weaken it.
 
-An accept requires complete coverage; a correct exponent ledger; valid handling of all finite
-characteristics; a proved conversion to the stated single-polynomial global conclusion; no
-required changes; and no fatal obstruction. Use reject with unfixable=true only for a concrete
-counterexample or false theorem. Use revise for repairable gaps. Explicitly compare the claimed
-exponent with 1/3, remembering that d/q<1. Run finite sanity checks only to find errors, never to
+An accept requires complete coverage; a correct exponent ledger; valid handling of every prime
+characteristic in the claimed parameter regime; a proved conversion to the stated
+single-polynomial global conclusion; no required changes; and no fatal obstruction. Use reject
+with unfixable=true only for a concrete counterexample or false theorem. Use revise for repairable
+gaps. Explicitly compare the claimed exponent with 1/3, remembering that d/p<1. Reject or request
+revision if the mathematical advance
+depends on m other than 2, a non-prime field, or dimension bootstrapping: those are outside this
+campaign. Set dimension_verified and field_regime_verified true only after checking those exact
+restrictions in every theorem and lemma. Run finite sanity checks only to find errors, never to
 certify asymptotic quantifiers.
 
 SUBMISSION MANIFEST:
@@ -489,6 +521,10 @@ NUMBERED NOTE:
             errors.append("no structured proof steps")
         if not response.get("exponent_ledger"):
             errors.append("no structured exponent ledger")
+        if response.get("dimension") != 2:
+            errors.append("submission dimension must be exactly 2")
+        if response.get("field_regime") != "prime":
+            errors.append("submission field_regime must be prime")
         if role == "researcher" and response.get("benchmark_improved"):
             if response.get("result_status") != "proved":
                 errors.append("benchmark_improved requires result_status=proved")
@@ -538,6 +574,8 @@ NUMBERED NOTE:
                 expected = hashlib.sha256(claim.encode()).hexdigest()
                 accept_consistent = (
                     response["verified_claim_sha256"] == expected and
+                    response["dimension_verified"] and
+                    response["field_regime_verified"] and
                     response["coverage_complete"] and
                     not response["required_changes"] and
                     response["fatal_obstruction"] is None and
@@ -613,6 +651,8 @@ NUMBERED NOTE:
             "campaign_dir": str(self.paths.campaign_dir),
             "model": self.provider.model,
             "reasoning_effort": self.provider.reasoning_effort,
+            "dimension": int(self.cfg.get("dimension", 2)),
+            "field_regime": str(self.cfg.get("field_regime", "prime")),
             "benchmark_exponent": str(self.cfg.get("benchmark_exponent", "1/3")),
             "target_exponent": str(self.cfg.get("target_exponent", "1-o(1)")),
             "researcher_count": int(self.cfg["researcher_count"]),
@@ -653,7 +693,9 @@ NUMBERED NOTE:
                 "role": row["role"],
                 "title": response.get("title", "GENIUS synthesis"),
                 "result_status": response.get("result_status", "conditional"),
-                "claim_scope": response.get("claim_scope", "general_dimension"),
+                "dimension": response.get("dimension", 2),
+                "field_regime": response.get("field_regime", "prime"),
+                "claim_scope": response.get("claim_scope", "bivariate_theorem"),
                 "claimed_exponent": response.get("claimed_exponent"),
                 "benchmark_improved": response.get("benchmark_improved", False),
                 "theorem_statement": response.get("theorem_statement") or response.get("integrated_theorem"),

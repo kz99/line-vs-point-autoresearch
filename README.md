@@ -1,14 +1,14 @@
 # Line-vs-Point Autoresearch
 
-This repository is a durable proof-author, adversary, verifier, and synthesis loop for improving the soundness threshold of the affine line-versus-point low-degree test.
+This repository is a durable proof-author, adversary, verifier, and synthesis loop for improving the soundness threshold of the affine line-versus-point low-degree test in the affine plane over a prime field.
 
 The current primary benchmark is Kominers--Thaler--Zheng's cubic threshold: local agreement
 
 \[
-\varepsilon \ge C(d/q)^{1/3}
+\varepsilon \ge C(d/p)^{1/3}
 \]
 
-forces agreement \(\Omega(\varepsilon)\) with one total-degree-\(d\) polynomial. The long-term target is a theorem at threshold \((d/q)^{1-o(1)}\), with every quantifier, field restriction, and exponent loss made explicit.
+forces agreement \(\Omega(\varepsilon)\) with one bivariate total-degree-\(d\) polynomial over \(\mathbb F_p\). The long-term target is a theorem at threshold \((d/p)^{1-o(1)}\). The research problem is fixed throughout at \(m=2\) and prime \(p\); the standard lift from the bivariate theorem to general dimension is downstream and is not a campaign objective.
 
 This project deliberately does **not** rank finite experiments as mathematical progress. Small-field computation may falsify a lemma, expose a characteristic-dependent failure, or test an exponent ledger. Only an asymptotic theorem with a complete academic note and an independent line-by-line audit can enter the verified leaderboard.
 
@@ -39,11 +39,13 @@ Read [TARGET.md](TARGET.md) before interpreting any claimed exponent, and [refer
 An exponent is not a theorem merely because algebraic manipulations produce it. Every submission must identify:
 
 1. the precise line and point sampling distribution;
-2. whether \(q\) is a prime, prime power, or arbitrary finite-field order;
-3. the domains and dependencies of \(m,d,q,\varepsilon\);
+2. that the field is the prime field \(\mathbb F_p\) and \(0\le d<p\);
+3. the domains and dependencies of \(d,p,\varepsilon\), with \(m=2\) fixed;
 4. the exact global conclusion and its agreement loss;
-5. every use of interpolation, factorization, list decoding, plurality, and bootstrapping;
+5. every use of interpolation, factorization, list decoding, plurality, and conversion to one global polynomial;
 6. all small-characteristic and inseparability cases;
 7. a multiplicative exponent ledger from hypothesis to conclusion.
 
 The verifier must reject a false theorem or construction, request revision for a repairable gap, and accept only the exact SHA-identified claim it audited.
+
+Arguments about \(m\ne2\), extension fields, or dimension bootstrapping are out of scope for scoring. General-dimensional bootstrapping is standard once the bivariate theorem is available; it is mentioned only to identify the downstream consequence.
