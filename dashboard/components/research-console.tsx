@@ -19,6 +19,7 @@ import {
 import ReactMarkdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
+import { BlockMath, InlineMath } from 'react-katex';
 
 import { Button } from '@/components/ui/button';
 
@@ -112,14 +113,45 @@ export type ResearchSnapshot = {
   jobs: Job[];
 };
 
+function normalizeMathMarkdown(source: string) {
+  return source
+    .replace(/\\\[([\s\S]*?)\\\]/g, '\n\n$$$$\n$1\n$$$$\n\n')
+    .replace(/\\\(([\s\S]*?)\\\)/g, '$$$1$$')
+    .replace(
+      /\\begin\{equation\*?\}([\s\S]*?)\\end\{equation\*?\}/g,
+      '\n\n$$$$\n$1\n$$$$\n\n',
+    )
+    .replace(
+      /\\begin\{align\*?\}([\s\S]*?)\\end\{align\*?\}/g,
+      '\n\n$$$$\n\\begin{aligned}$1\\end{aligned}\n$$$$\n\n',
+    );
+}
+
+function stripMathDelimiters(value: string) {
+  return value
+    .trim()
+    .replace(/^\$\$?|\$\$?$/g, '')
+    .replace(/^\\\(|\\\)$/g, '')
+    .replace(/^\\\[|\\\]$/g, '')
+    .trim();
+}
+
 function MathCopy({ children, className = '' }: { children: string; className?: string }) {
   return (
     <div className={`math-copy ${className}`}>
       <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-        {children}
+        {normalizeMathMarkdown(children)}
       </ReactMarkdown>
     </div>
   );
+}
+
+function DisplayFormula({ math }: { math: string }) {
+  return <BlockMath math={stripMathDelimiters(math)} />;
+}
+
+function InlineFormula({ math }: { math: string }) {
+  return <InlineMath math={stripMathDelimiters(math)} />;
 }
 
 function formatTimestamp(value: string) {
@@ -160,7 +192,11 @@ function CandidateEntry({ candidate, rank }: { candidate: Candidate; rank: numbe
           </div>
           <div className="exponent-mark">
             <span>claimed exponent</span>
-            <strong>{candidate.claimed_exponent ?? '—'}</strong>
+            <strong>
+              {candidate.claimed_exponent
+                ? <InlineFormula math={`\\alpha=${candidate.claimed_exponent}`} />
+                : '—'}
+            </strong>
           </div>
         </div>
 
@@ -194,9 +230,9 @@ function CandidateEntry({ candidate, rank }: { candidate: Candidate; rank: numbe
                       {candidate.exponent_ledger.map((stage, index) => (
                         <tr key={`${stage.stage}-${index}`}>
                           <td>{stage.stage}</td>
-                          <td><MathCopy>{stage.input_scale}</MathCopy></td>
-                          <td><MathCopy>{stage.output_scale}</MathCopy></td>
-                          <td><MathCopy>{stage.loss}</MathCopy></td>
+                          <td><InlineFormula math={stage.input_scale} /></td>
+                          <td><InlineFormula math={stage.output_scale} /></td>
+                          <td><InlineFormula math={stage.loss} /></td>
                         </tr>
                       ))}
                     </tbody>
@@ -323,8 +359,8 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
                 <p className="mission-copy">A public, proof-first search for a genuine bivariate argument—without relying on the trivial general-dimension bootstrap.</p>
               </div>
               <div className="target-formula">
-                <MathCopy>{'$$\\operatorname{snd}_{\\mathbb F_p,2}(d) \\leq \\left(\\frac{d}{p}\\right)^{1-o(1)}$$'}</MathCopy>
-                <MathCopy className="benchmark-formula">{'Benchmark: $\\left(d/p\\right)^{1/3}$'}</MathCopy>
+                <DisplayFormula math={'\\text{soundness} \\leq (\\frac{d}{p})^{1-o(1)}'} />
+                <p className="benchmark-formula">Benchmark: <InlineFormula math={'(d/p)^{1/3}'} /></p>
               </div>
             </div>
             <div className="metric-row">
@@ -366,7 +402,7 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
                         <span>{String(index + 1).padStart(2, '0')}</span>
                         <div>
                           <h3>{item.stage}</h3>
-                          <MathCopy>{`$${item.input_scale} \\longrightarrow ${item.output_scale}$`}</MathCopy>
+                          <p className="formula-line"><InlineFormula math={`${item.input_scale} \\longrightarrow ${item.output_scale}`} /></p>
                           <MathCopy className="muted-copy">{item.justification}</MathCopy>
                         </div>
                         <em>{item.status}</em>

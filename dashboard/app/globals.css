@@ -119,8 +119,9 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .mission-body h1 { max-width: 680px; margin: 8px 0 10px; font-size: clamp(1.65rem, 3vw, 2.5rem); font-weight: 680; letter-spacing: -.035em; line-height: 1.08; }
 .mission-copy { max-width: 650px; margin: 0; color: var(--ink-muted); font-size: .84rem; line-height: 1.6; }
 .target-formula { padding: 20px 22px; border: 1px solid #d9deee; border-radius: 11px; background: rgba(255,255,255,.78); text-align: center; box-shadow: inset 0 1px 0 white; }
-.target-formula > .math-copy { color: #22346f; font-size: 1.04rem; }
-.benchmark-formula { margin-top: 11px; padding-top: 11px; border-top: 1px solid #e4e7ef; color: #7c8493 !important; font-size: .67rem !important; }
+.target-formula > .katex-display { margin: 0; color: #22346f; font-size: 1.06rem; }
+.benchmark-formula { margin: 13px 0 0; padding-top: 12px; border-top: 1px solid #e4e7ef; color: #7c8493; font-size: .68rem; }
+.benchmark-formula .katex { margin-left: 3px; color: #596681; font-size: 1.08em; }
 .metric-row { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid #e2e6ef; background: rgba(255,255,255,.48); }
 .metric-row > div { padding: 13px 20px; border-right: 1px solid #e2e6ef; }
 .metric-row > div:last-child { border-right: 0; }
@@ -186,6 +187,7 @@ td .math-copy p { margin: 0; }
 .bottleneck-list article > span { color: #929aa8; font-family: var(--font-geist-mono), monospace; font-size: .62rem; }
 .bottleneck-list h3 { margin: 0 0 5px; font-size: .82rem; font-weight: 660; }
 .bottleneck-list .math-copy p { margin: 0; }
+.formula-line { margin: 0; color: #344269; font-size: .75rem; }
 .bottleneck-list em { color: #87909f; font-size: .58rem; font-style: normal; text-transform: uppercase; }
 .muted-copy { margin-top: 6px; color: var(--ink-muted); font-size: .72rem; line-height: 1.5; }
 
