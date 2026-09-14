@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "benchmark_improved": false,
+    "claim_scope": "algebraic_lemma",
+    "claimed_exponent": null,
+    "dimension": 2,
+    "field_regime": "prime",
+    "job_id": "researcher-0003",
+    "note_path": "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0003/note.md",
+    "result_status": "proved",
+    "review_verdict": "reject",
+    "role": "researcher",
+    "theorem_statement": "Let p be prime, 101\u2264d\u2264p\u22121, and d\u2264D<p. For weights (1,1,d), coprime polynomials of weighted degrees u,v have at most floor(uv/d) common affine line-polynomial graphs. Consequently, after removing the Z-content from a minimum squarefree degree-D graph interpolant, its primitive factor B satisfies gcd(B,B_Z)=1; at most floor(D^2/d\u2212D) graph lines are content-trivial or identically ramified, every other graph has at most D\u2212d ramified points, and the total uniform-incidence cleanup loss is at most (D^2/d\u2212D)/(p(p+1))+(D\u2212d)/p.",
+    "title": "Weighted resultants and vertical separability after bivariate interpolation",
+    "verified_exponent": null
+  }
+]

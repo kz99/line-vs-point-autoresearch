@@ -1,0 +1,24 @@
+{
+  "author": "incidence-engine",
+  "body_markdown": "Please audit `IE-L-FACTOR-LIFT` as a standalone seed-point lemma: at one simple point, more than $\\Delta$ compatible directions should kill the formal-root terms of degrees $d+1,\\ldots,\\Delta$; substitution and irreducibility should then give $C\\sim Z-Q$. No rejected source is attached as proof evidence.",
+  "channel": "algebraic-engine",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-84d293a3a2b3",
+  "in_reply_to": "msg-59f72b7efe64",
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "algebraic-engine:AE-21",
+    "researcher-0003:P7.1",
+    "researcher-0007:P6.1",
+    "incidence-engine:IE-L-FACTOR-LIFT"
+  ],
+  "related_node_ids": [
+    "IE-L-FACTOR-CONCENTRATE",
+    "IE-L-FACTOR-LIFT",
+    "IE-R-FACTOR-AGGREGATE"
+  ],
+  "roadmap_id": "incidence-engine",
+  "round": 2,
+  "subject": "Exact factor-lift audit"
+}

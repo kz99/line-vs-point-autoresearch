@@ -1,0 +1,327 @@
+{
+  "benchmark_improved": false,
+  "counterexample_attempts": [
+    "A legal one-direction construction with d=101, f=0, selected-direction line labels 0, and all other line labels 1 has a_x=1 everywhere, epsilon=1/(p+1), and Gamma_2=0. This refutes only the unqualified Theta(epsilon^2) sentence at line 0325, not Theorem A.",
+    "The characteristic-p attack B_Z=0 requires a nonconstant Z-exponent divisible by p. It cannot occur because the constructed relation has weighted degree D<p, hence deg_Z B<p.",
+    "Content-only and degenerate-graph attacks are covered respectively by deleting at most D lines and applying KTZ Lemma 2.6 to the proved coprime pair B,B_Z.",
+    "The modal construction's occupancy, concentration, star-moment, and global-polynomial union bounds were recomputed; no counterexample to Proposition D was found.",
+    "Near-p triangular interpolation and concentrated accepting directions do not contradict the claimed decoder; both instead provide readily decodable tables."
+  ],
+  "coverage_complete": true,
+  "dimension_verified": true,
+  "exponent_audit": [
+    {
+      "claim": "KTZ benchmark exponent is 1/3.",
+      "justification": "The reconstructed chain |R|=O(p/epsilon), D=O(sqrt(dp/epsilon)), and D=O(epsilon p) gives epsilon^3=Omega(d/p).",
+      "reference": "Numbered note 0063 and 0379",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Asymmetric selection and interpolation scales are r=Theta(tau p^2/u) and D=O(sqrt(d tau p^2/u)).",
+      "justification": "The selector gives 4t/u<=r<=16t/u, while D^2<=2^15 d tau p^2/u.",
+      "reference": "Numbered note 0180\u20130203 and 0380\u20130381",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The identity/lifting gate is u min(u,v)^2=Omega(d tau p^2).",
+      "justification": "Requiring D<min(u,v), with D^2=O(d tau p^2/u), yields exactly this condition.",
+      "reference": "Numbered note 0190\u20130215 and 0382",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Simple-root cleanup additionally costs uv=Omega(dp).",
+      "justification": "The exceptional fraction is bounded by D/v+2^14 dp/(uv); the first term is controlled by D<v and the second by uv=Omega(dp).",
+      "reference": "Numbered note 0217\u20130242 and 0383",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The popularity-tail condition is u_* epsilon^2=Omega(d).",
+      "justification": "Pruning gives U=Omega(u_*) and V,min(U,V)=Omega(epsilon p); substitution into Theorem A yields the displayed condition.",
+      "reference": "Numbered note 0254\u20130284 and 0385",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The conditional exponent is 1/(a+2).",
+      "justification": "For fixed a and kappa, u_*>=kappa epsilon^a p reduces the sufficient condition to kappa epsilon^(a+2)p>=2^70d.",
+      "reference": "Numbered note 0095\u20130102, 0284, and 0386",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The conditional exponent improves on 1/3 exactly when a<1 and is at most 1/2.",
+      "justification": "Since 0<d/p<1, a larger power gives a smaller trigger. Here 1/(a+2)>1/3 exactly for a<1, with maximum 1/2 at a=0.",
+      "reference": "Numbered note 0023 and 0390",
+      "verdict": "valid"
+    },
+    {
+      "claim": "No unconditional benchmark improvement is obtained.",
+      "justification": "The universal bound u_*>=epsilon(p+1)/2 corresponds to a=1 and recovers only epsilon^3=Omega(d/p).",
+      "reference": "Numbered note 0053\u20130057, 0284, and 0416",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The modal obstruction lies below every fixed target trigger.",
+      "justification": "Its epsilon=Theta(r/p), with r=Theta(log p/log log p), satisfies epsilon/(101/p)^(1-eta)=O(r/p^eta)->0 for every fixed eta>0.",
+      "reference": "Numbered note 0360\u20130373 and 0420",
+      "verdict": "valid"
+    }
+  ],
+  "fatal_obstruction": null,
+  "field_regime_verified": true,
+  "line_audit": [
+    {
+      "claim": "Exact SHA-256 identity",
+      "justification": "SHA-256 of the JSON-decoded theorem_statement bytes, without quotes or a trailing newline, is exactly f799a1079b0622fd32972b086fa6805a732653bb3b6e23bd77e43c9526840e2a.",
+      "reference": "researcher-0010 response.json theorem_statement; campaign.py hashing convention",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Abstract and main-result summary",
+      "justification": "The abstract accurately states Theorem A, Corollary B, the conditional exponent, absence of unconditional improvement, and Proposition D.",
+      "reference": "Numbered note 0001\u20130025",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Incidence counts and sampling normalization",
+      "justification": "There are p(p+1) lines and p^2(p+1) incidences. Uniform line-then-point sampling therefore equals uniform point-then-incident-line sampling.",
+      "reference": "Numbered note 0027\u20130057",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Definition of Gamma_s for every s>=2",
+      "justification": "Ordered sampling without replacement is defined only when s<=p+1, and (p+1)_s vanishes beyond that range. The omitted upper bound does not affect Proposition D because it assumes S<=p+1.",
+      "reference": "Numbered note 0059, 0149, and 0305\u20130315",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Theorem A statement",
+      "justification": "P1\u2013P7 prove exactly the two-gate asymmetric decoder and produce one total-degree-at-most-d polynomial with agreement at least v/(800p); disconnected input is handled by selecting a surviving component.",
+      "reference": "Numbered note 0073\u20130087 and 0154\u20130252",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Corollary B statement",
+      "justification": "P8 correctly prunes the u_* tail and verifies both Theorem A gates with the stated constants, yielding one Q with agreement at least epsilon/12800.",
+      "reference": "Numbered note 0089\u20130102 and 0254\u20130284",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Lemma C statement",
+      "justification": "Applying affine mixing to each disjoint template family and Cauchy\u2013Schwarz gives delta<=alpha tau+sqrt(R alpha tau/(p+1)); R<=delta(p+1) then forces alpha>=delta/4.",
+      "reference": "Numbered note 0104\u20130110 and 0286\u20130293",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Proposition D statement",
+      "justification": "For each fixed integer S, the listed conditions eventually hold and the probabilistic construction gives all stated epsilon, decoder, line-occupancy, and star-moment bounds.",
+      "reference": "Numbered note 0112\u20130150 and 0327\u20130358",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P1 asymmetric mixing",
+      "justification": "Assuming either side has less than one quarter of its normalized minimum-degree scale forces uv<2p. The theorem's first gate excludes this, and the second gate then gives w^2>=2^57dp.",
+      "reference": "Numbered note 0154\u20130178",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P2 selector",
+      "justification": "Reach indicators along a target line depend on disjoint eligible-line sets. Chernoff and the stated union bound give simultaneous half-reaching and 4t/u<=r<=16t/u.",
+      "reference": "Numbered note 0180\u20130188",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P3 interpolation",
+      "justification": "The D inequalities, monomial count, r>D line-factor argument, nonzero Z-derivative, minimum-weight choice, squarefreeness, and D<p functional-to-formal conversion all check.",
+      "reference": "Numbered note 0190\u20130207",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P4 identity extension",
+      "justification": "Every target line supplies more than v/2>D distinct shared accepted roots of a restriction of degree at most D.",
+      "reference": "Numbered note 0209\u20130215",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P5 prime-field cleanup",
+      "justification": "Content removal preserves squarefreeness and Z-dependence. Primitivity and deg_Z B<p imply gcd(B,B_Z)=1, so KTZ Lemma 2.6 and ordinary root counting give at most pD^2+Dt deleted edges.",
+      "reference": "Numbered note 0217\u20130225",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P6 pruning",
+      "justification": "The exceptional fraction is below 1/4000, while threshold peeling costs below |E|/50. A nonempty graph remains with minima above D.",
+      "reference": "Numbered note 0227\u20130242",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P7 single-polynomial recovery",
+      "justification": "KTZ Lemma 6.1 supplies one Q agreeing with all seed-line labels and satisfying B(X,Y,Q)=0. Simple-root uniqueness propagates that same Q through one component, whose point density is at least v/(800p).",
+      "reference": "Numbered note 0244\u20130252; KTZ Lemmas 6.1 and 6.3",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P8 popularity pruning",
+      "justification": "The point and line peeling budgets total at most 3E_*/4. The floor bounds follow from the large hypothesis and the universal u_* bound; 2^70/48 and 2^70/768 both exceed 2^60.",
+      "reference": "Numbered note 0254\u20130284",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P9\u2013P10 template and constant branches",
+      "justification": "Both mixing calculations are correct. For constant labels, disjoint point-level sets eliminate the template-count factor.",
+      "reference": "Numbered note 0286\u20130303",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P11 exact star identities",
+      "justification": "Within 2<=s<=p+1, falling-factorial double counting, discrete convexity, and the displayed variance identity are correct.",
+      "reference": "Numbered note 0305\u20130323",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Perfect regularity always gives Gamma_2=Theta(epsilon^2)",
+      "justification": "False without a lower-scale assumption. One accepting direction gives a_x=1 everywhere and epsilon=1/(p+1), but Gamma_2=0.",
+      "reference": "Numbered note 0325 and 0398",
+      "verdict": "false"
+    },
+    {
+      "claim": "P12 modal occupancy",
+      "justification": "The first and second moment bounds give r/(65p)<=q<=17r/p, and the 1/p^2 bounded difference gives the stated McDiarmid estimate.",
+      "reference": "Numbered note 0327\u20130346",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P13 simultaneous realization",
+      "justification": "Conditional independence across punctured lines gives E[Gamma_s]=q^s. The Markov, concentration, polynomial-union, and maximum-occupancy failure probabilities total at most 3/4.",
+      "reference": "Numbered note 0348\u20130358",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P14 scale-free obstruction",
+      "justification": "Taking S=s, the global/local ratio is below 260/r->0 while Gamma_s/epsilon^(s-gamma)=O_s(epsilon^gamma)->0.",
+      "reference": "Numbered note 0360\u20130373",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Exponent ledger, counterexample discussion, characteristic audit, and limitations",
+      "justification": "Apart from the identified Gamma_s asymptotic overstatement, the scales, legal d=101 examples, D<p separability argument, and disclosed conditionality are accurate.",
+      "reference": "Numbered note 0375\u20130422",
+      "verdict": "valid"
+    }
+  ],
+  "literature_audit": [
+    {
+      "claim": "KTZ Theorem 1.1 supplies the cubic benchmark and a single global polynomial.",
+      "justification": "Revision 1 states the result for arbitrary finite F_q and dimension, with threshold C(d/q)^(1/3) and one total-degree-at-most-d Q of agreement at least c epsilon. Its m=2, q=p specialization is the campaign benchmark.",
+      "reference": "[KTZ Revision 1, Theorem 1.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ Lemmas 2.1\u20132.3, 2.5\u20132.7, 6.1, and 6.3 have the imported hypotheses and conclusions.",
+      "justification": "The source confirms incidence mixing, weighted monomial counting, squarefree minimization, line/resultant bounds, Newton lifting, initial bivariate lifting, and simple-root propagation. The submission establishes each needed formal-identity and coprimality hypothesis before invocation.",
+      "reference": "[KTZ Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The prose benchmark is correctly written 'over every finite field' using d/p.",
+      "justification": "For a general finite field the source uses field size q, not characteristic p. The statement is correct after specializing to F_p, but line 0063 should either say that or replace p by q.",
+      "reference": "Numbered note 0063; [KTZ Theorem 1.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The cached KTZ version warning is accurate.",
+      "justification": "The local 17-page file is the July base report; the pinned online Revision 1 is the 23-page August 16 version. The relevant lemma numbering is stable.",
+      "reference": "Numbered note 0065; [official ECCC report record](https://eccc.weizmann.ac.il/report/2026/147/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "HKSS Theorem 4.2 has the quoted historical hypothesis.",
+      "justification": "Theorem 4.2 assumes q>C d/epsilon^7 for the bivariate best-fit line oracle and concludes one degree-d polynomial with Omega(epsilon^4) agreement. It is not used logically here.",
+      "reference": "[HKSS arXiv v1, Theorem 4.2](https://arxiv.org/pdf/2311.12752v1)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Active-corpus dependencies are represented accurately.",
+      "justification": "Researcher-0002's component theorem and researcher-0006's singular-lift obstruction have accepted audits; the cited researcher-0008 incidence calculations are not used as a logical premise of Theorem A.",
+      "reference": "Numbered note 0067 and local campaign audits",
+      "verdict": "valid"
+    }
+  ],
+  "quantifier_audit": [
+    {
+      "claim": "Exact claim identity and context",
+      "justification": "The required digest binds the exact theorem_statement. The surrounding parameter_regime and theorem section fix m=2, prime p, integer 100<d<p, and 0<epsilon<=1; the audit used exactly that context and did not broaden or weaken it.",
+      "reference": "response.json theorem_statement and parameter_regime; numbered note 0005 and 0073",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Campaign degree range",
+      "justification": "Theorem A, Corollary B, Lemma C, and all supporting steps cover every integer 100<d<p. Proposition D uses the legal value d=101. No d<=100 case is used or scored.",
+      "reference": "Numbered note 0005, 0073, 0112, and 0422",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Dimension restriction",
+      "justification": "Every new theorem and construction is in F_p^2. The arbitrary-dimensional KTZ statement is used only as literature context; the proof invokes its bivariate lemmas and no dimension bootstrap.",
+      "reference": "Numbered note 0029, 0073\u20130150, and 0422",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Prime-field restriction",
+      "justification": "Every positive result is specialized to F_p. The proof's D<p condition handles all characteristics in that regime, and no extension-field descent or non-prime-field result supplies the advance.",
+      "reference": "Numbered note 0404\u20130412 and 0422",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Sampling convention",
+      "justification": "Both sampling orders are exactly uniform over the same p^2(p+1) affine incidences.",
+      "reference": "Numbered note 0029\u20130035",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Theorem A quantification",
+      "justification": "For every nonempty accepted subgraph satisfying the two numerical gates, the proof constructs the stated Q. Feasibility itself ensures all sampling probabilities, floor bounds, and logarithmic estimates used later.",
+      "reference": "Numbered note 0073\u20130087 and P1\u2013P7",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Corollary B conditionality",
+      "justification": "The implication from u_*epsilon^2>=2^70d is unconditional, but any exponent greater than 1/3 additionally assumes u_*>=kappa epsilon^a p with a<1. No universal popularity estimate of that strength is asserted.",
+      "reference": "Numbered note 0089\u20130102 and 0254\u20130284",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Proposition D asymptotic quantifiers",
+      "justification": "For each fixed integer S, all displayed sufficient conditions hold for every sufficiently large prime, and S<=p+1 eventually. The construction is deterministic after freezing a positive-probability outcome.",
+      "reference": "Numbered note 0112\u20130150 and 0327\u20130358",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Distinct-star order range",
+      "justification": "The definition and P11 omit the necessary condition s<=p+1, although the only asymptotic application enforces it through S<=p+1.",
+      "reference": "Numbered note 0059, 0149, and 0305",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Single-polynomial global conclusion",
+      "justification": "KTZ Lemma 6.1 creates one Q at a seed point, and simple-root uniqueness propagates that same Q throughout one component. There is no list-size, factor-selection, or cross-component gluing assumption.",
+      "reference": "Numbered note 0244\u20130252",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Finite checks",
+      "justification": "The finite numerical examples are used only as falsification and consistency checks; all asymptotic existence assertions are proved analytically.",
+      "reference": "Numbered note 0392\u20130402",
+      "verdict": "valid"
+    }
+  ],
+  "required_changes": [
+    "Restrict the definition of Gamma_s and P11 to integer star orders 2<=s<=p+1.",
+    "Replace the unqualified claim that perfectly regular accepted degrees give Theta(epsilon^2) collision energy by an upper-bound statement, or add a scale hypothesis excluding epsilon=Theta(1/p).",
+    "At numbered note line 0063, write the general KTZ benchmark as C(d/q)^(1/3), or explicitly identify the displayed d/p formula as its prime-field specialization."
+  ],
+  "scope_verified": "combinatorial_lemma",
+  "summary": "Revise, not reject. The exact SHA-identified asymmetric decoder and its popularity-tail corollary are mathematically sound over F_p^2 for every integer 100<d<p, including the conversion to one global polynomial. The exponent ledger is correct: the unconditional exponent remains 1/3, while the additional popularity hypothesis gives conditional exponent 1/(a+2), up to 1/2. Strict acceptance fails because P11 omits the admissible star-order range and contains a false unqualified Theta(epsilon^2) side claim; the KTZ general-field notation also needs correction. These issues are repairable and do not constitute a fatal obstruction to the hashed theorem.",
+  "unfixable": false,
+  "verdict": "revise",
+  "verified_claim_sha256": "f799a1079b0622fd32972b086fa6805a732653bb3b6e23bd77e43c9526840e2a",
+  "verified_exponent": "Unconditional 1/3; conditional 1/(a+2) for fixed 0<=a<=1 and kappa>0, with maximum 1/2 at a=0"
+}

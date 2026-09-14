@@ -1,0 +1,593 @@
+You are an independent hostile mathematical verifier. Audit submission
+researcher-0008 line by line. You did not author it. Recompute every exponent and check every
+quantifier, field hypothesis, sampling convention, literature dependency, and proof-step edge.
+Accept only the exact claim whose SHA-256 is c20f6b6d7b1309eeee52e9d1834f034436ab85840df075c13ea897855bcee4b5; never silently weaken it.
+
+The campaign theorem is restricted to integer 100 < d < p. Do not raise, investigate, or score
+edge cases with d <= 100, including d=0. Verify that the submitted claim covers 100 < d < p;
+behavior outside that regime is irrelevant to the verdict.
+
+An accept requires complete coverage; a correct exponent ledger; valid handling of every prime
+characteristic in the claimed parameter regime; a proved conversion to the stated
+single-polynomial global conclusion; no required changes; and no fatal obstruction. Use reject
+with unfixable=true only for a concrete counterexample or false theorem. Use revise for repairable
+gaps. Explicitly compare the claimed exponent with 1/3, remembering that d/p<1. Reject or request
+revision if the mathematical advance
+depends on m other than 2, a non-prime field, or dimension bootstrapping: those are outside this
+campaign. Set dimension_verified and field_regime_verified true only after checking those exact
+restrictions in every theorem and lemma. Run finite sanity checks only to find errors, never to
+certify asymptotic quantifiers.
+
+SUBMISSION MANIFEST:
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "The field is exactly the prime field F_p and the ambient degree satisfies 101\u2264d<p throughout.",
+    "Each constructed line label is a formal degree-exactly-d product of d distinct linear factors. Since d<p, its accepted points are exactly its formal roots; no polynomial-function aliasing occurs.",
+    "The construction uses no derivative division, discriminant, resultant, irreducibility assumption, interpolation multiplicity, factorial, Markov inequality, union bound, or probabilistic existence argument.",
+    "The collision lemma uses one exact variance identity; its \u03b5\u00b2 loss is attained when accepted point degrees are constant.",
+    "Fixed affine parameterizations handle vertical lines without slope division.",
+    "The concentrated-direction equality example uses constant labels only as legal labels under the ambient cap d>100; it does not analyze a degree-zero test.",
+    "At d=p\u22121 the repair graph has degree p+1\u2212d=2, so the Hall argument remains valid. At d=101 it is unchanged.",
+    "Stevens\u2013de Zeeuw is used only with its positive-characteristic size hypotheses stated explicitly. Its results concern distinct unweighted lines and do not automatically apply to fractional or repeated-line selectors."
+  ],
+  "claim_scope": "obstruction",
+  "claimed_exponent": null,
+  "counterexample_attempts": [
+    "Successful architecture obstruction: a deterministic, fully line-supported table has \u03b5=d/p, exact accepted line degree d, accepted point degree d or d+1, and fractional KTZ-style reaching cost \u0398(p/\u03b5). It is not a soundness counterexample because Q=0 agrees everywhere.",
+    "Successful collision sharpness example: accepting all incidences in exactly k direction classes gives \u03b5=k/(p+1) and attains the exact lower bound \u03b5\u00b2\u2212\u03b5(1\u2212\u03b5)/p for two distinct accepted incident lines.",
+    "The verifier-accepted balanced-color construction from researcher-0002 gives the same \u03a9(p/\u03b5) integral-cover obstruction at larger \u03b5, but also has an immediate constant decoder.",
+    "The verifier-confirmed modal construction from researcher-0001 genuinely refutes a uniform constant-times-d/p trigger with linear recovery at ambient d=101, but lies below every fixed-\u03b7 target.",
+    "Inseparable candidates such as t^p\u2212t cannot arise in the new root construction because d<p; no derivative is used.",
+    "Concentrating good directions does not obstruct soundness: in the equality example Q=0 has global agreement one.",
+    "Near p, including d=p\u22121, the new carrier remains legal and regular but again has perfect global agreement."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "Local agreement \u03b5 in the KTZ bivariate proof.",
+      "justification": "KTZ Revision 1, Lemma 3.2 gives the one-sided bound |R|\u22646400p/\u03b5 after constant-factor pruning and Chernoff/union/Chebyshev estimates.",
+      "loss": "One inverse power of \u03b5; probabilistic estimates cost only constants in the stated KTZ regime.",
+      "output_scale": "|R|=O(p/\u03b5).",
+      "stage": "Published sparse reaching family",
+      "status": "proved"
+    },
+    {
+      "input_scale": "n=|R| selected graph identities and ambient degree cap d.",
+      "justification": "KTZ weighted interpolation compares \u0398(D\u00b3/d) coefficients with at most n(D+1) equations.",
+      "loss": "Square-root interpolation loss.",
+      "output_scale": "D=O(sqrt(dn))=O(sqrt(dp/\u03b5)).",
+      "stage": "Published weighted interpolation, exponent reconstructed",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(dp/\u03b5)) and \u0398(\u03b5p) distinct usable roots or directions.",
+      "justification": "Identity extension and simple-root lifting require D=O(\u03b5p). Squaring gives dp/\u03b5=O(\u03b5\u00b2p\u00b2).",
+      "loss": "Cubic compatibility gate.",
+      "output_scale": "\u03b5\u00b3=\u03a9(d/p).",
+      "stage": "KTZ benchmark bottleneck",
+      "status": "proved"
+    },
+    {
+      "input_scale": "All p(p+1) affine lines and the legal degree d.",
+      "justification": "A Hall-factor construction produces accepted line degree d and accepted point degree d or d+1.",
+      "loss": "No averaging or parameter loss.",
+      "output_scale": "Exactly p(p+1)d accepted incidences and \u03b5=d/p.",
+      "stage": "Regular carrier construction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Coverage fraction \u03b8 and regular carrier with \u03b5=d/p.",
+      "justification": "The fractional other-line reaching optimum lies between \u03b8p(p+1)/(d+1) and \u03b8p(p+1)/(d\u22121).",
+      "loss": "One inverse power of \u03b5, with multiplicative gap (d+1)/(d\u22121)\u2264102/100.",
+      "output_scale": "Fractional and integral reaching cost \u03a9(p/\u03b5).",
+      "stage": "Sharp universal-cover obstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Acceptance density \u03b5 and accepted point degrees a_x.",
+      "justification": "The exact identity is \u0393\u2082=\u03b5\u00b2\u2212\u03b5(1\u2212\u03b5)/p+Var_x(a_x)/[p(p+1)].",
+      "loss": "One power of \u03b5 in passing from incidences to compatible ordered line pairs; no Markov or union loss.",
+      "output_scale": "\u0393\u2082\u2265\u03b5\u00b2/2 whenever \u03b5\u22652/p.",
+      "stage": "Two-line collision extraction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A component recovery argument with minimum degree k=\u0398(\u03b5p).",
+      "justification": "KTZ Lemma 2.1 contributes error 1/sqrt(p+1), which Lemma 6.2 absorbs only when \u03b5=\u03a9(p^\u22121/2).",
+      "loss": "A post-1/2 method barrier for fixed legal d.",
+      "output_scale": "For \u03b5=C(101/p)^\u03b1 and \u03b1>1/2, \u03b5sqrt(p)=C\u00b7101^\u03b1 p^(1/2\u2212\u03b1)\u21920.",
+      "stage": "Vinh/KTZ mixing audit",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A balanced component with N points, N distinct lines, and minimum degree k, within Stevens\u2013de Zeeuw Theorem 3's range.",
+      "justification": "kN\u2264I(P,L)\u226aN^(22/15) implies N\u226bk^(15/7).",
+      "loss": "This reaches the desired N=\u03a9(kp) only at k=\u03a9(p^(7/8)), where N=\u03a9(p^(15/8)) violates the theorem's N\u226ap^(15/11) characteristic range.",
+      "output_scale": "No linear-size component conclusion from this black-box bound.",
+      "stage": "Stevens\u2013de Zeeuw balanced diagnostic",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A balanced Cartesian component P=A\u00d7B with |A|=|B|=sqrt(N), N lines, and minimum degree k, within Stevens\u2013de Zeeuw Theorem 4's range.",
+      "justification": "kN\u226aN^(11/8)+N gives N\u226bk^(8/3).",
+      "loss": "This reaches N=\u03a9(kp) only at k=\u03a9(p^(3/5)), forcing N=\u03a9(p^(8/5)), outside the theorem's N\u226ap^(4/3) characteristic range.",
+      "output_scale": "Even the Cartesian theorem does not supply linear recovery in its admissible range.",
+      "stage": "Stevens\u2013de Zeeuw Cartesian diagnostic",
+      "status": "proved"
+    },
+    {
+      "input_scale": "The constructed regular table.",
+      "justification": "The single total-degree-zero polynomial Q=0 agrees with f=0 on every point and is legal under the ambient degree cap d>100.",
+      "loss": "None.",
+      "output_scale": "Global agreement 1 despite worst-scale universal reaching cost.",
+      "stage": "Sparsify-or-decode separation",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "At p=103,d=101 there are 10,712 affine lines, 10,403 points of accepted degree 102, and 206 points of accepted degree 101. Both sides count 1,081,912 accepted incidences.",
+    "At p=103,d=101, any integral family reaching half of every line has |R|\u2265ceil(10,712/(2\u00b7102))=53.",
+    "At d=p\u22121, exactly p(p\u22121) points have accepted degree p and p points have accepted degree p\u22121; the Hall repair graph has degree 2.",
+    "For a k-direction table, direct substitution of \u03b5=k/(p+1) gives \u0393\u2082=k(k\u22121)/[p(p+1)], exactly matching the collision formula.",
+    "These arithmetic checks were used only for falsification; the results are proved symbolically for every admissible p,d."
+  ],
+  "global_conclusion": "No unconditional exponent beyond 1/3 is proved. The new result sharply rules out two incidence-blind improvements: compatible two-line collisions can be only \u0398(\u03b5\u00b2), and a universal family reaching a constant fraction of every accepted line can require \u0398(p/\u03b5) fractional weight even on an exactly almost-regular, fully supported, legal table. Because the extremal tables have the obvious decoder Q=0, the conclusion is a rigorous sparsify-or-decode obstruction, not a counterexample to soundness. KTZ already uses the exact affine Vinh estimate; improving toward exponent 1/2 must attack covering/interpolation or decode the obstructing case, while any exponent above 1/2 also needs a replacement for Vinh-only component recovery in low-d regimes.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Every finite field F_q, uniform incident point-line sampling, arbitrary point table, degree-at-most-d line table, and \u03b5\u2265C(d/q)^(1/3).",
+      "paper": "Kominers, Thaler, and Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/",
+      "result_id": "Theorem 1.1",
+      "used_for": "Quoted benchmark: one total-degree-at-most-d polynomial with agreement c\u03b5. The new obstruction does not alter this theorem.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Point and distinct affine-line subsets of F_q\u00b2; no size restriction.",
+      "paper": "Kominers, Thaler, and Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/",
+      "result_id": "Lemma 2.1",
+      "used_for": "Exact absolute affine incidence discrepancy with normalized error 1/sqrt(q+1), and the audit of the component-recovery barrier.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "KTZ-pruned bivariate accepted graph and the numerical regime imposed in Lemma 4.1.",
+      "paper": "Kominers, Thaler, and Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/",
+      "result_id": "Lemmas 3.2, 4.1\u20134.3, and 6.2\u20136.3",
+      "used_for": "Quoted one-sided cover bound, reconstructed cubic exponent, exact mixing requirement, and existing single-polynomial recovery. No simultaneous \u0398-saturation is attributed to KTZ.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Any finite field F_q; arbitrary point set P\u2286F_q\u00b2 and set of affine lines L.",
+      "paper": "Le Anh Vinh, Szemer\u00e9di\u2013Trotter type theorem and sum-product estimate in finite fields, https://arxiv.org/pdf/0711.4427v1",
+      "result_id": "Theorem 3",
+      "used_for": "Primary-source form I(P,L)\u2264|P||L|/q+sqrt(q|P||L|). KTZ Lemma 2.1 is used for the exact absolute-discrepancy normalization.",
+      "version": "arXiv:0711.4427v1, 2007"
+    },
+    {
+      "hypotheses": "m points and n distinct lines with m^(7/8)<n<m^(8/7); in characteristic p, m^(\u22122)n^13\u226ap^15.",
+      "paper": "Sophie Stevens and Frank de Zeeuw, An Improved Point-Line Incidence Bound Over Arbitrary Fields, https://arxiv.org/pdf/1609.06284v4",
+      "result_id": "Theorem 3",
+      "used_for": "Balanced-component diagnostic I(P,L)\u226am^(11/15)n^(11/15); the exponent and applicability comparison is reconstructed here.",
+      "version": "arXiv:1609.06284v4, 2017"
+    },
+    {
+      "hypotheses": "P=A\u00d7B with |A|=a\u2264b=|B|, ab\u00b2\u2264n\u00b3, n distinct lines, and an\u226ap\u00b2 in characteristic p.",
+      "paper": "Sophie Stevens and Frank de Zeeuw, An Improved Point-Line Incidence Bound Over Arbitrary Fields, https://arxiv.org/pdf/1609.06284v4",
+      "result_id": "Theorem 4",
+      "used_for": "Cartesian-support diagnostic only; no arbitrary accepted-point support is assumed Cartesian.",
+      "version": "arXiv:1609.06284v4, 2017"
+    }
+  ],
+  "next_tasks": [
+    "Prove a sparsify-or-decode dichotomy that recognizes regular or colored easy carriers before invoking a universal reaching family.",
+    "Develop incidence estimates for the lifted compatibility relation (point value together with line polynomial), rather than for its base point and line projections.",
+    "Replace Vinh-only component recovery for candidate exponents \u03b1>1/2, especially at the legal lower boundary d=101.",
+    "Investigate whether large joint dependencies among weighted interpolation constraints force a low-weight irreducible factor or an immediate global decoder.",
+    "Determine whether the regular Hall-factor carrier can be made connected while preserving the \u0398(p/\u03b5) other-line fractional cover cost; connectivity is not proved here.",
+    "Seek a nonuniform, algebra-aware selector whose cost is charged to undecoded components rather than to every accepted line simultaneously."
+  ],
+  "note_markdown": "# Sharp incidence-only losses in bivariate prime-field line\u2013point agreement\n\n## Abstract\n\nFor the affine line-versus-point test on \\(\\mathbb F_p^2\\), I prove two exact incidence obstructions. First, for every prime \\(p\\) and every campaign degree \\(101\\le d<p\\), there is a deterministic legal table with local agreement \\(\\epsilon=d/p\\), accepted degree exactly \\(d\\) on every affine line, accepted degree \\(d\\) or \\(d+1\\) at every point, and acceptance supported on all lines. Any fractional family of lines that reaches a fixed fraction \\(\\theta\\) of the accepted points of every target line through *other* accepted lines has total weight \\(\\Theta(p/\\epsilon)\\), with a multiplicative gap at most \\((d+1)/(d-1)\\). Thus the \\(p/\\epsilon\\) scale cannot be improved by a universal graph-theoretic cover, even with exact near-regularity and fractional weights.\n\nSecond, for every table of agreement \\(\\epsilon\\), the probability that two uniformly chosen distinct lines through a uniform point are both accepted there is exactly\n\n\\[\n\\epsilon^2-\\frac{\\epsilon(1-\\epsilon)}p+\n\\frac{\\operatorname{Var}_x(a_x)}{p(p+1)},\n\\]\n\nwhere \\(a_x\\) is the accepted degree of \\(x\\). The lower bound is attained by accepting exactly \\(k\\) direction classes. Hence the usual \\(\\epsilon^2\\) collision loss is sharp.\n\nBoth extremal tables have the obvious global polynomial \\(Q=0\\). They are therefore obstructions to incidence-blind proof architectures, not counterexamples to soundness. An exact primary-source audit also shows that KTZ already uses the affine Vinh estimate, while the stronger Stevens\u2013de Zeeuw bounds do not give the linear component size needed for global agreement in their characteristic ranges. The unconditional benchmark exponent remains \\(1/3\\).\n\n## Test and Notation\n\nFix a prime \\(p\\), an integer \\(101\\le d<p\\), and dimension \\(m=2\\). Let \\(\\mathcal L\\) be the \\(p(p+1)\\) affine lines of \\(\\mathbb F_p^2\\). Every line has \\(p\\) points and every point lies on \\(p+1\\) lines.\n\nA point table is \\(f:\\mathbb F_p^2\\to\\mathbb F_p\\). Each \\(L\\in\\mathcal L\\) has one polynomial label \\(P_L\\) of degree at most \\(d\\), interpreted using a fixed affine parameterization of \\(L\\). Put\n\n\\[\nA(x,L)=1_{\\{P_L(x)=f(x)\\}},\\qquad\n\\epsilon=\\frac{\\sum_{x,L\\ni x}A(x,L)}{p^2(p+1)}.\n\\]\n\nThis is exactly uniform-line-then-uniform-point sampling. Let\n\n\\[\na_x=\\sum_{L\\ni x}A(x,L),\\qquad\nN_E(L)=\\{x\\in L:A(x,L)=1\\}.\n\\]\n\nFor nonnegative line weights \\(\\lambda=(\\lambda_M)_{M\\in\\mathcal L}\\), define the capped load reaching an accepted incidence \\((x,L)\\) through other lines by\n\n\\[\nu_{x,L}(\\lambda)=\n\\min\\left\\{1,\\sum_{\\substack{M\\ni x,\\,M\\ne L}}A(x,M)\\lambda_M\\right\\}.\n\\]\n\nFor \\(0<\\theta\\le1\\), call \\(\\lambda\\) \\(\\theta\\)-reaching if\n\n\\[\n\\sum_{x\\in N_E(L)}u_{x,L}(\\lambda)\\ge\\theta |N_E(L)|\n\\quad\\text{for every }L\\in\\mathcal L.\n\\]\n\nIndicator weights are ordinary selected-line families. Fractional weights also cover multisets after coincident copies are combined.\n\n## Prior Results\n\nThe active corpus contains four earlier submissions and four verifier audits. Researcher-0002 is the only accepted result: a connected accepted component of minimum degree \\(k\\) and line measure \\(\\tau\\) is decoded under \\(k^2\\ge2^{40}dp\\) and \\(k^3\\ge2^{40}d\\tau p^2\\), giving a conditional exponent \\(1/2\\) when \\(\\tau=O(\\epsilon)\\). Researcher-0001 is revise-grade: its support-sensitive cubic theorem and modal obstruction were validated, but its exact statement and mixing algebra need repairs. Researcher-0003 was rejected because its hashed theorem omitted essential hypotheses forcing a \\(Z\\)-dependent interpolant; its weighted-resultant lemma survives only with the fuller hypotheses in the note. Researcher-0004's exact jet count is revise-grade and shows only that uniform rank-blind multiplicity is exponent-neutral. No active submission proves an unconditional exponent above \\(1/3\\). The data manifest is a launch snapshot and is not current mathematical evidence; the live boards and audits control this synthesis.\n\nThe benchmark is [Kominers\u2013Thaler\u2013Zheng, Revision 1, Theorem 1.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/): over every finite field, agreement \\(\\epsilon\\ge C(d/q)^{1/3}\\) yields one total-degree-at-most-\\(d\\) polynomial with global agreement \\(c\\epsilon\\). In its bivariate proof, Lemmas 6.2\u20136.3 give \\(\\epsilon/8000\\). The following explanation is a reconstruction, not a quoted theorem: Lemma 3.2 gives \\(|R|\\le6400p/\\epsilon\\); Section 4 uses \\(D=16(\\lfloor\\sqrt{d|R|}\\rfloor+1)\\); and Lemmas 4.1, 4.3, and 6.1 require \\(D=O(\\epsilon p)\\). Hence \\(\\epsilon^3=\\Omega(d/p)\\). KTZ supplies one-sided bounds, not simultaneous \\(\\Theta\\)-saturation.\n\nThe exact affine spectral estimate already appears as KTZ Lemma 2.1. Its primary antecedent is [Vinh, Theorem 3](https://arxiv.org/pdf/0711.4427v1):\n\n\\[\nI(P,T)\\le\\frac{|P||T|}{p}+\\sqrt{p|P||T|}.\n\\]\n\nFor medium-size distinct sets, [Stevens\u2013de Zeeuw, Theorem 3](https://arxiv.org/pdf/1609.06284v4) proves\n\n\\[\nI(P,T)\\ll |P|^{11/15}|T|^{11/15}\n\\]\n\nonly when \\(|P|^{7/8}<|T|<|P|^{8/7}\\) and \\(|P|^{-2}|T|^{13}\\ll p^{15}\\). Their Theorem 4 additionally treats a genuine Cartesian set \\(A\\times B\\), under \\(|A|\\le|B|\\), \\(|A||B|^2\\le|T|^3\\), and \\(|A||T|\\ll p^2\\). These hypotheses cannot be silently imposed on accepted-point supports. Bourgain\u2013Katz\u2013Tao Theorem 6.2 has an unspecified gain depending on a fixed support exponent and is not used.\n\n## Theorem\n\n**Theorem A (regular carrier and other-line fractional-cover obstruction).** Let \\(p\\) be prime and let \\(101\\le d<p\\). There exist \\(f:\\mathbb F_p^2\\to\\mathbb F_p\\) and degree-exactly-\\(d\\) labels \\(P_L\\), one for every affine line, such that:\n\n1. \\(|N_E(L)|=d\\) for every \\(L\\), while \\(a_x\\in\\{d,d+1\\}\\) for every \\(x\\). Exactly \\(pd\\) points have degree \\(d+1\\), and the remaining \\(p(p-d)\\) points have degree \\(d\\).\n2. The agreement is \\(\\epsilon=d/p\\), and every affine line supports acceptance.\n3. For every \\(0<\\theta\\le1\\), if \\(\\operatorname{OPT}_\\theta\\) denotes the infimum of \\(\\sum_L\\lambda_L\\) over all nonnegative \\(\\theta\\)-reaching weights, then\n\n\\[\n\\frac{\\theta p(p+1)}{d+1}\n\\le \\operatorname{OPT}_\\theta\n\\le \\frac{\\theta p(p+1)}{d-1}.\n\\]\n\n4. The total-degree-zero polynomial \\(Q=0\\) satisfies \\(Q(x)=f(x)\\) for every point.\n\n**Lemma B (exact two-line collision identity).** For any valid table in the same ambient regime, let \\(\\Gamma_2\\) be the probability that, after choosing \\(x\\) uniformly and an ordered pair \\((L,M)\\) of distinct lines through \\(x\\) uniformly, both \\((x,L)\\) and \\((x,M)\\) accept. Then\n\n\\[\n\\Gamma_2=\n\\epsilon^2-\\frac{\\epsilon(1-\\epsilon)}p+\n\\frac{\\operatorname{Var}_x(a_x)}{p(p+1)}.\n\\]\n\nFor every integer \\(1\\le k\\le p+1\\), equality in the lower bound is attained by a valid table of ambient degree cap \\(d\\) with \\(\\epsilon=k/(p+1)\\).\n\n**Proposition C (black-box incidence range).** Let a balanced accepted component have \\(N\\) point vertices, \\(N\\) distinct line vertices, and minimum degree at least \\(k\\). If Stevens\u2013de Zeeuw Theorem 3 applies, then \\(N\\gg k^{15/7}\\). This consequence alone reaches \\(N=\\Omega(kp)\\) only outside that theorem's positive-characteristic range. If the point set is additionally a balanced Cartesian product and Stevens\u2013de Zeeuw Theorem 4 applies, its consequence \\(N\\gg k^{8/3}\\) likewise reaches \\(N=\\Omega(kp)\\) only outside its characteristic range.\n\n## Proof or Conditional Proof\n\n**[P1] (proved: affine incidence decomposition).** Add \\(p\\) dummy point vertices. For each \\(b\\in\\mathbb F_p\\), connect dummy vertex \\(z_b\\) to the \\(p\\) lines \\(y=mx+b\\), \\(m\\in\\mathbb F_p\\), and to the vertical line \\(x=b\\). The resulting bipartite graph has \\(p(p+1)\\) vertices on each side and is \\((p+1)\\)-regular. A regular bipartite graph has a perfect matching: for every left set \\(S\\), its \\((p+1)|S|\\) edges enter at most \\((p+1)|N(S)|\\) slots, so Hall's condition holds. Removing a perfect matching preserves regularity. Iteration decomposes the augmented graph into \\(p+1\\) perfect matchings, regarded as colors.\n\nAfter deleting the dummy edges, every real point sees every color exactly once. Every affine line misses exactly the color of its unique dummy edge. Each color is absent from exactly \\(p\\) affine lines because its perfect matching contains exactly one edge at each of the \\(p\\) dummy vertices.\n\n**[P2] (proved: select and repair colors).** Select any \\(d\\) colors and let \\(E_0\\) be their real incidence edges. Every point has \\(E_0\\)-degree \\(d\\). A line has degree \\(d\\) unless its missing color was selected, in which case it has degree \\(d-1\\). There are exactly \\(pd\\) distinct deficient lines.\n\nPut \\(r=p+1-d>0\\). In the graph of unselected real incidences from deficient lines to real points, every deficient line has degree \\(r\\), while every point has degree at most \\(r\\). Hence for every deficient-line set \\(S\\),\n\n\\[\nr|S|=e(S,N(S))\\le r|N(S)|.\n\\]\n\nHall gives a matching saturating all deficient lines. Add these matching edges to \\(E_0\\). Every line now has degree \\(d\\); the \\(pd\\) distinct matching endpoints have point degree \\(d+1\\), and all other points retain degree \\(d\\).\n\n**[P3] (proved: realize the accepted graph).** Set \\(f=0\\). For each fixed parameterization \\(L(t)\\), let \\(S_L\\subseteq\\mathbb F_p\\) be the \\(d\\) parameters of the selected edges on \\(L\\), and define\n\n\\[\np_L(t)=\\prod_{a\\in S_L}(t-a).\n\\]\n\nThis polynomial has degree exactly \\(d<p\\) and vanishes exactly on \\(S_L\\). Therefore the accepted-incidence graph is precisely the graph from [P2]. Since it has \\(p(p+1)d\\) edges out of \\(p^2(p+1)\\),\n\n\\[\n\\epsilon=d/p.\n\\]\n\nAll lines support acceptance. The legal global polynomial \\(Q=0\\) agrees with \\(f\\) everywhere.\n\n**[P4] (proved: fractional-cover lower bound).** Let \\(\\lambda\\) be \\(\\theta\\)-reaching and define the larger common capped load\n\n\\[\nv_x=\\min\\left\\{1,\\sum_{M\\ni x}A(x,M)\\lambda_M\\right\\}.\n\\]\n\nSince \\(u_{x,L}\\le v_x\\), double counting gives\n\n\\[\n\\theta d\\,p(p+1)\n\\le \\sum_L\\sum_{x\\in N_E(L)}u_{x,L}\n\\le \\sum_x a_xv_x\n\\le(d+1)\\sum_xv_x.\n\\]\n\nAlso\n\n\\[\n\\sum_xv_x\n\\le\\sum_x\\sum_{M\\ni x}A(x,M)\\lambda_M\n=d\\sum_M\\lambda_M.\n\\]\n\nThus\n\n\\[\n\\sum_M\\lambda_M\\ge\\frac{\\theta p(p+1)}{d+1}.\n\\]\n\nNo Markov, union, or Cauchy\u2013Schwarz loss occurs. An ordinary selected set is the special case \\(\\lambda_M\\in\\{0,1\\}\\), so the same lower bound applies to KTZ's stricter other-line reach condition.\n\n**[P5] (proved: fractional-cover upper bound).** Give every line weight \\(\\lambda_M=\\theta/(d-1)\\). At an accepted incidence \\((x,L)\\), at least \\(a_x-1\\ge d-1\\) other accepted lines pass through \\(x\\). Hence \\(u_{x,L}\\ge\\theta\\), so the weights are \\(\\theta\\)-reaching. Their total weight is \\(\\theta p(p+1)/(d-1)\\). This proves Theorem A, including a multiplicative upper-to-lower gap \\((d+1)/(d-1)\\le102/100\\).\n\n**[P6] (proved: collision identity).** For a fixed point \\(x\\), exactly \\(a_x(a_x-1)\\) ordered pairs of distinct incident lines are jointly accepted. Therefore\n\n\\[\n\\Gamma_2=\n\\frac{\\mathbb E_x[a_x(a_x-1)]}{p(p+1)}.\n\\]\n\nBecause \\(\\mathbb E_xa_x=(p+1)\\epsilon\\), expanding the variance gives\n\n\\[\n\\Gamma_2=\n\\frac{(p+1)^2\\epsilon^2-(p+1)\\epsilon+\\operatorname{Var}_x(a_x)}{p(p+1)},\n\\]\n\nwhich is Lemma B. In particular, \\(\\Gamma_2\\ge\\epsilon^2-\\epsilon(1-\\epsilon)/p\\), and if \\(\\epsilon\\ge2/p\\), then \\(\\Gamma_2\\ge\\epsilon^2/2\\). This is one exact Jensen/variance loss and no further concentration loss.\n\n**[P7] (proved: collision equality and concentrated directions).** Fix \\(k\\) projective directions. Put \\(f=0\\), label every line in those directions by the zero polynomial, and every other line by the constant-one polynomial. These are legal labels under the ambient cap \\(d>100\\). Every point has accepted degree exactly \\(k\\), so the variance term vanishes. The agreement and collision probability are\n\n\\[\n\\epsilon=\\frac{k}{p+1},\\qquad\n\\Gamma_2=\\frac{k(k-1)}{p(p+1)}.\n\\]\n\nDirect substitution shows equality in Lemma B. The same \\(Q=0\\) has global agreement one, so concentrated directions sharpen the incidence loss but do not obstruct soundness.\n\n**[P8] (proved: where the KTZ cubic occurs).** KTZ Lemma 3.2 uses sampling rate \\(\\Theta(1/(\\epsilon p))\\), Chernoff plus a union bound over at most \\(p(p+1)\\) target lines, and Chebyshev for sample size. These estimates cost constants and produce only the one-sided upper bound \\(|R|=O(p/\\epsilon)\\). Weighted interpolation then gives\n\n\\[\nD=O\\left(\\sqrt{d|R|}\\right)\n =O\\left(\\sqrt{dp/\\epsilon}\\right).\n\\]\n\nThe distinct-root and lifting budgets require \\(D=O(\\epsilon p)\\). Squaring gives \\(\\epsilon^3=\\Omega(d/p)\\). Theorem A shows that replacing the cover by a universally \\(o(p/\\epsilon)\\)-weight fractional cover is false, but does not rule out decoding the obstructing case before interpolation.\n\n**[P9] (proved: Vinh/KTZ mixing barrier).** KTZ Lemma 2.1 is the absolute affine form of Vinh's spectral estimate, with normalized error \\((p+1)^{-1/2}\\). Lemma 6.2 absorbs it using\n\n\\[\n(p+1)^{-1/2}\\le\\epsilon/8000.\n\\]\n\nAt the current cubic threshold this is weaker: \\((d/p)^{1/3}\\sqrt p=d^{1/3}p^{1/6}\\). For a prospective exponent \\(\\alpha>1/2\\), however, fix the legal lower boundary \\(d=101\\). If \\(\\epsilon=C(101/p)^\\alpha\\), then\n\n\\[\n\\epsilon\\sqrt p=C\\,101^\\alpha p^{1/2-\\alpha}\\longrightarrow0.\n\\]\n\nThus Vinh-only component recovery cannot establish linear global agreement in this regime. This is a method obstruction, not a counterexample to a stronger theorem.\n\n**[P10] (proved: Stevens\u2013de Zeeuw diagnostics).** In the balanced setting of Proposition C, minimum degree gives \\(kN\\le I(P,T)\\). Theorem 3 gives\n\n\\[\nkN\\ll N^{22/15},\\qquad N\\gg k^{15/7}.\n\\]\n\nFor this lower bound to be at least the required \\(kp\\), one needs \\(k^{8/7}\\gtrsim p\\), or \\(k\\gtrsim p^{7/8}\\). At that scale it forces \\(N\\gtrsim p^{15/8}\\), whereas the theorem's characteristic hypothesis in the balanced case is \\(N^{11}\\ll p^{15}\\), i.e. \\(N\\ll p^{15/11}\\). There is no asymptotic overlap.\n\nIf the balanced point set is genuinely Cartesian, Theorem 4 gives\n\n\\[\nkN\\ll N^{11/8}+N,\n\\qquad N\\gg k^{8/3}\n\\]\n\nonce the linear term is absorbed. Reaching \\(N\\gtrsim kp\\) would require \\(k\\gtrsim p^{3/5}\\) and hence \\(N\\gtrsim p^{8/5}\\). But the characteristic condition \\(|A||T|\\ll p^2\\), with \\(|A|=\\sqrt N\\) and \\(|T|=N\\), requires \\(N\\ll p^{4/3}\\). Again there is no overlap. These are exponent reconstructions from the quoted theorems, not source-stated low-degree-test conclusions.\n\n**[P11] (refuted: incidence-only shortcut).** The claim that acceptance density alone always yields either \\(\\omega(\\epsilon^2)\\) compatible line-pair density or an \\(o(p/\\epsilon)\\)-weight family reaching a fixed fraction of every accepted line is false. Lemma B refutes the first alternative and Theorem A refutes the second. Since both examples have a perfect decoder, they instead prove that a successful argument must branch on algebraic or value coherence.\n\n## Exponent Ledger\n\n| Stage | Input | Loss | Output |\n|---|---|---|---|\n| KTZ selection | \\(\\epsilon\\) | one inverse \\(\\epsilon\\) | \\(|R|=O(p/\\epsilon)\\) |\n| KTZ interpolation | \\(|R|\\) | square root | \\(D=O(\\sqrt{dp/\\epsilon})\\) |\n| KTZ root budget | \\(D=O(\\epsilon p)\\) | cubic comparison | \\(\\epsilon^3=\\Omega(d/p)\\) |\n| Regular construction | degree \\(d\\) | none | \\(\\epsilon=d/p\\), line degree \\(d\\), point degree \\(d\\) or \\(d+1\\) |\n| Fractional reach | fraction \\(\\theta\\) | factor between \\(d-1\\) and \\(d+1\\) only | \\(\\operatorname{OPT}_\\theta=\\Theta(p/\\epsilon)\\) |\n| Collision extraction | \\(\\epsilon\\) | exact square plus finite correction | \\(\\Gamma_2\\ge\\epsilon^2-\\epsilon(1-\\epsilon)/p\\) |\n| KTZ/Vinh mixing | component degree \\(\\Theta(\\epsilon p)\\) | \\(p^{-1/2}\\) error | linear recovery only when \\(\\epsilon\\gtrsim p^{-1/2}\\) by this route |\n| Stevens\u2013de Zeeuw, balanced | minimum degree \\(k\\) | exponent \\(15/7\\) | \\(N\\gg k^{15/7}\\), insufficient for \\(N\\gg kp\\) in range |\n| Stevens\u2013de Zeeuw, Cartesian | minimum degree \\(k\\) | exponent \\(8/3\\) | \\(N\\gg k^{8/3}\\), insufficient for \\(N\\gg kp\\) in range |\n| Constructed global output | \\(f=0\\) | none | one \\(Q=0\\) with agreement \\(1\\) |\n\nThe new construction is deterministic. The only convexity loss is exposed exactly by the variance term in Lemma B. No logarithmic, Markov, union, derivative, or multiplicity loss is suppressed.\n\n## Counterexample Attempts\n\nTheorem A is a successful counterexample to a universal smaller reaching family. Unlike the earlier random balanced-color example, it is deterministic, exactly regular on the line side, within one on the point side, supported on every line, valid at \\(d=101\\), and valid near \\(p\\). Its fractional formulation also prevents an apparent escape through line multiplicities or randomized weights.\n\nIt fails completely as a soundness counterexample: \\(f=Q=0\\) everywhere. This is the intended sparsify-or-decode separation. The earlier verifier-accepted balanced-color construction behaves similarly at larger local agreements.\n\nThe direction-class table attains the collision lower bound and tests concentrated good directions. It too has perfect global agreement. Thus neither high collision energy nor direction concentration alone identifies a hard instance.\n\nThe modal table from researcher-0001 remains the only active genuine endpoint obstruction: at ambient \\(d=101\\), it has local agreement \\(\\Theta(\\log p/(p\\log\\log p))\\) and global degree-101 agreement below \\(2/p\\). It refutes a literal constant-times-\\(d/p\\) theorem but stays below every fixed \\((d/p)^{1-\\eta}\\) trigger.\n\nInseparability does not enter either new construction. At \\(d=p-1\\), the regular construction remains valid, but its perfect global polynomial confirms that the near-\\(p\\) regime is not an obstruction.\n\n## Characteristic Audit\n\n- The ambient field is exactly \\(\\mathbb F_p\\), and \\(101\\le d<p\\).\n- Each root polynomial has \\(d\\) distinct linear factors and formal degree below \\(p\\). Its zero set has exactly \\(d\\) points.\n- No derivative is divided by. The roots are simple, but simplicity is not used.\n- No discriminant, resultant, factor irreducibility, absolute irreducibility, or interpolation multiplicity is invoked.\n- Hall matching is proved directly by degree counting. No probabilistic method or finite computation proves existence.\n- Fixed affine parameterizations avoid division by a slope and treat vertical lines identically.\n- Lines are distinct geometric affine lines. Fractional weights are handled explicitly; source incidence theorems are not silently extended to multisets.\n- Constant labels in [P7] are legal under the fixed ambient cap \\(d>100\\); the excluded test parameter \\(d=0\\) is never studied.\n- At the lower boundary \\(p=103,d=101\\), the complement degree is three. At \\(d=p-1\\), it is two.\n- Stevens\u2013de Zeeuw's positive-characteristic inequalities are retained in [P10]; their implicit constants are not converted into an unstated explicit finite range.\n\n## Limitations\n\nThe benchmark is not improved. Theorem A lives at the exact interpolation floor \\(\\epsilon=d/p\\), which is below every fixed-\\(\\eta\\) trigger when \\(d/p\\to0\\). It obstructs a proof module, not the target theorem.\n\nConnectivity of the regular accepted graph is not proved. The cover lower bound is global and remains valid regardless of its component decomposition. An algebra-aware algorithm may decode components separately, as \\(Q=0\\) demonstrates.\n\nLemma B controls only pair extraction from acceptance density. Additional polynomial information might distinguish its equality examples. Proposition C audits black-box unweighted incidence estimates only; it does not rule out a new weighted, lifted, or algebra-sensitive incidence theorem.\n\nThe Stevens\u2013de Zeeuw calculations assume balanced components, and the Cartesian calculation additionally assumes a true product set. General accepted components need not satisfy either shape hypothesis. Bourgain\u2013Katz\u2013Tao's fixed-support exponent is insufficiently explicit for the campaign's uniform \\(d,p\\) target and was not imported.\n\nAccordingly, improvement from exponent \\(1/3\\) toward \\(1/2\\) still requires a sparsify-or-decode or interpolation advance. Improvement beyond \\(1/2\\) additionally requires a component-recovery argument that does not rely only on the \\(p^{-1/2}\\) affine incidence discrepancy.",
+  "obstructions": [
+    "The exact two-line compatibility energy can be only \u03b5\u00b2\u2212O(\u03b5/p); no incidence convexity argument can force a better power from \u03b5 alone.",
+    "A universal fractional family reaching a constant fraction of every accepted line can require \u0398(p/\u03b5) total weight, even on a fully supported, exactly almost-regular legal table.",
+    "The point and line projections of the regular table are the entire affine plane and all affine lines. Vinh's main term is exact on these projections, so unweighted incidence bounds discard the acceptance information.",
+    "Stevens\u2013de Zeeuw Theorem 3 requires comparable distinct sets and a characteristic-size condition; the component-size exponent it supplies becomes linear only outside that range.",
+    "Stevens\u2013de Zeeuw Theorem 4 additionally requires a Cartesian point set and likewise has no parameter overlap where its consequence supplies linear recovery.",
+    "For fixed legal d and a candidate soundness exponent above 1/2, the KTZ/Vinh mixing requirement \u03b5=\u03a9(p^\u22121/2) fails.",
+    "The extremal incidence examples are easy to decode, so none refutes the soundness target; they force a dichotomy rather than establish impossibility."
+  ],
+  "parameter_regime": "Dimension m=2; prime p; integer 101\u2264d<p; uniform sampling from the p\u00b2(p+1) affine point-line incidences. The regular construction uses \u03b8\u2208(0,1] and nonnegative fractional weights on distinct affine lines. The collision lemma applies to every valid table and every \u03b5\u2208[0,1]. The Stevens\u2013de Zeeuw diagnostics additionally retain their stated comparability, Cartesian, and characteristic-size hypotheses.",
+  "proof_steps": [
+    {
+      "dependencies": [
+        "Hall's marriage theorem, proved in the step by regular degree counting"
+      ],
+      "id": "P1",
+      "proof": "Add p dummy point vertices, connecting dummy b to the p finite-slope lines of intercept b and the vertical line x=b. The resulting balanced graph is (p+1)-regular and decomposes iteratively into p+1 perfect matchings. Restriction gives an affine incidence edge-coloring in which every point sees every color and every line misses exactly one.",
+      "statement": "The affine point-line incidence graph admits a p+1-color decomposition in which every point sees all colors and each line misses one color.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "Hall's marriage theorem"
+      ],
+      "id": "P2",
+      "proof": "Selecting d colors gives point degree d and line degree d or d\u22121, with exactly pd deficient lines. In the unselected graph from deficient lines, every left degree is r=p+1\u2212d and every right degree is at most r, so Hall supplies a matching saturating all deficient lines. Adding it gives exact line degree d and point degree d or d+1.",
+      "statement": "There is a spanning affine incidence subgraph with every line of degree d and every point of degree d or d+1.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2"
+      ],
+      "id": "P3",
+      "proof": "Set f=0 and, on each fixed line parameterization, take the product of t\u2212a over the d selected incidence parameters. Since d<p, this degree-d polynomial vanishes exactly on the selected points. Counting edges gives \u03b5=d/p, and Q=0 agrees globally everywhere.",
+      "statement": "The regular incidence subgraph is realized by a legal degree-d line-versus-point table.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "Replace target-excluded loads by the larger common capped load v_x. Double counting gives \u03b8d p(p+1)\u2264\u03a3_x a_xv_x\u2264(d+1)\u03a3_xv_x\u2264d(d+1)\u03a3_L\u03bb_L.",
+      "statement": "Every fractional family reaching a \u03b8-fraction of every line through other accepted lines has weight at least \u03b8p(p+1)/(d+1).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "P5",
+      "proof": "Assign every line weight \u03b8/(d\u22121). At every accepted incidence, at least d\u22121 other accepted lines contribute, so its capped other-line load is at least \u03b8. Total weight is \u03b8p(p+1)/(d\u22121).",
+      "statement": "The other-line fractional-cover lower bound is tight within factor (d+1)/(d\u22121).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P6",
+      "proof": "At point x there are exactly a_x(a_x\u22121) ordered pairs of distinct accepted incident lines. Averaging and expanding E[a_x\u00b2] as E[a_x]\u00b2+Var(a_x), with E[a_x]=(p+1)\u03b5, gives the exact formula.",
+      "statement": "The ordered distinct-line joint-acceptance probability equals \u03b5\u00b2\u2212\u03b5(1\u2212\u03b5)/p+Var(a_x)/[p(p+1)].",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P6"
+      ],
+      "id": "P7",
+      "proof": "Accept all incidences on k direction classes using zero labels and reject all others using constant-one labels, with f=0. Every point has accepted degree k, so the variance vanishes and \u0393\u2082=k(k\u22121)/[p(p+1)].",
+      "statement": "The collision lower bound is attained by concentrated good directions for every \u03b5=k/(p+1).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "Kominers\u2013Thaler\u2013Zheng Revision 1, Lemmas 3.2 and 4.1\u20134.3"
+      ],
+      "id": "P8",
+      "proof": "The source gives |R|=O(p/\u03b5), weighted degree D=O(sqrt(d|R|)), and requires D=O(\u03b5p). Squaring yields \u03b5\u00b3=\u03a9(d/p). The probabilistic selector losses are constants and KTZ does not claim simultaneous \u0398-saturation.",
+      "statement": "The KTZ cubic threshold is reconstructed from covering, interpolation, and root supply.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "Kominers\u2013Thaler\u2013Zheng Revision 1, Lemmas 2.1 and 6.2"
+      ],
+      "id": "P9",
+      "proof": "The component argument requires (p+1)^\u22121/2\u2264\u03b5/8000. For d=101 and \u03b5=C(101/p)^\u03b1 with fixed \u03b1>1/2, \u03b5sqrt(p) tends to zero, so this Vinh-based recovery step cannot yield linear component size.",
+      "statement": "Vinh-only component recovery has a method barrier at exponent 1/2 in the legal lower-boundary regime.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "Stevens\u2013de Zeeuw Theorems 3 and 4"
+      ],
+      "id": "P10",
+      "proof": "For balanced supports, kN\u226aN^(22/15) yields N\u226bk^(15/7); making this as large as kp forces parameters outside N\u226ap^(15/11). In the balanced Cartesian case, kN\u226aN^(11/8)+N yields N\u226bk^(8/3); making this as large as kp forces parameters outside N\u226ap^(4/3).",
+      "statement": "The quoted stronger prime-field incidence bounds do not supply linear component recovery within their own characteristic ranges.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P4",
+        "P5",
+        "P6",
+        "P7"
+      ],
+      "id": "P11",
+      "proof": "The regular carrier rules out a universally smaller reaching family, and the direction table attains the collision square. Both have Q=0, so they refute only the incidence-only shortcut, not soundness.",
+      "statement": "Acceptance density alone always yields either more than quadratic collision energy or an o(p/\u03b5)-weight universal reaching family.",
+      "status": "refuted"
+    }
+  ],
+  "result_status": "proved",
+  "sampling_model": "Choose L uniformly among the p(p+1) distinct affine lines of F_p\u00b2, then choose x uniformly among the p points of L; equivalently choose a uniform affine point-line incidence.",
+  "theorem_statement": "Let p be prime, let 101\u2264d<p, fix m=2, and use uniform affine point-line sampling. There exist f:F_p\u00b2\u2192F_p and degree-exactly-d line labels such that \u03b5=d/p, every affine line has exactly d accepted points, every point has accepted degree d or d+1, exactly pd points have degree d+1, and every line supports acceptance. For every \u03b8\u2208(0,1], the minimum total nonnegative line weight that gives every accepted incidence \u03b8 capped coverage through other accepted lines lies between \u03b8p(p+1)/(d+1) and \u03b8p(p+1)/(d\u22121); hence every integral such family has size \u03a9(p/\u03b5). Nevertheless Q=0 has global agreement one. Moreover, for every valid table of agreement \u03b5, the probability \u0393\u2082 that two uniformly chosen distinct lines through a uniform point both accept there satisfies \u0393\u2082=\u03b5\u00b2\u2212\u03b5(1\u2212\u03b5)/p+Var_x(deg_acc(x))/[p(p+1)], and the lower bound is attained by accepting exactly k direction classes, \u03b5=k/(p+1).",
+  "title": "Sharp Incidence-Only Losses in Bivariate Prime-Field Line\u2013Point Agreement"
+}
+
+NUMBERED NOTE:
+0001: # Sharp incidence-only losses in bivariate prime-field line–point agreement
+0002: 
+0003: ## Abstract
+0004: 
+0005: For the affine line-versus-point test on \(\mathbb F_p^2\), I prove two exact incidence obstructions. First, for every prime \(p\) and every campaign degree \(101\le d<p\), there is a deterministic legal table with local agreement \(\epsilon=d/p\), accepted degree exactly \(d\) on every affine line, accepted degree \(d\) or \(d+1\) at every point, and acceptance supported on all lines. Any fractional family of lines that reaches a fixed fraction \(\theta\) of the accepted points of every target line through *other* accepted lines has total weight \(\Theta(p/\epsilon)\), with a multiplicative gap at most \((d+1)/(d-1)\). Thus the \(p/\epsilon\) scale cannot be improved by a universal graph-theoretic cover, even with exact near-regularity and fractional weights.
+0006: 
+0007: Second, for every table of agreement \(\epsilon\), the probability that two uniformly chosen distinct lines through a uniform point are both accepted there is exactly
+0008: 
+0009: \[
+0010: \epsilon^2-\frac{\epsilon(1-\epsilon)}p+
+0011: \frac{\operatorname{Var}_x(a_x)}{p(p+1)},
+0012: \]
+0013: 
+0014: where \(a_x\) is the accepted degree of \(x\). The lower bound is attained by accepting exactly \(k\) direction classes. Hence the usual \(\epsilon^2\) collision loss is sharp.
+0015: 
+0016: Both extremal tables have the obvious global polynomial \(Q=0\). They are therefore obstructions to incidence-blind proof architectures, not counterexamples to soundness. An exact primary-source audit also shows that KTZ already uses the affine Vinh estimate, while the stronger Stevens–de Zeeuw bounds do not give the linear component size needed for global agreement in their characteristic ranges. The unconditional benchmark exponent remains \(1/3\).
+0017: 
+0018: ## Test and Notation
+0019: 
+0020: Fix a prime \(p\), an integer \(101\le d<p\), and dimension \(m=2\). Let \(\mathcal L\) be the \(p(p+1)\) affine lines of \(\mathbb F_p^2\). Every line has \(p\) points and every point lies on \(p+1\) lines.
+0021: 
+0022: A point table is \(f:\mathbb F_p^2\to\mathbb F_p\). Each \(L\in\mathcal L\) has one polynomial label \(P_L\) of degree at most \(d\), interpreted using a fixed affine parameterization of \(L\). Put
+0023: 
+0024: \[
+0025: A(x,L)=1_{\{P_L(x)=f(x)\}},\qquad
+0026: \epsilon=\frac{\sum_{x,L\ni x}A(x,L)}{p^2(p+1)}.
+0027: \]
+0028: 
+0029: This is exactly uniform-line-then-uniform-point sampling. Let
+0030: 
+0031: \[
+0032: a_x=\sum_{L\ni x}A(x,L),\qquad
+0033: N_E(L)=\{x\in L:A(x,L)=1\}.
+0034: \]
+0035: 
+0036: For nonnegative line weights \(\lambda=(\lambda_M)_{M\in\mathcal L}\), define the capped load reaching an accepted incidence \((x,L)\) through other lines by
+0037: 
+0038: \[
+0039: u_{x,L}(\lambda)=
+0040: \min\left\{1,\sum_{\substack{M\ni x,\,M\ne L}}A(x,M)\lambda_M\right\}.
+0041: \]
+0042: 
+0043: For \(0<\theta\le1\), call \(\lambda\) \(\theta\)-reaching if
+0044: 
+0045: \[
+0046: \sum_{x\in N_E(L)}u_{x,L}(\lambda)\ge\theta |N_E(L)|
+0047: \quad\text{for every }L\in\mathcal L.
+0048: \]
+0049: 
+0050: Indicator weights are ordinary selected-line families. Fractional weights also cover multisets after coincident copies are combined.
+0051: 
+0052: ## Prior Results
+0053: 
+0054: The active corpus contains four earlier submissions and four verifier audits. Researcher-0002 is the only accepted result: a connected accepted component of minimum degree \(k\) and line measure \(\tau\) is decoded under \(k^2\ge2^{40}dp\) and \(k^3\ge2^{40}d\tau p^2\), giving a conditional exponent \(1/2\) when \(\tau=O(\epsilon)\). Researcher-0001 is revise-grade: its support-sensitive cubic theorem and modal obstruction were validated, but its exact statement and mixing algebra need repairs. Researcher-0003 was rejected because its hashed theorem omitted essential hypotheses forcing a \(Z\)-dependent interpolant; its weighted-resultant lemma survives only with the fuller hypotheses in the note. Researcher-0004's exact jet count is revise-grade and shows only that uniform rank-blind multiplicity is exponent-neutral. No active submission proves an unconditional exponent above \(1/3\). The data manifest is a launch snapshot and is not current mathematical evidence; the live boards and audits control this synthesis.
+0055: 
+0056: The benchmark is [Kominers–Thaler–Zheng, Revision 1, Theorem 1.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/): over every finite field, agreement \(\epsilon\ge C(d/q)^{1/3}\) yields one total-degree-at-most-\(d\) polynomial with global agreement \(c\epsilon\). In its bivariate proof, Lemmas 6.2–6.3 give \(\epsilon/8000\). The following explanation is a reconstruction, not a quoted theorem: Lemma 3.2 gives \(|R|\le6400p/\epsilon\); Section 4 uses \(D=16(\lfloor\sqrt{d|R|}\rfloor+1)\); and Lemmas 4.1, 4.3, and 6.1 require \(D=O(\epsilon p)\). Hence \(\epsilon^3=\Omega(d/p)\). KTZ supplies one-sided bounds, not simultaneous \(\Theta\)-saturation.
+0057: 
+0058: The exact affine spectral estimate already appears as KTZ Lemma 2.1. Its primary antecedent is [Vinh, Theorem 3](https://arxiv.org/pdf/0711.4427v1):
+0059: 
+0060: \[
+0061: I(P,T)\le\frac{|P||T|}{p}+\sqrt{p|P||T|}.
+0062: \]
+0063: 
+0064: For medium-size distinct sets, [Stevens–de Zeeuw, Theorem 3](https://arxiv.org/pdf/1609.06284v4) proves
+0065: 
+0066: \[
+0067: I(P,T)\ll |P|^{11/15}|T|^{11/15}
+0068: \]
+0069: 
+0070: only when \(|P|^{7/8}<|T|<|P|^{8/7}\) and \(|P|^{-2}|T|^{13}\ll p^{15}\). Their Theorem 4 additionally treats a genuine Cartesian set \(A\times B\), under \(|A|\le|B|\), \(|A||B|^2\le|T|^3\), and \(|A||T|\ll p^2\). These hypotheses cannot be silently imposed on accepted-point supports. Bourgain–Katz–Tao Theorem 6.2 has an unspecified gain depending on a fixed support exponent and is not used.
+0071: 
+0072: ## Theorem
+0073: 
+0074: **Theorem A (regular carrier and other-line fractional-cover obstruction).** Let \(p\) be prime and let \(101\le d<p\). There exist \(f:\mathbb F_p^2\to\mathbb F_p\) and degree-exactly-\(d\) labels \(P_L\), one for every affine line, such that:
+0075: 
+0076: 1. \(|N_E(L)|=d\) for every \(L\), while \(a_x\in\{d,d+1\}\) for every \(x\). Exactly \(pd\) points have degree \(d+1\), and the remaining \(p(p-d)\) points have degree \(d\).
+0077: 2. The agreement is \(\epsilon=d/p\), and every affine line supports acceptance.
+0078: 3. For every \(0<\theta\le1\), if \(\operatorname{OPT}_\theta\) denotes the infimum of \(\sum_L\lambda_L\) over all nonnegative \(\theta\)-reaching weights, then
+0079: 
+0080: \[
+0081: \frac{\theta p(p+1)}{d+1}
+0082: \le \operatorname{OPT}_\theta
+0083: \le \frac{\theta p(p+1)}{d-1}.
+0084: \]
+0085: 
+0086: 4. The total-degree-zero polynomial \(Q=0\) satisfies \(Q(x)=f(x)\) for every point.
+0087: 
+0088: **Lemma B (exact two-line collision identity).** For any valid table in the same ambient regime, let \(\Gamma_2\) be the probability that, after choosing \(x\) uniformly and an ordered pair \((L,M)\) of distinct lines through \(x\) uniformly, both \((x,L)\) and \((x,M)\) accept. Then
+0089: 
+0090: \[
+0091: \Gamma_2=
+0092: \epsilon^2-\frac{\epsilon(1-\epsilon)}p+
+0093: \frac{\operatorname{Var}_x(a_x)}{p(p+1)}.
+0094: \]
+0095: 
+0096: For every integer \(1\le k\le p+1\), equality in the lower bound is attained by a valid table of ambient degree cap \(d\) with \(\epsilon=k/(p+1)\).
+0097: 
+0098: **Proposition C (black-box incidence range).** Let a balanced accepted component have \(N\) point vertices, \(N\) distinct line vertices, and minimum degree at least \(k\). If Stevens–de Zeeuw Theorem 3 applies, then \(N\gg k^{15/7}\). This consequence alone reaches \(N=\Omega(kp)\) only outside that theorem's positive-characteristic range. If the point set is additionally a balanced Cartesian product and Stevens–de Zeeuw Theorem 4 applies, its consequence \(N\gg k^{8/3}\) likewise reaches \(N=\Omega(kp)\) only outside its characteristic range.
+0099: 
+0100: ## Proof or Conditional Proof
+0101: 
+0102: **[P1] (proved: affine incidence decomposition).** Add \(p\) dummy point vertices. For each \(b\in\mathbb F_p\), connect dummy vertex \(z_b\) to the \(p\) lines \(y=mx+b\), \(m\in\mathbb F_p\), and to the vertical line \(x=b\). The resulting bipartite graph has \(p(p+1)\) vertices on each side and is \((p+1)\)-regular. A regular bipartite graph has a perfect matching: for every left set \(S\), its \((p+1)|S|\) edges enter at most \((p+1)|N(S)|\) slots, so Hall's condition holds. Removing a perfect matching preserves regularity. Iteration decomposes the augmented graph into \(p+1\) perfect matchings, regarded as colors.
+0103: 
+0104: After deleting the dummy edges, every real point sees every color exactly once. Every affine line misses exactly the color of its unique dummy edge. Each color is absent from exactly \(p\) affine lines because its perfect matching contains exactly one edge at each of the \(p\) dummy vertices.
+0105: 
+0106: **[P2] (proved: select and repair colors).** Select any \(d\) colors and let \(E_0\) be their real incidence edges. Every point has \(E_0\)-degree \(d\). A line has degree \(d\) unless its missing color was selected, in which case it has degree \(d-1\). There are exactly \(pd\) distinct deficient lines.
+0107: 
+0108: Put \(r=p+1-d>0\). In the graph of unselected real incidences from deficient lines to real points, every deficient line has degree \(r\), while every point has degree at most \(r\). Hence for every deficient-line set \(S\),
+0109: 
+0110: \[
+0111: r|S|=e(S,N(S))\le r|N(S)|.
+0112: \]
+0113: 
+0114: Hall gives a matching saturating all deficient lines. Add these matching edges to \(E_0\). Every line now has degree \(d\); the \(pd\) distinct matching endpoints have point degree \(d+1\), and all other points retain degree \(d\).
+0115: 
+0116: **[P3] (proved: realize the accepted graph).** Set \(f=0\). For each fixed parameterization \(L(t)\), let \(S_L\subseteq\mathbb F_p\) be the \(d\) parameters of the selected edges on \(L\), and define
+0117: 
+0118: \[
+0119: p_L(t)=\prod_{a\in S_L}(t-a).
+0120: \]
+0121: 
+0122: This polynomial has degree exactly \(d<p\) and vanishes exactly on \(S_L\). Therefore the accepted-incidence graph is precisely the graph from [P2]. Since it has \(p(p+1)d\) edges out of \(p^2(p+1)\),
+0123: 
+0124: \[
+0125: \epsilon=d/p.
+0126: \]
+0127: 
+0128: All lines support acceptance. The legal global polynomial \(Q=0\) agrees with \(f\) everywhere.
+0129: 
+0130: **[P4] (proved: fractional-cover lower bound).** Let \(\lambda\) be \(\theta\)-reaching and define the larger common capped load
+0131: 
+0132: \[
+0133: v_x=\min\left\{1,\sum_{M\ni x}A(x,M)\lambda_M\right\}.
+0134: \]
+0135: 
+0136: Since \(u_{x,L}\le v_x\), double counting gives
+0137: 
+0138: \[
+0139: \theta d\,p(p+1)
+0140: \le \sum_L\sum_{x\in N_E(L)}u_{x,L}
+0141: \le \sum_x a_xv_x
+0142: \le(d+1)\sum_xv_x.
+0143: \]
+0144: 
+0145: Also
+0146: 
+0147: \[
+0148: \sum_xv_x
+0149: \le\sum_x\sum_{M\ni x}A(x,M)\lambda_M
+0150: =d\sum_M\lambda_M.
+0151: \]
+0152: 
+0153: Thus
+0154: 
+0155: \[
+0156: \sum_M\lambda_M\ge\frac{\theta p(p+1)}{d+1}.
+0157: \]
+0158: 
+0159: No Markov, union, or Cauchy–Schwarz loss occurs. An ordinary selected set is the special case \(\lambda_M\in\{0,1\}\), so the same lower bound applies to KTZ's stricter other-line reach condition.
+0160: 
+0161: **[P5] (proved: fractional-cover upper bound).** Give every line weight \(\lambda_M=\theta/(d-1)\). At an accepted incidence \((x,L)\), at least \(a_x-1\ge d-1\) other accepted lines pass through \(x\). Hence \(u_{x,L}\ge\theta\), so the weights are \(\theta\)-reaching. Their total weight is \(\theta p(p+1)/(d-1)\). This proves Theorem A, including a multiplicative upper-to-lower gap \((d+1)/(d-1)\le102/100\).
+0162: 
+0163: **[P6] (proved: collision identity).** For a fixed point \(x\), exactly \(a_x(a_x-1)\) ordered pairs of distinct incident lines are jointly accepted. Therefore
+0164: 
+0165: \[
+0166: \Gamma_2=
+0167: \frac{\mathbb E_x[a_x(a_x-1)]}{p(p+1)}.
+0168: \]
+0169: 
+0170: Because \(\mathbb E_xa_x=(p+1)\epsilon\), expanding the variance gives
+0171: 
+0172: \[
+0173: \Gamma_2=
+0174: \frac{(p+1)^2\epsilon^2-(p+1)\epsilon+\operatorname{Var}_x(a_x)}{p(p+1)},
+0175: \]
+0176: 
+0177: which is Lemma B. In particular, \(\Gamma_2\ge\epsilon^2-\epsilon(1-\epsilon)/p\), and if \(\epsilon\ge2/p\), then \(\Gamma_2\ge\epsilon^2/2\). This is one exact Jensen/variance loss and no further concentration loss.
+0178: 
+0179: **[P7] (proved: collision equality and concentrated directions).** Fix \(k\) projective directions. Put \(f=0\), label every line in those directions by the zero polynomial, and every other line by the constant-one polynomial. These are legal labels under the ambient cap \(d>100\). Every point has accepted degree exactly \(k\), so the variance term vanishes. The agreement and collision probability are
+0180: 
+0181: \[
+0182: \epsilon=\frac{k}{p+1},\qquad
+0183: \Gamma_2=\frac{k(k-1)}{p(p+1)}.
+0184: \]
+0185: 
+0186: Direct substitution shows equality in Lemma B. The same \(Q=0\) has global agreement one, so concentrated directions sharpen the incidence loss but do not obstruct soundness.
+0187: 
+0188: **[P8] (proved: where the KTZ cubic occurs).** KTZ Lemma 3.2 uses sampling rate \(\Theta(1/(\epsilon p))\), Chernoff plus a union bound over at most \(p(p+1)\) target lines, and Chebyshev for sample size. These estimates cost constants and produce only the one-sided upper bound \(|R|=O(p/\epsilon)\). Weighted interpolation then gives
+0189: 
+0190: \[
+0191: D=O\left(\sqrt{d|R|}\right)
+0192:  =O\left(\sqrt{dp/\epsilon}\right).
+0193: \]
+0194: 
+0195: The distinct-root and lifting budgets require \(D=O(\epsilon p)\). Squaring gives \(\epsilon^3=\Omega(d/p)\). Theorem A shows that replacing the cover by a universally \(o(p/\epsilon)\)-weight fractional cover is false, but does not rule out decoding the obstructing case before interpolation.
+0196: 
+0197: **[P9] (proved: Vinh/KTZ mixing barrier).** KTZ Lemma 2.1 is the absolute affine form of Vinh's spectral estimate, with normalized error \((p+1)^{-1/2}\). Lemma 6.2 absorbs it using
+0198: 
+0199: \[
+0200: (p+1)^{-1/2}\le\epsilon/8000.
+0201: \]
+0202: 
+0203: At the current cubic threshold this is weaker: \((d/p)^{1/3}\sqrt p=d^{1/3}p^{1/6}\). For a prospective exponent \(\alpha>1/2\), however, fix the legal lower boundary \(d=101\). If \(\epsilon=C(101/p)^\alpha\), then
+0204: 
+0205: \[
+0206: \epsilon\sqrt p=C\,101^\alpha p^{1/2-\alpha}\longrightarrow0.
+0207: \]
+0208: 
+0209: Thus Vinh-only component recovery cannot establish linear global agreement in this regime. This is a method obstruction, not a counterexample to a stronger theorem.
+0210: 
+0211: **[P10] (proved: Stevens–de Zeeuw diagnostics).** In the balanced setting of Proposition C, minimum degree gives \(kN\le I(P,T)\). Theorem 3 gives
+0212: 
+0213: \[
+0214: kN\ll N^{22/15},\qquad N\gg k^{15/7}.
+0215: \]
+0216: 
+0217: For this lower bound to be at least the required \(kp\), one needs \(k^{8/7}\gtrsim p\), or \(k\gtrsim p^{7/8}\). At that scale it forces \(N\gtrsim p^{15/8}\), whereas the theorem's characteristic hypothesis in the balanced case is \(N^{11}\ll p^{15}\), i.e. \(N\ll p^{15/11}\). There is no asymptotic overlap.
+0218: 
+0219: If the balanced point set is genuinely Cartesian, Theorem 4 gives
+0220: 
+0221: \[
+0222: kN\ll N^{11/8}+N,
+0223: \qquad N\gg k^{8/3}
+0224: \]
+0225: 
+0226: once the linear term is absorbed. Reaching \(N\gtrsim kp\) would require \(k\gtrsim p^{3/5}\) and hence \(N\gtrsim p^{8/5}\). But the characteristic condition \(|A||T|\ll p^2\), with \(|A|=\sqrt N\) and \(|T|=N\), requires \(N\ll p^{4/3}\). Again there is no overlap. These are exponent reconstructions from the quoted theorems, not source-stated low-degree-test conclusions.
+0227: 
+0228: **[P11] (refuted: incidence-only shortcut).** The claim that acceptance density alone always yields either \(\omega(\epsilon^2)\) compatible line-pair density or an \(o(p/\epsilon)\)-weight family reaching a fixed fraction of every accepted line is false. Lemma B refutes the first alternative and Theorem A refutes the second. Since both examples have a perfect decoder, they instead prove that a successful argument must branch on algebraic or value coherence.
+0229: 
+0230: ## Exponent Ledger
+0231: 
+0232: | Stage | Input | Loss | Output |
+0233: |---|---|---|---|
+0234: | KTZ selection | \(\epsilon\) | one inverse \(\epsilon\) | \(|R|=O(p/\epsilon)\) |
+0235: | KTZ interpolation | \(|R|\) | square root | \(D=O(\sqrt{dp/\epsilon})\) |
+0236: | KTZ root budget | \(D=O(\epsilon p)\) | cubic comparison | \(\epsilon^3=\Omega(d/p)\) |
+0237: | Regular construction | degree \(d\) | none | \(\epsilon=d/p\), line degree \(d\), point degree \(d\) or \(d+1\) |
+0238: | Fractional reach | fraction \(\theta\) | factor between \(d-1\) and \(d+1\) only | \(\operatorname{OPT}_\theta=\Theta(p/\epsilon)\) |
+0239: | Collision extraction | \(\epsilon\) | exact square plus finite correction | \(\Gamma_2\ge\epsilon^2-\epsilon(1-\epsilon)/p\) |
+0240: | KTZ/Vinh mixing | component degree \(\Theta(\epsilon p)\) | \(p^{-1/2}\) error | linear recovery only when \(\epsilon\gtrsim p^{-1/2}\) by this route |
+0241: | Stevens–de Zeeuw, balanced | minimum degree \(k\) | exponent \(15/7\) | \(N\gg k^{15/7}\), insufficient for \(N\gg kp\) in range |
+0242: | Stevens–de Zeeuw, Cartesian | minimum degree \(k\) | exponent \(8/3\) | \(N\gg k^{8/3}\), insufficient for \(N\gg kp\) in range |
+0243: | Constructed global output | \(f=0\) | none | one \(Q=0\) with agreement \(1\) |
+0244: 
+0245: The new construction is deterministic. The only convexity loss is exposed exactly by the variance term in Lemma B. No logarithmic, Markov, union, derivative, or multiplicity loss is suppressed.
+0246: 
+0247: ## Counterexample Attempts
+0248: 
+0249: Theorem A is a successful counterexample to a universal smaller reaching family. Unlike the earlier random balanced-color example, it is deterministic, exactly regular on the line side, within one on the point side, supported on every line, valid at \(d=101\), and valid near \(p\). Its fractional formulation also prevents an apparent escape through line multiplicities or randomized weights.
+0250: 
+0251: It fails completely as a soundness counterexample: \(f=Q=0\) everywhere. This is the intended sparsify-or-decode separation. The earlier verifier-accepted balanced-color construction behaves similarly at larger local agreements.
+0252: 
+0253: The direction-class table attains the collision lower bound and tests concentrated good directions. It too has perfect global agreement. Thus neither high collision energy nor direction concentration alone identifies a hard instance.
+0254: 
+0255: The modal table from researcher-0001 remains the only active genuine endpoint obstruction: at ambient \(d=101\), it has local agreement \(\Theta(\log p/(p\log\log p))\) and global degree-101 agreement below \(2/p\). It refutes a literal constant-times-\(d/p\) theorem but stays below every fixed \((d/p)^{1-\eta}\) trigger.
+0256: 
+0257: Inseparability does not enter either new construction. At \(d=p-1\), the regular construction remains valid, but its perfect global polynomial confirms that the near-\(p\) regime is not an obstruction.
+0258: 
+0259: ## Characteristic Audit
+0260: 
+0261: - The ambient field is exactly \(\mathbb F_p\), and \(101\le d<p\).
+0262: - Each root polynomial has \(d\) distinct linear factors and formal degree below \(p\). Its zero set has exactly \(d\) points.
+0263: - No derivative is divided by. The roots are simple, but simplicity is not used.
+0264: - No discriminant, resultant, factor irreducibility, absolute irreducibility, or interpolation multiplicity is invoked.
+0265: - Hall matching is proved directly by degree counting. No probabilistic method or finite computation proves existence.
+0266: - Fixed affine parameterizations avoid division by a slope and treat vertical lines identically.
+0267: - Lines are distinct geometric affine lines. Fractional weights are handled explicitly; source incidence theorems are not silently extended to multisets.
+0268: - Constant labels in [P7] are legal under the fixed ambient cap \(d>100\); the excluded test parameter \(d=0\) is never studied.
+0269: - At the lower boundary \(p=103,d=101\), the complement degree is three. At \(d=p-1\), it is two.
+0270: - Stevens–de Zeeuw's positive-characteristic inequalities are retained in [P10]; their implicit constants are not converted into an unstated explicit finite range.
+0271: 
+0272: ## Limitations
+0273: 
+0274: The benchmark is not improved. Theorem A lives at the exact interpolation floor \(\epsilon=d/p\), which is below every fixed-\(\eta\) trigger when \(d/p\to0\). It obstructs a proof module, not the target theorem.
+0275: 
+0276: Connectivity of the regular accepted graph is not proved. The cover lower bound is global and remains valid regardless of its component decomposition. An algebra-aware algorithm may decode components separately, as \(Q=0\) demonstrates.
+0277: 
+0278: Lemma B controls only pair extraction from acceptance density. Additional polynomial information might distinguish its equality examples. Proposition C audits black-box unweighted incidence estimates only; it does not rule out a new weighted, lifted, or algebra-sensitive incidence theorem.
+0279: 
+0280: The Stevens–de Zeeuw calculations assume balanced components, and the Cartesian calculation additionally assumes a true product set. General accepted components need not satisfy either shape hypothesis. Bourgain–Katz–Tao's fixed-support exponent is insufficiently explicit for the campaign's uniform \(d,p\) target and was not imported.
+0281: 
+0282: Accordingly, improvement from exponent \(1/3\) toward \(1/2\) still requires a sparsify-or-decode or interpolation advance. Improvement beyond \(1/2\) additionally requires a component-recovery argument that does not rely only on the \(p^{-1/2}\) affine incidence discrepancy.

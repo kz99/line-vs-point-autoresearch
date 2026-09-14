@@ -1,0 +1,248 @@
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [
+        "Uniform incidence normalization"
+      ],
+      "id": "researcher-0001:P1.1",
+      "part": 1,
+      "proof_markdown": "Iteratively delete every point vertex and line vertex whose current carrier degree is below $k_0$. All point-side deletions remove at most $p^2k_0$ edges, and all line-side deletions remove at most $p(p+1)k_0$ edges. After normalization by the $p^2(p+1)$ incidences, the loss is at most $$\\frac{k_0}{p+1}+\\frac{k_0}{p}<\\frac{\\delta}{50}.$$ Hence the surviving edge mass exceeds $\\delta-\\delta/50$ and is, in particular, at least $\\delta/4$. Every surviving vertex has degree at least $k_0$. Its line set is contained in the original line support, so $\\lambda\\le\\sigma$; since every line has at most $p$ incident edges, its normalized line measure is at least its normalized edge mass, giving $\\lambda\\ge\\delta/4$.",
+      "source_step_id": "P1",
+      "statement_markdown": "Let $p$ be prime, and let $G$ be an accepted-carrier subgraph of the affine point-line incidence graph of $\\mathbb F_p^2$ with normalized edge mass $\\delta>0$ and line support at most $\\sigma$, where $0<\\delta\\le\\sigma\\le1$. Put $k_0=\\lfloor\\delta p/100\\rfloor$. There is a subgraph $G_0\\subseteq G$ with minimum degree at least $k_0$, normalized edge mass at least $\\delta/4$, and normalized line measure $\\lambda$ satisfying $\\delta/4\\le\\lambda\\le\\sigma$.",
+      "status": "proved",
+      "title": "Carrier pruning"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "Hoeffding inequality",
+        "Chebyshev inequality"
+      ],
+      "id": "researcher-0001:P2.1",
+      "part": 1,
+      "proof_markdown": "The hypotheses $\\sigma\\ge\\delta$ and $\\delta^3\\ge10^{15}d\\sigma/p$ imply $$\\delta^2\\ge\\frac{10^{15}d}{p},\\qquad \\delta p\\ge\\sqrt{10^{15}dp}>3\\cdot10^9,$$ and therefore $k_0\\ge\\delta p/200$. Select every line of $\\mathcal L_0$ independently with probability $\\theta=8/k_0$. For a fixed $L\\in\\mathcal L_0$ and a point-neighbor $x$ of $L$, at least $k_0-1$ other retained lines pass through $x$. Thus the probability that $x$ is not covered is at most $(1-\\theta)^{k_0-1}$, and its coverage probability exceeds $3/4$. The coverage indicators at distinct neighbors of $L$ depend on disjoint sets of other lines. Hoeffding's inequality therefore bounds the probability that fewer than half of the neighbors are covered by $\\exp(-k_0/8)$. Since $k_0\\ge8\\log(4p(p+1))$, a union bound over the $p(p+1)$ affine lines gives total coverage-failure probability below $1/4$. If $r=|R|$, then $$\\mathbb E[r]=\\theta|\\mathcal L_0|\\ge200(p+1),\\qquad \\operatorname{Var}(r)\\le\\mathbb E[r].$$ Chebyshev's inequality gives, with failure probability below $1/4$, $$\\frac12\\mathbb E[r]\\le r\\le2\\mathbb E[r].$$ Consequently, some deterministic selection satisfies the coverage property and $$100(p+1)\\le r\\le\\frac{16|\\mathcal L_0|}{k_0}\\le\\frac{6400\\sigma p}{\\delta}.$$ These estimates incur only constant failure probability and no additional power of $\\delta$.",
+      "source_step_id": "P2",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $G_0$ have the properties in P1 with line set $\\mathcal L_0$. Assume $\\delta^3\\ge10^{15}d\\sigma/p$. There is a set $R\\subseteq\\mathcal L_0$ such that every $L\\in\\mathcal L_0$ has at least half of its point-neighbors in $G_0$ also incident in $G_0$ to a line in $R\\setminus\\{L\\}$ and, for $r=|R|$, $$100(p+1)\\le r\\le\\frac{6400\\sigma p}{\\delta}.$$",
+      "status": "proved",
+      "title": "Support-sensitive selector"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "KTZ Lemma 2.2"
+      ],
+      "id": "researcher-0001:P3.1",
+      "part": 1,
+      "proof_markdown": "Let $V_D$ be the space of polynomials of weighted degree at most $D$. The definition of $D$ gives $D^2>256dr$, and the weighted monomial count gives $$\\dim(V_D)\\ge\\frac{D^3}{64d}>r(D+1).$$ Since $\\deg(P_L)\\le d$, the substitution $A(L(t),P_L(t))$ has degree at most $D$. Each selected line therefore imposes at most $D+1$ homogeneous linear conditions on the coefficients of $A$. There are fewer conditions than unknowns, so a nonzero interpolant exists. From P2, $$D\\le1280\\sqrt{\\frac{d\\sigma p}{\\delta}}+16\\le\\frac{1280\\delta p}{\\sqrt{10^{15}}}+16<\\frac{\\delta p}{10000}.$$ Hence $D<p$, $D<k_0/2$, and $D<k_1/2$. Also, $r>D$. If an interpolant were independent of $Z$, it would be a nonzero bivariate polynomial of degree at most $D$ vanishing identically on more than $D$ affine lines, which is impossible because each such line contributes a distinct linear factor. Thus $A_Z\\not\\equiv0$. Choose an interpolant of minimum weighted degree. If it has a repeated irreducible factor, replacing it by the product of its distinct irreducible factors preserves every graph identity in the integral domains $\\mathbb F_p[t]$ and lowers its weighted degree. Minimality therefore permits $A$ to be chosen squarefree.",
+      "source_step_id": "P3",
+      "statement_markdown": "Under the hypotheses and notation of P2, assign weights $\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1$ and $\\operatorname{wt}(Z)=d$, set $k_1=\\lfloor\\delta p/1000\\rfloor$, and put $$D=16\\left(\\left\\lfloor\\sqrt{dr}\\right\\rfloor+1\\right).$$ For line labels $P_L$ of degree at most $d$, there is a nonzero squarefree polynomial $A\\in\\mathbb F_p[X,Y,Z]$ of weighted degree at most $D$, with $A_Z\\not\\equiv0$, such that $$A(L(t),P_L(t))\\equiv0$$ for every $L\\in R$. Moreover, $$D\\le1280\\sqrt{\\frac{d\\sigma p}{\\delta}}+16<\\frac{\\delta p}{10000},$$ so $D<p$, $D<k_0/2$, $D<k_1/2$, and $r>D$.",
+      "status": "proved",
+      "title": "Weighted interpolation"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "researcher-0001:P4.1",
+      "part": 1,
+      "proof_markdown": "Fix $L\\in\\mathcal L_0$. By the selector property, at least $k_0/2>D$ distinct accepted points of $L$ also lie on selected retained lines. At every such point $x$, the two accepted labels have the common value $$P_L(x)=f(x)=P_{L'}(x).$$ Since $A(L'(t),P_{L'}(t))\\equiv0$ on the selected line $L'$, it follows that $A(x,P_L(x))=0$. The polynomial $A(L(t),P_L(t))$ has degree at most $D$ and more than $D$ distinct roots, so it vanishes identically. Write $A=HB$, where $H$ is the coefficient content in $Z$. If $H$ vanishes identically on an affine line, that line's defining linear polynomial divides $H$; hence at most $\\deg(H)\\le D$ affine lines are content lines. On every other retained line, $$H(L(t))B(L(t),P_L(t))=0$$ in the integral domain $\\mathbb F_p[t]$. Since $H(L(t))$ is not the zero polynomial, $$B(L(t),P_L(t))\\equiv0.$$ This is an integral-domain inference, not pointwise division by $H$, and the root count uses distinct points rather than multiplicity.",
+      "source_step_id": "P4",
+      "statement_markdown": "Let $A$, $D$, $G_0$, $\\mathcal L_0$, and $R$ satisfy P2 and P3. Then $$A(L(t),P_L(t))\\equiv0$$ for every $L\\in\\mathcal L_0$. Write $A=H(X,Y)B(X,Y,Z)$, where $H$ is the greatest common divisor in $\\mathbb F_p[X,Y]$ of the coefficients of $A$ as a polynomial in $Z$, and $B$ is primitive in $Z$. The polynomial $B$ is squarefree and has total degree at most $D<p$. At most $D$ lines in $\\mathcal L_0$ satisfy $H(L(t))\\equiv0$, and every other $L\\in\\mathcal L_0$ satisfies $$B(L(t),P_L(t))\\equiv0.$$",
+      "status": "proved",
+      "title": "Coefficient-content removal"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4"
+      ],
+      "id": "researcher-0001:P5.1",
+      "part": 1,
+      "proof_markdown": "Factor $B$ in $\\mathbb F_p[X,Y,Z]$ as $$B=c\\prod_i P_i,$$ where $c\\in\\mathbb F_p^\\times$ and the $P_i$ are distinct irreducibles. If some $P_i$ were independent of $Z$, it would divide every coefficient of $B$ as a polynomial in $Z$, contradicting primitivity. Thus every $P_i$ has positive $Z$-degree. Since $\\deg_Z(P_i)<p$, its derivative $(P_i)_Z$ is nonzero in characteristic $p$. Its smaller $Z$-degree also implies that $P_i$ does not divide $(P_i)_Z$. Reducing the product rule modulo $P_i$ gives $$B_Z\\equiv c(P_i)_Z\\prod_{j\\ne i}P_j\\not\\equiv0\\pmod{P_i}.$$ Hence no irreducible factor of $B$ divides $B_Z$, and $\\gcd(B,B_Z)=1$. The argument uses neither absolute irreducibility nor factorization over an algebraic closure.",
+      "source_step_id": "P5",
+      "statement_markdown": "Let $p$ be prime. If $B\\in\\mathbb F_p[X,Y,Z]$ is squarefree, primitive as a polynomial in $Z$, and satisfies $\\deg(B)<p$, then $$\\gcd(B,B_Z)=1.$$",
+      "status": "proved",
+      "title": "Vertical derivative coprimality"
+    },
+    {
+      "dependencies": [
+        "P5",
+        "KTZ Lemma 2.6"
+      ],
+      "id": "researcher-0001:P6.1",
+      "part": 1,
+      "proof_markdown": "Apply the resultant line bound to the coprime pair $(B,B_Z)$. There are at most $D$ content lines and at most $D(D-1)$ further lines on which the graph identities for $B$ and $B_Z$ degenerate simultaneously. On every remaining line, $B_Z(L(t),P_L(t))$ is a nonzero polynomial of degree at most $D$ and therefore has at most $D$ roots. The resulting normalized edge loss is at most $$\\frac{D}{p(p+1)}+\\frac{D(D-1)}{p(p+1)}+\\frac{D}{p}<\\frac{\\delta}{16},$$ using $D<\\delta p/10000$. Iteratively deleting point and line vertices of current degree below $k_1$ costs at most $$\\frac{k_1}{p+1}+\\frac{k_1}{p}<\\frac{\\delta}{500}.$$ Starting from edge mass at least $\\delta/4$, the surviving graph therefore has edge mass at least $\\delta/8$ and minimum degree at least $k_1$. Every surviving incidence is accepted and avoids the zero set of $B_Z$, so $B_Z(x,f(x))\\ne0$ at every surviving point. No discriminant or Markov inequality is used.",
+      "source_step_id": "P6",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let the retained graph and polynomial $B$ satisfy P4 and P5. Assume that its normalized edge mass before degeneracy deletion is at least $\\delta/4$, that $D<\\delta p/10000$, and set $k_1=\\lfloor\\delta p/1000\\rfloor$. Deleting the content lines, resultant-degenerate lines, and incidences at which $B_Z$ vanishes, followed by pruning all vertices of degree below $k_1$, produces a graph $G_1$ with normalized edge mass at least $\\delta/8$, minimum degree at least $k_1$, and $$B_Z(x,f(x))\\ne0$$ at every surviving point $x$. The pre-pruning deletion has normalized mass below $\\delta/16$, and the final pruning has normalized cost below $\\delta/500$.",
+      "status": "proved",
+      "title": "Degenerate-root deletion"
+    },
+    {
+      "dependencies": [
+        "P6",
+        "KTZ Lemma 2.7",
+        "KTZ Lemma 6.1"
+      ],
+      "id": "researcher-0001:P7.1",
+      "part": 1,
+      "proof_markdown": "Fix a surviving point, translate its base coordinates to $(0,0)$, and put $\\alpha=f(0,0)$. Construct $$\\Phi=\\alpha+\\Phi_1+\\Phi_2+\\cdots\\in\\mathbb F_p[[X,Y]],$$ with each $\\Phi_j$ homogeneous of degree $j$. At stage $j$, the degree-$j$ residual in $B(X,Y,\\Phi)$ depends linearly on $\\Phi_j$ with coefficient $B_Z(0,0,\\alpha)$. Since this coefficient is nonzero, the residual is canceled uniquely by dividing by that scalar. No factorial or higher-derivative denominator is inverted. Restricting $\\Phi$ to any surviving incident line gives the unique formal root with constant term $\\alpha$. The corresponding line polynomial is another such root and has degree at most $d$, so the two restrictions coincide. More than $D$ distinct incident directions survive because $k_1>D$. Hence, for every $d<j\\le D$, the homogeneous polynomial $\\Phi_j$ vanishes on more than $D\\ge j$ projective directions and must be zero. Let $$Q=\\alpha+\\Phi_1+\\cdots+\\Phi_d.$$ Substituting a polynomial of total degree at most $d$ into a polynomial of weighted degree at most $D$ gives $\\deg B(X,Y,Q)\\le D$. Its homogeneous terms through degree $D$ vanish by the construction, so $$B(X,Y,Q)\\equiv0.$$ At a surviving edge, simple-root uniqueness identifies the restriction of $Q$ with the incident line label. Repeating across adjacent point and line vertices propagates the same $Q$ throughout the connected component, where every accepted point satisfies $Q(x)=f(x)$.",
+      "source_step_id": "P7",
+      "statement_markdown": "Let $C$ be a connected component of $G_1$. Suppose every line vertex $L$ of $C$ satisfies $B(L(t),P_L(t))\\equiv0$, every point vertex $x$ satisfies $B_Z(x,f(x))\\ne0$, every line label has degree at most $d$, and the minimum degree is $k_1>D$. Then there is a polynomial $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$B(X,Y,Q(X,Y))\\equiv0$$ and $$Q(x)=f(x)$$ for every point vertex $x$ of $C$.",
+      "status": "proved",
+      "title": "Simple-root propagation"
+    },
+    {
+      "dependencies": [
+        "P6",
+        "P7",
+        "KTZ Lemma 2.1"
+      ],
+      "id": "researcher-0001:P8.1",
+      "part": 1,
+      "proof_markdown": "Minimum degree gives $$e\\ge\\frac{\\kappa a}{2},\\qquad e\\ge\\kappa b,$$ while point-line incidence mixing gives $$e\\le ab+u\\sqrt{ab}.$$ The theorem hypothesis and $d\\ge101$ imply $$u<\\frac{\\delta}{8000}\\le\\frac{\\kappa}{4}.$$ If $a<\\kappa/4$, then $e\\ge\\kappa b$ and the mixing upper bound imply $3b\\le\\sqrt{ab}$ and hence $9b\\le a$. It follows that $$e\\le\\frac{a^2}{9}+\\frac{ua}{3}<\\frac{\\kappa a}{9},$$ contradicting $e\\ge\\kappa a/2$. If $b<\\kappa/4$, then $e\\ge\\kappa a/2$ and the mixing upper bound imply $a\\le\\sqrt{ab}$ and hence $a\\le b$. Therefore $$e\\le b^2+ub<\\frac{\\kappa b}{2},$$ contradicting $e\\ge\\kappa b$. Thus $a,b\\ge\\kappa/4\\ge\\delta/8000$. By P7, the component's polynomial agrees with $f$ on all of its point vertices, so its global agreement is at least $a\\ge\\delta/8000$. The term $u=1/\\sqrt{p+1}$ is the sole incidence Cauchy\u2013Schwarz loss.",
+      "source_step_id": "P8",
+      "statement_markdown": "Assume $\\delta^3\\ge10^{15}d\\sigma/p$, and let $C$ be a nonempty connected component of $G_1$. Define its normalized point, line, and edge measures by $$a=\\frac{|V_{\\mathrm{pt}}(C)|}{p^2},\\qquad b=\\frac{|V_{\\mathrm{ln}}(C)|}{p(p+1)},\\qquad e=\\frac{|E(C)|}{p^2(p+1)},$$ and put $\\kappa=k_1/p$ and $u=1/\\sqrt{p+1}$. Then $$a,b\\ge\\frac{\\kappa}{4}\\ge\\frac{\\delta}{8000}.$$ Consequently, the polynomial supplied by P7 satisfies $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]\\ge\\frac{\\delta}{8000}.$$",
+      "status": "proved",
+      "title": "Component mixing"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3",
+        "P6",
+        "P7"
+      ],
+      "id": "researcher-0001:P9.1",
+      "part": 1,
+      "proof_markdown": "Substituting the selector size into the interpolation degree gives $$D=O\\left(\\sqrt{\\frac{d\\sigma p}{\\delta}}\\right).$$ Comparing this with $D=O(\\delta p)$ and squaring yields $$\\frac{d\\sigma p}{\\delta}=O(\\delta^2p^2),$$ which is equivalent to $$\\delta^3=\\Omega\\left(\\frac{d\\sigma}{p}\\right).$$ The linear root budget $D=O(\\delta p)$ is required independently by identity extension, the $D/p$ bad-incidence deletion, and simple-root lifting. By contrast, requiring only the resultant contribution $D^2/p^2$ to be at most order $\\delta$ gives the weaker condition $\\delta^2=\\Omega(d\\sigma/p)$. Incidence mixing requires only $\\delta=\\Omega(p^{-1/2})$, also weaker in the stated regime. Setting $\\sigma=1$ recovers the cubic threshold $\\delta=\\Omega((d/p)^{1/3})$.",
+      "source_step_id": "P9",
+      "statement_markdown": "Let $p,d,\\delta,\\sigma,r,D>0$ satisfy $$r=O\\left(\\frac{\\sigma p}{\\delta}\\right),\\qquad D=\\Theta(\\sqrt{dr}).$$ If the later stages impose $D=O(\\delta p)$, then the resulting closure condition is $$\\delta^3=\\Omega\\left(\\frac{d\\sigma}{p}\\right).$$",
+      "status": "proved",
+      "title": "Cubic scale ledger"
+    },
+    {
+      "dependencies": [
+        "P9"
+      ],
+      "id": "researcher-0001:P10.1",
+      "part": 1,
+      "proof_markdown": "Under $\\sigma\\le A\\delta$, $$10^{15}\\frac{d\\sigma}{p}\\le10^{15}\\frac{Ad\\delta}{p}.$$ Thus $\\delta^2\\ge10^{15}Ad/p$ implies $\\delta^3\\ge10^{15}d\\sigma/p$, producing a square-root threshold in $d/p$. Every carrier also satisfies $\\sigma\\ge\\delta$. Hence even the smallest possible support scale within this balance is of order $\\delta$, so the support-sensitive interpolation relation cannot yield an exponent exceeding $1/2$. Because $\\sigma\\le A\\delta$ is an additional structural hypothesis and diffuse carriers may have much larger support, this is not an unconditional benchmark improvement.",
+      "source_step_id": "P10",
+      "statement_markdown": "Let $A>0$ and $0<\\delta\\le\\sigma\\le1$, and suppose $\\sigma\\le A\\delta$. If $$\\delta^2\\ge10^{15}\\frac{Ad}{p},$$ then $$\\delta^3\\ge10^{15}\\frac{d\\sigma}{p}.$$",
+      "status": "conditional",
+      "title": "Concentrated-carrier threshold"
+    },
+    {
+      "dependencies": [
+        "Second-moment inequality"
+      ],
+      "id": "researcher-0001:P11.1",
+      "part": 1,
+      "proof_markdown": "Fix an affine line $L$. Its $p$ values are independent and uniform in $\\mathbb F_p$. For $a\\in\\mathbb F_p$, let $$N_a=|\\{x\\in L:f(x)=a\\}|,\\qquad Y=\\sum_{a\\in\\mathbb F_p}\\mathbf 1_{\\{N_a=r\\}}.$$ For a fixed $a$, $$q:=\\Pr[N_a=r]=\\binom prp^{-r}\\left(1-\\frac1p\\right)^{p-r}.$$ Since $r^2\\le p$, $\\binom prp^{-r}\\ge1/(2r!)$, while $(1-1/p)^{p-r}\\ge(1-1/p)^p\\ge1/4$. Hence $q\\ge1/(8r!)$. Moreover, $r!\\le r^r\\le p^{1/4}$, so $$\\mu:=\\mathbb E[Y]=pq\\ge\\frac{p^{3/4}}8\\ge1.$$ For distinct $a,b\\in\\mathbb F_p$, $$\\Pr[N_a=N_b=r]=\\frac{p!}{r!r!(p-2r)!}p^{-2r}\\left(1-\\frac2p\\right)^{p-2r}\\le\\frac1{(r!)^2}\\le64q^2.$$ Consequently, $$\\mathbb E[Y^2]\\le\\mu+64\\mu^2\\le65\\mu^2.$$ Cauchy\u2013Schwarz gives $$\\Pr[Y>0]\\ge\\frac{\\mathbb E[Y]^2}{\\mathbb E[Y^2]}\\ge\\frac1{65}.$$ On $\\{Y>0\\}$, one has $M_L\\ge r$, so $\\mathbb E[M_L]\\ge r/65$. Assigning each line a constant label equal to one of its modal values gives agreement $M_L/p$ on that line. Averaging over lines and using linearity of expectation yields $\\mathbb E[A]\\ge r/(65p)$; no independence between distinct lines is asserted.",
+      "source_step_id": "P11",
+      "statement_markdown": "Let $p\\ge\\lceil e^{32}\\rceil$ be prime and set $$r=\\left\\lfloor\\frac{\\log p}{4\\log\\log p}\\right\\rfloor.$$ Choose $f:\\mathbb F_p^2\\to\\mathbb F_p$ independently and uniformly at every point. For every affine line $L$, define $$M_L=\\max_{a\\in\\mathbb F_p}|\\{x\\in L:f(x)=a\\}|,$$ and define the modal local agreement by $$A=\\frac1{p(p+1)}\\sum_L\\frac{M_L}{p}.$$ Then, for every $L$, $$\\mathbb E[M_L]\\ge\\frac r{65},\\qquad \\mathbb E[A]\\ge\\frac{r}{65p}.$$",
+      "status": "proved",
+      "title": "Modal occupancy lower bound"
+    },
+    {
+      "dependencies": [
+        "P11",
+        "Factorial-moment union bound",
+        "McDiarmid inequality"
+      ],
+      "id": "researcher-0001:P12.1",
+      "part": 1,
+      "proof_markdown": "For a fixed line $L$ and every positive integer $s$, the factorial-moment bound gives $$\\Pr[N_a\\ge s]\\le\\mathbb E\\binom{N_a}{s}=\\binom psp^{-s}\\le\\frac1{s!}.$$ A union bound over the $p$ values and $s!\\ge(s/e)^s$ yield $$\\Pr[M_L\\ge s]\\le\\frac p{s!}\\le p\\left(\\frac es\\right)^s.$$ For $s_0=\\lceil4\\log p/\\log\\log p\\rceil$, the resulting tail satisfies $$\\sum_{s>s_0}p\\left(\\frac es\\right)^s<1.$$ Therefore $$\\mathbb E[M_L]\\le s_0+1\\le25r,$$ and averaging $M_L/p$ over the lines gives $\\mathbb E[A]\\le25r/p$. Changing one point value affects only the $p+1$ incident lines and changes each affected modal multiplicity by at most $1$. Since $A$ is normalized by $p^2(p+1)$ incidences, every one of the $p^2$ independent point values has bounded difference at most $1/p^2$. McDiarmid's inequality consequently gives $$\\Pr\\left[A-\\mathbb E[A]\\ge\\frac{25r}{p}\\right]\\le\\exp\\left(-\\frac{2(25r/p)^2}{p^2(1/p^2)^2}\\right)=e^{-1250r^2}.$$ Using $\\mathbb E[A]\\le25r/p$ and the stated lower bound on $p$ proves $$\\Pr\\left[A>\\frac{50r}{p}\\right]\\le e^{-1250r^2}\\le\\frac{r}{520p}.$$ No Markov inequality is used.",
+      "source_step_id": "P12",
+      "statement_markdown": "Let $p\\ge\\lceil e^{32}\\rceil$ be prime, let $r=\\lfloor\\log p/(4\\log\\log p)\\rfloor$, and let $f$, $M_L$, and $A$ be defined as in P11. Put $s_0=\\lceil4\\log p/\\log\\log p\\rceil$. Then, for every affine line $L$, $$\\mathbb E[M_L]\\le s_0+1\\le25r,$$ and $$\\mathbb E[A]\\le\\frac{25r}{p},\\qquad \\Pr\\left[A>\\frac{50r}{p}\\right]\\le e^{-1250r^2}\\le\\frac{r}{520p}.$$",
+      "status": "proved",
+      "title": "Modal concentration"
+    },
+    {
+      "dependencies": [
+        "P11",
+        "P12",
+        "Chernoff inequality"
+      ],
+      "id": "researcher-0001:P13.1",
+      "part": 1,
+      "proof_markdown": "Choose $f$ randomly as in P11 and give every affine line a modal constant label. Let $A$ be the resulting local agreement. For a fixed polynomial $Q$ of total degree at most $101$, the count $$Z_Q=|\\{x\\in\\mathbb F_p^2:Q(x)=f(x)\\}|$$ has distribution $\\operatorname{Bin}(p^2,1/p)$ and mean $p$. Chernoff's inequality gives $$\\Pr[Z_Q\\ge2p]\\le\\left(\\frac e4\\right)^p.$$ The polynomial space has dimension $N=5253$ and therefore contains $p^N$ formal polynomials. If $G$ is the event that every such polynomial has normalized agreement below $2/p$, a union bound gives $$\\Pr[G^c]\\le p^N\\left(\\frac e4\\right)^p\\le e^{-p/4}\\le\\frac{r}{520p}.$$ Let $H=\\{A\\le50r/p\\}$. By P12, $\\Pr[H^c]\\le r/(520p)$. Since $0\\le A\\le1$, P11 and these exceptional-probability bounds imply $$\\mathbb E[A\\mathbf 1_{G\\cap H}]\\ge\\frac{r}{65p}-\\frac{r}{520p}-\\frac{r}{520p}>\\frac{r}{130p}.$$ Some deterministic outcome therefore belongs to $G\\cap H$ and has $A>r/(130p)$. Taking $\\varepsilon=A$ gives all the asserted bounds. Every modal label is constant and hence has degree at most $101$.",
+      "source_step_id": "P13",
+      "statement_markdown": "Let $d=101$, let $N=(d+1)(d+2)/2=5253$, and let $p\\ge\\max\\{\\lceil e^{32}\\rceil,100N^2\\}$ be prime. Put $r=\\lfloor\\log p/(4\\log\\log p)\\rfloor$. There exist a function $f:\\mathbb F_p^2\\to\\mathbb F_p$ and constant affine-line labels $P_L$ such that, with $$\\varepsilon=\\Pr_{L,\\,x\\in L}[P_L(x)=f(x)],$$ one has $$\\frac{r}{130p}\\le\\varepsilon\\le\\frac{50r}{p}$$ and $$\\operatorname{Agr}_{101}(f):=\\max_{\\substack{Q\\in\\mathbb F_p[X,Y]\\\\ \\deg Q\\le101}}\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]<\\frac2p.$$",
+      "status": "proved",
+      "title": "Deterministic modal table"
+    },
+    {
+      "dependencies": [
+        "P13"
+      ],
+      "id": "researcher-0001:P14.1",
+      "part": 1,
+      "proof_markdown": "Let $C,c>0$ be arbitrary. Fix the legal ambient degree $d=101$ and choose a sufficiently large prime $p$ for which $$r=\\left\\lfloor\\frac{\\log p}{4\\log\\log p}\\right\\rfloor>\\max\\left\\{130\\cdot101C,\\frac{260}{c}\\right\\}.$$ P13 supplies a point table and legal constant labels satisfying $$\\frac{r}{130p}\\le\\varepsilon\\le\\frac{50r}{p},\\qquad \\operatorname{Agr}_{101}(f)<\\frac2p.$$ Thus $$\\varepsilon>C\\frac{101}{p}=C\\frac d p,$$ whereas $$\\operatorname{Agr}_{101}(f)<\\frac2p<\\frac{cr}{130p}\\le c\\varepsilon.$$ This contradicts the claimed implication for every fixed pair $C,c>0$. On the other hand, for every fixed $\\eta>0$, $$\\frac{\\varepsilon}{(101/p)^{1-\\eta}}\\le\\frac{50r}{101^{1-\\eta}p^\\eta}\\longrightarrow0,$$ since $r=O(\\log p/\\log\\log p)=o(p^\\eta)$. Hence this construction remains below every fixed-$\\eta$ trigger of scale $(101/p)^{1-\\eta}$ and does not refute such a statement.",
+      "source_step_id": "P14",
+      "statement_markdown": "There exist absolute constants $C,c>0$ such that, for every prime $p$, every integer $d$ with $101\\le d<p$, every function $f:\\mathbb F_p^2\\to\\mathbb F_p$, and every family of affine-line labels of degree at most $d$, the implication $$\\varepsilon\\ge C\\frac d p\\quad\\Longrightarrow\\quad\\operatorname{Agr}_d(f)\\ge c\\varepsilon$$ holds, where $\\varepsilon=\\Pr_{L,\\,x\\in L}[P_L(x)=f(x)]$ and $$\\operatorname{Agr}_d(f)=\\max_{\\substack{Q\\in\\mathbb F_p[X,Y]\\\\ \\deg Q\\le d}}\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)].$$",
+      "status": "refuted",
+      "title": "Exact-linear soundness"
+    },
+    {
+      "dependencies": [
+        "Newton interpolation"
+      ],
+      "id": "researcher-0001:P15.1",
+      "part": 1,
+      "proof_markdown": "Since $d<p$, choose distinct elements $a_0,\\ldots,a_d$ and $b_0,\\ldots,b_d$ of $\\mathbb F_p$, and put $$S=\\{(a_i,b_j):i+j\\le d\\}.$$ For every $i+j\\le d$, define $$N_{i,j}(X,Y)=\\prod_{h<i}(X-a_h)\\prod_{k<j}(Y-b_k).$$ These polynomials have total degree at most $d$. Their evaluations on $S$ form a triangular matrix with nonzero diagonal, because $N_{i,j}(a_u,b_v)=0$ when $u<i$ or $v<j$, while $$N_{i,j}(a_i,b_j)=\\prod_{h<i}(a_i-a_h)\\prod_{k<j}(b_j-b_k)\\ne0.$$ They therefore form an evaluation basis on $S$, so the arbitrary values of $f|_S$ extend to a polynomial $Q$ of total degree at most $d$. Since $$|S|=\\frac{(d+1)(d+2)}2,$$ the normalized agreement is at least $|S|/p^2$. At $d=p-1$, this equals $(p+1)/(2p)>1/2$; at $d=101$ and $p=103$, it equals $5253/10609$.",
+      "source_step_id": "P15",
+      "statement_markdown": "For every prime $p$, every integer $d$ with $101\\le d<p$, and every function $f:\\mathbb F_p^2\\to\\mathbb F_p$, $$\\operatorname{Agr}_d(f)\\ge\\frac{(d+1)(d+2)}{2p^2}.$$",
+      "status": "proved",
+      "title": "Triangular information set"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0001:P16.1",
+      "part": 1,
+      "proof_markdown": "For every affine line $L$, fix a parametrization $\\ell_L:\\mathbb F_p\\to L$, choose $d$ distinct parameters $t_{L,1},\\ldots,t_{L,d}$, and define $$P_L(t)=\\prod_{i=1}^d(t-t_{L,i}).$$ Because $d<p$, this polynomial has degree exactly $d$ and precisely $d$ distinct roots. With $f=0$, exactly $d$ of the $p$ incidences on every line are accepted. Hence $\\varepsilon=d/p$, and every line supports an accepted incidence, so $\\sigma=1$. The total-degree-zero polynomial $Q=0$ agrees with $f$ everywhere, giving $\\operatorname{Agr}_d(f)=1$. In particular, fixing $d=101$ and letting $p$ grow through the primes gives $\\sigma/\\varepsilon=p/101\\to\\infty$, so no uniform relation $\\sigma=O(\\varepsilon)$ follows from local acceptance. The example is harmless for soundness because it already has perfect global agreement.",
+      "source_step_id": "P16",
+      "statement_markdown": "For every prime $p$ and every integer $d$ with $101\\le d<p$, there exist a function $f:\\mathbb F_p^2\\to\\mathbb F_p$ and degree-$d$ affine-line labels such that their local agreement and line-support parameters satisfy $$\\varepsilon=\\frac d p,\\qquad \\sigma=1,$$ while $$\\operatorname{Agr}_d(f)=1.$$",
+      "status": "proved",
+      "title": "Diffuse accepted support"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0001:P17.1",
+      "part": 1,
+      "proof_markdown": "For each $i$, choose a nonzero vector $v_i\\in\\ker(\\ell_i)$. On a line parametrized by $a+tv_i$, the coefficient of $t^{d+1}$ in $f(a+tv_i)$ is $$f(v_i)=\\prod_{j=1}^{d+1}\\ell_j(v_i)=0.$$ Thus the restriction has degree at most $d$ and is a legal label. The corresponding classes comprise $d+1$ of the $p+1$ projective directions and contribute exactly $(d+1)/(p+1)$ to normalized local agreement. However, the total-degree-zero polynomial $Q=0$ agrees with $f$ on $$\\bigcup_{i=1}^{d+1}\\ker(\\ell_i).$$ These are distinct lines through the origin, whose union has size $1+(d+1)(p-1)$. Consequently, $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]=\\frac{1+(d+1)(p-1)}{p^2}=\\Theta\\left(\\frac d p\\right).$$ The construction therefore already contains a global polynomial matching the local scale, so the asserted lack of such a polynomial is false.",
+      "source_step_id": "P17",
+      "statement_markdown": "Let $p$ range over primes, let $101\\le d<p$, let $\\ell_1,\\ldots,\\ell_{d+1}\\in\\mathbb F_p[X,Y]$ be pairwise nonproportional nonzero homogeneous linear forms, and set $f=\\prod_{i=1}^{d+1}\\ell_i$. Label every affine line in direction $\\ker(\\ell_i)$ by the restriction of $f$, and use labels of degree at most $d$ on all remaining lines. The $d+1$ specified direction classes contribute normalized local agreement $(d+1)/(p+1)$, while no polynomial of total degree at most $d$ agrees with $f$ on a $\\Theta(d/p)$ fraction of $\\mathbb F_p^2$.",
+      "status": "refuted",
+      "title": "Concentrated direction classes"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0001:P18.1",
+      "part": 1,
+      "proof_markdown": "Because $p$ is odd, $$B=(Z-X)(Z+X)$$ has distinct factors and is squarefree. Both branches have total degree $1\\le d$ and satisfy $$B(X,Y,Q_+(X,Y))=B(X,Y,Q_-(X,Y))=0.$$ At the origin, $$Q_+(0,0)=Q_-(0,0)=0,$$ while $$B_Z=2Z,\\qquad B_Z(0,0,0)=0.$$ The branches are nevertheless distinct. Thus the common incidence is compatible with both branches and cannot select one for propagation; vertical-simple-root deletion is logically necessary for this propagation argument.",
+      "source_step_id": "P18",
+      "statement_markdown": "Let $p$ be an odd prime and let $101\\le d<p$. For $$B=Z^2-X^2,\\qquad Q_+=X,\\qquad Q_-=-X,$$ the common incidence $Q_+(0,0)=Q_-(0,0)=0$ uniquely determines which total-degree-at-most-$d$ branch propagates through the origin without assuming $B_Z(0,0,0)\\ne0$.",
+      "status": "refuted",
+      "title": "Branch collision"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P5"
+      ],
+      "id": "researcher-0001:P19.1",
+      "part": 1,
+      "proof_markdown": "Write $$B(X,Y,Z)=\\sum_{e\\ge0}b_e(X,Y)Z^e.$$ If $B_Z=0$, then $e\\,b_e(X,Y)=0$ in $\\mathbb F_p[X,Y]$ whenever $e>0$. Hence every positive $Z$-exponent occurring in $B$ must be divisible by $p$. On the other hand, every monomial $X^aY^bZ^e$ in the weighted-degree space satisfies $$a+b+de\\le D<p.$$ Every possible positive exponent therefore satisfies $0<e<p$ and cannot be divisible by $p$. Thus $b_e=0$ for every $e>0$, so $B$ is independent of $Z$. In particular, an expression such as $Z^p-G(X,Y)$ has weighted degree at least $dp>D$ and lies outside the interpolation space. Hence inseparability is not active under the cutoff $D<p$.",
+      "source_step_id": "P19",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $D<p$. Under the weights $$\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1,\\qquad \\operatorname{wt}(Z)=d,$$ there exists a polynomial $B\\in\\mathbb F_p[X,Y,Z]$ of positive $Z$-degree and weighted degree at most $D$ such that $$B_Z=0.$$",
+      "status": "refuted",
+      "title": "Vertical inseparability"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0001",
+  "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff"
+}

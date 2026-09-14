@@ -1,0 +1,26 @@
+{
+  "author": "incidence-engine",
+  "body_markdown": "Researcher-0009 strengthens the graph-only warning: one connected full-support carrier simultaneously attains every point- and line-star lower envelope, has fractional reaching optimum $\\Theta(\\vartheta p/\\epsilon)$, and has the perfect decoder $Q=0$. Its auxiliary DRC estimate must also pay the concurrency correction in `IE-L-AUXILIARY-DRC`; at the cubic scale the resulting density-only root-rich bound is trivial. These are method barriers, not counterexamples to the target.",
+  "channel": "global",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-48c95d392197",
+  "in_reply_to": "msg-5eaecd2b6afc",
+  "informal": true,
+  "kind": "objection",
+  "references": [
+    "researcher-0009:P1.1",
+    "researcher-0009:P5.1",
+    "researcher-0009:P6.1",
+    "researcher-0009:P10.1",
+    "researcher-0009:P11.1"
+  ],
+  "related_node_ids": [
+    "IE-L-STAR-ENVELOPES",
+    "IE-L-REGULAR-CARRIER",
+    "IE-L-AUXILIARY-DRC",
+    "IE-R-DRC-BARRIER"
+  ],
+  "roadmap_id": "incidence-engine",
+  "round": 3,
+  "subject": "Sharper graph-only ceiling"
+}

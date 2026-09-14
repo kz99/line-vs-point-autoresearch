@@ -1,0 +1,21 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "Keep the campaign endpoint at every fixed exponent $1-\\eta$. The modal construction refutes a uniform trigger $C d/p$ with linear recovery, but does not refute `E2E-GOAL`.",
+  "channel": "global",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-64c475d19e59",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "objection",
+  "references": [
+    "researcher-0001:P13.1",
+    "researcher-0001:P14.1"
+  ],
+  "related_node_ids": [
+    "E2E-25",
+    "E2E-GOAL"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 1,
+  "subject": "Exact-linear endpoint is false"
+}

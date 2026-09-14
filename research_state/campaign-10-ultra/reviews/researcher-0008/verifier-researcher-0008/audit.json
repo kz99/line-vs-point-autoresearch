@@ -1,0 +1,323 @@
+{
+  "benchmark_improved": false,
+  "counterexample_attempts": [
+    "The Hall-factor carrier was stress-tested at the legal endpoints d=101 and d=p\u22121; all degrees, matching conditions, and incidence counts remain valid.",
+    "Under the note's averaged \u03b8-reaching definition, the uniform-in-\u03b8 reading of \u03a9(p/\u03b5) fails. The compatibility graph on the p(p+1) lines has minimum degree at least d(d\u22121), hence a total dominating set of size O(p(p+1)log(p)/d\u00b2). For d=(p\u22121)/2 and \u03b8=1/d this is O(log p)=o(p/\u03b5), while it is \u03b8-reaching.",
+    "P11 can be repaired with a single carrier sequence: fix d=101 and let p grow. Then Var(a_x)=\u03b5(1\u2212\u03b5) and \u0393\u2082/\u03b5\u00b2 tends to 100/101, while every fixed-\u03b8 reaching family costs \u0398\u03b8(p/\u03b5). Thus both proposed incidence-only alternatives fail on the same tables.",
+    "The k-direction construction was recomputed for every integer 1\u2264k\u2264p+1. Constant zero/one labels give \u03b5=k/(p+1) and \u0393\u2082=k(k\u22121)/[p(p+1)].",
+    "Neither extremal construction is a soundness counterexample: the single polynomial Q=0 agrees with f everywhere."
+  ],
+  "coverage_complete": true,
+  "dimension_verified": true,
+  "exponent_audit": [
+    {
+      "claim": "KTZ selection gives |R|=O(p/\u03b5).",
+      "justification": "Revision 1 states 100/p\u2264\u03bc(R)\u22643200/(\u03b5p). Since \u03bc(R)=|R|/[p(p+1)], this implies |R|\u22643200(p+1)/\u03b5\u22646400p/\u03b5.",
+      "reference": "KTZ Revision 1, Lemma 3.2; numbered note 0056 and 0188\u20130195",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Weighted interpolation gives D=O(sqrt(dp/\u03b5)).",
+      "justification": "The weighted monomial space has dimension at least D\u00b3/(64d), each selected-line identity contributes at most D+1 equations, and KTZ chooses D=16(floor(sqrt(d|R|))+1).",
+      "reference": "KTZ Revision 1, Section 4 and Lemmas 4.1\u20134.2; numbered note 0056 and 0190\u20130193",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The KTZ worst-case closure produces \u03b5\u00b3=\u03a9(d/p).",
+      "justification": "Uniformly bounding D by O(sqrt(dp/\u03b5)) and imposing D=O(\u03b5p) gives dp/\u03b5=O(\u03b5\u00b2p\u00b2), hence \u03b5\u00b3=\u03a9(d/p). This is a sufficient worst-case gate, not an instancewise necessity; the note correctly warns that KTZ gives only one-sided bounds.",
+      "reference": "Numbered note 0056 and 0188\u20130195",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The regular carrier has \u03b5=d/p.",
+      "justification": "There are p(p+1) lines, each with exactly d accepted points, among p\u00b2(p+1) incidences, giving \u03b5=p(p+1)d/[p\u00b2(p+1)]=d/p.",
+      "reference": "Numbered note 0116\u20130128",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The fractional reaching scale is \u0398(p/\u03b5).",
+      "justification": "The exact bounds are correct, but uniformly in \u03b8 they give \u0398(\u03b8p/\u03b5). Writing \u0398(p/\u03b5) or \u03a9(p/\u03b5) requires \u03b8 to be fixed independently of p and d.",
+      "reference": "Exact theorem_statement; numbered note 0078\u20130084, 0130\u20130161, and 0238",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The collision exponent is exactly quadratic.",
+      "justification": "\u0393\u2082=\u03b5\u00b2\u2212\u03b5(1\u2212\u03b5)/p+Var(a_x)/[p(p+1)], and constant accepted point degree makes the variance zero. Thus density alone cannot force \u03c9(\u03b5\u00b2).",
+      "reference": "Numbered note 0163\u20130186 and 0239",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The Vinh/KTZ component step has a method barrier at exponent 1/2.",
+      "justification": "The relevant spectral coefficient is (p+1)^(\u22121/2). For fixed d=101 and \u03b5=C(101/p)^\u03b1 with fixed \u03b1>1/2, \u03b5sqrt(p) tends to zero, so KTZ's absorption inequality eventually fails.",
+      "reference": "KTZ Revision 1, Lemmas 2.1, 4.1, and 6.2; numbered note 0197\u20130209",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The balanced Stevens\u2013de Zeeuw diagnostic gives N\u226bk^(15/7).",
+      "justification": "kN\u2264I(P,L)\u226aN^(22/15) gives N\u226bk^(15/7). Making this bound dominate kp requires k\u2273p^(7/8), which forces N\u2273p^(15/8), incompatible asymptotically with N\u226ap^(15/11).",
+      "reference": "Stevens\u2013de Zeeuw Theorem 3; numbered note 0211\u20130217",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The balanced Cartesian diagnostic gives N\u226bk^(8/3).",
+      "justification": "Theorem 4 gives kN\u226aN^(11/8)+N, hence N\u226bk^(8/3). Dominating kp requires k\u2273p^(3/5), forcing N\u2273p^(8/5), outside N\u226ap^(4/3).",
+      "reference": "Stevens\u2013de Zeeuw Theorem 4; numbered note 0219\u20130226",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The submission improves exponent 1/3.",
+      "justification": "It does not. Since 0<d/p<1, an exponent \u03b1>1/3 would give a smaller and therefore stronger trigger than (d/p)^(1/3). No such unconditional trigger is proved.",
+      "reference": "Numbered note 0016, 0230\u20130245, and 0272\u20130282",
+      "verdict": "valid"
+    }
+  ],
+  "fatal_obstruction": null,
+  "field_regime_verified": true,
+  "line_audit": [
+    {
+      "claim": "Test definition and sampling normalization",
+      "justification": "There are p(p+1) affine lines, p points per line, and p+1 lines through each point. Uniform-line-then-point sampling is exactly uniform sampling from the p\u00b2(p+1) incidences.",
+      "reference": "Numbered note 0020\u20130029",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Capped-load and averaged \u03b8-reaching definitions",
+      "justification": "The formulas are coherent and exclude the target line. Indicator weights recover ordinary selected-line families.",
+      "reference": "Numbered note 0031\u20130050",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The exact hashed prose uses the same reaching convention as the note.",
+      "justification": "It says every accepted incidence receives \u03b8 coverage, which reads pointwise, whereas the note requires only average capped load at least \u03b8 over each target line. The numerical sandwich holds under either convention, but the intended obstruction and its integral consequences differ.",
+      "reference": "Exact theorem_statement versus numbered note 0036\u20130047",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Prior-results synopsis",
+      "justification": "The descriptions of the four completed earlier audits and the accepted conditional result agree with the recorded verifier outcomes available before this submission batch.",
+      "reference": "Numbered note 0052\u20130054; campaign review records",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Theorem A's degree and point-count assertions",
+      "justification": "The construction yields exact line degree d, exactly pd distinct matched endpoints of point degree d+1, and p(p\u2212d) remaining points of degree d.",
+      "reference": "Numbered note 0074\u20130086 and 0102\u20130128",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P1 augmented incidence graph and factorization",
+      "justification": "Both bipartition classes have p(p+1) vertices and every vertex has degree p+1. Iterated Hall matchings give p+1 perfect matchings; deleting dummy edges has exactly the stated color incidence properties.",
+      "reference": "Numbered note 0102\u20130104",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P2 color selection and repair matching",
+      "justification": "A deficient line has r=p+1\u2212d unselected real edges and each real point has at most r such incident deficient-line edges. Degree counting proves Hall, including d=p\u22121 where r=2.",
+      "reference": "Numbered note 0106\u20130114",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P3 polynomial realization",
+      "justification": "A fixed affine parameterization bijects each line with F_p. The product of the d distinct factors t\u2212a has formal degree exactly d<p and vanishes precisely at the selected parameters.",
+      "reference": "Numbered note 0116\u20130128",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P4 fractional lower bound",
+      "justification": "The chain \u03b8dp(p+1)\u2264\u03a3_x a_xv_x\u2264(d+1)\u03a3_xv_x\u2264d(d+1)\u03a3_L\u03bb_L is correct.",
+      "reference": "Numbered note 0130\u20130159",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P5 fractional upper bound",
+      "justification": "Uniform weight \u03b8/(d\u22121) gives every accepted incidence load at least (a_x\u22121)\u03b8/(d\u22121)\u2265\u03b8. The upper/lower ratio is at most 102/100.",
+      "reference": "Numbered note 0161",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The optimum is attained despite being defined as an infimum.",
+      "justification": "Weights above one may be truncated to one without reducing any capped load. The feasible set can therefore be restricted to a nonempty closed subset of the compact cube [0,1]^[p(p+1)], where the objective attains its minimum.",
+      "reference": "Exact theorem_statement and numbered note 0078",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P6 collision identity and \u03b5\u00b2/2 consequence",
+      "justification": "At x there are a_x(a_x\u22121) ordered accepted pairs. Averaging, using E[a_x]=(p+1)\u03b5, and expanding the variance gives the displayed identity. The assumption \u03b5\u22652/p is sufficient for \u0393\u2082\u2265\u03b5\u00b2/2.",
+      "reference": "Numbered note 0163\u20130177",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P7 equality construction",
+      "justification": "Each point lies on exactly one line in every direction, so accepting k direction classes makes a_x identically k. The constant labels have degree at most the ambient d.",
+      "reference": "Numbered note 0179\u20130186",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P8 KTZ reconstruction",
+      "justification": "The selection, interpolation, and root-budget scales are correct. The cubic comparison is explicitly presented as a reconstruction from one-sided source bounds.",
+      "reference": "Numbered note 0188\u20130195",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P9 Vinh/KTZ barrier",
+      "justification": "The asymptotic calculation for fixed d=101 and fixed \u03b1>1/2 is correct and is properly characterized as a method obstruction rather than a theorem counterexample.",
+      "reference": "Numbered note 0197\u20130209",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P10 incidence diagnostics",
+      "justification": "Both incidence exponents and characteristic-range substitutions recompute correctly; all no-overlap statements are asymptotic because the source constants are implicit.",
+      "reference": "Numbered note 0211\u20130226",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P11 refutes the stated disjunction",
+      "justification": "The written proof invokes one example against each alternative, which does not by itself refute a universal disjunction. The conclusion is true but requires using the same Theorem-A carrier and computing its variance, together with an explicit asymptotic sequence.",
+      "reference": "Numbered note 0228",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Counterexample and limitation sections",
+      "justification": "They correctly distinguish architecture obstructions from soundness counterexamples and acknowledge the missing connectivity and algebra-sensitive cases.",
+      "reference": "Numbered note 0247\u20130257 and 0272\u20130282",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Characteristic audit",
+      "justification": "All constructed roots are distinct, every formal line degree is below p, vertical lines use fixed affine parameterizations, and no derivative, resultant, factorial, or probabilistic existence is used in Theorem A or Lemma B.",
+      "reference": "Numbered note 0259\u20130270",
+      "verdict": "valid"
+    }
+  ],
+  "literature_audit": [
+    {
+      "claim": "KTZ Theorem 1.1 gives the cubic benchmark and one global polynomial.",
+      "justification": "Revision 1 states the result over every finite field and dimension with uniform incident-pair sampling. Specializing to q=p and m=2 is legitimate; \u03b5/8000 is the explicit bivariate recovery value.",
+      "reference": "https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/ \u2014 Theorem 1.1 and bivariate conclusion",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The KTZ citation identifies the authoritative version.",
+      "justification": "The cited Revision 1 is the 23-page artifact dated August 16, 2026. The workspace's 17-page unversioned cached PDF is not Revision 1, but the submission cites the correct official revision URL.",
+      "reference": "https://eccc.weizmann.ac.il/report/2026/147/",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ Lemma 2.1 has normalized coefficient (p+1)^(\u22121/2).",
+      "justification": "The exact error is sqrt(\u03bc(X)\u03bc(T))/sqrt(p+1), equivalently absolute incidence discrepancy at most sqrt(p|X||T|). The note's phrase is valid when read as the spectral coefficient.",
+      "reference": "KTZ Revision 1, Lemma 2.1",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ Lemma 3.2 and Sections 4\u20136 support the reconstructed ledger.",
+      "justification": "The source confirms independent sampling probability 8/k\u2080, Chernoff plus a line union bound, Chebyshev size control, the weighted degree D, the D<k\u2080/2 and D<k\u2081/2 gates, and final propagation by Lemmas 6.1\u20136.3.",
+      "reference": "KTZ Revision 1, Lemmas 3.2, 4.1\u20134.3, 5.2, and 6.1\u20136.3",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Vinh Theorem 3 supplies the displayed affine incidence bound.",
+      "justification": "For every finite field F_q it gives I(P,L)\u2264|P||L|/q+sqrt(q|P||L|), without a size or odd-characteristic restriction.",
+      "reference": "https://arxiv.org/pdf/0711.4427v1 \u2014 Theorem 3",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Stevens\u2013de Zeeuw Theorem 3 is quoted with its full hypotheses.",
+      "justification": "The comparability condition and positive-characteristic constraint m^(\u22122)n^13\u226ap^15 are correct, as is the conclusion I\u226am^(11/15)n^(11/15).",
+      "reference": "https://arxiv.org/pdf/1609.06284v4 \u2014 Theorem 3",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Stevens\u2013de Zeeuw Theorem 4 is quoted with its full hypotheses.",
+      "justification": "The Cartesian, size-shape, distinct-line, and characteristic conditions are retained, and the omitted displayed source conclusion is correctly used as I\u226aa^(3/4)b^(1/2)n^(3/4)+n.",
+      "reference": "https://arxiv.org/pdf/1609.06284v4 \u2014 Theorem 4",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The Bourgain\u2013Katz\u2013Tao statement is fully sourced.",
+      "justification": "Its substance is correct: Theorem 6.2 gives an unspecified gain depending on a fixed cardinality exponent over a prime field. However, the paper, version, field hypothesis, and URL are absent from literature_dependencies despite the numbered note naming the theorem.",
+      "reference": "https://arxiv.org/pdf/math/0301343v3 \u2014 Theorem 6.2; numbered note 0070",
+      "verdict": "gap"
+    }
+  ],
+  "quantifier_audit": [
+    {
+      "claim": "Exact claim identity",
+      "justification": "SHA-256 of the exact UTF-8 response.theorem_statement bytes, with no appended newline, is c20f6b6d7b1309eeee52e9d1834f034436ab85840df075c13ea897855bcee4b5.",
+      "reference": "researcher-0008 response.json theorem_statement",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Campaign degree range",
+      "justification": "The note explicitly takes integer 101\u2264d<p, exactly the requested regime. Every construction and diagnostic remains inside it.",
+      "reference": "Numbered note 0020, 0074, and 0261",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Dimension and field",
+      "justification": "Every new theorem, construction, and diagnostic is used over the prime field F_p in dimension m=2. No extension-field argument or dimension bootstrapping is used for the advance.",
+      "reference": "Numbered note 0018\u20130029, 0072\u20130098, and 0259\u20130270",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Sampling convention",
+      "justification": "The local agreement uses uniform affine-line then uniform-point sampling; biregularity makes this uniform incident-pair sampling. \u0393\u2082 separately and explicitly uses a uniform point and a uniform ordered distinct pair through it.",
+      "reference": "Numbered note 0020\u20130034 and 0088\u20130096",
+      "verdict": "valid"
+    },
+    {
+      "claim": "\u03b8 is quantified uniformly in the exact sandwich.",
+      "justification": "Both displayed bounds hold for every real \u03b8\u2208(0,1].",
+      "reference": "Numbered note 0078\u20130084 and P4\u2013P5",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The integral \u03a9(p/\u03b5) corollary is uniform in quantified \u03b8.",
+      "justification": "Under the formal averaged definition, the bound is \u03a9(\u03b8p/\u03b5), not \u03a9(p/\u03b5) with an absolute constant. The latter is valid only as \u03a9\u03b8 for each fixed \u03b8.",
+      "reference": "Exact theorem_statement and numbered note 0005, 0078\u20130084, and 0238",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The collision clause binds its agreement parameter independently.",
+      "justification": "The exact string first fixes \u03b5=d/p for the existential carrier, then reuses \u03b5 for an arbitrary valid table. The intended rebinding is clear from Lemma B but is not formally explicit; a new symbol \u03b5\u2032 is needed.",
+      "reference": "Exact theorem_statement versus numbered note 0088\u20130096",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The equality parameter k is quantified in the exact claim.",
+      "justification": "The hashed string leaves k free. The full Lemma B correctly supplies the missing range: every integer 1\u2264k\u2264p+1.",
+      "reference": "Exact theorem_statement and numbered note 0096",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Constant labels in the equality construction satisfy the correct degree convention.",
+      "justification": "They are degree-at-most-d labels in a valid ambient table. They should not be read as satisfying Theorem A's separate degree-exactly-d condition.",
+      "reference": "Numbered note 0022, 0074, and 0179\u20130186",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The stated single-polynomial conclusion is proved.",
+      "justification": "For the carrier, f is identically zero and the single zero polynomial agrees on all p\u00b2 points. It is legal under the degree-at-most-d global cap.",
+      "reference": "Numbered note 0086 and 0116\u20130128",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The method-barrier asymptotics have fixed parameters.",
+      "justification": "P9 fixes d=101, \u03b1>1/2, and C before sending p to infinity. P10 uses Vinogradov notation consistently as an asymptotic range comparison.",
+      "reference": "Numbered note 0197\u20130226",
+      "verdict": "valid"
+    }
+  ],
+  "required_changes": [
+    "Rewrite the exact cover clause to state the formal averaged \u03b8-reaching inequality, or explicitly declare the stronger pointwise convention. The current phrase does not identify which claim is hashed.",
+    "Replace the unqualified integral \u03a9(p/\u03b5) conclusion by the uniform bound \u03a9(\u03b8p/\u03b5), or state \u03a9\u03b8(p/\u03b5) for each fixed \u03b8>0.",
+    "In the exact collision clause, use a separately bound agreement parameter such as \u03b5\u2032 and quantify every integer 1\u2264k\u2264p+1; explicitly retain the degree-at-most-d convention for the constant-label equality tables.",
+    "Repair P11 by using one Theorem-A carrier sequence for both alternatives and computing Var(a_x)=\u03b5(1\u2212\u03b5), hence \u0393\u2082=\u03b5\u00b2\u2212\u03b5(1\u2212\u03b5)/(p+1); state the asymptotic sequence underlying o and \u03c9.",
+    "Add the full Bourgain\u2013Katz\u2013Tao Theorem 6.2 citation and its prime-field/cardinality-exponent hypotheses. For maximum source precision, P9 should also display the full KTZ chain 1/sqrt(p+1)\u2264\u03b5/8000\u2264k\u2081/(4p)."
+  ],
+  "scope_verified": "obstruction",
+  "summary": "REVISE. The exact SHA was confirmed. The Hall construction, exact degree counts, polynomial realization, fractional sandwich, collision identity, prime-characteristic handling, single decoder Q=0, and all incidence/exponent calculations are correct throughout m=2, prime p, and 101\u2264d<p. No soundness counterexample or fatal obstruction exists. Strict acceptance fails because the hashed prose conflates pointwise and averaged reaching, suppresses \u03b8 in an \u03a9 claim that is false uniformly under the note's definition, leaves k and the collision agreement parameter improperly bound, and P11's written proof negates its two alternatives using different examples. These are repairable. No exponent beyond 1/3 is proved; because d/p<1, any exponent greater than 1/3 would be the genuine improvement.",
+  "unfixable": false,
+  "verdict": "revise",
+  "verified_claim_sha256": "c20f6b6d7b1309eeee52e9d1834f034436ab85840df075c13ea897855bcee4b5",
+  "verified_exponent": "No new soundness exponent. The unconditional benchmark remains 1/3; exponents greater than 1/3 would be stronger because 0<d/p<1."
+}

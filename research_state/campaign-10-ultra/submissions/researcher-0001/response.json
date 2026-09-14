@@ -1,0 +1,416 @@
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "The field is the prime field F_p and every theorem assumes 101\u2264d<p.",
+    "The interpolation parameter satisfies D<p. Hence every positive Z-exponent in the weighted monomial space is below p, so formal Z-differentiation cannot vanish through a hidden p-th power.",
+    "After removing the coefficient content H(X,Y), the squarefree primitive factor B satisfies gcd(B,B_Z)=1. This is proved directly from deg(B)<p and does not assume absolute irreducibility.",
+    "No discriminant is formed. KTZ's resultant bound is applied only after coprimality has been established.",
+    "The identity A(L(t),P_L(t))=H(L(t))B(L(t),P_L(t))=0 is divided only in the integral domain F_p[t], and only when H restricted to L is not the zero polynomial. There is no pointwise division by H.",
+    "Newton\u2013Hensel lifting divides only by the retained nonzero scalar B_Z(x,f(x)); no factorial, ordinary higher derivative, or characteristic-sensitive Taylor denominator is used.",
+    "Interpolation imposes D+1 coefficient equations per selected line. Later root counts use more than D distinct points or directions, not multiplicity at a repeated witness.",
+    "The modal counterexample fixes the ambient degree cap at d=101. Its constant line labels are legal degree-at-most-101 labels; it makes no claim about a test whose ambient parameter is d=0.",
+    "For d near p, the support-sensitive theorem's large-constant premise is vacuous. A separate information-set argument proves that arbitrary point tables already have global agreement at least (d+1)(d+2)/(2p\u00b2)."
+  ],
+  "claim_scope": "obstruction",
+  "claimed_exponent": "Unconditional exponent 1/3 is audited but not improved; exponent 1/2 is proved only under the extra carrier condition \u03c3=O(\u03b4); a uniform exact exponent-1 threshold C d/p with linear recovery is refuted.",
+  "counterexample_attempts": [
+    "Proved obstruction: at ambient d=101, a random point table with modal constant line labels has local agreement \u0398(log p/(p log log p)) while every total-degree-at-most-101 polynomial has agreement below 2/p.",
+    "Diffuse-support stress test: taking f=0 and giving every line a degree-d polynomial with d prescribed roots yields \u03b5=d/p and \u03c3=1, yet Q=0 has perfect agreement. Thus \u03c3=O(\u03b5) cannot be inferred merely from local acceptance.",
+    "Concentrated-direction attempt: a product of d+1 homogeneous linear forms gives d+1 direction classes on which its restrictions lose their leading term. However Q=0 agrees on the corresponding union of lines at the same \u0398(d/p) scale, so this is not a soundness counterexample.",
+    "Simple-root stress test: for odd p and ambient d\u2265101, B=Z\u00b2\u2212X\u00b2 has branches Q=X and Q=\u2212X meeting at the origin where B_Z=0. This refutes any proof step that propagates a branch without deleting nonsimple roots.",
+    "Inseparability attempt: a candidate such as Z^p\u2212G has B_Z=0, but its weighted degree is at least pd>D because D<p. It cannot arise in the audited interpolation regime.",
+    "Near-characteristic stress test: the triangular information set gives agreement 5253/10609\u22480.4951 already at d=101,p=103, and at d=p\u22121 gives (p+1)/(2p). Thus near-p parameters do not furnish a vanishing-global-agreement obstruction."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "Carrier edge mass \u03b4 and line support \u03c3.",
+      "justification": "Deleting point vertices of degree below k0=floor(\u03b4p/100) costs at most k0/(p+1); deleting line vertices costs at most k0/p.",
+      "loss": "Less than \u03b4/50; the proof retains the weaker convenient bound \u03b4/4.",
+      "output_scale": "A graph of edge mass at least \u03b4/4, minimum degree k0, and line measure between \u03b4/4 and \u03c3.",
+      "stage": "carrier pruning",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Minimum degree k0 and selector probability \u03b8=8/k0.",
+      "justification": "For each line, coverage failure is at most exp(\u2212k0/8); a union bound over p(p+1) lines is below 1/4. Chebyshev gives size failure at most 4/E|R|<1/4.",
+      "loss": "Only constant success probability; no power of \u03b4 is lost probabilistically.",
+      "output_scale": "A deterministic selected line set satisfying coverage and two-sided size control.",
+      "stage": "Hoeffding, union, and Chebyshev audit",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Retained line measure at most \u03c3 and k0\u2265\u03b4p/200.",
+      "justification": "The selector has |R|\u226416|L0|/k0.",
+      "loss": "One inverse factor \u03b4 and one factor \u03c3.",
+      "output_scale": "100(p+1)\u2264r=|R|\u22646400\u03c3p/\u03b4.",
+      "stage": "support-sensitive selector",
+      "status": "proved"
+    },
+    {
+      "input_scale": "r selected graph identities and weighted degree D.",
+      "justification": "There are at most r(D+1) linear constraints, while dim(V_D)\u2265D\u00b3/(64d). Taking D=16(floor(sqrt(dr))+1) makes dim(V_D)>r(D+1).",
+      "loss": "Square root of dr.",
+      "output_scale": "D\u22641280 sqrt(d\u03c3p/\u03b4)+16.",
+      "stage": "weighted interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D\u2248sqrt(d\u03c3p/\u03b4) and root budget k0,k1=\u0398(\u03b4p).",
+      "justification": "Identity extension and Hensel lifting both require D=O(\u03b4p).",
+      "loss": "Combining the square-root interpolation degree with the linear root budget.",
+      "output_scale": "\u03b4\u00b3=\u03a9(d\u03c3/p).",
+      "stage": "principal cubic bottleneck",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D\u2264\u03b4p/10000.",
+      "justification": "Content lines, resultant-degenerate lines, and bad incidences cost D/[p(p+1)]+D(D\u22121)/[p(p+1)]+D/p.",
+      "loss": "The D/p term enforces the same cubic inequality; D\u00b2/p\u00b2 alone would require only \u03b4\u00b2=\u03a9(d\u03c3/p).",
+      "output_scale": "Deletion below \u03b4/16.",
+      "stage": "content and resultant deletion",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Post-deletion graph and k1=floor(\u03b4p/1000).",
+      "justification": "Second pruning removes at most k1/(p+1)+k1/p.",
+      "loss": "Less than \u03b4/500.",
+      "output_scale": "Edge mass at least \u03b4/8 and minimum degree k1.",
+      "stage": "second pruning",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Incidence mixing error 1/sqrt(p+1).",
+      "justification": "One spectral Cauchy\u2013Schwarz estimate and \u03b4\u00b2\u226510^15 d/p give 1/sqrt(p+1)<\u03b4/8000\u2264k1/(4p).",
+      "loss": "A p^\u22121/2 error, weaker than the cubic gate for d\u2265101.",
+      "output_scale": "Every surviving component has point density at least \u03b4/8000.",
+      "stage": "component mixing",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A carrier satisfying \u03b4\u00b3\u226510^15 d\u03c3/p.",
+      "justification": "Interpolation, deletion, simple-root lifting, and mixing close with the displayed constants.",
+      "loss": "Constant recovery factor 1/8000.",
+      "output_scale": "Global agreement at least \u03b4/8000; if \u03b4\u2265\u03b5/2, at least \u03b5/16000.",
+      "stage": "global recovery",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Diffuse carrier \u03c3\u22641.",
+      "justification": "Substitute \u03c3=1 into \u03b4\u00b3\u226510^15d\u03c3/p.",
+      "loss": "Cube root.",
+      "output_scale": "\u03b4\u226510^5(d/p)^(1/3).",
+      "stage": "unconditional benchmark reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Additional hypothesis \u03c3\u2264A\u03b4.",
+      "justification": "Then \u03b4\u00b3\u226510^15Ad\u03b4/p reduces to \u03b4\u00b2\u226510^15Ad/p.",
+      "loss": "Square root; the extra structural hypothesis is essential.",
+      "output_scale": "\u03b4\u2265sqrt(10^15 A d/p), a conditional exponent 1/2.",
+      "stage": "concentrated-carrier corollary",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Hypothetical universal selector r=O(\u03b4p).",
+      "justification": "It would give D\u2248sqrt(d\u03b4p), and D\u2264\u03b4p would algebraically reduce to \u03b4=\u03a9(d/p).",
+      "loss": "None beyond the interpolation baseline.",
+      "output_scale": "A putative exponent-1 route.",
+      "stage": "hypothetical optimal selector",
+      "status": "refuted"
+    },
+    {
+      "input_scale": "p independent values on one line and r=floor(log p/(4 log log p)).",
+      "justification": "A second-moment/Cauchy\u2013Schwarz calculation gives probability at least 1/65 that some value occurs exactly r times.",
+      "loss": "Constant 1/65.",
+      "output_scale": "Expected modal local agreement at least r/(65p).",
+      "stage": "modal occupancy lower bound",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Modal agreement A with E[A]\u226425r/p.",
+      "justification": "A factorial-moment union bound controls one-line maxima; McDiarmid gives Pr[A>50r/p]\u2264exp(\u22121250r\u00b2).",
+      "loss": "Exponentially small exceptional probability; no Markov inequality is used.",
+      "output_scale": "A\u226450r/p on the selected deterministic instance.",
+      "stage": "modal upper concentration",
+      "status": "proved"
+    },
+    {
+      "input_scale": "N=5253 degree-at-most-101 coefficients and a random point table.",
+      "justification": "For fixed Q, agreements are Bin(p\u00b2,1/p), so Pr[agreements\u22652p]\u2264(e/4)^p; union over p^N polynomials is at most exp(\u2212p/4).",
+      "loss": "A union factor p^5253 absorbed by the exponential tail.",
+      "output_scale": "Every total-degree-at-most-101 polynomial has agreement below 2/p.",
+      "stage": "global polynomial union bound",
+      "status": "proved"
+    },
+    {
+      "input_scale": "\u03b5 between r/(130p) and 50r/p, with r\u2192\u221e.",
+      "justification": "For arbitrary C,c>0, choose a sufficiently large prime with r\u2265max(130\u00b7101C,260/c).",
+      "loss": "Global/local ratio at most 260/r\u21920.",
+      "output_scale": "The implication \u03b5\u2265C\u00b7101/p \u21d2 Agr_101(f)\u2265c\u03b5 is false.",
+      "stage": "exact-linear obstruction",
+      "status": "refuted"
+    },
+    {
+      "input_scale": "Fixed \u03b7>0 and d=101.",
+      "justification": "(50r/p)/(101/p)^(1\u2212\u03b7)=50r/(101^(1\u2212\u03b7)p^\u03b7)\u21920.",
+      "loss": "The modal scale remains below every fixed-\u03b7 trigger.",
+      "output_scale": "No refutation of a fixed exponent 1\u2212\u03b7.",
+      "stage": "fixed-\u03b7 comparison",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "The incidence normalization was checked exactly: p(p+1) affine lines, p points per line, and p+1 incident lines per point give p\u00b2(p+1) incidences; uniform line-then-point sampling equals uniform point-then-line sampling.",
+    "At the legal boundary p=103,d=101, the information-set lower bound is 5253/10609\u22480.4951. This explains why the asymptotic modal obstruction requires much larger p.",
+    "At d=p\u22121, the same exact count is p(p+1)/(2p\u00b2)=(p+1)/(2p)>1/2.",
+    "For B=Z\u00b2\u2212X\u00b2 over p=103, B is squarefree, B_Z=2Z, and the two legal low-degree branches meet at a vertically singular point, directly checking the simple-root warning.",
+    "The modal proof is asymptotic and uses exact occupancy probabilities rather than finite computation. No finite-field experiment is presented as proof of soundness."
+  ],
+  "global_conclusion": "The bivariate KTZ exponent 1/3 is not improved unconditionally. Its exact source is the combination |R|=O(\u03c3p/\u03b4), D=\u0398(sqrt(d|R|)), and the later requirement D=O(\u03b4p), yielding \u03b4\u00b3=\u03a9(d\u03c3/p). Retaining \u03c3 proves a conditional exponent-1/2 theorem when \u03c3=O(\u03b4), and prime-field differentiation can be simplified to B_Z. Separately, modal constant line labels at the legal boundary d=101 rigorously refute any uniform exact threshold C d/p with global agreement \u03a9(\u03b5). Fixed-\u03b7 near-linear soundness remains open, but any exponent-1 formulation must accommodate an occupancy factor of order log p/log log p for fixed d.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Uniform affine-line/point sampling over F_q; local univariate degree at most d; global total degree at most d; specialized here to q=p prime, m=2, and 101\u2264d<p.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line-versus-Point Test, https://eccc.weizmann.ac.il/report/2026/147/",
+      "result_id": "Theorem 1.1",
+      "used_for": "Quoted benchmark: absolute constants C,c with threshold C(d/p)^(1/3) and global agreement c\u03b5. The theorem statement does not supply the reconstructed constant 10^15.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Point-line incidence graph over a finite field and arbitrary point/line subsets.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line-versus-Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/",
+      "result_id": "Lemma 2.1",
+      "used_for": "The single spectral incidence-mixing/Cauchy\u2013Schwarz loss 1/sqrt(p+1).",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Weighted degrees wt(X)=wt(Y)=1, wt(Z)=d; characteristic-compatible monomial space; squarefree polynomial of degree below the characteristic; coprime polynomial pair.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line-versus-Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/",
+      "result_id": "Lemmas 2.2\u20132.7",
+      "used_for": "Weighted monomial count, squarefree reduction, derivative/resultant control, and Newton iteration. The prime-field lemma gcd(B,B_Z)=1 is proved here and replaces the source's generic directional derivative.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Bivariate accepted-incidence graph, selector parameters k0 and k1, interpolation degree D satisfying the displayed root and deletion inequalities.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line-versus-Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/",
+      "result_id": "Lemmas 3.1\u20133.2, 4.1\u20134.3, Section 5, and Lemmas 6.1\u20136.2",
+      "used_for": "The bivariate pruning, random selector, formal interpolation, root deletion, lifting, propagation, and component argument whose exponents are reconstructed in this note.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Formal simple root over a power-series ring and the high-agreement bivariate setup.",
+      "paper": "Harsha\u2013Kumar\u2013Saptharishi\u2013Sudan, An Improved Line-Point Low-Degree Test, https://arxiv.org/abs/2311.12752",
+      "result_id": "Lemma 2.10 and Lemma 3.1",
+      "used_for": "Primary-source ancestry and cross-check of the Newton and bivariate ideas. No HKSS result is used as an unproved black box because the required arguments are reproduced or restated in KTZ.",
+      "version": "arXiv:2311.12752v1, 2023-11-21; FOCS 2024"
+    }
+  ],
+  "next_tasks": [
+    "Prove or refute a bivariate dichotomy saying that a diffuse accepted carrier either contains exploitable algebraic coherence or is governed by a modal-occupancy ceiling.",
+    "Determine the correct uniform lower-order scale, plausibly involving max{d, log p/log log p}/p, before formulating an exponent-1 theorem with linear recovery.",
+    "Study the deterministic set-cover problem behind the selector. Any KTZ-style covering set must have \u03a9(\u03b4p) lines, while the current random construction has O(\u03c3p/\u03b4); characterize when the \u03b4^\u22122 gap is unavoidable.",
+    "Seek a replacement for graph-line selection that aggregates repeated values or jets without requiring one selected witness line per covered point.",
+    "Sharpen the modal construction for growing d and identify which functions of d and p are unavoidable at a (d/p)^(1\u2212o(1)) threshold.",
+    "Mechanically verify the bivariate constants and formal Hensel propagation against Revision 1, keeping the prime-field B_Z simplification separate from the quoted KTZ proof."
+  ],
+  "note_markdown": "# The bivariate prime-field cubic bottleneck: support sensitivity and a modal obstruction\n\n## Abstract\n\nFor the affine line-versus-point test on `F_p\u00b2`, the KTZ cubic threshold comes from one precise chain:\n\n`|R| = O(p/\u03b5)`, `D = \u0398(sqrt(d|R|))`, and `D = O(\u03b5p)`.\n\nThe first relation is the selected-line cost, the second is weighted interpolation, and the third is simultaneously required for identity extension, deletion of nonsimple incidences, and root lifting. Their combination is `\u03b5\u00b3 = \u03a9(d/p)`.\n\nRetaining the fraction \u03c3 of lines supporting an accepted carrier of edge mass \u03b4 gives the sharper proved relation `\u03b4\u00b3 = \u03a9(d\u03c3/p)`. In particular, \u03c3=O(\u03b4) gives a conditional exponent `1/2`, but not an unconditional benchmark improvement. In the prime regime, I also prove that the primitive squarefree interpolant satisfies `gcd(B,B_Z)=1`, so KTZ's generic directional derivative can be replaced by the vertical derivative.\n\nFinally, I give a legal obstruction at ambient degree `d=101`: modal constant line labels can attain local agreement `\u0398(log p/(p log log p))` while every total-degree-at-most-101 polynomial has agreement below `2/p`. Thus a uniform exact threshold `C d/p` with global agreement `\u03a9(\u03b5)` is false. This obstruction remains below every fixed-\u03b7 trigger `(d/p)^(1\u2212\u03b7)`.\n\n## Test and Notation\n\nFix a prime `p` and an integer `101\u2264d<p`; the dimension is exactly two. Let `L` range uniformly over the `p(p+1)` affine lines of `F_p\u00b2`, and then let `x` range uniformly over the `p` points of `L`. This is uniform sampling from the `p\u00b2(p+1)` incidences and is equivalent to first choosing `x` uniformly and then an incident line uniformly.\n\nThe point table is an arbitrary function `f:F_p\u00b2\u2192F_p`. Each line has a univariate polynomial label `P_L` of degree at most `d`. All global degrees below are total degrees. Define\n\n`\u03b5 = Pr_{L,x\u2208L}[P_L(x)=f(x)]`\n\nand\n\n`Agr_d(f) = max_{Q: total-degree(Q)\u2264d} Pr_x[Q(x)=f(x)]`.\n\nAn accepted carrier is any set `E*` of accepted incidences. Write\n\n`\u03b4 = |E*|/[p\u00b2(p+1)]`,  `T = projection of E* to lines`,  `\u03c3 = |T|/[p(p+1)]`.\n\nNecessarily `0<\u03b4\u2264\u03c3\u22641`. Taking all accepted incidences gives `\u03b4=\u03b5`; a carrier with `\u03b4\u2265\u03b5/2` retains a constant fraction of the test acceptance.\n\n## Prior Results\n\nThe primary benchmark is [Kominers\u2013Thaler\u2013Zheng, ECCC TR26-147, Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/). Its Theorem 1.1, specialized to the present regime, states that absolute constants `C,c>0` give global agreement at least `c\u03b5` when `\u03b5\u2265C(d/p)^(1/3)`. The theorem statement hides the constants. The bivariate proof in Sections 3\u20136 explicitly closes with recovery `\u03b5/8000`.\n\nThe source chooses `k0=floor(\u03b5p/100)`, `k1=floor(\u03b5p/1000)`, a selected line set of size `O(p/\u03b5)`, and\n\n`D = 16(floor(sqrt(d|R|))+1)`.\n\nRevision 1 uses a squarefree primitive polynomial, a generic directional derivative, and a resultant; it does not use a discriminant in the bivariate proof. The constant `10^15` below is my conservative reconstruction for a support-sensitive variant, not a constant quoted from Theorem 1.1. The older cached base report and Revision 1 must not be conflated.\n\nThe Newton step is consistent with [Harsha\u2013Kumar\u2013Saptharishi\u2013Sudan, arXiv:2311.12752v1](https://arxiv.org/abs/2311.12752), especially Lemma 2.10, but the needed lifting argument is reproduced below. No Arora\u2013Sudan theorem is used as a black box.\n\nThe active durable corpus was also audited. All eight active leaderboard files were empty, and there were no completed submissions or verifier-audit files to inherit. The [data manifest](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json) is a pre-launch snapshot relative to the live campaign state, so it was treated as provenance rather than mathematical evidence. Every directory named `superseded` was excluded.\n\n## Theorem\n\n**Theorem A \u2014 support-sensitive KTZ closure.** Let `p` be prime, `101\u2264d<p`, and let an accepted carrier have parameters `(\u03b4,\u03c3)`. Put `K=10^15`. If\n\n`\u03b4\u00b3 \u2265 K d\u03c3/p`,\n\nthen there is a polynomial `Q\u2208F_p[X,Y]` of total degree at most `d` with\n\n`Pr_x[Q(x)=f(x)] \u2265 \u03b4/8000`.\n\nThus, if `\u03b4\u2265\u03b5/2`, the conclusion is at least `\u03b5/16000`. With all accepted edges and \u03c3\u22641, the sufficient threshold is `\u03b5\u226510^5(d/p)^(1/3)`. Under the additional structural condition `\u03c3\u2264A\u03b4`, it becomes the conditional square-root threshold `\u03b4\u2265sqrt(10^15 A d/p)`.\n\n**Lemma B \u2014 prime vertical derivative.** If `B\u2208F_p[X,Y,Z]` is squarefree, primitive as a polynomial in `Z`, and has total degree below `p`, then `gcd(B,B_Z)=1`.\n\n**Theorem C \u2014 modal obstruction at the legal lower boundary.** Let `d=101`, `N=(d+1)(d+2)/2=5253`, and\n\n`r=floor(log p/(4 log log p))`.\n\nFor every sufficiently large prime, explicitly every prime `p\u2265max{\u2308e^32\u2309,100N\u00b2}`, there are a point table and constant line labels, hence labels of degree at most 101, such that\n\n`r/(130p) \u2264 \u03b5 \u2264 50r/p`,  while  `Agr_101(f)<2/p`.\n\nConsequently, for every fixed `C,c>0`, arbitrarily large primes admit `\u03b5\u2265C\u00b7101/p` but `Agr_101(f)<c\u03b5`.\n\n**Proposition D \u2014 near-p information baseline.** For every `101\u2264d<p` and every point table,\n\n`Agr_d(f) \u2265 (d+1)(d+2)/(2p\u00b2)`.\n\n## Proof or Conditional Proof\n\n**[P1] (proved) Carrier pruning.** Set `k0=floor(\u03b4p/100)`. Iteratively delete point vertices and line vertices whose current carrier degree is below `k0`. Point deletions remove at most `p\u00b2k0` edges and line deletions at most `p(p+1)k0` edges. In normalized incidence measure the loss is at most\n\n`k0/(p+1)+k0/p < \u03b4/50`.\n\nKeep the weaker bound that the remaining graph `G0` has edge mass at least `\u03b4/4`. It has minimum degree `k0`; its line set `L0` has normalized measure \u03bb satisfying `\u03b4/4\u2264\u03bb\u2264\u03c3`.\n\n**[P2] (proved) Support-sensitive selector.** Select each line of `L0` independently with probability `\u03b8=8/k0`. The hypothesis and `\u03c3\u2265\u03b4` imply\n\n`\u03b4\u00b2\u226510^15 d/p`,  `\u03b4p\u2265sqrt(10^15dp)>3\u00b710^9`,\n\nso `k0\u2265\u03b4p/200`. For a fixed `L\u2208L0`, coverage indicators at distinct neighbors of `L` depend on disjoint sets of other lines. Each has success probability above `3/4`; Hoeffding therefore bounds failure to cover half the neighbors by `exp(\u2212k0/8)`. Since `k0\u22658 log(4p(p+1))`, a union bound over all affine lines costs less than `1/4`.\n\nIf `r=|R|`, then `E[r]=\u03b8|L0|\u2265200(p+1)` and `Var(r)\u2264E[r]`. Chebyshev puts `r` between half and twice its mean with failure below `1/4`. Some deterministic selection consequently satisfies both coverage and\n\n`100(p+1)\u2264r\u226416|L0|/k0\u22646400\u03c3p/\u03b4`.\n\nThese are the only Hoeffding, selector union, and Chebyshev losses.\n\n**[P3] (proved) Weighted interpolation.** Give `X,Y,Z` weights `1,1,d` and set\n\n`D=16(floor(sqrt(dr))+1)`.\n\nThen `D\u00b2>256dr` and KTZ's monomial count gives `dim(V_D)\u2265D\u00b3/(64d)>r(D+1)`. Each formal identity `A(L(t),P_L(t))=0` imposes at most `D+1` coefficient equations, so a nonzero interpolant exists. Moreover,\n\n`D\u22641280 sqrt(d\u03c3p/\u03b4)+16\u22641280\u03b4p/sqrt(10^15)+16<\u03b4p/10000`.\n\nThus `D<p`, `D<k0/2`, and, for `k1=floor(\u03b4p/1000)`, `D<k1/2`. Also `r>D`. A nonzero `Z`-independent polynomial of degree at most `D` cannot vanish identically on more than `D` affine lines, so `A_Z\u22600`. Choosing minimum weighted degree removes repeated factors and makes `A` squarefree.\n\n**[P4] (proved) Identity extension and formal content removal.** Every `L\u2208L0` has more than `k0/2>D` distinct accepted points that also lie on selected accepted lines. At each such point the two line labels equal the same value `f(x)`. Hence the degree-at-most-`D` polynomial `A(L(t),P_L(t))` has more than `D` distinct roots and is identically zero.\n\nWrite `A=H(X,Y)B(X,Y,Z)`, where `H` is the gcd of the coefficients in `Z`. At most `deg(H)\u2264D` base lines satisfy `H|_L=0` identically. On every other retained line, `H(L(t))B(L(t),P_L(t))=0` in the integral domain `F_p[t]`; hence `B(L(t),P_L(t))=0`. This is formal polynomial division, not division by values of `H`. No root multiplicities are counted.\n\n**[P5] (proved) Prime vertical-derivative lemma.** Factor the squarefree primitive polynomial as `B=c\u220fP_i` into distinct irreducibles over `F_p`. Primitivity implies that every `P_i` genuinely depends on `Z`. Since `deg_Z(P_i)<p`, its derivative `(P_i)_Z` is nonzero, and its smaller degree implies `P_i` does not divide `(P_i)_Z`. Modulo `P_i`,\n\n`B_Z = (P_i)_Z \u220f_{j\u2260i}P_j \u22600`.\n\nThus no irreducible factor of `B` divides `B_Z`, proving `gcd(B,B_Z)=1`. No irreducibility over the algebraic closure is required. This replaces, in the prime-field regime only, KTZ's generic directional derivative.\n\n**[P6] (proved) Degenerate-root deletion.** Apply KTZ's resultant line bound to the coprime pair `(B,B_Z)`. Delete the at most `D` content lines, at most `D(D\u22121)` lines on which the two graph identities degenerate together, and at most `D` zeros of `B_Z(L(t),P_L(t))` on every other line. Their total normalized edge mass is bounded by\n\n`D/[p(p+1)] + D(D\u22121)/[p(p+1)] + D/p < \u03b4/16`.\n\nPruning both sides at degree `k1=floor(\u03b4p/1000)` costs at most\n\n`k1/(p+1)+k1/p<\u03b4/500`.\n\nThe surviving graph `G1` has edge mass at least `\u03b4/8`, minimum degree `k1`, and `B_Z(x,f(x))\u22600` at every surviving point. No discriminant or Markov inequality appears.\n\n**[P7] (proved) Hensel lifting and propagation.** At a surviving point translate the base coordinates to `(0,0)` and put `\u03b1=f(0,0)`. In `F_p[[X,Y]]`, construct a root `\u03a6=\u03b1+\u03a6_1+\u03a6_2+\u2026` recursively by homogeneous degree. At stage `j`, the degree-`j` residual is canceled uniquely by division by the scalar `B_Z(0,0,\u03b1)`. Thus no factorial is inverted.\n\nEvery incident line polynomial is the same unique root after restriction to that line. There are more than `D` incident directions. Therefore every homogeneous part `\u03a6_j` with `d<j\u2264D` vanishes on more than `D\u2265j` projective directions and is zero. Let `Q` be the truncation through degree `d`. The polynomial `B(X,Y,Q)` has degree at most `D` and all terms through degree `D` vanish, so it is identically zero. Simple-root uniqueness propagates the same `Q` across every edge of the connected component, and `Q=f` at all of its point vertices.\n\n**[P8] (proved) Component mixing and recovery.** For a component let `a,b,e` denote its normalized point, line, and edge measures. Put `\u03ba=k1/p` and `u=1/sqrt(p+1)`. Minimum degree and point-line mixing give\n\n`e\u2265\u03baa/2`,  `e\u2265\u03bab`,  and  `e\u2264ab+u sqrt(ab)`.\n\nThe theorem hypothesis gives `u<\u03b4/8000\u2264\u03ba/4`. If `a<\u03ba/4`, the last two inequalities imply `9b\u2264a`, which contradicts the first inequality. If `b<\u03ba/4`, they imply `a\u2264b`, which contradicts `e\u2265\u03bab`. Hence `a,b\u2265\u03ba/4\u2265\u03b4/8000`. The polynomial from [P7] therefore has global agreement at least `\u03b4/8000`. This is the sole incidence Cauchy\u2013Schwarz loss.\n\n**[P9] (proved) Exact cubic reconstruction.** The dominant scales are\n\n`r=O(\u03c3p/\u03b4)`,  `D=O(sqrt(d\u03c3p/\u03b4))`,  `D=O(\u03b4p)`.\n\nThe first two give the interpolation degree; the last is independently demanded by identity extension, the `D/p` bad-incidence term, and lifting. Squaring the final comparison yields exactly `\u03b4\u00b3=\u03a9(d\u03c3/p)`. The resultant term `D\u00b2/p\u00b2` alone needs only `\u03b4\u00b2=\u03a9(d\u03c3/p)`, and mixing needs only `\u03b4=\u03a9(p^\u22121/2)`; both are weaker here. For \u03c3=1 this is the KTZ cubic exponent.\n\n**[P10] (conditional) Concentrated-carrier exponent.** If additionally `\u03c3\u2264A\u03b4`, [P9] becomes `\u03b4\u00b2=\u03a9(Ad/p)`, giving exponent `1/2`. Since every carrier has `\u03c3\u2265\u03b4`, this support-sensitive interpolation balance cannot exceed exponent `1/2`. This is not an unconditional improvement of the benchmark.\n\n**[P11] (proved) Modal occupancy lower bound.** For Theorem C choose all `p\u00b2` point values independently and uniformly. On a fixed line let `N_a` be the occupancy of value `a`, `M=max_a N_a`, and `Y=\u03a3_a 1[N_a=r]`. For one value,\n\n`Pr[N_a=r] = binom(p,r)p^(\u2212r)(1\u22121/p)^(p\u2212r) \u2265 1/(8r!)`.\n\nHere `r\u00b2\u2264p`, `(1\u22121/p)^p\u22651/4`, and `r!\u2264r^r\u2264p^(1/4)`. Thus `\u03bc=E[Y]\u2265p^(3/4)/8\u22651`. For distinct values, the joint probability of both occupancies equaling `r` is at most `1/(r!)\u00b2`, at most 64 times the product of the lower bounds. Hence `E[Y\u00b2]\u2264\u03bc+64\u03bc\u00b2\u226465\u03bc\u00b2`. Cauchy\u2013Schwarz, equivalently the zero-threshold Paley\u2013Zygmund argument, gives `Pr[Y>0]\u22651/65`, so `E[M]\u2265r/65`.\n\nGive each line a modal constant label. By linearity of expectation across lines\u2014no line independence is asserted\u2014the local agreement `A` satisfies `E[A]\u2265r/(65p)`.\n\n**[P12] (proved) Modal upper concentration.** A factorial-moment union bound gives\n\n`Pr[M\u2265s]\u2264p/s!\u2264p(e/s)^s`.\n\nFor `s0=ceil(4 log p/log log p)`, the tail sums to less than one and `E[M]\u2264s0+1\u226425r`; hence `E[A]\u226425r/p`. Changing one point value changes the modal count on only its `p+1` incident lines and changes `A` by at most `1/p\u00b2`. McDiarmid therefore gives\n\n`Pr[A>50r/p]\u2264exp(\u22121250r\u00b2)\u2264r/(520p)`.\n\nNo Markov inequality is used.\n\n**[P13] (proved) Global union bound and deterministic instance.** There are `p^N` formal total-degree-at-most-101 polynomials, with `N=5253`. For fixed `Q`, its agreement count with random `f` is `Bin(p\u00b2,1/p)`, of mean `p`. Chernoff gives\n\n`Pr[agreements(Q,f)\u22652p]\u2264(e/4)^p`.\n\nUnion over all `p^N` polynomials gives `p^N(e/4)^p\u2264exp(\u2212p/4)\u2264r/(520p)` under the stated lower bound on `p`. Let `G` be the event that all global agreements are below `2/p`, and `H={A\u226450r/p}`. Since `0\u2264A\u22641`,\n\n`E[A\u00b71_{G\u2229H}] \u2265 r/(65p)\u2212r/(520p)\u2212r/(520p) > r/(130p)`.\n\nSome deterministic table in `G\u2229H` therefore has all three bounds in Theorem C.\n\n**[P14] (refuted) Uniform exact-linear soundness.** Suppose constants `C,c>0` made `\u03b5\u2265Cd/p` imply `Agr_d(f)\u2265c\u03b5` uniformly. Fix the legal ambient cap `d=101` and choose a sufficiently large prime with `r\u2265max{130\u00b7101C,260/c}`. Theorem C then has `\u03b5\u2265C\u00b7101/p` but `Agr_101(f)<2/p<c\u03b5`, a contradiction. Thus the exact-linear statement is false. On the other hand, for each fixed `\u03b7>0`,\n\n`\u03b5/(101/p)^(1\u2212\u03b7) \u2264 50r/[101^(1\u2212\u03b7)p^\u03b7] \u2192 0`,\n\nso this construction does not refute a fixed-\u03b7 target.\n\n**[P15] (proved) Near-p information set.** Choose distinct `a_0,\u2026,a_d` and `b_0,\u2026,b_d` and the triangular set `S={(a_i,b_j):i+j\u2264d}`. The Newton products `\u220f_{h<i}(X\u2212a_h)\u220f_{k<j}(Y\u2212b_k)` with `i+j\u2264d` form a triangular evaluation basis on `S`. Hence arbitrary prescribed values on all `|S|=(d+1)(d+2)/2` points extend to a total-degree-at-most-`d` polynomial. Applying this to `f|_S` proves Proposition D. In particular, the lower bound is `(p+1)/(2p)` at `d=p\u22121` and `5253/10609` at `d=101,p=103`.\n\n**[P16] (proved) Diffuse support need not concentrate.** Fix the legal ambient `d\u2265101`, take `f=0`, and on every line choose a degree-`d` label with `d` distinct prescribed parameter roots. Then `\u03b5=d/p` and every line supports acceptance, so `\u03c3=1`; nevertheless `Q=0` agrees globally everywhere. Thus local density does not imply `\u03c3=O(\u03b5)`, although this example is harmless for soundness.\n\n**[P17] (refuted as an obstruction) Concentrated good directions.** Let `f` be a product of `d+1` distinct homogeneous linear forms. In each of the corresponding `d+1` projective directions, every affine-line restriction loses its degree-`d+1` leading term and is a legal degree-`d` label. This gives local mass about `(d+1)/(p+1)`. But `Q=0` agrees on the union of the same `d+1` lines through the origin, a \u0398(d/p) fraction. The attempted counterexample already contains the required global polynomial.\n\n**[P18] (refuted safety of omitting simplicity) Branch collision.** For odd `p` and legal ambient cap `d\u2265101`, `B=Z\u00b2\u2212X\u00b2` is squarefree but its two legal branches `Q=X` and `Q=\u2212X` meet at the origin, where `B_Z=0`. Agreement at that incidence cannot select a branch. Vertical-simple-root deletion is therefore logically necessary.\n\n**[P19] (refuted as an active obstruction) Inseparability.** A polynomial with vanishing `Z`-derivative must use positive `Z`-exponents divisible by `p`. Since the interpolant has weighted degree `D<p`, no such exponent occurs. Examples such as `Z^p\u2212G` lie outside the interpolation space and do not obstruct the prime-field proof.\n\n## Exponent Ledger\n\n| Stage | Scale or loss | Consequence |\n|---|---|---|\n| Carrier pruning | `<\u03b4/50`, retained as `\u03b4/4` | Constant only |\n| Selector probability | Hoeffding `e^(\u2212k0/8)`, union over `p(p+1)` | No \u03b4-power loss |\n| Selector size | Chebyshev; `r\u22646400\u03c3p/\u03b4` | One factor `\u03c3/\u03b4` |\n| Interpolation | `dim(V_D)\u2248D\u00b3/d` versus `rD` constraints | `D\u2248sqrt(dr)` |\n| Root budget | `D\u2264\u0398(\u03b4p)` | `\u03b4\u00b3=\u03a9(d\u03c3/p)` |\n| Content/resultant deletion | `D/p + D\u00b2/p\u00b2` | Cubic plus a weaker quadratic gate |\n| Second pruning | `<\u03b4/500` | Constant only |\n| Mixing | One Cauchy\u2013Schwarz error `p^\u22121/2` | Weaker than cubic for `d\u2265101` |\n| Recovery | Component point density `\u03b4/8000` | Linear global recovery |\n| Diffuse carrier | `\u03c3=1` | Exponent `1/3` |\n| Concentrated carrier | `\u03c3\u2264A\u03b4` | Conditional exponent `1/2` |\n| Modal occupancy | `r\u2248log p/(4 log log p)` | Local `\u0398(r/p)` |\n| Polynomial union | `p^5253(e/4)^p` | Global `<2/p` |\n| Exact-linear claim | Ratio at most `260/r` | Tends to zero; exponent 1 with constant threshold is false |\n\nThere is no hidden Markov loss. The only probabilistic inequalities are the selector's Hoeffding, union, and Chebyshev bounds; the modal occupancy second moment, factorial union, and McDiarmid bound; and the global Chernoff union. The sole incidence Cauchy\u2013Schwarz loss is the `p^\u22121/2` mixing error.\n\n## Counterexample Attempts\n\nThe successful adversarial table is Theorem C: it is diffuse across lines and exploits the maximum occupancy among `p` symbols, not low characteristic or a small exceptional direction set. It proves that the campaign's possible sharp threshold cannot literally be a constant multiple of `d/p` with linear recovery.\n\nThe all-lines prescribed-root table [P16] shows why line-support concentration cannot be assumed. The homogeneous-direction construction [P17] fails because its zero set already supplies a global polynomial. The branch collision [P18] validates the simple-root deletion. The inseparable attempt [P19] is excluded by `D<p`. Proposition D handles `d` near `p`; it is a positive agreement baseline, not an obstruction.\n\n## Characteristic Audit\n\n- The field is exactly the prime field `F_p`; no extension-field descent is used.\n- The ambient degree always satisfies `101\u2264d<p`. Constant or linear objects appearing inside examples are legal labels or branches under that ambient cap; no test with parameter `d\u2264100` is analyzed.\n- Because `D<p`, the characteristic-pruned weighted monomial set equals the full weighted ball: every positive `Z`-exponent is strictly below `p`.\n- Lemma B rules out inseparable vertical factors after content removal. Absolute irreducibility is unnecessary.\n- KTZ's source proof uses a generic directional derivative. The replacement by `B_Z` is a new prime-field simplification and causes no exponent gain.\n- No discriminant is used. The resultant is invoked only for the proved coprime pair `(B,B_Z)`.\n- Division by `H` occurs only as an integral-domain inference on non-content lines. Hensel lifting divides only by a nonzero scalar `B_Z(x,f(x))`.\n- All interpolation constraints are coefficient identities, and every later root count uses distinct points or directions rather than multiplicity.\n- When `d` is near `p`, Theorem A's premise is vacuous because `\u03c3\u2265\u03b4` would force `p\u226510^15d`; Proposition D supplies the appropriate direct check.\n\n## Limitations\n\nThe general KTZ benchmark is not improved: the exponent `1/2` conclusion requires the additional hypothesis `\u03c3=O(\u03b4)`, and diffuse carriers can have `\u03c3=1`. The constant `10^15` is deliberately conservative and is not claimed optimal.\n\nThe modal obstruction refutes a uniform constant-times-`d/p` trigger but not any fixed exponent `1\u2212\u03b7`. It instead shows that an exponent-1 formulation must include a subpolynomial occupancy allowance, at least on the order of `log p/log log p` when `d=101`.\n\nThe current selector has an upper bound `O(\u03c3p/\u03b4)`, whereas covering more than `k0/2` points on one line requires at least `\u03a9(\u03b4p)` distinct witness lines. Closing this gap demands a new combinatorial or algebraic idea. No computation, higher-dimensional lifting, extension field, or individual-degree substitution is used here.",
+  "obstructions": [
+    "The exact KTZ bottleneck is the selected-line/interpolation/root-budget chain r=O(\u03c3p/\u03b4), D=\u0398(sqrt(dr)), and D=O(\u03b4p), which forces \u03b4\u00b3=\u03a9(d\u03c3/p).",
+    "For diffuse carriers \u03c3=1, tracking support alone recovers only the cubic exponent. Since \u03c3\u2265\u03b4, this particular refinement cannot beat exponent 1/2 even in the best concentrated case.",
+    "The modal-constant construction at ambient d=101 disproves every uniform implication at trigger C d/p with global recovery c\u03b5.",
+    "Any proof that omits vertical-simple-root deletion permits branch switching at singular incidences, as witnessed by Z\u00b2\u2212X\u00b2.",
+    "Raw acceptance does not force concentrated good lines: \u03c3 may equal one even when \u03b5=d/p.",
+    "The current selected-line upper bound O(\u03c3p/\u03b4) can be a factor \u03b4^\u22122 above the elementary coverage lower bound \u03a9(\u03b4p)."
+  ],
+  "parameter_regime": "Dimension m=2; prime p; integer 101\u2264d<p; total-degree global polynomials and degree-at-most-d univariate line labels. The support-sensitive theorem uses an accepted carrier of edge mass \u03b4 and line support \u03c3 satisfying \u03b4\u00b3\u226510^15d\u03c3/p. The obstruction fixes the legal ambient cap d=101 and lets p range through sufficiently large primes.",
+  "proof_steps": [
+    {
+      "dependencies": [
+        "Uniform incidence normalization"
+      ],
+      "id": "P1",
+      "proof": "Iterative deletion removes at most p\u00b2k0 point-side edges and p(p+1)k0 line-side edges, hence normalized loss below \u03b4/50. The surviving graph has minimum degree k0, edge mass at least \u03b4/4, and line support at most \u03c3.",
+      "statement": "Prune an accepted carrier to minimum degree k0=floor(\u03b4p/100) without losing a power of \u03b4.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "Hoeffding inequality",
+        "Chebyshev inequality"
+      ],
+      "id": "P2",
+      "proof": "Independent selection at rate 8/k0 covers half the neighbors of every retained line except with union probability below 1/4. Chebyshev controls the selected size with failure below 1/4, yielding a deterministic R with 100(p+1)\u2264|R|\u22646400\u03c3p/\u03b4.",
+      "statement": "Construct a support-sensitive selected line set.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "KTZ Lemma 2.2"
+      ],
+      "id": "P3",
+      "proof": "With D=16(floor(sqrt(d|R|))+1), dim(V_D)\u2265D\u00b3/(64d)>|R|(D+1). The hypothesis bounds D by \u03b4p/10000, hence below p,k0/2,k1/2; minimal weighted degree gives a squarefree Z-dependent interpolant.",
+      "statement": "Interpolate the selected line graphs at weighted degree D=O(sqrt(d\u03c3p/\u03b4)).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "Coverage supplies more than D distinct roots on every retained line, forcing its graph identity. Factoring A=HB and excluding at most D lines where H vanishes identically transfers the identity to primitive B in F_p[t], without pointwise division.",
+      "statement": "Extend the interpolation identity and remove coefficient content safely.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4"
+      ],
+      "id": "P5",
+      "proof": "Every irreducible factor of primitive B depends on Z. Its Z-degree is positive and below p, so its derivative is nonzero and not divisible by that factor. Reduction modulo each distinct factor proves gcd(B,B_Z)=1.",
+      "statement": "A squarefree primitive polynomial of total degree below p is coprime to its vertical derivative.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P5",
+        "KTZ Lemma 2.6"
+      ],
+      "id": "P6",
+      "proof": "The content, resultant-degenerate, and bad-point deletions cost at most D/[p(p+1)]+D(D\u22121)/[p(p+1)]+D/p<\u03b4/16. Pruning at k1 costs below \u03b4/500 and leaves vertically simple roots and minimum degree k1.",
+      "statement": "Delete all degenerate roots with controlled loss.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P6",
+        "KTZ Lemma 2.7",
+        "KTZ Lemma 6.1"
+      ],
+      "id": "P7",
+      "proof": "Homogeneous Newton recursion divides only by B_Z(x,f(x)). More than D incident directions kill all lifted homogeneous terms of degrees d+1 through D. The degree-d truncation is an exact polynomial root and simple-root uniqueness propagates it through a component.",
+      "statement": "Lift and propagate one total-degree-at-most-d polynomial on every surviving component.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P6",
+        "P7",
+        "KTZ Lemma 2.1"
+      ],
+      "id": "P8",
+      "proof": "Minimum degree gives e\u2265\u03baa/2 and e\u2265\u03bab; incidence mixing gives e\u2264ab+p^\u22121/2 sqrt(ab). Since p^\u22121/2\u2264\u03ba/4, assuming either a or b below \u03ba/4 yields a contradiction. Thus component point density is at least \u03b4/8000.",
+      "statement": "Convert a component polynomial into global agreement \u03b4/8000.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3",
+        "P6",
+        "P7"
+      ],
+      "id": "P9",
+      "proof": "Substitution of |R|=O(\u03c3p/\u03b4) into D=\u0398(sqrt(d|R|)), followed by D=O(\u03b4p), is equivalent to \u03b4\u00b3=\u03a9(d\u03c3/p). The D\u00b2/p\u00b2 and p^\u22121/2 gates are weaker.",
+      "statement": "Identify the exact cubic exponent ledger.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P9"
+      ],
+      "id": "P10",
+      "proof": "Under \u03c3\u2264A\u03b4, the cubic relation reduces algebraically to \u03b4\u00b2=\u03a9(Ad/p). Because \u03c3\u2265\u03b4, the support parameter cannot improve this architecture past exponent 1/2.",
+      "statement": "Obtain exponent 1/2 under concentrated line support.",
+      "status": "conditional"
+    },
+    {
+      "dependencies": [
+        "Second-moment inequality"
+      ],
+      "id": "P11",
+      "proof": "For r=floor(log p/(4 log log p)), exact occupancy estimates give E[Y\u00b2]\u226465E[Y]\u00b2 for the number of symbols occurring exactly r times. Therefore a line's modal multiplicity has expectation at least r/65.",
+      "statement": "Lower-bound modal agreement on a random line.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P11",
+        "Factorial-moment union bound",
+        "McDiarmid inequality"
+      ],
+      "id": "P12",
+      "proof": "The maximum occupancy has expectation at most 25r. The global line-average modal agreement has pointwise Lipschitz constant 1/p\u00b2, giving probability at most exp(\u22121250r\u00b2) of exceeding 50r/p.",
+      "statement": "Upper-control the modal local agreement.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P11",
+        "P12",
+        "Chernoff inequality"
+      ],
+      "id": "P13",
+      "proof": "A fixed polynomial has Bin(p\u00b2,1/p) agreements. Union over p^5253 polynomials leaves failure at most exp(\u2212p/4). Intersecting this event with the modal bounds by an expectation argument yields a deterministic table with \u03b5\u2265r/(130p), \u03b5\u226450r/p, and global agreement below 2/p.",
+      "statement": "Construct the deterministic modal table and bound every global polynomial.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P13"
+      ],
+      "id": "P14",
+      "proof": "For any C,c>0, choose a sufficiently large prime with r\u2265max(130\u00b7101C,260/c). Then the modal table satisfies the premise \u03b5\u2265C\u00b7101/p but violates Agr_101(f)\u2265c\u03b5.",
+      "statement": "Universal exact-linear soundness at threshold C d/p with linear recovery.",
+      "status": "refuted"
+    },
+    {
+      "dependencies": [
+        "Newton interpolation"
+      ],
+      "id": "P15",
+      "proof": "A triangular Cartesian set of (d+1)(d+2)/2 points has an invertible total-degree Newton evaluation matrix. Interpolating f there supplies a degree-at-most-d polynomial agreeing on the entire set.",
+      "statement": "Every point table has global agreement at least (d+1)(d+2)/(2p\u00b2).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P16",
+      "proof": "For f=0, assign every line a degree-d polynomial with d distinct parameter roots. Then \u03b5=d/p and \u03c3=1, while Q=0 has agreement one.",
+      "statement": "Diffuse accepted support need not imply a soundness obstruction or \u03c3=O(\u03b5).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P17",
+      "proof": "A product of d+1 homogeneous linear forms produces d+1 exact direction classes, but Q=0 agrees on their union at \u0398(d/p), matching the local scale.",
+      "statement": "Concentrated good directions alone furnish a counterexample.",
+      "status": "refuted"
+    },
+    {
+      "dependencies": [],
+      "id": "P18",
+      "proof": "The squarefree polynomial Z\u00b2\u2212X\u00b2 has two branches meeting where B_Z=0, so an incidence at that point cannot determine which branch propagates.",
+      "statement": "Branch propagation remains valid without vertical simplicity.",
+      "status": "refuted"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P5"
+      ],
+      "id": "P19",
+      "proof": "Vanishing Z-derivative would require positive Z-exponents divisible by p, but every such exponent is excluded by weighted degree D<p.",
+      "statement": "Inseparability is an active obstruction in the audited interpolation range.",
+      "status": "refuted"
+    }
+  ],
+  "result_status": "proved",
+  "sampling_model": "Choose an affine line uniformly from the p(p+1) affine lines of F_p\u00b2, then choose a point uniformly among its p points. This is the uniform incidence distribution. Each line label is a univariate polynomial of degree at most d, and global candidates have total degree at most d.",
+  "theorem_statement": "For prime p, 101\u2264d<p, and any accepted carrier of edge mass \u03b4 supported on a \u03c3-fraction of affine lines, \u03b4\u00b3\u226510^15d\u03c3/p implies a total-degree-at-most-d polynomial with global agreement at least \u03b4/8000. Under \u03c3\u2264A\u03b4 this yields a conditional exponent-1/2 threshold. Moreover, for d=101 and all sufficiently large primes there are modal constant line labels with \u03b5=\u0398(log p/(p log log p)) but Agr_101(f)<2/p; consequently no uniform trigger C d/p can guarantee global agreement c\u03b5 for fixed positive C,c.",
+  "title": "The Bivariate Prime-Field Cubic Bottleneck: Support Sensitivity and a Modal Obstruction"
+}

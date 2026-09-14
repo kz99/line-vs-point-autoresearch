@@ -1,0 +1,186 @@
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [
+        "KTZ Lemma 2.1"
+      ],
+      "id": "researcher-0010:[P1].1",
+      "part": 1,
+      "proof_markdown": "Put $\\xi=|X|/p^2$, $\\rho=|E|/[p^2(p+1)]$, $\\alpha_0=u/(p+1)$, $\\beta_0=v/p$, and $\\lambda=(p+1)^{-1/2}$. Minimum degree and KTZ Lemma 2.1 give\n\n$$\n\\alpha_0\\xi\\le\\rho,\\qquad \\beta_0\\tau\\le\\rho,\\qquad \\rho\\le\\xi\\tau+\\lambda\\sqrt{\\xi\\tau}.\n$$\n\nIf $\\tau<\\alpha_0/4$, the first and third inequalities imply $\\xi<(16/9)\\lambda^2\\tau/\\alpha_0^2$. Substitution into the mixing bound and comparison with $\\beta_0\\tau\\le\\rho$ yield $\\alpha_0\\beta_0<2\\lambda^2$, equivalently $uv<2p$, contradicting $uv\\ge2^{60}dp$. The same calculation with the point and line sides interchanged gives $\\xi\\ge v/(4p)$. Therefore\n\n$$\n\\tau\\ge\\frac{u}{4(p+1)},\\qquad \\frac{|X|}{p^2}\\ge\\frac{v}{4p},\\qquad t=\\tau p(p+1)\\ge\\frac{up}{4}.\n$$\n\nFinally, the second gate and the lower bound on $\\tau$ imply\n\n$$\nw^2\\ge\\frac{2^{60}d\\tau p^2}{u}\\ge\\frac{2^{60}dp^2}{4(p+1)}\\ge2^{57}dp.\n$$",
+      "source_step_id": "[P1]",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, and let $G=(X,T,E)$ be a nonempty accepted point-line subgraph over $\\mathbb F_p^2$. Suppose every point of $X$ has degree at least $u$, every line of $T$ has degree at least $v$, $t=|T|$, $\\tau=t/[p(p+1)]$, and $w=\\min\\{u,v\\}$. If\n\n$$\nuv\\ge2^{60}dp\n\\quad\\text{and}\\quad\nuw^2\\ge2^{60}d\\tau p^2,\n$$\n\nthen\n\n$$\n\\tau\\ge\\frac{u}{4(p+1)},\\qquad\n\\frac{|X|}{p^2}\\ge\\frac{v}{4p},\\qquad\nw^2\\ge2^{57}dp.\n$$",
+      "status": "proved",
+      "title": "Asymmetric Mixing Bounds"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "Chernoff bounds"
+      ],
+      "id": "researcher-0010:[P2].1",
+      "part": 1,
+      "proof_markdown": "The first gate and $v\\le p$ imply $u>8$. Select each line of $T$ independently with probability $8/u$. For a target line $L$, call an accepted point $x\\in N_G(L)$ reached when some selected line $M\\ne L$ also satisfies $(x,M)\\in E$. Each such point has at least $u-1$ eligible lines, so its reach probability is greater than $3/4$.\n\nFor distinct points of $L$, the eligible line sets are disjoint: their unique common line is $L$, which is excluded. Thus the reach indicators along $L$ are independent, and a Chernoff bound gives failure probability at most $e^{-v/24}$ for that line. Since $v\\ge w\\ge\\sqrt{2^{57}dp}$, the union-bound loss over fewer than $2p^2$ target lines satisfies\n\n$$\n2p^2e^{-v/24}<\\frac14.\n$$\n\nThe expected sample size is $8t/u\\ge2p$. Its lower- and upper-tail probabilities for the interval $[4t/u,16t/u]$ are at most $e^{-p/4}$ and $e^{-2p/3}$, respectively. Hence a sample satisfying all requirements exists. The lower size bound and $t\\ge up/4$ also give $|R|\\ge p$.",
+      "source_step_id": "[P2]",
+      "statement_markdown": "Under the hypotheses of the asymmetric mixing bounds, there exists $R\\subseteq T$ such that\n\n$$\n\\frac{4t}{u}\\le |R|\\le\\frac{16t}{u}\n\\quad\\text{and}\\quad\n|R|\\ge p,\n$$\n\nand, for every $L\\in T$, more than half of the points $x\\in N_G(L)$ are incident to a line $M\\in R\\setminus\\{L\\}$ with $(x,M)\\in E$.",
+      "status": "proved",
+      "title": "Line Selector"
+    },
+    {
+      "dependencies": [
+        "[P2]",
+        "KTZ Lemmas 2.2, 2.3, and 2.5"
+      ],
+      "id": "researcher-0010:[P3].1",
+      "part": 1,
+      "proof_markdown": "Write $r=|R|$. The definition of $D$ gives $D^2>256dr$ and\n\n$$\nD^2\\le1024dr\n\\le2^{14}\\frac{dt}{u}\n\\le2^{15}\\frac{d\\tau p^2}{u}\n\\le2^{-45}w^2.\n$$\n\nConsequently, $D<w/5000$, $D<p$, and $r\\ge p>D$. KTZ Lemma 2.2 gives\n\n$$\n\\dim V_D\\ge\\frac{D^3}{64d}>r(D+1).\n$$\n\nEach formal identity on a selected line imposes at most $D+1$ homogeneous linear conditions, so a nonzero candidate in $V_D$ exists. If such a candidate were $Z$-independent, KTZ Lemma 2.5 and $r>D$ would force it to vanish identically. Its eligible positive $Z$-exponents are not divisible by $p$, so its formal $Z$-derivative is nonzero.\n\nLet\n\n$$\nS_R=\\bigcup_{L\\in R}\\{(x,P_L(x)):x\\in L\\},\n$$\n\nand choose a nonzero polynomial $A$ of minimum weighted degree among the polynomials vanishing on $S_R$ with $A_Z\\not\\equiv0$. KTZ Lemma 2.3 makes $A$ squarefree. Its weighted degree is at most $D<p$, so pointwise vanishing at all $p$ parameters of a selected line implies a formal identity. Thus the squarefree minimization does not lose any selected-line identity.",
+      "source_step_id": "[P3]",
+      "statement_markdown": "Let $R$ be a selector from the preceding entry, put $r=|R|$, and define\n\n$$\nD=16\\bigl(\\lfloor\\sqrt{dr}\\rfloor+1\\bigr).\n$$\n\nThere exists a nonzero squarefree, $Z$-dependent polynomial $A\\in\\mathbb F_p[X,Y,Z]$ of weighted degree at most $D$ such that\n\n$$\nA_Z\\not\\equiv0,\n\\qquad\nA(L(t),P_L(t))\\equiv0\n$$\n\nfor every $L\\in R$, and\n\n$$\nD<\\frac{\\min\\{u,v\\}}{5000}<p.\n$$",
+      "status": "proved",
+      "title": "Squarefree Explainer"
+    },
+    {
+      "dependencies": [
+        "[P2]",
+        "[P3]"
+      ],
+      "id": "researcher-0010:[P4].1",
+      "part": 1,
+      "proof_markdown": "Fix $L\\in T$. More than half of its accepted points are reached through selected lines distinct from $L$, so there are more than $v/2>D$ such points. At every reached point $x$, some $M\\in R\\setminus\\{L\\}$ satisfies\n\n$$\nP_L(x)=f(x)=P_M(x).\n$$\n\nThe selected-line identity gives $A(x,P_M(x))=0$, and hence $A(x,P_L(x))=0$. The restriction $A(L(t),P_L(t))$ has degree at most $D$ and more than $D$ distinct roots, so it vanishes identically. This uses only multiplicity-one roots; no Markov or multiplicity loss occurs.",
+      "source_step_id": "[P4]",
+      "statement_markdown": "Let $A$ and $D$ be as in the squarefree explainer entry, and let $R$ satisfy the selector property. Then\n\n$$\nA(L(t),P_L(t))\\equiv0\n$$\n\nfor every $L\\in T$.",
+      "status": "proved",
+      "title": "Identity Extension"
+    },
+    {
+      "dependencies": [
+        "[P4]",
+        "KTZ Lemma 2.6"
+      ],
+      "id": "researcher-0010:[P5].1",
+      "part": 1,
+      "proof_markdown": "Write $A=HB$, where $H(X,Y)$ is the greatest common divisor of the $Z$-coefficients of $A$. At most $D$ affine lines are contained in $H=0$. On every other line $L$, the identity for $A$ and division in the integral domain $\\mathbb F_p[t]$ give\n\n$$\nB(L(t),P_L(t))\\equiv0.\n$$\n\nThe polynomial $B$ is squarefree, $Z$-primitive, $Z$-dependent, and has weighted degree at most $D<p$.\n\nTo prove $\\gcd(B,B_Z)=1$, suppose an irreducible polynomial $C$ divides both. Write $B=CE$. Squarefreeness gives $C\\nmid E$, while reducing\n\n$$\nB_Z=C_ZE+CE_Z\n$$\n\nmodulo $C$ gives $C\\mid C_Z$. Hence $C_Z=0$. Because $\\deg_Z C<p$, this makes $C$ independent of $Z$, contradicting the $Z$-primitivity of $B$.\n\nKTZ Lemma 2.6 therefore bounds by $D(D-1)$ the lines on whose polynomial graphs both $B$ and $B_Z$ vanish formally. On every other noncontent line, $B_Z(L(t),P_L(t))$ is a nonzero polynomial of degree at most $D$, and hence has at most $D$ accepted roots. Deleting all edges on the at most $D$ content lines and the at most $D(D-1)$ resultant-degenerate lines costs at most $pD^2$ edges; deleting the derivative-zero accepted points costs at most $Dt$ more. No discriminant or derivative is divided by.",
+      "source_step_id": "[P5]",
+      "statement_markdown": "Let $A$ be the squarefree explainer whose identity holds on every line of $T$, and write $A=HB$, where $H\\in\\mathbb F_p[X,Y]$ is the greatest common divisor of the $Z$-coefficients of $A$. Then $B$ is squarefree, $Z$-primitive, $Z$-dependent, has weighted degree at most $D<p$, and satisfies\n\n$$\n\\gcd(B,B_Z)=1.\n$$\n\nAfter deleting at most\n\n$$\npD^2+Dt\n$$\n\naccepted edges, every retained edge $(x,L)$ satisfies\n\n$$\nB(L(t),P_L(t))\\equiv0,\n\\qquad\nB(x,f(x))=0,\n\\qquad\nB_Z(x,f(x))\\ne0.\n$$",
+      "status": "proved",
+      "title": "Simple-Root Cleanup"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "[P3]",
+        "[P5]"
+      ],
+      "id": "researcher-0010:[P6].1",
+      "part": 1,
+      "proof_markdown": "Since $|E|\\ge vt$, the exceptional fraction is at most\n\n$$\n\\frac{pD^2+Dt}{|E|}\n\\le\\frac{D}{v}+\\frac{pD^2}{vt}\n\\le\\frac{D}{v}+\\frac{2^{14}dp}{uv}\n<\\frac1{4000}.\n$$\n\nAfter removing these exceptional edges, iteratively delete point vertices of current degree below $u_1$ and line vertices of current degree below $v_1$. The total peeling cost is less than\n\n$$\nu_1|X|+v_1|T|\n\\le\\frac{u|X|}{100}+\\frac{v|T|}{100}\n\\le\\frac{|E|}{50}.\n$$\n\nTogether with the exceptional-edge bound, this leaves at least one edge. The numerical hypotheses and $D<w/5000$ give\n\n$$\nu_1\\ge\\frac{u}{200},\n\\qquad\nv_1\\ge\\frac{v}{200},\n\\qquad\nu_1>D,\n\\qquad\nv_1>D.\n$$",
+      "source_step_id": "[P6]",
+      "statement_markdown": "Under the hypotheses of the asymmetric mixing bounds, remove the exceptional edges from the simple-root cleanup and set\n\n$$\nu_1=\\left\\lfloor\\frac{u}{100}\\right\\rfloor,\n\\qquad\nv_1=\\left\\lfloor\\frac{v}{100}\\right\\rfloor.\n$$\n\nIteratively deleting points of current degree below $u_1$ and lines of current degree below $v_1$ leaves a nonempty subgraph in which every retained edge is a simple root of $B$, the point minimum degree is at least $u_1$, and the line minimum degree is at least $v_1$. Moreover,\n\n$$\nu_1\\ge\\frac{u}{200},\n\\qquad\nv_1\\ge\\frac{v}{200},\n\\qquad\nu_1,v_1>D.\n$$",
+      "status": "proved",
+      "title": "Asymmetric Pruning"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "[P6]",
+        "KTZ Lemmas 6.1 and 6.3"
+      ],
+      "id": "researcher-0010:[P7].1",
+      "part": 1,
+      "proof_markdown": "Every surviving point is incident to an identity line and therefore satisfies $B(x,f(x))=0$. Every retained edge also certifies $B_Z(x,f(x))\\ne0$. At a point in any surviving connected component, more than $D$ incident line roots satisfy the hypotheses of KTZ Lemma 6.1. That lemma produces a polynomial $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ with\n\n$$\nB(X,Y,Q(X,Y))\\equiv0.\n$$\n\nThe one-variable simple-root uniqueness used in KTZ Lemma 6.3 propagates the same $Q$ through the entire component, so $Q(x)=f(x)$ at every point of that component.\n\nFurthermore,\n\n$$\nu_1v_1\\ge\\frac{uv}{40000}>2p.\n$$\n\nApplying the asymmetric mixing calculation to the component gives point density at least\n\n$$\n\\frac{v_1}{4p}\\ge\\frac{v}{800p}.\n$$\n\nThus $Q$ has the required global agreement. There is no list-size or factor-count loss.",
+      "source_step_id": "[P7]",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, and let $G=(X,T,E)$ be a nonempty accepted subgraph with point minimum degree $u$, line minimum degree $v$, line measure $\\tau=|T|/[p(p+1)]$, and $w=\\min\\{u,v\\}$. If\n\n$$\nuv\\ge2^{60}dp\n\\quad\\text{and}\\quad\nuw^2\\ge2^{60}d\\tau p^2,\n$$\n\nthen there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]\\ge\\frac{v}{800p}.\n$$",
+      "status": "proved",
+      "title": "Component Recovery"
+    },
+    {
+      "dependencies": [
+        "[P7]"
+      ],
+      "id": "researcher-0010:[P8].1",
+      "part": 1,
+      "proof_markdown": "Let $\\delta_*=\\delta_{u_*}\\ge\\epsilon/2$ and retain all accepted edges incident to points of accepted degree at least $u_*$. Their number is\n\n$$\nE_*=\\delta_*p^2(p+1).\n$$\n\nPeel point degrees below $U=\\lfloor u_*/2\\rfloor$ and line degrees below $V=\\lfloor\\delta_*p/4\\rfloor$. Point deletions cost at most $E_*/2$, while line deletions cost at most\n\n$$\nVp(p+1)\\le\\frac{E_*}{4}.\n$$\n\nA nonempty core remains. The hypothesis $u_*\\epsilon^2\\ge2^{70}d$, together with the floor bounds, gives\n\n$$\nU\\ge\\frac{u_*}{3},\n\\qquad\nV\\ge\\frac{\\delta_*p}{8}\\ge\\frac{\\epsilon p}{16},\n\\qquad\n\\min\\{U,V\\}\\ge\\frac{\\epsilon p}{16}.\n$$\n\nFor every connected component of line measure $\\tau_C\\le1$,\n\n$$\nUV\\ge\\frac{u_*\\epsilon p}{48}>2^{60}dp\n$$\n\nand\n\n$$\nU\\min\\{U,V\\}^2\n\\ge\\frac{u_*\\epsilon^2p^2}{768}\n>2^{60}d\\tau_Cp^2.\n$$\n\nThe component recovery lemma therefore gives agreement at least\n\n$$\n\\frac{V}{800p}\\ge\\frac{\\epsilon}{12800}.\n$$\n\nIf $u_*\\ge\\kappa\\epsilon^ap$, then $u_*\\epsilon^2\\ge2^{70}d$ follows from $\\kappa\\epsilon^{a+2}p\\ge2^{70}d$, which is equivalent to the stated threshold. The universal estimate $u_*\\ge\\epsilon(p+1)/2$ recovers the exponent $1/3$.",
+      "source_step_id": "[P8]",
+      "statement_markdown": "Let the full accepted graph have normalized edge mass $\\epsilon>0$, let $a_x$ be the accepted degree of $x$, and define\n\n$$\n\\delta_j=\\frac{1}{p^2(p+1)}\\sum_{x:a_x\\ge j}a_x,\n\\qquad\nu_*=\\max\\{j\\in\\{1,\\ldots,p+1\\}:\\delta_j\\ge\\epsilon/2\\}.\n$$\n\nIf\n\n$$\nu_*\\epsilon^2\\ge2^{70}d,\n$$\n\nthen there exists a polynomial $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfying\n\n$$\n\\operatorname{agr}(f,Q)\\ge\\frac{\\epsilon}{12800}.\n$$\n\nIf additionally $0\\le a\\le1$, $0<\\kappa\\le1$, and $u_*\\ge\\kappa\\epsilon^ap$, the same conclusion holds whenever\n\n$$\n\\epsilon\\ge\n\\left(\\frac{2^{70}}{\\kappa}\\right)^{1/(a+2)}\n\\left(\\frac{d}{p}\\right)^{1/(a+2)}.\n$$",
+      "status": "conditional",
+      "title": "Popularity-Tail Translation"
+    },
+    {
+      "dependencies": [
+        "KTZ Lemma 2.1",
+        "Cauchy-Schwarz"
+      ],
+      "id": "researcher-0010:[P9].1",
+      "part": 1,
+      "proof_markdown": "Put\n\n$$\nS_j=\\{x\\in\\mathbb F_p^2:Q_j(x)=f(x)\\},\n\\qquad\n\\alpha_j=\\frac{|S_j|}{p^2}.\n$$\n\nFor $L\\in T_j$, the carried accepted edges are exactly the incidences between $S_j$ and $T_j$. Applying KTZ Lemma 2.1 to each pair and summing gives\n\n$$\n\\delta\\le\\sum_{j=1}^R\\alpha_j\\tau_j+\n\\frac1{\\sqrt{p+1}}\\sum_{j=1}^R\\sqrt{\\alpha_j\\tau_j}.\n$$\n\nThe first sum is at most $\\alpha\\tau$. Cauchy--Schwarz bounds the second sum by $\\sqrt{R\\alpha\\tau}$, proving\n\n$$\n\\delta\\le\\alpha\\tau+\n\\sqrt{\\frac{R\\alpha\\tau}{p+1}}.\n$$\n\nIf $R\\le\\delta(p+1)$ and $\\alpha<\\delta/4$, then, using $\\tau\\le1$, the two terms on the right are respectively below $\\delta/4$ and $\\delta/2$, contradicting the displayed inequality.",
+      "source_step_id": "[P9]",
+      "statement_markdown": "Let $T_1,\\ldots,T_R$ be disjoint affine-line families, and let $Q_1,\\ldots,Q_R\\in\\mathbb F_p[X,Y]$ have total degree at most $d$. Suppose\n\n$$\nP_L=Q_j|_L\n$$\n\nfor every $L\\in T_j$. Define\n\n$$\n\\tau_j=\\frac{|T_j|}{p(p+1)},\n\\qquad\n\\tau=\\sum_{j=1}^R\\tau_j,\n\\qquad\n\\alpha=\\max_{1\\le j\\le R}\\operatorname{agr}(f,Q_j),\n$$\n\nand let $\\delta>0$ be the normalized accepted-incidence mass carried by $\\bigcup_jT_j$. Then\n\n$$\n\\delta\\le\\alpha\\tau+\n\\sqrt{\\frac{R\\alpha\\tau}{p+1}}.\n$$\n\nIf $R\\le\\delta(p+1)$, then $\\alpha\\ge\\delta/4$.",
+      "status": "proved",
+      "title": "Template Popularity"
+    },
+    {
+      "dependencies": [
+        "[P9]"
+      ],
+      "id": "researcher-0010:[P10].1",
+      "part": 1,
+      "proof_markdown": "Group the lines by their constant label $a$. The corresponding point sets\n\n$$\nS_a=\\{x\\in\\mathbb F_p^2:f(x)=a\\}\n$$\n\nare disjoint, so $\\sum_a|S_a|/p^2=1$. Applying affine mixing to each group and then Cauchy--Schwarz gives\n\n$$\n\\delta\\le\\mu\\tau+\n\\sqrt{\\frac{\\tau}{p+1}}.\n$$\n\nIf $\\delta\\ge2\\sqrt{\\tau/(p+1)}$, the error term is at most $\\delta/2$, and therefore\n\n$$\n\\mu\\ge\\frac{\\delta}{2\\tau}\\ge\\frac{\\delta}{2}.\n$$\n\nIf the constant-labelled lines carry at least a $\\theta$ fraction of total agreement, then $\\delta\\ge\\theta\\epsilon$. Under $\\epsilon\\ge2/[\\theta\\sqrt{p+1}]$, one has $\\delta\\ge2\\sqrt{\\tau/(p+1)}$, so a constant polynomial agrees with $f$ on at least $\\theta\\epsilon/2$ of all points.",
+      "source_step_id": "[P10]",
+      "statement_markdown": "Let $T$ be a family of constant-labelled affine lines, let\n\n$$\n\\tau=\\frac{|T|}{p(p+1)},\n$$\n\nlet $\\delta>0$ be its normalized accepted-incidence mass, and put\n\n$$\n\\mu=\\max_{a\\in\\mathbb F_p}\\Pr_x[f(x)=a].\n$$\n\nThen\n\n$$\n\\delta\\le\\mu\\tau+\n\\sqrt{\\frac{\\tau}{p+1}}.\n$$\n\nIf $\\delta\\ge2\\sqrt{\\tau/(p+1)}$, then\n\n$$\n\\mu\\ge\\frac{\\delta}{2\\tau}\\ge\\frac{\\delta}{2}.\n$$\n\nIf these lines carry at least a $\\theta$ fraction of total agreement and\n\n$$\n\\epsilon\\ge\\frac{2}{\\theta\\sqrt{p+1}},\n$$\n\nthen some constant polynomial has agreement at least $\\theta\\epsilon/2$.",
+      "status": "proved",
+      "title": "Constant-Label Decoding"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0010:[P11].1",
+      "part": 1,
+      "proof_markdown": "Condition on a point $x$ of accepted degree $a_x$ and sample $s$ ordered distinct incident lines. The conditional probability that all sampled lines accept is $(a_x)_s/(p+1)_s$. Averaging over $x$ gives the exact identity.\n\nThe integer sequence $(n)_s$ is discretely convex. Among degree distributions with mean $\\mu=k+\\theta$, convexity minimizes the average of $(a_x)_s$ by placing mass $1-\\theta$ at $k$ and mass $\\theta$ at $k+1$. This yields the stated sharp degree-only lower bound.\n\nFor $s=2$,\n\n$$\n\\mathbb E_x[(a_x)_2]\n=\\operatorname{Var}_x(a_x)+\\mu^2-\\mu.\n$$\n\nSubstituting $\\mu=\\epsilon(p+1)$ and dividing by $p(p+1)$ gives the variance identity.",
+      "source_step_id": "[P11]",
+      "statement_markdown": "Let $a_x$ be the accepted degree of $x$ in a deterministic table over $\\mathbb F_p^2$. For $2\\le s\\le p+1$, let $\\Gamma_s$ be the probability that $s$ ordered distinct uniformly sampled lines through a uniformly sampled point all accept there, and write\n\n$$\n(n)_s=n(n-1)\\cdots(n-s+1).\n$$\n\nThen\n\n$$\n\\Gamma_s=\\frac{1}{p^2(p+1)_s}\\sum_x(a_x)_s.\n$$\n\nIf\n\n$$\n\\mu=\\epsilon(p+1)=k+\\theta,\n\\qquad\nk=\\lfloor\\mu\\rfloor,\n\\qquad\n0\\le\\theta<1,\n$$\n\nthen\n\n$$\n\\Gamma_s\\ge\n\\frac{(1-\\theta)(k)_s+\\theta(k+1)_s}{(p+1)_s}.\n$$\n\nFor $s=2$,\n\n$$\n\\Gamma_2=\\epsilon^2-\n\\frac{\\epsilon(1-\\epsilon)}{p}+\n\\frac{\\operatorname{Var}_x(a_x)}{p(p+1)}.\n$$",
+      "status": "proved",
+      "title": "Star-Moment Identities"
+    },
+    {
+      "dependencies": [
+        "Second-moment inequality",
+        "McDiarmid inequality"
+      ],
+      "id": "researcher-0010:[P12].1",
+      "part": 1,
+      "proof_markdown": "Let $M$ be the maximum occupancy when $p$ balls are thrown independently into $p$ bins, and let $Y$ count bins of occupancy exactly $r$. The size assumptions give\n\n$$\n\\mathbb E[Y]\\ge\\frac{p}{8r!}\\ge1,\n\\qquad\n\\mathbb E[Y^2]\\le\\mathbb E[Y]+\n\\frac{p^2}{(r!)^2}\n\\le65\\mathbb E[Y]^2.\n$$\n\nThe second-moment inequality yields $\\Pr[M\\ge r]\\ge1/65$, and hence $q\\ge r/(65p)$. Conversely, $\\Pr[M\\ge s]\\le p/s!$. Summing this bound and using $2p/(u_0+1)!\\le1$ gives\n\n$$\n\\mathbb E[M]\\le u_0+1\\le17r,\n$$\n\nso $q\\le17r/p$.\n\nChanging one point value affects the maxima on only its $p+1$ incident lines and changes $\\epsilon$ by at most $1/p^2$. McDiarmid's inequality therefore gives\n\n$$\n\\Pr\\left[|\\epsilon-q|>\\frac q2\\right]\n\\le2\\exp\\left(-\\frac{q^2p^2}{2}\\right)\n\\le2\\exp\\left(-\\frac{r^2}{8450}\\right)\n\\le\\frac14.\n$$\n\nSymmetric independent tie-breaking is part of the construction; arbitrary deterministic tie-breaking need not yield the later star-moment identity.",
+      "source_step_id": "[P12]",
+      "statement_markdown": "Let $p$ be prime and set\n\n$$\nr=\\left\\lfloor\\frac{\\log p}{4\\log\\log p}\\right\\rfloor,\n\\qquad\nu_0=\\left\\lceil\\frac{4\\log p}{\\log\\log p}\\right\\rceil.\n$$\n\nAssume\n\n$$\nr\\ge133,\n\\qquad\nr^2\\le p,\n\\qquad\np\\ge8r!,\n\\qquad\nu_0+1\\le17r,\n\\qquad\n\\frac{2p}{(u_0+1)!}\\le1.\n$$\n\nChoose the values $f(x)$ independently and uniformly from $\\mathbb F_p$. On each affine line, choose a modal value uniformly using an independent tie-breaking coin and use it as the constant line polynomial. If $M$ is the maximum occupancy of $p$ independent uniform samples from $\\mathbb F_p$, $\\epsilon$ is the realized local agreement, and\n\n$$\nq=\\frac{\\mathbb E[M]}p=\\mathbb E[\\epsilon],\n$$\n\nthen\n\n$$\n\\frac{r}{65p}\\le q\\le\\frac{17r}{p}\n$$\n\nand\n\n$$\n\\Pr\\left[\\frac q2\\le\\epsilon\\le\\frac{3q}{2}\\right]\\ge\\frac34.\n$$",
+      "status": "proved",
+      "title": "Modal Occupancy Concentration"
+    },
+    {
+      "dependencies": [
+        "[P12]",
+        "Chernoff bound",
+        "Markov inequality"
+      ],
+      "id": "researcher-0010:[P13].1",
+      "part": 1,
+      "proof_markdown": "Fix a point $x$ and condition on $f(x)$. The punctured lines through $x$ partition all other points. Their point values and independent tie-breaking coins are therefore independent. Label symmetry and double counting the modal positions show that each incident line accepts $x$ with probability exactly $q$. Thus $a_x$ is conditionally binomial, and the exact star identity gives\n\n$$\n\\mathbb E[\\Gamma_s]=q^s.\n$$\n\nFor each $2\\le s\\le S$, Markov's inequality at threshold $4(S-1)q^s$ has failure probability at most $1/[4(S-1)]$. A union bound over these values of $s$ costs at most $1/4$. On the event $\\epsilon\\ge q/2$, this gives\n\n$$\n\\Gamma_s\\le2^{s+2}(S-1)\\epsilon^s.\n$$\n\nFor each fixed polynomial $Q$ of total degree at most $101$, its agreement count with the random point table has distribution $\\operatorname{Bin}(p^2,1/p)$. A Chernoff bound gives\n\n$$\n\\Pr[\\operatorname{agr}(f,Q)\\ge2/p]\\le(e/4)^p.\n$$\n\nThere are at most $p^{5253}$ candidates because\n\n$$\n\\frac{(101+1)(101+2)}2=5253.\n$$\n\nThus the global-polynomial union-bound loss is at most $p^{5253}(e/4)^p\\le1/8$. The probability that any line has modal occupancy at least $v_0$ is at most $2p^3/v_0!\\le1/8$.\n\nTogether with the concentration and star-moment losses, the four bad-event probabilities sum to at most $3/4$. A deterministic realization therefore exists after freezing both the point values and the tie-breaking coins. On the concentration event,\n\n$$\n\\frac{r}{130p}\\le\\epsilon\\le\\frac{3\\cdot17r}{2p}\\le\\frac{26r}{p}.\n$$\n\nEvery line has a nonempty modal class, and the line-maximum event ensures that it contains fewer than $v_0$ accepted points.",
+      "source_step_id": "[P13]",
+      "statement_markdown": "Fix $S\\ge2$. Let $p$ be prime and set\n\n$$\nr=\\left\\lfloor\\frac{\\log p}{4\\log\\log p}\\right\\rfloor,\n\\qquad\nu_0=\\left\\lceil\\frac{4\\log p}{\\log\\log p}\\right\\rceil,\n\\qquad\nv_0=\\left\\lceil\\frac{8\\log p}{\\log\\log p}\\right\\rceil.\n$$\n\nAssume\n\n$$\nr\\ge133,\n\\quad r^2\\le p,\n\\quad p\\ge8r!,\n\\quad u_0+1\\le17r,\n\\quad v_0\\le33r,\n$$\n\n$$\n\\frac{2p}{(u_0+1)!}\\le1,\n\\quad\n\\frac{2p^3}{v_0!}\\le\\frac18,\n\\quad\np^{5253}(e/4)^p\\le\\frac18,\n\\quad\nS\\le p+1.\n$$\n\nAt ambient degree $d=101$, there exists a deterministic table with constant line polynomials such that\n\n$$\n\\frac{r}{130p}\\le\\epsilon\\le\\frac{26r}{p},\n$$\n\n$$\n\\max_{\\substack{Q\\in\\mathbb F_p[X,Y]\\\\ \\deg Q\\le101}}\n\\operatorname{agr}(f,Q)<\\frac2p,\n$$\n\nand, for every $2\\le s\\le S$,\n\n$$\n\\Gamma_s\\le2^{s+2}(S-1)\\epsilon^s.\n$$\n\nEvery affine line has at least one and fewer than $v_0$ accepted points.",
+      "status": "proved",
+      "title": "Modal Table Realization"
+    },
+    {
+      "dependencies": [
+        "[P13]"
+      ],
+      "id": "researcher-0010:[P14].1",
+      "part": 1,
+      "proof_markdown": "Apply the modal realization with a fixed $S\\ge s$. Its global-to-local agreement ratio satisfies\n\n$$\n\\frac{\n\\max_{\\deg Q\\le101}\\operatorname{agr}(f,Q)\n}{\\epsilon}\n<\\frac{2/p}{r/(130p)}\n=\\frac{260}{r}\n\\longrightarrow0.\n$$\n\nHence the antecedent holds for every fixed $c_0>0$ once $p$ is sufficiently large. On the other hand,\n\n$$\n\\frac{\\Gamma_s}{\\epsilon^{s-\\gamma}}\n\\le2^{s+2}(S-1)\\epsilon^\\gamma\n\\longrightarrow0,\n$$\n\nbecause $\\epsilon\\le26r/p\\to0$. Thus the conclusion fails for every fixed $c_1>0$.\n\nThese counterexamples lie below every fixed target-range trigger. For each fixed $\\eta>0$,\n\n$$\n\\frac{\\epsilon}{(101/p)^{1-\\eta}}\n=O_\\eta\\left(\\frac{r}{p^\\eta}\\right)\n\\longrightarrow0.\n$$\n\nAccordingly, the counterexample does not refute an energy statement whose hypotheses are restricted to that target range.",
+      "source_step_id": "[P14]",
+      "statement_markdown": "Fix an integer $s\\ge2$, a real number $\\gamma>0$, and constants $c_0,c_1>0$. Let a deterministic line-versus-point table over $\\mathbb F_p^2$ have ambient degree at most $101$ and local agreement $\\epsilon>0$. If\n\n$$\n\\max_{\\substack{Q\\in\\mathbb F_p[X,Y]\\\\ \\deg Q\\le101}}\n\\operatorname{agr}(f,Q)\n\\le c_0\\epsilon,\n$$\n\nthen\n\n$$\n\\Gamma_s\\ge c_1\\epsilon^{s-\\gamma}.\n$$",
+      "status": "refuted",
+      "title": "Scale-Free Star-Energy Implication"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0010",
+  "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605"
+}

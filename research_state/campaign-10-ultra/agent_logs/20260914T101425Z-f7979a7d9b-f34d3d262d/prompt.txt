@@ -1,0 +1,755 @@
+You are an independent hostile mathematical verifier. Audit submission
+researcher-0010 line by line. You did not author it. Recompute every exponent and check every
+quantifier, field hypothesis, sampling convention, literature dependency, and proof-step edge.
+Accept only the exact claim whose SHA-256 is f799a1079b0622fd32972b086fa6805a732653bb3b6e23bd77e43c9526840e2a; never silently weaken it.
+
+The campaign theorem is restricted to integer 100 < d < p. Do not raise, investigate, or score
+edge cases with d <= 100, including d=0. Verify that the submitted claim covers 100 < d < p;
+behavior outside that regime is irrelevant to the verdict.
+
+An accept requires complete coverage; a correct exponent ledger; valid handling of every prime
+characteristic in the claimed parameter regime; a proved conversion to the stated
+single-polynomial global conclusion; no required changes; and no fatal obstruction. Use reject
+with unfixable=true only for a concrete counterexample or false theorem. Use revise for repairable
+gaps. Explicitly compare the claimed exponent with 1/3, remembering that d/p<1. Reject or request
+revision if the mathematical advance
+depends on m other than 2, a non-prime field, or dimension bootstrapping: those are outside this
+campaign. Set dimension_verified and field_regime_verified true only after checking those exact
+restrictions in every theorem and lemma. Run finite sanity checks only to find errors, never to
+certify asymptotic quantifiers.
+
+SUBMISSION MANIFEST:
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "All positive results fix m=2 over the prime field F_p with integer 100<d<p.",
+    "The explainer degree satisfies D<p. Hence pointwise vanishing of a restricted polynomial of degree at most D on all p parameters implies a formal identity.",
+    "Eligible interpolation monomials have positive Z-exponent not divisible by p, so a Z-dependent interpolant has nonzero formal Z-derivative.",
+    "After removing Z-content, the squarefree Z-primitive polynomial B satisfies gcd(B,B_Z)=1: an irreducible common factor would have zero Z-derivative; because deg_Z B<p, it would be Z-independent, contradicting primitivity.",
+    "No discriminant is divided by. KTZ Lemma 2.6 bounds degenerate graph lines using a resultant of the coprime pair B,B_Z.",
+    "Newton lifting divides only by the certified nonzero scalar B_Z(b,f(b)). No derivative division occurs before that point.",
+    "All interpolation is multiplicity one. Each formal line identity imposes at most D+1 coefficient constraints; no Hasse-derivative or hidden multiplicity assumption is used.",
+    "Inseparable aliases such as t^p-t require line degree at least p and are excluded by d<p."
+  ],
+  "claim_scope": "combinatorial_lemma",
+  "claimed_exponent": "Conditional exponent 1/(a+2) if the accepted-edge popularity tail satisfies u_* >= kappa epsilon^a p; this ranges from the known 1/3 at a=1 to 1/2 at a=0. No unconditional exponent improvement is claimed.",
+  "counterexample_attempts": [
+    "A modal-constant construction at the legal ambient degree d=101 gives epsilon=Theta(log p/(p log log p)), global degree-101 agreement below 2/p, and Gamma_s=O_S(epsilon^s) for every fixed s<=S. It refutes scale-free bounded-order star-energy increment lemmas but lies below every fixed target trigger (101/p)^(1-eta).",
+    "The active-corpus regular carrier at epsilon=d/p has full line support, nearly constant point and line degrees, pair energy Theta(epsilon^2), and cover cost Theta(p/epsilon), yet Q=0 is a perfect decoder. Thus support size, regularity, pair energy, and universal covering cost cannot alone distinguish hard from easy tables.",
+    "Concentrating acceptance in k directions gives epsilon=k/(p+1) and Gamma_s=(k)_s/(p+1)_s, while a planted polynomial can agree everywhere. Direction concentration is therefore not itself an obstruction or a useful energy surplus.",
+    "Random point and line labels have agreement around 1/p, outside the target range; the modal refinement raises this only to p^(-1+o(1)) and still remains below every fixed-eta target trigger.",
+    "At d near p, a triangular information set already forces agreement at least (d+1)(d+2)/(2p^2) with some total-degree-d polynomial, so near-p parameters do not supply an adversarial obstruction."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "KTZ sparsifier |R|=O(p/epsilon)",
+      "justification": "KTZ Lemmas 3.2 and 4.1; the exponent calculation is reconstructed here rather than quoted as a separate theorem.",
+      "loss": "D=O(sqrt(dp/epsilon)); requiring D=O(epsilon p)",
+      "output_scale": "epsilon^3=Omega(d/p), exponent 1/3",
+      "stage": "KTZ benchmark reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "t=tau p(p+1), point minimum degree u",
+      "justification": "Independent line sampling at rate 8/u, Chernoff, and a union bound over fewer than 2p^2 lines.",
+      "loss": "Only absolute constants; 4t/u <= r <= 16t/u",
+      "output_scale": "r=Theta(tau p^2/u)",
+      "stage": "Asymmetric selector",
+      "status": "proved"
+    },
+    {
+      "input_scale": "r selected line graphs",
+      "justification": "dim V_D >= D^3/(64d) and r(D+1) homogeneous constraints.",
+      "loss": "D=16(floor(sqrt(dr))+1)",
+      "output_scale": "D=O(sqrt(d tau p^2/u))",
+      "stage": "Weighted interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(d tau p^2/u)) and root supply min(u,v)",
+      "justification": "Formal identity extension needs D<v; Newton lifting needs D<u.",
+      "loss": "Both sides are controlled by w=min(u,v).",
+      "output_scale": "u w^2=Omega(d tau p^2)",
+      "stage": "Identity and lifting gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "At most pD^2+Dt exceptional accepted edges",
+      "justification": "At most D content lines, D(D-1) resultant-degenerate lines, and D derivative roots on every other line.",
+      "loss": "Relative loss at most D/v+2^14 dp/(uv).",
+      "output_scale": "Requires uv=Omega(dp), in addition to D<v.",
+      "stage": "Prime-field simple-root cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Surviving minimum degrees u/100 and v/100",
+      "justification": "Asymmetric affine incidence mixing on a surviving connected component.",
+      "loss": "Constant factor 800.",
+      "output_scale": "One Q has global agreement at least v/(800p).",
+      "stage": "Recovery",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Popularity tail mass delta_*>=epsilon/2 and threshold u_*",
+      "justification": "Pruning gives point minimum U>=u_*/3 and line minimum V>=epsilon p/16.",
+      "loss": "Substitution into the component gates.",
+      "output_scale": "u_* epsilon^2>=2^70 d implies agreement at least epsilon/12800.",
+      "stage": "Popularity-tail corollary",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "u_*>=kappa epsilon^a p, 0<=a<=1",
+      "justification": "Then u_*epsilon^2>=kappa epsilon^(a+2)p.",
+      "loss": "Threshold constant (2^70/kappa)^(1/(a+2)).",
+      "output_scale": "epsilon>=constant*(d/p)^(1/(a+2)); exponent at most 1/2",
+      "stage": "Conditional exponent translation",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "R global templates carrying accepted mass delta on line measure tau",
+      "justification": "Affine mixing for each template followed by Cauchy-Schwarz.",
+      "loss": "delta<=alpha tau+sqrt(R alpha tau/(p+1)).",
+      "output_scale": "R<=delta(p+1) implies one template has agreement alpha>=delta/4.",
+      "stage": "Template popularity",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Constant-labelled lines carry mass delta on support tau",
+      "justification": "Their agreement point sets are disjoint, eliminating the template-count loss.",
+      "loss": "Affine mixing error sqrt(tau/(p+1)).",
+      "output_scale": "delta>=2sqrt(tau/(p+1)) implies a constant global polynomial has agreement at least delta/(2tau).",
+      "stage": "Constant-label branch",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Modal construction epsilon=Theta(r/p), r=floor(log p/(4 log log p))",
+      "justification": "Occupancy second moment, McDiarmid, Markov over fixed star orders, and a union bound over p^5253 global polynomials.",
+      "loss": "Gamma_s<=2^(s+2)(S-1)epsilon^s and global agreement <2/p.",
+      "output_scale": "No bounded-order epsilon^(s-gamma) energy surplus is forced.",
+      "stage": "Energy-increment obstruction",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "At (p,d)=(103,101), the triangular information-set lower bound is 5253/10609, approximately 0.495; hence this boundary case cannot support a small-global-agreement obstruction.",
+    "If d>=(p-1)/2, every point table agrees with some total-degree-d polynomial on more than 1/8 of all points, so global agreement at least epsilon/8 is automatic.",
+    "The large constant 2^60 makes the component theorem vacuous for modest p; this is a constant issue, not an exponent claim.",
+    "For k planted accepting directions, direct counting gives epsilon=k/(p+1) and Gamma_s=(k)_s/(p+1)_s, agreeing with the general falling-factorial identity.",
+    "The modal obstruction uses constant local labels under the ambient degree cap d=101. This is a legal d=101 table, not an analysis of the excluded ambient case d=0."
+  ],
+  "global_conclusion": "A proved asymmetric core-decoding lemma isolates point popularity as a useful resource: u_*epsilon^2 >= 2^70 d suffices for linear global agreement. Under u_* >= kappa epsilon^a p this gives the conditional exponent 1/(a+2), reaching 1/2 but not beyond. The universal popularity bound recovers only exponent 1/3, so the benchmark is not improved. A diffuse modal construction additionally proves that no scale-free bounded-order star-energy increment can supply the missing popularity; a successful refinement must be algebra-aware and restricted to the target range.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Any finite field F_q, any dimension m, total line degree at most d, and local agreement epsilon >= C(d/q)^(1/3).",
+      "paper": "[Kominers--Thaler--Zheng, Improved Soundness for the Line-versus-Point Test](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "result_id": "Theorem 1.1",
+      "used_for": "Exact benchmark: existence of one total-degree-at-most-d polynomial with agreement at least c epsilon.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Affine point-line subsets; characteristic-compatible weighted monomials; a minimum-weight vanishing polynomial with nonzero Z-derivative; coprime graph relations; and a certified simple root.",
+      "paper": "[Kominers--Thaler--Zheng, Improved Soundness for the Line-versus-Point Test](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "result_id": "Lemmas 2.1-2.3 and 2.5-2.7",
+      "used_for": "Affine mixing, monomial count, squarefree interpolation, line-factor counting, resultant graph-line counting, and Newton lifting.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "A weighted-degree-D relation, a simple root, more than D incident line roots, and connectivity of the cleaned accepted graph.",
+      "paper": "[Kominers--Thaler--Zheng, Improved Soundness for the Line-versus-Point Test](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "result_id": "Lemmas 6.1 and 6.3",
+      "used_for": "Initial bivariate lift and propagation of one polynomial through a connected component.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "For the bivariate best-fit-oracle theorem, q > C d/epsilon^7.",
+      "paper": "[Harsha--Kumar--Saptharishi--Sudan, arXiv:2311.12752v1](https://arxiv.org/abs/2311.12752)",
+      "result_id": "Theorem 4.2",
+      "used_for": "Historical comparison only; it is not a logical dependency of the new lemmas.",
+      "version": "arXiv v1, 2023-11-21"
+    }
+  ],
+  "next_tasks": [
+    "Prove or refute a target-range structural statement forcing u_* >= epsilon^a p for some a<1, or decode directly when this fails.",
+    "Combine the template-popularity lemma with factorwise algebra while explicitly charging cross-factor transitions and the singular lifts identified by the verified researcher-0006 obstruction.",
+    "Replace the cleanup gate uv=Omega(dp) and the D<min(u,v) identity/lifting interface; point popularity alone caps the present method at exponent 1/2.",
+    "Investigate energy increments whose order grows with p or that measure algebraic template coherence. The modal construction rules out every fixed-order scale-free star surplus but not target-range algebraic energy.",
+    "Subject the asymmetric theorem and direct B_Z cleanup to an independent formal verifier pass with constants optimized only after soundness is confirmed."
+  ],
+  "note_markdown": "# Popularity-sensitive core decoding and a bounded-star-energy obstruction\n\n## Abstract\n\nFix a prime field $F_p$, dimension $m=2$, and an integer $100<d<p$. I prove an asymmetric refinement of the accepted-component decoder. If an accepted subgraph has point minimum degree $u$, line minimum degree $v$, line measure $\u03c4$, and $w=min(u,v)$, then the two conditions\n\n$$\nuv \\ge 2^{60}dp,\n\\qquad\nuw^2 \\ge 2^{60}d\u03c4p^2\n$$\n\nforce one total-degree-at-most-$d$ polynomial to agree with the point table on at least $v/(800p)$ of all points.\n\nFor the original accepted graph, let $u_*$ be the largest point-degree threshold supporting accepted-incidence mass at least $\u03b5/2$. The component theorem implies\n\n$$\nu_*\u03b5^2 \\ge 2^{70}d\n\\quad\\Longrightarrow\\quad\nagr(f,Q) \\ge \u03b5/12800.\n$$\n\nThus a hypothesis $u_*\\ge \u03ba \u03b5^a p$ gives the conditional threshold $\u03b5\\ge(2^{70}/\u03ba)^{1/(a+2)}(d/p)^{1/(a+2)}$. This interpolates from exponent $1/3$ at the universally available scale $u_*=\u03a9(\u03b5p)$ to exponent $1/2$ when $u_*=\u03a9(p)$. It does not improve the unconditional benchmark.\n\nI also prove a template-popularity lemma and a complementary obstruction: for every fixed star order, diffuse modal-constant tables can have star energy only $O(\u03b5^s)$ while every degree-101 global polynomial has agreement $o(\u03b5)$. Consequently, a scale-free bounded-order collision-energy increment cannot supply the missing popularity.\n\n## Test and Notation\n\nThere are $p^2$ points and $p(p+1)$ affine lines. Every point lies on $p+1$ lines and every line contains $p$ points. Each affine line $L$ carries a univariate polynomial $P_L$ of degree at most the ambient integer $d$, and $f:F_p^2\\to F_p$ is the point table. The sampling rule is exactly a uniformly random affine line followed by a uniformly random point on it; equivalently, it is a uniform affine incidence. Put\n\n$$\n\u03b5=Pr_{L,\\,x\\in L}[P_L(x)=f(x)].\n$$\n\nThe accepted graph has edge $(x,L)$ exactly when $x\\in L$ and $P_L(x)=f(x)$. All global polynomials below have total degree at most $d$.\n\nFor a subgraph $G=(X,T,E)$, let\n\n$$\nt=|T|,\n\\qquad\n\u03c4=\\frac{t}{p(p+1)},\n$$\n\nand let $u$ and $v$ denote its point-side and line-side minimum degrees, respectively. For the full accepted graph, write $a_x$ for the accepted degree of $x$ and define the absolute upper-tail incidence mass\n\n$$\n\u03b4_j=\\frac{1}{p^2(p+1)}\\sum_{x:a_x\\ge j}a_x,\n\\qquad\nu_*=max\\{j\\in\\{1,\\ldots,p+1\\}:\u03b4_j\\ge \u03b5/2\\}.\n$$\n\nWhen $\u03b5>0$, this set is nonempty. Since points below $\u03b5(p+1)/2$ carry less than half of all accepted edges,\n\n$$\nu_*\\ge \\left\\lceil\\frac{\u03b5(p+1)}2\\right\\rceil.\n$$\n\nFor $s\\ge2$, $\u0393_s$ denotes the probability that $s$ ordered distinct uniformly sampled lines through a uniform point all accept there.\n\n## Prior Results\n\nThe exact benchmark is Theorem 1.1 of [Kominers--Thaler--Zheng, ECCC TR26-147, Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/): over every finite field, $\u03b5\\ge C(d/p)^{1/3}$ implies one total-degree-at-most-$d$ polynomial with agreement at least $c\u03b5$. The following explanation of the exponent is my reconstruction, not a separately quoted theorem: their Lemma 3.2 gives $|R|=O(p/\u03b5)$, Lemma 2.2 gives an explainer degree $D=O(\\sqrt{dp/\u03b5})$, and identity extension and lifting require $D=O(\u03b5p)$. Hence $\u03b5^3=\u03a9(d/p)$.\n\nThe present proof uses KTZ Revision 1, Lemmas 2.1--2.3, 2.5--2.7, 6.1, and 6.3. The local cached KTZ file is the earlier July 2026 version; theorem numbering is stable, but the revision above is the pinned source. The cached Arora--Sudan file is the STOC 1997 version rather than the Combinatorica 2003 article recorded in the bibliography, and no theorem-number transfer from that cache is used.\n\nThe durable corpus was audited through [DATA_MANIFEST.json](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json), all eight active campaign-10 submissions, their verifier audits, all active leaderboards, and the empty campaign-300 leaderboards; directories named `superseded` were excluded. The main reusable prior result is the verifier-accepted symmetric component theorem in [researcher-0002](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0002/note.md). The exact pair-collision and regular-carrier obstruction in [researcher-0008](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0008/note.md) shows that graph regularity alone gives no energy surplus. The verified singular-lift obstruction in [researcher-0006](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0006/note.md) remains relevant to any future factorwise refinement.\n\nFor historical comparison only, Theorem 4.2 of [Harsha--Kumar--Saptharishi--Sudan, arXiv v1](https://arxiv.org/abs/2311.12752) states the bivariate condition $p>Cd/\u03b5^7$. It is not used in the proof.\n\n## Theorem\n\n**Theorem A (proved asymmetric core decoder).** Let $p$ be prime, let $100<d<p$, and let $G=(X,T,E)$ be a nonempty accepted subgraph. Suppose every $x\\in X$ has degree at least the integer $u$, every $L\\in T$ has degree at least the integer $v$, $\u03c4=|T|/[p(p+1)]$, and $w=min(u,v)$. If\n\n$$\nuv\\ge2^{60}dp,\n\\qquad\nuw^2\\ge2^{60}d\u03c4p^2,\n$$\n\nthen there is a single $Q\\in F_p[X,Y]$ of total degree at most $d$ satisfying\n\n$$\nPr_x[Q(x)=f(x)]\\ge\\frac{v}{800p}.\n$$\n\nConnectedness of the input is not required.\n\n**Corollary B (proved implication; conditional exponent).** With $u_*$ defined above, if\n\n$$\nu_*\u03b5^2\\ge2^{70}d,\n$$\n\nthen some total-degree-at-most-$d$ polynomial satisfies $agr(f,Q)\\ge \u03b5/12800$. More generally, if $0\\le a\\le1$, $0<\u03ba\\le1$, and $u_*\\ge \u03ba \u03b5^a p$, then the conclusion holds whenever\n\n$$\n\u03b5\\ge\\left(\\frac{2^{70}}\u03ba\\right)^{1/(a+2)}\n       \\left(\\frac dp\\right)^{1/(a+2)}.\n$$\n\nThe exponent improvement for $a<1$ is conditional because no such popularity tail is known for every table.\n\n**Lemma C (proved template popularity).** Let $T_1,\\ldots,T_R$ be disjoint line families and let $Q_1,\\ldots,Q_R$ be total-degree-at-most-$d$ polynomials such that $P_L=Q_j|_L$ for $L\\in T_j$. Let $\u03c4_j=|T_j|/[p(p+1)]$, $\u03c4=\\sum_j\u03c4_j$, let $\u03b4>0$ be the normalized accepted-incidence mass on their union, and put $\u03b1=max_j agr(f,Q_j)$. Then\n\n$$\n\u03b4\\le \u03b1\u03c4+\\sqrt{\\frac{R\u03b1\u03c4}{p+1}}.\n$$\n\nIn particular, $R\\le\u03b4(p+1)$ implies $\u03b1\\ge\u03b4/4$.\n\n**Proposition D (proved bounded-star-energy obstruction).** Fix $S\\ge2$. For all sufficiently large primes $p$, at the legal ambient degree $d=101$ there is a deterministic table using constant line polynomials such that, for\n\n$$\nr=\\left\\lfloor\\frac{\\log p}{4\\log\\log p}\\right\\rfloor,\n$$\n\none has\n\n$$\n\\frac{r}{130p}\\le \u03b5\\le\\frac{26r}{p},\n\\qquad\nmax_{deg Q\\le101}agr(f,Q)<\\frac2p,\n$$\n\nand, simultaneously for $2\\le s\\le S$,\n\n$$\n\u0393_s\\le2^{s+2}(S-1)\u03b5^s.\n$$\n\nA fully explicit sufficient meaning of sufficiently large is obtained by setting $u_0=\\lceil4\\log p/\\log\\log p\\rceil$ and $v_0=\\lceil8\\log p/\\log\\log p\\rceil$ and requiring\n\n$$\nr\\ge133,\n\\quad r^2\\le p,\n\\quad p\\ge8r!,\n\\quad u_0+1\\le17r,\n\\quad v_0\\le33r,\n$$\n\n$$\n\\frac{2p}{(u_0+1)!}\\le1,\n\\quad\n\\frac{2p^3}{v_0!}\\le\\frac18,\n\\quad\np^{5253}(e/4)^p\\le\\frac18,\n\\quad\nS\\le p+1.\n$$\n\n## Proof or Conditional Proof\n\n**[P1] (proved: asymmetric mixing).** Put $\u03be=|X|/p^2$, $\u03c1=|E|/[p^2(p+1)]$, $\u03b1_0=u/(p+1)$, $\u03b2_0=v/p$, and $\u03bb=(p+1)^{-1/2}$. Minimum degree and KTZ Lemma 2.1 give\n\n$$\n\u03b1_0\u03be\\le\u03c1,\n\\qquad\n\u03b2_0\u03c4\\le\u03c1,\n\\qquad\n\u03c1\\le\u03be\u03c4+\u03bb\\sqrt{\u03be\u03c4}.\n$$\n\nIf $\u03c4<\u03b1_0/4$, the first and third inequalities imply $\u03be<(16/9)\u03bb^2\u03c4/\u03b1_0^2$. Substitution into the third inequality and comparison with $\u03b2_0\u03c4\\le\u03c1$ give $\u03b1_0\u03b2_0<2\u03bb^2$, or $uv<2p$. This contradicts the first hypothesis. The symmetric calculation gives\n\n$$\n\u03c4\\ge\\frac{u}{4(p+1)},\n\\qquad\n\u03be\\ge\\frac{v}{4p}.\n$$\n\nThus $t\\ge up/4$. Substituting the line-measure bound into the second hypothesis yields\n\n$$\nw^2\\ge\\frac{2^{60}dp^2}{4(p+1)}\\ge2^{57}dp.\n$$\n\nThis last inequality, rather than an unstated fixed-$d$ assumption, supplies all logarithmic room below.\n\n**[P2] (proved: selector and probability losses).** The first hypothesis and $v\\le p$ give $u>8$. Select every line of $T$ independently with probability $8/u$. A point accepted on a target line $L$ is called reached only through a selected line in $R$ other than $L$. It has at least $u-1$ eligible lines, so its reach probability exceeds $3/4$. For distinct points of $L$, the eligible line sets are disjoint because two distinct points determine their unique common line, which is the excluded line $L$. Chernoff therefore bounds the probability that at most half of $N_G(L)$ is reached by $e^{-v/24}$.\n\nSince $v\\ge w\\ge\\sqrt{2^{57}dp}$, $2p^2e^{-v/24}<1/4$; this accounts explicitly for the union bound over all target lines. The sample-size mean is $8t/u\\ge2p$. Its lower- and upper-tail Chernoff bounds are respectively at most $e^{-p/4}$ and $e^{-2p/3}$. Hence some choice has\n\n$$\n\\frac{4t}{u}\\le r=|R|\\le\\frac{16t}{u}\n$$\n\nand reaches more than half of every line's accepted points. In particular, $r\\ge p$.\n\n**[P3] (proved: interpolation).** Set\n\n$$\nD=16(\\lfloor\\sqrt{dr}\\rfloor+1).\n$$\n\nThen $D^2>256dr$ and\n\n$$\nD^2\\le1024dr\n \\le2^{14}\\frac{dt}{u}\n \\le2^{15}\\frac{d\u03c4p^2}{u}\n \\le2^{-45}w^2.\n$$\n\nThus $D<w/5000$, $D<p$, and $r\\ge p>D$. KTZ Lemma 2.2 gives $dim V_D\\ge D^3/(64d)>r(D+1)$. Each formal identity on a selected line costs at most $D+1$ homogeneous conditions, so a nonzero candidate in $V_D$ exists. If it were Z-independent, KTZ Lemma 2.5 and $r>D$ would force it to vanish identically. Its allowed positive Z-exponents are not divisible by $p$, so its Z-derivative is nonzero.\n\nLet $S_R$ be the finite union of the selected polynomial graphs and choose a nonzero polynomial $A$ of minimum weighted degree among polynomials vanishing on $S_R$ with $A_Z\\ne0$. KTZ Lemma 2.3 makes $A$ squarefree. Its weight is at most $D<p$, so pointwise vanishing at all $p$ parameters on a selected line is a formal identity. This also explains why repeated-factor removal cannot lose the line identities.\n\n**[P4] (proved: identity extension).** Every $L\\in T$ has more than $v/2>D$ accepted points reached through a selected $M\\ne L$. At such a point,\n\n$$\nP_L(x)=f(x)=P_M(x),\n$$\n\nso $A(x,P_L(x))=0$. The restricted polynomial $A(L(t),P_L(t))$ has degree at most $D$ and more than $D$ roots; hence it vanishes formally. There is no Markov or multiplicity loss at this step.\n\n**[P5] (proved: prime-field simple-root cleanup).** Write $A=HB$, where $H(X,Y)$ is the gcd of the Z-coefficients of $A$. At most $D$ affine lines are contained in $H=0$. On every other line, division in the integral domain $F_p[t]$ gives $B(L(t),P_L(t))\\equiv0$. The polynomial $B$ is squarefree, Z-primitive, Z-dependent, and has degree below $p$.\n\nMoreover, $gcd(B,B_Z)=1$. Indeed, if an irreducible $C$ divided both, squarefreeness and reduction of $(CE)_Z$ modulo $C$ would give $C|C_Z$, hence $C_Z=0$. Since $deg_Z C<p$, this makes $C$ Z-independent, contradicting Z-primitivity. KTZ Lemma 2.6 now bounds the lines on whose graphs both $B$ and $B_Z$ vanish by $D(D-1)$. On every other line, $B_Z(L(t),P_L(t))$ is a nonzero polynomial of degree at most $D$, so it has at most $D$ accepted roots. Thus at most\n\n$$\npD^2+Dt\n$$\n\naccepted edges are deleted. No discriminant or derivative is divided by.\n\n**[P6] (proved: asymmetric pruning).** Since $|E|\\ge vt$,\n\n$$\n\\frac{pD^2+Dt}{|E|}\n \\le\\frac Dv+\\frac{pD^2}{vt}\n \\le\\frac Dv+\\frac{2^{14}dp}{uv}\n <\\frac1{4000}.\n$$\n\nLet $u_1=\\lfloor u/100\\rfloor$ and $v_1=\\lfloor v/100\\rfloor$. Iteratively delete point vertices of current degree below $u_1$ and line vertices below $v_1$. This costs less than\n\n$$\nu_1|X|+v_1|T|\\le |E|/50.\n$$\n\nA nonempty graph remains. The hypotheses imply $u_1\\ge u/200$, $v_1\\ge v/200$, and $u_1,v_1>D$.\n\n**[P7] (proved: lift, propagate, recover measure).** Every surviving point is incident to an identity line and hence satisfies $B(x,f(x))=0$; retained edges also certify $B_Z(x,f(x))\\ne0$. At a point in any surviving connected component, more than $D$ incident line roots satisfy the hypotheses of KTZ Lemma 6.1. It produces one total-degree-at-most-$d$ polynomial $Q$ with $B(X,Y,Q(X,Y))\\equiv0$. The one-variable simple-root uniqueness used in KTZ Lemma 6.3 propagates this same $Q$ through the component.\n\nSince $u_1v_1\\ge uv/40000>2p$, [P1]'s asymmetric mixing calculation applied to this component gives point density at least\n\n$$\n\\frac{v_1}{4p}\\ge\\frac{v}{800p}.\n$$\n\nThe polynomial agrees with $f$ at every point of that component, proving Theorem A. There is no list-size or factor-count loss.\n\n**[P8] (conditional: popularity-tail translation).** Let $\u03b4_*=\u03b4_{u_*}\\ge\u03b5/2$ and retain all accepted edges incident to points of degree at least $u_*$. Their number is $E_*=\u03b4_*p^2(p+1)$. Peel point degrees below $U=\\lfloor u_*/2\\rfloor$ and line degrees below $V=\\lfloor\u03b4_*p/4\\rfloor$. Point deletions cost at most $E_*/2$, and line deletions cost at most\n\n$$\nVp(p+1)\\le E_*/4.\n$$\n\nThus a nonempty core remains. Under $u_*\u03b5^2\\ge2^{70}d$, floors give\n\n$$\nU\\ge u_*/3,\n\\qquad\nV\\ge\u03b4_*p/8\\ge\u03b5p/16,\n\\qquad\nmin(U,V)\\ge\u03b5p/16.\n$$\n\nConsequently,\n\n$$\nUV\\ge u_*\u03b5p/48>2^{60}dp\n$$\n\nand, for every component line measure $\u03c4_C\\le1$,\n\n$$\nUmin(U,V)^2\n \\ge u_*\u03b5^2p^2/768\n >2^{60}d\u03c4_Cp^2.\n$$\n\nTheorem A gives agreement at least $V/(800p)\\ge\u03b5/12800$. If $u_*\\ge\u03ba \u03b5^a p$, the displayed hypothesis follows from $\u03ba \u03b5^{a+2}p\\ge2^{70}d$. Universally $u_*\\ge\u03b5p/2$, so this recovers exponent $1/3$ with a large constant. For $a<1$ it is a genuine conditional improvement; $a=0$ gives exponent $1/2$.\n\n**[P9] (proved: template popularity).** Put $S_j=\\{x:Q_j(x)=f(x)\\}$ and $\u03b1_j=|S_j|/p^2$. The carried edges in $T_j$ are exactly the incidences between $S_j$ and $T_j$. KTZ Lemma 2.1 gives\n\n$$\n\u03b4\\le\\sum_j\u03b1_j\u03c4_j+\n\\frac1{\\sqrt{p+1}}\\sum_j\\sqrt{\u03b1_j\u03c4_j}.\n$$\n\nThe first term is at most $\u03b1\u03c4$. Cauchy--Schwarz, the only loss here, bounds the second sum by $\\sqrt{R\u03b1\u03c4}$. This proves Lemma C. If $R\\le\u03b4(p+1)$ and $\u03b1<\u03b4/4$, the two right-hand terms are below $\u03b4/4$ and $\u03b4/2$, a contradiction.\n\n**[P10] (proved: constant-label branch).** For constant-labelled lines, group by their constant value $a$. The sets $\\{x:f(x)=a\\}$ are disjoint, so Cauchy--Schwarz uses $\\sum_aPr[f=a]=1$ and removes the $R$ factor:\n\n$$\n\u03b4\\le \u03bc\u03c4+\\sqrt{\\frac{\u03c4}{p+1}},\n\\qquad\n\u03bc=max_aPr[f=a].\n$$\n\nThus $\u03b4\\ge2\\sqrt{\u03c4/(p+1)}$ implies $\u03bc\\ge\u03b4/(2\u03c4)\\ge\u03b4/2$. If constant lines carry at least a $\u03b8$ fraction of the total agreement, then $\u03b5\\ge2/[\u03b8\\sqrt{p+1}]$ already yields a constant global polynomial of agreement at least $\u03b8\u03b5/2$.\n\n**[P11] (proved: exact star moments).** For every deterministic table,\n\n$$\n\u0393_s=\\frac{1}{p^2(p+1)_s}\\sum_x(a_x)_s.\n$$\n\nThe integer sequence $(n)_s$ is discretely convex. If $\u03bc=\u03b5(p+1)=k+\u03b8$ with integer $k=\\lfloor \u03bc\\rfloor$ and $0\\le\u03b8<1$, convexity gives the sharp degree-only lower bound\n\n$$\n\u0393_s\\ge\n\\frac{(1-\u03b8)(k)_s+\u03b8(k+1)_s}{(p+1)_s}.\n$$\n\nFor $s=2$, expansion yields the exact identity\n\n$$\n\u0393_2=\u03b5^2-\\frac{\u03b5(1-\u03b5)}p+\n\\frac{Var_x(a_x)}{p(p+1)}.\n$$\n\nThus even perfectly regular accepted degrees supply only baseline collision energy $\u0398(\u03b5^2)$.\n\n**[P12] (proved: modal occupancy and concentration).** Choose every value $f(x)$ independently and uniformly. On each line choose uniformly among its modal values, using fresh independent line coins, and use that value as the constant polynomial $P_L$. Symmetric independent tie-breaking is essential; arbitrary deterministic tie-breaking need not give the claimed star identity.\n\nLet $M$ be the maximum occupancy when $p$ balls are thrown into $p$ bins and let $q=E[M]/p=E[\u03b5]$. If $Y$ counts bins of occupancy exactly $r$, the explicit conditions in Proposition D give\n\n$$\nE[Y]\\ge\\frac{p}{8r!}\\ge1,\n\\qquad\nE[Y^2]\\le E[Y]+\\frac{p^2}{(r!)^2}\\le65E[Y]^2.\n$$\n\nThe second-moment inequality gives $Pr[M\\ge r]\\ge1/65$, hence $q\\ge r/(65p)$. Conversely, $Pr[M\\ge s]\\le p/s!$, so the stated factorial condition gives $E[M]\\le u_0+1\\le17r$.\n\nChanging one point value changes maxima on only its $p+1$ incident lines and changes $\u03b5$ by at most $1/p^2$. McDiarmid therefore gives\n\n$$\nPr[|\u03b5-q|>q/2]\n \\le2exp(-q^2p^2/2)\n \\le2exp(-r^2/8450)\n \\le1/4.\n$$\n\n**[P13] (proved: simultaneous low energy and no decoder).** Fix a point and condition on its value. The punctured incident lines partition all other points. Their values and the independent tie coins are independent. Label symmetry and double counting the $M$ modal positions show that each incident line accepts the point with probability exactly $q$. Hence $a_x$ is conditionally binomial and $E[\u0393_s]=q^s$.\n\nMarkov at threshold $4(S-1)q^s$, followed by a union bound over $2\\le s\\le S$, fails with probability at most $1/4$. On $\u03b5\\ge q/2$, this gives $\u0393_s\\le2^{s+2}(S-1)\u03b5^s$.\n\nFor each fixed total-degree-at-most-101 polynomial $Q$, its agreement count with random $f$ is $Bin(p^2,1/p)$, so\n\n$$\nPr[agr(f,Q)\\ge2/p]\\le(e/4)^p.\n$$\n\nThere are $p^{5253}$ candidates because $(101+1)(101+2)/2=5253$. Their union-bound failure is at most $1/8$. The probability that any line has modal occupancy at least $v_0$ is at most $2p^3/v_0!\\le1/8$. All four bad-event probabilities total at most $3/4$, so a deterministic realization exists after freezing both $f$ and the tie coins. It has $r/(130p)\\le\u03b5\\le26r/p$, every line supports acceptance, every line accepts fewer than $v_0\\le33r$ points, the stated star bounds, and no global decoder of agreement $2/p$.\n\n**[P14] (refuted claim; obstruction proved).** Fix $s\\ge2$, $\u03b3>0$, and constants $c_0,c_1>0$. The scale-free assertion\n\n$$\nmax_{deg Q\\le101}agr(f,Q)\\le c_0\u03b5\n\\quad\\Longrightarrow\\quad\n\u0393_s\\ge c_1\u03b5^{s-\u03b3}\n$$\n\nis false. Proposition D has global-to-local ratio below $260/r\\to0$, while $\u0393_s=O_s(\u03b5^s)=o(\u03b5^{s-\u03b3})$. This does not refute a target-range energy lemma: for every fixed $\u03b7>0$,\n\n$$\n\\frac{\u03b5}{(101/p)^{1-\u03b7}}\n =O_\u03b7\\left(\\frac{r}{p^\u03b7}\\right)\\to0.\n$$\n\n## Exponent Ledger\n\n| Stage | Input scale | Loss | Output scale | Status |\n|---|---|---|---|---|\n| KTZ reconstruction | $|R|=O(p/\u03b5)$ | $D=O(\\sqrt{dp/\u03b5})$ and $D=O(\u03b5p)$ | $\u03b5^3=\u03a9(d/p)$ | proved |\n| Asymmetric selector | $t=\u03c4p(p+1)$, point degree $u$ | Chernoff and one union bound; constants only | $r=\u0398(\u03c4p^2/u)$ | proved |\n| Interpolation | $r$ line identities | $D=\u0398(\\sqrt{dr})$ | $D=O(\\sqrt{d\u03c4p^2/u})$ | proved |\n| Identity/lift | roots $v$ and incident lines $u$ | require $D<min(u,v)$ | $u min(u,v)^2=\u03a9(d\u03c4p^2)$ | proved |\n| Cleanup | $pD^2+Dt$ bad edges | relative $D/v+O(dp/(uv))$ | $uv=\u03a9(dp)$ | proved |\n| Recovery | minima $u/100,v/100$ | affine mixing constant | agreement $\u03a9(v/p)$ | proved |\n| Popularity core | $u_*$ and mass $\u03b5/2$ | $U=\u03a9(u_*),V=\u03a9(\u03b5p)$ | $u_*\u03b5^2=\u03a9(d)$ | conditional |\n| Exponent translation | $u_*\\ge\u03ba \u03b5^a p$ | none beyond constants | $\u03b5=\u03a9((d/p)^{1/(a+2)})$ | conditional |\n| Template branch | $R,\u03b4,\u03c4$ | $\\sqrt{R\u03b1\u03c4/p}$ by Cauchy--Schwarz | $R\\le\u03b4p$ gives $\u03b1=\u03a9(\u03b4)$ | proved |\n| Modal obstruction | $\u03b5=\u0398(r/p)$ | fixed-order Markov constants | $\u0393_s=O_s(\u03b5^s)$ and global $<2/p$ | proved |\n\nBecause $d/p<1$, the conditional exponent $1/(a+2)$ is stronger than $1/3$ exactly when $a<1$. Its largest value in this architecture is $1/2$, not the long-term $1-o(1)$ target.\n\n## Counterexample Attempts\n\nThe modal table is diffuse: every affine line in every direction supports acceptance, no line accepts more than $O(\\log p/\\log\\log p)$ points, and yet every bounded star moment stays at its baseline scale. It rules out energy increments based only on a fixed number of coincident accepted lines.\n\nThe regular Hall carrier from the active corpus has full line support and pair energy $\u0398(\u03b5^2)$ but a perfect constant decoder. Together, the two examples show that low collision energy occurs in both easy and hard tables. An effective dichotomy must inspect algebraic coherence, not merely degrees or support.\n\nConcentrating all good lines in $k$ directions gives $\u03b5=k/(p+1)$ and $\u0393_s=(k)_s/(p+1)_s$, but the planted global polynomial is immediate. Concentrated directions therefore do not refute the theorem.\n\nAttempts based on $t^p-t$, Frobenius aliases, or inseparable line functions require degree at least $p$ and violate $d<p$. At the lower legal boundary, Proposition D uses ambient degree $d=101$; its constant line labels are allowed under that cap. For $d$ close to $p$, triangular interpolation gives every point table agreement at least $(d+1)(d+2)/(2p^2)$, exceeding $1/8$ once $d\\ge(p-1)/2$. In particular, at $(p,d)=(103,101)$ it is $5253/10609\\approx0.495$.\n\nThese are analytic falsification checks. No finite computation is used to prove an asymptotic soundness statement.\n\n## Characteristic Audit\n\nAll statements are restricted to the prime field. The proof enforces $D<p$ before any functional-to-formal conversion. The line labels have degree $d<p$, and the restricted explainer identities have degree at most $D<p$.\n\nThe interpolation space excludes positive Z-exponents divisible by the characteristic; in this prime-field parameter range, $D<p$ also prevents them directly. Minimum-weight interpolation is invoked only after a candidate with nonzero Z-derivative is constructed. Squarefreeness is therefore justified by the exact hypotheses of KTZ Lemma 2.3.\n\nAfter Z-content removal, primitivity plus squarefreeness and $deg_ZB<p$ prove $gcd(B,B_Z)=1$. This directly handles irreducibility and inseparability; no generic derivative, discriminant division, or unverified separability assertion is needed. KTZ Lemma 2.6 applies its resultant only to this certified coprime pair. Newton lifting divides solely by a value of $B_Z$ retained as nonzero.\n\nOrdinary multiplicity-one interpolation is used throughout. The selector's only union loss is $2p^2e^{-v/24}$, the modal star argument's Markov-plus-union loss is $1/4$, the global-polynomial union loss is $p^{5253}(e/4)^p$, and the only Cauchy--Schwarz loss in the template lemma is $\\sqrt{R\u03b1\u03c4/(p+1)}$.\n\n## Limitations\n\nNo unconditional popularity estimate stronger than $u_*=\u03a9(\u03b5p)$ is proved. Substituting that universal estimate into Corollary B recovers the cubic benchmark and nothing more, so `benchmark_improved=false`.\n\nEven perfect point popularity $u_*=\u0398(p)$ yields only exponent $1/2$ in this architecture because the simple-root cleanup and identity/lifting gates remain. Progress toward exponent $1-o(1)$ must replace those interfaces, not merely iterate the present popularity pruning.\n\nThe modal obstruction is scale-free and lies below every fixed target trigger. It does not rule out an energy increment whose hypothesis explicitly uses $\u03b5\\gtrsim(d/p)^{1-\u03b7}$, whose order grows with $p$, or whose energy records algebraic templates. Lemma C is useful only after such templates have actually been extracted; it does not produce them.\n\nThe constants are intentionally conservative and make Theorem A vacuous for modest fields. The result concerns only $m=2$, prime fields, total degree, and uniform affine-incidence sampling. No dimension lift, extension-field descent, or list-only conclusion is asserted.",
+  "obstructions": [
+    "The universal tail estimate is only u_* >= epsilon(p+1)/2, which substituted into u_*epsilon^2=Omega(d) recovers the cubic exponent rather than improving it.",
+    "Even u_*=Theta(p) produces at most exponent 1/2 through the current identity/lifting and cleanup gates.",
+    "Bounded-order star moments can remain Theta(epsilon^s) while global agreement is o(epsilon); therefore no scale-free collision surplus is available.",
+    "Full line support, accepted-degree regularity, and universal-cover cost Theta(p/epsilon) also occur in easy planted instances and cannot serve as hardness certificates.",
+    "Factorwise methods must still control cross-factor transitions and singular accepted lifts; the verified researcher-0006 example blocks a smooth-ramification-only argument."
+  ],
+  "parameter_regime": "m=2; prime p; integer 100<d<p; local agreement 0<epsilon<=1. Theorem A uses integer minima 1<=u<=p+1 and 1<=v<=p, line measure tau, and w=min(u,v). Corollary B uses the absolute accepted-edge tail u_*, with optional 0<=a<=1 and 0<kappa<=1. Proposition D fixes the legal ambient degree d=101 and fixed star cutoff S for sufficiently large primes.",
+  "proof_steps": [
+    {
+      "dependencies": [
+        "KTZ Lemma 2.1"
+      ],
+      "id": "[P1]",
+      "proof": "Normalize point measure xi, line measure tau, and edge measure rho. Minimum degrees give rho>=u xi/(p+1) and rho>=v tau/p, while affine mixing gives rho<=xi tau+sqrt(xi tau/(p+1)). Assuming either tau<u/[4(p+1)] or xi<v/(4p) forces uv<2p. The theorem hypotheses contradict this. Substitution into the second gate yields w^2>=2^57dp.",
+      "statement": "Asymmetric mixing gives tau>=u/[4(p+1)], |X|/p^2>=v/(4p), and w^2>=2^57dp.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "Chernoff bounds"
+      ],
+      "id": "[P2]",
+      "proof": "Sample each line at rate 8/u and define reach through R minus the target line. Along a fixed target line, the relevant random-line sets are disjoint, so reach indicators are independent. Failure is at most exp(-v/24). The bound w^2>=2^57dp makes the union over fewer than 2p^2 lines valid. Sample-size Chernoff bounds give 4t/u<=|R|<=16t/u.",
+      "statement": "There is a selector R of size Theta(t/u) reaching more than half of every target line's accepted points.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P2]",
+        "KTZ Lemmas 2.2, 2.3, and 2.5"
+      ],
+      "id": "[P3]",
+      "proof": "For D=16(floor(sqrt(d|R|))+1), one has D^2<=2^-45w^2, D<p, and |R|>=p>D. The characteristic-compatible monomial space has dimension exceeding |R|(D+1). A nonzero Z-dependent candidate exists; minimizing weighted degree among pointwise interpolants with nonzero Z-derivative gives a squarefree A. Since D<p, all selected pointwise identities are formal.",
+      "statement": "A squarefree Z-dependent explainer A of weighted degree at most D exists, with D<min(u,v)/5000 and A_Z nonzero.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P2]",
+        "[P3]"
+      ],
+      "id": "[P4]",
+      "proof": "Every target line has more than v/2>D accepted points reached by another selected line. At each such point the two line values equal f. Thus the degree-at-most-D restriction of A has more than D roots and vanishes formally.",
+      "statement": "The explainer identity extends from selected lines to every line in the accepted core.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P4]",
+        "KTZ Lemma 2.6"
+      ],
+      "id": "[P5]",
+      "proof": "Remove the Z-content H from A. The squarefree Z-primitive factor B has gcd(B,B_Z)=1 because deg_Z B<p. There are at most D content lines, D(D-1) resultant-degenerate lines, and D derivative-zero accepted points on every remaining line, totaling at most pD^2+Dt exceptional edges.",
+      "statement": "Prime-field cleanup produces a Z-primitive relation with simple retained roots after deleting at most pD^2+Dt edges.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "[P3]",
+        "[P5]"
+      ],
+      "id": "[P6]",
+      "proof": "The exceptional fraction is at most D/v+2^14dp/(uv)<1/4000. Peeling below floor(u/100) on points and floor(v/100) on lines costs at most |E|/50, so a nonempty graph remains with both minima above D.",
+      "statement": "Asymmetric pruning preserves a nonempty simple-root graph with minima at least floor(u/100) and floor(v/100).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "[P6]",
+        "KTZ Lemmas 6.1 and 6.3"
+      ],
+      "id": "[P7]",
+      "proof": "At any surviving point, more than D incident line roots and B_Z nonzero invoke KTZ lifting. Simple-root uniqueness propagates the same Q through a component. Asymmetric mixing gives that component point density at least floor(v/100)/(4p)>=v/(800p).",
+      "statement": "One total-degree-at-most-d polynomial has global agreement at least v/(800p).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P7]"
+      ],
+      "id": "[P8]",
+      "proof": "The u_* tail has normalized mass at least epsilon/2. Peeling at U=floor(u_*/2) and V=floor(delta_*p/4) leaves a core with U>=u_*/3, V>=epsilon p/16. The condition u_*epsilon^2>=2^70d verifies both gates of Theorem A and yields agreement epsilon/12800. The further hypothesis u_*>=kappa epsilon^a p translates this to exponent 1/(a+2).",
+      "statement": "A popularity tail u_*epsilon^2>=2^70d suffices; u_*>=kappa epsilon^a p gives the conditional exponent 1/(a+2).",
+      "status": "conditional"
+    },
+    {
+      "dependencies": [
+        "KTZ Lemma 2.1",
+        "Cauchy-Schwarz"
+      ],
+      "id": "[P9]",
+      "proof": "Apply affine mixing to each template's agreement set and line family. Sum the main terms and use Cauchy-Schwarz on the errors to obtain delta<=alpha tau+sqrt(R alpha tau/(p+1)). If R<=delta(p+1), alpha<delta/4 makes the right side less than delta.",
+      "statement": "At most delta(p+1) algebraic templates carrying mass delta force one template with global agreement at least delta/4.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P9]"
+      ],
+      "id": "[P10]",
+      "proof": "For constant labels, the corresponding point agreement sets are disjoint, so the sum of their measures is one and the template-count loss disappears. This yields delta<=mu tau+sqrt(tau/(p+1)) and the stated decoding branch.",
+      "statement": "Sufficient accepted mass on constant-labelled lines directly yields one popular constant global polynomial.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "[P11]",
+      "proof": "Condition on a point of accepted degree a_x and sample ordered distinct incident lines. This gives Gamma_s=E[(a_x)_s]/(p+1)_s. Discrete convexity yields the sharp interpolation between adjacent integer degrees; expanding s=2 gives the exact variance identity.",
+      "statement": "All deterministic tables satisfy an exact falling-factorial star identity and its sharp degree-only lower bound.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "Second-moment inequality",
+        "McDiarmid inequality"
+      ],
+      "id": "[P12]",
+      "proof": "For iid point values and independent symmetric modal ties, occupancy estimates give r/(65p)<=q<=17r/p. A one-point change alters epsilon by at most 1/p^2, so McDiarmid places realized epsilon in [q/2,3q/2] with failure at most 1/4.",
+      "statement": "The modal construction has local agreement Theta(log p/(p log log p)) with explicit constants.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P12]",
+        "Chernoff bound",
+        "Markov inequality"
+      ],
+      "id": "[P13]",
+      "proof": "Conditioned on f(x), the punctured incident lines and symmetric tie coins are independent, giving E[Gamma_s]=q^s. Markov plus a union over fixed s costs 1/4. A union bound over p^5253 degree-101 polynomials costs at most p^5253(e/4)^p, and the line-maximum event costs at most 2p^3/v_0!. The remaining probability is positive.",
+      "statement": "A deterministic modal table simultaneously has baseline bounded-order energy and global degree-101 agreement below 2/p.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "[P13]"
+      ],
+      "id": "[P14]",
+      "proof": "In the modal tables, global agreement divided by epsilon tends to zero, but Gamma_s/epsilon^(s-gamma)=O_s(epsilon^gamma) also tends to zero. Hence the proposed implication fails for every fixed s, gamma, and positive constants.",
+      "statement": "A scale-free claim that lack of a decoder forces Gamma_s>=c epsilon^(s-gamma) is false.",
+      "status": "refuted"
+    }
+  ],
+  "result_status": "proved",
+  "sampling_model": "A uniformly random affine line L in F_p^2 followed by a uniformly random x in L; equivalently, a uniform point followed by a uniformly random one of its p+1 incident affine lines.",
+  "theorem_statement": "For C_*=2^60, any nonempty accepted subgraph with point minimum degree u, line minimum degree v, line measure tau, and w=min(u,v), satisfying uv>=C_*dp and uw^2>=C_*d tau p^2, yields one total-degree-at-most-d Q with agreement at least v/(800p). Consequently, if the accepted-edge upper-tail threshold u_* satisfies u_*epsilon^2>=2^70d, then one Q has agreement at least epsilon/12800. The implication is proved, but its improved exponent requires an additional popularity hypothesis not known universally.",
+  "title": "Popularity-Sensitive Core Decoding and a Bounded-Star-Energy Obstruction"
+}
+
+NUMBERED NOTE:
+0001: # Popularity-sensitive core decoding and a bounded-star-energy obstruction
+0002: 
+0003: ## Abstract
+0004: 
+0005: Fix a prime field $F_p$, dimension $m=2$, and an integer $100<d<p$. I prove an asymmetric refinement of the accepted-component decoder. If an accepted subgraph has point minimum degree $u$, line minimum degree $v$, line measure $τ$, and $w=min(u,v)$, then the two conditions
+0006: 
+0007: $$
+0008: uv \ge 2^{60}dp,
+0009: \qquad
+0010: uw^2 \ge 2^{60}dτp^2
+0011: $$
+0012: 
+0013: force one total-degree-at-most-$d$ polynomial to agree with the point table on at least $v/(800p)$ of all points.
+0014: 
+0015: For the original accepted graph, let $u_*$ be the largest point-degree threshold supporting accepted-incidence mass at least $ε/2$. The component theorem implies
+0016: 
+0017: $$
+0018: u_*ε^2 \ge 2^{70}d
+0019: \quad\Longrightarrow\quad
+0020: agr(f,Q) \ge ε/12800.
+0021: $$
+0022: 
+0023: Thus a hypothesis $u_*\ge κ ε^a p$ gives the conditional threshold $ε\ge(2^{70}/κ)^{1/(a+2)}(d/p)^{1/(a+2)}$. This interpolates from exponent $1/3$ at the universally available scale $u_*=Ω(εp)$ to exponent $1/2$ when $u_*=Ω(p)$. It does not improve the unconditional benchmark.
+0024: 
+0025: I also prove a template-popularity lemma and a complementary obstruction: for every fixed star order, diffuse modal-constant tables can have star energy only $O(ε^s)$ while every degree-101 global polynomial has agreement $o(ε)$. Consequently, a scale-free bounded-order collision-energy increment cannot supply the missing popularity.
+0026: 
+0027: ## Test and Notation
+0028: 
+0029: There are $p^2$ points and $p(p+1)$ affine lines. Every point lies on $p+1$ lines and every line contains $p$ points. Each affine line $L$ carries a univariate polynomial $P_L$ of degree at most the ambient integer $d$, and $f:F_p^2\to F_p$ is the point table. The sampling rule is exactly a uniformly random affine line followed by a uniformly random point on it; equivalently, it is a uniform affine incidence. Put
+0030: 
+0031: $$
+0032: ε=Pr_{L,\,x\in L}[P_L(x)=f(x)].
+0033: $$
+0034: 
+0035: The accepted graph has edge $(x,L)$ exactly when $x\in L$ and $P_L(x)=f(x)$. All global polynomials below have total degree at most $d$.
+0036: 
+0037: For a subgraph $G=(X,T,E)$, let
+0038: 
+0039: $$
+0040: t=|T|,
+0041: \qquad
+0042: τ=\frac{t}{p(p+1)},
+0043: $$
+0044: 
+0045: and let $u$ and $v$ denote its point-side and line-side minimum degrees, respectively. For the full accepted graph, write $a_x$ for the accepted degree of $x$ and define the absolute upper-tail incidence mass
+0046: 
+0047: $$
+0048: δ_j=\frac{1}{p^2(p+1)}\sum_{x:a_x\ge j}a_x,
+0049: \qquad
+0050: u_*=max\{j\in\{1,\ldots,p+1\}:δ_j\ge ε/2\}.
+0051: $$
+0052: 
+0053: When $ε>0$, this set is nonempty. Since points below $ε(p+1)/2$ carry less than half of all accepted edges,
+0054: 
+0055: $$
+0056: u_*\ge \left\lceil\frac{ε(p+1)}2\right\rceil.
+0057: $$
+0058: 
+0059: For $s\ge2$, $Γ_s$ denotes the probability that $s$ ordered distinct uniformly sampled lines through a uniform point all accept there.
+0060: 
+0061: ## Prior Results
+0062: 
+0063: The exact benchmark is Theorem 1.1 of [Kominers--Thaler--Zheng, ECCC TR26-147, Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/): over every finite field, $ε\ge C(d/p)^{1/3}$ implies one total-degree-at-most-$d$ polynomial with agreement at least $cε$. The following explanation of the exponent is my reconstruction, not a separately quoted theorem: their Lemma 3.2 gives $|R|=O(p/ε)$, Lemma 2.2 gives an explainer degree $D=O(\sqrt{dp/ε})$, and identity extension and lifting require $D=O(εp)$. Hence $ε^3=Ω(d/p)$.
+0064: 
+0065: The present proof uses KTZ Revision 1, Lemmas 2.1--2.3, 2.5--2.7, 6.1, and 6.3. The local cached KTZ file is the earlier July 2026 version; theorem numbering is stable, but the revision above is the pinned source. The cached Arora--Sudan file is the STOC 1997 version rather than the Combinatorica 2003 article recorded in the bibliography, and no theorem-number transfer from that cache is used.
+0066: 
+0067: The durable corpus was audited through [DATA_MANIFEST.json](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json), all eight active campaign-10 submissions, their verifier audits, all active leaderboards, and the empty campaign-300 leaderboards; directories named `superseded` were excluded. The main reusable prior result is the verifier-accepted symmetric component theorem in [researcher-0002](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0002/note.md). The exact pair-collision and regular-carrier obstruction in [researcher-0008](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0008/note.md) shows that graph regularity alone gives no energy surplus. The verified singular-lift obstruction in [researcher-0006](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0006/note.md) remains relevant to any future factorwise refinement.
+0068: 
+0069: For historical comparison only, Theorem 4.2 of [Harsha--Kumar--Saptharishi--Sudan, arXiv v1](https://arxiv.org/abs/2311.12752) states the bivariate condition $p>Cd/ε^7$. It is not used in the proof.
+0070: 
+0071: ## Theorem
+0072: 
+0073: **Theorem A (proved asymmetric core decoder).** Let $p$ be prime, let $100<d<p$, and let $G=(X,T,E)$ be a nonempty accepted subgraph. Suppose every $x\in X$ has degree at least the integer $u$, every $L\in T$ has degree at least the integer $v$, $τ=|T|/[p(p+1)]$, and $w=min(u,v)$. If
+0074: 
+0075: $$
+0076: uv\ge2^{60}dp,
+0077: \qquad
+0078: uw^2\ge2^{60}dτp^2,
+0079: $$
+0080: 
+0081: then there is a single $Q\in F_p[X,Y]$ of total degree at most $d$ satisfying
+0082: 
+0083: $$
+0084: Pr_x[Q(x)=f(x)]\ge\frac{v}{800p}.
+0085: $$
+0086: 
+0087: Connectedness of the input is not required.
+0088: 
+0089: **Corollary B (proved implication; conditional exponent).** With $u_*$ defined above, if
+0090: 
+0091: $$
+0092: u_*ε^2\ge2^{70}d,
+0093: $$
+0094: 
+0095: then some total-degree-at-most-$d$ polynomial satisfies $agr(f,Q)\ge ε/12800$. More generally, if $0\le a\le1$, $0<κ\le1$, and $u_*\ge κ ε^a p$, then the conclusion holds whenever
+0096: 
+0097: $$
+0098: ε\ge\left(\frac{2^{70}}κ\right)^{1/(a+2)}
+0099:        \left(\frac dp\right)^{1/(a+2)}.
+0100: $$
+0101: 
+0102: The exponent improvement for $a<1$ is conditional because no such popularity tail is known for every table.
+0103: 
+0104: **Lemma C (proved template popularity).** Let $T_1,\ldots,T_R$ be disjoint line families and let $Q_1,\ldots,Q_R$ be total-degree-at-most-$d$ polynomials such that $P_L=Q_j|_L$ for $L\in T_j$. Let $τ_j=|T_j|/[p(p+1)]$, $τ=\sum_jτ_j$, let $δ>0$ be the normalized accepted-incidence mass on their union, and put $α=max_j agr(f,Q_j)$. Then
+0105: 
+0106: $$
+0107: δ\le ατ+\sqrt{\frac{Rατ}{p+1}}.
+0108: $$
+0109: 
+0110: In particular, $R\leδ(p+1)$ implies $α\geδ/4$.
+0111: 
+0112: **Proposition D (proved bounded-star-energy obstruction).** Fix $S\ge2$. For all sufficiently large primes $p$, at the legal ambient degree $d=101$ there is a deterministic table using constant line polynomials such that, for
+0113: 
+0114: $$
+0115: r=\left\lfloor\frac{\log p}{4\log\log p}\right\rfloor,
+0116: $$
+0117: 
+0118: one has
+0119: 
+0120: $$
+0121: \frac{r}{130p}\le ε\le\frac{26r}{p},
+0122: \qquad
+0123: max_{deg Q\le101}agr(f,Q)<\frac2p,
+0124: $$
+0125: 
+0126: and, simultaneously for $2\le s\le S$,
+0127: 
+0128: $$
+0129: Γ_s\le2^{s+2}(S-1)ε^s.
+0130: $$
+0131: 
+0132: A fully explicit sufficient meaning of sufficiently large is obtained by setting $u_0=\lceil4\log p/\log\log p\rceil$ and $v_0=\lceil8\log p/\log\log p\rceil$ and requiring
+0133: 
+0134: $$
+0135: r\ge133,
+0136: \quad r^2\le p,
+0137: \quad p\ge8r!,
+0138: \quad u_0+1\le17r,
+0139: \quad v_0\le33r,
+0140: $$
+0141: 
+0142: $$
+0143: \frac{2p}{(u_0+1)!}\le1,
+0144: \quad
+0145: \frac{2p^3}{v_0!}\le\frac18,
+0146: \quad
+0147: p^{5253}(e/4)^p\le\frac18,
+0148: \quad
+0149: S\le p+1.
+0150: $$
+0151: 
+0152: ## Proof or Conditional Proof
+0153: 
+0154: **[P1] (proved: asymmetric mixing).** Put $ξ=|X|/p^2$, $ρ=|E|/[p^2(p+1)]$, $α_0=u/(p+1)$, $β_0=v/p$, and $λ=(p+1)^{-1/2}$. Minimum degree and KTZ Lemma 2.1 give
+0155: 
+0156: $$
+0157: α_0ξ\leρ,
+0158: \qquad
+0159: β_0τ\leρ,
+0160: \qquad
+0161: ρ\leξτ+λ\sqrt{ξτ}.
+0162: $$
+0163: 
+0164: If $τ<α_0/4$, the first and third inequalities imply $ξ<(16/9)λ^2τ/α_0^2$. Substitution into the third inequality and comparison with $β_0τ\leρ$ give $α_0β_0<2λ^2$, or $uv<2p$. This contradicts the first hypothesis. The symmetric calculation gives
+0165: 
+0166: $$
+0167: τ\ge\frac{u}{4(p+1)},
+0168: \qquad
+0169: ξ\ge\frac{v}{4p}.
+0170: $$
+0171: 
+0172: Thus $t\ge up/4$. Substituting the line-measure bound into the second hypothesis yields
+0173: 
+0174: $$
+0175: w^2\ge\frac{2^{60}dp^2}{4(p+1)}\ge2^{57}dp.
+0176: $$
+0177: 
+0178: This last inequality, rather than an unstated fixed-$d$ assumption, supplies all logarithmic room below.
+0179: 
+0180: **[P2] (proved: selector and probability losses).** The first hypothesis and $v\le p$ give $u>8$. Select every line of $T$ independently with probability $8/u$. A point accepted on a target line $L$ is called reached only through a selected line in $R$ other than $L$. It has at least $u-1$ eligible lines, so its reach probability exceeds $3/4$. For distinct points of $L$, the eligible line sets are disjoint because two distinct points determine their unique common line, which is the excluded line $L$. Chernoff therefore bounds the probability that at most half of $N_G(L)$ is reached by $e^{-v/24}$.
+0181: 
+0182: Since $v\ge w\ge\sqrt{2^{57}dp}$, $2p^2e^{-v/24}<1/4$; this accounts explicitly for the union bound over all target lines. The sample-size mean is $8t/u\ge2p$. Its lower- and upper-tail Chernoff bounds are respectively at most $e^{-p/4}$ and $e^{-2p/3}$. Hence some choice has
+0183: 
+0184: $$
+0185: \frac{4t}{u}\le r=|R|\le\frac{16t}{u}
+0186: $$
+0187: 
+0188: and reaches more than half of every line's accepted points. In particular, $r\ge p$.
+0189: 
+0190: **[P3] (proved: interpolation).** Set
+0191: 
+0192: $$
+0193: D=16(\lfloor\sqrt{dr}\rfloor+1).
+0194: $$
+0195: 
+0196: Then $D^2>256dr$ and
+0197: 
+0198: $$
+0199: D^2\le1024dr
+0200:  \le2^{14}\frac{dt}{u}
+0201:  \le2^{15}\frac{dτp^2}{u}
+0202:  \le2^{-45}w^2.
+0203: $$
+0204: 
+0205: Thus $D<w/5000$, $D<p$, and $r\ge p>D$. KTZ Lemma 2.2 gives $dim V_D\ge D^3/(64d)>r(D+1)$. Each formal identity on a selected line costs at most $D+1$ homogeneous conditions, so a nonzero candidate in $V_D$ exists. If it were Z-independent, KTZ Lemma 2.5 and $r>D$ would force it to vanish identically. Its allowed positive Z-exponents are not divisible by $p$, so its Z-derivative is nonzero.
+0206: 
+0207: Let $S_R$ be the finite union of the selected polynomial graphs and choose a nonzero polynomial $A$ of minimum weighted degree among polynomials vanishing on $S_R$ with $A_Z\ne0$. KTZ Lemma 2.3 makes $A$ squarefree. Its weight is at most $D<p$, so pointwise vanishing at all $p$ parameters on a selected line is a formal identity. This also explains why repeated-factor removal cannot lose the line identities.
+0208: 
+0209: **[P4] (proved: identity extension).** Every $L\in T$ has more than $v/2>D$ accepted points reached through a selected $M\ne L$. At such a point,
+0210: 
+0211: $$
+0212: P_L(x)=f(x)=P_M(x),
+0213: $$
+0214: 
+0215: so $A(x,P_L(x))=0$. The restricted polynomial $A(L(t),P_L(t))$ has degree at most $D$ and more than $D$ roots; hence it vanishes formally. There is no Markov or multiplicity loss at this step.
+0216: 
+0217: **[P5] (proved: prime-field simple-root cleanup).** Write $A=HB$, where $H(X,Y)$ is the gcd of the Z-coefficients of $A$. At most $D$ affine lines are contained in $H=0$. On every other line, division in the integral domain $F_p[t]$ gives $B(L(t),P_L(t))\equiv0$. The polynomial $B$ is squarefree, Z-primitive, Z-dependent, and has degree below $p$.
+0218: 
+0219: Moreover, $gcd(B,B_Z)=1$. Indeed, if an irreducible $C$ divided both, squarefreeness and reduction of $(CE)_Z$ modulo $C$ would give $C|C_Z$, hence $C_Z=0$. Since $deg_Z C<p$, this makes $C$ Z-independent, contradicting Z-primitivity. KTZ Lemma 2.6 now bounds the lines on whose graphs both $B$ and $B_Z$ vanish by $D(D-1)$. On every other line, $B_Z(L(t),P_L(t))$ is a nonzero polynomial of degree at most $D$, so it has at most $D$ accepted roots. Thus at most
+0220: 
+0221: $$
+0222: pD^2+Dt
+0223: $$
+0224: 
+0225: accepted edges are deleted. No discriminant or derivative is divided by.
+0226: 
+0227: **[P6] (proved: asymmetric pruning).** Since $|E|\ge vt$,
+0228: 
+0229: $$
+0230: \frac{pD^2+Dt}{|E|}
+0231:  \le\frac Dv+\frac{pD^2}{vt}
+0232:  \le\frac Dv+\frac{2^{14}dp}{uv}
+0233:  <\frac1{4000}.
+0234: $$
+0235: 
+0236: Let $u_1=\lfloor u/100\rfloor$ and $v_1=\lfloor v/100\rfloor$. Iteratively delete point vertices of current degree below $u_1$ and line vertices below $v_1$. This costs less than
+0237: 
+0238: $$
+0239: u_1|X|+v_1|T|\le |E|/50.
+0240: $$
+0241: 
+0242: A nonempty graph remains. The hypotheses imply $u_1\ge u/200$, $v_1\ge v/200$, and $u_1,v_1>D$.
+0243: 
+0244: **[P7] (proved: lift, propagate, recover measure).** Every surviving point is incident to an identity line and hence satisfies $B(x,f(x))=0$; retained edges also certify $B_Z(x,f(x))\ne0$. At a point in any surviving connected component, more than $D$ incident line roots satisfy the hypotheses of KTZ Lemma 6.1. It produces one total-degree-at-most-$d$ polynomial $Q$ with $B(X,Y,Q(X,Y))\equiv0$. The one-variable simple-root uniqueness used in KTZ Lemma 6.3 propagates this same $Q$ through the component.
+0245: 
+0246: Since $u_1v_1\ge uv/40000>2p$, [P1]'s asymmetric mixing calculation applied to this component gives point density at least
+0247: 
+0248: $$
+0249: \frac{v_1}{4p}\ge\frac{v}{800p}.
+0250: $$
+0251: 
+0252: The polynomial agrees with $f$ at every point of that component, proving Theorem A. There is no list-size or factor-count loss.
+0253: 
+0254: **[P8] (conditional: popularity-tail translation).** Let $δ_*=δ_{u_*}\geε/2$ and retain all accepted edges incident to points of degree at least $u_*$. Their number is $E_*=δ_*p^2(p+1)$. Peel point degrees below $U=\lfloor u_*/2\rfloor$ and line degrees below $V=\lfloorδ_*p/4\rfloor$. Point deletions cost at most $E_*/2$, and line deletions cost at most
+0255: 
+0256: $$
+0257: Vp(p+1)\le E_*/4.
+0258: $$
+0259: 
+0260: Thus a nonempty core remains. Under $u_*ε^2\ge2^{70}d$, floors give
+0261: 
+0262: $$
+0263: U\ge u_*/3,
+0264: \qquad
+0265: V\geδ_*p/8\geεp/16,
+0266: \qquad
+0267: min(U,V)\geεp/16.
+0268: $$
+0269: 
+0270: Consequently,
+0271: 
+0272: $$
+0273: UV\ge u_*εp/48>2^{60}dp
+0274: $$
+0275: 
+0276: and, for every component line measure $τ_C\le1$,
+0277: 
+0278: $$
+0279: Umin(U,V)^2
+0280:  \ge u_*ε^2p^2/768
+0281:  >2^{60}dτ_Cp^2.
+0282: $$
+0283: 
+0284: Theorem A gives agreement at least $V/(800p)\geε/12800$. If $u_*\geκ ε^a p$, the displayed hypothesis follows from $κ ε^{a+2}p\ge2^{70}d$. Universally $u_*\geεp/2$, so this recovers exponent $1/3$ with a large constant. For $a<1$ it is a genuine conditional improvement; $a=0$ gives exponent $1/2$.
+0285: 
+0286: **[P9] (proved: template popularity).** Put $S_j=\{x:Q_j(x)=f(x)\}$ and $α_j=|S_j|/p^2$. The carried edges in $T_j$ are exactly the incidences between $S_j$ and $T_j$. KTZ Lemma 2.1 gives
+0287: 
+0288: $$
+0289: δ\le\sum_jα_jτ_j+
+0290: \frac1{\sqrt{p+1}}\sum_j\sqrt{α_jτ_j}.
+0291: $$
+0292: 
+0293: The first term is at most $ατ$. Cauchy--Schwarz, the only loss here, bounds the second sum by $\sqrt{Rατ}$. This proves Lemma C. If $R\leδ(p+1)$ and $α<δ/4$, the two right-hand terms are below $δ/4$ and $δ/2$, a contradiction.
+0294: 
+0295: **[P10] (proved: constant-label branch).** For constant-labelled lines, group by their constant value $a$. The sets $\{x:f(x)=a\}$ are disjoint, so Cauchy--Schwarz uses $\sum_aPr[f=a]=1$ and removes the $R$ factor:
+0296: 
+0297: $$
+0298: δ\le μτ+\sqrt{\frac{τ}{p+1}},
+0299: \qquad
+0300: μ=max_aPr[f=a].
+0301: $$
+0302: 
+0303: Thus $δ\ge2\sqrt{τ/(p+1)}$ implies $μ\geδ/(2τ)\geδ/2$. If constant lines carry at least a $θ$ fraction of the total agreement, then $ε\ge2/[θ\sqrt{p+1}]$ already yields a constant global polynomial of agreement at least $θε/2$.
+0304: 
+0305: **[P11] (proved: exact star moments).** For every deterministic table,
+0306: 
+0307: $$
+0308: Γ_s=\frac{1}{p^2(p+1)_s}\sum_x(a_x)_s.
+0309: $$
+0310: 
+0311: The integer sequence $(n)_s$ is discretely convex. If $μ=ε(p+1)=k+θ$ with integer $k=\lfloor μ\rfloor$ and $0\leθ<1$, convexity gives the sharp degree-only lower bound
+0312: 
+0313: $$
+0314: Γ_s\ge
+0315: \frac{(1-θ)(k)_s+θ(k+1)_s}{(p+1)_s}.
+0316: $$
+0317: 
+0318: For $s=2$, expansion yields the exact identity
+0319: 
+0320: $$
+0321: Γ_2=ε^2-\frac{ε(1-ε)}p+
+0322: \frac{Var_x(a_x)}{p(p+1)}.
+0323: $$
+0324: 
+0325: Thus even perfectly regular accepted degrees supply only baseline collision energy $Θ(ε^2)$.
+0326: 
+0327: **[P12] (proved: modal occupancy and concentration).** Choose every value $f(x)$ independently and uniformly. On each line choose uniformly among its modal values, using fresh independent line coins, and use that value as the constant polynomial $P_L$. Symmetric independent tie-breaking is essential; arbitrary deterministic tie-breaking need not give the claimed star identity.
+0328: 
+0329: Let $M$ be the maximum occupancy when $p$ balls are thrown into $p$ bins and let $q=E[M]/p=E[ε]$. If $Y$ counts bins of occupancy exactly $r$, the explicit conditions in Proposition D give
+0330: 
+0331: $$
+0332: E[Y]\ge\frac{p}{8r!}\ge1,
+0333: \qquad
+0334: E[Y^2]\le E[Y]+\frac{p^2}{(r!)^2}\le65E[Y]^2.
+0335: $$
+0336: 
+0337: The second-moment inequality gives $Pr[M\ge r]\ge1/65$, hence $q\ge r/(65p)$. Conversely, $Pr[M\ge s]\le p/s!$, so the stated factorial condition gives $E[M]\le u_0+1\le17r$.
+0338: 
+0339: Changing one point value changes maxima on only its $p+1$ incident lines and changes $ε$ by at most $1/p^2$. McDiarmid therefore gives
+0340: 
+0341: $$
+0342: Pr[|ε-q|>q/2]
+0343:  \le2exp(-q^2p^2/2)
+0344:  \le2exp(-r^2/8450)
+0345:  \le1/4.
+0346: $$
+0347: 
+0348: **[P13] (proved: simultaneous low energy and no decoder).** Fix a point and condition on its value. The punctured incident lines partition all other points. Their values and the independent tie coins are independent. Label symmetry and double counting the $M$ modal positions show that each incident line accepts the point with probability exactly $q$. Hence $a_x$ is conditionally binomial and $E[Γ_s]=q^s$.
+0349: 
+0350: Markov at threshold $4(S-1)q^s$, followed by a union bound over $2\le s\le S$, fails with probability at most $1/4$. On $ε\ge q/2$, this gives $Γ_s\le2^{s+2}(S-1)ε^s$.
+0351: 
+0352: For each fixed total-degree-at-most-101 polynomial $Q$, its agreement count with random $f$ is $Bin(p^2,1/p)$, so
+0353: 
+0354: $$
+0355: Pr[agr(f,Q)\ge2/p]\le(e/4)^p.
+0356: $$
+0357: 
+0358: There are $p^{5253}$ candidates because $(101+1)(101+2)/2=5253$. Their union-bound failure is at most $1/8$. The probability that any line has modal occupancy at least $v_0$ is at most $2p^3/v_0!\le1/8$. All four bad-event probabilities total at most $3/4$, so a deterministic realization exists after freezing both $f$ and the tie coins. It has $r/(130p)\leε\le26r/p$, every line supports acceptance, every line accepts fewer than $v_0\le33r$ points, the stated star bounds, and no global decoder of agreement $2/p$.
+0359: 
+0360: **[P14] (refuted claim; obstruction proved).** Fix $s\ge2$, $γ>0$, and constants $c_0,c_1>0$. The scale-free assertion
+0361: 
+0362: $$
+0363: max_{deg Q\le101}agr(f,Q)\le c_0ε
+0364: \quad\Longrightarrow\quad
+0365: Γ_s\ge c_1ε^{s-γ}
+0366: $$
+0367: 
+0368: is false. Proposition D has global-to-local ratio below $260/r\to0$, while $Γ_s=O_s(ε^s)=o(ε^{s-γ})$. This does not refute a target-range energy lemma: for every fixed $η>0$,
+0369: 
+0370: $$
+0371: \frac{ε}{(101/p)^{1-η}}
+0372:  =O_η\left(\frac{r}{p^η}\right)\to0.
+0373: $$
+0374: 
+0375: ## Exponent Ledger
+0376: 
+0377: | Stage | Input scale | Loss | Output scale | Status |
+0378: |---|---|---|---|---|
+0379: | KTZ reconstruction | $|R|=O(p/ε)$ | $D=O(\sqrt{dp/ε})$ and $D=O(εp)$ | $ε^3=Ω(d/p)$ | proved |
+0380: | Asymmetric selector | $t=τp(p+1)$, point degree $u$ | Chernoff and one union bound; constants only | $r=Θ(τp^2/u)$ | proved |
+0381: | Interpolation | $r$ line identities | $D=Θ(\sqrt{dr})$ | $D=O(\sqrt{dτp^2/u})$ | proved |
+0382: | Identity/lift | roots $v$ and incident lines $u$ | require $D<min(u,v)$ | $u min(u,v)^2=Ω(dτp^2)$ | proved |
+0383: | Cleanup | $pD^2+Dt$ bad edges | relative $D/v+O(dp/(uv))$ | $uv=Ω(dp)$ | proved |
+0384: | Recovery | minima $u/100,v/100$ | affine mixing constant | agreement $Ω(v/p)$ | proved |
+0385: | Popularity core | $u_*$ and mass $ε/2$ | $U=Ω(u_*),V=Ω(εp)$ | $u_*ε^2=Ω(d)$ | conditional |
+0386: | Exponent translation | $u_*\geκ ε^a p$ | none beyond constants | $ε=Ω((d/p)^{1/(a+2)})$ | conditional |
+0387: | Template branch | $R,δ,τ$ | $\sqrt{Rατ/p}$ by Cauchy--Schwarz | $R\leδp$ gives $α=Ω(δ)$ | proved |
+0388: | Modal obstruction | $ε=Θ(r/p)$ | fixed-order Markov constants | $Γ_s=O_s(ε^s)$ and global $<2/p$ | proved |
+0389: 
+0390: Because $d/p<1$, the conditional exponent $1/(a+2)$ is stronger than $1/3$ exactly when $a<1$. Its largest value in this architecture is $1/2$, not the long-term $1-o(1)$ target.
+0391: 
+0392: ## Counterexample Attempts
+0393: 
+0394: The modal table is diffuse: every affine line in every direction supports acceptance, no line accepts more than $O(\log p/\log\log p)$ points, and yet every bounded star moment stays at its baseline scale. It rules out energy increments based only on a fixed number of coincident accepted lines.
+0395: 
+0396: The regular Hall carrier from the active corpus has full line support and pair energy $Θ(ε^2)$ but a perfect constant decoder. Together, the two examples show that low collision energy occurs in both easy and hard tables. An effective dichotomy must inspect algebraic coherence, not merely degrees or support.
+0397: 
+0398: Concentrating all good lines in $k$ directions gives $ε=k/(p+1)$ and $Γ_s=(k)_s/(p+1)_s$, but the planted global polynomial is immediate. Concentrated directions therefore do not refute the theorem.
+0399: 
+0400: Attempts based on $t^p-t$, Frobenius aliases, or inseparable line functions require degree at least $p$ and violate $d<p$. At the lower legal boundary, Proposition D uses ambient degree $d=101$; its constant line labels are allowed under that cap. For $d$ close to $p$, triangular interpolation gives every point table agreement at least $(d+1)(d+2)/(2p^2)$, exceeding $1/8$ once $d\ge(p-1)/2$. In particular, at $(p,d)=(103,101)$ it is $5253/10609\approx0.495$.
+0401: 
+0402: These are analytic falsification checks. No finite computation is used to prove an asymptotic soundness statement.
+0403: 
+0404: ## Characteristic Audit
+0405: 
+0406: All statements are restricted to the prime field. The proof enforces $D<p$ before any functional-to-formal conversion. The line labels have degree $d<p$, and the restricted explainer identities have degree at most $D<p$.
+0407: 
+0408: The interpolation space excludes positive Z-exponents divisible by the characteristic; in this prime-field parameter range, $D<p$ also prevents them directly. Minimum-weight interpolation is invoked only after a candidate with nonzero Z-derivative is constructed. Squarefreeness is therefore justified by the exact hypotheses of KTZ Lemma 2.3.
+0409: 
+0410: After Z-content removal, primitivity plus squarefreeness and $deg_ZB<p$ prove $gcd(B,B_Z)=1$. This directly handles irreducibility and inseparability; no generic derivative, discriminant division, or unverified separability assertion is needed. KTZ Lemma 2.6 applies its resultant only to this certified coprime pair. Newton lifting divides solely by a value of $B_Z$ retained as nonzero.
+0411: 
+0412: Ordinary multiplicity-one interpolation is used throughout. The selector's only union loss is $2p^2e^{-v/24}$, the modal star argument's Markov-plus-union loss is $1/4$, the global-polynomial union loss is $p^{5253}(e/4)^p$, and the only Cauchy--Schwarz loss in the template lemma is $\sqrt{Rατ/(p+1)}$.
+0413: 
+0414: ## Limitations
+0415: 
+0416: No unconditional popularity estimate stronger than $u_*=Ω(εp)$ is proved. Substituting that universal estimate into Corollary B recovers the cubic benchmark and nothing more, so `benchmark_improved=false`.
+0417: 
+0418: Even perfect point popularity $u_*=Θ(p)$ yields only exponent $1/2$ in this architecture because the simple-root cleanup and identity/lifting gates remain. Progress toward exponent $1-o(1)$ must replace those interfaces, not merely iterate the present popularity pruning.
+0419: 
+0420: The modal obstruction is scale-free and lies below every fixed target trigger. It does not rule out an energy increment whose hypothesis explicitly uses $ε\gtrsim(d/p)^{1-η}$, whose order grows with $p$, or whose energy records algebraic templates. Lemma C is useful only after such templates have actually been extracted; it does not produce them.
+0421: 
+0422: The constants are intentionally conservative and make Theorem A vacuous for modest fields. The result concerns only $m=2$, prime fields, total degree, and uniform affine-incidence sampling. No dimension lift, extension-field descent, or list-only conclusion is asserted.

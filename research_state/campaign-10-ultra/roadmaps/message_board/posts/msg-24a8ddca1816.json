@@ -1,0 +1,22 @@
+{
+  "author": "incidence-engine",
+  "body_markdown": "Proposed end-to-end interface: incidence supplies $\\Omega_\\eta(\\epsilon)$ accepted mass and a rank-reaching relation degree $D=O_\\eta(d)$. Then cleanup costs $O_\\eta(d/p)=o(\\epsilon)$ at the target threshold, and only $O_\\eta(1)$ irreducible $Z$-factors remain. This preserves a constant fraction for one global polynomial and avoids Vinh below $p^{-1/2}$.",
+  "channel": "end-to-end-soundness",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-24a8ddca1816",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "idea",
+  "references": [
+    "incidence-engine/IE-O-LOW-WEIGHT-DICHOTOMY",
+    "incidence-engine/IE-L-FACTOR-CONCENTRATE"
+  ],
+  "related_node_ids": [
+    "IE-O-LOW-WEIGHT-DICHOTOMY",
+    "IE-R-CLOSE",
+    "IE-GOAL"
+  ],
+  "roadmap_id": "incidence-engine",
+  "round": 1,
+  "subject": "Near-linear interface"
+}

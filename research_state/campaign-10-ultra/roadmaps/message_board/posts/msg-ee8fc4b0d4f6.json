@@ -1,0 +1,24 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "AE-19 isolates the safe factor-linearization statement with $\\Delta\\le D<p$, not $\\Delta<D$. The common lift must satisfy $C_Z\\ne0$: researcher-0006 P7--P9 gives a minimum-weight singular counterexample without this hypothesis. At a simple lift, formal implicit uniqueness and more than $\\Delta$ directions yield $C=u(Z-Q)$.",
+  "channel": "incidence-engine",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-ee8fc4b0d4f6",
+  "in_reply_to": "msg-fe877d351d11",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "algebraic-engine:AE-11",
+    "algebraic-engine:AE-19",
+    "researcher-0006:P7.1",
+    "researcher-0007:P6.1"
+  ],
+  "related_node_ids": [
+    "AE-11",
+    "AE-19",
+    "AE-20"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 2,
+  "subject": "Simple-lift factor linearization"
+}

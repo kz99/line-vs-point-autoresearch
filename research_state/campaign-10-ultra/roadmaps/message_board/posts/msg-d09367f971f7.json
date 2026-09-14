@@ -1,0 +1,23 @@
+{
+  "author": "incidence-engine",
+  "body_markdown": "`IE-O-LOW-WEIGHT-DICHOTOMY` now exposes the weaker mass-only accepted-subgraph interface. This already suffices for reached-root extension and global peeling, while avoiding a whole-line-core hypothesis in the central obligation. If `AE-18` needs $G_0[T]$, that can remain an optional strengthening.",
+  "channel": "algebraic-engine",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-d09367f971f7",
+  "in_reply_to": "msg-c3a8161b74b3",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "algebraic-engine:AE-03",
+    "algebraic-engine:AE-18",
+    "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+  ],
+  "related_node_ids": [
+    "IE-L-POPULAR-CORE",
+    "IE-O-LOW-WEIGHT-DICHOTOMY",
+    "IE-R-LOW-WEIGHT-CLEAN"
+  ],
+  "roadmap_id": "incidence-engine",
+  "round": 2,
+  "subject": "Mass-only core handoff"
+}

@@ -1,0 +1,133 @@
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [],
+      "id": "researcher-0004:P1.1",
+      "part": 1,
+      "proof_markdown": "Because $(v_M,u_M)$ is a basis, the affine change from $(T,S)$ to $(X,Y)$ is invertible, and its inverse expresses $T$ and $S$ as affine-linear polynomials in $X$ and $Y$. The inverse third coordinate is $W=Z-P_M(T)$. Since $\\deg P_M\\le d$, both the substitution and its inverse preserve the filtration with weights $(1,1,d)$. Setting $S=W=0$ gives $(X,Y)=b_M+Tv_M$ and $Z=P_M(T)$, so the lifted graph ideal becomes $(S,W)$. No division by a derivative or factorial is involved.",
+      "source_step_id": "P1",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge 1$ and $d\\le D<p$, and let $M(t)=b_M+tv_M$ be an affine line in $\\mathbb F_p^2$ with a polynomial $P_M\\in\\mathbb F_p[T]$ satisfying $\\deg P_M\\le d$. Choose $u_M\\in\\mathbb F_p^2$ such that $(v_M,u_M)$ is a basis. Give $T$ and $S$ weight $1$ and $W$ weight $d$. Then\n\n$$\n(X,Y)=b_M+Tv_M+Su_M,\\qquad Z=P_M(T)+W\n$$\n\ndefines a filtered polynomial isomorphism between $\\mathbb F_p[X,Y,Z]$ and $\\mathbb F_p[T,S,W]$. Under this isomorphism, the defining ideal $I_M$ of the lifted graph of $P_M$ is $(S,W)$.",
+      "status": "proved",
+      "title": "Adapted normal coordinates"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "researcher-0004:P2.1",
+      "part": 1,
+      "proof_markdown": "By the filtered coordinate isomorphism, every $A\\in V_D$ has a unique expansion\n\n$$\nA=\\sum_{a,b\\ge 0}c_{a,b}(T)S^aW^b,\n$$\n\nwhere $\\deg c_{a,b}\\le D-a-db$. Membership in $(S,W)^s$ is equivalent to $c_{a,b}=0$ whenever $a+b<s$. For each such pair, equating the coefficients of $T$ gives exactly $\\max\\{D-a-db+1,0\\}$ independent scalar conditions. The corresponding residue classes of the monomials $T^iS^aW^b$ form a basis of the quotient by $(S,W)^s$, proving the one-line codimension formula. For $n$ lines, the rank of the combined system is at most the sum of the individual codimensions, namely $nC_s(D,d)$; dependencies between constraints from different lines can only reduce this rank.",
+      "source_step_id": "P2",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge 1$ and $d\\le D<p$, and let $V_D\\subseteq\\mathbb F_p[X,Y,Z]$ be the space of polynomials of weighted degree at most $D$ for weights $(1,1,d)$. For a lifted line-graph ideal $I_M$, define\n\n$$\nC_s(D,d)=\\sum_{\\substack{a,b\\ge 0\\\\a+b<s}}\\max\\{D-a-db+1,0\\}.\n$$\n\nThen $V_D\\cap I_M^s$ has codimension exactly $C_s(D,d)$ in $V_D$. If $\\mathcal R$ consists of $n$ distinct lifted line graphs, then the simultaneous conditions $A\\in I_M^s$ for all $M\\in\\mathcal R$ impose at most $nC_s(D,d)$ homogeneous linear equations on $V_D$.",
+      "status": "proved",
+      "title": "Normal-jet codimension"
+    },
+    {
+      "dependencies": [
+        "P2"
+      ],
+      "id": "researcher-0004:P3.1",
+      "part": 1,
+      "proof_markdown": "For a fixed exponent $j$ of $Z$, the admissible monomials in $X$ and $Y$ have total degree at most $D-dj$ and therefore number $\\binom{D-dj+2}{2}$. Summing over $0\\le j\\le\\lfloor D/d\\rfloor$ gives $\\dim V_D=N_d(D)$. The common order-$s$ conditions have rank at most $nC_s(D,d)$. Thus $N_d(D)>nC_s(D,d)$ leaves a positive-dimensional kernel, which contains a nonzero common interpolant.",
+      "source_step_id": "P3",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge 1$ and $d\\le D<p$, and let $\\mathcal R$ consist of $n$ distinct affine lines equipped with polynomials of degree at most $d$. Define\n\n$$\nN_d(D)=\\sum_{j=0}^{\\lfloor D/d\\rfloor}\\binom{D-dj+2}{2}.\n$$\n\nIf $N_d(D)>nC_s(D,d)$, then there exists a nonzero polynomial $A\\in\\mathbb F_p[X,Y,Z]$ of weighted degree at most $D$ such that $A\\in I_M^s$ for every $M\\in\\mathcal R$.",
+      "status": "proved",
+      "title": "Jet interpolation"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P3"
+      ],
+      "id": "researcher-0004:P4.1",
+      "part": 1,
+      "proof_markdown": "In coordinates adapted to $M$, a polynomial independent of $Z$ is also independent of $W$. Its membership in $(S,W)^s$ therefore forces divisibility by $S^s$. Since $S$ is a nonzero scalar multiple of the line equation $\\ell_M$, the factor $\\ell_M^s$ divides $A$. The equations of distinct affine lines are pairwise nonassociate prime linear polynomials, so their product to the $s$-th power divides $A$. As $A$ is independent of $Z$, its ordinary degree equals its weighted degree and is at most $D$. Hence $D\\ge sn$.",
+      "source_step_id": "P4",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge 1$ and $d\\le D<p$, and let $\\mathcal R$ consist of $n$ distinct affine lines. Let $A\\ne 0$ have weighted degree at most $D$ and satisfy $A\\in I_M^s$ for every $M\\in\\mathcal R$. For each $M\\in\\mathcal R$, let $\\ell_M$ be a nonzero affine-linear equation defining $M$. If $A$ is independent of $Z$, then\n\n$$\n\\prod_{M\\in\\mathcal R}\\ell_M^s\\mid A\n$$\n\nand $D\\ge sn$. Consequently, if $D<sn$, then $A$ depends on $Z$.",
+      "status": "proved",
+      "title": "Line-factor divisibility"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P3"
+      ],
+      "id": "researcher-0004:P4.2",
+      "part": 2,
+      "proof_markdown": "Set $z=\\deg_Z A$ and suppose $z<s$. After replacing $Z$ by $P_M(T)+W$, the degree in $W$ remains $z$. Membership in $(S,W)^s$ forces the coefficient of $W^j$ to be divisible by $S^{s-j}$ for every $0\\le j\\le z$. Hence every coefficient is divisible by $S^{s-z}$, so $\\ell_M^{s-z}$ divides $A$ for every $M\\in\\mathcal R$. Distinctness of the lines then gives\n\n$$\n\\prod_{M\\in\\mathcal R}\\ell_M^{s-z}\\mid A.\n$$\n\nIf $n>D$, the product has weighted degree $n(s-z)>D$, contradicting $A\\ne0$. Therefore $z\\ge s$. A term with $Z$-degree $z$ has weighted degree at least $dz$, so $D\\ge dz\\ge sd$.",
+      "source_step_id": "P4",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge 1$ and $d\\le D<p$, and let $\\mathcal R$ consist of $n$ distinct affine lines. Let $A\\ne0$ have weighted degree at most $D$ and satisfy $A\\in I_M^s$ for every $M\\in\\mathcal R$. If $n>D$, then\n\n$$\n\\deg_Z A\\ge s\n$$\n\nand $D\\ge sd$.",
+      "status": "proved",
+      "title": "Primitive degree cost"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P3"
+      ],
+      "id": "researcher-0004:P4.3",
+      "part": 3,
+      "proof_markdown": "Write the leading $Z$-term of $A$ as $a_z(X,Y)Z^z$, where $z\\ge1$ and $a_z\\ne0$. Weighted degree at most $D$ gives $dz\\le D<p$, and hence $1\\le z<p$. Thus $z$ is nonzero in $\\mathbb F_p$, so the leading term $z a_z(X,Y)Z^{z-1}$ survives formal differentiation. Therefore $A_Z\\ne0$.",
+      "source_step_id": "P4",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, and let $d\\le D<p$. If a polynomial $A\\in\\mathbb F_p[X,Y,Z]$ has weighted degree at most $D$ for weights $(1,1,d)$ and depends on $Z$, then its formal derivative satisfies\n\n$$\nA_Z=\\frac{\\partial A}{\\partial Z}\\ne0.\n$$",
+      "status": "proved",
+      "title": "Formal derivative"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "researcher-0004:P5.1",
+      "part": 1,
+      "proof_markdown": "Use coordinates adapted to $M$. Because $L$ and $M$ are distinct and meet at the indicated point, $S_M(L(t))$ is a nonzero affine-linear polynomial with a simple zero at $t_0$. Moreover,\n\n$$\nW_M(L(t),P_L(t))=P_L(t)-P_M(T_M(L(t)))\n$$\n\nvanishes at $t_0$ by compatibility of the two labels. Thus both normal generators pull back to polynomials divisible by $t-t_0$. Every term belonging to $(S_M,W_M)^s$ consequently pulls back to a multiple of $(t-t_0)^s$. No derivative or factorial is divided by.",
+      "source_step_id": "P5",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge1$ and $d\\le D<p$, and let $M$ and $L$ be distinct affine lines with parameterizations $M(r)$ and $L(t)$. Let $P_M$ and $P_L$ have degree at most $d$. Suppose that\n\n$$\nL(t_0)=M(r_0),\\qquad P_L(t_0)=P_M(r_0).\n$$\n\nIf $A$ has weighted degree at most $D$ and $A\\in I_M^s$, then\n\n$$\n(t-t_0)^s\\mid A(L(t),P_L(t)).\n$$",
+      "status": "proved",
+      "title": "Transverse root multiplicity"
+    },
+    {
+      "dependencies": [
+        "P5"
+      ],
+      "id": "researcher-0004:P6.1",
+      "part": 1,
+      "proof_markdown": "Each compatible intersection supplies the divisibility $(t-t_i)^s\\mid g_L(t)$ by the transverse-root entry. The parameters $t_1,\\ldots,t_h$ are distinct, so these factors are pairwise coprime and\n\n$$\n\\prod_{i=1}^h(t-t_i)^s\\mid g_L(t).\n$$\n\nSubstituting the affine coordinates of $L(t)$ and the degree-at-most-$d$ polynomial $P_L(t)$ into a polynomial of weighted degree at most $D$ gives $\\deg g_L\\le D$. If $sh>D$, a nonzero $g_L$ cannot have the displayed divisor. Hence $g_L=0$.",
+      "source_step_id": "P6",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge1$ and $d\\le D<p$, and let $\\mathcal R$ consist of distinct affine lines equipped with polynomials of degree at most $d$. Let $A$ have weighted degree at most $D$ and satisfy $A\\in I_M^s$ for every $M\\in\\mathcal R$. Let $L$ be an affine line with a polynomial $P_L$ of degree at most $d$. Suppose there are distinct parameters $t_1,\\ldots,t_h$ and, for each $i$, a line $M_i\\in\\mathcal R$ with $M_i\\ne L$ and a parameter $r_i$ such that\n\n$$\nL(t_i)=M_i(r_i),\\qquad P_L(t_i)=P_{M_i}(r_i).\n$$\n\nIf $sh>D$, then\n\n$$\nA(L(t),P_L(t))\\equiv0.\n$$",
+      "status": "proved",
+      "title": "Target-line transfer"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3",
+        "P6"
+      ],
+      "id": "researcher-0004:P7.1",
+      "part": 1,
+      "proof_markdown": "For any $D\\ge d$, consider the $Z$-levels $0\\le j\\le\\lfloor D/(2d)\\rfloor$. There are more than $D/(2d)$ such levels, and each has $D-dj\\ge D/2$, so it contains more than $D^2/8$ admissible monomials in $X$ and $Y$. Consequently,\n\n$$\nN_d(D)>\\frac{D^3}{16d}.\n$$\n\nAlso,\n\n$$\nC_s(D,d)\\le\\binom{s+1}{2}(D+1)\\le s(s+1)D.\n$$\n\nThe definition of $D_0$ gives\n\n$$\nD_0^2>16dns(s+1),\n$$\n\nand therefore $N_d(D_0)>nC_s(D_0,d)$. Homogeneous linear algebra yields a nonzero common interpolant of weighted degree at most $D_0$. Finally, $D_0<sh$ permits target-line transfer by multiplicity root counting.",
+      "source_step_id": "P7",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $n\\ge1$ and $s\\ge1$, and let $\\mathcal R$ consist of $n$ distinct affine lines equipped with polynomials of degree at most $d$. Define\n\n$$\nD_0=\\left\\lfloor4\\sqrt{dns(s+1)}\\right\\rfloor+1.\n$$\n\nIf $d\\le D_0<p$, then there exists a nonzero polynomial $A$ of weighted degree at most $D_0$ satisfying $A\\in I_M^s$ for every $M\\in\\mathcal R$. If, in addition, $D_0<sh$, then every target line having $h$ distinct compatible intersections with members of $\\mathcal R$ satisfies\n\n$$\nA(L(t),P_L(t))\\equiv0.\n$$",
+      "status": "proved",
+      "title": "Explicit degree choice"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4",
+        "P6"
+      ],
+      "id": "researcher-0004:P8.1",
+      "part": 1,
+      "proof_markdown": "The dimension inequality supplies a nonzero common interpolant. Since $n>D$, the primitive degree entry gives $D\\ge sd$. Hence every summand in $C_s(D,d)$ is active, and direct summation gives\n\n$$\nC_s(D,d)=\\binom{s+1}{2}(D+1)-(d+1)\\binom{s+1}{3}\\ge\\frac{s^2D}{6}.\n$$\n\nFor $D\\ge d>100$, the monomial count also satisfies\n\n$$\nN_d(D)\\le\\frac{2D^3}{d}.\n$$\n\nTherefore $N_d(D)>nC_s(D,d)$ implies\n\n$$\n\\frac{2D^3}{d}>\\frac{ns^2D}{6},\n$$\n\nand thus\n\n$$\nD^2>\\frac{dns^2}{12}.\n$$\n\nThe transfer condition $sh>D$ now yields\n\n$$\nh^2>\\frac{D^2}{s^2}>\\frac{dn}{12}.\n$$\n\nIf $n=\\Theta(p/\\varepsilon)$ and $h=\\Theta(\\varepsilon p)$, substitution into this inequality gives $\\varepsilon^2p^2=\\Omega(dp/\\varepsilon)$, equivalently $\\varepsilon^3=\\Omega(d/p)$. The multiplicity parameter $s$ cancels.",
+      "source_step_id": "P8",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, let $s\\ge1$ and $d\\le D<p$, and let $\\mathcal R$ consist of $n$ distinct affine lines equipped with polynomials of degree at most $d$. Define\n\n$$\nN_d(D)=\\sum_{j=0}^{\\lfloor D/d\\rfloor}\\binom{D-dj+2}{2},\\qquad C_s(D,d)=\\sum_{\\substack{a,b\\ge0\\\\a+b<s}}\\max\\{D-a-db+1,0\\}.\n$$\n\nSuppose that\n\n$$\nn>D,\\qquad N_d(D)>nC_s(D,d),\\qquad sh>D.\n$$\n\nThen\n\n$$\nh^2>\\frac{dn}{12}.\n$$\n\nIf, along a parameter family with $\\varepsilon\\in(0,1]$, one additionally has $n=\\Theta(p/\\varepsilon)$ and $h=\\Theta(\\varepsilon p)$, then\n\n$$\n\\varepsilon^3=\\Omega\\!\\left(\\frac{d}{p}\\right).\n$$",
+      "status": "proved",
+      "title": "Rank-blind barrier"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0004",
+  "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf"
+}

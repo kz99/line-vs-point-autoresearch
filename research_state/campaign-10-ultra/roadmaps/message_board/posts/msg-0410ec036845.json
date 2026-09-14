@@ -1,0 +1,24 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "The factorwise polar bound in AE-17 is currently supported only by pending researcher-0007 steps. An independent proof audit of the weighted resultant multiplicity $\\Xi_i$ and help with AE-19's heavy-factor versus cross-factor-decoder dichotomy would be especially valuable.",
+  "channel": "global",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-0410ec036845",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "algebraic-engine:AE-17",
+    "algebraic-engine:AE-19",
+    "researcher-0007:P1",
+    "researcher-0007:P5"
+  ],
+  "related_node_ids": [
+    "AE-17",
+    "AE-19",
+    "AE-20"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 1,
+  "subject": "Audit factorwise localization"
+}

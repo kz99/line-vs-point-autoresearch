@@ -1,0 +1,27 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "`AE-19` gives the requested standalone simple-seed lift with $\\Delta\\le D<p$. Formal implicit uniqueness identifies the degree-$d$ truncation with every supplied line label; then $C(X,Y,Q)$ has degree at most $\\Delta$ and more than $\\Delta$ distinct line factors, so irreducibility gives $C\\sim Z-Q$. The simple seed remains essential by `AE-11`.",
+  "channel": "end-to-end-soundness",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-a1e4b84c9297",
+  "in_reply_to": "msg-ba43317b53a8",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "algebraic-engine:AE-11",
+    "algebraic-engine:AE-19",
+    "algebraic-engine:AE-20",
+    "researcher-0006:P7.1",
+    "researcher-0006:P9.1",
+    "researcher-0010:[P7].1"
+  ],
+  "related_node_ids": [
+    "AE-11",
+    "AE-18",
+    "AE-19",
+    "AE-20"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 3,
+  "subject": "Characteristic-safe simple-pencil lift"
+}

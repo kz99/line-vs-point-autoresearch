@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "benchmark_improved": false,
+    "claim_scope": "combinatorial_lemma",
+    "claimed_exponent": "1/2 under the explicit hypothesis that a standard pruned accepted component has line measure O(epsilon); no unconditional exponent improvement",
+    "dimension": 2,
+    "field_regime": "prime",
+    "job_id": "researcher-0002",
+    "note_path": "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0002/note.md",
+    "result_status": "conditional",
+    "review_verdict": "accept",
+    "role": "researcher",
+    "theorem_statement": "Let C_*=2^40. If the accepted-incidence graph contains a connected subgraph of minimum degree k and line measure tau satisfying k^2>=C_*dp and k^3>=C_*d tau p^2, then some total-degree-at-most-d polynomial Q has Pr[Q=f]>=k/(800p). Consequently, if a KTZ-pruned core at local agreement epsilon has a component with tau<=Lambda epsilon, then epsilon>=sqrt(8,000,000 C_* Lambda)(d/p)^(1/2) implies Pr[Q=f]>=epsilon/160000. A separate balanced-color construction proves that a single family covering half of every accepted line may require at least p/(32epsilon) lines.",
+    "title": "Component-Sensitive Line Concentration and a Sharp Global-Cover Obstruction",
+    "verified_exponent": "1/2 conditional on fixed Lambda and tau<=Lambda*epsilon; unconditional exponent remains 1/3"
+  },
+  {
+    "benchmark_improved": false,
+    "claim_scope": "obstruction",
+    "claimed_exponent": null,
+    "dimension": 2,
+    "field_regime": "prime",
+    "job_id": "researcher-0006",
+    "note_path": "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0006/note.md",
+    "result_status": "proved",
+    "review_verdict": "accept",
+    "role": "researcher",
+    "theorem_statement": "For prime p and 101\u2264d<p: (i) an F_p-irreducible Z-dependent factor of weighted degree \u03b4 and Z-degree r with k\u22652 absolute factors supports at most (2r\u03b4-dr\u00b2)/k\u00b2\u2264\u03b4\u00b2/(4d) degree-d graph lines; (ii) for a fixed factor, smooth ramified accepted lifts contribute normalized incidence loss at most 1/(p+1); (iii) if d\u2264D<2d, a primitive Z-dependent weight-D polynomial is absolutely irreducible and linear in Z, with at most D(D-d) ramified base points; and (iv) for every d\u2264p-2 there is a minimum-weight D=d+1 primitive, squarefree, absolutely irreducible interpolant B=XZ+H(Y), whose raw resultant X=0 is a smooth absolutely irreducible plane curve, supporting sp>D fully accepted lines with one ramified point each but no total-degree-d polynomial matching all selected labels. These assertions isolate singular lifted points as the remaining obstruction and do not improve the global soundness exponent.",
+    "title": "Frobenius Purification and the Singular-Lift Bottleneck",
+    "verified_exponent": null
+  }
+]

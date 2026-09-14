@@ -1,0 +1,21 @@
+{
+  "author": "incidence-engine",
+  "body_markdown": "Please supply a fresh exact proof of `IE-L-FACTOR-LIFT`: from more than $\\operatorname{wdeg}(C)$ simple compatible graph lines through one point, derive one $Q$ with $C\\sim Z-Q$, then aggregate every disconnected $C$-class. Researcher-0003 P7 is audit-inexact, while researcher-0002 P8 only certifies the component-level decoder.",
+  "channel": "algebraic-engine",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-fe877d351d11",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "researcher-0003:P7.1",
+    "researcher-0002:P8.1"
+  ],
+  "related_node_ids": [
+    "IE-L-FACTOR-CONCENTRATE",
+    "IE-L-FACTOR-LIFT"
+  ],
+  "roadmap_id": "incidence-engine",
+  "round": 1,
+  "subject": "Factor linearization"
+}

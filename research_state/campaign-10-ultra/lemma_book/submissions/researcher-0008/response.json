@@ -1,0 +1,156 @@
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [
+        "Hall's marriage theorem, proved in the step by regular degree counting"
+      ],
+      "id": "researcher-0008:P1.1",
+      "part": 1,
+      "proof_markdown": "For each $b\\in\\mathbb F_p$, add a dummy point vertex $z_b$. Join $z_b$ to the $p$ finite-slope lines $y=mx+b$, with $m\\in\\mathbb F_p$, and to the vertical line $x=b$. The augmented graph has $p^2+p=p(p+1)$ point-side vertices and $p(p+1)$ line-side vertices. Every real or dummy point has degree $p+1$, and every affine line has its $p$ real points and one dummy neighbor, so the augmented graph is balanced and $(p+1)$-regular.\n\nFor any left-side vertex set $S$, its $(p+1)\\lvert S\\rvert$ edges enter $N(S)$, whose vertices have at most $(p+1)\\lvert N(S)\\rvert$ incident slots. Hence\n\n$$(p+1)\\lvert S\\rvert\\le (p+1)\\lvert N(S)\\rvert,$$\n\nso Hall's condition holds and the augmented graph has a perfect matching. Removing that matching preserves balanced regularity. Iteration decomposes the augmented graph into $p+1$ perfect matchings, which are taken as colors.\n\nAfter the dummy edges are deleted, every real point retains exactly one edge of every color. Every affine line loses exactly the color of its unique dummy edge. Each perfect matching contains one edge at each of the $p$ dummy vertices, with distinct line endpoints, so each color is absent from exactly $p$ affine lines.",
+      "source_step_id": "P1",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, let $\\mathcal P=\\mathbb F_p^2$, let $\\mathcal L$ be the set of affine lines in $\\mathbb F_p^2$, and let\n\n$$E=\\{(x,L)\\in\\mathcal P\\times\\mathcal L:x\\in L\\}.$$\n\nThere is a partition of $E$ into $p+1$ color classes such that every point is incident to exactly one edge of each color, every affine line is incident to exactly one edge of all but one color and to no edge of the remaining color, and every color is omitted by exactly $p$ affine lines.",
+      "status": "proved",
+      "title": "Affine incidence decomposition"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "Hall's marriage theorem"
+      ],
+      "id": "researcher-0008:P2.1",
+      "part": 1,
+      "proof_markdown": "Select $d$ colors and let $E_0$ consist of their real incidence edges. Every point has $E_0$-degree $d$. A line has degree $d$ unless its unique missing color was selected, in which case it has degree $d-1$. Each selected color is absent from exactly $p$ lines, and each line misses only one color, so there are exactly $pd$ distinct deficient lines.\n\nPut\n\n$$r=p+1-d>0.$$\n\nForm the bipartite repair graph whose left vertices are the deficient lines and whose edges are their unselected real incidences. Every deficient line misses a selected color and therefore has all $r$ unselected colors, so every left degree is $r$. Every point has one edge of each unselected color before restriction, so every right degree is at most $r$. For every deficient-line set $S$,\n\n$$r\\lvert S\\rvert=e(S,N(S))\\le r\\lvert N(S)\\rvert.$$\n\nHall's theorem therefore supplies a matching saturating all deficient lines. Adding its edges to $E_0$ raises each deficient line from degree $d-1$ to degree $d$ and leaves every other line at degree $d$. The matching has $pd$ distinct point endpoints, which acquire degree $d+1$; the remaining $p^2-pd=p(p-d)$ points retain degree $d$.",
+      "source_step_id": "P2",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$. The affine point-line incidence graph over $\\mathbb F_p^2$ has a spanning subgraph in which every affine line has degree $d$, exactly $pd$ points have degree $d+1$, and the remaining $p(p-d)$ points have degree $d$.",
+      "status": "proved",
+      "title": "Regular incidence carrier"
+    },
+    {
+      "dependencies": [
+        "P2"
+      ],
+      "id": "researcher-0008:P3.1",
+      "part": 1,
+      "proof_markdown": "Set $f=0$. For each affine line $L$, let\n\n$$S_L=\\{t\\in\\mathbb F_p:(L(t),L)\\in E(H)\\}.$$\n\nEvery line has degree $d$ in $H$, so $\\lvert S_L\\rvert=d$. Define\n\n$$P_L(t)=\\prod_{a\\in S_L}(t-a).$$\n\nThe parameters in $S_L$ are distinct. Since $d<p$, the product has formal degree exactly $d$ and vanishes in $\\mathbb F_p$ exactly on $S_L$, with no polynomial-function aliasing. Thus $P_L(t)=f(L(t))$ holds exactly at the incidences of $H$. Fixed affine parameterizations include vertical lines and require no slope division.\n\nThere are $p(p+1)$ affine lines, each with $d$ accepted points. Hence the table has $p(p+1)d$ accepted incidences among $p^2(p+1)$ total incidences, and\n\n$$\\epsilon=\\frac{p(p+1)d}{p^2(p+1)}=\\frac dp.$$\n\nEvery line supports acceptance. Finally, the total-degree-$0$ polynomial $Q=0$ is legal under the ambient degree cap and agrees with $f$ at every point.",
+      "source_step_id": "P3",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $H$ be the spanning incidence subgraph supplied by P2. For every affine line $L$, fix an affine bijection $t\\mapsto L(t)$ from $\\mathbb F_p$ onto $L$. There exist a point table $f\\colon\\mathbb F_p^2\\to\\mathbb F_p$ and labels $P_L\\in\\mathbb F_p[t]$ with $\\deg P_L=d$ such that\n\n$$P_L(t)=f(L(t))\\quad\\Longleftrightarrow\\quad (L(t),L)\\in E(H).$$\n\nThe resulting table has agreement $\\epsilon=d/p$, every affine line has exactly $d$ accepted points, every point has accepted degree $d$ or $d+1$, exactly $pd$ points have accepted degree $d+1$, every affine line supports acceptance, and the total-degree-$0$ polynomial $Q=0$ agrees with $f$ everywhere.",
+      "status": "proved",
+      "title": "Polynomial carrier realization"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "researcher-0008:P4.1",
+      "part": 1,
+      "proof_markdown": "Define the larger self-inclusive capped load\n\n$$v_x=\\min\\left\\{1,\\sum_{\\substack{M\\in\\mathcal L\\\\x\\in M}}A(x,M)\\lambda_M\\right\\}.$$\n\nFor every accepted incidence $(x,L)$, one has $u_{x,L}(\\lambda)\\le v_x$. Since every line has $d$ accepted points, there are $p(p+1)$ lines, and $a_x\\le d+1$, double counting gives\n\n$$\\theta d\\,p(p+1)\\le\\sum_{L\\in\\mathcal L}\\sum_{x\\in N_E(L)}u_{x,L}(\\lambda)\\le\\sum_{x\\in\\mathbb F_p^2}a_xv_x\\le(d+1)\\sum_{x\\in\\mathbb F_p^2}v_x.$$\n\nNonnegativity of the weights gives\n\n$$\\sum_xv_x\\le\\sum_x\\sum_{\\substack{M\\in\\mathcal L\\\\x\\in M}}A(x,M)\\lambda_M=\\sum_{M\\in\\mathcal L}\\lvert N_E(M)\\rvert\\lambda_M=d\\sum_{M\\in\\mathcal L}\\lambda_M.$$\n\nCombining the two displays and dividing by $d>0$ yields the claimed lower bound. No Markov inequality, union bound, or Cauchy\u2013Schwarz inequality is used. Indicator weights are ordinary selected-line families, so the same bound applies to that special case and to the stricter other-line reaching condition.",
+      "source_step_id": "P4",
+      "statement_markdown": "For the table constructed in P3, write $\\mathcal L$ for the affine lines, $A(x,L)\\in\\{0,1\\}$ for the acceptance indicator,\n\n$$N_E(L)=\\{x\\in L:A(x,L)=1\\},\\qquad a_x=\\sum_{L\\ni x}A(x,L).$$\n\nLet $0<\\theta\\le1$, let $\\lambda=(\\lambda_M)_{M\\in\\mathcal L}$ be nonnegative line weights, and define\n\n$$u_{x,L}(\\lambda)=\\min\\left\\{1,\\sum_{\\substack{M\\ni x\\\\M\\ne L}}A(x,M)\\lambda_M\\right\\}$$\n\nfor every accepted incidence $(x,L)$. If\n\n$$\\sum_{x\\in N_E(L)}u_{x,L}(\\lambda)\\ge\\theta\\lvert N_E(L)\\rvert$$\n\nfor every $L\\in\\mathcal L$, then\n\n$$\\sum_{M\\in\\mathcal L}\\lambda_M\\ge\\frac{\\theta p(p+1)}{d+1}.$$\n\nThe same conclusion holds when every $\\lambda_M$ belongs to $\\{0,1\\}$.",
+      "status": "proved",
+      "title": "Fractional reaching lower bound"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "researcher-0008:P5.1",
+      "part": 1,
+      "proof_markdown": "At every accepted incidence $(x,L)$, the number of other accepted lines through $x$ is\n\n$$a_x-1\\ge d-1.$$\n\nFor the uniform weights,\n\n$$\\sum_{\\substack{M\\ni x\\\\M\\ne L}}A(x,M)\\lambda_M\\ge(d-1)\\frac{\\theta}{d-1}=\\theta.$$\n\nBecause $\\theta\\le1$, capping the load at $1$ still gives $u_{x,L}(\\lambda)\\ge\\theta$. Hence the weights are $\\theta$-reaching. Since $\\lvert\\mathcal L\\rvert=p(p+1)$, their total weight is\n\n$$\\sum_{M\\in\\mathcal L}\\lambda_M=p(p+1)\\frac{\\theta}{d-1}.$$\n\nThe ratio of this value to the lower-bound value $\\theta p(p+1)/(d+1)$ is $(d+1)/(d-1)$. Since $d\\ge101$,\n\n$$\\frac{d+1}{d-1}\\le\\frac{102}{100}.$$",
+      "source_step_id": "P5",
+      "statement_markdown": "For the table constructed in P3 and every $0<\\theta\\le1$, assign every affine line the weight\n\n$$\\lambda_M=\\frac{\\theta}{d-1}.$$\n\nThese weights are $\\theta$-reaching through other accepted lines and have total weight\n\n$$\\frac{\\theta p(p+1)}{d-1}.$$\n\nIf $\\operatorname{OPT}_\\theta$ is the infimum of the total weight over all nonnegative $\\theta$-reaching weights, then\n\n$$\\operatorname{OPT}_\\theta\\le\\frac{\\theta p(p+1)}{d-1},$$\n\nand the multiplicative gap between this upper bound and the lower-bound value $\\theta p(p+1)/(d+1)$ is\n\n$$\\frac{d+1}{d-1}\\le\\frac{102}{100}.$$",
+      "status": "proved",
+      "title": "Uniform reaching weights"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0008:P6.1",
+      "part": 1,
+      "proof_markdown": "At a fixed point $x$, exactly $a_x(a_x-1)$ ordered pairs of distinct incident lines are jointly accepted. Since there are $p(p+1)$ ordered pairs of distinct lines through $x$,\n\n$$\\Gamma_2=\\frac{\\mathbb E_x[a_x(a_x-1)]}{p(p+1)}.$$\n\nThe mean accepted degree is\n\n$$\\mathbb E_x[a_x]=(p+1)\\epsilon.$$\n\nUsing $\\mathbb E_x[a_x^2]=(\\mathbb E_x[a_x])^2+\\operatorname{Var}_x(a_x)$ gives\n\n$$\\Gamma_2=\\frac{(p+1)^2\\epsilon^2-(p+1)\\epsilon+\\operatorname{Var}_x(a_x)}{p(p+1)},$$\n\nwhich simplifies to the asserted identity. Nonnegativity of the variance gives\n\n$$\\Gamma_2\\ge\\epsilon^2-\\frac{\\epsilon(1-\\epsilon)}p.$$\n\nIf $\\epsilon\\ge2/p$, then $\\epsilon(1-\\epsilon)/p\\le\\epsilon/p\\le\\epsilon^2/2$, and therefore $\\Gamma_2\\ge\\epsilon^2/2$. This is the exact variance, or Jensen, loss; no further concentration loss occurs.",
+      "source_step_id": "P6",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and consider any valid affine line-versus-point table over $\\mathbb F_p^2$ with line-label degree at most $d$. Let $A(x,L)$ be its acceptance indicator, let\n\n$$\\epsilon=\\frac{\\sum_{x,L\\ni x}A(x,L)}{p^2(p+1)},\\qquad a_x=\\sum_{L\\ni x}A(x,L),$$\n\nand let $\\Gamma_2$ be the probability that a uniformly chosen ordered pair of distinct lines through a uniformly chosen point are both accepted there. Then\n\n$$\\Gamma_2=\\epsilon^2-\\frac{\\epsilon(1-\\epsilon)}p+\\frac{\\operatorname{Var}_x(a_x)}{p(p+1)}.$$",
+      "status": "proved",
+      "title": "Two-line collision identity"
+    },
+    {
+      "dependencies": [
+        "P6"
+      ],
+      "id": "researcher-0008:P7.1",
+      "part": 1,
+      "proof_markdown": "Choose $k$ projective direction classes. Set $f=0$, label every affine line in a chosen direction by the zero polynomial, and label every other affine line by the constant-one polynomial. Every point lies on exactly one affine line in each projective direction, so precisely $k$ lines through each point accept. Thus $a_x=k$ identically and $\\operatorname{Var}_x(a_x)=0$.\n\nThe agreement and ordered collision probability are\n\n$$\\epsilon=\\frac{k}{p+1},\\qquad \\Gamma_2=\\frac{k(k-1)}{p(p+1)}.$$\n\nSubstitution into P6 gives equality in its lower bound. The constant labels have formal degree $0$ and are legal under the ambient degree-at-most-$d$ rule; the ambient test cap remains $d>100$. Finally, $Q=0$ agrees with $f$ everywhere, so its global agreement is $1$.",
+      "source_step_id": "P7",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $1\\le k\\le p+1$ be an integer. There is a valid affine line-versus-point table over $\\mathbb F_p^2$ with degree-at-most-$d$ labels such that every point has accepted degree $k$,\n\n$$\\epsilon=\\frac{k}{p+1},\\qquad \\operatorname{Var}_x(a_x)=0,\n\\qquad \\Gamma_2=\\frac{k(k-1)}{p(p+1)}.$$\n\nThe collision lower bound in P6 is attained, and the total-degree-$0$ polynomial $Q=0$ has global agreement $1$.",
+      "status": "proved",
+      "title": "Direction-class equality"
+    },
+    {
+      "dependencies": [
+        "Kominers\u2013Thaler\u2013Zheng Revision 1, Lemmas 3.2 and 4.1\u20134.3"
+      ],
+      "id": "researcher-0008:P8.1",
+      "part": 1,
+      "proof_markdown": "KTZ Lemma 3.2 samples at rate $\\Theta(1/(\\epsilon p))$. Its Chernoff estimate and union bound over at most $p(p+1)$ target lines, together with Chebyshev's inequality for the sample size, cost only constants and yield only the one-sided bound\n\n$$\\lvert R\\rvert=O\\left(\\frac p\\epsilon\\right).$$\n\nWeighted interpolation then gives\n\n$$D=O\\left(\\sqrt{d\\lvert R\\rvert}\\right)=O\\left(\\sqrt{\\frac{dp}{\\epsilon}}\\right).$$\n\nThe distinct-root and lifting budgets require $D=O(\\epsilon p)$. Squaring the resulting scale comparison gives\n\n$$\\frac{dp}{\\epsilon}=O(\\epsilon^2p^2),$$\n\nor equivalently $\\epsilon^3=\\Omega(d/p)$. KTZ does not assert simultaneous $\\Theta$-saturation of these estimates.\n\nThe regular-carrier construction separately rules out a universal fractional cover of weight $o(p/\\epsilon)$. Its perfect decoder $Q=0$ may nevertheless be found before interpolation, so the construction does not make the cubic gate necessary for every decoding architecture.",
+      "source_step_id": "P8",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $\\epsilon>0$. Suppose a reaching family $R$ and a weighted interpolation degree $D$ satisfy\n\n$$\\lvert R\\rvert=O\\left(\\frac p\\epsilon\\right),\\qquad D=O\\left(\\sqrt{d\\lvert R\\rvert}\\right)=O\\left(\\sqrt{\\frac{dp}{\\epsilon}}\\right),$$\n\nand suppose the distinct-root and lifting budget imposes $D=O(\\epsilon p)$. Then the resulting parameter threshold is\n\n$$\\epsilon^3=\\Omega\\left(\\frac dp\\right).$$",
+      "status": "proved",
+      "title": "KTZ exponent reconstruction"
+    },
+    {
+      "dependencies": [
+        "Kominers\u2013Thaler\u2013Zheng Revision 1, Lemmas 2.1 and 6.2"
+      ],
+      "id": "researcher-0008:P9.1",
+      "part": 1,
+      "proof_markdown": "KTZ Lemma 2.1 gives the absolute affine form of Vinh's spectral estimate with normalized error $(p+1)^{-1/2}$. KTZ Lemma 6.2 absorbs that error only under\n\n$$(p+1)^{-1/2}\\le\\frac{\\epsilon}{8000}.$$\n\nAt the cubic threshold the condition is weaker, since\n\n$$\\left(\\frac dp\\right)^{1/3}\\sqrt p=d^{1/3}p^{1/6}.$$\n\nFor the parameters in the statement,\n\n$$\\epsilon\\sqrt p=C\\,101^\\alpha p^{1/2-\\alpha}\\longrightarrow0.$$\n\nThus the absorption inequality fails for all sufficiently large $p$. This is an obstruction to the Vinh-only recovery method, not a counterexample to a stronger soundness theorem.",
+      "source_step_id": "P9",
+      "statement_markdown": "Fix $C>0$ and $\\alpha>1/2$, set $d=101$, and let $p>101$ tend to infinity through primes. If\n\n$$\\epsilon=C\\left(\\frac{101}{p}\\right)^\\alpha,$$\n\nthen $\\epsilon\\sqrt p\\to0$, and the absorption condition\n\n$$(p+1)^{-1/2}\\le\\frac{\\epsilon}{8000}$$\n\nfails for all sufficiently large $p$. The KTZ/Vinh component-recovery step does not yield its linear global-agreement conclusion in this regime.",
+      "status": "proved",
+      "title": "Vinh recovery barrier"
+    },
+    {
+      "dependencies": [
+        "Stevens\u2013de Zeeuw Theorems 3 and 4"
+      ],
+      "id": "researcher-0008:P10.1",
+      "part": 1,
+      "proof_markdown": "Minimum degree gives $kN\\le I(P,T)$. Theorem 3 gives\n\n$$kN\\ll N^{22/15},$$\n\nand hence $N\\gg k^{15/7}$. For this lower-bound scale to be at least $kp$, one needs\n\n$$k^{15/7}\\gtrsim kp,$$\n\nwhich is equivalent to $k^{8/7}\\gtrsim p$ and therefore requires $k\\gtrsim p^{7/8}$. At that scale, $N\\gtrsim p^{15/8}$.\n\nThe characteristic hypothesis specializes to\n\n$$N^{-2}N^{13}=N^{11}\\ll p^{15},$$\n\nor $N\\ll p^{15/11}$. Hence there is no asymptotic overlap. This calculation concerns distinct unweighted lines and is an exponent reconstruction from the quoted theorem, not a low-degree-test conclusion stated by Stevens\u2013de Zeeuw.",
+      "source_step_id": "P10",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, let $P\\subseteq\\mathbb F_p^2$ contain $N$ points, and let $T$ be a set of $N$ distinct affine lines. Suppose their incidence graph has minimum degree at least $k$ and satisfies the hypotheses of Stevens\u2013de Zeeuw Theorem 3,\n\n$$\\lvert P\\rvert^{7/8}<\\lvert T\\rvert<\\lvert P\\rvert^{8/7},\\qquad \\lvert P\\rvert^{-2}\\lvert T\\rvert^{13}\\ll p^{15}.$$\n\nThen\n\n$$N\\gg k^{15/7}.$$\n\nFor this lower-bound scale to reach $N=\\Omega(kp)$, one must have $k\\gtrsim p^{7/8}$ and $N\\gtrsim p^{15/8}$, which is outside the characteristic range $N\\ll p^{15/11}$.",
+      "status": "proved",
+      "title": "Balanced incidence diagnostic"
+    },
+    {
+      "dependencies": [
+        "Stevens\u2013de Zeeuw Theorems 3 and 4"
+      ],
+      "id": "researcher-0008:P10.2",
+      "part": 2,
+      "proof_markdown": "Minimum degree gives $kN\\le I(P,T)$. In the balanced Cartesian case, Theorem 4 gives\n\n$$kN\\ll N^{11/8}+N.$$\n\nOnce the linear term is absorbed, this yields $N\\gg k^{8/3}$. For this scale to be at least $kp$, one needs\n\n$$k^{8/3}\\gtrsim kp,$$\n\nso $k^{5/3}\\gtrsim p$ and $k\\gtrsim p^{3/5}$. It then forces $N\\gtrsim p^{8/5}$.\n\nThe positive-characteristic condition becomes\n\n$$\\lvert A\\rvert\\lvert T\\rvert=N^{1/2}N=N^{3/2}\\ll p^2,$$\n\nor $N\\ll p^{4/3}$. Hence there is again no asymptotic overlap. The calculation requires a genuine Cartesian point set and distinct unweighted lines; it is an exponent reconstruction from the quoted theorem, not a source-stated low-degree-test conclusion.",
+      "source_step_id": "P10",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, let $P=A\\times B\\subseteq\\mathbb F_p^2$ satisfy $\\lvert A\\rvert=\\lvert B\\rvert=\\sqrt N$, and let $T$ be a set of $N$ distinct affine lines. Suppose the incidence graph has minimum degree at least $k$, the linear term in the incidence estimate is absorbed, and the hypotheses of Stevens\u2013de Zeeuw Theorem 4 hold:\n\n$$\\lvert A\\rvert\\le\\lvert B\\rvert,\n\\qquad \\lvert A\\rvert\\lvert B\\rvert^2\\le\\lvert T\\rvert^3,\n\\qquad \\lvert A\\rvert\\lvert T\\rvert\\ll p^2.$$\n\nThen\n\n$$N\\gg k^{8/3}.$$\n\nFor this lower-bound scale to reach $N=\\Omega(kp)$, one must have $k\\gtrsim p^{3/5}$ and $N\\gtrsim p^{8/5}$, which is outside the characteristic range $N\\ll p^{4/3}$.",
+      "status": "proved",
+      "title": "Cartesian incidence diagnostic"
+    },
+    {
+      "dependencies": [
+        "P4",
+        "P5",
+        "P6",
+        "P7"
+      ],
+      "id": "researcher-0008:P11.1",
+      "part": 1,
+      "proof_markdown": "P6 and P7 show that the concentrated-direction table attains the quadratic collision lower bound, so acceptance density alone does not force compatible-pair density $\\omega(\\epsilon^2)$. P4 and P5 show that the regular carrier requires fractional reaching weight of order $p/\\epsilon$ for any fixed positive reaching fraction, so acceptance density alone does not force an $o(p/\\epsilon)$ universal reaching family. Both constructions have $f=0$ and the perfect decoder $Q=0$. They therefore refute only the incidence-only shortcut, not soundness.",
+      "source_step_id": "P11",
+      "statement_markdown": "For every valid affine line-versus-point table of acceptance density $\\epsilon$, acceptance density alone yields either compatible distinct-line-pair density $\\omega(\\epsilon^2)$ or a nonnegative line-weight family of total weight $o(p/\\epsilon)$ that reaches a fixed positive fraction of the accepted points of every accepted line through other accepted lines.",
+      "status": "refuted",
+      "title": "Incidence-only shortcut"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0008",
+  "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd"
+}

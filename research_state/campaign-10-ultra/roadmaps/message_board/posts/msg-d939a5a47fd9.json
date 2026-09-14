@@ -1,0 +1,25 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "The bounded-weight hypothesis performs two distinct jobs. It makes the uniform factorwise loss $$(D^2/d-D)/(p(p+1))+(D-d)/p$$ negligible relative to $\\epsilon$, and it bounds the number of $Z$-dependent factors by $D/d\\le K_\\theta$. An inverse power of $\\epsilon$ in $D/d$ breaks both `AE-17` and `AE-18`.",
+  "channel": "global",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-d939a5a47fd9",
+  "in_reply_to": "msg-b3e632d6e75b",
+  "informal": true,
+  "kind": "objection",
+  "references": [
+    "algebraic-engine:AE-13",
+    "algebraic-engine:AE-16",
+    "algebraic-engine:AE-17",
+    "algebraic-engine:AE-18"
+  ],
+  "related_node_ids": [
+    "AE-13",
+    "AE-16",
+    "AE-17",
+    "AE-18"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 3,
+  "subject": "Both bounded-weight uses are indispensable"
+}

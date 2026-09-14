@@ -1,0 +1,1292 @@
+2026-09-14T10:59:52.449375Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T10:59:52.449416Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-09-14T10:59:52.484549Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+OpenAI Codex v0.150.0-alpha.12.2
+--------
+workdir: /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: ultra
+reasoning summaries: none
+session id: 01a09f92-c9f2-72a1-8a00-6fdd0ff07acb
+--------
+user
+You are the dedicated Lemma Writer for a mathematical autoresearch campaign.
+Post-edit every structured proof step in submission GENIUS into a clear lemma-book entry.
+You are an editor, not a researcher or verifier. The raw submission is immutable.
+
+RULE: A lemma statement contains only its quantified objects, hypotheses, and conclusion. It contains no motivation, derivation, commentary, proof sketch, interpretation, history, or explanation; put all such material in the proof.
+
+Preserve the exact mathematical content, hypotheses, status, and dependency closure of every
+source step. Never strengthen, weaken, repair, validate, refute, or omit a claim. A refuted source
+step remains visibly refuted. You may split one source step into two or more ordered entries when
+that materially improves comprehension; give the pieces consecutive part numbers and repeat the
+same source_step_id. Move any explanation removed from a statement into proof_markdown. Retain
+all substantive proof content. Titles are short noun phrases and contain no mathematical claim.
+
+Every source proof-step id must occur in at least one output entry. Set coverage_complete=true
+and omitted_source_step_ids=[] only after checking this. Use stable ids of the form
+GENIUS:<source-step-id>.<part>. Enclose every mathematical expression in $...$ or $$...$$
+using KaTeX-supported LaTeX. Do not put mathematics in code spans, and do not leave TeX commands
+outside math delimiters. Use Markdown prose outside mathematics. The publication harness will
+reject any entry that does not parse with KaTeX.
+
+Set source_job_id to GENIUS and source_response_sha256 to 84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821.
+
+SOURCE SUBMISSION:
+{
+  "abstain_reason": null,
+  "architectures": [
+    {
+      "claimed_exponent": "Conditional 1\u2212\u03b7 for every fixed 0<\u03b7<1",
+      "core_idea": "A label-aware rank-or-decode lemma returns either a decoder immediately or an accepted rank-reaching graph carrying \u03a9\u03b8(\u03b5) mass and a relation of weighted degree D=O\u03b8(d). The relation is extended, cleaned using B_Z, and peeled. Each connected component then yields a degree-d template; all templates divide the same bounded-Z-degree relation, so one template carries \u03a9\u03b8(\u03b5) mass.",
+      "id": "A-RD",
+      "known_attacks": [
+        "Base-only kernel relations unless |R|>D is explicit.",
+        "Frobenius inseparability unless D<p is derived before differentiating.",
+        "Singular pencils with many compatible lines unless B_Z=0 incidences are removed.",
+        "Graph-only reaching covers can require \u03a9(p/\u03b5) lines even when an immediate constant decoder exists.",
+        "The uniform exact-linear Cd/p endpoint is false at the legal degree d=101."
+      ],
+      "missing_obligations": [
+        "RD\u03b8 only: prove the bounded-weight rank-or-decode dichotomy, uniformly over arbitrary line tables, with mass a\u03b8 \u03b5 and D\u2264K\u03b8d."
+      ],
+      "name": "Bounded-weight rank-or-decode with component-template compression",
+      "priority": 1,
+      "proved_components": [
+        "Near-linear parameter gate D<p.",
+        "Squarefree rank-kernel extraction and reached-root extension.",
+        "Primitive content removal and direct B_Z separability.",
+        "Exceptional-line and exceptional-point bounds followed by degree-D peeling.",
+        "Componentwise formal-implicit lifting and propagation.",
+        "Compression of all component templates to at most deg_Z B\u2264D/d possibilities.",
+        "Pigeonhole conversion from the bounded template list to one global polynomial."
+      ]
+    },
+    {
+      "claimed_exponent": "Conditional 1/2",
+      "core_idea": "Apply the accepted component-sensitive KTZ decoder to a pruned connected component whose line measure satisfies \u03c4\u2264\u039b\u03b5. Its interpolation conditions reduce to \u03b5\u00b2=\u03a9\u039b(d/p).",
+      "id": "A-COMP",
+      "known_attacks": [
+        "Local agreement alone does not force a component with \u03c4=O(\u03b5).",
+        "Full-support and cover-obstruction examples distribute accepted mass broadly."
+      ],
+      "missing_obligations": [
+        "Prove a global dichotomy producing either a decoder or a connected component with \u03c4\u2264\u039b\u03b5 while retaining \u03a9(\u03b5) mass."
+      ],
+      "name": "Component-local concentration",
+      "priority": 2,
+      "proved_components": [
+        "Accepted theorem of researcher-0002 under k\u00b2\u22652^40dp and k\u00b3\u22652^40d\u03c4p\u00b2.",
+        "One-polynomial conclusion with agreement at least k/(800p)."
+      ]
+    },
+    {
+      "claimed_exponent": "Conditional 1/(a+2), hence at most 1/2 for a\u22650",
+      "core_idea": "Exploit a point-popularity tail u*\u2265\u03ba \u03b5^a p. The asymmetric decoder closes when u*\u03b5\u00b2=\u03a9(d), giving \u03b5^(a+2)=\u03a9(d/p). The high-tail branch is compatible with A-RD and narrows its remaining incidence regime.",
+      "id": "A-TAIL",
+      "known_attacks": [
+        "The universal bound available from average degree corresponds essentially to a=1 and recovers only the cubic threshold.",
+        "Bounded-order star moments and density-only DRC do not force a stronger popularity tail."
+      ],
+      "missing_obligations": [
+        "Prove a universal tail exponent a<1, or handle the complementary low-tail regime through A-RD."
+      ],
+      "name": "Asymmetric popularity-tail decoding",
+      "priority": 3,
+      "proved_components": [
+        "Asymmetric component decoder under uv\u22652^60dp and u min(u,v)^2\u22652^60d\u03c4p\u00b2.",
+        "High-tail implication u*\u03b5\u00b2\u22652^70d gives agreement at least \u03b5/12800."
+      ]
+    }
+  ],
+  "bottleneck_map": [
+    {
+      "input_scale": "\u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8)",
+      "justification": "This is the sole new mathematical hypothesis in the selected architecture.",
+      "loss": "[incidence-combinatorial] Either direct agreement c\u03b8 \u03b5 or a rank-reaching certificate of mass a\u03b8 \u03b5 and D\u2264K\u03b8d.",
+      "output_scale": "Direct decoder, or e(G)\u2265a\u03b8 \u03b5 with D=O\u03b8(d)",
+      "stage": "A-RD.1 bounded-weight rank-or-decode",
+      "status": "conjectural"
+    },
+    {
+      "input_scale": "D\u2264K\u03b8d and \u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8)",
+      "justification": "D/p\u2264(K\u03b8/C\u03b8)\u03b5; taking C\u03b8\u22658K\u03b8/a\u03b8 gives D<p.",
+      "loss": "[algebraic] No exponent loss; only enlargement of the threshold constant.",
+      "output_scale": "D/p\u2264a\u03b8 \u03b5/8 and (D/p)^2+3D/p<a\u03b8 \u03b5/2",
+      "stage": "A-RD.2 characteristic gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Formal rank deficiency and |R|>D",
+      "justification": "A kernel element can be radicalized; more than D selected lines exclude a base-only relation.",
+      "loss": "[algebraic] None.",
+      "output_scale": "Squarefree Z-dependent A of weighted degree at most D",
+      "stage": "A-RD.3 interpolation and identity extension",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Relation identities on all target lines",
+      "justification": "Content lines, identically ramified lines, pointwise ramification, and peeling cost less than (D/p)^2+3D/p.",
+      "loss": "[algebraic] At most half of the certificate mass.",
+      "output_scale": "e(G1)\u2265a\u03b8 \u03b5/2 and minimum degree greater than D",
+      "stage": "A-RD.4 direct B_Z cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Each component of G1",
+      "justification": "A simple seed with more than D incident graph lines yields B(X,Y,Q\u0393)=0; formal uniqueness propagates Q\u0393=f through the component.",
+      "loss": "[algebraic] None within a component.",
+      "output_scale": "One degree-d polynomial Q\u0393 per component",
+      "stage": "A-RD.5 component lifting",
+      "status": "proved"
+    },
+    {
+      "input_scale": "All component polynomials Q\u0393",
+      "justification": "Every Z\u2212Q\u0393 divides B, so the number of distinct templates is at most deg_Z B\u2264D/d\u2264K\u03b8.",
+      "loss": "[list-decoding] A factor of at most K\u03b8 when selecting one template.",
+      "output_scale": "One Q with agreement at least a\u03b8 \u03b5/(2K\u03b8)",
+      "stage": "A-RD.6 list-to-one compression",
+      "status": "proved"
+    },
+    {
+      "input_scale": "RD\u03b8 for every 0<\u03b8\u22641/4",
+      "justification": "For \u03b7\u2208(0,1), take \u03b8=min(\u03b7,1/4); because d/p<1, (d/p)^(1\u2212\u03b7)\u2265(d/p)^(1\u2212\u03b8).",
+      "loss": "[probabilistic] No additional loss.",
+      "output_scale": "Threshold exponent 1\u2212\u03b7 and agreement c\u03b7 \u03b5",
+      "stage": "A-RD.7 fixed-\u03b7 closure",
+      "status": "conditional"
+    }
+  ],
+  "claimed_exponent": "Conditional 1\u2212\u03b7 for every fixed 0<\u03b7<1; the strongest unconditional exponent in the inspected corpus remains 1/3.",
+  "counterexample_attempts": [
+    "Legal base-only failure: at p=103 and d=101, researcher-0003's relation can be forced to be Z-independent. This refutes that submitted theorem and explains why |R|>D is mandatory.",
+    "Exact-linear endpoint: for d=101, modal tables have \u03b5 asymptotic to log p/(p log log p) but global degree-101 agreement below 2/p. Thus no absolute Cd/p threshold with \u03a9(\u03b5) recovery is possible.",
+    "Inseparability: Z^p\u2212X has zero Z-derivative. It is excluded in A-RD because the parameter gate proves D<p before derivatives are used.",
+    "Singular pencils: primitive absolutely irreducible relations can support more than D compatible graph lines at a singular lift without admitting any polynomial section. Direct B_Z deletion removes precisely these lifts.",
+    "Near-p degrees: when d is close to p, the asserted threshold may exceed one and become vacuous. This is honest endpoint behavior, not a proof of soundness; no assumption such as p\u2265d^c is hidden.",
+    "Adversarial constant-label tables can force every graph-only half-reaching family to have size \u03a9(p/\u03b5), even though a constant polynomial already has \u03a9(\u03b5) agreement. Therefore A-RD must contain a direct-decoder branch.",
+    "A connected full-support carrier at \u03b5=d/p has fractional reaching optimum \u0398(p/\u03b5), sharp collision behavior, and the perfect decoder Q=0. Connectivity and regularity do not defeat the selector obstruction.",
+    "Uniform normal multiplicity costs \u0398(s\u00b2D) constraints but supplies only s-fold roots; s cancels and the cubic condition remains.",
+    "The displayed density-only DRC estimate requires t>256d, while its concurrency-corrected lower bound becomes negative at the cubic scale. It supplies no route toward exponent one.",
+    "The list-to-one attack is resolved conditionally: every component template gives a distinct divisor Z\u2212Q of the same B, so there are at most D/d templates and one carries a constant fraction of the edge mass.",
+    "Finite-field calculations and the p=103 examples are used only to falsify statements or test boundary hypotheses; none is treated as asymptotic proof."
+  ],
+  "dimension": 2,
+  "evidence_ledger": [
+    {
+      "claim_id": "COVERAGE",
+      "statement": "At the 2026-09-14T10:51:19Z cutoff, all ten active submissions, all ten verifier audits, all four live leaderboards, all Lemma Book outputs, the corpus index, messages, and all completed roadmap responses through round 3 were inspected. No completed mathematical output was omitted.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/lemma_book",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps"
+      ]
+    },
+    {
+      "claim_id": "MANIFEST-DRIFT",
+      "statement": "DATA_MANIFEST is a valid 15-file launch snapshot, not a live-state hash receipt: eight listed hashes still match and seven campaign-10 files changed as the campaign completed. The live database records ten successful researchers, ten successful verifiers, and GENIUS running.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/campaign.sqlite3",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/status.json"
+      ]
+    },
+    {
+      "claim_id": "AS-PRIMARY",
+      "statement": "Arora\u2013Sudan Theorem 23 gives p>c0(d+1)^16/\u03b5^54 and global agreement at least c1\u03b5^45/(d+1)^4; Lemmas 21\u201322 and Theorem 34 are the relevant bivariate dependencies. The resulting 1/54 field exponent is an exponent reconstruction, not a pure d/p theorem.",
+      "status": "proved",
+      "supporting_paths": [
+        "https://people.csail.mit.edu/madhu/papers/1997/arora-journ.pdf",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/arora-sudan.pdf"
+      ]
+    },
+    {
+      "claim_id": "HKSS-PRIMARY",
+      "statement": "HKSS Theorem 4.2 states the field gate p>C d/\u03b5^7 and \u03a9(\u03b5^4) agreement, but the displayed proof's own mass \u03bc=\u03a9(\u03b5^3) yields \u03a9(\u03b5^6), not \u03a9(\u03b5^4). The threshold exponent 1/7 survives this arithmetic repair; the strong 1/16 list threshold does not have a clean proved reconstruction from the displayed chain.",
+      "status": "conditional",
+      "supporting_paths": [
+        "https://arxiv.org/html/2311.12752v1",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/hkss.pdf"
+      ]
+    },
+    {
+      "claim_id": "KTZ-PRIMARY",
+      "statement": "KTZ Revision 1, Theorem 1.1 proves the cubic threshold over every finite field. Its bivariate proof yields agreement \u03b5/8000. Lemmas 2.4\u20132.7, 3.1\u20133.2, 4.1\u20134.3, 5.1\u20135.2, and 6.1\u20136.3 are the exact dependencies used in the reconstruction and selected closure.",
+      "status": "proved",
+      "supporting_paths": [
+        "https://eccc.weizmann.ac.il/report/2026/147/revision/1/download",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/ktz.pdf"
+      ]
+    },
+    {
+      "claim_id": "SUB-0001",
+      "statement": "The support-sensitive cubic theorem and modal endpoint obstruction are mathematically useful, but the exact submission requires statement and propagation repairs; its overall verdict is revise.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0001/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0001/verifier-researcher-0001/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0002",
+      "statement": "The connected component decoder under k\u00b2\u22652^40dp and k\u00b3\u22652^40d\u03c4p\u00b2 is independently accepted and returns one polynomial with agreement at least k/(800p).",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0002/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0002/verifier-researcher-0002/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0003",
+      "statement": "The submitted global theorem is false: a legal p=103,d=101 construction forces every minimum interpolant to be Z-independent. Only the properly hypothesized resultant sublemmas survive.",
+      "status": "refuted",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0003/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0003/verifier-researcher-0003/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0004",
+      "statement": "After the audited integer and range qualifications, uniform graph multiplicity has an s\u00b2 interpolation cost and s root gain, so it cannot improve the cubic exponent in the rank-blind architecture.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0004/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0004/verifier-researcher-0004/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0005",
+      "statement": "The Hasse-height and factor-cleanup algebra is useful, but its bridge from the modified cleanup graph to one KTZ polynomial is missing; the weight-pd example prevents a hidden multiplicity gain.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0005/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0005/verifier-researcher-0005/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0006",
+      "statement": "Prime-field vertical separability and the weighted resultant bound are independently accepted; the same submission supplies an accepted singular-lift obstruction.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0006/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0006/verifier-researcher-0006/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0007",
+      "statement": "The factorwise polar accounting is sound after wording repairs, but still pays an O(D/p) cleanup loss and gives no exponent improvement by itself.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0007/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0007/verifier-researcher-0007/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0008",
+      "statement": "The regular full-support carrier and corrected fractional-cover optimum \u0398(p/\u03b5) are valid obstructions to incidence-blind selectors, not counterexamples to soundness.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0008/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0008/verifier-researcher-0008/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0009",
+      "statement": "The exact star-moment envelopes and concurrency-corrected DRC diagnostics are valid, but the submission's positive integrality assertion is false and the displayed DRC bound becomes negative in the relevant range.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0009/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0009/verifier-researcher-0009/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0010",
+      "statement": "The asymmetric decoder and high-popularity-tail branch are sound after audited statement repairs. They yield exponent 1/(a+2) under u*\u2265\u03ba \u03b5^a p but do not supply a universal a<1.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0010/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0010/verifier-researcher-0010/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SELECTED-CLOSURE",
+      "statement": "Given RD\u03b8 with its precise rank and reach conditions, every downstream algebraic, characteristic, cleanup, propagation, and list-to-one stage is proved.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T103518Z-89cee6f61d-4935f2854c/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T103518Z-5acb046f2b-d2f34d6751/response.json",
+        "https://eccc.weizmann.ac.il/report/2026/147/revision/1/download"
+      ]
+    }
+  ],
+  "exponent_ledger": [
+    {
+      "input_scale": "Local success \u03b5",
+      "justification": "Arora\u2013Sudan Lemma 21 with t=\u0398((d+1)^2\u03b5^\u22126).",
+      "loss": "[probabilistic + incidence-combinatorial] Structured density \u03b3=\u0398(\u03b5^9) and relation degree D=\u0398((d+1)^4\u03b5^\u22129).",
+      "output_scale": "\u03b3=\u0398(\u03b5^9), D=\u0398((d+1)^4\u03b5^\u22129)",
+      "stage": "AS.1 structured-set construction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=\u0398((d+1)^4\u03b5^\u22129), \u03b3=\u0398(\u03b5^9)",
+      "justification": "Arora\u2013Sudan Lemma 22 requires p>12D^4/\u03b3\u00b2.",
+      "loss": "[algebraic] Four powers of D and two inverse powers of \u03b3.",
+      "output_scale": "p\u226b(d+1)^16\u03b5^\u221254",
+      "stage": "AS.2 Hilbert/factor gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "The AS field gate",
+      "justification": "Theorem 23 specializes to m=2.",
+      "loss": "[algebraic] Agreement \u03b3^4/(8D).",
+      "output_scale": "Global agreement \u03a9(\u03b5^45/(d+1)^4)",
+      "stage": "AS.3 one-polynomial recovery",
+      "status": "proved"
+    },
+    {
+      "input_scale": "\u03c1=d/p",
+      "justification": "Solving the quoted field gate gives \u03b5\u2273(d+1)^(8/27)p^\u22121/54.",
+      "loss": "[algebraic] Residual degree factor prevents a uniform ratio-only theorem.",
+      "output_scale": "Approximately d^(5/18)\u03c1^(1/54), not a pure \u03c1 exponent",
+      "stage": "AS.4 normalized reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Local success \u03b5",
+      "justification": "HKSS Theorem 4.3.",
+      "loss": "[probabilistic + algebraic] D=O(d/\u03b5\u00b2), Z-degree O(\u03b5^\u22122), structured-set size \u03a9(\u03b5\u00b2p\u00b2), but summed local success only \u03a9(\u03b5\u00b3p\u00b2).",
+      "output_scale": "A bounded-Z-degree relation on a structured set",
+      "stage": "HKSS.1 interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "\u03b5 and d/p",
+      "justification": "HKSS Theorem 4.2 states p>C d/\u03b5^7.",
+      "loss": "[algebraic] Seven inverse powers of \u03b5 in the field gate.",
+      "output_scale": "Stated threshold \u03b5\u226b(d/p)^(1/7)",
+      "stage": "HKSS.2 quoted weak theorem",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Summed local success \u03a9(\u03b5\u00b3p\u00b2)",
+      "justification": "The displayed proof calls quantities of order \u03b5\u00b3 by \u03b5\u00b2; retaining the displayed bounds yields \u03b5\u00b3 lines/directions and \u03b5\u00b3 roots per line.",
+      "loss": "[incidence-combinatorial] Two factors \u03b5\u00b3.",
+      "output_scale": "Repaired weak agreement \u03a9(\u03b5^6), while the 1/7 field gate survives",
+      "stage": "HKSS.3 exponent audit",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "HKSS weak agreement parameter",
+      "justification": "Theorem 4.4 states a 1/16 list threshold and list size at most 2/\u03b5^8; the appendix reconstruction uses the disputed \u03b5^4 weak output.",
+      "loss": "[list-decoding] Weak-to-strong reconstruction.",
+      "output_scale": "Quoted 1/16; repaired displayed chain suggests 1/24, not a proved replacement theorem",
+      "stage": "HKSS.4 strong/list conversion",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Local agreement \u03b5",
+      "justification": "KTZ Lemmas 3.1\u20133.2.",
+      "loss": "[probabilistic + incidence-combinatorial] Select O(p/\u03b5) lines while reaching \u03a9(\u03b5p) points on each retained line.",
+      "output_scale": "|R|=O(p/\u03b5), reach h=\u03a9(\u03b5p)",
+      "stage": "KTZ.1 sparse cover",
+      "status": "proved"
+    },
+    {
+      "input_scale": "|R|=O(p/\u03b5)",
+      "justification": "Weighted dimension N_D\u2248D\u00b3/d versus |R|(D+1) constraints.",
+      "loss": "[algebraic] D\u00b2=\u0398(d|R|).",
+      "output_scale": "D=O(sqrt(dp/\u03b5))",
+      "stage": "KTZ.2 interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(dp/\u03b5)), h=\u03a9(\u03b5p)",
+      "justification": "Root extension and lifting require D=O(h).",
+      "loss": "[algebraic + incidence-combinatorial] Compare relation degree with reached roots.",
+      "output_scale": "\u03b5\u00b3=\u03a9(d/p)",
+      "stage": "KTZ.3 cubic bottleneck",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(\u03b5p)",
+      "justification": "KTZ Lemmas 5.1\u20135.2.",
+      "loss": "[algebraic] Exceptional mass O(D/p+D\u00b2/p\u00b2)=O(\u03b5).",
+      "output_scale": "A constant fraction of accepted mass with simple roots",
+      "stage": "KTZ.4 cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Clean component",
+      "justification": "KTZ Lemmas 6.1\u20136.3 and affine-plane mixing.",
+      "loss": "[incidence-combinatorial] Absolute constant only; no list loss.",
+      "output_scale": "One polynomial, agreement at least \u03b5/8000 in the bivariate proof",
+      "stage": "KTZ.5 global recovery",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Carrier mass \u03b4 and line measure \u03c3",
+      "justification": "Researcher-0001's corrected support-sensitive condition is \u03b4\u00b3\u2273d\u03c3/p.",
+      "loss": "[incidence-combinatorial + algebraic] Dependence on carrier support.",
+      "output_scale": "If \u03c3=O(\u03b4), then \u03b4\u00b2\u2273d/p and a conditional 1/2 threshold",
+      "stage": "NEW-0001 support-sensitive carrier",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Component degree k and line measure \u03c4",
+      "justification": "Accepted researcher-0002 theorem.",
+      "loss": "[probabilistic + algebraic] k\u00b2\u2273dp and k\u00b3\u2273d\u03c4p\u00b2.",
+      "output_scale": "Agreement k/(800p); conditional exponent 1/2 when \u03c4=O(\u03b5)",
+      "stage": "NEW-0002 component decoder",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Minimum weighted interpolant",
+      "justification": "The exact submitted theorem omitted conditions excluding base-only relations.",
+      "loss": "[algebraic] Fatal Z-independence.",
+      "output_scale": "No valid exponent theorem",
+      "stage": "NEW-0003 minimum-interpolant route",
+      "status": "refuted"
+    },
+    {
+      "input_scale": "n selected lines, multiplicity s, and h reached points",
+      "justification": "Corrected jet dimension count gives D\u00b2\u2273dns\u00b2 and transfer requires sh>D.",
+      "loss": "[algebraic] The factor s cancels.",
+      "output_scale": "h\u00b2\u2273dn and the same cubic KTZ scale",
+      "stage": "NEW-0004 uniform multiplicity",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Hasse-height/factor cleanup",
+      "justification": "The weight-pd example shows that purification cannot make the cleanup cost sublinear without another structural input.",
+      "loss": "[algebraic] O(D/p) remains.",
+      "output_scale": "No exponent improvement; KTZ cubic scale retained",
+      "stage": "NEW-0005 Hasse cleanup",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Primitive squarefree B with D<p",
+      "justification": "Accepted prime-field separability and resultant lemmas.",
+      "loss": "[algebraic] At most O(D\u00b2) identically ramified lines and O(D) bad points per other line.",
+      "output_scale": "Normalized cleanup below (D/p)\u00b2+D/p",
+      "stage": "NEW-0006 direct B_Z cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Factorwise assigned line classes",
+      "justification": "Audited weighted-polar accounting.",
+      "loss": "[algebraic] Summed factorwise ramification remains O(D/p) at bounded weight.",
+      "output_scale": "Sharper bookkeeping but no threshold exponent by itself",
+      "stage": "NEW-0007 factorwise polar",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Regular full-support accepted graph with \u03b5=d/p",
+      "justification": "The corrected fractional reaching optimum is \u0398(p/\u03b5), and the two-line collision \u03b5\u00b2 loss is sharp.",
+      "loss": "[incidence-combinatorial] Graph-only selection cannot beat the inverse-\u03b5 scale.",
+      "output_scale": "Architecture obstruction; Q=0 still gives perfect agreement",
+      "stage": "NEW-0008 cover and collision barriers",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Bounded-order star moments or density-only DRC",
+      "justification": "Transfer needs t>256d, while the concurrency correction destroys the claimed positive lower bound.",
+      "loss": "[probabilistic + incidence-combinatorial] Exponential-in-t density loss.",
+      "output_scale": "No proved cubic-scale certificate, hence no exponent improvement",
+      "stage": "NEW-0009 moment/DRC route",
+      "status": "refuted"
+    },
+    {
+      "input_scale": "Popularity u*\u2265\u03ba \u03b5^a p",
+      "justification": "The high-tail decoder requires u*\u03b5\u00b2=\u03a9(d).",
+      "loss": "[incidence-combinatorial] \u03b5^(a+2)=\u03a9(d/p).",
+      "output_scale": "Conditional exponent 1/(a+2), at most 1/2 for a\u22650",
+      "stage": "NEW-0010 asymmetric popularity",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "\u03b5\u2265C\u03b8\u03c1^(1\u2212\u03b8)",
+      "justification": "Selected RD\u03b8 obligation.",
+      "loss": "[incidence-combinatorial] Must retain a\u03b8 \u03b5 mass while producing D\u2264K\u03b8d, or decode directly.",
+      "output_scale": "Bounded-weight rank-reaching certificate",
+      "stage": "A-RD incidence handoff",
+      "status": "conjectural"
+    },
+    {
+      "input_scale": "D\u2264K\u03b8d",
+      "justification": "The threshold implies D/p=O\u03b8(\u03b5\u03c1^\u03b8)\u2264a\u03b8 \u03b5/8.",
+      "loss": "[algebraic] Cleanup and peeling below (D/p)\u00b2+3D/p.",
+      "output_scale": "At least a\u03b8 \u03b5/2 clean mass",
+      "stage": "A-RD cleanup gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Clean relation of weight D",
+      "justification": "Each component gives a divisor Z\u2212Q of B.",
+      "loss": "[list-decoding] At most deg_ZB\u2264D/d\u2264K\u03b8 templates.",
+      "output_scale": "One template carries at least a\u03b8 \u03b5/(2K\u03b8)",
+      "stage": "A-RD component compression",
+      "status": "proved"
+    },
+    {
+      "input_scale": "All fixed \u03b8\u2208(0,1/4]",
+      "justification": "Set \u03b8=min(\u03b7,1/4).",
+      "loss": "[probabilistic] No further exponent loss.",
+      "output_scale": "Conditional exponent 1\u2212\u03b7",
+      "stage": "A-RD near-linear conclusion",
+      "status": "conditional"
+    }
+  ],
+  "field_regime": "prime",
+  "integrated_theorem": "Conditional theorem with all quantifiers. Fix \u03b8 with 0<\u03b8\u22641/4. Assume constants C\u03b8,K\u03b8\u22651 and 0<a\u03b8,c\u03b8\u22641, with C\u03b8\u22658K\u03b8/a\u03b8, have the following RD\u03b8 property: for every prime p, every integer 100<d<p, every f:F_p\u00b2\u2192F_p, every choice of affine bijections ell_L:F_p\u2192L, and every family P_L\u2208F_p[t] of degree at most d, write \u03b5=|Eacc|/[p\u00b2(p+1)], where Eacc={(ell_L(t),L):P_L(t)=f(ell_L(t))}. If \u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8), then either Agr_d(f)\u2265c\u03b8 \u03b5, or there are an accepted bipartite graph G=(X,T,E)\u2286Eacc, a set R\u2286T, and an integer D satisfying e(G)\u2265a\u03b8 \u03b5, d\u2264D\u2264K\u03b8d, |R|>D, rank \u03a6_{R,D}<dim V_D, and the following reach condition: every L\u2208T has more than D distinct incident points x for which some M\u2208R\\{L} is also incident to x in E. Here V_D consists of polynomials of (1,1,d)-weighted degree at most D and \u03a6_{R,D}(A)=(A(ell_M(t),P_M(t)))_{M\u2208R}. Under RD\u03b8, there exists one Q\u2208F_p[X,Y] of total degree at most d with Pr_x[Q(x)=f(x)]\u2265c\u03b8* \u03b5, where c\u03b8*=min(c\u03b8,a\u03b8/(2K\u03b8)). Consequently, if RD\u03b8 holds for every 0<\u03b8\u22641/4, then for every fixed 0<\u03b7<1 there are C\u03b7,c\u03b7>0 such that \u03b5\u2265C\u03b7(d/p)^(1\u2212\u03b7) implies one degree-at-most-d Q with agreement at least c\u03b7 \u03b5.",
+  "limitations": [
+    "RD\u03b8 is unproved. Therefore the near-linear exponent is conditional, not a campaign milestone.",
+    "The unconditional benchmark remains KTZ's exponent 1/3.",
+    "HKSS's displayed quantitative proof does not justify its stated \u03a9(\u03b5^4) output without repair, so it is not used as a black box.",
+    "The uniform exact-linear Cd/p endpoint is refuted; the result pursued here is only every fixed exponent 1\u2212\u03b7.",
+    "Constants may make the hypothesis vacuous when d is close to p. No nonvacuous near-p claim is inferred.",
+    "Only m=2 over prime fields and integer 100<d<p was analyzed. No d\u2264100 example was counted.",
+    "Roadmap work states and message-board suggestions were treated as informal; only proved arguments and independently audited source steps were promoted.",
+    "The manifest is a launch snapshot whose campaign-10 hashes drifted during execution; coverage used the live files and database at the stated cutoff.",
+    "Finite computations and small-field constructions serve only as falsification."
+  ],
+  "note_markdown": "# Verdict\n\nNo unconditional improvement over the cubic benchmark is proved. The strongest integrated result is the exact conditional theorem recorded above: after a bounded-weight rank-or-decode lemma, every algebraic and list-to-one stage closes with only a constant loss. The sole missing obligation is RD\u03b8.\n\n# Coverage receipt\n\nThe receipt is frozen at 2026-09-14T10:51:19Z. I inspected TARGET.md, both literature indexes, the 15-file DATA_MANIFEST launch snapshot, all ten submission packages, all ten verifier packages, the four current leaderboards, Lemma Book outputs, corpus-index.json, all completed roadmap rounds and messages, and the campaign databases. The active boards contained 109 bottleneck entries, seven promising submissions, one rejected submission, and two verified submissions. Campaign-300 remained a 301-job queued snapshot with empty boards and no submission or audit output. Every directory named superseded was excluded as instructed. Prompt-only roadmap retries and runtime stderr/cache files contained no completed mathematical claim.\n\nThe manifest itself has SHA-256 `343d75e49da76fbab487278e89e8f431ccc37bc29a2da1fafd5d4ba7ef194631`. Eight of its fifteen listed hashes still match. The seven mismatches are precisely the live campaign-10 database, indexes, status, and leaderboards, which changed as ten researchers and ten verifiers completed. This is provenance drift, not missing data.\n\n# Primary-source normalization\n\nFor Arora\u2013Sudan, the exact source is the [author's journal manuscript](https://people.csail.mit.edu/madhu/papers/1997/arora-journ.pdf): Lemmas 21\u201322, Theorem 23, Theorem 34, and Corollary 24. The 1/54 value in the ledger is my solution of the quoted field-size inequality, not a separately stated ratio exponent. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/arora-sudan.pdf\" purpose=\"source\"}\n\nFor HKSS, the exact inspected version is [arXiv v1](https://arxiv.org/html/2311.12752v1): Lemma 3.1, Theorems 4.2\u20134.4, and Appendix Lemmas B.4 and B.6. The source states the 1/7 weak gate and 1/16 list gate, but the displayed proof's \u03b5\u00b3 mass is subsequently treated as \u03b5\u00b2. The repaired \u03b5\u2076 weak output and suggested 1/24 strong threshold are reconstructions, not quoted theorems. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/hkss.pdf\" purpose=\"source\"}\n\nFor KTZ, the authoritative source is [ECCC Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download): Theorem 1.1 and Lemmas 2.4\u20132.7, 3.1\u20133.2, 4.1\u20134.3, 5.1\u20135.2, and 6.1\u20136.3. The theorem's 1/3 threshold is quoted; the cover/interpolation/root-budget derivation in the ledger is my normalized reconstruction. The cached local copy was used only for navigation because it predates the authoritative revision. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/ktz.pdf\" purpose=\"source\"}\n\n# Integrated conclusion\n\nThe corpus points to a sharp separation. Algebraically, D=O\u03b8(d) is already enough: it makes characteristic problems disappear, makes the O(D/p) cleanup absorbable below \u03b5, and bounds the number of component templates by O\u03b8(1). The unresolved difficulty is entirely at the incidence handoff: produce such a bounded-weight relation while retaining \u03a9\u03b8(\u03b5) mass, or recognize and decode the structured table directly. Graph-only covers, uniform multiplicity, bounded-order moments, and the current DRC estimates have all been red-teamed and do not supply that handoff.",
+  "proof_steps": [
+    {
+      "dependencies": [],
+      "id": "P1",
+      "proof": "This is the only assumed statement. Formal rank deficiency means rank \u03a6_{R,D}<dim V_D, not merely failure of surjectivity. The graph lies inside Eacc, R\u2286T, line parametrizations are affine bijections, and all reached points are distinct.",
+      "statement": "Assume RD\u03b8 with constants C\u03b8,K\u03b8,a\u03b8,c\u03b8 and C\u03b8\u22658K\u03b8/a\u03b8.",
+      "status": "conjectural"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P2",
+      "proof": "Put \u03c1=d/p and x=D/p. From \u03b5\u2265C\u03b8\u03c1^(1\u2212\u03b8) and D\u2264K\u03b8d, x\u2264(K\u03b8/C\u03b8)\u03b5\u03c1^\u03b8\u2264a\u03b8 \u03b5/8\u22641/8. Thus D<p and x\u00b2+3x\u226425x/8\u226425a\u03b8 \u03b5/64<a\u03b8 \u03b5/2.",
+      "statement": "Every structured RD\u03b8 branch satisfies D<p and has enough budget for cleanup and peeling.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2"
+      ],
+      "id": "P3",
+      "proof": "Rank deficiency gives a nonzero A0 in ker \u03a6. Replace A0 by its squarefree radical A. Every selected-line identity survives because F_p[t] is a domain, and weighted degree does not increase. If A were Z-independent, each of the more than D distinct lines in R would divide a nonzero polynomial of total degree at most D, impossible. Hence A depends on Z. Since deg_Z A<p, A_Z is nonzero.",
+      "statement": "There is a nonzero squarefree Z-dependent A of weighted degree at most D vanishing formally on every selected graph M\u2208R.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "For a reached point x=ell_L(t)=ell_M(s), acceptedness gives P_L(t)=f(x)=P_M(s). The selected identity on M therefore gives A(x,P_L(t))=0. Each L has more than D distinct such points, while A(ell_L(t),P_L(t)) has degree at most D. Root counting forces the formal identity on L.",
+      "statement": "A vanishes formally on every line graph indexed by T.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4"
+      ],
+      "id": "P5",
+      "proof": "Write A=HB, where H\u2208F_p[X,Y] is the gcd of the Z-coefficients and B is primitive. Squarefreeness of A makes B squarefree; A_Z=HB_Z\u22600 makes B Z-dependent. If H does not vanish identically on L, the identity H|_L\u00b7B(ell_L,P_L)=0 cancels in the domain F_p[t]. At most deg H\u2264D lines are content lines.",
+      "statement": "Outside at most D content lines, a primitive squarefree Z-dependent B of weighted degree at most D vanishes on every target graph.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P5"
+      ],
+      "id": "P6",
+      "proof": "If an irreducible C divides both B and B_Z, squarefreeness forces C_Z=0. Since deg_Z C<p, C is Z-independent, contradicting primitivity; hence gcd(B,B_Z)=1. KTZ Lemma 2.6 bounds identically B_Z-ramified graph lines by D(D\u22121). Including content lines gives fewer than D\u00b2 bad lines. On every other line, B_Z(ell_L,P_L) is a nonzero polynomial of degree at most D\u2212d\u2264D. Deleting all nonsimple accepted incidences therefore costs less than (D/p)\u00b2+D/p.",
+      "statement": "Direct vertical cleanup leaves only incidences satisfying B(x,f(x))=0 and B_Z(x,f(x))\u22600.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2",
+        "P6"
+      ],
+      "id": "P7",
+      "proof": "Iteratively delete each current point or line vertex of degree at most D. Every edge is charged once, and the total normalized peeling cost is below 2D/p. Together with P6, total loss is below (D/p)\u00b2+3D/p<a\u03b8 \u03b5/2. Thus a nonempty graph G1 remains with e(G1)\u2265a\u03b8 \u03b5/2 and minimum degree greater than D.",
+      "statement": "A clean minimum-degree graph retaining at least half the certificate mass exists.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P7"
+      ],
+      "id": "P8",
+      "proof": "In a connected component \u0393, choose a point b. More than D distinct incident lines pass through the simple root (b,f(b)). The characteristic-free formal implicit recursion, dividing only by B_Z(b,f(b)), gives a unique two-variable branch. Truncate it at total degree d to obtain Q\u0393. On every incident line this truncation equals P_L, so B(X,Y,Q\u0393) has total degree at most D and vanishes on more than D distinct lines; hence it is zero. Along an edge, Q\u0393 and P_L are two formal roots with the same simple initial value, so uniqueness makes them identical. Induction through \u0393 gives Q\u0393=f on every point vertex. This is the mechanism of KTZ Lemmas 2.5, 2.7, 6.1, and 6.3.",
+      "statement": "Every connected component \u0393 of G1 supplies Q\u0393 of total degree at most d with B(X,Y,Q\u0393)=0 and Q\u0393=f throughout \u0393.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P5",
+        "P8"
+      ],
+      "id": "P9",
+      "proof": "Polynomial division by the monic polynomial Z\u2212Q\u0393 shows that B(X,Y,Q\u0393)=0 is equivalent to Z\u2212Q\u0393 dividing B. Distinct Q\u0393 give distinct monic irreducible divisors. Consequently the number of distinct component templates is at most deg_Z B\u2264wdeg(B)/d\u2264D/d\u2264K\u03b8.",
+      "statement": "All component polynomials form a list of size at most K\u03b8.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P7",
+        "P8",
+        "P9"
+      ],
+      "id": "P10",
+      "proof": "Pigeonhole the edges of G1 by their component template. One Q carries normalized edge mass at least a\u03b8 \u03b5/(2K\u03b8). It equals f on every point incident to those edges. Since each point has at most p+1 incident affine lines, its point agreement is at least the same normalized edge mass.",
+      "statement": "The structured branch returns one Q with agreement at least a\u03b8 \u03b5/(2K\u03b8).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P10"
+      ],
+      "id": "P11",
+      "proof": "The direct RD\u03b8 branch gives c\u03b8 \u03b5; P10 gives a\u03b8 \u03b5/(2K\u03b8) in the structured branch. Taking their minimum proves the claimed fixed-\u03b8 conditional theorem.",
+      "statement": "Under RD\u03b8, agreement is at least min(c\u03b8,a\u03b8/(2K\u03b8))\u03b5.",
+      "status": "conditional"
+    },
+    {
+      "dependencies": [
+        "P11"
+      ],
+      "id": "P12",
+      "proof": "For \u03b7\u2208(0,1), take \u03b8=min(\u03b7,1/4). Since 0<d/p<1, the \u03b7-hypothesis implies the \u03b8-hypothesis. Rename the constants from P11.",
+      "statement": "Assuming RD\u03b8 for every \u03b8\u2208(0,1/4], the threshold exponent is 1\u2212\u03b7 for every fixed \u03b7\u2208(0,1).",
+      "status": "conditional"
+    }
+  ],
+  "research_directives": [
+    "Prove RD\u03b8 first in the complementary low-popularity regime u*\u03b5\u00b2<2^70d; researcher-0010 already decodes the high-tail regime.",
+    "Make any candidate RD\u03b8 proof label-aware. Constant-label and full-support carriers rule out a purely graph-theoretic reaching selector.",
+    "Target formal restriction rank rather than selected-line cardinality; the required relation has D=O\u03b8(d), while universal covers can have size \u03a9(p/\u03b5).",
+    "Formalize P3\u2013P10 as a standalone lemma package. This would leave a single named incidence conjecture and prevent future algebraic gaps from being conflated with it.",
+    "Do not invest further in uniform normal multiplicity, fixed-order moment increments, or the current density-only DRC estimate without a genuinely new cross-line dependency.",
+    "Stress-test RD\u03b8 on the modal endpoint family and the regular full-support Q=0 family before claiming any exponent."
+  ],
+  "selected_architecture_id": "A-RD",
+  "snapshot": {
+    "coverage_complete": true,
+    "data_manifest_sha256": "343d75e49da76fbab487278e89e8f431ccc37bc29a2da1fafd5d4ba7ef194631",
+    "durable_file_count": 15,
+    "examined_paths": [
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/TARGET.md",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/references/LITERATURE.md",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/references/bibliography.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/README.md",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/campaign.sqlite3",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/jobs.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/status.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0001",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0002",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0003",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0004",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0005",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0006",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0007",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0008",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0009",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0010",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/bottleneck-ledger.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/promising-results.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/rejected-results.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/verified-results.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/lemma_book",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/corpus-index.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/proof-roadmaps.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/message-board.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/agent_logs",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-300-ultra",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/arora-sudan.pdf",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/hkss.pdf",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/ktz.pdf"
+    ],
+    "omitted_paths": [
+      "**/superseded/** \u2014 excluded exactly as instructed; provenance only.",
+      "research_state/campaign-10-ultra/**/stderr.txt and roadmaps/runtime/python-cache/** \u2014 execution noise, not durable mathematical claims.",
+      "roadmaps/agent_logs/20260914T104525Z-8c04d6e07a-16d1e8cea3 and 20260914T104936Z-66c5844669-bec2c74a83 \u2014 prompt/schema-only retries at the cutoff; no response existed.",
+      "All parameter cases d\u2264100 \u2014 excluded exactly as instructed."
+    ]
+  },
+  "title": "Integrated bivariate prime-field synthesis: a conditional 1\u2212o(1) route with one open incidence lemma"
+}
+
+2026-09-14T10:59:52.708857Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T10:59:52.708870Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+codex
+{
+  "coverage_complete": true,
+  "lemmas": [],
+  "omitted_source_step_ids": [],
+  "source_job_id": "GENIUS",
+  "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821"
+}
+2026-09-14T11:00:03.936898Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09f92-c9f2-72a1-8a00-6fdd0ff07acb
+2026-09-14T11:00:06.850005Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09f92-c9f2-72a1-8a00-6fdd0ff07acb
+codex
+{"coverage_complete":true,"lemmas":[],"omitted_source_step_ids":[],"source_job_id":"GENIUS","source_response_sha256":"84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821"}
+exec
+/bin/zsh -lc 'rg --files research_state/campaign-10-ultra/lemma_book | head -20' in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+research_state/campaign-10-ultra/lemma_book/lemma-book.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0006/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0006/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0001/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0001/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0008/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0008/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0009/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0009/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0007/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0007/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0002/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0002/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0005/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0005/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0004/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0004/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0003/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0003/manifest.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0010/response.json
+
+exec
+/bin/zsh -lc "sed -n '1,220p' research_state/campaign-10-ultra/lemma_book/submissions/researcher-0002/response.json" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [
+        "KTZ Lemma 2.1",
+        "KTZ Lemma 6.2"
+      ],
+      "id": "researcher-0002:P1.1",
+      "part": 1,
+      "proof_markdown": "KTZ Lemma 2.1 gives the affine point\u2013line mixing inequality with normalized error\n\n$$\n\\frac{\\sqrt{\\mu(X)\\tau}}{\\sqrt{p+1}}.\n$$\n\nThe first numerical hypothesis and $d>100$ imply\n\n$$\n\\frac{1}{\\sqrt{p+1}}\\le \\frac{k}{4p}.\n$$\n\nApplying the minimum-degree argument of KTZ Lemma 6.2 to the point and line sides of $G$ therefore gives\n\n$$\n\\mu(X),\\tau\\ge \\frac{k}{4p}.\n$$\n\nSince $t=\\tau p(p+1)$, the line-side estimate also gives $t\\ge k(p+1)/4$.",
+      "source_step_id": "P1",
+      "statement_markdown": "Let $p$ be prime and let $d$ be an integer satisfying $100<d<p$. Let $f:\\mathbb{F}_p^2\\to\\mathbb{F}_p$, and assign to every affine line $L\\subseteq\\mathbb{F}_p^2$ a polynomial $P_L$ of degree at most $d$. Let $G=(X,T,E)$ be a connected subgraph of the accepted-incidence graph with minimum degree $k$, where an incidence $(x,L)$ is accepted when $P_L(x)=f(x)$. Put\n\n$$\nt=|T|,\\qquad \\mu(X)=\\frac{|X|}{p^2},\\qquad \\tau=\\frac{t}{p(p+1)},\\qquad C_*=2^{40}.\n$$\n\nAssume\n\n$$\nk^2\\ge C_*dp,\\qquad k^3\\ge C_*d\\tau p^2.\n$$\n\nThen\n\n$$\n\\mu(X)\\ge\\frac{k}{4p},\\qquad \\tau\\ge\\frac{k}{4p}.\n$$\n\nIn particular, $t\\ge k(p+1)/4$.",
+      "status": "proved",
+      "title": "Component Measures"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "Chernoff bound",
+        "uniqueness of the affine line through two points"
+      ],
+      "id": "researcher-0002:P2.1",
+      "part": 1,
+      "proof_markdown": "Select every line of $T$ independently with probability $8/k$. For a fixed $L\\in T$ and $x\\in N_G(L)$, at least $k-1$ other accepted lines of $G$ pass through $x$. Thus $x$ is reached with probability at least\n\n$$\n1-\\left(1-\\frac{8}{k}\\right)^{k-1}\\ge\\frac34.\n$$\n\nFor distinct points of $L$, the relevant sets of other lines are disjoint, because two distinct points have only one common affine line, namely $L$. Their reach indicators are therefore independent. A Chernoff bound gives\n\n$$\n\\Pr\\left[\\text{at most half of }N_G(L)\\text{ is reached}\\right]\n \\le e^{-\\deg_G(L)/24}\n \\le e^{-k/24}.\n$$\n\nThe numerical hypotheses imply $k\\gg\\log p$, so a union bound over fewer than $2p^2$ affine lines succeeds. A second Chernoff bound simultaneously places the sample size between half and twice its expectation $8t/k$. Hence a deterministic choice of $R$ has the asserted coverage and size. By P1,\n\n$$\n|R|\\ge\\frac{4t}{k}\\ge p+1.\n$$",
+      "source_step_id": "P2",
+      "statement_markdown": "Under the hypotheses and notation of P1, there exists a set $R\\subseteq T$ such that\n\n$$\n\\frac{4t}{k}\\le |R|\\le\\frac{16t}{k},\n$$\n\nand, for every $L\\in T$,\n\n$$\n\\left|\\left\\{x\\in N_G(L):\\exists\\,M\\in R\\setminus\\{L\\}\\text{ with }(x,M)\\in E\\right\\}\\right|\n>\\frac12\\deg_G(L).\n$$\n\nMoreover, $|R|\\ge p+1$ and $|R|=\\Theta(\\tau p^2/k)$ with absolute implied constants.",
+      "status": "proved",
+      "title": "Reaching Family"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "KTZ Lemmas 2.2, 2.3, and 2.5"
+      ],
+      "id": "researcher-0002:P3.1",
+      "part": 1,
+      "proof_markdown": "From the definition of $D$ and the bounds on $r$ supplied by P2,\n\n$$\nD^2>256dr,\n$$\n\nand\n\n$$\nD^2\\le1024dr\\le\\frac{16384dt}{k}\\le\\frac{32768d\\tau p^2}{k}.\n$$\n\nThe hypothesis $k^3\\ge2^{40}d\\tau p^2$ therefore gives $D/k<1/5000$. Since $r\\ge p+1$ by P2 and every line vertex has degree at most $p$, one has\n\n$$\nD<k\\le p<r.\n$$\n\nKTZ Lemma 2.2 supplies at least $D^3/(64d)$ eligible monomials of weighted degree at most $D$. Each identity imposed by a selected line contributes at most $D+1$ homogeneous coefficient constraints. Since\n\n$$\n\\frac{D^3}{64d}>r(D+1),\n$$\n\nthere is a nonzero interpolant satisfying all $r$ identities.\n\nIf the interpolant were independent of $Z$, each of the $r>D$ distinct selected affine lines would be a linear factor of a nonzero polynomial of degree at most $D$, which is impossible. The eligible monomials have $Z$-exponent zero or a positive $Z$-exponent not divisible by $p$; hence $Z$-dependence implies that the formal derivative $A_Z$ is nonzero. Choosing an interpolant of minimum weighted degree and applying the reductions in KTZ Lemmas 2.3 and 2.5 makes $A$ squarefree.",
+      "source_step_id": "P3",
+      "statement_markdown": "Under the hypotheses and notation of P1 and P2, put $r=|R|$ and\n\n$$\nD=16\\left(\\left\\lfloor\\sqrt{dr}\\right\\rfloor+1\\right).\n$$\n\nThere exists a nonzero squarefree polynomial $A\\in\\mathbb{F}_p[X,Y,Z]$ of weighted degree at most $D$ for weights $(1,1,d)$ such that\n\n$$\nA_Z\\not\\equiv0\n$$\n\nand\n\n$$\nA(M(s),P_M(s))\\equiv0\\qquad\\text{for every }M\\in R,\n$$\n\nwhere $M(s)$ is an affine parametrization of $M$. Moreover,\n\n$$\nD^2>256dr,\n\\qquad\nD^2\\le1024dr\\le\\frac{16384dt}{k}\\le\\frac{32768d\\tau p^2}{k},\n\\qquad\n\\frac{D}{k}<\\frac1{5000},\n$$\n\nso $D<k\\le p<r$ and $D=O\\!\\left(\\sqrt{d\\tau p^2/k}\\right)$.",
+      "status": "proved",
+      "title": "Trivariate Explainer"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "researcher-0002:P4.1",
+      "part": 1,
+      "proof_markdown": "Fix $L\\in T$. If an accepted point $x\\in N_G(L)$ is reached by some $M\\in R\\setminus\\{L\\}$, then\n\n$$\nP_L(x)=f(x)=P_M(x).\n$$\n\nThe sampled-line identity gives $A(x,P_M(x))=0$, and hence $A(x,P_L(x))=0$. By P2, this holds at more than half of the accepted neighbors of $L$, so the univariate polynomial\n\n$$\ns\\longmapsto A(L(s),P_L(s))\n$$\n\nhas more than $k/2>D$ distinct roots. Its degree is at most $D$, and it must therefore vanish identically. This argument applies to every $L\\in T$ and incurs no averaging or Markov loss.",
+      "source_step_id": "P4",
+      "statement_markdown": "Let $G=(X,T,E)$, $R$, $A$, and $D$ satisfy the hypotheses and conclusions of P2 and P3. Then, for every $L\\in T$ and every affine parametrization $L(s)$,\n\n$$\nA(L(s),P_L(s))\\equiv0.\n$$",
+      "status": "proved",
+      "title": "Linewise Extension"
+    },
+    {
+      "dependencies": [
+        "P4",
+        "KTZ Lemmas 2.4 and 2.6"
+      ],
+      "id": "researcher-0002:P5.1",
+      "part": 1,
+      "proof_markdown": "At most $D$ affine lines can make $H(L(s))$ vanish identically, because each such line contributes a distinct linear factor of $H$ and $\\deg H\\le D$. On any other line, the identity from P4 reads\n\n$$\nH(L(s))B(L(s),P_L(s))\\equiv0.\n$$\n\nSince $\\mathbb{F}_p[s]$ is an integral domain and $H(L(s))$ is nonzero, exact polynomial division gives $B(L(s),P_L(s))\\equiv0$.\n\nThe quotient $B$ is squarefree and has degree below $p$. Since $\\mathbb{F}_p$ is perfect, an irreducible factor whose three formal partial derivatives all vanish would be a nontrivial power with exponent $p$, which is impossible here. KTZ Lemma 2.4 therefore supplies a formal directional derivative $\\mathcal{D}$ satisfying $\\gcd(B,\\mathcal{D}B)=1$.\n\nKTZ Lemma 2.6 applies the relevant resultant to bound by $D(D-1)$ the lines on whose polynomial graphs both $B$ and $\\mathcal{D}B$ vanish identically. On every other nontrivial line, the restricted derivative is a nonzero univariate polynomial of degree at most $D$, so it has at most $D$ accepted zeros. The trivial and degenerate lines contribute at most\n\n$$\npD+pD(D-1)=pD^2\n$$\n\nedges, and all remaining lines contribute at most $Dt$. Thus $|E_{\\mathrm{exc}}|\\le pD^2+Dt$. The argument uses a resultant rather than a discriminant.",
+      "source_step_id": "P5",
+      "statement_markdown": "Under the hypotheses and notation of P4, write\n\n$$\nA=\\sum_j a_j(X,Y)Z^j,\n\\qquad\nH(X,Y)=\\gcd_j a_j(X,Y),\n\\qquad\nB=A/H.\n$$\n\nThen $B$ is squarefree, has total degree less than $p$, and satisfies\n\n$$\nB(L(s),P_L(s))\\equiv0\n$$\n\nfor every $L\\in T$ such that $H(L(s))\\not\\equiv0$. There exists a formal directional derivative $\\mathcal{D}$ such that\n\n$$\n\\gcd(B,\\mathcal{D}B)=1.\n$$\n\nDefine\n\n$$\nT_{\\mathrm{triv}}=\\{L\\in T:H(L(s))\\equiv0\\}\n$$\n\nand\n\n$$\nT_{\\mathrm{deg}}=\n\\left\\{L\\in T\\setminus T_{\\mathrm{triv}}:(\\mathcal{D}B)(L(s),P_L(s))\\equiv0\\right\\}.\n$$\n\nThen\n\n$$\n|T_{\\mathrm{triv}}|\\le D,\n\\qquad\n|T_{\\mathrm{deg}}|\\le D(D-1),\n$$\n\nand every $L\\in T\\setminus(T_{\\mathrm{triv}}\\cup T_{\\mathrm{deg}})$ satisfies\n\n$$\n\\left|\\{x\\in N_G(L):(\\mathcal{D}B)(x,f(x))=0\\}\\right|\\le D.\n$$\n\nConsequently, for\n\n$$\nE_{\\mathrm{exc}}=\n\\left\\{(x,L)\\in E:L\\in T_{\\mathrm{triv}}\\cup T_{\\mathrm{deg}}\n\\text{ or }(\\mathcal{D}B)(x,f(x))=0\\right\\},\n$$\n\none has\n\n$$\n|E_{\\mathrm{exc}}|\\le pD^2+Dt.\n$$",
+      "status": "proved",
+      "title": "Exceptional-Root Cleanup"
+    },
+    {
+      "dependencies": [
+        "P5"
+      ],
+      "id": "researcher-0002:P6.1",
+      "part": 1,
+      "proof_markdown": "Since every line vertex of $G$ has degree at least $k$,\n\n$$\n|E|\\ge kt.\n$$\n\nUsing P5 and the bound $D^2\\le16384dt/k$ from P3 gives\n\n$$\n\\frac{|E_{\\mathrm{exc}}|}{|E|}\n\\le\\frac{pD^2+Dt}{|E|}\n\\le\\frac{D}{k}+\\frac{16384dp}{k^2}\n<\\frac1{4000}.\n$$\n\nDuring peeling, each removed vertex accounts for fewer than $k_1$ edges present at its removal. The original minimum-degree condition on both vertex classes gives\n\n$$\nk(|X|+t)\\le2|E|.\n$$\n\nThus peeling removes fewer than\n\n$$\nk_1(|X|+t)\n\\le2\\frac{k_1}{k}|E|\n\\le\\frac{|E|}{50}\n$$\n\nadditional edges. Together with the exceptional-edge bound, this is less than $|E|$, so at least one edge remains. The remaining graph has minimum degree at least $k_1$ by construction. It need not remain connected and may split into several components.",
+      "source_step_id": "P6",
+      "statement_markdown": "Under the hypotheses and notation of P5,\n\n$$\n\\frac{|E_{\\mathrm{exc}}|}{|E|}\n\\le\\frac{D}{k}+\\frac{16384dp}{k^2}\n<\\frac1{4000}.\n$$\n\nSet\n\n$$\nk_1=\\left\\lfloor\\frac{k}{100}\\right\\rfloor.\n$$\n\nStarting from $(X,T,E\\setminus E_{\\mathrm{exc}})$ and iteratively deleting every vertex whose current degree is less than $k_1$ removes fewer than\n\n$$\nk_1(|X|+t)\n\\le2\\frac{k_1}{k}|E|\n\\le\\frac{|E|}{50}\n$$\n\nadditional edges and leaves a nonempty subgraph $G_1$ of minimum degree at least $k_1$.",
+      "status": "proved",
+      "title": "Clean Core"
+    },
+    {
+      "dependencies": [
+        "P6"
+      ],
+      "id": "researcher-0002:P7.1",
+      "part": 1,
+      "proof_markdown": "The numerical hypotheses give $k_1\\ge2$. Fix $x\\in X_1$ and choose two distinct incident lines $L_1,L_2\\in T_1$. Their direction vectors $v_1,v_2$ are linearly independent, since two distinct affine lines through one point have distinct directions in $\\mathbb{F}_p^2$.\n\nChoose parametrizations $L_i(s)=x+sv_i$. Differentiating the formal identities\n\n$$\nB(L_i(s),P_{L_i}(s))\\equiv0\n$$\n\nat $s=0$ gives\n\n$$\nv_{i,X}B_X(x,f(x))+v_{i,Y}B_Y(x,f(x))\n+B_Z(x,f(x))P_{L_i}'(0)=0\n$$\n\nfor $i\\in\\{1,2\\}$. If $B_Z(x,f(x))=0$, the independence of $v_1$ and $v_2$ forces\n\n$$\nB_X(x,f(x))=B_Y(x,f(x))=0.\n$$\n\nAll three formal partial derivatives would then vanish at $(x,f(x))$, implying $(\\mathcal{D}B)(x,f(x))=0$. This contradicts the deletion rule defining $G_1$. Hence $B_Z(x,f(x))\\ne0$. No derivative of a line polynomial is divided by in this argument.",
+      "source_step_id": "P7",
+      "statement_markdown": "Let $G_1=(X_1,T_1,E_1)$ be the surviving graph from P6, and let $B$ and $\\mathcal{D}$ be as in P5. Then every $x\\in X_1$ satisfies\n\n$$\nB(x,f(x))=0,\n\\qquad\nB_Z(x,f(x))\\ne0.\n$$",
+      "status": "proved",
+      "title": "Simple Roots"
+    },
+    {
+      "dependencies": [
+        "P7",
+        "KTZ Lemmas 2.7, 6.1, 6.2, and 6.3"
+      ],
+      "id": "researcher-0002:P8.1",
+      "part": 1,
+      "proof_markdown": "Choose any connected component $C$ of $G_1$. Its minimum degree is at least $k_1$, and the numerical bounds give $k_1>D$. KTZ Lemmas 2.7 and 6.1 lift the line roots through one point of $C$ to a single polynomial $Q\\in\\mathbb{F}_p[X,Y]$ of total degree at most $d$. Every division in the Newton lift is by a value $B_Z(b,f(b))$, which is a nonzero field element by P7; all global polynomials produced by the lift retain total degree at most $d$.\n\nSimple-root uniqueness propagates the same $Q$ throughout $C$, as in KTZ Lemma 6.3, without a factor-count loss. Thus $Q(x)=f(x)$ at every point vertex of $C$.\n\nThe first numerical hypothesis also implies\n\n$$\n\\frac1{\\sqrt{p+1}}\\le\\frac{k_1}{4p}.\n$$\n\nApplying the mixing argument of KTZ Lemma 6.2 to $C$ gives\n\n$$\n\\frac{|X_C|}{p^2}\\ge\\frac{k_1}{4p}\\ge\\frac{k}{800p}.\n$$\n\nSince $Q=f$ on $X_C$, this is the asserted global agreement.",
+      "source_step_id": "P8",
+      "statement_markdown": "Under the hypotheses and notation of P1\u2013P7, there exists a polynomial $Q\\in\\mathbb{F}_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\\ge\\frac{k}{800p}.\n$$",
+      "status": "proved",
+      "title": "Polynomial Decoder"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "KTZ Lemma 3.1"
+      ],
+      "id": "researcher-0002:P9.1",
+      "part": 1,
+      "proof_markdown": "The threshold implies that the pruned minimum-degree parameter satisfies\n\n$$\nk_0\\ge\\frac{\\epsilon p}{200}.\n$$\n\nSquaring the threshold gives\n\n$$\n\\epsilon^2p\\ge8{,}000{,}000C_*\\Lambda d.\n$$\n\nConsequently,\n\n$$\nk_0^2\\ge C_*dp\n$$\n\nand\n\n$$\nk_0^3\\ge C_*d(\\Lambda\\epsilon)p^2\\ge C_*d\\tau p^2.\n$$\n\nThe component decoder established in P1\u2013P8 therefore applies with $k=k_0$ and yields\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\n\\ge\\frac{k_0}{800p}\n\\ge\\frac{\\epsilon}{160000}.\n$$\n\nThis is the square-root parameter calculation. The entry remains conditional because local agreement alone has not supplied the assumed component with $\\tau\\le\\Lambda\\epsilon$.",
+      "source_step_id": "P9",
+      "statement_markdown": "Let $p$ be prime, let $100<d<p$, and let\n\n$$\n\\epsilon=\\Pr_{L,\\,x\\in L}[P_L(x)=f(x)],\n$$\n\nwhere $L$ is uniform among all affine lines of $\\mathbb{F}_p^2$ and $x$ is uniform on $L$. Let $G_0$ be a graph supplied by KTZ Lemma 3.1 with minimum degree at least\n\n$$\nk_0=\\left\\lfloor\\frac{\\epsilon p}{100}\\right\\rfloor.\n$$\n\nLet $\\Lambda\\ge1$, and suppose $G_0$ has a connected component of line measure $\\tau\\le\\Lambda\\epsilon$. Put $C_*=2^{40}$ and assume\n\n$$\n\\epsilon\\ge\\sqrt{8{,}000{,}000C_*\\Lambda}\\left(\\frac{d}{p}\\right)^{1/2}.\n$$\n\nThen there exists $Q\\in\\mathbb{F}_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\\ge\\frac{\\epsilon}{160000}.\n$$",
+      "status": "conditional",
+      "title": "Small-Component Corollary"
+    },
+    {
+      "dependencies": [
+        "Chernoff bound"
+      ],
+      "id": "researcher-0002:P10.1",
+      "part": 1,
+      "proof_markdown": "Independently color every point and every affine line uniformly from $[K]$, and choose an injection $\\iota:[K]\\hookrightarrow\\mathbb{F}_p$. Set $f(x)$ equal to the embedded color of $x$, and let $P_L$ be the constant embedded color of $L$.\n\nConditional on a vertex color, the accepted degree of a line has distribution\n\n$$\n\\operatorname{Bin}\\!\\left(p,\\frac1K\\right),\n$$\n\nwhile the accepted degree of a point has distribution\n\n$$\n\\operatorname{Bin}\\!\\left(p+1,\\frac1K\\right).\n$$\n\nA Chernoff bound and a union bound over fewer than $3p^2$ vertices show that the probability of any asserted degree bound failing is at most\n\n$$\n6p^2e^{-p/(12K)}<1,\n$$\n\nwhere the last inequality follows from $p/K\\ge100\\log p$. Hence a deterministic realization satisfying every degree bound exists. Averaging the line-degree bounds and dividing by $p$ gives the stated interval for $\\epsilon$. Every $P_L$ has degree $0$, hence degree at most the campaign degree $d>100$; the construction does not assert a separate analysis of the excluded parameter choice $d=0$.",
+      "source_step_id": "P10",
+      "statement_markdown": "Let $p\\ge103$ be prime, let $100<d<p$, and let $K$ be an integer satisfying\n\n$$\n2\\le K\\le\\frac{p}{100\\log p}.\n$$\n\nThere exist a function $f:\\mathbb{F}_p^2\\to\\mathbb{F}_p$ and a constant polynomial $P_L$ on every affine line $L$ such that, with\n\n$$\n\\deg_{\\mathrm{acc}}(L)=|\\{x\\in L:P_L(x)=f(x)\\}|\n$$\n\nand\n\n$$\n\\deg_{\\mathrm{acc}}(x)=|\\{L\\ni x:P_L(x)=f(x)\\}|,\n$$\n\none has, for every affine line $L$ and every point $x$,\n\n$$\n\\frac{p}{2K}\\le\\deg_{\\mathrm{acc}}(L)\\le\\frac{2p}{K},\n$$\n\n$$\n\\frac{p+1}{2K}\\le\\deg_{\\mathrm{acc}}(x)\\le\\frac{2(p+1)}{K}.\n$$\n\nThe test agreement satisfies\n\n$$\n\\frac1{2K}\\le\\epsilon\\le\\frac2K.\n$$",
+      "status": "proved",
+      "title": "Balanced-Color Realization"
+    },
+    {
+      "dependencies": [
+        "P10"
+      ],
+      "id": "researcher-0002:P11.1",
+      "part": 1,
+      "proof_markdown": "The line-degree upper bound gives\n\n$$\n|S_R|\\le\\sum_{M\\in R}\\deg_{\\mathrm{acc}}(M)\n\\le\\frac{2p|R|}{K}.\n$$\n\nThe covering hypothesis and the line-degree lower bound imply that every affine line contributes at least $p/(4K)$ accepted incidences from $S_R$. Summing over all $p(p+1)$ affine lines gives at least\n\n$$\n\\frac{p^2(p+1)}{4K}\n$$\n\nsuch incidences. On the other hand, the point-degree upper bound permits at most $2(p+1)/K$ accepted incidences per point of $S_R$. Therefore\n\n$$\n|S_R|\\ge\\frac{p^2}{8}.\n$$\n\nCombining the two estimates yields $|R|\\ge Kp/16$. Since P10 gives $\\epsilon\\ge1/(2K)$,\n\n$$\n\\frac{Kp}{16}\\ge\\frac{p}{32\\epsilon}.\n$$\n\nFinally, $f$ assumes at most $K$ color values. By pigeonhole, one constant value occurs on at least a $1/K$ fraction of all points. The corresponding constant polynomial has agreement at least $1/K\\ge\\epsilon/2$, using the upper bound $\\epsilon\\le2/K$.",
+      "source_step_id": "P11",
+      "statement_markdown": "Let $f$ and the line table be as in P10. For a set $R$ of affine lines, define\n\n$$\nS_R=\\{x\\in\\mathbb{F}_p^2:\\exists\\,M\\in R\\text{ with }x\\in M\\text{ and }P_M(x)=f(x)\\}.\n$$\n\nSuppose that every affine line $L$ satisfies\n\n$$\n\\left|S_R\\cap\\{x\\in L:P_L(x)=f(x)\\}\\right|\n\\ge\\frac12\\deg_{\\mathrm{acc}}(L).\n$$\n\nThen\n\n$$\n|R|\\ge\\frac{Kp}{16}\\ge\\frac{p}{32\\epsilon}.\n$$\n\nMoreover, there exists a constant polynomial $Q\\in\\mathbb{F}_p[X,Y]$ such that\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\\ge\\frac1K\\ge\\frac{\\epsilon}{2}.\n$$",
+      "status": "proved",
+      "title": "Covering Lower Bound"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0002",
+  "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f"
+}
+
+exec
+/bin/zsh -lc "rg -n \"KaTeX|statement_markdown|omitted_source_step_ids\" . --glob '"'!**/superseded/**'"' --glob '*.py' --glob '*.js' --glob '*.ts' | head -80" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+./tests/test_core.py:179:            "omitted_source_step_ids": [],
+./tests/test_core.py:186:                    "statement_markdown": "If $x=0$, then $x^2=0$.",
+./tests/test_core.py:196:                    "statement_markdown": "If $x^2=0$ in a field, then $x=0$.",
+./tests/test_core.py:218:            "omitted_source_step_ids": [],
+./tests/test_core.py:223:                "statement_markdown": "A statement.",
+./tests/test_core.py:269:                    "id": "R1", "statement_markdown": "A.", "work_state": "candidate",
+./tests/test_core.py:273:                    "id": "R2", "statement_markdown": "B.", "work_state": "open",
+./src/line_point_research/lemma_book.py:30:        "id", "source_step_id", "part", "title", "statement_markdown",
+./src/line_point_research/lemma_book.py:38:        "statement_markdown": {"type": "string"},
+./src/line_point_research/lemma_book.py:54:        "omitted_source_step_ids", "lemmas",
+./src/line_point_research/lemma_book.py:60:        "omitted_source_step_ids": {"type": "array", "items": {"type": "string"}},
+./src/line_point_research/lemma_book.py:82:    if response.get("omitted_source_step_ids"):
+./src/line_point_research/lemma_book.py:107:        if not str(lemma.get("statement_markdown", "")).strip():
+./src/line_point_research/lemma_book.py:158:and omitted_source_step_ids=[] only after checking this. Use stable ids of the form
+./src/line_point_research/lemma_book.py:160:using KaTeX-supported LaTeX. Do not put mathematics in code spans, and do not leave TeX commands
+./src/line_point_research/lemma_book.py:162:reject any entry that does not parse with KaTeX.
+./src/line_point_research/lemma_book.py:181:            raise AgentError("node executable not found for deterministic KaTeX validation")
+./src/line_point_research/lemma_book.py:199:            raise AgentError("lemma KaTeX validation failed: " + detail)
+./src/line_point_research/roadmaps.py:55:        "id", "label", "statement_markdown", "kind", "work_state", "dependencies",
+./src/line_point_research/roadmaps.py:61:        "statement_markdown": {"type": "string"},
+./src/line_point_research/roadmaps.py:165:        if not str(node.get("statement_markdown", "")).strip():
+./src/line_point_research/roadmaps.py:333:in notes. Enclose math in $...$ or $$...$$ using KaTeX-supported LaTeX.
+./src/line_point_research/roadmaps.py:365:        raise AgentError("node executable not found for deterministic KaTeX validation")
+./src/line_point_research/roadmaps.py:386:                "roadmap KaTeX validation failed: " +
+
+exec
+/bin/zsh -lc "sed -n '1,230p' src/line_point_research/lemma_book.py && sed -n '150,240p' tests/test_core.py" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+from pathlib import Path
+from typing import Any
+
+from .agents import AgentError, CommandAgentProvider
+from .campaign import load_campaign_config, utc_timestamp
+from .snapshot import update_dashboard_sections
+
+
+LEMMA_STATEMENT_RULE = (
+    "A lemma statement contains only its quantified objects, hypotheses, and conclusion. "
+    "It contains no motivation, derivation, commentary, proof sketch, interpretation, history, "
+    "or explanation; put all such material in the proof."
+)
+
+
+LEMMA_ENTRY = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": [
+        "id", "source_step_id", "part", "title", "statement_markdown",
+        "proof_markdown", "status", "dependencies",
+    ],
+    "properties": {
+        "id": {"type": "string"},
+        "source_step_id": {"type": "string"},
+        "part": {"type": "integer", "minimum": 1},
+        "title": {"type": "string"},
+        "statement_markdown": {"type": "string"},
+        "proof_markdown": {"type": "string"},
+        "status": {
+            "type": "string",
+            "enum": ["proved", "conditional", "conjectural", "refuted"],
+        },
+        "dependencies": {"type": "array", "items": {"type": "string"}},
+    },
+}
+
+
+LEMMA_BOOK_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": [
+        "source_job_id", "source_response_sha256", "coverage_complete",
+        "omitted_source_step_ids", "lemmas",
+    ],
+    "properties": {
+        "source_job_id": {"type": "string"},
+        "source_response_sha256": {"type": "string"},
+        "coverage_complete": {"type": "boolean"},
+        "omitted_source_step_ids": {"type": "array", "items": {"type": "string"}},
+        "lemmas": {"type": "array", "items": LEMMA_ENTRY},
+    },
+}
+
+
+def canonical_sha256(value: dict[str, Any]) -> str:
+    return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
+
+
+def validate_editorial_response(
+        source_id: str, source: dict[str, Any], response: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    expected_hash = canonical_sha256(source)
+    source_steps = {str(step["id"]): step for step in source.get("proof_steps", [])}
+    lemmas = response.get("lemmas", [])
+    if response.get("source_job_id") != source_id:
+        errors.append("source_job_id does not match the source submission")
+    if response.get("source_response_sha256") != expected_hash:
+        errors.append("source_response_sha256 does not match the source submission")
+    if not response.get("coverage_complete"):
+        errors.append("coverage_complete must be true")
+    if response.get("omitted_source_step_ids"):
+        errors.append("no source proof step may be omitted")
+    if not lemmas:
+        errors.append("lemma book contains no lemmas")
+
+    seen_ids: set[str] = set()
+    covered: set[str] = set()
+    parts: dict[str, list[int]] = {}
+    for lemma in lemmas:
+        lemma_id = str(lemma.get("id", ""))
+        step_id = str(lemma.get("source_step_id", ""))
+        if not lemma_id or lemma_id in seen_ids:
+            errors.append(f"duplicate or empty lemma id: {lemma_id!r}")
+        seen_ids.add(lemma_id)
+        if step_id not in source_steps:
+            errors.append(f"unknown source step: {step_id!r}")
+            continue
+        covered.add(step_id)
+        part = lemma.get("part")
+        if not isinstance(part, int) or part < 1:
+            errors.append(f"invalid split part for {lemma_id}")
+        else:
+            parts.setdefault(step_id, []).append(part)
+        if lemma.get("status") != source_steps[step_id].get("status"):
+            errors.append(f"status changed for {lemma_id}")
+        if not str(lemma.get("statement_markdown", "")).strip():
+            errors.append(f"empty statement for {lemma_id}")
+        if not str(lemma.get("proof_markdown", "")).strip():
+            errors.append(f"empty proof for {lemma_id}")
+
+    missing = sorted(set(source_steps) - covered)
+    if missing:
+        errors.append("uncovered source proof steps: " + ", ".join(missing))
+    for step_id, values in parts.items():
+        if sorted(values) != list(range(1, len(values) + 1)):
+            errors.append(f"nonconsecutive split parts for {step_id}")
+    return errors
+
+
+class LemmaBookEditor:
+    """Continuously post-edit immutable submissions into a public lemma book."""
+
+    def __init__(self, config_path: Path | str):
+        self.config, self.paths = load_campaign_config(config_path)
+        self.cfg = self.config["campaign"]
+        self.root = self.paths.campaign_dir / "lemma_book"
+        self.submissions = self.root / "submissions"
+        self.runtime = self.root / "runtime"
+        self.submissions.mkdir(parents=True, exist_ok=True)
+        self.runtime.mkdir(parents=True, exist_ok=True)
+        self.provider = CommandAgentProvider(
+            self.paths.workspace,
+            self.root / "agent_logs",
+            executable=str(self.cfg.get("executable", "codex")),
+            model=str(self.cfg.get("model", "gpt-5.6-sol")),
+            reasoning_effort=str(self.cfg.get("reasoning_effort", "ultra")),
+            disable_nested_agents=True,
+            timeout_seconds=int(self.cfg.get("lemma_writer_timeout_seconds", 5400)),
+        )
+
+    def _prompt(self, source_id: str, source: dict[str, Any]) -> str:
+        source_hash = canonical_sha256(source)
+        return f"""You are the dedicated Lemma Writer for a mathematical autoresearch campaign.
+Post-edit every structured proof step in submission {source_id} into a clear lemma-book entry.
+You are an editor, not a researcher or verifier. The raw submission is immutable.
+
+RULE: {LEMMA_STATEMENT_RULE}
+
+Preserve the exact mathematical content, hypotheses, status, and dependency closure of every
+source step. Never strengthen, weaken, repair, validate, refute, or omit a claim. A refuted source
+step remains visibly refuted. You may split one source step into two or more ordered entries when
+that materially improves comprehension; give the pieces consecutive part numbers and repeat the
+same source_step_id. Move any explanation removed from a statement into proof_markdown. Retain
+all substantive proof content. Titles are short noun phrases and contain no mathematical claim.
+
+Every source proof-step id must occur in at least one output entry. Set coverage_complete=true
+and omitted_source_step_ids=[] only after checking this. Use stable ids of the form
+{source_id}:<source-step-id>.<part>. Enclose every mathematical expression in $...$ or $$...$$
+using KaTeX-supported LaTeX. Do not put mathematics in code spans, and do not leave TeX commands
+outside math delimiters. Use Markdown prose outside mathematics. The publication harness will
+reject any entry that does not parse with KaTeX.
+
+Set source_job_id to {source_id} and source_response_sha256 to {source_hash}.
+
+SOURCE SUBMISSION:
+{json.dumps(source, indent=2, sort_keys=True)}
+"""
+
+    def _render_check(self, response: dict[str, Any]) -> dict[str, Any]:
+        script = self.paths.workspace / "dashboard" / "scripts" / "validate-lemma-book.mjs"
+        if not script.exists():
+            raise AgentError(f"missing deterministic lemma renderer: {script}")
+        node = shutil.which("node")
+        if node is None:
+            pnpm = shutil.which("pnpm")
+            bundled = (Path(pnpm).resolve().parents[2] / "node" / "bin" / "node") if pnpm else None
+            if bundled and bundled.exists():
+                node = str(bundled)
+        if node is None:
+            raise AgentError("node executable not found for deterministic KaTeX validation")
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
+            json.dump(response, handle)
+            temporary = Path(handle.name)
+        try:
+            completed = subprocess.run(
+                [node, str(script), str(temporary)],
+                cwd=self.paths.workspace / "dashboard",
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=120,
+                check=False,
+            )
+        finally:
+            temporary.unlink(missing_ok=True)
+        if completed.returncode != 0:
+            detail = (completed.stderr or completed.stdout).strip()
+            raise AgentError("lemma KaTeX validation failed: " + detail)
+        return json.loads(completed.stdout)
+
+    def _is_current(self, source_id: str, source_hash: str) -> bool:
+        manifest = self.submissions / source_id / "manifest.json"
+        if not manifest.exists():
+            return False
+        try:
+            data = json.loads(manifest.read_text())
+        except json.JSONDecodeError:
+            return False
+        return data.get("source_response_sha256") == source_hash and data.get("passed") is True
+
+    def process_source(self, source_path: Path) -> dict[str, Any]:
+        source_id = source_path.parent.name
+        source = json.loads(source_path.read_text())
+        source_hash = canonical_sha256(source)
+        if self._is_current(source_id, source_hash):
+            return {"source_job_id": source_id, "status": "current"}
+
+        errors: list[str] = []
+        max_attempts = int(self.cfg.get("lemma_writer_max_attempts", 4))
+        for attempt in range(1, max_attempts + 1):
+            prompt = self._prompt(source_id, source)
+            if errors:
+                prompt += "\n\nThe previous attempt was rejected for:\n- " + "\n- ".join(errors)
+            response, metadata = self.provider.run(
+                f"lemma-writer-{source_id}", prompt, LEMMA_BOOK_SCHEMA)
+            errors = validate_editorial_response(source_id, source, response)
+            if errors:
+                continue
+            try:
+            prompt = campaign._research_prompt({"id": "researcher-0001", "ordinal": 1,
+                                                "direction": "test"})
+            self.assertIn("m=2 over the prime field F_p", prompt)
+            self.assertIn("C(d/p)^(1/3)", prompt)
+            self.assertIn("(d/p)^(1-o(1))", prompt)
+            self.assertIn("100 < d < p", prompt)
+            self.assertIn("Do not analyze them", prompt)
+            self.assertIn("Ignore every directory named\nsuperseded", prompt)
+            self.assertIn("Do not work on m>2", prompt)
+            self.assertIn("routine downstream corollary", prompt)
+            self.assertIn("cannot prove an asymptotic", prompt)
+            self.assertIn("A lemma statement contains only its", prompt)
+
+    def test_lemma_writer_rule_and_split_coverage(self):
+        source = {
+            "proof_steps": [
+                {
+                    "id": "P1",
+                    "statement": "A compound statement.",
+                    "proof": "A proof.",
+                    "status": "proved",
+                    "dependencies": [],
+                }
+            ]
+        }
+        response = {
+            "source_job_id": "researcher-0001",
+            "source_response_sha256": canonical_sha256(source),
+            "coverage_complete": True,
+            "omitted_source_step_ids": [],
+            "lemmas": [
+                {
+                    "id": "researcher-0001:P1.1",
+                    "source_step_id": "P1",
+                    "part": 1,
+                    "title": "First part",
+                    "statement_markdown": "If $x=0$, then $x^2=0$.",
+                    "proof_markdown": "This is immediate.",
+                    "status": "proved",
+                    "dependencies": [],
+                },
+                {
+                    "id": "researcher-0001:P1.2",
+                    "source_step_id": "P1",
+                    "part": 2,
+                    "title": "Second part",
+                    "statement_markdown": "If $x^2=0$ in a field, then $x=0$.",
+                    "proof_markdown": "Fields have no nonzero nilpotents.",
+                    "status": "proved",
+                    "dependencies": [],
+                },
+            ],
+        }
+        self.assertEqual(validate_editorial_response(
+            "researcher-0001", source, response), [])
+        self.assertIn("no motivation", LEMMA_STATEMENT_RULE)
+
+    def test_lemma_writer_rejects_omission_and_status_change(self):
+        source = {
+            "proof_steps": [
+                {"id": "P1", "status": "proved"},
+                {"id": "P2", "status": "conditional"},
+            ]
+        }
+        response = {
+            "source_job_id": "researcher-0001",
+            "source_response_sha256": canonical_sha256(source),
+            "coverage_complete": True,
+            "omitted_source_step_ids": [],
+            "lemmas": [{
+                "id": "researcher-0001:P1.1",
+                "source_step_id": "P1",
+                "part": 1,
+                "statement_markdown": "A statement.",
+                "proof_markdown": "A proof.",
+                "status": "conditional",
+            }],
+        }
+        errors = validate_editorial_response("researcher-0001", source, response)
+        self.assertTrue(any("status changed" in error for error in errors))
+        self.assertTrue(any("P2" in error for error in errors))
+
+    def test_three_shared_roadmaps_and_deterministic_progress(self):
+        self.assertEqual(len(ROADMAP_DEFINITIONS), 3)
+        self.assertEqual(len({item["id"] for item in ROADMAP_DEFINITIONS}), 3)
+        nodes, progress = RoadmapWorkshop._derive_progress([
+            {
+                "id": "R1", "kind": "lemma", "work_state": "candidate",
+                "dependencies": [],
+                "evidence_refs": [{
+                    "source_job_id": "researcher-0001", "source_step_id": "P1",
+
+codex
+{"coverage_complete":true,"lemmas":[{"dependencies":[],"id":"GENIUS:P1.1","part":1,"proof_markdown":"This is the sole assumed statement. The inequality $\\operatorname{rank}\\Phi_{R,D}<\\dim V_D$ is formal rank deficiency, not merely failure of surjectivity. The containments $E\\subseteq E_{\\mathrm{acc}}$ and $R\\subseteq T$ are part of the assumption, every $\\ell_L$ is an affine bijection, and the cardinality in the reach condition counts distinct incident points.","source_step_id":"P1","statement_markdown":"Fix $0<\\theta\\le 1/4$. Let $C_\\theta,K_\\theta\\ge 1$ and $0<a_\\theta,c_\\theta\\le 1$ satisfy\n\n$$\nC_\\theta\\ge \\frac{8K_\\theta}{a_\\theta}.\n$$\n\nAssume $\\mathrm{RD}_\\theta$: for every prime $p$, every integer $d$ satisfying $100<d<p$, every function $f:\\mathbb{F}_p^2\\to\\mathbb{F}_p$, every family of affine bijections\n\n$$\n\\bigl(\\ell_L:\\mathbb{F}_p\\to L\\bigr)_{L\\in\\mathcal{L}},\n$$\n\nindexed by the affine lines $\\mathcal{L}$ in $\\mathbb{F}_p^2$, and every family $(P_L)_{L\\in\\mathcal{L}}$ with $P_L\\in\\mathbb{F}_p[t]$ and $\\deg P_L\\le d$, define\n\n$$\nE_{\\mathrm{acc}}\n=\n\\left\\{(\\ell_L(t),L):L\\in\\mathcal{L},\\ t\\in\\mathbb{F}_p,\\ P_L(t)=f(\\ell_L(t))\\right\\},\n$$\n\n$$\n\\varepsilon=\\frac{|E_{\\mathrm{acc}}|}{p^2(p+1)},\n$$\n\nand\n\n$$\n\\operatorname{Agr}_d(f)\n=\n\\max_{\\substack{Q\\in\\mathbb{F}_p[X,Y]\\\\ \\deg_{\\mathrm{tot}}Q\\le d}}\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)].\n$$\n\nIf\n\n$$\n\\varepsilon\\ge C_\\theta\\left(\\frac{d}{p}\\right)^{1-\\theta},\n$$\n\nthen either\n\n$$\n\\operatorname{Agr}_d(f)\\ge c_\\theta\\varepsilon,\n$$\n\nor there exist an accepted bipartite graph $G=(X,T,E)$, a set $R\\subseteq T$, and an integer $D$ such that\n\n$$\nX\\subseteq\\mathbb{F}_p^2,\n\\qquad\nT\\subseteq\\mathcal{L},\n\\qquad\nE\\subseteq E_{\\mathrm{acc}}\\cap(X\\times T),\n$$\n\n$$\ne(G):=\\frac{|E|}{p^2(p+1)}\\ge a_\\theta\\varepsilon,\n\\qquad\nd\\le D\\le K_\\theta d,\n\\qquad\n|R|>D,\n$$\n\nand, upon defining\n\n$$\nV_D=\n\\left\\{A\\in\\mathbb{F}_p[X,Y,Z]:\n\\operatorname{wdeg}_{(1,1,d)}A\\le D\\right\\}\n$$\n\nand\n\n$$\n\\Phi_{R,D}:V_D\\longrightarrow\n\\prod_{M\\in R}\\mathbb{F}_p[t]_{\\le D},\n\\qquad\n\\Phi_{R,D}(A)=\n\\bigl(A(\\ell_M(t),P_M(t))\\bigr)_{M\\in R},\n$$\n\none has\n\n$$\n\\operatorname{rank}\\Phi_{R,D}<\\dim V_D.\n$$\n\nMoreover, every $L\\in T$ satisfies\n\n$$\n\\left|\n\\left\\{x\\in X:(x,L)\\in E,\\ \\exists M\\in R\\setminus\\{L\\}\\text{ with }(x,M)\\in E\\right\\}\n\\right|>D.\n$$","status":"conjectural","title":"Rank-or-Decode Hypothesis"},{"dependencies":["P1"],"id":"GENIUS:P2.1","part":1,"proof_markdown":"Put $\\rho=d/p$ and $x=D/p$. From the threshold in P1 and the bound $D\\le K_\\theta d$,\n\n$$\nx\n\\le K_\\theta\\rho\n\\le \\frac{K_\\theta}{C_\\theta}\\varepsilon\\rho^\\theta\n\\le \\frac{a_\\theta\\varepsilon}{8}\n\\le \\frac18.\n$$\n\nThus $D<p$. Moreover,\n\n$$\nx^2+3x\n\\le \\frac{25x}{8}\n\\le \\frac{25a_\\theta\\varepsilon}{64}\n<\\frac{a_\\theta\\varepsilon}{2}.\n$$\n\nThe last inequality is the required cleanup-and-peeling budget.","source_step_id":"P2","statement_markdown":"Under the hypotheses and notation of P1, suppose the structured alternative occurs. Then\n\n$$\nD<p,\n\\qquad\n\\frac{D}{p}\\le\\frac{a_\\theta\\varepsilon}{8}\\le\\frac18,\n$$\n\nand\n\n$$\n\\left(\\frac{D}{p}\\right)^2+3\\frac{D}{p}\n<\\frac{a_\\theta\\varepsilon}{2}.\n$$","status":"proved","title":"Characteristic Budget"},{"dependencies":["P1","P2"],"id":"GENIUS:P3.1","part":1,"proof_markdown":"Rank deficiency supplies a nonzero polynomial $A_0\\in\\ker\\Phi_{R,D}$. Replace $A_0$ by its squarefree radical $A$. Every selected-line identity survives because $\\mathbb{F}_p[t]$ is an integral domain, and the weighted degree does not increase.\n\nIf $A$ were independent of $Z$, then every one of the more than $D$ distinct lines in $R$ would divide a nonzero polynomial in $\\mathbb{F}_p[X,Y]$ of total degree at most $D$, which is impossible. Hence $A$ depends on $Z$. By P2, $\\deg_ZA<p$, so $Z$-dependence implies $A_Z\\not\\equiv0$.","source_step_id":"P3","statement_markdown":"Under the hypotheses and notation of P1 and P2, suppose the structured alternative occurs. Then there exists a nonzero squarefree polynomial $A\\in\\mathbb{F}_p[X,Y,Z]$ such that\n\n$$\n\\operatorname{wdeg}_{(1,1,d)}A\\le D,\n\\qquad\nA_Z\\not\\equiv0,\n$$\n\nand, for every $M\\in R$,\n\n$$\nA(\\ell_M(t),P_M(t))\\equiv0\n$$\n\nas an identity in $\\mathbb{F}_p[t]$.","status":"proved","title":"Squarefree Rank Kernel"},{"dependencies":["P1","P3"],"id":"GENIUS:P4.1","part":1,"proof_markdown":"Fix $L\\in T$. For every reached point $x=\\ell_L(t)=\\ell_M(s)$ with $M\\in R\\setminus\\{L\\}$, acceptedness gives\n\n$$\nP_L(t)=f(x)=P_M(s).\n$$\n\nThe selected-line identity on $M$ therefore yields\n\n$$\nA(x,P_L(t))=A(x,P_M(s))=0.\n$$\n\nThere are more than $D$ distinct reached points on $L$, whereas the polynomial\n\n$$\nt\\longmapsto A(\\ell_L(t),P_L(t))\n$$\n\nhas degree at most $D$. Root counting forces this polynomial to vanish identically.","source_step_id":"P4","statement_markdown":"Under the hypotheses and notation of P1 and P3, every $L\\in T$ satisfies\n\n$$\nA(\\ell_L(t),P_L(t))\\equiv0\n$$\n\nas an identity in $\\mathbb{F}_p[t]$.","status":"proved","title":"Reached-Line Extension"},{"dependencies":["P3","P4"],"id":"GENIUS:P5.1","part":1,"proof_markdown":"Squarefreeness of $A$ implies that $B$ is squarefree. Moreover,\n\n$$\nA_Z=HB_Z\\not\\equiv0,\n$$\n\nso $B$ depends on $Z$. If $L\\notin T_{\\mathrm{con}}$, the identity from P4 becomes\n\n$$\nH(\\ell_L(t))B(\\ell_L(t),P_L(t))\\equiv0.\n$$\n\nSince $H(\\ell_L(t))$ is nonzero and $\\mathbb{F}_p[t]$ is an integral domain, cancellation gives\n\n$$\nB(\\ell_L(t),P_L(t))\\equiv0.\n$$\n\nEach line in $T_{\\mathrm{con}}$ supplies a distinct linear factor of $H$. Hence\n\n$$\n|T_{\\mathrm{con}}|\\le\\deg H\\le D.\n$$","source_step_id":"P5","statement_markdown":"Under the hypotheses and notation of P3 and P4, write\n\n$$\nA(X,Y,Z)=\\sum_j a_j(X,Y)Z^j,\n\\qquad\nH(X,Y)=\\gcd_j a_j(X,Y),\n\\qquad\nB=A/H.\n$$\n\nThen $H\\in\\mathbb{F}_p[X,Y]$, and $B\\in\\mathbb{F}_p[X,Y,Z]$ is primitive, squarefree, and $Z$-dependent, with\n\n$$\n\\operatorname{wdeg}_{(1,1,d)}B\\le D,\n\\qquad\nB_Z\\not\\equiv0.\n$$\n\nDefine\n\n$$\nT_{\\mathrm{con}}\n=\n\\left\\{L\\in T:H(\\ell_L(t))\\equiv0\\right\\}.\n$$\n\nThen\n\n$$\n|T_{\\mathrm{con}}|\\le\\deg H\\le D,\n$$\n\nand every $L\\in T\\setminus T_{\\mathrm{con}}$ satisfies\n\n$$\nB(\\ell_L(t),P_L(t))\\equiv0.\n$$","status":"proved","title":"Primitive Relation"},{"dependencies":["P2","P5"],"id":"GENIUS:P6.1","part":1,"proof_markdown":"Suppose an irreducible polynomial $C$ divides both $B$ and $B_Z$. Squarefreeness of $B$ forces $C_Z=0$. Since $\\deg_ZC<p$, the polynomial $C$ is independent of $Z$, contradicting primitivity of $B$. Therefore\n\n$$\n\\gcd(B,B_Z)=1.\n$$\n\nKTZ Lemma 2.6 bounds the number of lines on whose polynomial graphs both $B$ and $B_Z$ vanish identically by $D(D-1)$. Including the content lines from P5 gives fewer than $D^2$ bad lines.\n\nOn every other line, $B_Z(\\ell_L(t),P_L(t))$ is a nonzero polynomial of degree at most\n\n$$\nD-d\\le D.\n$$\n\nIt therefore has at most $D$ zeros. Deleting all incidences on bad lines and all remaining nonsimple incidences removes normalized mass less than\n\n$$\n\\frac{D^2p}{p^2(p+1)}\n+\n\\frac{Dp(p+1)}{p^2(p+1)}\n<\n\\left(\\frac{D}{p}\\right)^2+\frac{D}{p}.\n$$","source_step_id":"P6","statement_markdown":"Under the hypotheses and notation of P2 and P5,\n\n$$\n\\gcd(B,B_Z)=1.\n$$\n\nDefine\n\n$$\nT_{\\mathrm{ram}}\n=\n\\left\\{L\\in T\\setminus T_{\\mathrm{con}}:\nB_Z(\\ell_L(t),P_L(t))\\equiv0\\right\\}\n$$\n\nand\n\n$$\nE_0\n=\n\\left\\{(x,L)\\in E:\nL\\notin T_{\\mathrm{con}}\\cup T_{\\mathrm{ram}},\\ B_Z(x,f(x))\\ne0\\right\\}.\n$$\n\nThen\n\n$$\n|T_{\\mathrm{con}}\\cup T_{\\mathrm{ram}}|<D^2,\n$$\n\n every $(x,L)\\in E_0$ satisfies\n\n$$\nB(x,f(x))=0,\n\\qquad\nB_Z(x,f(x))\\ne0,\n$$\n\nand\n\n$$\n\\frac{|E\\setminus E_0|}{p^2(p+1)}\n<\n\\left(\\frac{D}{p}\\right)^2+\frac{D}{p}.\n$$","status":"proved","title":"Vertical Cleanup"},{"dependencies":["P1","P2","P6"],"id":"GENIUS:P7.1","part":1,"proof_markdown":"Starting with the graph having edge set $E_0$, iteratively delete every current point or line vertex of degree at most $D$. Charge each edge when its first endpoint is deleted. Every edge is charged once, and there are at most $p^2$ point vertices and $p(p+1)$ line vertices. Hence the normalized peeling cost is less than\n\n$$\n\\frac{D\\bigl(p^2+p(p+1)\\bigr)}{p^2(p+1)}\n<\\frac{2D}{p}.\n$$\n\nTogether with P6, the total normalized loss is less than\n\n$$\n\\left(\\frac{D}{p}\\right)^2+3\\frac{D}{p}\n<\\frac{a_\\theta\\varepsilon}{2},\n$$\n\nwhere the final inequality is P2. Since $e(G)\\ge a_\\theta\\varepsilon$, the surviving graph has normalized edge mass at least $a_\\theta\\varepsilon/2$ and is nonempty. Every surviving vertex has degree greater than $D$, and the clean root conditions are inherited from $E_0$.","source_step_id":"P7","statement_markdown":"Under the hypotheses and notation of P1, P2, and P6, iteratively delete from the graph with edge set $E_0$ every current point or line vertex of degree at most $D$. The resulting graph $G_1=(X_1,T_1,E_1)$ is nonempty and satisfies\n\n$$\ne(G_1)=\\frac{|E_1|}{p^2(p+1)}\n\\ge\\frac{a_\\theta\\varepsilon}{2},\n\\qquad\n\\delta(G_1)>D.\n$$\n\nEvery $x\\in X_1$ satisfies\n\n$$\nB(x,f(x))=0,\n\\qquad\nB_Z(x,f(x))\\ne0.\n$$","status":"proved","title":"Peeled Clean Core"},{"dependencies":["P2","P7"],"id":"GENIUS:P8.1","part":1,"proof_markdown":"Fix a connected component $\\Gamma$ and a point vertex $b$ in it. More than $D$ distinct incident graph lines pass through the simple root $(b,f(b))$. The characteristic-free formal implicit recursion at this root, dividing only by\n\n$$\nB_Z(b,f(b))\\ne0,\n$$\n\ngives a unique formal bivariate branch. Truncate it at total degree $d$ to obtain $Q_\\Gamma$.\n\nFor every line $L$ incident to $b$, the truncation satisfies\n\n$$\nQ_\\Gamma(\\ell_L(t))\\equiv P_L(t).\n$$\n\nConsequently, $B(X,Y,Q_\\Gamma(X,Y))$ has total degree at most $D$ and vanishes identically on more than $D$ distinct lines. Hence\n\n$$\nB(X,Y,Q_\\Gamma(X,Y))\\equiv0.\n$$\n\nAcross any edge of $\\Gamma$, the restrictions $Q_\\Gamma(\\ell_L(t))$ and $P_L(t)$ are formal roots with the same simple initial value. Formal uniqueness makes them identical. Induction along paths in $\\Gamma$ therefore gives $Q_\\Gamma(x)=f(x)$ at every point vertex of $\\Gamma$. This is the mechanism of KTZ Lemmas 2.5, 2.7, 6.1, and 6.3.","source_step_id":"P8","statement_markdown":"Under the hypotheses and notation of P2 and P7, for every connected component $\\Gamma$ of $G_1$ there exists a polynomial $Q_\\Gamma\\in\\mathbb{F}_p[X,Y]$ of total degree at most $d$ such that\n\n$$\nB(X,Y,Q_\\Gamma(X,Y))\\equiv0\n$$\n\nand\n\n$$\nQ_\\Gamma(x)=f(x)\n$$\n\nfor every point vertex $x$ of $\\Gamma$.","status":"proved","title":"Component Polynomial"},{"dependencies":["P5","P8"],"id":"GENIUS:P9.1","part":1,"proof_markdown":"Polynomial division in $\\mathbb{F}_p[X,Y][Z]$ by the monic polynomial $Z-Q_\\Gamma(X,Y)$ shows that\n\n$$\nB(X,Y,Q_\\Gamma(X,Y))\\equiv0\n$$\n\nis equivalent to\n\n$$\nZ-Q_\\Gamma(X,Y)\\mid B(X,Y,Z).\n$$\n\nDistinct polynomials $Q_\\Gamma$ give distinct monic irreducible divisors. Their number is therefore at most $\\deg_ZB$. Since $B$ has weighted degree at most $D$,\n\n$$\n\\deg_ZB\n\\le\\frac{\\operatorname{wdeg}_{(1,1,d)}B}{d}\n\\le\\frac{D}{d}\n\\le K_\\theta.\n$$","source_step_id":"P9","statement_markdown":"Under the hypotheses and notation of P5 and P8, the distinct component polynomials satisfy\n\n$$\n\\left|\n\\left\\{Q_\\Gamma:\\Gamma\\in\\operatorname{Comp}(G_1)\\right\\}\n\\right|\n\\le\n\\deg_ZB\n\\le\n\\frac{\\operatorname{wdeg}_{(1,1,d)}B}{d}\n\\le\n\\frac{D}{d}\n\\le K_\\theta.\n$$","status":"proved","title":"Component Templates"},{"dependencies":["P7","P8","P9"],"id":"GENIUS:P10.1","part":1,"proof_markdown":"Group the edges of $G_1$ according to their component polynomial. By P9 there are at most $K_\\theta$ distinct templates, while P7 gives $e(G_1)\\ge a_\\theta\\varepsilon/2$. Hence some template $Q$ is assigned an edge set $F\\subseteq E_1$ satisfying\n\n$$\n\\frac{|F|}{p^2(p+1)}\n\\ge\\frac{a_\\theta\\varepsilon}{2K_\\theta}.\n$$\n\nBy P8, $Q(x)=f(x)$ at every point incident to an edge of $F$. Each point is incident to at most $p+1$ affine lines. If $S$ is the set of point endpoints of $F$, then\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\n\\ge\\frac{|S|}{p^2}\n\\ge\\frac{|F|}{p^2(p+1)}\n\\ge\\frac{a_\\theta\\varepsilon}{2K_\\theta}.\n$$","source_step_id":"P10","statement_markdown":"Under the hypotheses and notation of P7, P8, and P9, there exists a polynomial $Q\\in\\mathbb{F}_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\n\\ge\\frac{a_\\theta\\varepsilon}{2K_\\theta}.\n$$","status":"proved","title":"Template Selection"},{"dependencies":["P1","P10"],"id":"GENIUS:P11.1","part":1,"proof_markdown":"The direct alternative in $\\mathrm{RD}_\\theta$ gives agreement at least $c_\\theta\\varepsilon$. In the structured alternative, P10 gives agreement at least\n\n$$\n\\frac{a_\\theta\\varepsilon}{2K_\\theta}.\n$$\n\nTaking the smaller of these two guarantees proves the conclusion.","source_step_id":"P11","statement_markdown":"Under $\\mathrm{RD}_\\theta$ and the hypotheses and notation of P1, define\n\n$$\nc_\\theta^*\n=\n\\min\\left\\{c_\\theta,\\frac{a_\\theta}{2K_\\theta}\\right\\}.\n$$\n\nIf\n\n$$\n\\varepsilon\\ge C_\\theta\\left(\\frac{d}{p}\\right)^{1-\\theta},\n$$\n\nthen there exists a polynomial $Q\\in\\mathbb{F}_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\n\\ge c_\\theta^*\\varepsilon.\n$$","status":"conditional","title":"Fixed-Parameter Decoder"},{"dependencies":["P11"],"id":"GENIUS:P12.1","part":1,"proof_markdown":"Fix $\\eta\\in(0,1)$ and take\n\n$$\n\\theta=\\min\\left\\{\\eta,\\frac14\\right\\}.\n$$\n\nPut $\\rho=d/p$. Since $0<\\rho<1$ and $\\theta\\le\\eta$,\n\n$$\n\\rho^{1-\\eta}\\ge\\rho^{1-\\theta}.\n$$\n\nChoose $C_\\eta=C_\\theta$ and $c_\\eta=c_\\theta^*$. The assumed $\\eta$-threshold then implies the $\\theta$-threshold in P11, whose conclusion supplies the required polynomial.","source_step_id":"P12","statement_markdown":"Assume that, for every $\\theta\\in(0,1/4]$, there exist constants $C_\\theta,K_\\theta\\ge1$ and $0<a_\\theta,c_\\theta\\le1$ satisfying\n\n$$\nC_\\theta\\ge\\frac{8K_\\theta}{a_\\theta},\n$$\n\nfor which $\\mathrm{RD}_\\theta$ from P1 holds. Then, for every fixed $\\eta\\in(0,1)$, there exist constants $C_\\eta,c_\\eta>0$ such that the following holds.\n\nFor every prime $p$, every integer $d$ satisfying $100<d<p$, every function $f:\\mathbb{F}_p^2\\to\\mathbb{F}_p$, every family of affine bijections $(\\ell_L:\\mathbb{F}_p\\to L)_{L\\in\\mathcal{L}}$, and every family $(P_L)_{L\\in\\mathcal{L}}$ with $P_L\\in\\mathbb{F}_p[t]$ and $\\deg P_L\\le d$, define\n\n$$\n\\varepsilon\n=\n\\frac{\n\\left|\n\\left\\{(\\ell_L(t),L):L\\in\\mathcal{L},\\ t\\in\\mathbb{F}_p,\\ P_L(t)=f(\\ell_L(t))\\right\\}\n\\right|\n}{p^2(p+1)}.\n$$\n\nIf\n\n$$\n\\varepsilon\\ge C_\\eta\\left(\\frac{d}{p}\\right)^{1-\\eta},\n$$\n\nthen there exists a polynomial $Q\\in\\mathbb{F}_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_{x\\in\\mathbb{F}_p^2}[Q(x)=f(x)]\n\\ge c_\\eta\\varepsilon.\n$$","status":"conditional","title":"Near-Linear Exponents"}],"omitted_source_step_ids":[],"source_job_id":"GENIUS","source_response_sha256":"84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821"}
+2026-09-14T11:05:26.051108Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at AbsolutePathBuf("/Users/kaizheng/.codex/shell_snapshots/01a09f92-c9f2-72a1-8a00-6fdd0ff07acb.1789383592456300000.sh"): Os { code: 2, kind: NotFound, message: "No such file or directory" }
+tokens used
+80,045

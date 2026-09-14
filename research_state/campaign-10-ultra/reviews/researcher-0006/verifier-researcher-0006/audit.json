@@ -1,0 +1,321 @@
+{
+  "benchmark_improved": false,
+  "counterexample_attempts": [
+    "Recomputed the sharpness example C=Z\u00b2\u2212\u03bdH\u2080\u00b2. It is F_p-irreducible with two absolute factors and supports exactly d degree-zero graph lines, attaining \u03b4\u00b2/(4d)=d.",
+    "Attacked Frobenius purification through degree-dropping specializations. The raw Sylvester resultant still specializes to zero on every common formal graph, so no missing leading-coefficient hypothesis was found.",
+    "Attacked smooth ramification by allowing many labels above one base point. Acceptance fixes the lifted value to f(x), and in dimension two the nonzero horizontal gradient leaves only one projective direction, so the p\u00b2-edge bound survives.",
+    "Recomputed the full p=103,d=101 construction over all 541,059 selected incidences: 5,253 distinct selected lines, full acceptance, and exactly 5,253 selected ramified incidences. This finite computation was used only to search for errors.",
+    "Tried the endpoint d=p\u22121. Under d\u2264D<p one necessarily has D=d, and every primitive Z-dependent interpolant is cZ+b with c\u22600, so it yields the global root \u2212b/c; the singular construction correctly excludes this endpoint.",
+    "Checked whether the explicit table is a soundness counterexample. It is not: Q=0 already has substantial global agreement on the zero rows and X=0, while P9 proves only that no one degree-d polynomial matches every selected label.",
+    "Recomputed the monic and dense quadratic stress tests. The former realizes exactly D\u2212d distinct derivative zeros at smooth lifted points; the latter realizes d=D\u2212d ramified parameters on more than D lines, all at singular lifted points.",
+    "The previously accepted modal-constant construction at ambient d=101 does refute a uniform constant-times-d/p trigger with linear recovery, but it does not meet any fixed exponent-(1\u2212\u03b7) trigger asymptotically and is not used to prove this submission's theorem.",
+    "No concrete counterexample to the exact SHA-identified claim was found."
+  ],
+  "coverage_complete": true,
+  "dimension_verified": true,
+  "exponent_audit": [
+    {
+      "claim": "Published benchmark \u03b5\u2265C(d/p)^(1/3) gives one total-degree-at-most-d polynomial with agreement at least c\u03b5; the bivariate proof permits c=1/8000.",
+      "justification": "This is exactly the prime-field, m=2 specialization of KTZ Theorem 1.1 and its bivariate conclusion.",
+      "reference": "Numbered note lines 28\u201339; [KTZ Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "D\u22641280\u221a(dp/\u03b5)+16 from |R|\u22646400p/\u03b5.",
+      "justification": "Substitution into D=16(\u230a\u221a(d|R|)\u230b+1) gives 16\u00b780\u221a(dp/\u03b5)+16 exactly.",
+      "reference": "Lines 34\u201339 and 259\u2013260",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Charging D/p as O(\u03b5) reproduces \u03b5\u00b3=\u03a9(d/p).",
+      "justification": "\u221a(d/(\u03b5p))=O(\u03b5) is equivalent to \u03b5\u00b3=\u03a9(d/p); the additive 16/p is absorbed when \u03b5p=\u03a9(1), which holds in the legal cubic regime.",
+      "reference": "Lines 245\u2013253 and 260,266",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Frobenius purification loses at most D\u00b2/[4dp(p+1)] in normalized incidence measure.",
+      "justification": "At most D\u00b2/(4d) full graph lines are removed, and each line has normalized incidence mass 1/[p(p+1)].",
+      "reference": "Lines 55\u201361, 105\u2013123, and 261",
+      "verdict": "valid"
+    },
+    {
+      "claim": "At the KTZ envelope, purification costs O(1/(\u03b5p)) and requires \u03b5\u00b2p=\u03a9(1) if charged as O(\u03b5).",
+      "justification": "D\u00b2=O(dp/\u03b5) substituted into D\u00b2/[4dp(p+1)] gives O(1/[\u03b5(p+1)]). Comparing this with \u03b5 gives \u03b5\u00b2p=\u03a9(1).",
+      "reference": "Lines 247, 261\u2013262, and 295",
+      "verdict": "valid"
+    },
+    {
+      "claim": "At \u03b5=(d/p)^(1\u2212\u03b7), \u03b5\u00b2p=d^(2\u22122\u03b7)p^(2\u03b7\u22121).",
+      "justification": "Direct exponent expansion confirms the displayed expression and explains why purification is not uniformly cheap throughout the near-linear regime.",
+      "reference": "Structured exponent ledger, purification consequence",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Smooth ramification costs at most 1/(p+1), while linear-in-Z vertex deletion costs at most D(D\u2212d)/p\u00b2.",
+      "justification": "The first count is p\u00b2 edges divided by p\u00b2(p+1). The second deletes at most D(D\u2212d) base points, each with normalized star mass 1/p\u00b2.",
+      "reference": "Lines 63\u201372, 131\u2013149, and 263\u2013264",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The explicit table has selected-line mass s/(p+1) and selected ramified mass s/[p(p+1)].",
+      "justification": "There are sp selected lines and one ramified edge on each; division by p(p+1) lines and p\u00b2(p+1) incidences gives the two expressions.",
+      "reference": "Lines 74\u201383, 170\u2013194, and 265",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The submission improves the 1/3 exponent.",
+      "justification": "It correctly claims no improved exponent. Since 0<d/p<1, an exponent strictly larger than 1/3 would be stronger by permitting smaller \u03b5; no such unconditional or conditional soundness theorem is proved here.",
+      "reference": "Lines 7, 85, 245\u2013253, and 291\u2013297",
+      "verdict": "valid"
+    }
+  ],
+  "fatal_obstruction": null,
+  "field_regime_verified": true,
+  "line_audit": [
+    {
+      "claim": "Abstract and scope",
+      "justification": "The abstract accurately states the purification and smooth-lift bounds, the singular construction's exact range, and that the result is an architecture obstruction rather than a soundness theorem.",
+      "reference": "Numbered note lines 1\u20137",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Sampling and notation",
+      "justification": "F_p\u00b2 has p(p+1) affine lines and p\u00b2(p+1) incidences. Uniform line-then-point sampling is uniform incidence sampling, and all graph identities are explicitly formal identities.",
+      "reference": "Lines 9\u201324",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ benchmark reconstruction",
+      "justification": "The theorem, 1/8000 bivariate recovery fraction, reference-set bound, and interpolation degree agree with Revision 1. The note correctly distinguishes its cubic reconstruction from a quoted theorem.",
+      "reference": "Lines 26\u201339",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Contextual literature and corpus provenance",
+      "justification": "HKSS uses the raw resultant as its discriminant and a squarefree/simple-root lifting interface; the Arora\u2013Sudan, Aubry\u2013Perret, and Cafure\u2013Matera descriptions are contextual. The recorded verdicts for researchers 0001\u20130004 match line 49.",
+      "reference": "Lines 41\u201349",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Theorem 1 statement",
+      "justification": "Each of its four clauses is established with the stated hypotheses. Clause (iv) inherits 101\u2264d and explicitly adds d\u2264p\u22122; no assertion is made for excluded d\u2264100.",
+      "reference": "Lines 51\u201385",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P1 vertical separability",
+      "justification": "If C divides squarefree B and B_Z, differentiating B=C\u00b7E and reducing modulo C gives C|C_Z; degree then forces C_Z=0. Since deg_Z C<p, C is base-only, contradicting Z-primitivity. Z^p\u2212X verifies failure at weight dp.",
+      "reference": "Lines 89\u201393",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P2 weighted resultant degree",
+      "justification": "Every Sylvester monomial is bihomogeneous of coefficient-degrees s\u2080 and r\u2080 and has total Z-index r\u2080s\u2080, giving base degree at most s\u2080u+r\u2080v\u2212dr\u2080s\u2080. A common formal graph makes its base line divide the nonzero resultant.",
+      "reference": "Lines 95\u2013103",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P3 Frobenius purification",
+      "justification": "Because F_p is perfect, the distinct absolute factors form one Frobenius orbit. Frobenius preserves support, so each has weight \u03b4/k and Z-degree r/k. Applying P2 to two conjugates gives the exact first bound; (\u03b4\u2212dr)\u00b2\u22650 gives the remaining inequalities.",
+      "reference": "Lines 105\u2013113",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P4 union and sharpness",
+      "justification": "Primitivity excludes base-only factors. Assigning each supported line to a factor and using \u03a3\u03b4_i\u00b2\u2264(\u03a3\u03b4_i)\u00b2\u2264D\u00b2 proves the union bound. For C=Z\u00b2\u2212\u03bdH\u2080\u00b2, nonsquareness of \u03bd in F_p(t) excludes every graph outside the d factors of H\u2080.",
+      "reference": "Lines 115\u2013129",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P5 smooth ramification",
+      "justification": "At B_Z=0, the differentiated graph identity requires (B_X,B_Y)\u00b7v_L=0. Smoothness makes this a nonzero functional on F_p\u00b2, with one projective kernel direction and hence at most one accepted edge above each base point.",
+      "reference": "Lines 131\u2013137",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P6 linear-in-Z regime",
+      "justification": "D<2d forces B=aZ+b. Coprimality over F_p persists geometrically: any common absolute factor would bring its full Frobenius orbit and yield an F_p common divisor. Gauss and B\u00e9zout then prove absolute irreducibility and the D(D\u2212d) bound, including constant/zero coefficient cases.",
+      "reference": "Lines 139\u2013149",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P7 singular interpolant algebra",
+      "justification": "X and H(Y) are geometrically coprime, so XZ+H is absolutely irreducible and squarefree. Direct differentiation and the degree-one resultant give B_Z=X, Res_Z(B,B_Z)=X, and singular lifts (0,c_j,0).",
+      "reference": "Lines 151\u2013168",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P8 full table and counts",
+      "justification": "For m\u22600 the double root makes H(c_j+mt) divisible by t\u00b2; for m=0 the numerator is zero. The quotient has degree at most d, agrees with f also at t=0, and B_Z=t gives exactly one ramified parameter. The sp lines are pairwise distinct.",
+      "reference": "Lines 170\u2013194",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P9 global-polynomial exclusion and minimality",
+      "justification": "If one degree-d Q matched all selected labels, XQ+H would have degree at most D and more than D distinct affine-line factors, so it would vanish identically, contradicting X\u2224H. Every lower-weight interpolant is aZ+b with constant a, and the two cases a=0 and a\u22600 are both excluded.",
+      "reference": "Lines 196\u2013204",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P10 monic smooth-discriminant test",
+      "justification": "The displayed B and \u0394 are affine-linear in Y with nonzero coefficient, proving absolute irreducibility; their Y-derivatives prove smoothness. On Y=Z=0, B_Z=A has exactly the D\u2212d selected distinct roots.",
+      "reference": "Lines 206\u2013220",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P11 dense singular test",
+      "justification": "The Y-adic valuation of XYg\u00b2 is odd, so it is not a square over the algebraic closure's rational function field; the quadratic is absolutely irreducible. Substitution verifies every graph, the slope count exceeds D, and all d ramified lifts per graph have zero full gradient.",
+      "reference": "Lines 222\u2013233",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P12 refuted replacement principles",
+      "justification": "P7\u2013P9, P7\u2013P8, and P10 respectively refute the three stated stronger principles without contradicting P5.",
+      "reference": "Lines 235\u2013243",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P13 architecture diagnosis",
+      "justification": "The substitutions are correct and explicitly conditional on fixed-factor assignment, smoothness, and continued use of per-line deletion for singular lifts. It does not assert a universal lower bound on all proof methods.",
+      "reference": "Lines 245\u2013253",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Exponent table and inequality inventory",
+      "justification": "Every normalization and exponent in the table recomputes correctly. The new proofs use only the stated factor-union bound and do not conceal Markov, mixing, Cauchy\u2013Schwarz, multiplicity, or derivative-division losses.",
+      "reference": "Lines 255\u2013268",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Counterexample discussion",
+      "justification": "Each example is assigned exactly the conclusion it refutes. The endpoint and full-table caveats prevent either an illicit d=p\u22121 extension or a false soundness-counterexample claim.",
+      "reference": "Lines 270\u2013277",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Characteristic audit",
+      "justification": "All divisions by 2 or 4 occur with p odd; the quotient in P8 is polynomial division; all local/global degree conventions and line counts are correct. No extension-field test is introduced.",
+      "reference": "Lines 279\u2013289",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Limitations",
+      "justification": "The note discloses the \u03b5\u00b2p purification condition, the absence of an exact KTZ-stage realization theorem for the explicit interpolant, and the absence of any improved soundness or best-global-agreement bound.",
+      "reference": "Lines 291\u2013299",
+      "verdict": "valid"
+    }
+  ],
+  "literature_audit": [
+    {
+      "claim": "KTZ Theorem 1.1 and the cited bivariate constants",
+      "justification": "Revision 1 states the cubic threshold over every finite field, outputs one total-degree-at-most-d polynomial, and its bivariate proof concludes \u03b5/8000. Lemmas 3.2 and 4.1 give the stated reference and D bounds.",
+      "reference": "[Kominers\u2013Thaler\u2013Zheng, ECCC TR26-147 Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "HKSS resultant/discriminant and lifting context",
+      "justification": "Section 2.5 defines the resultant through the Sylvester determinant and calls Res_z(A,A_z) the z-discriminant. Lemma 3.1 assumes a squarefree specialized fiber, and its proof invokes Newton lifting at a simple root. The paper formulates a best-fit oracle, but replacing an arbitrary supplied label by a best fit cannot decrease acceptance; no quantitative HKSS theorem is imported here.",
+      "reference": "[Harsha\u2013Kumar\u2013Saptharishi\u2013Sudan, arXiv:2311.12752v1](https://arxiv.org/html/2311.12752v1)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Arora\u2013Sudan specialization and discriminant context",
+      "justification": "Theorem 34 bounds affine substitutions yielding a local z-linear factor when no corresponding global factor exists. Lemma 35 and Corollary 36 implement the squarefree/discriminant step. The submission correctly flags separability as mathematically necessary and uses none of these results quantitatively.",
+      "reference": "[Arora\u2013Sudan, Combinatorica 23(3)](https://people.csail.mit.edu/madhu/papers/1997/arora-journ.pdf)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Aubry\u2013Perret Corollary 2.5",
+      "justification": "For an absolutely irreducible projective plane curve of degree r, the corollary gives the stated Weil bound with (r\u22121)(r\u22122)\u221ap, including singular curves.",
+      "reference": "[Aubry\u2013Perret, A Weil theorem for singular curves](https://api.pageplace.de/preview/DT0400.9783110811056_A19979170/preview-9783110811056_A19979170.pdf)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Cafure\u2013Matera Lemma 2.3 context",
+      "justification": "The lemma bounds rational points of an F_q-irreducible but non-absolutely-irreducible variety by a degree-squared, codimension-one-scale term; the curve description is a valid specialization. The new purification theorem is independently proved and does not rely on this estimate.",
+      "reference": "[Cafure\u2013Matera, arXiv:math/0405302](https://arxiv.org/abs/math/0405302)",
+      "verdict": "valid"
+    }
+  ],
+  "quantifier_audit": [
+    {
+      "claim": "Exact claim identity",
+      "justification": "Hashing the exact theorem_statement bytes without an added newline gives a0b1b2205611b3c586a8816e0ac0406ae8abbe2a065685cc7c64e741b1b39b32.",
+      "reference": "researcher-0006 response.json theorem_statement",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Campaign degree coverage",
+      "justification": "The controlling quantifier is prime p and integer 101\u2264d<p, exactly equivalent to 100<d<p. No proof or sanity check invokes d\u2264100.",
+      "reference": "Lines 5, 53, 281\u2013287",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Prime-field restriction",
+      "justification": "Every new object and graph identity is over F_p. Absolute factors are used only inside algebraic closure for geometric irreducibility and Frobenius comparison; no extension-field line test or descent conclusion appears.",
+      "reference": "P1\u2013P13 and lines 281\u2013285",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Dimension restriction",
+      "justification": "All base polynomials use X,Y, every graph is an affine line in F_p\u00b2, the line-factor argument is bivariate, and P5's unique-kernel-direction conclusion is specifically two-dimensional. No dimension lift is used.",
+      "reference": "Lines 5, 11\u201324, 55\u201383, and P2\u2013P12",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Clause (i) quantification",
+      "justification": "For every F_p-irreducible Z-dependent C and every distinct family of formal degree-d graphs, Frobenius transitivity and P2 prove the stated bound without an unstated D<p, separability, or smoothness assumption.",
+      "reference": "Lines 55\u201361 and 95\u2013123",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Clause (ii) quantification",
+      "justification": "The fixed-factor and smooth-lift hypotheses are essential and explicit. The bound counts only accepted incidences from graph lines of that factor and is uniform over all point and line tables.",
+      "reference": "Lines 63 and 131\u2013137",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Clause (iii) quantification",
+      "justification": "For every d\u2264D<2d and primitive Z-dependent B of weight at most D, the proof handles all coefficient degeneracies and bounds the F_p ramified base set. At D=d the bound is zero and the leading coefficient is constant.",
+      "reference": "Lines 65\u201372 and 139\u2013149",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Clause (iv) construction range",
+      "justification": "For every legal 101\u2264d\u2264p\u22122, there are enough distinct c_j and, when needed, b; D=d+1<p. The inequality sp>D follows from s\u226551 and p>D. The excluded endpoint d=p\u22121 is separately and correctly analyzed, not silently claimed.",
+      "reference": "Lines 74\u201383, 172\u2013194, and 276\u2013287",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Formal versus functional restriction",
+      "justification": "The construction proves formal graph identities. Even if 'matches a label' were read only pointwise, both restrictions have degree below p, so agreement on all p line points implies formal equality before P9's line-factor argument.",
+      "reference": "Lines 18\u201322, 178\u2013180, and 198\u2013204",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Single-polynomial conclusion",
+      "justification": "This obstruction claim asserts no positive soundness theorem or list output. Its stated global conclusion is the exact nonexistence of one total-degree-at-most-d polynomial matching all selected labels, and P9 proves precisely that; it does not silently replace this with a weaker root statement.",
+      "reference": "Lines 79\u201385, 196\u2013204, and 291\u2013297",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Conditional exponent language",
+      "justification": "Purification and residual-deletion consequences are expressly conditional architecture diagnostics, not universal asymptotic theorems or lower bounds on every interpolant.",
+      "reference": "Lines 245\u2013253, 262,266, and 293\u2013297",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Finite sanity checks",
+      "justification": "The p=103 and p=409 computations are legal-regime falsification checks only. Every quantified result is supported symbolically, so finite experiments are not used to certify asymptotic quantifiers.",
+      "reference": "Manifest finite_sanity_checks and P1\u2013P13",
+      "verdict": "valid"
+    }
+  ],
+  "required_changes": [],
+  "scope_verified": "obstruction",
+  "summary": "Accept the exact SHA-identified obstruction claim. Every algebraic bound, incidence normalization, construction, characteristic condition, and quantifier verifies in dimension m=2 over prime F_p for all integers 100<d<p, with clause (iv) correctly restricted to d\u2264p\u22122 and the endpoint separately handled. P9 proves the exact one-polynomial nonexistence conclusion. No soundness exponent is claimed or improved: because d/p<1, an exponent greater than 1/3 would be stronger, while this submission leaves the unconditional benchmark at 1/3.",
+  "unfixable": false,
+  "verdict": "accept",
+  "verified_claim_sha256": "a0b1b2205611b3c586a8816e0ac0406ae8abbe2a065685cc7c64e741b1b39b32",
+  "verified_exponent": null
+}

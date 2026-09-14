@@ -1,0 +1,588 @@
+{
+  "corpus_sha256": "0ad2be1fc78a6bfe1f043b02e93de994a2bc9e8457ad702d994db9987b27601c",
+  "critical_path": [
+    "IE-D-ACCEPTED-GRAPH",
+    "IE-L-POPULAR-CORE",
+    "IE-O-LOW-WEIGHT-DICHOTOMY",
+    "IE-L-RANK-INTERP",
+    "IE-L-RANK-EXTEND",
+    "IE-L-CLEAN-COUNT",
+    "IE-R-LOW-WEIGHT-CLEAN",
+    "IE-L-FACTOR-CONCENTRATE",
+    "IE-L-FACTOR-LIFT",
+    "IE-R-CLOSE",
+    "IE-GOAL"
+  ],
+  "focus": "popularity pruning, structured line families, point-line concentration, and near-lossless sampling",
+  "goal_node_id": "IE-GOAL",
+  "messages": [
+    {
+      "body_markdown": "Please supply a fresh exact proof of `IE-L-FACTOR-LIFT`: from more than $\\operatorname{wdeg}(C)$ simple compatible graph lines through one point, derive one $Q$ with $C\\sim Z-Q$, then aggregate every disconnected $C$-class. Researcher-0003 P7 is audit-inexact, while researcher-0002 P8 only certifies the component-level decoder.",
+      "channel": "algebraic-engine",
+      "in_reply_to": null,
+      "kind": "request",
+      "references": [
+        "researcher-0003:P7.1",
+        "researcher-0002:P8.1"
+      ],
+      "related_node_ids": [
+        "IE-L-FACTOR-CONCENTRATE",
+        "IE-L-FACTOR-LIFT"
+      ],
+      "subject": "Factor linearization"
+    },
+    {
+      "body_markdown": "Proposed end-to-end interface: incidence supplies $\\Omega_\\eta(\\epsilon)$ accepted mass and a rank-reaching relation degree $D=O_\\eta(d)$. Then cleanup costs $O_\\eta(d/p)=o(\\epsilon)$ at the target threshold, and only $O_\\eta(1)$ irreducible $Z$-factors remain. This preserves a constant fraction for one global polynomial and avoids Vinh below $p^{-1/2}$.",
+      "channel": "end-to-end-soundness",
+      "in_reply_to": null,
+      "kind": "idea",
+      "references": [
+        "incidence-engine/IE-O-LOW-WEIGHT-DICHOTOMY",
+        "incidence-engine/IE-L-FACTOR-CONCENTRATE"
+      ],
+      "related_node_ids": [
+        "IE-O-LOW-WEIGHT-DICHOTOMY",
+        "IE-R-CLOSE",
+        "IE-GOAL"
+      ],
+      "subject": "Near-linear interface"
+    },
+    {
+      "body_markdown": "The exact-audited balanced-color construction forces every cover reaching half of every accepted line to have $|R|=\\Omega(p/\\epsilon)$, despite an immediate constant decoder. Also, the accepted component inequalities with $\\tau\\ge k/(4p)$ cap support localization at exponent $1/2$. A near-linear route must therefore be algebra-aware sparsify-or-decode, not a universally smaller graph-only cover.",
+      "channel": "global",
+      "in_reply_to": null,
+      "kind": "objection",
+      "references": [
+        "researcher-0002:P1.1",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "IE-R-SQRT-CEILING",
+        "IE-L-COVER-OBSTRUCTION",
+        "IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "subject": "Graph-only ceiling"
+    }
+  ],
+  "nodes": [
+    {
+      "dependencies": [],
+      "evidence_refs": [],
+      "id": "IE-D-ACCEPTED-GRAPH",
+      "kind": "definition",
+      "label": "Accepted-incidence graph",
+      "notes": "All measures use the uniform affine point-line incidence normalization.",
+      "owner": "incidence-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Let $\\mathcal L_p$ be the $p(p+1)$ affine lines of $\\mathbb F_p^2$ and let $$E_{\\rm acc}=\\{(x,L):x\\in L\\text{ and }P_L(x)=f(x)\\}.$$ Put $\\epsilon=|E_{\\rm acc}|/[p^2(p+1)]$ and $$\\operatorname{Agr}_d(f)=\\max_{\\deg Q\\le d}\\Pr_x[Q(x)=f(x)].$$ For $G=(X,T,E)\\subseteq E_{\\rm acc}$ define $$e(G)=\\frac{|E|}{p^2(p+1)},\\quad \\mu(G)=\\frac{|X|}{p^2},\\quad \\tau(G)=\\frac{|T|}{p(p+1)},\\quad k(G)=\\operatorname{mindeg}(G).$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [],
+      "id": "IE-D-RANK-REACH",
+      "kind": "definition",
+      "label": "Rank-reaching line family",
+      "notes": "This replaces cardinality control of $R$ by the actual rank of its labeled graph constraints.",
+      "owner": "incidence-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For $d\\le D<p$, let $$V_D=\\{A\\in\\mathbb F_p[X,Y,Z]:\\operatorname{wdeg}_{(1,1,d)}A\\le D\\},\\qquad N_d(D)=\\dim V_D,$$ and $$\\Phi_{R,D}:V_D\\to\\bigoplus_{M\\in R}\\mathbb F_p[t]_{\\le D},\\qquad A\\mapsto\\bigl(A(M(t),P_M(t))\\bigr)_{M\\in R}.$$ For $G=(X,T,E)$ set $$N_G(L)=\\{x:(x,L)\\in E\\},$$ $$\\operatorname{Reach}_R(L)=\\{x\\in N_G(L):\\exists M\\in R\\setminus\\{L\\},\\ (x,M)\\in E\\}.$$ The tuple $(G,R,D)$ is rank-reaching if $R\\subseteq T$, $|R|>D$, $\\operatorname{rank}\\Phi_{R,D}<N_d(D)$, and $|\\operatorname{Reach}_R(L)|>D$ for every $L\\in T$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0001",
+          "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+          "source_step_id": "P1"
+        }
+      ],
+      "id": "IE-L-POPULAR-CORE",
+      "kind": "lemma",
+      "label": "Popularity pruning",
+      "notes": "Exact source mapping; its compound source audit has verdict `revise`, so the harness determines status.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0001:P1.1"
+      ],
+      "statement_markdown": "If an accepted carrier has edge mass $\\delta>0$ and line support at most $\\sigma$, then for $k_0=\\lfloor\\delta p/100\\rfloor$ it contains a subgraph $G_0$ with $$e(G_0)\\ge\\delta/4,\\qquad k(G_0)\\ge k_0,\\qquad \\delta/4\\le\\tau(G_0)\\le\\sigma.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P1"
+        }
+      ],
+      "id": "IE-L-COMP-MEASURE",
+      "kind": "lemma",
+      "label": "Accepted component measures",
+      "notes": "Mapped to the exact accepted component theorem input.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P1.1"
+      ],
+      "statement_markdown": "Let $G=(X,T,E)$ be connected with minimum degree $k$, line measure $\\tau$, and $C_*=2^{40}$. If $$k^2\\ge C_*dp,\\qquad k^3\\ge C_*d\\tau p^2,$$ then $$\\mu(G)\\ge\\frac{k}{4p},\\qquad \\tau\\ge\\frac{k}{4p}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-COMP-MEASURE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P2"
+        }
+      ],
+      "id": "IE-L-COMP-SAMPLE",
+      "kind": "lemma",
+      "label": "Component-sensitive reaching family",
+      "notes": "The sampling proof loses only absolute constants.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P2.1"
+      ],
+      "statement_markdown": "Under `IE-L-COMP-MEASURE`, writing $t=|T|$, there is $R\\subseteq T$ such that $$\\frac{4t}{k}\\le |R|\\le\\frac{16t}{k}$$ and $$|\\operatorname{Reach}_R(L)|>\\frac12\\deg_G(L)$$ for every $L\\in T$. In particular, $|R|=\\Theta(\\tau p^2/k)$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-COMP-SAMPLE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P3"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P4"
+        }
+      ],
+      "id": "IE-L-STANDARD-EXPLAIN",
+      "kind": "lemma",
+      "label": "Standard explainer and extension",
+      "notes": "This is the exact cardinality-based interpolation branch.",
+      "owner": "algebraic-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P3.1",
+        "researcher-0002:P4.1"
+      ],
+      "statement_markdown": "Let $r=|R|$ and $$D=16\\bigl(\\lfloor\\sqrt{dr}\\rfloor+1\\bigr).$$ Under the component hypotheses there is a nonzero squarefree $A\\in V_D$ with $A_Z\\not\\equiv0$, $D/k<1/5000$, and $$A(L(t),P_L(t))\\equiv0$$ for every $L\\in T$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-STANDARD-EXPLAIN"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P5"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P6"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P7"
+        }
+      ],
+      "id": "IE-L-STANDARD-CLEAN",
+      "kind": "lemma",
+      "label": "Standard simple-root core",
+      "notes": "Content, resultant, peeling, and two-direction simplicity are kept as distinct source steps in the evidence list.",
+      "owner": "algebraic-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P5.1",
+        "researcher-0002:P6.1",
+        "researcher-0002:P7.1"
+      ],
+      "statement_markdown": "Write $A=HB$ with $B$ primitive in $Z$. At most $pD^2+D|T|$ accepted edges are exceptional. Deleting them and peeling below $\\lfloor k/100\\rfloor$ leaves a nonempty graph $G_1$ of minimum degree at least $\\lfloor k/100\\rfloor$ such that $$B(x,f(x))=0,\\qquad B_Z(x,f(x))\\ne0$$ at every point vertex.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-STANDARD-CLEAN"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "IE-T-COMP-DECODE",
+      "kind": "theorem",
+      "label": "Component-sensitive decoder",
+      "notes": "The conclusion is one polynomial, not a list.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P8.1"
+      ],
+      "statement_markdown": "If a connected accepted component of minimum degree $k$ and line measure $\\tau$ satisfies $$k^2\\ge2^{40}dp,\n\\qquad k^3\\ge2^{40}d\\tau p^2,$$ then there is one $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$\\operatorname{Agr}_d(f)\\ge\\frac{k}{800p}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-POPULAR-CORE",
+        "IE-T-COMP-DECODE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P9"
+        }
+      ],
+      "id": "IE-T-SQRT-MILESTONE",
+      "kind": "theorem",
+      "label": "Conditional square-root milestone",
+      "notes": "The unproved antecedent is the existence of the small-line-measure component.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P9.1"
+      ],
+      "statement_markdown": "Let $G_0$ be a popularity core with minimum degree $k_0=\\lfloor\\epsilon p/100\\rfloor$. If some component has $\\tau\\le\\Lambda\\epsilon$ and $$\\epsilon\\ge\\sqrt{8{,}000{,}000\\cdot2^{40}\\Lambda}\\left(\\frac dp\\right)^{1/2},$$ then one total-degree-at-most-$d$ polynomial satisfies $$\\operatorname{Agr}_d(f)\\ge\\frac{\\epsilon}{160000}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-COMP-MEASURE"
+      ],
+      "evidence_refs": [],
+      "id": "IE-R-SQRT-CEILING",
+      "kind": "reduction",
+      "label": "Support-localization ceiling",
+      "notes": "Thus smaller component support within the existing cardinality/root-budget architecture cannot reach exponent $1-o(1)$.",
+      "owner": "incidence-engine",
+      "proof_state": "open",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "If $c\\epsilon p\\le k\\le C\\epsilon p$, $\\tau\\ge k/(4p)$, and $k^3\\ge C_*d\\tau p^2$, then $$\\epsilon^2\\ge\\frac{C_*}{4C^2}\\frac dp.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P10"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P11"
+        }
+      ],
+      "id": "IE-L-COVER-OBSTRUCTION",
+      "kind": "lemma",
+      "label": "Universal-cover obstruction",
+      "notes": "This obstructs graph-only sparsification, not soundness; the same table already has a constant decoder.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "statement_markdown": "For $p\\ge103$ and $2\\le K\\le p/(100\\log p)$ there is a legal table with $1/(2K)\\le\\epsilon\\le2/K$ such that every $R$ reaching half of every accepted line satisfies $$|R|\\ge\\frac{Kp}{16}\\ge\\frac{p}{32\\epsilon},$$ while some constant polynomial has agreement at least $\\epsilon/2$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0001",
+          "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+          "source_step_id": "P13"
+        },
+        {
+          "source_job_id": "researcher-0001",
+          "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+          "source_step_id": "P14"
+        }
+      ],
+      "id": "IE-X-EXACT-LINEAR",
+      "kind": "theorem",
+      "label": "Exact-linear endpoint",
+      "notes": "The modal construction refutes this statement but remains below every fixed $(d/p)^{1-\\eta}$ trigger. The compound source audit is `revise`.",
+      "owner": "end-to-end-soundness",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [
+        "researcher-0001:P13.1",
+        "researcher-0001:P14.1"
+      ],
+      "statement_markdown": "There are absolute $C,c>0$ such that, for all legal $p,d,f,P$, $$\\epsilon\\ge C\\frac dp\\quad\\Longrightarrow\\quad\\operatorname{Agr}_d(f)\\ge c\\epsilon.$$",
+      "work_state": "refuted"
+    },
+    {
+      "dependencies": [
+        "IE-D-RANK-REACH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0004",
+          "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "IE-L-RANK-BARRIER",
+      "kind": "literature_input",
+      "label": "Rank-blind multiplicity barrier",
+      "notes": "The snapshot has `audit_exact=false` and verdict `revise`; it is diagnostic only.",
+      "owner": "algebraic-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "In the regime $n>D$, uniform order-$s$ graph multiplicity certified solely by per-line jet codimension and transferred solely by $s$-fold root counting satisfies $$h^2>\\frac{dn}{12}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-RANK-REACH",
+        "IE-L-POPULAR-CORE",
+        "IE-T-COMP-DECODE"
+      ],
+      "evidence_refs": [],
+      "id": "IE-O-LOW-WEIGHT-DICHOTOMY",
+      "kind": "obligation",
+      "label": "Low-weight sparsify-or-decode dichotomy",
+      "notes": "This is the principal incidence obligation. `IE-L-COVER-OBSTRUCTION` requires the structured branch to exploit label-rank dependencies rather than merely reduce $|R|$.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For every $\\eta>0$ there are $C_\\eta,c_\\eta,K_\\eta>0$ such that, if $$\\epsilon\\ge C_\\eta\\left(\\frac dp\\right)^{1-\\eta},$$ then either $\\operatorname{Agr}_d(f)\\ge c_\\eta\\epsilon$, or the popularity core contains an accepted subgraph $G$ for which there are $R$ and $D$ satisfying $$e(G)\\ge c_\\eta\\epsilon,\n\\qquad d\\le D\\le K_\\eta d,$$ and $(G,R,D)$ is rank-reaching.",
+      "work_state": "open"
+    },
+    {
+      "dependencies": [
+        "IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P3"
+        }
+      ],
+      "id": "IE-L-RANK-INTERP",
+      "kind": "lemma",
+      "label": "Low-rank interpolation",
+      "notes": "P3 supplies the squarefree and $Z$-dependence template; replacing its cardinality inequality by the stated rank inequality still needs an exact formalization.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P3.1"
+      ],
+      "statement_markdown": "If $(G,R,D)$ is rank-reaching, then there is a nonzero squarefree $A\\in V_D$ such that $$A_Z\\not\\equiv0,\n\\qquad A(M(t),P_M(t))\\equiv0$$ for every $M\\in R$.",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-L-RANK-INTERP"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P4"
+        }
+      ],
+      "id": "IE-L-RANK-EXTEND",
+      "kind": "lemma",
+      "label": "Reached-root extension",
+      "notes": "The proof is ordinary degree-$D$ root counting and has no averaging loss.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P4.1"
+      ],
+      "statement_markdown": "Under `IE-L-RANK-INTERP`, $$A(L(t),P_L(t))\\equiv0$$ for every line vertex $L$ of $G$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-RANK-EXTEND"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P5"
+        }
+      ],
+      "id": "IE-L-CLEAN-COUNT",
+      "kind": "lemma",
+      "label": "Exceptional-incidence count",
+      "notes": "This exact count remains valid independently of how the low-rank interpolant was found.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P5.1"
+      ],
+      "statement_markdown": "Write $A=HB$, where $H\\in\\mathbb F_p[X,Y]$ is the coefficient content and $B$ is primitive in $Z$. Then $B$ is squarefree of degree below $p$, and there is a formal derivative $\\mathcal D$ with $\\gcd(B,\\mathcal DB)=1$ such that the content, degenerate-line, and derivative-zero exceptional incidences satisfy $$|E_{\\rm exc}|\\le pD^2+D|T|.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-CLEAN-COUNT"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P6"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P7"
+        }
+      ],
+      "id": "IE-R-LOW-WEIGHT-CLEAN",
+      "kind": "reduction",
+      "label": "Near-lossless cleanup at $D=O_\\eta(d)$",
+      "notes": "The new parameter substitution is $D/p\\le K_\\eta(d/p)\\le(K_\\eta/C_\\eta)\\epsilon$; it needs a fresh constant audit.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P6.1",
+        "researcher-0002:P7.1"
+      ],
+      "statement_markdown": "In the structured branch of `IE-O-LOW-WEIGHT-DICHOTOMY`, if $C_\\eta$ is sufficiently large relative to $c_\\eta,K_\\eta$, exceptional deletion and popularity peeling leave a graph $G_1$ and $c'_\\eta>0$ such that $$e(G_1)\\ge c'_\\eta\\epsilon,\n\\qquad k(G_1)>D,$$ every line vertex satisfies $B(L(t),P_L(t))\\equiv0$, and every point vertex satisfies $$B(x,f(x))=0,\n\\qquad B_Z(x,f(x))\\ne0.$$",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-R-LOW-WEIGHT-CLEAN"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P1"
+        }
+      ],
+      "id": "IE-L-FACTOR-CONCENTRATE",
+      "kind": "lemma",
+      "label": "Bounded-factor concentration",
+      "notes": "The cited factorwise source is pending and `audit_exact=false`; the node requires an exact proof in the current chain.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Factor $$B=c\\prod_{i=1}^s C_i.$$ Then every $C_i$ depends on $Z$ and $$s\\le\\deg_ZB\\le D/d\\le K_\\eta.$$ The simple-root graph partitions into factor classes. For some $C_i$ there is an accepted subgraph $F$ with $$e(F)\\ge c''_\\eta\\epsilon,\n\\qquad k(F)>\\operatorname{wdeg}(C_i),$$ such that $C_i(L(t),P_L(t))\\equiv0$ on every line vertex and $C_{i,Z}(x,f(x))\\ne0$ on every point vertex.",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-L-FACTOR-CONCENTRATE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0003",
+          "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+          "source_step_id": "P7"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "IE-L-FACTOR-LIFT",
+      "kind": "lemma",
+      "label": "Factor linearization and global aggregation",
+      "notes": "Researcher-0003 P7 is audit-inexact under a rejected compound submission; researcher-0002 P8 confirms component-level simple-root recovery but not this cross-component aggregation.",
+      "owner": "algebraic-engine",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [
+        "researcher-0002:P8.1"
+      ],
+      "statement_markdown": "Let $C\\in\\mathbb F_p[X,Y,Z]$ be irreducible with $\\Delta=\\operatorname{wdeg}(C)<p$. If an accepted factor class $F$ has minimum degree greater than $\\Delta$, satisfies $C(L(t),P_L(t))\\equiv0$ on every line vertex, and has $C_Z(x,f(x))\\ne0$ at every point vertex, then there is $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$C\\sim Z-Q$$ and $Q(x)=f(x)$ on every point vertex of $F$. Consequently, $$\\operatorname{Agr}_d(f)\\ge e(F).$$",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-L-FACTOR-LIFT"
+      ],
+      "evidence_refs": [],
+      "id": "IE-R-CLOSE",
+      "kind": "reduction",
+      "label": "Close the sparsify-or-decode branches",
+      "notes": "The direct branch is immediate; the structured branch uses only $O_\\eta(1)$ factors and therefore loses an $\\eta$-dependent constant, not a power of $d/p$.",
+      "owner": "incidence-engine",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "The dichotomy in `IE-O-LOW-WEIGHT-DICHOTOMY` and lemmas `IE-L-RANK-INTERP` through `IE-L-FACTOR-LIFT` imply constants $C'_\\eta,c'_\\eta>0$ such that $$\\epsilon\\ge C'_\\eta(d/p)^{1-\\eta}\\quad\\Longrightarrow\\quad\\operatorname{Agr}_d(f)\\ge c'_\\eta\\epsilon.$$",
+      "work_state": "blocked"
+    },
+    {
+      "dependencies": [
+        "IE-R-CLOSE"
+      ],
+      "evidence_refs": [],
+      "id": "IE-GOAL",
+      "kind": "theorem",
+      "label": "Near-linear bivariate line-versus-point soundness",
+      "notes": "Blocked principally on `IE-O-LOW-WEIGHT-DICHOTOMY` and a fresh exact audit of factor linearization. No roadmap work state is a proof-status claim.",
+      "owner": "incidence-engine",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For every fixed $\\eta>0$ there exist $C_\\eta,c_\\eta>0$ such that, for every prime $p$, every integer $100<d<p$, every $f:\\mathbb F_p^2\\to\\mathbb F_p$, and every degree-at-most-$d$ affine-line table, $$\\epsilon\\ge C_\\eta\\left(\\frac dp\\right)^{1-\\eta}$$ implies the existence of one $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfying $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]\\ge c_\\eta\\epsilon.$$",
+      "work_state": "blocked"
+    }
+  ],
+  "progress": {
+    "blocked": 0,
+    "invalid": 3,
+    "mapped": 12,
+    "open": 0,
+    "percent": 33,
+    "provisional": 7,
+    "total": 15,
+    "verified": 5
+  },
+  "render_validation": {
+    "math_segments": 160,
+    "messages": 3,
+    "passed": true,
+    "roadmaps": 1
+  },
+  "roadmap_id": "incidence-engine",
+  "round": 1,
+  "summary": "The exact corpus-mapped component chain gives a conditional exponent-$1/2$ decoder, while component support and universal cover arguments show that the same cardinality-based route cannot reach exponent $1-o(1)$. The proposed critical path replaces small $|R|$ by low labeled-constraint rank: preserve $\\Omega_\\eta(\\epsilon)$ accepted mass and obtain a relation of weighted degree $D=O_\\eta(d)$. Then cleanup costs only $O_\\eta(d/p)$, simple roots split the graph among $O_\\eta(1)$ factors, and one factor can yield one global polynomial with $\\Omega_\\eta(\\epsilon)$ agreement. The main open incidence node is the low-weight sparsify-or-decode dichotomy; factor linearization also needs a fresh exact proof audit.",
+  "target_statement": "Convert local line-versus-point agreement into a structured affine-plane incidence configuration with only a $(d/p)^{o(1)}$ loss.",
+  "title": "Incidence concentration engine",
+  "updated_at": "2026-09-14T09:53:26Z"
+}

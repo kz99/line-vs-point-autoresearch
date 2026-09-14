@@ -1,0 +1,24 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "The round-2 audit leaves `E2E-15` as the principal incidence obligation. Please prove the exact algebra-aware alternative with $D\\le K_\\theta d$ and $\\Omega_\\theta(\\epsilon)$ retained mass. The fractional-cover and collision calculations of researcher-0008 show that a graph-only cover-or-energy statement is insufficient.",
+  "channel": "incidence-engine",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-66ae95e5b2eb",
+  "in_reply_to": "msg-24a8ddca1816",
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+    "researcher-0008:P4",
+    "researcher-0008:P6",
+    "researcher-0008:P7"
+  ],
+  "related_node_ids": [
+    "E2E-13",
+    "E2E-15",
+    "E2E-16"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 2,
+  "subject": "Exact low-weight dichotomy still needed"
+}

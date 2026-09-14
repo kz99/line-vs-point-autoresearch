@@ -1,0 +1,322 @@
+2026-09-14T08:29:27.993435Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T08:29:27.993457Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-09-14T08:29:28.013588Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+OpenAI Codex v0.150.0-alpha.12.2
+--------
+workdir: /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: ultra
+reasoning summaries: none
+session id: 01a09f09-1628-7332-b5a3-5ac7dbd330ac
+--------
+user
+You are the dedicated Lemma Writer for a mathematical autoresearch campaign.
+Post-edit every structured proof step in submission researcher-0003 into a clear lemma-book entry.
+You are an editor, not a researcher or verifier. The raw submission is immutable.
+
+RULE: A lemma statement contains only its quantified objects, hypotheses, and conclusion. It contains no motivation, derivation, commentary, proof sketch, interpretation, history, or explanation; put all such material in the proof.
+
+Preserve the exact mathematical content, hypotheses, status, and dependency closure of every
+source step. Never strengthen, weaken, repair, validate, refute, or omit a claim. A refuted source
+step remains visibly refuted. You may split one source step into two or more ordered entries when
+that materially improves comprehension; give the pieces consecutive part numbers and repeat the
+same source_step_id. Move any explanation removed from a statement into proof_markdown. Retain
+all substantive proof content. Titles are short noun phrases and contain no mathematical claim.
+
+Every source proof-step id must occur in at least one output entry. Set coverage_complete=true
+and omitted_source_step_ids=[] only after checking this. Use stable ids of the form
+researcher-0003:<source-step-id>.<part>. Enclose every mathematical expression in $...$ or $$...$$
+using KaTeX-supported LaTeX. Do not put mathematics in code spans, and do not leave TeX commands
+outside math delimiters. Use Markdown prose outside mathematics. The publication harness will
+reject any entry that does not parse with KaTeX.
+
+Set source_job_id to researcher-0003 and source_response_sha256 to b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420.
+
+SOURCE SUBMISSION:
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "The prime-field condition is used through D<p=char(F_p), which implies deg_Z(B)<p. A Z-dependent irreducible factor therefore has nonzero ordinary Z-derivative.",
+    "Primitivity in Z excludes irreducible factors lying in F_p[X,Y]. Together with squarefreeness, this proves gcd(B,B_Z)=1 without absolute irreducibility.",
+    "No factorials or integer derivatives are divided by. The optional Newton step divides only by the explicitly nonzero field element B_Z(b,\u03b1).",
+    "The proof uses Res_Z(B,B_Z), not a discriminant normalized by a leading coefficient. Degree-dropping specializations are safely counted as exceptional.",
+    "Formal and functional identities are kept distinct. The bound D<p prevents artifacts such as t^p-t and excludes Z^p terms from the interpolant.",
+    "The primitive squarefree polynomial Z^p-X has B_Z=0, showing that D<p or another separability mechanism is essential.",
+    "The polynomial Z^2-XY over F_409 shows that a nonzero higher Hasse derivative does not replace a simple root for global polynomial lifting.",
+    "When d>p/2 and D<p, deg_Z(B)=1. At d=p-1 and D=d, B_Z is a nonzero constant, so ramification disappears entirely."
+  ],
+  "claim_scope": "algebraic_lemma",
+  "claimed_exponent": null,
+  "counterexample_attempts": [
+    "Higher-Hasse lifting is refuted at p=409,d=101 by B=Z^2-XY. There are 206>D=202 pencil directions carrying degree-one roots through the double fiber root, but no polynomial Q of any degree satisfies Q^2=XY.",
+    "For any growing 101\u2264d=o(sqrt(p/log p)), a counting argument produces a point table with global degree-d agreement below 4/p, while independently interpolating d+1 points on every affine line gives local agreement at least (d+1)/p. This proves that exponents strictly larger than 1 are impossible, but does not obstruct the target 1-o(1).",
+    "A concentrated-direction table was tested using f=\u220f_{i=1}^{d+1}\u2113_i. Its restrictions have degree at most d in d+1 selected directions. It has local and global agreement of order d/p and therefore is a sharpness sanity check, not a counterexample to linear global recovery.",
+    "The inseparable primitive squarefree polynomial Z^p-X was tested. It lies outside the auxiliary D<p regime and confirms that squarefreeness alone does not imply vertical separability.",
+    "Uniform ambient Hasse multiplicity was analyzed. Its cubic number of jet constraints cancels its multiplicity gain in univariate root counting, so the standard coefficient-counting route remains limited to the 1/3 threshold."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "Local agreement \u03b5 on uniform point-line incidences",
+      "justification": "KTZ Lemma 3.1 retains incidence measure at least \u03b5/4 after popularity pruning.",
+      "loss": "Only absolute constant factors",
+      "output_scale": "Minimum point and line degree k0=floor(\u03b5p/100)",
+      "stage": "accepted-incidence pruning",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Minimum degree \u0398(\u03b5p)",
+      "justification": "KTZ Lemma 3.2 samples lines with probability \u0398(1/(\u03b5p)); Chernoff plus a union bound gives coverage, while Chebyshev controls sample size.",
+      "loss": "No power of \u03b5 beyond \u03b5^\u22121 in the selected-line count",
+      "output_scale": "100p\u2264|R|\u22646400p/\u03b5",
+      "stage": "sparse line selection",
+      "status": "proved"
+    },
+    {
+      "input_scale": "|R|=O(p/\u03b5), weighted monomial dimension \u0398(D^3/d), and O(D) constraints per graph line",
+      "justification": "The inequality D^3/d \u2273 |R|D gives D^2\u2273d|R|.",
+      "loss": "Square-root interpolation scale",
+      "output_scale": "D=O(sqrt(dp/\u03b5))",
+      "stage": "bivariate weighted interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Coprime weighted degrees u,v and Z-degrees r,s",
+      "justification": "The new weighted resultant lemma gives degree su+rv\u2212drs\u2264uv/d.",
+      "loss": "At most a factor-d-sharpened exceptional-line count",
+      "output_scale": "|T_common|\u2264floor(uv/d)",
+      "stage": "weighted resultant",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Squarefree primitive B of weighted degree \u03b4\u2264D<p",
+      "justification": "Prime-field vertical separability permits V=B_Z, with weighted degree at most \u03b4\u2212d.",
+      "loss": "At most D^2/d\u2212D content-trivial or identically ramified lines",
+      "output_scale": "Exceptional-line incidence loss at most (D^2/d\u2212D)/(p(p+1))",
+      "stage": "prime vertical cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(dp/\u03b5))",
+      "justification": "Substitution of the interpolation scale into the new exceptional-line bound.",
+      "loss": "O(1/(\u03b5p)); this is lower order under the cubic regime",
+      "output_scale": "D^2/(dp^2)=O(1/(\u03b5p))",
+      "stage": "exceptional-line exponent reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Every nonexceptional B_Z(L(t),P_L(t)) has degree at most D\u2212d",
+      "justification": "Ordinary univariate root counting.",
+      "loss": "At most (D\u2212d)/p=O(sqrt((d/p)/\u03b5)) incidence measure",
+      "output_scale": "O(sqrt((d/p)/\u03b5))",
+      "stage": "nonexceptional ramified-point cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Cleanup loss O(sqrt((d/p)/\u03b5))",
+      "justification": "Requiring this loss to be O(\u03b5) gives sqrt((d/p)/\u03b5)\u2272\u03b5.",
+      "loss": "Cubic compatibility condition",
+      "output_scale": "\u03b5^3\u2273d/p, equivalently \u03b5\u2273(d/p)^(1/3)",
+      "stage": "controlling threshold",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Point-line mixing error 1/sqrt(p+1)",
+      "justification": "KTZ Lemmas 2.1 and 6.2 use Cauchy-Schwarz/expander mixing; Lemma 4.1 requires 1/sqrt(p+1)\u2264\u03b5/8000.",
+      "loss": "No additional exponent once \u03b5^3p\u2273d and d\u2265101",
+      "output_scale": "A connected component with point density at least \u03b5/8000",
+      "stage": "single-polynomial recovery",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Ambient Hasse multiplicity s on M lifted points",
+      "justification": "Raw interpolation uses M*binom(s+2,3)=\u0398(Ms^3) constraints while root propagation gains a factor s.",
+      "loss": "If M\u2265\u03c1p^2 and k\u2264K\u03b5p, feasibility forces \u03b5^3>\u03c1d/(12K^3p).",
+      "output_scale": "The same 1/3 exponent barrier",
+      "stage": "multiplicity attempt",
+      "status": "proved"
+    },
+    {
+      "input_scale": "HKSS hypothesis q>Cd/\u03b5^7",
+      "justification": "Algebraic rearrangement, not a quoted exponent theorem.",
+      "loss": "Historical weak bivariate threshold",
+      "output_scale": "\u03b5>(Cd/q)^(1/7)",
+      "stage": "prior-result reconstruction",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Local agreement at least (d+1)/p and global agreement below 4/p",
+      "justification": "Random-table Chernoff bound followed by a union bound over at most p^binom(d+2,2) global polynomials.",
+      "loss": "Global/local ratio below 4/(d+1)",
+      "output_scale": "Every exponent \u03b1>1 is impossible",
+      "stage": "asymptotic ceiling counterexample",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "At p=103,d=101, the exact weighted monomial dimensions are N_101(101)=5254 and N_101(102)=5359. The raw line-interpolation conditions allow at most 51 or 52 graph lines, respectively, while forcing Z-dependence requires more than D lines. This is a limitation of that interpolation route, not an obstruction to the campaign theorem.",
+    "At p=409,d=101,D=202 and r=2, the new ramified-line bound is 202, compared with the ordinary-degree bound D(D\u22121)=40602.",
+    "At p=409,d=101,D=408 and r=4, the exact vertical resultant bound is 1240, compared with D(D\u22121)=166056.",
+    "For p=409,d=101, exactly (p+3)/2=206 projective directions satisfy the square-root condition in the Z^2-XY pencil example, and 206>202.",
+    "At d=p\u22121, the only auxiliary degree satisfying d\u2264D<p is D=d. The primitive interpolant is linear in Z with constant nonzero Z-derivative, so no characteristic or ramification anomaly occurs.",
+    "All finite calculations above are falsification and endpoint checks only; the proof is symbolic and asymptotic."
+  ],
+  "global_conclusion": "The weighted-resultant and vertical-separability lemmas give a genuine factor-d improvement in the bivariate algebraic cleanup. Applied inside the KTZ bivariate proof, they still yield a single total-degree-at-most-d polynomial with agreement at least \u03b5/8000 when \u03b5\u2265C(d/p)^(1/3). The controlling loss remains (D\u2212d)/p with D=O(sqrt(dp/\u03b5)), so no exponent above 1/3 is obtained.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Uniform incident point-line sampling over F_q^m, total degree d, and \u03b5\u2265C(d/q)^(1/3). The bivariate application uses q=p and 100<d<p.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test",
+      "result_id": "Theorem 1.1; Lemmas 2.1\u20132.7, 3.1\u20133.2, 4.1\u20134.3, 5.1\u20135.2, and 6.1\u20136.3",
+      "used_for": "Benchmark statement and the surrounding combinatorial, interpolation, Newton-lifting, and component-propagation steps. The weighted resultant and vertical cleanup replace the bounds in Lemmas 2.6 and 5.1.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download"
+    },
+    {
+      "hypotheses": "Bivariate finite-field line-point test. Theorem 4.2 assumes q>Cd/\u03b5^7; Theorem 4.3 constructs a weighted interpolant under q>c1d/\u03b5^c2.",
+      "paper": "Harsha\u2013Kumar\u2013Saptharishi\u2013Sudan, An Improved Line-Point Low-Degree Test",
+      "result_id": "Theorems 4.2\u20134.3; Lemmas 2.9\u20132.10 and 3.1; Appendix A, Lemmas A.2, A.7\u2013A.8",
+      "used_for": "Historical interpolation and simple-root lifting comparison only. No HKSS theorem is used to prove the new lemma.",
+      "version": "arXiv:2311.12752v1 / ECCC TR23-182, https://eccc.weizmann.ac.il/report/2023/182/download/"
+    }
+  ],
+  "next_tasks": [
+    "Exploit the component-sensitive lifting threshold deg_w(C), rather than the full interpolant degree D, by proving that a heavily used irreducible component must have substantially smaller weighted degree.",
+    "Seek an explainer construction whose propagation budget is D\u2212d rather than D; the new vertical lemma makes such a reduction algebraically meaningful.",
+    "Analyze Hilbert-function dependencies created when selected polynomial graphs meet at accepted nodes. The current coefficient count treats their line constraints independently.",
+    "Investigate nonuniform or directional jet interpolation, which is not covered by the uniform ambient-multiplicity barrier, while explicitly excluding the Z^2\u2212XY pencil obstruction.",
+    "Independently resolve the apparent HKSS Appendix A logarithmic-range condition and \u03b5^2-versus-\u03b5^3 bookkeeping mismatch before using its interpolation theorem quantitatively."
+  ],
+  "note_markdown": "# Weighted resultants and vertical separability over the prime field\n\n## Abstract\n\nFix a prime $p$, dimension $m=2$, and an integer $100<d<p$. I prove a prime-field refinement of the algebraic cleanup following weighted interpolation. If a squarefree $(1,1,d)$-weighted interpolant has weighted degree $D<p$, then after removing its content in $Z$, the primitive factor $B$ is automatically separable in $Z$: $\\gcd(B,B_Z)=1$. Moreover, a weighted resultant calculation bounds the number of line-polynomial graphs on which both $B$ and $B_Z$ vanish identically by\n\n$$\n(2r-1)\\delta-dr^2\\le \\frac{\\delta^2}{d}-\\delta,\n$$\n\nwhere $\\delta=\\operatorname{wdeg}B$ and $r=\\deg_ZB$. Including content-trivial lines, at most $D^2/d-D$ lines must be discarded. Every other line has at most $D-d$ ramified points. This replaces the ordinary-degree bounds $D(D-1)$ and $D$ in KTZ by factor-$d$ sharper line control and the smaller point bound $D-d$.\n\nThe improvement is genuine but does not improve soundness. KTZ interpolation has $D=O(\\sqrt{dp/\\varepsilon})$; the remaining $(D-d)/p$ loss is $O(\\sqrt{(d/p)/\\varepsilon})$. Making it $O(\\varepsilon)$ still requires $\\varepsilon^3\\gtrsim d/p$. Thus `benchmark_improved=false`.\n\nI also prove that the usual uniform ambient-multiplicity modification cannot change this exponent by raw coefficient counting, and give an explicit $p=409,d=101$ counterexample showing that a nonzero higher Hasse derivative cannot replace the simple-root hypothesis in Newton lifting.\n\n## Test and Notation\n\nThere are $p(p+1)$ affine lines in $\\mathbb F_p^2$. The sampling model is exactly\n\n$$\nL\\sim\\operatorname{Unif}(\\mathcal L),\\qquad x\\sim\\operatorname{Unif}(L).\n$$\n\nFor a point table $f:\\mathbb F_p^2\\to\\mathbb F_p$ and supplied line polynomials $P_L$ of degree at most $d$, write\n\n$$\n\\varepsilon=\\Pr_{L,x\\in L}[P_L(x)=f(x)].\n$$\n\nAll polynomial degrees below are formal degrees. The weights are\n\n$$\n\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1,\\qquad \\operatorname{wt}(Z)=d.\n$$\n\nThus, if $A$ has weighted degree at most $D$ and $\\deg P_L\\le d$, then\n\n$$\n\\deg_t A(L(t),P_L(t))\\le D.\n$$\n\nFor the interpolation space set\n\n$$\nN_d(D)=\\sum_{k=0}^{\\lfloor D/d\\rfloor}\\binom{D-dk+2}{2}.\n$$\n\nThis is the exact number of monomials of weighted degree at most $D$. When $D<p$, every positive possible $Z$-exponent is below $p$, so ordinary $Z$-differentiation kills no such monomial merely because of the characteristic.\n\nIn the KTZ application, $\\mathcal R$ is the selected line family, $n=|\\mathcal R|$,\n\n$$\nk_0=\\left\\lfloor\\frac{\\varepsilon p}{100}\\right\\rfloor,\n\\quad\nk_1=\\left\\lfloor\\frac{\\varepsilon p}{1000}\\right\\rfloor,\n\\quad\nD=16(\\lfloor\\sqrt{dn}\\rfloor+1).\n$$\n\nTheir Lemmas 3.2 and 4.1 give\n\n$$\n100p\\le n\\le\\frac{6400p}{\\varepsilon},\n\\qquad\nD\\le1280\\left(\\sqrt{\\frac{dp}{\\varepsilon}}+1\\right),\n\\qquad\nD<\\min\\{p,k_0/2,k_1/2\\}.\n$$\n\n## Prior Results\n\nThe active corpus contains no prior submission or verifier finding. Both campaign databases contain only metadata and job queues; every prior output and error field is null. All eight active leaderboards are empty arrays, and no submissions or review directories exist. Directories named `superseded` were excluded.\n\nThe benchmark is [KTZ Revision 1, Theorem 1.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download): over every finite field, $\\varepsilon\\ge C(d/q)^{1/3}$ implies one total-degree-at-most-$d$ polynomial with global agreement at least $c\\varepsilon$. The bivariate proof gives the explicit value $c=1/8000$.\n\nThe exact bivariate chain used for comparison is KTZ Lemmas 3.1\u20133.2, 4.1\u20134.3, 5.1\u20135.2, and 6.1\u20136.3. The source-stated interpolation degree is $D=16(\\lfloor\\sqrt{d|\\mathcal R|}\\rfloor+1)$. The following exponent calculation is my reconstruction, not a quoted theorem: $|\\mathcal R|=O(p/\\varepsilon)$ and $N_d(D)=\\Theta(D^3/d)$, while every graph-line identity costs $O(D)$ coefficients. Hence $D^2\\asymp d|\\mathcal R|$ and\n\n$$\nD=O\\left(\\sqrt{\\frac{dp}{\\varepsilon}}\\right).\n$$\n\nBoth identity propagation and simple-root cleanup need $D=O(\\varepsilon p)$, producing $\\varepsilon^3\\gtrsim d/p$.\n\nFor historical comparison, [HKSS Theorem 4.2](https://eccc.weizmann.ac.il/report/2023/182/download/) states that $q>Cd/\\varepsilon^7$ gives a bivariate polynomial with agreement $\\Omega(\\varepsilon^4)$. The exponent $1/7$ is obtained by rearranging that hypothesis; HKSS Theorem 1.4 itself leaves its exponent unspecified. HKSS Theorem 4.3 constructs an interpolant of weighted degree $O(d/\\varepsilon^2)$ and invokes Lemmas 2.9, 2.10, and 3.1 for separability and lifting.\n\nAn adversarial reading found two unresolved displayed transitions in the inspected HKSS version. Appendix Lemma A.2 assumes $r\\ge2\\log(q)/\\gamma^2$, whereas the later choice $r=900d/\\gamma^2$ checks this only when $\\log q\\le450d$. Separately, the proof of Theorem 4.2 establishes a mass parameter $\\mu=\\Omega(\\varepsilon^3)$ and later labels $\\mu q$ as $\\Omega(\\varepsilon^2q)$. I do not use either transition. These observations are audit cautions, not a declaration that the HKSS theorem is false; an omitted case split or revised accounting may repair them.\n\n## Theorem\n\n### Theorem 1: weighted resultant bound\n\nLet $U,V\\in\\mathbb F_p[X,Y,Z]$ be nonzero and coprime. Let their weighted degrees be $u,v$ and their $Z$-degrees be $r,s$, with at least one of $r,s$ positive. Suppose $\\mathcal T$ is a family of distinct affine lines, each carrying $q_L(t)$ of degree at most $d$, such that\n\n$$\nU(L(t),q_L(t))\\equiv V(L(t),q_L(t))\\equiv0\n\\quad(L\\in\\mathcal T).\n$$\n\nThen\n\n$$\n|\\mathcal T|\n\\le su+rv-drs\n=\\frac{uv}{d}-\\frac{(u-dr)(v-ds)}d\n\\le\\frac{uv}{d},\n$$\n\nwith the evident direct interpretation if one $Z$-degree is zero. In particular, $|\\mathcal T|\\le\\lfloor uv/d\\rfloor$.\n\n### Theorem 2: prime-field interpolation and vertical cleanup\n\nLet\n\n$$\np\\text{ prime},\\qquad 101\\le d\\le p-1,\\qquad d\\le D<p.\n$$\n\nLet $\\mathcal R$ be $n$ distinct affine lines with degree-at-most-$d$ labels. If\n\n$$\nn>D,\n\\qquad\nN_d(D)>n(D+1),\n$$\n\nthere is a nonzero squarefree polynomial $A$ of weighted degree at most $D$ satisfying\n\n$$\nA(L(t),P_L(t))\\equiv0\\quad(L\\in\\mathcal R),\n\\qquad A_Z\\ne0.\n$$\n\nWrite $A=HB$, where $H\\in\\mathbb F_p[X,Y]$ is the $Z$-content and $B$ is primitive in $Z$. For any family of graph lines on which $A$ vanishes formally:\n\n1. $B$ is squarefree and $\\gcd(B,B_Z)=1$.\n2. At most $\\lfloor D^2/d-D\\rfloor$ lines are either $H$-trivial or satisfy $B_Z(L(t),P_L(t))\\equiv0$.\n3. Every remaining line has at most $D-d$ points with $B_Z(L(t),P_L(t))=0$.\n4. Relative to uniform affine point-line incidences, deleting every such exceptional line and ramified point loses at most\n\n$$\n\\frac{D^2/d-D}{p(p+1)}+\\frac{D-d}{p}.\n$$\n\n### Corollary: component-sensitive lifting\n\nSuppose $B(b,\\alpha)=0$ and $B_Z(b,\\alpha)\\ne0$. Let $C$ be the unique irreducible factor of $B$ vanishing at $(b,\\alpha)$ and let $\\delta_C=\\operatorname{wdeg}C$. If more than $\\delta_C$ distinct lines through $b$ carry degree-at-most-$d$ roots through $\\alpha$, then a single total-degree-at-most-$d$ polynomial $Q$ restricts to all those roots and\n\n$$\nC(X,Y,Q(X,Y))\\equiv0.\n$$\n\nIndeed, $C$ is associated to $Z-Q$. This refines the lifting threshold from the whole interpolant degree to the degree of the relevant component, though no worst-case bound forces $\\delta_C=o(D)$.\n\n## Proof or Conditional Proof\n\n**[P1 \u2014 proved: weighted Sylvester degree.]** Write\n\n$$\nU=\\sum_{i=0}^{r}a_i(X,Y)Z^i,\n\\qquad\nV=\\sum_{j=0}^{s}b_j(X,Y)Z^j.\n$$\n\nWeighted degree gives $\\deg a_i\\le u-di$ and $\\deg b_j\\le v-dj$. Every monomial in the Sylvester determinant contains $s$ coefficients of $U$, $r$ coefficients of $V$, and has total coefficient-index sum $rs$. The last identity also follows from\n\n$$\n\\operatorname{Res}_Z(U(TZ),V(TZ))\n=T^{rs}\\operatorname{Res}_Z(U,V).\n$$\n\nConsequently,\n\n$$\n\\deg_{X,Y}\\operatorname{Res}_Z(U,V)\\le su+rv-drs.\n$$\n\nNo ordinary-total-degree estimate is substituted here.\n\n**[P2 \u2014 proved: graph-line count.]** Coprimality makes the resultant nonzero. For each $L\\in\\mathcal T$, specialization to $\\mathbb F_p(t)$ gives the common root $q_L(t)$, so the resultant vanishes identically on the base line $L$. Its affine-linear equation therefore divides the resultant. Distinct lines give distinct linear factors, proving Theorem 1. If, say, $s=0$, then $V(L(t))\\equiv0$ directly and $|\\mathcal T|\\le\\deg V\\le v\\le uv/d$, since $r>0$ implies $u\\ge d$.\n\n**[P3 \u2014 proved: exact interpolation.]** For an unknown polynomial supported on the $N_d(D)$ weighted monomials, one graph-line identity has degree at most $D$ in $t$ and imposes at most $D+1$ homogeneous linear equations. The strict dimension inequality therefore supplies a nonzero $A$. If $A$ were independent of $Z$, it would vanish identically on $n>D$ base lines; their distinct linear equations would all divide a bivariate polynomial of degree at most $D$, an impossibility. Thus $A$ depends on $Z$. Since $D<p$, every positive $Z$-exponent is nonzero modulo $p$, so $A_Z\\ne0$.\n\n**[P4 \u2014 proved: squarefree primitive reduction.]** Choose $A$ of minimum weighted degree among nonzero graph interpolants. If $A=P^eR$ with $e\\ge2$ and $P\\nmid R$, then on each graph the product $P^eR$ is zero in the domain $\\mathbb F_p[t]$. Hence $PR$ is also zero there, but has smaller weighted degree and still depends on $Z$, a contradiction. Thus $A$ is squarefree. Dividing its coefficient content $H(X,Y)$ makes $B=A/H$ primitive in $Z$ and preserves squarefreeness. On any line not annihilated by $H$, the identity $A(L,P_L)=0$ implies $B(L,P_L)=0$ in the same domain.\n\n**[P5 \u2014 proved: vertical separability.]** Factor $B$ into distinct irreducibles. If an irreducible factor $C$ divided both $B$ and $B_Z$, squarefreeness would force $C_Z=0$. But $\\deg_ZC\\le\\deg_ZB\\le D/d<p$. In characteristic $p$, a polynomial of $Z$-degree below $p$ with zero $Z$-derivative is independent of $Z$. Such a factor would divide every coefficient of $B$, contradicting primitivity. Therefore $\\gcd(B,B_Z)=1$. Absolute irreducibility is neither assumed nor needed.\n\n**[P6 \u2014 proved: ramification count and incidence loss.]** Put $\\delta=\\operatorname{wdeg}B$ and $r=\\deg_ZB$. Then $r<p$,\n\n$$\n\\operatorname{wdeg}B_Z\\le\\delta-d,\n\\qquad\n\\deg_ZB_Z=r-1.\n$$\n\nTheorem 1 applied to $B,B_Z$ bounds identically ramified graph lines by\n\n$$\n\\Delta=(2r-1)\\delta-dr^2\n=\\frac{\\delta^2}{d}-\\delta-\frac{(\\delta-dr)^2}{d}\n\\le\\frac{\\delta^2}{d}-\\delta.\n$$\n\nLet $a=\\operatorname{wdeg}A$ and $h=\\deg H$, so $a=h+\\delta\\le D$. Adding the at most $h$ content-trivial lines gives\n\n$$\nh+\\Delta\n\\le a-\\delta+\\frac{\\delta^2}{d}-\\delta\n\\le\\frac{a^2}{d}-a\n\\le\\frac{D^2}{d}-D.\n$$\n\nThe middle inequality follows because\n\n$$\n\\frac{a^2}{d}-a-\n\\left(a+\\frac{\\delta^2}{d}-2\\delta\\right)\n=(a-\\delta)\\left(\\frac{a+\\delta}{d}-2\\right)\\ge0.\n$$\n\nOn any other graph, $B_Z(L(t),P_L(t))$ is a nonzero polynomial of degree at most $\\delta-d\\le D-d$, hence has at most $D-d$ roots. Exceptional lines contribute at most $p$ incidences apiece. Dividing by the total $p^2(p+1)$ incidences proves the claimed loss.\n\n**[P7 \u2014 proved: component-sensitive simple-root lift.]** At a point with $B_Z(b,\\alpha)\\ne0$, exactly one irreducible factor $C$ of $B$ vanishes, and $C_Z(b,\\alpha)\\ne0$. On every supplied graph through the point, the domain property forces this same factor, rather than another factor, to vanish identically. Newton recursion produces the unique total-degree-at-most-$d$ truncation $Q$ through $\\alpha$; it divides only by $C_Z(b,\\alpha)$. Its restriction equals every supplied $P_L$. Then $C(X,Y,Q)$ has degree at most $\\delta_C$ and vanishes on more than $\\delta_C$ distinct lines, so it is zero. The kernel of substitution $Z\\mapsto Q$ is $(Z-Q)$; irreducibility forces $C$ to be associated to $Z-Q$.\n\n**[P8 \u2014 conditional on the cited KTZ surrounding lemmas: application.]** Substitute the new cleanup for KTZ Section 5 while retaining their Lemmas 3.1\u20134.3 and 6.1\u20136.3. The new deletion bound is no larger than their Lemma 4.1 budget. The remaining graph therefore has the same minimum degree and incidence mass required for lifting and component propagation. Their conclusion supplies one polynomial $Q$ with\n\n$$\n\\Pr_x[Q(x)=f(x)]\\ge\\frac{\\varepsilon}{8000}.\n$$\n\nHowever,\n\n$$\n\\frac{D-d}{p}\n\\le O\\left(\\sqrt{\\frac{d}{\\varepsilon p}}+\\frac1p\\right).\n$$\n\nRequiring this to be $O(\\varepsilon)$ is equivalent, up to constants, to $\\varepsilon^3\\gtrsim d/p$. Thus this substitution does not improve Theorem 1.1's exponent.\n\n**[P9 \u2014 proved: uniform multiplicity barrier.]** Suppose a proposed point-interpolation proof imposes ambient Hasse multiplicity $s\\ge1$ at $M$ lifted points. The raw number of linear jet conditions is\n\n$$\nM\\binom{s+2}{3}.\n$$\n\nFor $D\\ge d\\ge101$,\n\n$$\n\\dim W_D=N_d(D)\\le\\frac{2D^3}{d},\n\\qquad\n\\binom{s+2}{3}\\ge\\frac{s^3}{6}.\n$$\n\nIf existence is certified by the standard raw coefficient inequality\n\n$$\nM\\binom{s+2}{3}<\\dim W_D,\n$$\n\nthen $(D/s)^3>Md/12$. If a target graph contains $k$ interpolated points, multiplicity root counting needs $sk>D$, hence\n\n$$\nk^3>\\frac{Md}{12}.\n$$\n\nFor $M\\ge\\rho p^2$ and $k\\le K\\varepsilon p$, this forces\n\n$$\n\\varepsilon^3>\\frac{\\rho}{12K^3}\\frac{d}{p}.\n$$\n\nThus uniform ambient multiplicity cannot improve the exponent through this coefficient-counting route. Dependent constraints, nonuniform multiplicities, or directional jets are not ruled out.\n\n**[P10 \u2014 refuted claim: higher Hasse order can replace simplicity.]** Take $p=409$, $d=101$, and\n\n$$\nB=Z^2-XY,\n\\qquad\n\\operatorname{wdeg}B=202<p.\n$$\n\nAt $(0,0,0)$, $B_Z=0$ while $\\partial_Z^{[2]}B=1$. For every projective direction $[a:b]$ with $ab$ a square, choose $c^2=ab$ and use $L(t)=(at,bt)$, $P_L(t)=ct$. There are\n\n$$\n2+\\frac{p-1}{2}=206>202\n$$\n\nsuch directions, and every graph satisfies $B(L(t),P_L(t))\\equiv0$. Nevertheless, $B(X,Y,Q)=0$ would give $Q^2=XY$, impossible because the exponent of the irreducible $X$ is odd on the right and even in a square. Hence even irreducibility, squarefreeness, generic separability, a nonzero second Hasse derivative, and more than $D$ pencil roots do not replace a fiberwise simple root.\n\n**[P11 \u2014 proved: exponent ceiling under uniform line sampling.]** Let $N=\\binom{d+2}{2}$ and suppose\n\n$$\nN\\log p<(4\\log4-3)p.\n$$\n\nFor uniformly random $f$, a fixed total-degree-at-most-$d$ polynomial agrees at a binomial number of points with mean $p$. Chernoff gives\n\n$$\n\\Pr[\\operatorname{agr}(f,Q)\\ge4/p]\n\\le e^{-(4\\log4-3)p}.\n$$\n\nA union bound over at most $p^N$ polynomials produces an $f$ with maximum global agreement below $4/p$. On each affine line, interpolate $f$ on any $d+1$ points. The resulting supplied line table has local agreement at least $(d+1)/p$. Taking, for example, growing $d=o(\\sqrt{p/\\log p})$ proves that any claimed exponent strictly larger than $1$ with global agreement $\\Omega(\\varepsilon)$ is false. This uses uniform affine-line sampling and total degree and does not obstruct exponent $1-o(1)$.\n\n## Exponent Ledger\n\nThe controlling calculation is\n\n$$\n|\\mathcal R|=O(p/\\varepsilon),\n\\quad\nD^3/d\\gtrsim |\\mathcal R|D,\n\\quad\nD=O(\\sqrt{dp/\\varepsilon}),\n\\quad\n(D-d)/p=O(\\varepsilon).\n$$\n\nTherefore\n\n$$\n\\sqrt{\\frac{d}{\\varepsilon p}}\\lesssim\\varepsilon\n\\iff\n\\varepsilon^3\\gtrsim\\frac dp.\n$$\n\nThe new exceptional-line term is only\n\n$$\n\\frac{D^2/d}{p^2}=O\\left(\\frac1{\\varepsilon p}\\right),\n$$\n\nwhere the ordinary-degree estimate was $D^2/p^2=O(d/(\\varepsilon p))$. This factor-$d$ improvement is not controlling.\n\nNo Markov loss occurs in the new proof. KTZ Lemma 3.2 uses a Chernoff estimate and a union bound over at most $p(p+1)$ lines, followed by Chebyshev for $|\\mathcal R|$; these introduce constants and the requirement $k_0\\gtrsim\\log p$, not another power of $\\varepsilon$. KTZ Lemma 2.1 is proved by Cauchy\u2013Schwarz and contributes $1/\\sqrt{p+1}$; Lemma 4.1 explicitly budgets it as at most $\\varepsilon/8000$. Under $\\varepsilon^3p\\gtrsim d$ and $d\\ge101$, it is not the controlling exponent. The second pruning loses only a constant fraction of $\\varepsilon$.\n\n## Counterexample Attempts\n\n1. **Adversarial random table:** [P11] rigorously proves the linear-scale floor and rules out exponents greater than $1$. It does not refute the campaign target.\n\n2. **Higher-Hasse lifting:** [P10] refutes the tempting replacement of simple roots by finite Hasse multiplicity. The failure already occurs at the campaign's lower boundary $d=101$.\n\n3. **Concentrated good directions:** choose $d+1$ distinct directions $u_i$ and linear forms $\\ell_i$ vanishing on them, and set\n\n   $$f(X,Y)=\\prod_{i=1}^{d+1}\\ell_i(X,Y).$$\n\n   On every affine line in direction $u_i$, the leading coefficient vanishes, so the restriction has degree at most $d$. Use that restriction as $P_L$ and use $P_L=0$ in all other directions. The exact local agreement is\n\n   $$\n   \\frac{(d+1)p^2+(p-d)((p-1)(d+1)+1)}{p^2(p+1)},\n   $$\n\n   while $Q=0$ has global agreement\n\n   $$\n   \\frac{1+(d+1)(p-1)}{p^2}.\n   $$\n\n   Both are $\\Theta(d/p)$ when $d=o(p)$. Thus good directions may be concentrated at the conjectured linear scale, but the example still has the required order of global agreement.\n\n4. **Inseparability:** $Z^p-X$ is primitive, irreducible, and squarefree as a multivariate polynomial, yet its ordinary $Z$-derivative is zero. Its weighted degree is at least $pd$, so it is excluded precisely by $D<p$. This confirms that the auxiliary degree condition is doing real characteristic work.\n\n5. **Near-$p$ regime:** if $d>p/2$ and $D<p$, then $\\deg_ZB=1$. For $d=p-1$, $D=d$ and $B_Z$ is constant. No inseparability obstruction appears; instead, the KTZ cubic hypothesis with a large absolute constant may simply be empty when $d/p$ is too close to one.\n\n## Characteristic Audit\n\n- All rings used for factorization are formal polynomial UFDs. Polynomial functions are never substituted for formal polynomials.\n- The only characteristic-sensitive implication is $C_Z=0$ and $\\deg_ZC<p$ implies $C$ is independent of $Z$.\n- Primitivity, not absolute irreducibility, excludes such a factor.\n- The resultant is not divided by a leading coefficient, so fibers where $\\deg_ZB$ drops are included in its zero set.\n- The simple-root Newton recursion divides only by the nonzero value $B_Z(b,\\alpha)$.\n- Hasse multiplicity in [P9] is defined through maximal-ideal powers, so no factorial denominators occur.\n- The substitution of a multiplicity-$s$ lifted point into a line graph produces a root of multiplicity at least $s$ because the lifted maximal ideal maps into $(t-t_0)$.\n- The $p=409$ pencil confirms that higher Hasse order does not give uniqueness.\n- At $p=103,d=101$, the exact dimension check shows failure of the raw interpolation inequalities, not failure of the theorem or a small-degree obstruction.\n\n## Limitations\n\nThe result improves algebraic factor control but not the degree $D$ of the explainer. It therefore cannot by itself beat exponent $1/3$. The main surviving bottleneck is the need to spend up to $D-d$ bad roots on every nonexceptional line, together with the earlier need for more than $D$ accepted crossings to propagate the line identity.\n\nThe automatic vertical-separability argument requires the auxiliary interpolant degree $D<p$. It does not address a hypothetical construction with $D\\ge p$, and the example $Z^p-X$ shows why that extension is nonformal.\n\nThe multiplicity obstruction covers only uniform ambient multiplicity certified by the raw number of jet equations. It leaves open dependent node conditions, nonuniform multiplicity, component-specific interpolation, and directional jets.\n\nThe component-sensitive corollary helps only if one proves that the component supporting many accepted line graphs has weighted degree substantially below $D$; no such distribution theorem is proved here.\n\nFinally, finite-field arithmetic checks are used only for falsification and endpoint auditing. They do not establish the asymptotic soundness statement.",
+  "obstructions": [
+    "The KTZ interpolation degree D=\u0398(sqrt(dp/\u03b5)) must remain below an \u0398(\u03b5p) root budget, forcing \u03b5^3\u2273d/p.",
+    "After the factor-d improvement in exceptional-line counting, the nonexceptional loss (D\u2212d)/p remains controlling.",
+    "Uniform ambient multiplicity incurs \u0398(s^3) jet constraints per lifted point, exactly cancelling the s-fold root-count gain at the exponent level.",
+    "A nonzero higher Hasse derivative does not provide branch uniqueness; Z^2\u2212XY gives an explicit in-scope counterexample.",
+    "The prime vertical-separability proof requires D<p; Z^p\u2212X demonstrates the failure beyond that range.",
+    "The inspected HKSS version contains an unchecked logarithmic sampling condition and an \u03b5^3-to-\u03b5^2 bookkeeping transition, so it was not used as a decisive dependency."
+  ],
+  "parameter_regime": "Prime p; fixed dimension m=2; integer 101\u2264d\u2264p\u22121; local agreement \u03b5\u2208[0,1] under uniform affine-line sampling. The new vertical lemma assumes an auxiliary weighted degree d\u2264D<p. Its KTZ application uses |R|\u22646400p/\u03b5, D=16(floor(sqrt(d|R|))+1), k0=floor(\u03b5p/100), and k1=floor(\u03b5p/1000).",
+  "proof_steps": [
+    {
+      "dependencies": [],
+      "id": "P1",
+      "proof": "Expand U and V in Z. Weighted degree bounds their coefficient degrees. Multihomogeneity and Z-index homogeneity of the Sylvester determinant bound the resultant's X,Y-degree by su+rv\u2212drs.",
+      "statement": "The weighted resultant has degree at most su+rv\u2212drs\u2264uv/d.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P2",
+      "proof": "Every common graph root makes the nonzero resultant vanish identically on the corresponding base line. Distinct line equations are distinct irreducible factors.",
+      "statement": "At most floor(uv/d) affine line-polynomial graphs are common formal zeros of coprime U and V.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P3",
+      "proof": "Each graph-line identity imposes at most D+1 homogeneous equations on N_d(D) coefficients. More than D base lines exclude every nonzero Z-independent solution; D<p then gives A_Z\u22600.",
+      "statement": "The exact dimension inequalities produce a Z-dependent weighted interpolant.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "A repeated factor can be reduced to one copy while preserving every graph identity in the domain F_p[t], contradicting minimum weighted degree. Content division preserves squarefreeness and gives a primitive polynomial.",
+      "statement": "A minimum graph interpolant may be taken squarefree and primitive after Z-content removal.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P4"
+      ],
+      "id": "P5",
+      "proof": "A common irreducible factor of B and B_Z would have zero Z-derivative. Since its Z-degree is below p, it would be Z-independent, contradicting primitivity.",
+      "statement": "For D<p, the primitive squarefree factor B satisfies gcd(B,B_Z)=1.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P5"
+      ],
+      "id": "P6",
+      "proof": "Apply the weighted resultant lemma to B and B_Z and combine with the content degree. Ordinary root counting on every remaining graph gives at most D\u2212d bad points.",
+      "statement": "At most D^2/d\u2212D lines and D\u2212d points per other line are removed in vertical ramification cleanup.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P5"
+      ],
+      "id": "P7",
+      "proof": "A simple root selects one irreducible component. Newton uniqueness identifies all supplied line roots with one bivariate truncation; more lines than the component degree force a formal global identity.",
+      "statement": "Simple-root lifting can be charged to the relevant irreducible component's weighted degree.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P6",
+        "KTZ Lemmas 3.1\u20134.3 and 6.1\u20136.3"
+      ],
+      "id": "P8",
+      "proof": "The new deletion bound fits within KTZ's existing \u03b5/16 budget. Their remaining pruning, lifting, mixing, and propagation then give agreement \u03b5/8000.",
+      "statement": "Substitution into the published KTZ chain preserves the cubic theorem and linear global agreement.",
+      "status": "conditional"
+    },
+    {
+      "dependencies": [],
+      "id": "P9",
+      "proof": "Raw ambient multiplicity s costs at least Ms^3/6 conditions, while dim W_D\u22642D^3/d. Combining coefficient feasibility with sk>D gives k^3>Md/12.",
+      "statement": "Uniform ambient-multiplicity coefficient counting cannot improve the cubic threshold in the dense-point regime.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P10",
+      "proof": "For B=Z^2\u2212XY over F_409, 206>D=202 pencil lines have degree-one roots through a second-order Hasse root, but Q^2=XY has no polynomial solution.",
+      "statement": "A nonzero higher Z-Hasse derivative can replace the simple-root hypothesis in lifting.",
+      "status": "refuted"
+    },
+    {
+      "dependencies": [],
+      "id": "P11",
+      "proof": "A Chernoff and union-bound argument gives a random point table with global agreement below 4/p; degree-d interpolation on d+1 points of every line gives local agreement at least (d+1)/p.",
+      "statement": "Uniform affine-line sampling admits an asymptotic counterexample to every soundness exponent strictly larger than 1.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P6"
+      ],
+      "id": "P12",
+      "proof": "With D=O(sqrt(dp/\u03b5)), the surviving root loss is O(sqrt((d/p)/\u03b5)); comparison with \u03b5 yields \u03b5^3\u2273d/p.",
+      "statement": "The new algebraic lemma alone yields an exponent strictly larger than 1/3.",
+      "status": "refuted"
+    }
+  ],
+  "result_status": "proved",
+  "sampling_model": "Choose L uniformly from the p(p+1) affine lines in F_p^2, then choose x uniformly from the p points of L; equivalently, choose a uniformly random incident point-line pair.",
+  "theorem_statement": "Let p be prime, 101\u2264d\u2264p\u22121, and d\u2264D<p. For weights (1,1,d), coprime polynomials of weighted degrees u,v have at most floor(uv/d) common affine line-polynomial graphs. Consequently, after removing the Z-content from a minimum squarefree degree-D graph interpolant, its primitive factor B satisfies gcd(B,B_Z)=1; at most floor(D^2/d\u2212D) graph lines are content-trivial or identically ramified, every other graph has at most D\u2212d ramified points, and the total uniform-incidence cleanup loss is at most (D^2/d\u2212D)/(p(p+1))+(D\u2212d)/p.",
+  "title": "Weighted resultants and vertical separability after bivariate interpolation"
+}
+
+2026-09-14T08:29:28.441322Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T08:29:28.441353Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+codex
+{"coverage_complete":false,"lemmas":[],"omitted_source_step_ids":["P1","P2","P3","P4","P5","P6","P7","P8","P9","P10","P11","P12"],"source_job_id":"researcher-0003","source_response_sha256":"b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420"}
+2026-09-14T08:30:00.377692Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09f09-1628-7332-b5a3-5ac7dbd330ac
+2026-09-14T08:30:04.794322Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09f09-1628-7332-b5a3-5ac7dbd330ac
+2026-09-14T08:31:12.584393Z  WARN codex_core::responses_retry: stream disconnected - retrying sampling request (1/5 in 196ms)... turn_id=01a09f09-1676-7d61-8505-1b30ad314868 retries=1 max_retries=5 sampling_error=stream disconnected before completion: WebSocket protocol error: Connection reset without closing handshake
+codex
+{"coverage_complete":true,"lemmas":[{"dependencies":[],"id":"researcher-0003:P1.1","part":1,"proof_markdown":"Write $U=\\sum_{i=0}^{r}a_i(X,Y)Z^i$ and $V=\\sum_{j=0}^{s}b_j(X,Y)Z^j$. Weighted degree gives $\\deg a_i\\le u-di$ and $\\deg b_j\\le v-dj$. Every monomial in the Sylvester determinant contains $s$ coefficients of $U$ and $r$ coefficients of $V$, and the sum of their $Z$-indices is $rs$. The latter identity also follows from $\\operatorname{Res}_Z(U(X,Y,TZ),V(X,Y,TZ))=T^{rs}\\operatorname{Res}_Z(U,V)$. Hence every determinant term has $(X,Y)$-degree at most $su+rv-drs$. Finally, $u-dr\\ge0$ and $v-ds\\ge0$, so $su+rv-drs=\\frac{uv}{d}-\\frac{(u-dr)(v-ds)}{d}\\le\\frac{uv}{d}$.","source_step_id":"P1","statement_markdown":"Let $p$ be prime and $d\\ge1$. Give $\\mathbb F_p[X,Y,Z]$ the weights $\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1$ and $\\operatorname{wt}(Z)=d$. Let $U,V\\in\\mathbb F_p[X,Y,Z]$ be nonzero and coprime, with weighted degrees $u,v$ and $Z$-degrees $r,s$, respectively, where at least one of $r,s$ is positive. Then $$\\deg_{X,Y}\\operatorname{Res}_Z(U,V)\\le su+rv-drs=\\frac{uv}{d}-\\frac{(u-dr)(v-ds)}{d}\\le\\frac{uv}{d}.$$","status":"proved","title":"Weighted Sylvester degree"},{"dependencies":["researcher-0003:P1.1"],"id":"researcher-0003:P2.1","part":1,"proof_markdown":"Coprimality makes $R=\\operatorname{Res}_Z(U,V)$ nonzero. When $r,s>0$, specialization along a graph gives the common root $q_L(t)$ over $\\mathbb F_p(t)$, and therefore $R(L(t))\\equiv0$. The affine-linear equation defining $L$ consequently divides $R$. Distinct lines yield pairwise nonassociate irreducible linear factors, so the number of lines is at most $\\deg R$, which is at most $uv/d$ by the weighted Sylvester-degree bound. Since the number of lines is integral, it is at most $\\left\\lfloor uv/d\\right\\rfloor$. If, for example, $s=0$, then $V(L(t))\\equiv0$ directly, so the number of lines is at most $\\deg V\\le v\\le uv/d$, because $r>0$ implies $u\\ge d$. The case $r=0$ is symmetric. Degree-dropping specializations cause no difficulty because the resultant is used without division by a leading coefficient.","source_step_id":"P2","statement_markdown":"Under the hypotheses of the weighted Sylvester-degree lemma, let $\\mathcal T$ be a family of distinct affine lines in $\\mathbb F_p^2$. For every $L\\in\\mathcal T$, let $q_L\\in\\mathbb F_p[t]$ have degree at most $d$ and suppose $$U(L(t),q_L(t))\\equiv V(L(t),q_L(t))\\equiv0.$$ Then $$|\\mathcal T|\\le\\left\\lfloor\\frac{uv}{d}\\right\\rfloor.$$","status":"proved","title":"Common graph-line count"},{"dependencies":[],"id":"researcher-0003:P3.1","part":1,"proof_markdown":"An unknown polynomial supported on the $N_d(D)$ weighted monomials restricts on each graph to a univariate polynomial of degree at most $D$. Requiring this restriction to vanish identically imposes at most $D+1$ homogeneous linear equations. Thus the $n$ graph identities impose at most $n(D+1)<N_d(D)$ equations and admit a nonzero solution $A$. If $A$ were independent of $Z$, it would be a bivariate polynomial of degree at most $D$ vanishing identically on more than $D$ distinct affine lines. Every corresponding line equation would divide $A$, which is impossible. Hence $A$ depends on $Z$. Every positive $Z$-exponent occurring in $A$ is at most $\\lfloor D/d\\rfloor<p$ and is therefore nonzero in $\\mathbb F_p$; consequently $A_Z\\ne0$.","source_step_id":"P3","statement_markdown":"Let $p$ be prime and let $1\\le d\\le D<p$. Let $\\mathcal R$ consist of $n$ distinct affine lines in $\\mathbb F_p^2$, and assign to each $L\\in\\mathcal R$ a polynomial $P_L\\in\\mathbb F_p[t]$ of degree at most $d$. Define $$N_d(D)=\\sum_{k=0}^{\\lfloor D/d\\rfloor}\\binom{D-dk+2}{2}.$$ If $n>D$ and $N_d(D)>n(D+1)$, then there exists a nonzero $A\\in\\mathbb F_p[X,Y,Z]$ of weighted degree at most $D$ such that $$A(L(t),P_L(t))\\equiv0\\qquad(L\\in\\mathcal R),$$ and $A$ depends on $Z$ with $A_Z\\ne0$.","status":"proved","title":"Weighted graph interpolation"},{"dependencies":["researcher-0003:P3.1"],"id":"researcher-0003:P4.1","part":1,"proof_markdown":"Existence and $Z$-dependence follow from the interpolation lemma. Suppose $A=P^eR$ for an irreducible $P$, with $e\\ge2$ and $P\\nmid R$. On each graph, $P(L(t),P_L(t))^eR(L(t),P_L(t))=0$ in the integral domain $\\mathbb F_p[t]$. Hence $P(L(t),P_L(t))R(L(t),P_L(t))=0$ there as well. The polynomial $PR$ remains $Z$-dependent and has smaller weighted degree than $A$, contradicting minimality. Thus $A$ is squarefree. Dividing by the coefficient content $H$ makes $B$ primitive in $Z$ and preserves squarefreeness. If $H(L(t))\\not\\equiv0$, then $H(L(t))B(L(t),P_L(t))=0$ in $\\mathbb F_p[t]$, so $B(L(t),P_L(t))\\equiv0$.","source_step_id":"P4","statement_markdown":"Let $p,d,D,\\mathcal R$, and $\\{P_L\\}_{L\\in\\mathcal R}$ satisfy the hypotheses of the weighted graph-interpolation lemma. Among the nonzero polynomials satisfying all graph identities, let $A$ have minimum weighted degree. Then $A$ is $Z$-dependent and squarefree. If $A=HB$, where $H\\in\\mathbb F_p[X,Y]$ is the coefficient content of $A$ as a polynomial in $Z$, then $B$ is primitive in $Z$ and squarefree. Moreover, for every $L\\in\\mathcal R$ with $H(L(t))\\not\\equiv0$, $$B(L(t),P_L(t))\\equiv0.$$","status":"proved","title":"Primitive squarefree reduction"},{"dependencies":["researcher-0003:P4.1"],"id":"researcher-0003:P5.1","part":1,"proof_markdown":"Factor $B$ into distinct irreducibles. If an irreducible factor $C$ divided both $B$ and $B_Z$, write $B=CE$ with $C\\nmid E$. Reducing $B_Z=C_ZE+CE_Z$ modulo $C$ shows that $C\\mid C_Z$. Since differentiation lowers the $Z$-degree, this forces $C_Z=0$. Moreover, $\\deg_ZC\\le\\deg_ZB\\le D/d<p$. In characteristic $p$, a polynomial of $Z$-degree below $p$ with zero ordinary $Z$-derivative is independent of $Z$. Thus $C\\in\\mathbb F_p[X,Y]$, so $C$ divides every coefficient of $B$ as a polynomial in $Z$, contradicting primitivity. Therefore no common irreducible factor exists. Absolute irreducibility is neither assumed nor used.","source_step_id":"P5","statement_markdown":"Let $p$ be prime and let $1\\le d\\le D<p$. Give $\\mathbb F_p[X,Y,Z]$ the weights $(1,1,d)$. If $B\\in\\mathbb F_p[X,Y,Z]$ is $Z$-dependent, squarefree, primitive as a polynomial in $Z$, and has weighted degree at most $D$, then $$\\gcd(B,B_Z)=1.$$","status":"proved","title":"Vertical separability"},{"dependencies":["researcher-0003:P2.1","researcher-0003:P5.1"],"id":"researcher-0003:P6.1","part":1,"proof_markdown":"Put $\\delta=\\operatorname{wdeg}B$ and $r=\\deg_ZB$. Then $r<p$, $\\operatorname{wdeg}B_Z\\le\\delta-d$, and $\\deg_ZB_Z=r-1$. Vertical separability makes $B$ and $B_Z$ coprime. Applying the weighted resultant calculation to them bounds the identically ramified, non-content-trivial graph lines by $$\\Delta=(2r-1)\\delta-dr^2=\\frac{\\delta^2}{d}-\\delta-\\frac{(\\delta-dr)^2}{d}\\le\\frac{\\delta^2}{d}-\\delta.$$ Let $a=\\operatorname{wdeg}A$ and $h=\\deg H$, so $a=h+\\delta\\le D$. At most $h$ distinct affine lines are content-trivial. Hence $$h+\\Delta\\le a-\\delta+\\frac{\\delta^2}{d}-\\delta\\le\\frac{a^2}{d}-a\\le\\frac{D^2}{d}-D.$$ The middle inequality follows from $$\\frac{a^2}{d}-a-\\left(a+\\frac{\\delta^2}{d}-2\\delta\\right)=(a-\\delta)\\left(\\frac{a+\\delta}{d}-2\\right)\\ge0,$$ using $a\\ge\\delta\\ge d$. On every other graph, $B_Z(L(t),P_L(t))$ is a nonzero polynomial of degree at most $\\delta-d\\le D-d$, so ordinary root counting gives at most $D-d$ roots. An exceptional line contributes at most $p$ incidences. Dividing the resulting counts by the total $p^2(p+1)$ affine point-line incidences gives the stated loss.","source_step_id":"P6","statement_markdown":"Let $p$ be prime and $1\\le d\\le D<p$. Let $A=HB\\in\\mathbb F_p[X,Y,Z]$ have weighted degree at most $D$, where $H\\in\\mathbb F_p[X,Y]$ is the $Z$-content and $B$ is $Z$-dependent, primitive, and squarefree. Let $\\mathcal T$ be a family of distinct affine lines, each carrying $P_L\\in\\mathbb F_p[t]$ of degree at most $d$, such that $A(L(t),P_L(t))\\equiv0$. Call $L$ content-trivial when $H(L(t))\\equiv0$ and identically ramified when $B_Z(L(t),P_L(t))\\equiv0$. Then at most $$\\left\\lfloor\\frac{D^2}{d}-D\\right\\rfloor$$ lines in $\\mathcal T$ are content-trivial or identically ramified. Every other $L\\in\\mathcal T$ contains at most $D-d$ values $t\\in\\mathbb F_p$ satisfying $B_Z(L(t),P_L(t))=0$. Under uniform affine point-line sampling, deleting all these lines and points loses incidence mass at most $$\\frac{D^2/d-D}{p(p+1)}+\\frac{D-d}{p}.$$","status":"proved","title":"Vertical ramification cleanup"},{"dependencies":["researcher-0003:P5.1"],"id":"researcher-0003:P7.1","part":1,"proof_markdown":"At a point where $B_Z(\\mathbf b,\\alpha)\\ne0$, two distinct irreducible factors of the squarefree polynomial $B$ cannot both vanish, since their simultaneous vanishing would force $B_Z(\\mathbf b,\\alpha)=0$. Thus exactly one factor $C$ vanishes, and $C_Z(\\mathbf b,\\alpha)\\ne0$. For each supplied graph, the factorization of $B(L(t),P_L(t))$ in the domain $\\mathbb F_p[t]$ forces some irreducible factor to vanish identically. Evaluation at $t=0$ shows that this factor must be $C$. Newton recursion at $(\\mathbf b,\\alpha)$ produces the unique total-degree-at-most-$d$ truncation $Q$ through $\\alpha$ and divides only by the nonzero field element $C_Z(\\mathbf b,\\alpha)$. Uniqueness makes $Q(L(t))=P_L(t)$ on every supplied line. The polynomial $C(X,Y,Q(X,Y))$ has total degree at most $\\delta_C$ and vanishes identically on more than $\\delta_C$ distinct lines, so it is zero. Finally, the kernel of substitution $Z\\mapsto Q(X,Y)$ is $(Z-Q)$; irreducibility therefore makes $C$ associated to $Z-Q$.","source_step_id":"P7","statement_markdown":"Let $B$ be a primitive squarefree polynomial as in the vertical-separability lemma. Suppose $(\\mathbf b,\\alpha)\\in\\mathbb F_p^2\\times\\mathbb F_p$ satisfies $B(\\mathbf b,\\alpha)=0$ and $B_Z(\\mathbf b,\\alpha)\\ne0$. Then there is a unique irreducible factor $C$ of $B$ vanishing at $(\\mathbf b,\\alpha)$. Set $\\delta_C=\\operatorname{wdeg}C$. Suppose more than $\\delta_C$ distinct affine lines through $\\mathbf b$, parameterized by $L(0)=\\mathbf b$, carry polynomials $P_L\\in\\mathbb F_p[t]$ satisfying $\\deg P_L\\le d$, $P_L(0)=\\alpha$, and $B(L(t),P_L(t))\\equiv0$. Then there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$Q(L(t))=P_L(t)$$ on every supplied line and $$C(X,Y,Q(X,Y))\\equiv0.$$ Moreover, $C$ is associated to $Z-Q$.","status":"proved","title":"Component-sensitive lifting"},{"dependencies":["researcher-0003:P3.1","researcher-0003:P6.1","KTZ Lemmas 3.1–4.3 and 6.1–6.3"],"id":"researcher-0003:P8.1","part":1,"proof_markdown":"Conditionally retaining KTZ Lemmas 3.1–4.3 and 6.1–6.3, substitute the weighted graph interpolation and vertical ramification cleanup for the corresponding interpolation and Section 5 cleanup. The new deletion bound fits within the existing KTZ Lemma 4.1 budget. The remaining accepted graph therefore has the same minimum degrees and incidence mass required by the cited lifting, mixing, and component-propagation lemmas, which yield a polynomial $Q$ with global agreement at least $\\varepsilon/8000$. The interpolation scale satisfies $D=O(\\!\\sqrt{dp/\\varepsilon})$, while the surviving point loss obeys $$\\frac{D-d}{p}=O\\!\\left(\\sqrt{\\frac{d}{\\varepsilon p}}+\\frac1p\\right).$$ Requiring this loss to be $O(\\varepsilon)$ is, up to constants in the cited parameter regime, equivalent to $\\varepsilon^3\\gtrsim d/p$. Thus the substitution preserves, but does not improve, the cubic exponent.","source_step_id":"P8","statement_markdown":"Let $p$ be prime, let $101\\le d\\le p-1$, and let $f:\\mathbb F_p^2\\to\\mathbb F_p$ and degree-at-most-$d$ line labels $\\{P_L\\}$ have uniform point-line incidence agreement $\\varepsilon$. Assume the hypotheses and conclusions of KTZ Lemmas 3.1–4.3 and 6.1–6.3 apply, with the weighted graph interpolation and vertical ramification cleanup used at their corresponding stages. If $\\varepsilon\\ge C(d/p)^{1/3}$ for a sufficiently large absolute constant $C$, then there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]\\ge\\frac{\\varepsilon}{8000}.$$","status":"conditional","title":"KTZ chain substitution"},{"dependencies":[],"id":"researcher-0003:P9.1","part":1,"proof_markdown":"Ambient Hasse multiplicity $s$ at one lifted point imposes $\\binom{s+2}{3}$ linear jet conditions. For $D\\ge d\\ge101$, $$\\dim W_D=N_d(D)\\le\\frac{2D^3}{d},\\qquad \\binom{s+2}{3}\\ge\\frac{s^3}{6}.$$ Therefore $M\\binom{s+2}{3}<\\dim W_D$ implies $(D/s)^3>Md/12$. Hasse multiplicity may be defined through powers of the lifted maximal ideal, so no factorial division is used; after substitution into a line graph, that ideal maps into $(t-t_0)$ and produces a univariate root of multiplicity at least $s$. Root propagation consequently requires $sk>D$. Thus $k>D/s$ and $k^3>Md/12$. If $M\\ge\\rho p^2$ and $k\\le K\\varepsilon p$, comparison gives $K^3\\varepsilon^3p^3>\\rho p^2d/12$, which is the claimed cubic lower bound. This argument does not rule out dependent constraints, nonuniform multiplicities, or directional jets.","source_step_id":"P9","statement_markdown":"Let $p$ be prime and let $D\\ge d\\ge101$. Let $W_D$ be the space of polynomials in $\\mathbb F_p[X,Y,Z]$ of $(1,1,d)$-weighted degree at most $D$. Suppose ambient Hasse multiplicity $s\\ge1$ is imposed at $M$ lifted points and existence is certified by $$M\\binom{s+2}{3}<\\dim W_D.$$ If multiplicity root counting on a target graph containing $k$ interpolated points requires $sk>D$, then $$k^3>\\frac{Md}{12}.$$ In particular, if $M\\ge\\rho p^2$ and $k\\le K\\varepsilon p$, then $$\\varepsilon^3>\\frac{\\rho}{12K^3}\\frac{d}{p}.$$","status":"proved","title":"Uniform multiplicity barrier"},{"dependencies":[],"id":"researcher-0003:P10.1","part":1,"proof_markdown":"This claim is refuted by taking $p=409$, $d=101$, $D=202$, and $B=Z^2-XY$. The polynomial $B$ is primitive, irreducible, squarefree, and satisfies $\\gcd(B,B_Z)=1$ and $\\operatorname{wdeg}B=202<409$. At $(0,0,0)$, however, $B_Z=0$ while $\\partial_Z^{[2]}B=1$. For each projective direction $[a:b]$ for which $ab$ is a square, choose $c\\in\\mathbb F_{409}$ with $c^2=ab$ and set $L(t)=(at,bt)$ and $P_L(t)=ct$. There are $$2+\\frac{p-1}{2}=206>D$$ such directions, and every graph satisfies $B(L(t),P_L(t))\\equiv0$. Nevertheless, $B(X,Y,Q)=0$ would imply $Q^2=XY$. This is impossible in the unique factorization domain $\\mathbb F_{409}[X,Y]$, because the exponent of the irreducible factor $X$ is even in a square and odd in $XY$. Thus no polynomial $Q$ of any degree satisfies the asserted conclusion.","source_step_id":"P10","statement_markdown":"Let $p$ be prime and $1\\le d\\le D<p$. Let $B\\in\\mathbb F_p[X,Y,Z]$ be primitive, irreducible, squarefree, and of $(1,1,d)$-weighted degree at most $D$, with $\\gcd(B,B_Z)=1$. Let $(\\mathbf b,\\alpha)$ satisfy $B(\\mathbf b,\\alpha)=B_Z(\\mathbf b,\\alpha)=0$ and $\\partial_Z^{[j]}B(\\mathbf b,\\alpha)\\ne0$ for some $j\\ge2$. If more than $D$ distinct affine lines through $\\mathbf b$, parameterized by $L(0)=\\mathbf b$, carry polynomials $P_L$ with $\\deg P_L\\le d$, $P_L(0)=\\alpha$, and $B(L(t),P_L(t))\\equiv0$, then there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $Q(L(t))=P_L(t)$ on all supplied lines and $B(X,Y,Q(X,Y))\\equiv0$.","status":"refuted","title":"Higher-Hasse lifting claim"},{"dependencies":[],"id":"researcher-0003:P11.1","part":1,"proof_markdown":"Choose $f$ uniformly at random. For a fixed total-degree-at-most-$d$ polynomial $Q$, the number of points on which $f$ and $Q$ agree has distribution $\\operatorname{Bin}(p^2,1/p)$ and mean $p$. A Chernoff bound gives $$\\Pr\\!\\left[\\Pr_x[f(x)=Q(x)]\\ge\\frac4p\\right]\\le e^{-(4\\log4-3)p}.$$ There are at most $p^N$ such formal polynomials. The displayed hypothesis therefore makes the union-bound probability strictly less than one, yielding a table $f$ whose agreement with every $Q$ is below $4/p$. On each affine line, interpolate the values of $f$ at any $d+1$ distinct points by a polynomial of degree at most $d$. Every line label then agrees at at least $(d+1)/p$ of its points, so the same lower bound holds under uniform affine-line sampling. Along any growing choice $d=o(\\sqrt{p/\\log p})$, the global-to-local ratio is below $4/(d+1)$ and tends to zero. For every fixed $\\alpha>1$, the local scale $d/p$ eventually dominates every fixed multiple of $(d/p)^\\alpha$, proving the asserted exponent ceiling. This does not obstruct an exponent of $1-o(1)$.","source_step_id":"P11","statement_markdown":"Let $p$ be prime, let $101\\le d\\le p-1$, and set $N=\\binom{d+2}{2}$. If $$N\\log p<(4\\log4-3)p,$$ then there exist a point table $f:\\mathbb F_p^2\\to\\mathbb F_p$ and degree-at-most-$d$ labels on every affine line such that their uniform local agreement $\\varepsilon$ satisfies $$\\varepsilon\\ge\\frac{d+1}{p},$$ while every $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfies $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]<\\frac4p.$$ Consequently, for every fixed $\\alpha>1$ and fixed positive constants $C,c$, there are arbitrarily large such instances with $\\varepsilon\\ge C(d/p)^\\alpha$ but global agreement below $c\\varepsilon$ for every total-degree-at-most-$d$ polynomial.","status":"proved","title":"Uniform-sampling exponent ceiling"},{"dependencies":["researcher-0003:P6.1"],"id":"researcher-0003:P12.1","part":1,"proof_markdown":"This claim is refuted by the surviving nonexceptional root loss. Substituting $D=O(\\sqrt{dp/\\varepsilon})$ into the point bound from the vertical ramification cleanup gives $$\\frac{D-d}{p}=O\\!\\left(\\sqrt{\\frac{d/p}{\\varepsilon}}\\right)$$ up to the lower-order endpoint term recorded in the application. Making this loss $O(\\varepsilon)$ requires $$\\sqrt{\\frac{d/p}{\\varepsilon}}\\lesssim\\varepsilon,$$ which is equivalent, up to absolute constants, to $$\\varepsilon^3\\gtrsim\\frac{d}{p}.$$ Thus the algebraic improvement leaves the controlling exponent equal to $1/3$ rather than making it strictly larger.","source_step_id":"P12","statement_markdown":"Let $p$ be prime, let $101\\le d\\le p-1$, let $0<\\varepsilon\\le1$, and let $d\\le D<p$ satisfy $D=O(\\sqrt{dp/\\varepsilon})$. Then there exists an exponent $\\alpha>1/3$ such that the hypothesis $\\varepsilon\\gtrsim(d/p)^\\alpha$ suffices, using the vertical ramification cleanup alone, to make its surviving loss $O(\\varepsilon)$.","status":"refuted","title":"Algebraic exponent-improvement claim"}],"omitted_source_step_ids":[],"source_job_id":"researcher-0003","source_response_sha256":"b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420"}
+2026-09-14T08:47:44.401260Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at AbsolutePathBuf("/Users/kaizheng/.codex/shell_snapshots/01a09f09-1628-7332-b5a3-5ac7dbd330ac.1789374568001824000.sh"): Os { code: 2, kind: NotFound, message: "No such file or directory" }
+tokens used
+58,332

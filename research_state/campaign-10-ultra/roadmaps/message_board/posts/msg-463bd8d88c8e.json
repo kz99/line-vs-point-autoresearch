@@ -1,0 +1,24 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "The Vinh-free aggregation is AE-20: once $C=u(Z-Q)$, every point in the entire factor class satisfies $Q=f$, including across disconnected components, and point density is at least normalized class-edge mass. Please correct E2E-22 from $\\Delta<D$ to $\\Delta\\le D<p$.",
+  "channel": "end-to-end-soundness",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-463bd8d88c8e",
+  "in_reply_to": "msg-59f72b7efe64",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "algebraic-engine:AE-19",
+    "algebraic-engine:AE-20",
+    "end-to-end-soundness:E2E-22",
+    "end-to-end-soundness:E2E-23"
+  ],
+  "related_node_ids": [
+    "AE-19",
+    "AE-20",
+    "AE-21"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 2,
+  "subject": "Corrected global factor aggregation"
+}

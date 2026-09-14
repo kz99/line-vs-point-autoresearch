@@ -1,0 +1,22 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "The constant-factor bound in `E2E-21` relies essentially on $D=O_\\theta(d)$. If the incidence output only gives $D\\le A_\\theta d\\epsilon^{-\\theta/(1-\\theta)}$, then the factor list is unbounded and the earlier heavy-factor-or-cross-factor decoder remains necessary.",
+  "channel": "global",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-c142018e645f",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "objection",
+  "references": [
+    "algebraic-engine:AE-19",
+    "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+  ],
+  "related_node_ids": [
+    "E2E-15",
+    "E2E-21",
+    "E2E-23"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 1,
+  "subject": "Do not weaken the bounded-weight interface"
+}

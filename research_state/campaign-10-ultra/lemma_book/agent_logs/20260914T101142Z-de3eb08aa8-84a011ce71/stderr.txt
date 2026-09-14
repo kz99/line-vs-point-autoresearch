@@ -1,0 +1,575 @@
+2026-09-14T10:11:42.945201Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T10:11:42.945241Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+OpenAI Codex v0.150.0-alpha.12.2
+--------
+workdir: /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: ultra
+reasoning summaries: none
+session id: 01a09f66-b2cb-7233-b27e-b75056cd8bc0
+--------
+user
+You are the dedicated Lemma Writer for a mathematical autoresearch campaign.
+Post-edit every structured proof step in submission researcher-0009 into a clear lemma-book entry.
+You are an editor, not a researcher or verifier. The raw submission is immutable.
+
+RULE: A lemma statement contains only its quantified objects, hypotheses, and conclusion. It contains no motivation, derivation, commentary, proof sketch, interpretation, history, or explanation; put all such material in the proof.
+
+Preserve the exact mathematical content, hypotheses, status, and dependency closure of every
+source step. Never strengthen, weaken, repair, validate, refute, or omit a claim. A refuted source
+step remains visibly refuted. You may split one source step into two or more ordered entries when
+that materially improves comprehension; give the pieces consecutive part numbers and repeat the
+same source_step_id. Move any explanation removed from a statement into proof_markdown. Retain
+all substantive proof content. Titles are short noun phrases and contain no mathematical claim.
+
+Every source proof-step id must occur in at least one output entry. Set coverage_complete=true
+and omitted_source_step_ids=[] only after checking this. Use stable ids of the form
+researcher-0009:<source-step-id>.<part>. Enclose every mathematical expression in $...$ or $$...$$
+using KaTeX-supported LaTeX. Do not put mathematics in code spans, and do not leave TeX commands
+outside math delimiters. Use Markdown prose outside mathematics. The publication harness will
+reject any entry that does not parse with KaTeX.
+
+Set source_job_id to researcher-0009 and source_response_sha256 to 56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec.
+
+SOURCE SUBMISSION:
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "The construction is over the prime field F_p with 101<=d<p. The elements 0,1,...,d-1 are distinct, and 0,1,2 are available for the connectivity proof.",
+    "Every constructed line label is a formal univariate polynomial of degree exactly d<p with d distinct roots. Thus its accepted set has exactly d points; no t^p-t functional alias or inseparability occurs.",
+    "The global decoder Q=0 has total degree zero, hence total degree at most the ambient d. This does not analyze the excluded test parameter d=0.",
+    "No derivative is divided by. No Hasse derivative, discriminant, resultant, irreducibility assertion, or factorization theorem is used.",
+    "No interpolation multiplicity is used in the new lemmas. The KTZ weighted interpolant appears only in the explicitly attributed benchmark reconstruction.",
+    "The only divisions in the construction are real normalizations of probabilities and the fractional weight theta/(d-1); d-1 is positive because d>=101.",
+    "No Markov, union-bound, or Cauchy--Schwarz loss occurs in the new proof. The moment inequalities use exact counting and Jensen/discrete convexity.",
+    "The KTZ comparison separately records Chernoff plus a union bound and Chebyshev in Lemma 3.2; those cost constants but no power of epsilon.",
+    "Vertical lines are parameterized separately, so no division by slope is hidden."
+  ],
+  "claim_scope": "combinatorial_lemma",
+  "claimed_exponent": null,
+  "counterexample_attempts": [
+    "The explicit connected carrier at epsilon=d/p simultaneously minimizes every point- and line-degree factorial moment, has full line support, and requires fractional theta-reaching mass Theta(theta p/epsilon). It is a successful obstruction to incidence-only proof modules, but not to soundness because Q=0 agrees everywhere.",
+    "For any 1<=k<=p+1, accepting exactly k direction classes with f=0 and constant labels gives point degree exactly k and with-replacement point moments exactly epsilon^s, where epsilon=k/(p+1). This tests concentrated good directions. It also shows that the auxiliary line-compatibility graph can contain large bicliques, so the raw K_{2,2}-free conclusion must not be transferred to auxiliary graphs.",
+    "The prior modal random-table construction at ambient d=101 refutes a literal constant-times-d/p threshold with linear recovery, but its agreement is below every fixed (d/p)^(1-eta) trigger. It does not refute the campaign target.",
+    "Random f followed by degree-d interpolation on d+1 selected points of each line gives local agreement at least (d+1)/p and is useful for exponent ceilings above one. Controlling the maximum global agreement uniformly when d is near p is insufficient for the present target, so this attempt is not used.",
+    "Inseparable aliases based on t^p-t cannot occur in the explicit labels because their formal degree is d<p.",
+    "At d=p-1 the construction remains connected and all cover denominators remain positive; at the lower boundary d=101 the first admissible prime p=103 also satisfies every count."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "Local agreement epsilon",
+      "justification": "Double counting gives mean point degree (p+1)epsilon and mean line degree p epsilon without loss.",
+      "loss": "None",
+      "output_scale": "mu_P=(p+1)epsilon and mu_L=p epsilon",
+      "stage": "degree means",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Moment order s and mean normalized degree epsilon",
+      "justification": "Independent sampling with replacement gives an ordinary power moment; Jensen yields E[(degree/n)^s]>=epsilon^s.",
+      "loss": "An exact s-th-power density loss",
+      "output_scale": "at least epsilon^s; the constructed line side attains epsilon^s exactly",
+      "stage": "with-replacement higher moments",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Ordered distinct moment order s",
+      "justification": "Conditional counting gives E[(degree)_s]/(n)_s. Discrete convexity gives the adjacent-integer envelope J_s(mean)/(n)_s.",
+      "loss": "Finite-population falling-factorial correction, retained exactly",
+      "output_scale": "For the carrier, Gamma_s^L=(d)_s/(p)_s; for fixed s<= (d+1)/2 this lies between 2^(-(s-1))epsilon^s and epsilon^s",
+      "stage": "without-replacement higher moments",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Compatibility graph induced by agreement epsilon",
+      "justification": "Its edge count is sum_x binom(a_x,2), so its average degree is at least p*mu_P(mu_P-1)/(p+1), approximately epsilon^2 p^2 when mu_P is large.",
+      "loss": "Two simultaneous acceptances, hence a quadratic epsilon scale",
+      "output_scale": "compatibility density on the order of epsilon^2 in the regular regime",
+      "stage": "auxiliary graph formation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Auxiliary moment order t",
+      "justification": "Double counting t-seed sets and common neighbors gives M_t(H)=sum_L binom(deg_H(L),t)/binom(N,t); the average-degree specialization is at least N(epsilon^2/4)^t under the stated hypotheses.",
+      "loss": "The compatibility density is raised to the t-th power",
+      "output_scale": "density-only common-neighborhood certificate N(epsilon^2/4)^t",
+      "stage": "dependent-random-choice certificate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "t seed graphs and KTZ weighted interpolation degree D_t=16(floor(sqrt(dt))+1)",
+      "justification": "A target common neighbor supplies at most t distinct intersection roots. The KTZ transfer condition h>D_t therefore forces t>D_t>16sqrt(dt), hence t>256d.",
+      "loss": "At least a linear-in-d DRC moment order",
+      "output_scale": "For fixed d and epsilon=C(d/p)^(1/3), N(epsilon^2/4)^t=O(p^(2-2t/3)) tends to zero",
+      "stage": "all-common-neighbor DRC insertion",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Fixed reaching fraction theta on the connected carrier, epsilon=d/p",
+      "justification": "Capped-load double counting and uniform weights give theta p(p+1)/(d+1)<=OPT_theta<=theta p(p+1)/(d-1).",
+      "loss": "One inverse power of epsilon",
+      "output_scale": "OPT_theta=Theta(theta p/epsilon), with upper/lower ratio at most 102/100",
+      "stage": "fractional reaching barrier",
+      "status": "proved"
+    },
+    {
+      "input_scale": "KTZ pruned core at agreement epsilon",
+      "justification": "KTZ Lemma 3.2 gives |R|=O(p/epsilon); its Chernoff, union, and Chebyshev estimates cost only constants.",
+      "loss": "One inverse epsilon",
+      "output_scale": "|R|=O(p/epsilon)",
+      "stage": "KTZ selector reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "|R|=O(p/epsilon)",
+      "justification": "KTZ weighted interpolation compares Omega(D^3/d) monomials with O(|R|D) constraints.",
+      "loss": "Square root",
+      "output_scale": "D=O(sqrt(dp/epsilon))",
+      "stage": "KTZ interpolation reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(dp/epsilon)) and Theta(epsilon p) usable roots or directions",
+      "justification": "KTZ identity extension and lifting require D=O(epsilon p); squaring and rearranging gives epsilon^3=Omega(d/p).",
+      "loss": "Cubic compatibility condition",
+      "output_scale": "epsilon=Omega((d/p)^(1/3))",
+      "stage": "KTZ benchmark bottleneck",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A component with minimum degree Theta(epsilon p) and line measure O(epsilon)",
+      "justification": "The verified researcher-0002 budgets reduce to epsilon^2 p=Omega(d).",
+      "loss": "Extra small-component hypothesis",
+      "output_scale": "Conditional exponent 1/2 and global agreement Omega(epsilon)",
+      "stage": "prior conditional frontier",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Explicit connected carrier",
+      "justification": "The point table is identically zero.",
+      "loss": "None",
+      "output_scale": "One total-degree-at-most-d polynomial Q=0 has global agreement 1",
+      "stage": "constructed global output",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "For p=103,d=101 there are 10,712 affine lines and 1,081,912 accepted incidences. Exactly 10,403 points have accepted degree 102 and 206 have degree 101.",
+    "At p=103,d=101, the exact second distinct-star probabilities are Gamma_2^P=530351/551668\u22480.961359 and Gamma_2^L=5050/5253\u22480.961355; direct enumeration of the degree distribution gives the same values.",
+    "For p=1009,d=101, the third distinct-star probabilities computed from the formulas are Gamma_3^P\u22480.000976335 and Gamma_3^L\u22480.000976282, consistent with the predicted epsilon^3 scale but not used as proof.",
+    "When d=p-1, every line has p-1 accepted points, points have degree p-1 or p, the graph remains connected, and the cover bounds have denominators p and p-2.",
+    "For fixed d=101 and any t>256d, substituting epsilon=C(101/p)^(1/3) into the density-only auxiliary DRC term gives O(p^(2-2t/3)), which tends to zero. This is symbolic asymptotic verification, not a finite-field proof."
+  ],
+  "global_conclusion": "A fully quantified all-order moment and dependent-random-choice lemma is proved. Degree-based star moments are sharply minimized by a new explicit connected legal carrier at epsilon=d/p, while raw affine incidence DRC collapses because the graph is K_{2,2}-free and fractional universal reaching still costs Theta(theta p/epsilon). An exact auxiliary compatibility-graph DRC certificate is also proved, but its acceptance-density-only specialization raises epsilon^2 to a t-th power and is quantitatively useless for the t>256d root supply required by the direct KTZ interpolation route. These are proof-architecture obstructions and tools, not a soundness counterexample: the carrier has the perfect decoder Q=0. The unconditional benchmark exponent 1/3 is not improved.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Any finite field F_q, any dimension m, uniform incident-pair sampling, and a degree-d line table with acceptance epsilon>=C(d/q)^(1/3).",
+      "paper": "Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test",
+      "result_id": "Theorem 1.1",
+      "used_for": "Quoted benchmark only: in the m=2, q=p specialization, one total-degree-at-most-d polynomial has global agreement at least c epsilon.",
+      "version": "ECCC TR26-147, revision 1, accepted 16 August 2026"
+    },
+    {
+      "hypotheses": "The bivariate pruned accepted graph under Theorem 1.1's sufficiently large absolute constant; weighted degree (1,1,d); D<p and the displayed KTZ parameter inequalities.",
+      "paper": "Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test",
+      "result_id": "Lemmas 2.2, 3.2, and 4.1--4.3; Lemma 6.1",
+      "used_for": "Exact primary-source inputs for the selector size, weighted interpolation degree, distinct-root transfer, and lifting budgets. The cubic exponent calculation and the DRC insertion are reconstructed in this note, not quoted from KTZ.",
+      "version": "ECCC TR26-147, revision 1, accepted 16 August 2026"
+    }
+  ],
+  "next_tasks": [
+    "Develop a label-aware sparsify-or-decode dichotomy: the connected extremizer has broad support and worst possible incidence moments, but all its labels expose the common decoder Q=0.",
+    "Apply the auxiliary DRC lemma after stratifying lines by a common irreducible explainer factor, and require transversal intersection points rather than raw common neighbors.",
+    "Combine any such factor-sensitive localization with the verified component theorem of researcher-0002 to obtain the conditional exponent-1/2 decoder.",
+    "Investigate higher moments on the singular lifted locus isolated by researcher-0006; bare direction or compatibility moments cannot distinguish its singular obstructions.",
+    "Seek an auxiliary-graph pseudorandom extremizer realizable by legal line labels, or prove that absence of large root-rich common neighborhoods itself forces algebraic coherence."
+  ],
+  "note_markdown": "# Sharp Higher-Moment Envelopes and Raw-DRC Barriers for Good Affine Incidences\n\n## Abstract\n\nFix a prime $p$, an integer $101\\le d<p$, and dimension $m=2$. I prove sharp all-order lower bounds for point-centered and line-centered distinct-star moments of the accepted-incidence graph. The bounds are the adjacent-integer convex envelopes of falling factorials. I then give an explicit legal line-versus-point table at local agreement $\\epsilon_0=d/p$ whose accepted graph is connected, has full point and line support, and attains both families of moment bounds simultaneously for every admissible order. On the same table, every fractional family that reaches a $\\theta$ fraction of the accepted points of every line through other accepted lines has weight $\\Theta(\\theta p/\\epsilon_0)$, with exact bounds differing by at most $1.02$.\n\nEvery affine point-line incidence graph is $K_{2,2}$-free, so ordinary common-neighborhood dependent random choice on the raw accepted graph cannot produce a nontrivial biclique. I also prove an exact higher-moment DRC certificate for the auxiliary line-compatibility graph, including a concurrency correction that counts target lines receiving genuinely distinct intersection roots. Its acceptance-density-only specialization pays $\\epsilon^{2t}$ at moment order $t$; direct insertion into KTZ interpolation needs $t>256d$ and is therefore much worse than the cubic route.\n\nThese results isolate a proof-architecture barrier, not a soundness counterexample. The explicit extremizer has $f=0$, and the single total-degree-zero polynomial $Q=0$ agrees globally everywhere. Accordingly, the unconditional exponent-$1/3$ benchmark is not improved.\n\n## Test and Notation\n\nLet $\\mathcal L$ be the $p(p+1)$ affine lines of $\\mathbb F_p^2$. Each line contains $p$ points and each point lies on $p+1$ lines. A valid table consists of\n\n$$\nf:\\mathbb F_p^2\\to\\mathbb F_p,\n\\qquad\nP_L\\in\\mathbb F_p[t],\\quad \\deg P_L\\le d\\quad(L\\in\\mathcal L),\n$$\n\nusing a fixed affine parameterization of each line. Put\n\n$$\nE=\\{(x,L):x\\in L,\\ P_L(x)=f(x)\\},\n\\qquad\n\\epsilon=\\frac{|E|}{p^2(p+1)}.\n$$\n\nThis is exactly uniform affine-line sampling followed by a uniform point of the line. Because the incidence graph is biregular, it is equivalently a uniform point followed by a uniform incident line. Define accepted degrees\n\n$$\na_x=|\\{L\\ni x:(x,L)\\in E\\}|,\n\\qquad\nb_L=|\\{x\\in L:(x,L)\\in E\\}|.\n$$\n\nFor integers $u,s\\ge0$, let $(u)_s=u(u-1)\\cdots(u-s+1)$, with $(u)_0=1$. For $\\mu\\in[0,n]$, write $k=\\lfloor\\mu\\rfloor$ and $\\rho=\\mu-k$, and define the adjacent-integer interpolation\n\n$$\nJ_s(\\mu)=(1-\\rho)(k)_s+\\rho(k+1)_s.\n$$\n\nFor $0\\le s\\le p+1$, let $\\Gamma_s^P$ be the probability that, after choosing uniform $x$, an ordered $s$-tuple of distinct lines through $x$ consists entirely of accepted incidences. For $0\\le s\\le p$, define $\\Gamma_s^L$ analogously by choosing a uniform line and an ordered $s$-tuple of distinct points on it. Tildes, as in $\\widetilde\\Gamma_s^P$, denote independent sampling with replacement.\n\nFor fractional reaching, let $\\lambda_M\\ge0$ be line weights and set\n\n$$\nu_{x,L}(\\lambda)=\n\\min\\left\\{1,\n\\sum_{\\substack{M\\ni x,\\ M\\ne L\\\\(x,M)\\in E}}\\lambda_M\n\\right\\}.\n$$\n\nThe weights are $\\theta$-reaching if\n\n$$\n\\sum_{x:(x,L)\\in E}u_{x,L}(\\lambda)\\ge\\theta b_L\n$$\n\nfor every line $L$, where $0<\\theta\\le1$. Let $\\operatorname{OPT}_\\theta$ be the minimum of $\\sum_M\\lambda_M$.\n\nFinally, the auxiliary compatibility graph $H$ has vertex set $\\mathcal L$. Distinct lines are adjacent when they are nonparallel and both accept at their unique intersection.\n\n## Prior Results\n\nThe benchmark is [Kominers--Thaler--Zheng, Revision 1, Theorem 1.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/): over every finite field, acceptance $\\epsilon\\ge C(d/q)^{1/3}$ yields one total-degree-at-most-$d$ polynomial with global agreement at least $c\\epsilon$. Only its $m=2$, $q=p$ specialization is used here.\n\nThe following exponent explanation is my reconstruction, not a quoted KTZ theorem. KTZ Lemma 3.2 selects $|R|=O(p/\\epsilon)$ lines. Lemmas 2.2 and 4.1--4.2 give a weighted-degree explainer\n\n$$\nD=O\\!\\left(\\sqrt{dp/\\epsilon}\\right).\n$$\n\nLemma 4.3 and the lifting step require $D=O(\\epsilon p)$. Hence\n\n$$\n\\sqrt{dp/\\epsilon}=O(\\epsilon p)\n\\quad\\Longleftrightarrow\\quad\n\\epsilon^3=\\Omega(d/p).\n$$\n\nThe active verifier board accepts two earlier results. Researcher-0002 proves a component-sensitive decoder and a conditional exponent $1/2$ when a pruned component has line measure $O(\\epsilon)$. Researcher-0006 isolates singular lifted incidences as an algebraic obstruction. Researchers 0001, 0004, 0005, 0007, and 0008 are revise-grade; researcher-0003's exact aggregate theorem was rejected for omitted interpolation hypotheses. In particular, researcher-0004 proves uniform interpolation multiplicity exponent-neutral, while researcher-0008 proves the exact second collision identity and a nearly regular carrier. The present note independently re-proves and strengthens the latter to every moment order, gives a simpler explicit carrier, and proves that its accepted graph is connected. The live leaderboards, rather than the launch-time data manifest, determine these statuses.\n\n## Theorem\n\n**Theorem 1 (sharp raw moments and a connected simultaneous extremizer).** Fix a prime $p$ and $101\\le d<p$.\n\n1. For every valid table of agreement $\\epsilon$,\n\n$$\n\\Gamma_s^P=\n\\frac{\\mathbb E_x[(a_x)_s]}{(p+1)_s}\n\\ge\n\\frac{J_s((p+1)\\epsilon)}{(p+1)_s}\n\\qquad(0\\le s\\le p+1),\n$$\n\nand\n\n$$\n\\Gamma_s^L=\n\\frac{\\mathbb E_L[(b_L)_s]}{(p)_s}\n\\ge\n\\frac{J_s(p\\epsilon)}{(p)_s}\n\\qquad(0\\le s\\le p).\n$$\n\nFor every integer $r\\ge1$,\n\n$$\n\\widetilde\\Gamma_r^P\\ge\\epsilon^r,\n\\qquad\n\\widetilde\\Gamma_r^L\\ge\\epsilon^r.\n$$\n\n2. There is an explicit legal table with $\\epsilon_0=d/p$ such that its accepted graph is connected,\n\n$$\nb_L=d\\quad\\text{for every }L,\n$$\n\nand\n\n$$\na_x=\n\\begin{cases}\nd+1,&\\text{at exactly }pd\\text{ points},\\\\\nd,&\\text{at exactly }p(p-d)\\text{ points}.\n\\end{cases}\n$$\n\nIt simultaneously attains both distinct-star lower envelopes for every admissible $s$:\n\n$$\n\\Gamma_s^P=\n\\frac{(1-d/p)(d)_s+(d/p)(d+1)_s}{(p+1)_s},\n\\qquad\n\\Gamma_s^L=\\frac{(d)_s}{(p)_s}.\n$$\n\nIts line-centered with-replacement moments equal $\\epsilon_0^r$ for every $r\\ge1$.\n\n3. On this table, for every $0<\\theta\\le1$,\n\n$$\n\\frac{\\theta p(p+1)}{d+1}\n\\le\\operatorname{OPT}_\\theta\n\\le\n\\frac{\\theta p(p+1)}{d-1}.\n$$\n\n4. Every accepted affine point-line graph is $K_{2,2}$-free. Thus two or more distinct vertices sampled from either shore have at most one common neighbor on the other shore.\n\nThe constructed table has $f=0$, and $Q=0$ has global agreement one.\n\n**Theorem 2 (auxiliary compatibility-graph DRC with concurrency correction).** For any valid table, let $N=p(p+1)$, $\\mu=(p+1)\\epsilon$, and let $\\bar\\Delta$ be the average degree of $H$. Then\n\n$$\ne(H)=\\sum_x\\binom{a_x}{2},\n\\qquad\n\\bar\\Delta\\ge\\frac{p\\mu(\\mu-1)}{p+1}.\n$$\n\nFor every integer $1\\le t\\le\\lfloor\\bar\\Delta\\rfloor$, define\n\n$$\nM_t(H)=\n\\frac{\\sum_{L\\in\\mathcal L}\\binom{\\deg_H(L)}t}{\\binom Nt}.\n$$\n\nThere is a set $S$ of $t$ distinct seed lines with at least $M_t(H)$ common neighbors. If $1\\le h\\le t$ and $h_L$ is the number of distinct points among $\\{L\\cap M:M\\in S\\}$, then the same $S$ has at least\n\n$$\nM_t(H)-\n\\frac{\\binom t2(p+1)}{t-h+1}\n$$\n\ncommon-neighbor lines satisfying $h_L\\ge h$. Moreover,\n\n$$\nM_t(H)\\ge\nN\\frac{\\binom{\\lfloor\\bar\\Delta\\rfloor}t}{\\binom Nt}.\n$$\n\nIf $\\mu\\ge2$ and $\\bar\\Delta\\ge2t+2$, the last expression is at least $N(\\epsilon^2/4)^t$.\n\n## Proof or Conditional Proof\n\n### [P1] \u2014 proved: exact star identities\n\nDouble counting accepted incidences gives\n\n$$\n\\mathbb E_x a_x=(p+1)\\epsilon,\n\\qquad\n\\mathbb E_L b_L=p\\epsilon.\n$$\n\nAt a fixed point $x$, precisely $(a_x)_s$ ordered tuples of $s$ distinct incident lines are wholly accepted, out of $(p+1)_s$. Averaging proves the point identity. The line identity is identical with $b_L$ and $(p)_s$. No independence or concentration estimate is used.\n\n### [P2] \u2014 proved: sharp discrete moment lower envelope\n\nFor $F_s(j)=(j)_s$ on nonnegative integers,\n\n$$\n\\Delta F_s(j)=s(j)_{s-1},\n\\qquad\n\\Delta^2F_s(j)=s(s-1)(j)_{s-2}\\ge0.\n$$\n\nThus the piecewise-linear interpolation of $F_s$ is convex. Jensen gives\n\n$$\n\\mathbb E[(A)_s]\\ge J_s(\\mathbb EA)\n$$\n\nfor every integer-valued degree variable $A$. The minimizer need not be unique when the falling factorial vanishes, but the adjacent-integer mixture always attains the minimum. Applying this to [P1] proves the distinct-star inequalities.\n\nFor sampling with replacement,\n\n$$\n\\widetilde\\Gamma_r^P=\n\\mathbb E_x\\left(\\frac{a_x}{p+1}\\right)^r,\n\\qquad\n\\widetilde\\Gamma_r^L=\n\\mathbb E_L\\left(\\frac{b_L}{p}\\right)^r.\n$$\n\nOrdinary Jensen for $z\\mapsto z^r$ gives the two $\\epsilon^r$ bounds. Repeated samples must not be confused with distinct constraints: $a^r=\\sum_j {r\\brace j}(a)_j$ includes duplicate-line events.\n\n### [P3] \u2014 proved: explicit legal carrier\n\nLet\n\n$$\nS_d=\\{0,1,\\ldots,d-1\\}\\subset\\mathbb F_p\n$$\n\nand set $f(x,y)=0$. For a nonvertical line\n\n$$\nL_{m,b}(t)=(t,mt+b),\n$$\n\nset\n\n$$\nP_{m,b}(t)=\\prod_{s\\in S_d}(t+m-s).\n$$\n\nFor the vertical line $V_c(t)=(c,t)$, set\n\n$$\nP_{V_c}(t)=\\prod_{s\\in S_d}(t-s).\n$$\n\nAll labels have formal degree exactly $d<p$. A nonvertical incidence at $(x,y)$ accepts exactly when $x+m\\in S_d$. Therefore every point has exactly $d$ accepted nonvertical lines, one for each slope $m=s-x$, $s\\in S_d$. Its vertical line also accepts exactly when $y\\in S_d$. Hence the asserted point degrees hold. Every nonvertical line has the $d$ roots $t=s-m$, and every vertical line has the $d$ roots $t=s$. Thus every line degree is $d$.\n\nThere are $dp(p+1)$ accepted incidences, so\n\n$$\n\\epsilon_0=\n\\frac{dp(p+1)}{p^2(p+1)}=\frac dp.\n$$\n\n### [P4] \u2014 proved: connectivity\n\nBecause $d\\ge101$, the elements $0,1,2$ belong to $S_d$. For any $(x,y)$, put\n\n$$\nC=(x-1,y+x-1).\n$$\n\nThe points $(x,y)$ and $C$ lie on a line of slope $1-x$ and have acceptance values $x+(1-x)=1$ and $(x-1)+(1-x)=0$. The points $C$ and $(x,y+1)$ lie on a line of slope $2-x$ and have acceptance values $1$ and $2$. Thus $(x,y)$ and $(x,y+1)$ are joined by a four-edge accepted path.\n\nAlso, $(x,y)$ and $(x+1,y-x)$ share the accepted line of slope $-x$, since their acceptance values are $0$ and $1$. Vertical unit moves connect every point in a fixed column; the second move connects column $x$ to column $x+1$. Since $1$ generates the additive group of the prime field, every point vertex lies in one component. Every line vertex has $d>0$ accepted neighbors, so the full accepted bipartite graph is connected.\n\n### [P5] \u2014 proved: simultaneous moment extremality\n\nFor the carrier,\n\n$$\n(p+1)\\epsilon_0=d+d/p.\n$$\n\nThe point-degree distribution is exactly the adjacent mixture at this mean: degree $d+1$ has probability $d/p=\\epsilon_0$, and degree $d$ has probability $1-\\epsilon_0$. The line mean is $p\\epsilon_0=d$, and every line has that degree. Equality therefore holds in both inequalities of [P2] for every admissible $s$.\n\nIn particular, $\\Gamma_s^L=0$ for $s>d$ and $\\Gamma_s^P=0$ for $s>d+1$. Fixed mean alone cannot manufacture more distinct algebraic constraints than the local degree permits. At $s=2$,\n\n$$\n\\Gamma_2^P=\n\\epsilon_0^2-\n\\frac{\\epsilon_0(1-\\epsilon_0)}{p+1}.\n$$\n\nFor $2\\le s\\le(d+1)/2$,\n\n$$\n2^{-(s-1)}\\epsilon_0^s\n\\le\\frac{(d)_s}{(p)_s}\n\\le\\epsilon_0^s.\n$$\n\nThe exact product, rather than this coarse comparison, is retained in the theorem.\n\n### [P6] \u2014 proved: fractional other-line reaching\n\nWeights may be truncated to $[0,1]$ without changing capped loads; compactness therefore makes the minimum attainable. Put\n\n$$\nv_x=\n\\min\\left\\{1,\n\\sum_{M\\ni x:(x,M)\\in E}\\lambda_M\n\\right\\}.\n$$\n\nSince $u_{x,L}\\le v_x$, any $\\theta$-reaching weights satisfy\n\n$$\n\\theta d\\,p(p+1)\n\\le\\sum_x a_xv_x\n\\le(d+1)\\sum_xv_x\n\\le d(d+1)\\sum_M\\lambda_M.\n$$\n\nThis proves the lower bound. Conversely, assign every line weight $\\theta/(d-1)$. At an accepted incidence, at least $a_x-1\\ge d-1$ other accepted lines occur, so $u_{x,L}\\ge\\theta$. This proves the upper bound. Their ratio is\n\n$$\n\\frac{d+1}{d-1}\\le\\frac{102}{100}.\n$$\n\nSince $d=p\\epsilon_0$, the cost is $\\Theta(\\theta p/\\epsilon_0)$ with explicit constants.\n\n### [P7] \u2014 proved: raw DRC collapse\n\nTwo distinct affine points determine one affine line, and two distinct affine lines meet in at most one point. Hence the full affine incidence graph, and every accepted subgraph, contains no $K_{2,2}$. A common-neighborhood DRC sample containing at least two distinct raw vertices therefore has common neighborhood of size at most one. If sampling with replacement appears to give a large common neighborhood, after deduplication it is either a one-vertex star or has common neighborhood at most one.\n\nThis assertion concerns only the raw point-line graph. Auxiliary compatibility graphs may contain many four-cycles.\n\n### [P8] \u2014 proved: auxiliary edge count\n\nEvery unordered pair of accepted lines through $x$ gives one edge of $H$, and every edge has a unique intersection point. Therefore\n\n$$\ne(H)=\\sum_x\\binom{a_x}{2}.\n$$\n\nSince $N=p(p+1)$,\n\n$$\n\\bar\\Delta=\n\\frac{2e(H)}N\n=\frac{p\\,\\mathbb E_x[a_x(a_x-1)]}{p+1}\n\\ge\\frac{p\\mu(\\mu-1)}{p+1},\n$$\n\nwhere the last step is convexity. The sharper adjacent-integer form follows by replacing $\\mu(\\mu-1)$ with $J_2(\\mu)$.\n\n### [P9] \u2014 proved: exact auxiliary DRC moment\n\nCount pairs $(S,L)$ in which $S$ is a $t$-element subset of $N_H(L)$. Their number is\n\n$$\n\\sum_L\\binom{\\deg_H(L)}t.\n$$\n\nAveraging over the $\\binom Nt$ choices of $S$ gives a seed set with at least $M_t(H)$ common neighbors. Discrete convexity of $j\\mapsto\\binom jt$ gives\n\n$$\nM_t(H)\\ge\nN\\frac{\\binom{\\lfloor\\bar\\Delta\\rfloor}t}{\\binom Nt}.\n$$\n\nIf $\\bar\\Delta\\ge2t+2$, every numerator factor is at least $\\bar\\Delta/2$, so the ratio is at least $(\\bar\\Delta/(2N))^t$. By [P8] and $\\mu\\ge2$,\n\n$$\n\\frac{\\bar\\Delta}{2N}\n\\ge\n\\frac{\\mu(\\mu-1)}{2(p+1)^2}\n\\ge\\frac{\\epsilon^2}{4}.\n$$\n\nThis proves the simplified bound.\n\n### [P10] \u2014 proved: concurrency correction\n\nFix the seed set from [P9]. For a common neighbor $L$, partition the $t$ seed lines according to their intersection point with $L$. If fewer than $h$ distinct points occur, the partition creates at least $t-h+1$ colliding seed pairs. A fixed pair of seed lines can collide on at most the $p+1$ lines through their own intersection; a parallel pair contributes none. Double counting bad targets and colliding seed pairs gives\n\n$$\n|\\{L\\in N_H(S):h_L<h\\}|\n\\le\n\\frac{\\binom t2(p+1)}{t-h+1}.\n$$\n\nSubtracting this from the common-neighbor count proves Theorem 2. If an explainer vanishes identically on every seed graph, each of the $h_L$ distinct intersections is a distinct root on the target graph, so the correction measures the root supply relevant to interpolation.\n\n### [P11] \u2014 proved: direct DRC insertion is quantitatively insufficient\n\nIn the KTZ coefficient-count construction, interpolating $t$ seed graphs uses\n\n$$\nD_t=16(\\lfloor\\sqrt{dt}\\rfloor+1).\n$$\n\nEven before cleanup, transfer to a common-neighbor target needs $h_L>D_t$. Since $h_L\\le t$, this forces\n\n$$\nt>D_t>16\\sqrt{dt},\n\\qquad\\text{hence}\\qquad t>256d.\n$$\n\nReplacing the exact auxiliary moment $M_t(H)$ by the guarantee obtainable from acceptance density alone gives $N(\\epsilon^2/4)^t$. At the benchmark scale $\\epsilon=C(d/p)^{1/3}$, for fixed admissible $d$ and fixed $t>256d$,\n\n$$\nN(\\epsilon^2/4)^t\n=O_{C,d,t}(p^{2-2t/3})\n\\longrightarrow0.\n$$\n\nThus this black-box all-common-neighbor DRC certificate does not even guarantee one target line in the lower-boundary asymptotic regime. This does not rule out exploiting larger observed moments, label classes, or special structure in $H$.\n\n### [P12] \u2014 proved: scope of the obstruction\n\nThe carrier from [P3]--[P6] is connected, uses every line, attains all degree-distribution moment minima, and has essentially maximal universal reaching cost, yet $Q=0$ decodes it perfectly. Consequently, a valid stronger soundness proof may not treat moment regularity, broad support, connectivity, or large reaching cost alone as evidence of hardness. It must branch on polynomial-label or value coherence. This is a precise incidence-only obstruction, not a claim that every auxiliary or label-aware DRC argument fails.\n\n## Exponent Ledger\n\n| Stage | Input | Loss | Output/status |\n|---|---|---|---|\n| Degree means | $\\epsilon$ | none | $(p+1)\\epsilon$ and $p\\epsilon$; proved |\n| Repeated $s$-moment | $\\epsilon$ | $s$th power | at least $\\epsilon^s$; sharp; proved |\n| Distinct $s$-moment | mean degree | exact falling-factorial correction | $J_s(\\mu)/(n)_s$; sharp; proved |\n| Compatibility graph | $\\epsilon$ | two acceptances | density scale $\\epsilon^2$; proved |\n| Auxiliary DRC | compatibility density | $t$th power | density-only certificate $N(\\epsilon^2/4)^t$; proved under stated hypotheses |\n| Direct root supply | $D_t=16(\\lfloor\\sqrt{dt}\\rfloor+1)$ | $h\\le t$ | requires $t>256d$; proved |\n| Cubic-scale DRC substitution | $\\epsilon=C(d/p)^{1/3}$ | $\\epsilon^{2t}$ | $O(p^{2-2t/3})\\to0$ for fixed $t>256d$; proved |\n| Fractional reaching | $\\epsilon_0=d/p$ | one inverse $\\epsilon_0$ | $\\Theta(\\theta p/\\epsilon_0)$; proved |\n| KTZ selector | $\\epsilon$ | $\\epsilon^{-1}$ | $|R|=O(p/\\epsilon)$; quoted |\n| KTZ interpolation | $|R|$ | square root | $D=O(\\sqrt{dp/\\epsilon})$; reconstructed |\n| KTZ transfer | $D=O(\\epsilon p)$ | cubic comparison | $\\epsilon^3=\\Omega(d/p)$; reconstructed |\n| Constructed decoder | $f=0$ | none | global agreement $1$; proved |\n\nNo logarithmic, Markov, union, or Cauchy--Schwarz loss is hidden in the new results.\n\n## Counterexample Attempts\n\nThe connected carrier is a successful counterexample to any universal claim that higher degree moments, connectivity, full support, or fractional relaxation automatically produce an $o(p/\\epsilon)$ reaching family. It is not a soundness counterexample: the labels visibly share $Q=0$.\n\nConcentrated good directions give a complementary stress test. Choose $k$ projective directions, put $f=0$, label their lines by zero and every other line by one. Every point has accepted degree $k$, so all point-centered with-replacement moments equal $\\epsilon^s$ exactly for $\\epsilon=k/(p+1)$. However, the auxiliary compatibility graph between two accepted parallel classes contains a $K_{p,p}$. Thus raw-graph $K_{2,2}$-freeness cannot be asserted for $H$.\n\nThe prior modal construction at ambient $d=101$ genuinely refutes a uniform exact-linear trigger $C d/p$ with global recovery $c\\epsilon$, but its local agreement is $\\Theta(\\log p/(p\\log\\log p))$, below every fixed $(101/p)^{1-\\eta}$ trigger. It does not obstruct the long-term target.\n\nA random point table with linewise interpolation guarantees roughly $d/p$ local agreement and can rule out exponents above one in suitable regimes. It does not yield a uniform fixed-$\\eta$ counterexample, especially when $d$ approaches $p$, and is not used in the theorem.\n\nNo inseparable construction affects the proof: $d<p$ prevents $t^p-t$ aliases. At $d=p-1$ the carrier remains valid and connected. At the lower boundary $d=101$, the first possible prime $p=103$ satisfies all denominators and root counts.\n\n## Characteristic Audit\n\n- The field is exactly $\\mathbb F_p$ and $101\\le d<p$ throughout.\n- The set $S_d$ consists of distinct field elements. Each line label is a product of $d$ distinct linear factors and has exactly $d$ roots.\n- No derivative, Hasse derivative, discriminant, resultant, irreducibility, or absolute irreducibility input is used.\n- No field division by a derivative or slope occurs. Vertical lines are handled by their own parameterization.\n- The fractional division by $d-1$ is over the real weight space and is valid because $d\\ge101$.\n- The global polynomial $Q=0$ is a total-degree-at-most-$d$ decoder in an ambient test with $d>100$; no excluded degree parameter is analyzed.\n- The new proof has no Markov, union-bound, or Cauchy--Schwarz step. Discrete and ordinary Jensen losses are displayed exactly.\n- KTZ's Chernoff/union/Chebyshev selector losses belong only to the cited comparison and do not change its power of $\\epsilon$.\n- Finite computations were used only to check formulas, never to prove the asymptotic statements.\n\n## Limitations\n\nThe benchmark is not improved, and no new global soundness theorem is claimed. The explicit carrier lies at $\\epsilon_0=d/p$, below every fixed $(d/p)^{1-\\eta}$ trigger because $0<d/p<1$, and it has a perfect decoder.\n\nThe $K_{2,2}$ obstruction applies only to the raw point-line incidence graph. Auxiliary compatibility graphs, factor graphs, and lifted incidence graphs may contain large bicliques. Theorem 2 is therefore a usable diagnostic rather than an impossibility theorem for all DRC variants.\n\nThe density-only lower bound for $M_t(H)$ can be far from the actual higher moment. A successful proof could exploit unusually large compatibility moments, provided it also controls concurrency and singular lifted roots. Conversely, the present note gives no realizable pseudorandom example proving that the auxiliary bound is sharp.\n\nFinally, moment and cover data discard polynomial labels. The connected carrier shows exactly why a future proof needs a sparsify-or-decode dichotomy: when incidence sparsification fails, the failure may itself reflect a common algebraic explanation that should be decoded directly.",
+  "obstructions": [
+    "Every raw affine point-line incidence graph is K_{2,2}-free; standard common-neighborhood DRC with two distinct raw samples has common neighborhood at most one.",
+    "At epsilon=d/p, an explicit connected full-support legal table simultaneously attains all point- and line-degree factorial-moment minima.",
+    "On that same table, fractional theta-reaching requires Theta(theta p/epsilon) total line weight, with exact upper/lower ratio at most 1.02.",
+    "The acceptance-density-only auxiliary DRC certificate has scale N(epsilon^2/4)^t, while direct KTZ root transfer from t common seeds requires t>256d.",
+    "All these obstructions coexist with a perfect decoder, so they rule out incidence-blind proof modules rather than stronger soundness itself."
+  ],
+  "parameter_regime": "Prime p; integer 101<=d<p; m=2. Arbitrary local agreement epsilon in [0,1] for the universal moment and auxiliary-graph lemmas. Point-centered distinct moment order 0<=s<=p+1; line-centered order 0<=s<=p; with-replacement order r>=1. Explicit connected extremizer at epsilon_0=d/p. Fractional reaching parameter 0<theta<=1. Auxiliary DRC order 1<=t<=floor(average degree of H), with 1<=h<=t; the simplified epsilon bound additionally assumes (p+1)epsilon>=2 and average degree at least 2t+2.",
+  "proof_steps": [
+    {
+      "dependencies": [],
+      "id": "P1",
+      "proof": "Double counting gives E_x a_x=(p+1)epsilon and E_L b_L=p epsilon. Conditional on the center, the number of ordered distinct accepted tuples is the appropriate falling factorial.",
+      "statement": "For every valid table, Gamma_s^P=E_x[(a_x)_s]/(p+1)_s and Gamma_s^L=E_L[(b_L)_s]/(p)_s in their stated ranges.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P2",
+      "proof": "For F_s(j)=(j)_s, the second forward difference is s(s-1)(j)_(s-2)>=0. Jensen applied to its piecewise-linear interpolation gives the adjacent-integer envelope. Ordinary Jensen gives the with-replacement epsilon^r bounds.",
+      "statement": "For every valid table, the point and line distinct-star probabilities satisfy the J_s lower bounds, and both with-replacement probabilities are at least epsilon^r.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P3",
+      "proof": "Take S_d={0,...,d-1}, f=0, P_{m,b}(t)=product_{s in S_d}(t+m-s) on L_{m,b}(t)=(t,mt+b), and P_{V_c}(t)=product_{s in S_d}(t-s) on vertical lines. Root counting gives line degree d; slope counting gives point degree d or d+1.",
+      "statement": "For every prime p and 101<=d<p, the explicit table has epsilon=d/p, every line degree d, exactly pd point vertices of degree d+1, and every other point degree d.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "Using 0,1,2 in S_d gives a four-edge path from (x,y) to (x,y+1) through (x-1,y+x-1), and an accepted edge-path from (x,y) to (x+1,y-x). These moves connect all point vertices; every line has a neighbor.",
+      "statement": "The accepted graph of the explicit table is connected and uses every point and affine line.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "P5",
+      "proof": "The point-degree law is precisely the adjacent mixture at mean d+d/p, while the line degree is constantly d. Substitution gives equality in every moment envelope; constant line degree also gives repeated line moment (d/p)^r.",
+      "statement": "The explicit table simultaneously attains both distinct-star moment lower envelopes for every admissible order and attains the repeated line moment epsilon^r for every r>=1.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3"
+      ],
+      "id": "P6",
+      "proof": "Capped-load double counting gives theta*d*p(p+1)<=d(d+1)sum_M lambda_M. Uniform weights theta/(d-1) give the matching upper bound.",
+      "statement": "For every 0<theta<=1 on the explicit table, theta p(p+1)/(d+1)<=OPT_theta<=theta p(p+1)/(d-1).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P7",
+      "proof": "Two distinct affine points determine one line and two distinct affine lines meet in at most one point.",
+      "statement": "Every accepted affine incidence graph is K_{2,2}-free, and two or more distinct vertices on either shore have at most one common neighbor.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2"
+      ],
+      "id": "P8",
+      "proof": "Each auxiliary edge is a unique pair of accepted lines through its intersection. Summing binom(a_x,2) and applying convexity gives the displayed average-degree bound.",
+      "statement": "For every valid table, e(H)=sum_x binom(a_x,2) and average_degree(H)>=p*mu(mu-1)/(p+1), where mu=(p+1)epsilon.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P8"
+      ],
+      "id": "P9",
+      "proof": "Double count pairs consisting of a t-seed set contained in a vertex neighborhood. Discrete convexity of binom(j,t) yields the average-degree specialization; elementary product bounds give N(epsilon^2/4)^t.",
+      "statement": "For every 1<=t<=floor(average_degree(H)), some distinct t-line seed set has at least M_t(H)>=N binom(floor(average_degree(H)),t)/binom(N,t) common neighbors; under the extra stated hypotheses this is at least N(epsilon^2/4)^t.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P9"
+      ],
+      "id": "P10",
+      "proof": "A target with fewer than h distinct seed intersections creates at least t-h+1 colliding seed pairs. Each seed pair can collide on at most p+1 target lines. Double counting gives the subtraction term.",
+      "statement": "For every 1<=h<=t, the seed set in P9 has at least M_t(H)-binom(t,2)(p+1)/(t-h+1) common neighbors with at least h distinct seed-intersection points.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P10",
+        "KTZ Lemmas 2.2 and 4.1--4.3"
+      ],
+      "id": "P11",
+      "proof": "KTZ's degree D_t=16(floor(sqrt(dt))+1) and h<=t make h>D_t imply t>256d. At epsilon=C(d/p)^(1/3) with fixed d,t, the density-only term is O(p^(2-2t/3)), hence tends to zero.",
+      "statement": "For fixed admissible d and t>256d, the acceptance-density-only auxiliary DRC certificate is asymptotically vacuous at the cubic scale as p tends to infinity.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7"
+      ],
+      "id": "P12",
+      "proof": "The same connected table has full support, sharp minimal moment profiles, and sharp universal reaching cost, while Q=0 agrees at every point.",
+      "statement": "Connectivity, full support, degree-moment extremality, and Theta(p/epsilon) universal reaching cost do not individually or jointly obstruct a single perfect global decoder.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "KTZ Theorem 1.1",
+        "KTZ Lemmas 3.2 and 4.1--4.3"
+      ],
+      "id": "P13",
+      "proof": "Substitute |R|=O(p/epsilon) into D=O(sqrt(d|R|)), then impose D=O(epsilon p). Squaring and rearranging gives epsilon^3=Omega(d/p).",
+      "statement": "The KTZ selector/interpolation/transfer chain reconstructs the benchmark exponent 1/3 and global agreement Omega(epsilon).",
+      "status": "proved"
+    }
+  ],
+  "result_status": "proved",
+  "sampling_model": "Choose L uniformly among the p(p+1) affine lines of F_p^2, then x uniformly among the p points of L. Equivalently choose x uniformly and then one of its p+1 incident lines uniformly. Distinct-star moments explicitly use ordered sampling without replacement; repeated moments explicitly use independent sampling with replacement.",
+  "theorem_statement": "Fix a prime p, an integer 101<=d<p, and m=2. For every valid table of local agreement epsilon, if a_x and b_L are accepted point and line degrees and J_s is the adjacent-integer interpolation of k\u21a6(k)_s, then Gamma_s^P>=J_s((p+1)epsilon)/(p+1)_s for 0<=s<=p+1 and Gamma_s^L>=J_s(p epsilon)/(p)_s for 0<=s<=p; with-replacement moments are at least epsilon^r. There is an explicit connected legal table at epsilon=d/p attaining both distinct-star envelopes simultaneously for every admissible s, with every line degree d and point degrees d or d+1. For every 0<theta<=1 its fractional other-line reaching optimum lies between theta p(p+1)/(d+1) and theta p(p+1)/(d-1), while Q=0 agrees globally everywhere. Every raw accepted graph is K_{2,2}-free. For the auxiliary line-compatibility graph H, an exact t-th degree-moment DRC bound and a concurrency correction yield at least M_t(H)-binom(t,2)(p+1)/(t-h+1) common-neighbor target lines with h distinct seed intersections.",
+  "title": "Sharp Higher-Moment Envelopes and Raw-DRC Barriers for Good Affine Incidences"
+}
+
+2026-09-14T10:11:43.051208Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-14T10:11:43.366266Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T10:11:43.366279Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+codex
+{"coverage_complete":false,"lemmas":[],"omitted_source_step_ids":["P1","P2","P3","P4","P5","P6","P7","P8","P9","P10","P11","P12","P13"],"source_job_id":"researcher-0009","source_response_sha256":"56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec"}
+2026-09-14T10:12:04.891286Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09f66-b2cb-7233-b27e-b75056cd8bc0
+2026-09-14T10:12:39.757447Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09f67-6c2a-7b93-a01c-a89c9ae36786
+2026-09-14T10:12:49.790739Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09f67-2266-7e63-8244-bd916a7a739e
+exec
+/bin/zsh -lc "rg --files | rg 'researcher-0009|response\\.json"'$'"'" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+research_state/campaign-10-ultra/submissions/researcher-0006/response.json
+research_state/campaign-10-ultra/submissions/researcher-0001/response.json
+research_state/campaign-10-ultra/submissions/researcher-0008/response.json
+research_state/campaign-10-ultra/submissions/researcher-0009/response.json
+research_state/campaign-10-ultra/submissions/researcher-0009/manifest.json
+research_state/campaign-10-ultra/submissions/researcher-0009/note.md
+research_state/campaign-10-ultra/submissions/researcher-0007/response.json
+research_state/campaign-10-ultra/submissions/researcher-0002/response.json
+research_state/campaign-10-ultra/submissions/researcher-0005/response.json
+research_state/campaign-10-ultra/submissions/researcher-0004/response.json
+research_state/campaign-10-ultra/submissions/researcher-0003/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/submissions/researcher-0001/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/submissions/researcher-0002/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/submissions/researcher-0004/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/submissions/researcher-0003/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/agent_logs/20260914T055635Z-4267c51f9c-0610af7024/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/agent_logs/20260914T055635Z-9f830b71a7-5ce0d94dcb/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/agent_logs/20260914T055635Z-2c397e5716-b51795aa9e/response.json
+research_state/campaign-10-ultra/superseded/pre-d-101/agent_logs/20260914T055635Z-904d548e93-52af3c92f7/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0006/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0004/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0001/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0003/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0008/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0007/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T082927Z-d06269cb4e-ae05ed0087/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0002/response.json
+research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T092159Z-2e4fb0f2f9-431395d9d3/response.json
+research_state/campaign-10-ultra/lemma_book/submissions/researcher-0005/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T075418Z-fc1b8097cb-06ce1fc3f0/response.json
+research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T084006Z-e6ec7ee3d1-fbeba7dab5/response.json
+research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T084006Z-2d657d1fcf-d2da9a1643/response.json
+research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T084006Z-4df653659c-53bd0fa212/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T085946Z-ed270f23b7-a2c5d78a0f/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T094911Z-280aca2e5d-1676ad1a59/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T091128Z-4ae9efcc0f-6ce105d296/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T092947Z-000c57a80d-61f1ea8a8f/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T081146Z-f55344848c-6437e14448/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T092916Z-9ff1eacdf5-e80cdfd890/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T085605Z-14545b1dfb-cde01c3407/response.json
+research_state/campaign-10-ultra/lemma_book/agent_logs/20260914T084744Z-0231ce3337-950a065d23/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T075740Z-ba28d1dbc3-aa0fd58215/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T085605Z-3979964e75-d3ad4bb986/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T073123Z-632f121793-6a59efe9ce/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T075740Z-55b68af91a-95c74ee5f1/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-925e3f8372-0262a96aa2/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T085605Z-89f9039633-aeffd666ba/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T075740Z-94b12c6bba-af7943c943/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-815b490f84-139389c83e/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T073123Z-060531b7dc-692a8ef10a/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-d7de3aa5af-05f544648e/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T075740Z-21cbc0c354-32382017ee/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T085605Z-05fbc9a6aa-63a2d46838/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T073123Z-00185b8ba5-fee2d1e8b1/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-1851a95ded-115cdec338/response.json
+research_state/campaign-10-ultra/agent_logs/20260914T073123Z-c882bdf030-8de1018296/response.json
+
+exec
+/bin/zsh -lc "jq '{source_job_id, coverage_complete, omitted_source_step_ids, lemma_count:(.lemmas|length), sample:.lemmas[0]}' research_state/campaign-10-ultra/lemma_book/submissions/researcher-0008/response.json" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+{
+  "source_job_id": "researcher-0008",
+  "coverage_complete": true,
+  "omitted_source_step_ids": [],
+  "lemma_count": 12,
+  "sample": {
+    "dependencies": [
+      "Hall's marriage theorem, proved in the step by regular degree counting"
+    ],
+    "id": "researcher-0008:P1.1",
+    "part": 1,
+    "proof_markdown": "For each $b\\in\\mathbb F_p$, add a dummy point vertex $z_b$. Join $z_b$ to the $p$ finite-slope lines $y=mx+b$, with $m\\in\\mathbb F_p$, and to the vertical line $x=b$. The augmented graph has $p^2+p=p(p+1)$ point-side vertices and $p(p+1)$ line-side vertices. Every real or dummy point has degree $p+1$, and every affine line has its $p$ real points and one dummy neighbor, so the augmented graph is balanced and $(p+1)$-regular.\n\nFor any left-side vertex set $S$, its $(p+1)\\lvert S\\rvert$ edges enter $N(S)$, whose vertices have at most $(p+1)\\lvert N(S)\\rvert$ incident slots. Hence\n\n$$(p+1)\\lvert S\\rvert\\le (p+1)\\lvert N(S)\\rvert,$$\n\nso Hall's condition holds and the augmented graph has a perfect matching. Removing that matching preserves balanced regularity. Iteration decomposes the augmented graph into $p+1$ perfect matchings, which are taken as colors.\n\nAfter the dummy edges are deleted, every real point retains exactly one edge of every color. Every affine line loses exactly the color of its unique dummy edge. Each perfect matching contains one edge at each of the $p$ dummy vertices, with distinct line endpoints, so each color is absent from exactly $p$ affine lines.",
+    "source_step_id": "P1",
+    "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, let $\\mathcal P=\\mathbb F_p^2$, let $\\mathcal L$ be the set of affine lines in $\\mathbb F_p^2$, and let\n\n$$E=\\{(x,L)\\in\\mathcal P\\times\\mathcal L:x\\in L\\}.$$\n\nThere is a partition of $E$ into $p+1$ color classes such that every point is incident to exactly one edge of each color, every affine line is incident to exactly one edge of all but one color and to no edge of the remaining color, and every color is omitted by exactly $p$ affine lines.",
+    "status": "proved",
+    "title": "Affine incidence decomposition"
+  }
+}
+
+exec
+/bin/zsh -lc "jq -r '.lemmas[] | [.source_step_id, (.dependencies|join(\" | \"))] | @tsv' research_state/campaign-10-ultra/lemma_book/submissions/researcher-0008/response.json | head -12" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+P1	Hall's marriage theorem, proved in the step by regular degree counting
+P2	P1 | Hall's marriage theorem
+P3	P2
+P4	P2 | P3
+P5	P2 | P3
+P6	
+P7	P6
+P8	Kominers–Thaler–Zheng Revision 1, Lemmas 3.2 and 4.1–4.3
+P9	Kominers–Thaler–Zheng Revision 1, Lemmas 2.1 and 6.2
+P10	Stevens–de Zeeuw Theorems 3 and 4
+P10	Stevens–de Zeeuw Theorems 3 and 4
+P11	P4 | P5 | P6 | P7
+
+collab: Wait
+exec
+/bin/zsh -lc "jq '.proof_steps' research_state/campaign-10-ultra/submissions/researcher-0009/response.json" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+[
+  {
+    "dependencies": [],
+    "id": "P1",
+    "proof": "Double counting gives E_x a_x=(p+1)epsilon and E_L b_L=p epsilon. Conditional on the center, the number of ordered distinct accepted tuples is the appropriate falling factorial.",
+    "statement": "For every valid table, Gamma_s^P=E_x[(a_x)_s]/(p+1)_s and Gamma_s^L=E_L[(b_L)_s]/(p)_s in their stated ranges.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P1"
+    ],
+    "id": "P2",
+    "proof": "For F_s(j)=(j)_s, the second forward difference is s(s-1)(j)_(s-2)>=0. Jensen applied to its piecewise-linear interpolation gives the adjacent-integer envelope. Ordinary Jensen gives the with-replacement epsilon^r bounds.",
+    "statement": "For every valid table, the point and line distinct-star probabilities satisfy the J_s lower bounds, and both with-replacement probabilities are at least epsilon^r.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [],
+    "id": "P3",
+    "proof": "Take S_d={0,...,d-1}, f=0, P_{m,b}(t)=product_{s in S_d}(t+m-s) on L_{m,b}(t)=(t,mt+b), and P_{V_c}(t)=product_{s in S_d}(t-s) on vertical lines. Root counting gives line degree d; slope counting gives point degree d or d+1.",
+    "statement": "For every prime p and 101<=d<p, the explicit table has epsilon=d/p, every line degree d, exactly pd point vertices of degree d+1, and every other point degree d.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P3"
+    ],
+    "id": "P4",
+    "proof": "Using 0,1,2 in S_d gives a four-edge path from (x,y) to (x,y+1) through (x-1,y+x-1), and an accepted edge-path from (x,y) to (x+1,y-x). These moves connect all point vertices; every line has a neighbor.",
+    "statement": "The accepted graph of the explicit table is connected and uses every point and affine line.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P2",
+      "P3"
+    ],
+    "id": "P5",
+    "proof": "The point-degree law is precisely the adjacent mixture at mean d+d/p, while the line degree is constantly d. Substitution gives equality in every moment envelope; constant line degree also gives repeated line moment (d/p)^r.",
+    "statement": "The explicit table simultaneously attains both distinct-star moment lower envelopes for every admissible order and attains the repeated line moment epsilon^r for every r>=1.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P3"
+    ],
+    "id": "P6",
+    "proof": "Capped-load double counting gives theta*d*p(p+1)<=d(d+1)sum_M lambda_M. Uniform weights theta/(d-1) give the matching upper bound.",
+    "statement": "For every 0<theta<=1 on the explicit table, theta p(p+1)/(d+1)<=OPT_theta<=theta p(p+1)/(d-1).",
+    "status": "proved"
+  },
+  {
+    "dependencies": [],
+    "id": "P7",
+    "proof": "Two distinct affine points determine one line and two distinct affine lines meet in at most one point.",
+    "statement": "Every accepted affine incidence graph is K_{2,2}-free, and two or more distinct vertices on either shore have at most one common neighbor.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P1",
+      "P2"
+    ],
+    "id": "P8",
+    "proof": "Each auxiliary edge is a unique pair of accepted lines through its intersection. Summing binom(a_x,2) and applying convexity gives the displayed average-degree bound.",
+    "statement": "For every valid table, e(H)=sum_x binom(a_x,2) and average_degree(H)>=p*mu(mu-1)/(p+1), where mu=(p+1)epsilon.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P8"
+    ],
+    "id": "P9",
+    "proof": "Double count pairs consisting of a t-seed set contained in a vertex neighborhood. Discrete convexity of binom(j,t) yields the average-degree specialization; elementary product bounds give N(epsilon^2/4)^t.",
+    "statement": "For every 1<=t<=floor(average_degree(H)), some distinct t-line seed set has at least M_t(H)>=N binom(floor(average_degree(H)),t)/binom(N,t) common neighbors; under the extra stated hypotheses this is at least N(epsilon^2/4)^t.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P9"
+    ],
+    "id": "P10",
+    "proof": "A target with fewer than h distinct seed intersections creates at least t-h+1 colliding seed pairs. Each seed pair can collide on at most p+1 target lines. Double counting gives the subtraction term.",
+    "statement": "For every 1<=h<=t, the seed set in P9 has at least M_t(H)-binom(t,2)(p+1)/(t-h+1) common neighbors with at least h distinct seed-intersection points.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P10",
+      "KTZ Lemmas 2.2 and 4.1--4.3"
+    ],
+    "id": "P11",
+    "proof": "KTZ's degree D_t=16(floor(sqrt(dt))+1) and h<=t make h>D_t imply t>256d. At epsilon=C(d/p)^(1/3) with fixed d,t, the density-only term is O(p^(2-2t/3)), hence tends to zero.",
+    "statement": "For fixed admissible d and t>256d, the acceptance-density-only auxiliary DRC certificate is asymptotically vacuous at the cubic scale as p tends to infinity.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7"
+    ],
+    "id": "P12",
+    "proof": "The same connected table has full support, sharp minimal moment profiles, and sharp universal reaching cost, while Q=0 agrees at every point.",
+    "statement": "Connectivity, full support, degree-moment extremality, and Theta(p/epsilon) universal reaching cost do not individually or jointly obstruct a single perfect global decoder.",
+    "status": "proved"
+  },
+  {
+    "dependencies": [
+      "KTZ Theorem 1.1",
+      "KTZ Lemmas 3.2 and 4.1--4.3"
+    ],
+    "id": "P13",
+    "proof": "Substitute |R|=O(p/epsilon) into D=O(sqrt(d|R|)), then impose D=O(epsilon p). Squaring and rearranging gives epsilon^3=Omega(d/p).",
+    "statement": "The KTZ selector/interpolation/transfer chain reconstructs the benchmark exponent 1/3 and global agreement Omega(epsilon).",
+    "status": "proved"
+  }
+]
+
+exec
+/bin/zsh -lc "rg -n \"KaTeX|katex|coverage_complete|omitted_source_step_ids\" research_state/campaign-10-ultra -g '*.py' -g '*.js' -g '*.ts' -g '*.sh' | head -80" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+2026-09-14T10:17:23.221156Z  WARN codex_core::hook_runtime: failed to resolve parent transcript path for subagent hook parent_thread_id=01a09f66-b2cb-7233-b27e-b75056cd8bc0 error=invalid thread-store request: no rollout found for thread id 01a09f66-b2cb-7233-b27e-b75056cd8bc0
+collab: Wait
+collab: Wait
+collab: Wait
+collab: Wait
+2026-09-14T10:20:22.222132Z  WARN codex_core::hook_runtime: failed to resolve parent transcript path for subagent hook parent_thread_id=01a09f66-b2cb-7233-b27e-b75056cd8bc0 error=invalid thread-store request: no rollout found for thread id 01a09f66-b2cb-7233-b27e-b75056cd8bc0
+2026-09-14T10:21:07.609555Z  WARN codex_core::hook_runtime: failed to resolve parent transcript path for subagent hook parent_thread_id=01a09f66-b2cb-7233-b27e-b75056cd8bc0 error=invalid thread-store request: no rollout found for thread id 01a09f66-b2cb-7233-b27e-b75056cd8bc0
+2026-09-14T10:22:08.889249Z  WARN codex_core::hook_runtime: failed to resolve parent transcript path for subagent hook parent_thread_id=01a09f66-b2cb-7233-b27e-b75056cd8bc0 error=invalid thread-store request: no rollout found for thread id 01a09f66-b2cb-7233-b27e-b75056cd8bc0
+codex
+{"coverage_complete":true,"lemmas":[{"dependencies":[],"id":"researcher-0009:P1.1","part":1,"proof_markdown":"The table has $p^2(p+1)\\epsilon$ accepted incidences. Double counting them by their point and line endpoints gives\n\n$$\\sum_x a_x=p^2(p+1)\\epsilon,\\qquad \\sum_L b_L=p^2(p+1)\\epsilon.$$\n\nSince there are $p^2$ points and $p(p+1)$ affine lines,\n\n$$\\mathbb E_x[a_x]=(p+1)\\epsilon,\\qquad \\mathbb E_L[b_L]=p\\epsilon.$$\n\nCondition on a point $x$. Among the $(p+1)_s$ ordered tuples of $s$ distinct lines through $x$, exactly $(a_x)_s$ consist entirely of accepted incidences. Averaging over $x$ proves the point identity. Likewise, conditioned on a line $L$, exactly $(b_L)_s$ of the $(p)_s$ ordered tuples of $s$ distinct points on $L$ are entirely accepted. Averaging over $L$ proves the line identity. The convention $(u)_0=1$ gives both identities at $s=0$. No independence or concentration estimate is used.","source_step_id":"P1","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let a valid affine line-versus-point table over $\\mathbb F_p^2$ have agreement $\\epsilon$, accepted point degrees $a_x$, and accepted line degrees $b_L$. For integers $u,s\\ge0$, write $(u)_0=1$ and, for $s\\ge1$, $(u)_s=u(u-1)\\cdots(u-s+1)$. For $0\\le s\\le p+1$, let $\\Gamma_s^P$ be the probability that, after choosing a uniform point and an ordered $s$-tuple of distinct incident lines uniformly, all sampled incidences are accepted. For $0\\le s\\le p$, define $\\Gamma_s^L$ analogously using a uniform line and an ordered $s$-tuple of distinct points on it. Then\n\n$$\\Gamma_s^P=\\frac{\\mathbb E_x[(a_x)_s]}{(p+1)_s}\\qquad(0\\le s\\le p+1),$$\n\nand\n\n$$\\Gamma_s^L=\\frac{\\mathbb E_L[(b_L)_s]}{(p)_s}\\qquad(0\\le s\\le p).$$","status":"proved","title":"Distinct-star counts"},{"dependencies":["P1"],"id":"researcher-0009:P2.1","part":1,"proof_markdown":"For $F_s(j)=(j)_s$, the forward differences satisfy\n\n$$\\Delta F_s(j)=s(j)_{s-1}$$\n\nand, for $s\\ge2$,\n\n$$\\Delta^2F_s(j)=s(s-1)(j)_{s-2}\\ge0.$$\n\nFor $s=0$ and $s=1$, the function is respectively constant and affine. Thus the piecewise-linear interpolation of $j\\mapsto(j)_s$ is convex. Jensen's inequality for any integer-valued degree variable $A$ gives\n\n$$\\mathbb E[(A)_s]\\ge J_s(\\mathbb E[A]).$$\n\nThe minimizer need not be unique when the falling factorial vanishes, but the adjacent-integer mixture always attains the minimum. Applying this inequality to $A=a_x$ and $A=b_L$, using the two mean identities from P1, proves the distinct-star bounds.\n\nFor sampling with replacement, conditioning on the center gives\n\n$$\\widetilde\\Gamma_r^P=\\mathbb E_x\\left[\\left(\\frac{a_x}{p+1}\\right)^r\\right],\\qquad \\widetilde\\Gamma_r^L=\\mathbb E_L\\left[\\left(\\frac{b_L}{p}\\right)^r\\right].$$\n\nOrdinary Jensen applied to $z\\mapsto z^r$ gives both lower bounds. Repeated samples must not be confused with distinct constraints: if $S(r,j)$ denotes a Stirling number of the second kind, then\n\n$$a^r=\\sum_{j=0}^r S(r,j)(a)_j,$$\n\nso the repeated-sampling moments include events in which sampled lines or points coincide.","source_step_id":"P2","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let a valid affine line-versus-point table over $\\mathbb F_p^2$ have agreement $\\epsilon$. For every real $\\mu\\ge0$, put $k=\\lfloor\\mu\\rfloor$ and $\\rho=\\mu-k$, and define\n\n$$J_s(\\mu)=(1-\\rho)(k)_s+\\rho(k+1)_s.$$\n\nFor every integer $r\\ge1$, let $\\widetilde\\Gamma_r^P$ and $\\widetilde\\Gamma_r^L$ be the analogous all-accepted probabilities when the incident lines or points are sampled independently with replacement. Then\n\n$$\\Gamma_s^P\\ge\\frac{J_s((p+1)\\epsilon)}{(p+1)_s}\\qquad(0\\le s\\le p+1),$$\n\n$$\\Gamma_s^L\\ge\\frac{J_s(p\\epsilon)}{(p)_s}\\qquad(0\\le s\\le p),$$\n\nand\n\n$$\\widetilde\\Gamma_r^P\\ge\\epsilon^r,\\qquad \\widetilde\\Gamma_r^L\\ge\\epsilon^r\\qquad(r\\ge1).$$","status":"proved","title":"Degree-moment envelopes"},{"dependencies":[],"id":"researcher-0009:P3.1","part":1,"proof_markdown":"Because $d<p$, the elements of $S_d$ are distinct in $\\mathbb F_p$, and every displayed label is a monic polynomial of formal degree exactly $d<p$ with $d$ distinct roots.\n\nOn a nonvertical line $L_{m,b}$, an incidence with parameter $t$ is accepted exactly when\n\n$$t+m\\in S_d.$$\n\nThe accepted parameters are the $d$ distinct elements $t=s-m$, with $s\\in S_d$. On a vertical line, the accepted parameters are exactly the $d$ elements of $S_d$. Hence $b_L=d$ for every affine line.\n\nAt a point $(x,y)$, a nonvertical line of slope $m$ accepts exactly when $x+m\\in S_d$. For every $s\\in S_d$, there is one such slope, namely $m=s-x$, so every point lies on exactly $d$ accepted nonvertical lines. Its vertical line accepts precisely when $y\\in S_d$. Thus $a_{(x,y)}=d+1$ when $y\\in S_d$ and $a_{(x,y)}=d$ otherwise. There are $p|S_d|=pd$ points of the first kind and $p(p-d)$ of the second.\n\nFinally, the accepted graph has $dp(p+1)$ edges out of $p^2(p+1)$ incidences, so\n\n$$\\epsilon_0=\\frac{dp(p+1)}{p^2(p+1)}=\\frac dp.$$","source_step_id":"P3","statement_markdown":"Let $p$ be prime and let $101\\le d<p$. Define\n\n$$S_d=\\{0,1,\\ldots,d-1\\}\\subset\\mathbb F_p,\\qquad f(x,y)=0.$$\n\nFor every $m,b\\in\\mathbb F_p$, parameterize the nonvertical line $L_{m,b}$ by $L_{m,b}(t)=(t,mt+b)$ and assign it the label\n\n$$P_{m,b}(t)=\\prod_{s\\in S_d}(t+m-s).$$\n\nFor every $c\\in\\mathbb F_p$, parameterize the vertical line $V_c$ by $V_c(t)=(c,t)$ and assign it the label\n\n$$P_{V_c}(t)=\\prod_{s\\in S_d}(t-s).$$\n\nThese data form a valid affine line-versus-point table of agreement $\\epsilon_0=d/p$. Every label has formal degree exactly $d$, every affine line has accepted degree $d$, exactly $pd$ points have accepted degree $d+1$, and the remaining $p(p-d)$ points have accepted degree $d$.","status":"proved","title":"Affine carrier"},{"dependencies":["P3"],"id":"researcher-0009:P4.1","part":1,"proof_markdown":"The elements $0$, $1$, and $2$ belong to $S_d$. Fix $(x,y)\\in\\mathbb F_p^2$ and put\n\n$$C=(x-1,y+x-1).$$\n\nThe points $(x,y)$ and $C$ lie on a line of slope $1-x$. Their acceptance values are respectively\n\n$$x+(1-x)=1\\qquad\\text{and}\\qquad (x-1)+(1-x)=0,$$\n\nso both incidences are accepted. The points $C$ and $(x,y+1)$ lie on a line of slope $2-x$, where their acceptance values are respectively\n\n$$(x-1)+(2-x)=1\\qquad\\text{and}\\qquad x+(2-x)=2.$$\n\nThus $(x,y)$ and $(x,y+1)$ are joined by a four-edge accepted path through $C$ and the two intervening line vertices.\n\nThe points $(x,y)$ and $(x+1,y-x)$ lie on the line of slope $-x$, and their acceptance values are $0$ and $1$. Hence an accepted two-edge path joins these points. Repeated vertical unit moves connect every point in a fixed column, and the second move connects column $x$ to column $x+1$. Since $1$ generates the additive group of the prime field $\\mathbb F_p$, every point vertex lies in one component. Every affine line has $d>0$ accepted neighbors by P3, so every line vertex lies in the same component. P3 also gives positive degree at every point.","source_step_id":"P4","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let the valid table be the table defined in P3. Its accepted bipartite point-line graph is connected, and every point of $\\mathbb F_p^2$ and every affine line is a nonisolated vertex.","status":"proved","title":"Carrier graph"},{"dependencies":["P2","P3"],"id":"researcher-0009:P5.1","part":1,"proof_markdown":"By P3, the point degree is $d+1$ with probability $d/p=\\epsilon_0$ and is $d$ with probability $1-d/p$. Its mean is\n\n$$(p+1)\\epsilon_0=d+\\frac dp,$$\n\nwhose adjacent-integer mixture is precisely this distribution. Every line degree is constantly $p\\epsilon_0=d$. Substitution into P1 gives the two exact moment formulas, and P2 shows that they attain both adjacent-integer lower envelopes for every admissible order. Constant line degree also gives\n\n$$\\widetilde\\Gamma_r^L=\\mathbb E_L\\left[\\left(\\frac{b_L}{p}\\right)^r\\right]=\\left(\\frac dp\\right)^r=\\epsilon_0^r.$$\n\nThe falling factorial $(d)_s$ vanishes for $s>d$, and both $(d)_s$ and $(d+1)_s$ vanish for $s>d+1$. Consequently,\n\n$$\\Gamma_s^L=0\\quad(d<s\\le p),\\qquad \\Gamma_s^P=0\\quad(d+1<s\\le p+1).$$\n\nFixed mean alone cannot manufacture more distinct algebraic constraints than the local degree permits. Setting $s=2$ in the point formula gives\n\n$$\\Gamma_2^P=\\epsilon_0^2-\\frac{\\epsilon_0(1-\\epsilon_0)}{p+1}.$$\n\nMoreover,\n\n$$\\frac{(d)_s}{(p)_s}=\\prod_{i=0}^{s-1}\\frac{d-i}{p-i}.$$\n\nEvery factor is at most $d/p=\\epsilon_0$. If $2\\le s\\le(d+1)/2$, then for $1\\le i\\le s-1$ each corresponding factor is at least $\\epsilon_0/2$, while the factor with $i=0$ equals $\\epsilon_0$. Hence\n\n$$2^{-(s-1)}\\epsilon_0^s\\le\\frac{(d)_s}{(p)_s}\\le\\epsilon_0^s.$$\n\nThe exact falling-factorial ratio, rather than this coarse comparison, is retained in the conclusion.","source_step_id":"P5","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let the table defined in P3 have agreement $\\epsilon_0=d/p$. Then\n\n$$\\Gamma_s^P=\\frac{(1-d/p)(d)_s+(d/p)(d+1)_s}{(p+1)_s}=\\frac{J_s((p+1)\\epsilon_0)}{(p+1)_s}\\qquad(0\\le s\\le p+1),$$\n\n$$\\Gamma_s^L=\\frac{(d)_s}{(p)_s}=\\frac{J_s(p\\epsilon_0)}{(p)_s}\\qquad(0\\le s\\le p),$$\n\nand, for every integer $r\\ge1$,\n\n$$\\widetilde\\Gamma_r^L=\\epsilon_0^r.$$","status":"proved","title":"Carrier moments"},{"dependencies":["P3"],"id":"researcher-0009:P6.1","part":1,"proof_markdown":"Replacing every weight $\\lambda_M>1$ by $1$ does not change any capped load and cannot increase the objective. Thus the feasible weights may be restricted to the compact cube $[0,1]^{p(p+1)}$; the feasibility inequalities are closed, so the optimum is attained.\n\nFor any feasible $\\lambda$, define\n\n$$v_x=\\min\\left\\{1,\\sum_{M\\ni x:(x,M)\\in E}\\lambda_M\\right\\}.$$\n\nSince $u_{x,L}(\\lambda)\\le v_x$, P3 and double counting give\n\n$$\\theta d\\,p(p+1)\\le\\sum_L\\sum_{x:(x,L)\\in E}u_{x,L}(\\lambda)\\le\\sum_x a_xv_x\\le(d+1)\\sum_xv_x.$$\n\nMoreover,\n\n$$\\sum_xv_x\\le\\sum_x\\sum_{M\\ni x:(x,M)\\in E}\\lambda_M=\\sum_M b_M\\lambda_M=d\\sum_M\\lambda_M.$$\n\nCombining these inequalities yields\n\n$$\\theta d\\,p(p+1)\\le d(d+1)\\sum_M\\lambda_M,$$\n\nwhich proves the lower bound.\n\nFor the upper bound, give every affine line the uniform real weight\n\n$$\\lambda_M=\\frac{\\theta}{d-1}.$$\n\nAt an accepted incidence $(x,L)$, there are at least $a_x-1\\ge d-1$ other accepted lines through $x$. Their total weight is at least $\\theta$, and $\\theta\\le1$, so $u_{x,L}(\\lambda)\\ge\\theta$. These weights are $\\theta$-reaching and have total weight $\\theta p(p+1)/(d-1)$.\n\nThe ratio of the upper bound to the lower bound is\n\n$$\\frac{d+1}{d-1}\\le\\frac{102}{100}.$$\n\nSince $d=p\\epsilon_0$, the exact bounds give\n\n$$\\operatorname{OPT}_\\theta=\\Theta\\left(\\frac{\\theta p}{\\epsilon_0}\\right).$$\n\nThe division by $d-1$ occurs in the real weight space and is valid because $d\\ge101$.","source_step_id":"P6","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let the table defined in P3 have accepted edge set $E$ and agreement $\\epsilon_0=d/p$. For nonnegative real line weights $\\lambda=(\\lambda_M)$, define\n\n$$u_{x,L}(\\lambda)=\\min\\left\\{1,\\sum_{\\substack{M\\ni x,\\ M\\ne L\\\\(x,M)\\in E}}\\lambda_M\\right\\}.$$\n\nFor $0<\\theta\\le1$, call $\\lambda$ $\\theta$-reaching if\n\n$$\\sum_{x:(x,L)\\in E}u_{x,L}(\\lambda)\\ge\\theta d$$\n\nfor every affine line $L$, and let $\\operatorname{OPT}_\\theta$ be the minimum of $\\sum_M\\lambda_M$ over all such weights. Then\n\n$$\\frac{\\theta p(p+1)}{d+1}\\le\\operatorname{OPT}_\\theta\\le\\frac{\\theta p(p+1)}{d-1}.$$","status":"proved","title":"Fractional reaching"},{"dependencies":[],"id":"researcher-0009:P7.1","part":1,"proof_markdown":"In the affine plane, two distinct points determine exactly one affine line, and two distinct affine lines meet in at most one point. Thus the full point-line incidence graph has the asserted common-neighborhood property, and passing to an accepted subgraph cannot increase a common neighborhood. In particular, $G$ is $K_{2,2}$-free.\n\nIn a with-replacement dependent-random-choice sample, deduplicate the sampled vertices. If only one distinct vertex remains, its common neighborhood is a one-vertex star; if at least two distinct vertices remain, the common neighborhood has size at most $1$. This conclusion concerns only the raw point-line graph. The auxiliary compatibility graph $H$ may contain many four-cycles.","source_step_id":"P7","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let $G$ be the bipartite accepted-incidence graph of a valid affine line-versus-point table over $\\mathbb F_p^2$. Then $G$ contains no $K_{2,2}$, and every set of at least two distinct vertices on either shore of $G$ has at most one common neighbor.","status":"proved","title":"Affine incidence neighborhoods"},{"dependencies":["P1","P2"],"id":"researcher-0009:P8.1","part":1,"proof_markdown":"Every unordered pair of accepted lines through $x$ gives one edge of $H$, and every edge of $H$ has a unique intersection point. Hence\n\n$$e(H)=\\sum_x\\binom{a_x}{2}.$$\n\nSince the mean of $a_x$ is $\\mu$ and $N=p(p+1)$,\n\n$$\\bar\\Delta=\\frac{2e(H)}N=\\frac{p\\,\\mathbb E_x[a_x(a_x-1)]}{p+1}.$$\n\nConvexity gives $\\mathbb E_x[a_x(a_x-1)]\\ge\\mu(\\mu-1)$, proving the stated bound. Because the degrees are integral, the adjacent-integer bound from P2 also gives the sharper form\n\n$$\\bar\\Delta\\ge\\frac{pJ_2(\\mu)}{p+1}.$$","source_step_id":"P8","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let a valid affine line-versus-point table over $\\mathbb F_p^2$ have local agreement $\\epsilon$. For each point $x$, let $a_x$ be its accepted-line degree, put $\\mu=(p+1)\\epsilon$ and $N=p(p+1)$, and let $H$ be the graph on the $N$ affine lines in which two distinct nonparallel lines are adjacent exactly when both accept their unique intersection. If $\\bar\\Delta=2e(H)/N$, then\n\n$$e(H)=\\sum_{x\\in\\mathbb F_p^2}\\binom{a_x}{2}$$\n\nand\n\n$$\\bar\\Delta\\ge\\frac{p\\mu(\\mu-1)}{p+1}.$$","status":"proved","title":"Compatibility graph degrees"},{"dependencies":["P8"],"id":"researcher-0009:P9.1","part":1,"proof_markdown":"Count pairs $(S,L)$ in which $S$ is a $t$-element subset of $N_H(L)$. Their number is\n\n$$\\sum_L\\binom{\\deg_H(L)}t.$$\n\nAveraging over the $\\binom Nt$ possible sets $S$ gives one set of distinct seed lines with at least $M_t(H)$ common neighbors. Discrete convexity of $j\\mapsto\\binom jt$ gives\n\n$$M_t(H)\\ge N\\frac{\\binom{\\lfloor\\bar\\Delta\\rfloor}t}{\\binom Nt}.$$\n\nIf $\\bar\\Delta\\ge2t+2$, every numerator factor in the binomial ratio is at least $\\bar\\Delta/2$, while every denominator factor is at most $N$. Hence the ratio is at least $(\\bar\\Delta/(2N))^t$. By P8 and $\\mu\\ge2$,\n\n$$\\frac{\\bar\\Delta}{2N}\\ge\\frac{\\mu(\\mu-1)}{2(p+1)^2}\\ge\\frac{\\epsilon^2}{4},$$\n\nwhich proves the simplified bound.","source_step_id":"P9","statement_markdown":"Under the hypotheses and notation of P8, let $t$ be an integer with $1\\le t\\le\\lfloor\\bar\\Delta\\rfloor$, and define\n\n$$M_t(H)=\\frac{\\sum_{L\\in V(H)}\\binom{\\deg_H(L)}t}{\\binom Nt}.$$\n\nThere is a set $S\\subseteq V(H)$ of $t$ distinct lines such that\n\n$$\\left|\\bigcap_{M\\in S}N_H(M)\\right|\\ge M_t(H)\\ge N\\frac{\\binom{\\lfloor\\bar\\Delta\\rfloor}t}{\\binom Nt}.$$\n\nIf additionally $\\mu\\ge2$ and $\\bar\\Delta\\ge2t+2$, then\n\n$$M_t(H)\\ge N\\left(\\frac{\\epsilon^2}{4}\\right)^t.$$","status":"proved","title":"Auxiliary neighborhood moments"},{"dependencies":["P9"],"id":"researcher-0009:P10.1","part":1,"proof_markdown":"For a fixed $L\\in N_H(S)$, partition the $t$ seed lines by their intersection point with $L$. If $h_L<h$, there are at most $h-1$ parts. A part of size $r$ contains at least $r-1$ colliding seed pairs, so the partition contains at least $t-h+1$ colliding pairs.\n\nA fixed pair of seed lines can collide on a target line only at the pair's own intersection. A parallel pair contributes no targets; a nonparallel pair has at most the $p+1$ affine lines through its intersection as targets. Double counting bad targets and colliding pairs gives\n\n$$\\left|\\{L\\in N_H(S):h_L<h\\}\\right|\\le\\frac{\\binom t2(p+1)}{t-h+1}.$$\n\nSince the fixed set $S$ has at least $M_t(H)$ common neighbors, subtraction proves all the displayed bounds for that same $S$.\n\nIf a polynomial explainer vanishes identically on every seed graph, the $h_L$ distinct intersections give $h_L$ distinct roots on the target graph. Thus the correction records the root supply relevant to interpolation.","source_step_id":"P10","statement_markdown":"Under the hypotheses and notation of P9, fix one $t$-line seed set $S$ supplied there, and write\n\n$$N_H(S)=\\bigcap_{M\\in S}N_H(M).$$\n\nFor $L\\in N_H(S)$, define\n\n$$h_L=\\left|\\{L\\cap M:M\\in S\\}\\right|.$$\n\nFor this fixed $S$, every integer $h$ with $1\\le h\\le t$ satisfies\n\n$$\\left|\\{L\\in N_H(S):h_L\\ge h\\}\\right|\\ge M_t(H)-\\frac{\\binom t2(p+1)}{t-h+1}.$$","status":"proved","title":"Seed-intersection concurrency"},{"dependencies":["P10","KTZ Lemmas 2.2 and 4.1--4.3"],"id":"researcher-0009:P11.1","part":1,"proof_markdown":"The KTZ coefficient-count construction gives\n\n$$D_t=16(\\lfloor\\sqrt{dt}\\rfloor+1)>16\\sqrt{dt}.$$\n\nEven before cleanup, transfer to a common-neighbor target requires $h_L>D_t$. Since $h_L\\le t$, these inequalities imply\n\n$$t>D_t>16\\sqrt{dt},$$\n\nand squaring gives the necessary condition $t>256d$. This condition is not asserted to be sufficient.\n\nIf the actual moment $M_t(H)$ is replaced by the guarantee obtainable from acceptance density alone in P9, then at the cubic scale this guarantee is\n\n$$N_p\\left(\\frac{\\epsilon_p^2}{4}\\right)^t=p(p+1)\\left(\\frac{C^2d^{2/3}}{4p^{2/3}}\\right)^t=O_{C,d,t}\\left(p^{2-2t/3}\\right),$$\n\nwhich tends to $0$ for fixed $t>256d$. Thus, even before cleanup or concurrency subtraction, the density-only all-common-neighbor certificate is asymptotically vacuous and does not guarantee a target line in the lower-boundary asymptotic regime. This conclusion concerns only the density-derived guarantee, not the actual value of $M_t(H)$, and it does not rule out exploiting larger observed moments, label classes, or special structure in $H$.","source_step_id":"P11","statement_markdown":"Fix an integer $d\\ge101$, an integer $t\\ge1$, and a constant $C>0$. Put\n\n$$D_t=16(\\lfloor\\sqrt{dt}\\rfloor+1).$$\n\nLet $h_L$ be the number of distinct seed intersections on a common-neighbor target line for a $t$-line seed set, as in P10. If transfer requires $h_L>D_t$, then necessarily $t>256d$. For primes $p>d$, put\n\n$$\\epsilon_p=C\\left(\\frac dp\\right)^{1/3},\\qquad N_p=p(p+1).$$\n\nFor every fixed $d$, $t>256d$, and $C$,\n\n$$N_p\\left(\\frac{\\epsilon_p^2}{4}\\right)^t=O_{C,d,t}\\left(p^{2-2t/3}\\right)\\longrightarrow0$$\n\nas $p\\to\\infty$ through primes.","status":"proved","title":"DRC parameter comparison"},{"dependencies":["P3","P4","P5","P6","P7"],"id":"researcher-0009:P12.1","part":1,"proof_markdown":"Take the table constructed in P3. Entry P4 shows that its accepted carrier is connected; its degree description gives positive degree at every point and line, hence full support. Entry P5 gives equality in the point- and line-side distinct-star moment envelopes at every admissible order and gives the repeated line moment $\\epsilon_0^r$. Entry P6 gives the displayed reaching bounds, whose scale is\n\n$$\\Theta\\left(\\frac{\\theta p}{\\epsilon_0}\\right).$$\n\nBy P7, its raw accepted-incidence graph is also $K_{2,2}$-free. Nevertheless, the point table is $f=0$, so $Q=0$ is a legal polynomial of total degree at most $d$ and has global agreement $1$.\n\nThus connectivity, full support, moment extremality, and large reaching cost, separately or together, are not evidence against a perfect global decoder. A stronger soundness argument must use polynomial-label or value coherence. This is an incidence-only obstruction, not a claim that every auxiliary or label-aware dependent-random-choice argument fails.","source_step_id":"P12","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and set $\\epsilon_0=d/p$. There exists a valid affine line-versus-point table over $\\mathbb F_p^2$ whose accepted carrier is connected and has positive degree at every affine point and line, which attains both distinct-star moment lower envelopes for every point-centered order $0\\le s\\le p+1$ and every line-centered order $0\\le s\\le p$, and whose line-centered with-replacement moment is $\\epsilon_0^r$ for every integer $r\\ge1$. For every $0<\\theta\\le1$, the same table satisfies\n\n$$\\frac{\\theta p(p+1)}{d+1}\\le\\operatorname{OPT}_\\theta\\le\\frac{\\theta p(p+1)}{d-1}.$$\n\nFor this table, the polynomial $Q=0$ has total degree $0\\le d$ and agrees with the point table at every point.","status":"proved","title":"Carrier scope"},{"dependencies":["KTZ Theorem 1.1","KTZ Lemmas 3.2 and 4.1--4.3"],"id":"researcher-0009:P13.1","part":1,"proof_markdown":"KTZ Lemma 3.2 selects\n\n$$|R|=O\\left(\\frac p\\epsilon\\right).$$\n\nKTZ Lemma 2.2 and Lemmas 4.1--4.2 give a weighted-degree explainer with\n\n$$D=O\\left(\\sqrt{d|R|}\\right)=O\\left(\\sqrt{\\frac{dp}{\\epsilon}}\\right).$$\n\nLemma 4.3 and the lifting step require this interpolation scale to fit the budget $D=O(\\epsilon p)$. Thus one imposes\n\n$$\\sqrt{\\frac{dp}{\\epsilon}}=O(\\epsilon p).$$\n\nSquaring and rearranging gives\n\n$$\\epsilon^3=\\Omega\\left(\\frac dp\\right),$$\n\nor equivalently the exponent-$1/3$ threshold up to constants. Under the stated KTZ trigger, Theorem 1.1 supplies one total-degree-at-most-$d$ polynomial with global agreement $\\Omega(\\epsilon)$. The selector's Chernoff, union-bound, and Chebyshev estimates cost constants but no power of $\\epsilon$. This exponent calculation is a reconstruction of the benchmark chain, not a quoted KTZ theorem or an improved exponent.","source_step_id":"P13","statement_markdown":"Let $p$ be prime, let $101\\le d<p$, and let a valid affine line-versus-point table over $\\mathbb F_p^2$ have point function $f$ and agreement $0<\\epsilon\\le1$. Suppose the KTZ selector has size $|R|=O(p/\\epsilon)$, weighted interpolation uses degree $D=O(\\sqrt{d|R|})$, and transfer and lifting require the resulting interpolation scale to fit the budget $D=O(\\epsilon p)$. Then the interpolation scale is $D=O(\\sqrt{dp/\\epsilon})$, and compatibility of these scales requires\n\n$$\\epsilon^3=\\Omega\\left(\\frac dp\\right).$$\n\nIf additionally\n\n$$\\epsilon\\ge C_{\\mathrm{KTZ}}\\left(\\frac dp\\right)^{1/3}$$\n\nfor the sufficiently large absolute constant in KTZ Theorem 1.1, then there is a polynomial $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ and an absolute constant $c>0$ such that\n\n$$\\frac{|\\{x\\in\\mathbb F_p^2:Q(x)=f(x)\\}|}{p^2}\\ge c\\epsilon.$$","status":"proved","title":"KTZ parameter chain"}],"omitted_source_step_ids":[],"source_job_id":"researcher-0009","source_response_sha256":"56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec"}
+2026-09-14T10:22:44.960166Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at AbsolutePathBuf("/Users/kaizheng/.codex/shell_snapshots/01a09f66-b2cb-7233-b27e-b75056cd8bc0.1789380702957806000.sh"): Os { code: 2, kind: NotFound, message: "No such file or directory" }
+tokens used
+122,615

@@ -1,0 +1,819 @@
+You are the proof-roadmap agent for `end-to-end-soundness` in the bivariate
+prime-field line-versus-point campaign. Work at the level of a Lean-style proof plan: give a
+concise but complete directed acyclic chain of definitions, reductions, lemmas, obligations, and
+the final theorem. Your focus is a complete KTZ-style dependency chain ending in one global polynomial and exponent $1-o(1)$.
+
+All work is shared. Read TARGET.md, the complete submissions, verifier audits, Lemma Book,
+all roadmaps under /Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps, and the informal message board at
+/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/message-board.json. You may cite and reuse lemmas from any source or roadmap.
+Treat message-board claims as informal suggestions, never as verified mathematics. Give roughly
+60 percent of your attention to your assigned focus so the three agents explore distinct routes,
+but import any useful shared lemma. Cite it in evidence_refs by the exact stable triple
+(source_job_id, source_step_id, source_response_sha256) from corpus-index.json. Editorial lemma
+splits are display-only and never change this proof reference.
+
+The scope is fixed at $m=2$ over prime $\mathbb F_p$ with integer $100<d<p$. Do not work on
+dimension bootstrapping or $d\le100$. The target is soundness $(d/p)^{1-o(1)}$ with recovery of
+one global total-degree-at-most-$d$ polynomial. Use work_state only to report activity: `open`,
+`drafting`, `candidate`, `blocked`, or `refuted`. The harness—not you—derives proof status from
+exact source hashes and independent verifier audits. Never convert confidence, a polished lemma,
+or informal discussion into verified proof progress.
+
+This is roadmap round 1. The shared corpus snapshot SHA-256 is
+0ad2be1fc78a6bfe1f043b02e93de994a2bc9e8457ad702d994db9987b27601c. Set those exact values in the response. Preserve useful nodes from your
+previous roadmap while making dependencies more complete and concise. Every dependency must
+refer to another node in this roadmap. The critical_path must list the shortest dependency chain
+ending at goal_node_id. Keep node statements mathematical and minimal; put short planning context
+in notes. Enclose math in $...$ or $$...$$ using KaTeX-supported LaTeX.
+
+Post up to four informal messages for the other roadmap agents: questions, warnings, proposed
+lemma imports, or requests for help. Messages may be candid and exploratory, but must cite the
+relevant roadmap/node/lemma ids when possible. Use channel `global` or one of the three roadmap
+ids. Use in_reply_to only for an id already present on the shared board. related_node_ids may
+contain only nodes in this submitted roadmap.
+
+ASSIGNED ROADMAP:
+{
+  "focus": "a complete KTZ-style dependency chain ending in one global polynomial and exponent $1-o(1)$",
+  "id": "end-to-end-soundness",
+  "target": "Prove that soundness at least $(d/p)^{1-o(1)}$ yields agreement with one total-degree-at-most-$d$ polynomial for $100<d<p$ over $\\mathbb F_p$.",
+  "title": "End-to-end soundness chain"
+}
+
+PREVIOUS VERSION OF THIS ROADMAP:
+None
+
+CURRENT SHARED MESSAGE BOARD:
+{
+  "messages": [],
+  "schema": "line-point-roadmap-message-board-v1"
+}
+
+CORPUS RECEIPT:
+[
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0001/response.json",
+    "sha256": "fa500e4a597f77f5241c624f0983a3a9c5e2ae8b42348da976251044968c0616"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0002/response.json",
+    "sha256": "163d8e97e77c5368d9d274d33554787f2700e7eddd16eb735954b0ff725a8e4a"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0001/verifier-researcher-0001/audit.json",
+    "sha256": "e4675f217545f12b3d68e159f7c6ece54daf740ee7a1fea64429c15af6f9151a"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0002/verifier-researcher-0002/audit.json",
+    "sha256": "9a7cad61bb042dcaf4c4ab98539f89903353160ba5acd1c4716d41b9953c4a46"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0003/verifier-researcher-0003/audit.json",
+    "sha256": "13e26084e25b973aeeedeec4fb0a8fafd6855c2d0605115b83bbc8132679dcf7"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0004/verifier-researcher-0004/audit.json",
+    "sha256": "3812519adf58a6ee6f590f3edd83458b374db7b507bc9647389397cfa85fc0a1"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0001/response.json",
+    "sha256": "7d31c0366ed375ba092e3f42641ce4f30098304e2b038a33dbc4d90aacc0c16d"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0002/response.json",
+    "sha256": "d52f9d8ae88b951f51924b3848cf99a2c4c3e0d7fb4883382d29bc7cfc588b02"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0003/response.json",
+    "sha256": "3f47d9a32a8a4c95be267daa286b3994e8a9883ac4217c356fe56b8f875f4847"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0004/response.json",
+    "sha256": "a5ebd078c8ecb5a710af48f877d35c20dfa13df7399a8df7198d0ebf192e14e0"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0007/response.json",
+    "sha256": "a0a1ae2d488d84d37517fe5ca489c1ba5745eb56e0b3e14948837e9728085d42"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0008/response.json",
+    "sha256": "d866f3c47628a3332dafa7d2afe157cad8d713486c57ef1708b439598b9ed275"
+  }
+]
+
+STABLE PROOF-EVIDENCE INDEX:
+{
+  "researcher-0001|P10|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P10.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "conditional",
+    "source_step_id": "P10"
+  },
+  "researcher-0001|P11|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P11.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P11"
+  },
+  "researcher-0001|P12|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P12.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P12"
+  },
+  "researcher-0001|P13|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P13.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P13"
+  },
+  "researcher-0001|P14|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P14.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P14"
+  },
+  "researcher-0001|P15|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P15.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P15"
+  },
+  "researcher-0001|P16|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P16.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P16"
+  },
+  "researcher-0001|P17|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P17.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P17"
+  },
+  "researcher-0001|P18|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P18.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P18"
+  },
+  "researcher-0001|P19|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P19.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P19"
+  },
+  "researcher-0001|P1|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P1.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0001|P2|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P2.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0001|P3|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P3.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0001|P4|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P4.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0001|P5|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P5.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0001|P6|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P6.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0001|P7|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P7.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0001|P8|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P8.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0001|P9|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P9.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  },
+  "researcher-0002|P10|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P10.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P10"
+  },
+  "researcher-0002|P11|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P11.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P11"
+  },
+  "researcher-0002|P1|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P1.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0002|P2|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P2.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0002|P3|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P3.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0002|P4|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P4.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0002|P5|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P5.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0002|P6|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P6.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0002|P7|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P7.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0002|P8|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P8.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0002|P9|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P9.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "conditional",
+    "source_step_id": "P9"
+  },
+  "researcher-0003|P10|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "refuted",
+    "source_step_id": "P10"
+  },
+  "researcher-0003|P11|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P11"
+  },
+  "researcher-0003|P12|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "refuted",
+    "source_step_id": "P12"
+  },
+  "researcher-0003|P1|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0003|P2|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0003|P3|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0003|P4|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0003|P5|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0003|P6|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0003|P7|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0003|P8|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "conditional",
+    "source_step_id": "P8"
+  },
+  "researcher-0003|P9|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  },
+  "researcher-0004|P1|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0004|P2|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0004|P3|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0004|P4|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0004|P5|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0004|P6|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0004|P7|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0004|P8|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0007|P10|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "refuted",
+    "source_step_id": "P10"
+  },
+  "researcher-0007|P11|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "refuted",
+    "source_step_id": "P11"
+  },
+  "researcher-0007|P1|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0007|P2|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0007|P3|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0007|P4|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0007|P5|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0007|P6|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "conditional",
+    "source_step_id": "P6"
+  },
+  "researcher-0007|P7|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0007|P8|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0007|P9|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  },
+  "researcher-0008|P10|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P10"
+  },
+  "researcher-0008|P11|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "refuted",
+    "source_step_id": "P11"
+  },
+  "researcher-0008|P1|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0008|P2|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0008|P3|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0008|P4|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0008|P5|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0008|P6|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0008|P7|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0008|P8|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0008|P9|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": false,
+    "audit_verdict": "pending",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  }
+}
+
+
+The previous attempt was rejected for:
+- roadmap KaTeX validation failed: end-to-end-soundness:E2E-12: contains a control character
+end-to-end-soundness:E2E-12: KaTeX parse error: Unexpected character: '' at position 63: …ac Dp\right)^2+̲rac Dp=o_{C_\th…

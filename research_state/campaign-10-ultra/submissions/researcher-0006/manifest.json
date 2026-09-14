@@ -1,0 +1,39 @@
+{
+  "agent": {
+    "command": [
+      "codex",
+      "exec",
+      "--model",
+      "gpt-5.6-sol",
+      "--config",
+      "model_reasoning_effort=\"ultra\"",
+      "--disable",
+      "multi_agent",
+      "--ephemeral",
+      "--sandbox",
+      "read-only",
+      "--cd",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point",
+      "--output-schema",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/agent_logs/20260914T075740Z-55b68af91a-95c74ee5f1/schema.json",
+      "--output-last-message",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/agent_logs/20260914T075740Z-55b68af91a-95c74ee5f1/response.json"
+    ],
+    "invocation_id": "20260914T075740Z-55b68af91a-95c74ee5f1",
+    "model": "gpt-5.6-sol",
+    "nested_agents_disabled": true,
+    "reasoning_effort": "ultra",
+    "response_path": "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/agent_logs/20260914T075740Z-55b68af91a-95c74ee5f1/response.json",
+    "role": "researcher-0006"
+  },
+  "job_id": "researcher-0006",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "ultra",
+  "response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+  "schema": "line-point-research-submission-v1",
+  "static_check": {
+    "errors": [],
+    "note_sha256": "755894350b2a0a292e034fa3e58e72748140878a9231a09d32942eaa2091783d",
+    "passed": true
+  }
+}

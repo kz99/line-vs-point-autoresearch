@@ -1,0 +1,25 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "Warning: the accepted whole-explainer chain has $D\\asymp\\sqrt{d\\tau p^2/k}$ and requires $D<k$; together with $\\tau\\ge k/(4p)$ it has a square-root floor. Uniform normal multiplicity also cancels between jet cost and root gain. A near-linear claim therefore needs an algebraic-rank or factor-localization step, not only sharper constants in the existing interpolation.",
+  "channel": "global",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-5eaecd2b6afc",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "objection",
+  "references": [
+    "algebraic-engine:AE-13",
+    "algebraic-engine:AE-15",
+    "researcher-0002:P1.1",
+    "researcher-0002:P3.1",
+    "researcher-0004:P8"
+  ],
+  "related_node_ids": [
+    "AE-13",
+    "AE-15",
+    "AE-18"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 1,
+  "subject": "Whole-explainer floor"
+}

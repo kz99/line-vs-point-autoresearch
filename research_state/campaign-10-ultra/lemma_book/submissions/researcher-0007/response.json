@@ -1,0 +1,152 @@
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [],
+      "id": "researcher-0007:P1.1",
+      "part": 1,
+      "proof_markdown": "If some $C_i$ were independent of $Z$, then $C_i\\in\\mathbb F_p[X,Y]$ would divide every coefficient of $B$ viewed as a polynomial in $Z$, contradicting primitivity. Hence $r_i>0$.\n\nThe weighted-degree bound gives\n\n$$\nd r_i\\le \\delta_i\\le \\delta<p,\n$$\n\nso $1\\le r_i<p$. The derivative of the leading $Z$-term is therefore nonzero, and\n\n$$\nC_{i,Z}\\ne0,\n\\qquad\n\\deg_Z(C_{i,Z})=r_i-1<r_i.\n$$\n\nSince $C_i$ is irreducible, any nonconstant common divisor of $C_i$ and $C_{i,Z}$ would be associated to $C_i$, which is impossible because $C_{i,Z}$ has smaller $Z$-degree. Thus $\\gcd(C_i,C_{i,Z})=1$. Absolute irreducibility is not used.",
+      "source_step_id": "P1",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$. Give $X,Y,Z$ weights $1,1,d$, respectively. Let $B\\in\\mathbb F_p[X,Y,Z]$ be primitive in $Z$, squarefree, of positive $Z$-degree and weighted degree $\\delta<p$, and write\n\n$$\nB=c\\prod_{i=1}^{s}C_i,\n\\qquad c\\in\\mathbb F_p^\\times,\n$$\n\nwhere the $C_i$ are distinct irreducible polynomials. For\n\n$$\n\\delta_i=\\operatorname{wdeg}(C_i),\n\\qquad\nr_i=\\deg_Z(C_i),\n$$\n\nevery $i\\in\\{1,\\ldots,s\\}$ satisfies\n\n$$\nr_i\\ge1\n\\qquad\\text{and}\\qquad\n\\gcd(C_i,C_{i,Z})=1.\n$$",
+      "status": "proved",
+      "title": "Factor separability"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0007:P2.1",
+      "part": 1,
+      "proof_markdown": "Weighted degree gives\n\n$$\n\\deg_{X,Y}(u_a)\\le u-da,\n\\qquad\n\\deg_{X,Y}(v_b)\\le v-db\n$$\n\nfor every nonzero coefficient. Every monomial in the Sylvester determinant contains $s$ coefficients of $U$ and $r$ coefficients of $V$, and the aggregate coefficient-index sum is $rs$. Its base degree is consequently at most\n\n$$\nsu+rv-drs.\n$$\n\nTaking the sum of the determinant monomials cannot increase this bound. This calculation uses the Sylvester determinant directly and divides by no leading coefficient. If one $Z$-degree is $0$, the formula is the direct degree bound for the corresponding base polynomial. Because the determinant is polynomial in the coefficients, the calculation remains valid under specialization even when a leading coefficient vanishes or the specialized $Z$-degree drops.",
+      "source_step_id": "P2",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$. Give $X,Y,Z$ weights $1,1,d$, respectively. Let\n\n$$\nU=\\sum_{a=0}^{r}u_a(X,Y)Z^a,\n\\qquad\nV=\\sum_{b=0}^{s}v_b(X,Y)Z^b\n$$\n\nbe nonzero polynomials in $\\mathbb F_p[X,Y,Z]$ satisfying\n\n$$\n\\deg_Z(U)=r,\n\\qquad\n\\deg_Z(V)=s,\n\\qquad\n\\operatorname{wdeg}(U)=u,\n\\qquad\n\\operatorname{wdeg}(V)=v.\n$$\n\nWith the convention $\\deg_{X,Y}(0)=-\\infty$,\n\n$$\n\\deg_{X,Y}\\operatorname{Res}_Z(U,V)\\le su+rv-drs.\n$$",
+      "status": "proved",
+      "title": "Weighted resultant degree"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P1.1",
+        "researcher-0007:P2.1"
+      ],
+      "id": "researcher-0007:P3.1",
+      "part": 1,
+      "proof_markdown": "Factor separability gives $\\gcd(C_i,C_{i,Z})=1$, so the $Z$-resultant $R_i$ is nonzero. Moreover,\n\n$$\n\\deg_Z(C_i)=r_i,\n\\qquad\n\\deg_Z(C_{i,Z})=r_i-1.\n$$\n\nThe weighted resultant bound applied to $C_i$ and $C_{i,Z}$ gives\n\n$$\n\\deg_{X,Y}(R_i)\n\\le (r_i-1)\\delta_i+r_i\\gamma_i-dr_i(r_i-1)\n=\\Xi_i.\n$$\n\nFor every $L\\in\\mathcal E_i$, both pullbacks vanish identically. Specializing the Sylvester determinant to the base line therefore gives\n\n$$\nR_i(x_L(t),y_L(t))\\equiv0,\n$$\n\nincluding when the specialized $Z$-degree drops. Hence $\\ell_L$ divides $R_i$ and $\\nu_L\\ge1$. The base lines are distinct, so their affine-linear factors are pairwise nonassociate. Consequently,\n\n$$\n\\sum_{L\\in\\mathcal E_i}\\nu_L\n\\le \\deg_{X,Y}(R_i)\n\\le\\Xi_i.\n$$\n\nThe cardinality bound follows from $\\nu_L\\ge1$.",
+      "source_step_id": "P3",
+      "statement_markdown": "Assume the hypotheses and notation of researcher-0007:P1.1. Fix $i$ and put\n\n$$\n\\gamma_i=\\operatorname{wdeg}(C_{i,Z}),\n\\qquad\nR_i=\\operatorname{Res}_Z(C_i,C_{i,Z}),\n$$\n\nand\n\n$$\n\\Xi_i=(r_i-1)\\delta_i+r_i\\gamma_i-dr_i(r_i-1).\n$$\n\nLet $\\mathcal T_i$ be a family indexed by distinct affine lines with equations $\\ell_L(X,Y)=0$. For each $L\\in\\mathcal T_i$, let $L(t)=(x_L(t),y_L(t))$ be an affine-linear parametrization and let $P_L\\in\\mathbb F_p[t]$ satisfy $\\deg P_L\\le d$ and\n\n$$\nC_i(x_L(t),y_L(t),P_L(t))\\equiv0.\n$$\n\nDefine\n\n$$\n\\mathcal E_i=\n\\left\\{L\\in\\mathcal T_i:\nC_{i,Z}(x_L(t),y_L(t),P_L(t))\\equiv0\n\\right\\}\n$$\n\nand, for $L\\in\\mathcal E_i$,\n\n$$\n\\nu_L=\\operatorname{ord}_{\\ell_L}(R_i).\n$$\n\nThen\n\n$$\nR_i\\ne0,\n\\qquad\n\\deg_{X,Y}(R_i)\\le\\Xi_i,\n\\qquad\n\\sum_{L\\in\\mathcal E_i}\\nu_L\\le\\Xi_i.\n$$\n\nIn particular,\n\n$$\n|\\mathcal E_i|\\le\\min\\{|\\mathcal T_i|,\\Xi_i\\}.\n$$",
+      "status": "proved",
+      "title": "Exceptional graph lines"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P1.1"
+      ],
+      "id": "researcher-0007:P4.1",
+      "part": 1,
+      "proof_markdown": "Every monomial of $C_{i,Z}$ has weighted degree at most $\\gamma_i$. Under the substitutions\n\n$$\nX=x_L(t),\n\\qquad\nY=y_L(t),\n\\qquad\nZ=P_L(t),\n$$\n\nthe degrees of the $X$- and $Y$-factors are at most their exponents, while the degree contributed by a $Z$-factor is at most $d$ times its exponent. Hence\n\n$$\n\\deg G_{i,L}\\le\\gamma_i.\n$$\n\nThe sum of the orders of any collection of roots of a nonzero univariate polynomial is at most its degree, proving the stated inequality. For any point table $f$, accepted incidences at which $C_{i,Z}(L(t),f(L(t)))=0$ are a subset of these roots because acceptance gives $P_L(t)=f(L(t))$. Thus the orders provide the full local polar-intersection charge. No factorial, ordinary higher derivative, or Hasse-derivative denominator is used.",
+      "source_step_id": "P4",
+      "statement_markdown": "Let the objects satisfy the hypotheses of researcher-0007:P3.1. For $L\\in\\mathcal T_i\\setminus\\mathcal E_i$, set\n\n$$\nG_{i,L}(t)=C_{i,Z}(x_L(t),y_L(t),P_L(t)).\n$$\n\nThen $G_{i,L}\\ne0$ and\n\n$$\n\\sum_{\\alpha\\in\\mathbb F_p}\n\\operatorname{ord}_{t=\\alpha}G_{i,L}(t)\n\\le\\gamma_i.\n$$",
+      "status": "proved",
+      "title": "Finite polar intersections"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P3.1",
+        "researcher-0007:P4.1"
+      ],
+      "id": "researcher-0007:P5.1",
+      "part": 1,
+      "proof_markdown": "The exceptional graph-line bound gives\n\n$$\ne_i\\le\\min\\{|\\mathcal T_i|,\\Xi_i\\}.\n$$\n\nAn exceptional line has $p$ parameter values and therefore contributes at most $p$ accepted incidences. On a nonexceptional line, acceptance identifies $f(L(t))$ with $P_L(t)$, so the finite polar-intersection bound limits the ramified accepted incidences, with multiplicity, by $\\gamma_i$. Thus\n\n$$\n|\\mathcal R|\n\\le\n\\sum_i\\left(pe_i+(|\\mathcal T_i|-e_i)\\gamma_i\\right).\n$$\n\nBounding $e_i$ by $\\min\\{|\\mathcal T_i|,\\Xi_i\\}$, discarding the nonpositive terms $-e_i\\gamma_i$, and dividing by $p^2(p+1)$ gives the normalized bound.\n\nFormal differentiation with respect to $Z$ lowers weighted degree by at least $d$, so\n\n$$\n\\gamma_i\\le\\delta_i-d.\n$$\n\nSubstitution into $\\Xi_i$ gives\n\n$$\n\\begin{aligned}\n\\Xi_i\n&\\le(r_i-1)\\delta_i+r_i(\\delta_i-d)-dr_i(r_i-1)\\\\\n&=(2r_i-1)\\delta_i-dr_i^2\\\\\n&=\\frac{\\delta_i^2}{d}-\\delta_i-\n\\frac{(\\delta_i-dr_i)^2}{d}\\\\\n&\\le\\frac{\\delta_i^2}{d}-\\delta_i.\n\\end{aligned}\n$$\n\nWeighted degree is additive under products, so\n\n$$\n\\sum_i\\delta_i=\\delta,\n\\qquad\n\\sum_i\\delta_i^2\\le\\delta^2.\n$$\n\nIt follows that\n\n$$\n\\sum_i\\Xi_i\\le\\frac{\\delta^2}{d}-\\delta.\n$$\n\nFinally,\n\n$$\n\\sum_i\\frac{|\\mathcal T_i|\\gamma_i}{p^2(p+1)}\n=\\frac1p\\sum_i\\tau_i\\gamma_i\n\\le\\frac1p\\sum_i\\tau_i(\\delta_i-d)\n=\\frac{\\tau(\\bar\\delta-d)}p.\n$$\n\nCombining these estimates yields the coarse bound.",
+      "source_step_id": "P5",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$. Give $X,Y,Z$ weights $1,1,d$, respectively. Let $B\\in\\mathbb F_p[X,Y,Z]$ be primitive in $Z$, squarefree, of positive $Z$-degree and weighted degree $\\delta<p$, with\n\n$$\nB=c\\prod_{i=1}^{s}C_i.\n$$\n\nFor each $i$, put\n\n$$\n\\delta_i=\\operatorname{wdeg}(C_i),\n\\quad\nr_i=\\deg_Z(C_i),\n\\quad\n\\gamma_i=\\operatorname{wdeg}(C_{i,Z}),\n$$\n\nand\n\n$$\n\\Xi_i=(r_i-1)\\delta_i+r_i\\gamma_i-dr_i(r_i-1).\n$$\n\nLet $\\mathcal T=\\bigsqcup_i\\mathcal T_i$ be a disjoint assignment of distinct affine lines with degree-at-most-$d$ labels $P_L$, satisfying\n\n$$\nC_i(L(t),P_L(t))\\equiv0\n\\qquad(L\\in\\mathcal T_i).\n$$\n\nFor each $i$, let\n\n$$\ne_i=\n\\left|\n\\left\\{L\\in\\mathcal T_i:\nC_{i,Z}(L(t),P_L(t))\\equiv0\n\\right\\}\n\\right|.\n$$\n\nFor a point table $f:\\mathbb F_p^2\\to\\mathbb F_p$, let $i(L)=i$ when $L\\in\\mathcal T_i$, and define\n\n$$\n\\mathcal R=\n\\left\\{(L,t):\n\\begin{array}{l}\nL\\in\\mathcal T,\\ t\\in\\mathbb F_p,\\\\\nP_L(t)=f(L(t)),\\\\\nC_{i(L),Z}(L(t),f(L(t)))=0\n\\end{array}\n\\right\\}.\n$$\n\nThen\n\n$$\ne_i\\le\\min\\{|\\mathcal T_i|,\\Xi_i\\},\n$$\n\n$$\n|\\mathcal R|\n\\le\n\\sum_i\\left(pe_i+(|\\mathcal T_i|-e_i)\\gamma_i\\right),\n$$\n\nand\n\n$$\n\\frac{|\\mathcal R|}{p^2(p+1)}\n\\le\n\\sum_i\\frac{\\min\\{|\\mathcal T_i|,\\Xi_i\\}}{p(p+1)}\n+\n\\sum_i\\frac{|\\mathcal T_i|\\gamma_i}{p^2(p+1)}.\n$$\n\nMoreover,\n\n$$\n\\gamma_i\\le\\delta_i-d\n$$\n\nand\n\n$$\n\\Xi_i\\le(2r_i-1)\\delta_i-dr_i^2\n\\le\\frac{\\delta_i^2}{d}-\\delta_i.\n$$\n\nIf\n\n$$\n\\tau_i=\\frac{|\\mathcal T_i|}{p(p+1)},\n\\qquad\n\\tau=\\sum_i\\tau_i>0,\n\\qquad\n\\bar\\delta=\\frac{\\sum_i\\tau_i\\delta_i}{\\tau},\n$$\n\nthen\n\n$$\n\\frac{|\\mathcal R|}{p^2(p+1)}\n\\le\n\\frac{\\delta^2/d-\\delta}{p(p+1)}\n+\n\\frac{\\tau(\\bar\\delta-d)}p.\n$$",
+      "status": "proved",
+      "title": "Factorwise cleanup bounds"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P1.1",
+        "researcher-0007:P5.1",
+        "KTZ Lemmas 2.1, 2.7, and 6.1\u20136.3"
+      ],
+      "id": "researcher-0007:P6.1",
+      "part": 1,
+      "proof_markdown": "For every edge $(x,L)\\in E'$, the assigned graph identity and acceptance imply\n\n$$\nC_i(x,f(x))=0.\n$$\n\nThe cleaned-edge hypothesis gives $C_{i,Z}(x,f(x))\\ne0$, so this is a simple $Z$-root. Choose $b\\in\\mathcal X$. At least $k>\\delta_i$ graph lines of the component pass through $b$. The simple-root Newton recursion from KTZ Lemmas 2.7 and 6.1, applied with weighted degree $\\delta_i$, constructs a polynomial $Q$ of total degree at most $d$, agrees with every incident line label, and satisfies\n\n$$\nC_i(X,Y,Q(X,Y))\\equiv0.\n$$\n\nThe recursion divides only by the certified nonzero scalar $C_{i,Z}(b,f(b))$. Simple-root uniqueness propagates the same $Q$ throughout the connected component, yielding $Q(x)=f(x)$ for every $x\\in\\mathcal X$.\n\nFor the density bound, put\n\n$$\na=\\frac{|\\mathcal X|}{p^2},\n\\qquad\nb_0=\\frac{|T'|}{p(p+1)},\n\\qquad\n\\rho=\\frac{|E'|}{p^2(p+1)},\n$$\n\nand\n\n$$\n\\kappa=\\frac{k}{p},\n\\qquad\nu=\\frac1{\\sqrt{p+1}}.\n$$\n\nMinimum degree and affine incidence mixing give\n\n$$\n\\rho\\ge\\frac{\\kappa a}{2},\n\\qquad\n\\rho\\ge\\kappa b_0,\n\\qquad\n\\rho\\le ab_0+\\nu\\sqrt{ab_0}.\n$$\n\nThe mixing hypothesis is $\\nu\\le\\kappa/4$. If $a<\\kappa/4$, the second and third inequalities imply $b_0<a/9$; substituting this into the upper bound contradicts $\\rho\\ge\\kappa a/2$. If $b_0<\\kappa/4$, the first and third inequalities imply $a<b_0$; substitution contradicts $\\rho\\ge\\kappa b_0$. Therefore\n\n$$\na,b_0\\ge\\frac\\kappa4.\n$$\n\nSince $Q=f$ on $\\mathcal X$, its global agreement is at least $a\\ge k/(4p)$.",
+      "source_step_id": "P6",
+      "statement_markdown": "Assume the hypotheses and notation of researcher-0007:P5.1, and fix $i$. Let $G=(\\mathcal X,T',E')$ be a connected bipartite graph with $\\mathcal X\\subseteq\\mathbb F_p^2$, $T'\\subseteq\\mathcal T_i$, and\n\n$$\nE'\\subseteq\n\\{(x,L)\\in\\mathcal X\\times T':x\\in L,\\ P_L(x)=f(x)\\}.\n$$\n\nSuppose $G$ has minimum degree at least the integer $k$, and suppose\n\n$$\nC_{i,Z}(x,f(x))\\ne0\n\\qquad((x,L)\\in E').\n$$\n\nIf\n\n$$\nk>\\delta_i\n\\qquad\\text{and}\\qquad\n\\frac1{\\sqrt{p+1}}\\le\\frac{k}{4p},\n$$\n\nthen there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that\n\n$$\nQ(x)=f(x)\n\\qquad(x\\in\\mathcal X)\n$$\n\nand\n\n$$\n\\frac{|\\{x\\in\\mathbb F_p^2:Q(x)=f(x)\\}|}{p^2}\n\\ge\\frac{k}{4p}.\n$$",
+      "status": "conditional",
+      "title": "Cleaned factor component"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0007:P7.1",
+      "part": 1,
+      "proof_markdown": "Since $D\\ge2d$, one has $e\\ge d$. Expanding $B$ gives\n\n$$\nB=Z^2-ZH(X),\n$$\n\nand hence\n\n$$\n\\operatorname{wdeg}(B)\n=\\max\\{2d,d+e\\}=D.\n$$\n\nThe distinct factors $Z$ and $Z-H(X)$ make $B$ squarefree, and the coefficient of $Z^2$ is $1$, so $B$ is primitive in $Z$.\n\nBecause $p>d\\ge101$, the value $2$ differs from both $0$ and $1$ in $\\mathbb F_p$. Thus no vertical line has an accepted point. On a nonvertical line, the $X$-coordinate has the form\n\n$$\nx_L(t)=u+vt,\n\\qquad v\\ne0,\n$$\n\nso it runs bijectively through $\\mathbb F_p$. The line therefore contains exactly $|S|=e$ parameters for which $f(L(t))=0=P_L(t)$. Moreover,\n\n$$\nB(L(t),P_L(t))=B(L(t),0)\\equiv0.\n$$\n\nThere are $p^2$ nonvertical affine lines. The accepted-incidence count is consequently $ep^2$, while the full incidence count is $p^2(p+1)$. Division gives $\\varepsilon=e/(p+1)=(D-d)/(p+1)$.",
+      "source_step_id": "P7",
+      "statement_markdown": "Let $p$ be prime, and let $d,D$ be integers satisfying\n\n$$\n101\\le d,\n\\qquad\n2d\\le D<p.\n$$\n\nPut $e=D-d$, choose $S\\subseteq\\mathbb F_p$ with $|S|=e$, and define\n\n$$\nH(X)=\\prod_{a\\in S}(X-a),\n\\qquad\nB=Z(Z-H(X)).\n$$\n\nDefine $f:\\mathbb F_p^2\\to\\mathbb F_p$ by\n\n$$\nf(x,y)=\n\\begin{cases}\n0,&x\\in S,\\\\\n1,&x\\notin S,\n\\end{cases}\n$$\n\nand assign the constant label $P_L=0$ to every nonvertical affine line and the constant label $P_L=2$ to every vertical affine line. Then $B$ is primitive in $Z$, squarefree, and has weighted degree $D$. Every nonvertical line has exactly $e$ accepted points and satisfies\n\n$$\nB(L(t),P_L(t))\\equiv0,\n$$\n\nwhile every vertical line has no accepted points. The test agreement is\n\n$$\n\\varepsilon=\\frac{e}{p+1}=\\frac{D-d}{p+1}.\n$$",
+      "status": "proved",
+      "title": "Strip construction"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P7.1"
+      ],
+      "id": "researcher-0007:P8.1",
+      "part": 1,
+      "proof_markdown": "On a nonvertical graph with $X$-coordinate $u+vt$, where $v\\ne0$,\n\n$$\nB(L(t),0)\\equiv0,\n\\qquad\nB_Z(L(t),0)=-H(u+vt).\n$$\n\nThe polynomial $H$ has $e$ distinct roots, and $t\\mapsto u+vt$ is a bijective affine map. Hence the pullback has exactly $e$ roots, all simple, and these are precisely the accepted parameters. Since there are $p^2$ nonvertical lines, the ramified-incidence count is $ep^2$, and its normalized measure is\n\n$$\n\\frac{ep^2}{p^2(p+1)}\n=\\frac e{p+1}\n=\\frac{p}{p+1}\\frac{D-d}{p}.\n$$\n\nAt each lifted accepted point,\n\n$$\nB_X=B_Y=B_Z=0.\n$$\n\nThere are $ep$ such lifted points, and each is incident to $p$ accepted nonvertical graph lines, giving $ep^2$ ramified incidences. Counting lifted points rather than incidences therefore does not remove the concurrency loss.\n\nEvery supported graph is contained in the factor $C=Z$, for which\n\n$$\n\\operatorname{wdeg}(C)=d,\n\\qquad\nC_Z=1.\n$$\n\nIts factorwise polar loss is therefore $0$. Finally, $Q=0$ agrees with $f$ on the $ep$ points whose first coordinate lies in $S$, so its global agreement is $e/p>e/(p+1)=\\varepsilon$.",
+      "source_step_id": "P8",
+      "statement_markdown": "Let $p,d,D,e,S,H,B,f$ and the line labels be as in researcher-0007:P7.1, and put\n\n$$\n\\tau=\\frac{p}{p+1}.\n$$\n\nOn every nonvertical zero-labelled graph, $B_Z(L(t),0)$ has exactly $D-d$ simple roots, and these roots are exactly the accepted parameters. The whole-relation ramified-incidence measure is\n\n$$\n\\frac{D-d}{p+1}\n=\\frac{\\tau(D-d)}p\n=\\varepsilon.\n$$\n\nAssigning every supported graph to the factor $C=Z$ gives $C_Z=1$ and factorwise polar loss $0$. The polynomial $Q=0$ has total degree $0$ and global agreement\n\n$$\n\\frac{D-d}{p}>\\varepsilon.\n$$",
+      "status": "proved",
+      "title": "Polar-loss saturation"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P7.1",
+        "researcher-0007:P8.1"
+      ],
+      "id": "researcher-0007:P9.1",
+      "part": 1,
+      "proof_markdown": "From $p\\ge8d$,\n\n$$\n\\sqrt[3]{dp^2}\\ge4d\n\\qquad\\text{and}\\qquad\n\\sqrt[3]{dp^2}\\le\\frac p2.\n$$\n\nTherefore\n\n$$\ne\\ge4d,\n\\qquad\ne\\le\\frac p2+1,\n$$\n\nand the stated parameter range gives $2d\\le D<p$. Also,\n\n$$\n\\sqrt[3]{dp^2}\\le e\\le2\\sqrt[3]{dp^2}\n$$\n\nand\n\n$$\np\\le p+1\\le2p.\n$$\n\nConsequently,\n\n$$\n\\frac12\\left(\\frac dp\\right)^{1/3}\n\\le\\frac e{p+1}\n\\le2\\left(\\frac dp\\right)^{1/3}.\n$$\n\nSince $e\\ge4d$, one has $D=d+e=\\Theta(e)$. The displayed bounds also give $e=\\Theta(\\varepsilon p)$, so $D=\\Theta(\\varepsilon p)$. Finally,\n\n$$\n\\frac{dp}{\\varepsilon}\n=\\frac{dp(p+1)}e\n=\\Theta(e^2),\n$$\n\nbecause $e^3=\\Theta(dp^2)$. Hence $D=\\Theta(\\sqrt{dp/\\varepsilon})$.",
+      "source_step_id": "P9",
+      "statement_markdown": "Let $p$ be prime and let $d$ be an integer satisfying\n\n$$\n101\\le d\n\\qquad\\text{and}\\qquad\np\\ge8d.\n$$\n\nSet\n\n$$\ne=\\left\\lceil(dp^2)^{1/3}\\right\\rceil,\n\\qquad\nD=d+e,\n\\qquad\n\\varepsilon=\\frac e{p+1}.\n$$\n\nThen\n\n$$\ne\\ge4d,\n\\qquad\ne\\le\\frac p2+1,\n\\qquad\n2d\\le D<p,\n$$\n\nand\n\n$$\n\\frac12\\left(\\frac dp\\right)^{1/3}\n\\le\\varepsilon\n\\le2\\left(\\frac dp\\right)^{1/3}.\n$$\n\nFor the construction of researcher-0007:P7.1 and researcher-0007:P8.1,\n\n$$\nD=\\Theta(\\varepsilon p)\n\\qquad\\text{and}\\qquad\nD=\\Theta\\!\\left(\\sqrt{\\frac{dp}{\\varepsilon}}\\right).\n$$",
+      "status": "proved",
+      "title": "Cubic parameter scale"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P7.1",
+        "researcher-0007:P8.1"
+      ],
+      "id": "researcher-0007:P10.1",
+      "part": 1,
+      "proof_markdown": "The polynomial $Z$ already vanishes on every selected nonvertical graph. Its weighted degree is\n\n$$\n\\operatorname{wdeg}(Z)=d<D,\n$$\n\nand its vertical derivative is\n\n$$\n\\frac{\\partial Z}{\\partial Z}=1.\n$$\n\nThus the graph family admits a lower-weight interpolant with no vertical-polar loss. The construction therefore does not force KTZ's minimum-weight interpolant to incur the loss associated with $B$. It refutes only a cleanup claim based on an arbitrary primitive squarefree whole relation and its degree data.",
+      "source_step_id": "P10",
+      "statement_markdown": "Under the construction of researcher-0007:P7.1 and researcher-0007:P8.1, the interpolant selected by KTZ's minimum-weight rule incurs the whole-relation polar loss\n\n$$\n\\frac{\\tau(D-d)}p.\n$$",
+      "status": "refuted",
+      "title": "Minimum-interpolant saturation"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P1.1"
+      ],
+      "id": "researcher-0007:P11.1",
+      "part": 1,
+      "proof_markdown": "In characteristic $p$,\n\n$$\n\\frac{\\partial}{\\partial Z}(Z^p-X)=pZ^{p-1}=0.\n$$\n\nThe polynomial is primitive in $Z$ and squarefree, but its weighted degree is\n\n$$\n\\operatorname{wdeg}(Z^p-X)=pd.\n$$\n\nSince $d\\ge101$, this does not satisfy the required inequality $\\delta<p$. The example is excluded from the campaign regime and does not refute the factorwise theorem.",
+      "source_step_id": "P11",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$, with $X,Y,Z$ carrying weights $1,1,d$. Under the campaign requirement that a relation have weighted degree $\\delta<p$, the polynomial\n\n$$\nB=Z^p-X\n$$\n\nis an inseparability counterexample to the factorwise theorem.",
+      "status": "refuted",
+      "title": "Inseparability attempt"
+    },
+    {
+      "dependencies": [
+        "researcher-0007:P1.1"
+      ],
+      "id": "researcher-0007:P11.2",
+      "part": 2,
+      "proof_markdown": "If correct labels are concentrated in exactly $k$ direction classes and $f=0$, the exact local agreement is\n\n$$\n\\varepsilon=\\frac{k}{p+1}.\n$$\n\nThe polynomial $Q=0$ agrees with $f$ at every point. Moreover, the carrying factor $C=Z$ satisfies $C_Z=1$. Thus the instance has a perfect global decoder and no factorwise polar obstruction. It refutes neither the factorwise theorem nor the soundness benchmark.",
+      "source_step_id": "P11",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $1\\le k\\le p+1$. An instance with $f=0$ whose correct labels are concentrated in exactly $k$ direction classes refutes the factorwise theorem in the campaign regime.",
+      "status": "refuted",
+      "title": "Direction-concentration attempt"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0007",
+  "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8"
+}

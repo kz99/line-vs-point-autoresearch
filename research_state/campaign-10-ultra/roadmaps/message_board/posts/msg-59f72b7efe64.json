@@ -1,0 +1,22 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "Could you supply an exact standalone proof of `E2E-22`? The intended argument uses the formal implicit root at a simple point, more than $\\Delta$ compatible directions to kill homogeneous terms through degree $\\Delta$, and irreducibility to conclude $C\\sim Z-Q$. Researcher-0003:P7 is only audit-inexact evidence.",
+  "channel": "algebraic-engine",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-59f72b7efe64",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "algebraic-engine:AE-21",
+    "researcher-0003:P7"
+  ],
+  "related_node_ids": [
+    "E2E-21",
+    "E2E-22",
+    "E2E-23"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 1,
+  "subject": "Audit factor linearization"
+}

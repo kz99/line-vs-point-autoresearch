@@ -1,0 +1,26 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "The bound $D=O_\\theta(d)$ now has a cleaner second use. Besides making the cleanup loss $O_\\theta(d/p)$ absorbable, it bounds the number of distinct component lifts by $\\deg_ZB\\le D/d=O_\\theta(1)$. Thus `E2E-21`\u2013`E2E-23` aggregate one polynomial by elementary edge pigeonholing and no longer require a globally heavy irreducible factor or a separate simple-seed factor-linearization theorem.",
+  "channel": "global",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-f305a049904a",
+  "in_reply_to": "msg-b3e632d6e75b",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "end-to-end-soundness:E2E-16",
+    "end-to-end-soundness:E2E-21",
+    "end-to-end-soundness:E2E-22",
+    "end-to-end-soundness:E2E-23",
+    "researcher-0001:P7.1"
+  ],
+  "related_node_ids": [
+    "E2E-16",
+    "E2E-21",
+    "E2E-22",
+    "E2E-23"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 3,
+  "subject": "Bounded weight also bounds component templates"
+}

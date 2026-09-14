@@ -1,0 +1,1618 @@
+{
+  "evidence": {
+    "GENIUS|P10|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P10"
+    },
+    "GENIUS|P11|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "conditional",
+      "source_step_id": "P11"
+    },
+    "GENIUS|P12|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "conditional",
+      "source_step_id": "P12"
+    },
+    "GENIUS|P1|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "conjectural",
+      "source_step_id": "P1"
+    },
+    "GENIUS|P2|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "GENIUS|P3|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "GENIUS|P4|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "GENIUS|P5|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "GENIUS|P6|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "GENIUS|P7|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "GENIUS|P8|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "GENIUS|P9|84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821": {
+      "audit_exact": false,
+      "audit_verdict": "pending",
+      "lemma_ids": [],
+      "source_job_id": "GENIUS",
+      "source_response_sha256": "84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821",
+      "source_status": "proved",
+      "source_step_id": "P9"
+    },
+    "researcher-0001|P10|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P10.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "conditional",
+      "source_step_id": "P10"
+    },
+    "researcher-0001|P11|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P11.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P11"
+    },
+    "researcher-0001|P12|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P12.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P12"
+    },
+    "researcher-0001|P13|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P13.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P13"
+    },
+    "researcher-0001|P14|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P14.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "refuted",
+      "source_step_id": "P14"
+    },
+    "researcher-0001|P15|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P15.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P15"
+    },
+    "researcher-0001|P16|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P16.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P16"
+    },
+    "researcher-0001|P17|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P17.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "refuted",
+      "source_step_id": "P17"
+    },
+    "researcher-0001|P18|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P18.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "refuted",
+      "source_step_id": "P18"
+    },
+    "researcher-0001|P19|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P19.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "refuted",
+      "source_step_id": "P19"
+    },
+    "researcher-0001|P1|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P1.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0001|P2|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P2.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0001|P3|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P3.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0001|P4|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P4.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0001|P5|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P5.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0001|P6|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P6.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "researcher-0001|P7|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P7.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0001|P8|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P8.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "researcher-0001|P9|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0001:P9.1"
+      ],
+      "source_job_id": "researcher-0001",
+      "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+      "source_status": "proved",
+      "source_step_id": "P9"
+    },
+    "researcher-0002|P10|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P10.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P10"
+    },
+    "researcher-0002|P11|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P11.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P11"
+    },
+    "researcher-0002|P1|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P1.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0002|P2|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P2.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0002|P3|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P3.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0002|P4|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P4.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0002|P5|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P5.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0002|P6|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P6.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "researcher-0002|P7|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P7.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0002|P8|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P8.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "researcher-0002|P9|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0002:P9.1"
+      ],
+      "source_job_id": "researcher-0002",
+      "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+      "source_status": "conditional",
+      "source_step_id": "P9"
+    },
+    "researcher-0003|P10|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P10.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "refuted",
+      "source_step_id": "P10"
+    },
+    "researcher-0003|P11|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P11.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P11"
+    },
+    "researcher-0003|P12|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P12.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "refuted",
+      "source_step_id": "P12"
+    },
+    "researcher-0003|P1|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P1.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0003|P2|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P2.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0003|P3|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P3.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0003|P4|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P4.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0003|P5|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P5.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0003|P6|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P6.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "researcher-0003|P7|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P7.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0003|P8|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P8.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "conditional",
+      "source_step_id": "P8"
+    },
+    "researcher-0003|P9|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+      "audit_exact": false,
+      "audit_verdict": "reject",
+      "lemma_ids": [
+        "researcher-0003:P9.1"
+      ],
+      "source_job_id": "researcher-0003",
+      "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+      "source_status": "proved",
+      "source_step_id": "P9"
+    },
+    "researcher-0004|P1|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P1.1"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0004|P2|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P2.1"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0004|P3|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P3.1"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0004|P4|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P4.1",
+        "researcher-0004:P4.2",
+        "researcher-0004:P4.3"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0004|P5|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P5.1"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0004|P6|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P6.1"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "researcher-0004|P7|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P7.1"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0004|P8|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+      "audit_exact": false,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0004:P8.1"
+      ],
+      "source_job_id": "researcher-0004",
+      "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "researcher-0005|[P10]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P10].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P10]"
+    },
+    "researcher-0005|[P11]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P11].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P11]"
+    },
+    "researcher-0005|[P12]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P12].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "refuted",
+      "source_step_id": "[P12]"
+    },
+    "researcher-0005|[P13]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P13].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "refuted",
+      "source_step_id": "[P13]"
+    },
+    "researcher-0005|[P1]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P1].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P1]"
+    },
+    "researcher-0005|[P2]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P2].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P2]"
+    },
+    "researcher-0005|[P3]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P3].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P3]"
+    },
+    "researcher-0005|[P4]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P4].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P4]"
+    },
+    "researcher-0005|[P5]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P5].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P5]"
+    },
+    "researcher-0005|[P6]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P6].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P6]"
+    },
+    "researcher-0005|[P7]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P7].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P7]"
+    },
+    "researcher-0005|[P8]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P8].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P8]"
+    },
+    "researcher-0005|[P9]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0005:[P9].1"
+      ],
+      "source_job_id": "researcher-0005",
+      "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+      "source_status": "proved",
+      "source_step_id": "[P9]"
+    },
+    "researcher-0006|P10|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P10.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P10"
+    },
+    "researcher-0006|P11|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P11.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P11"
+    },
+    "researcher-0006|P12|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P12.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "refuted",
+      "source_step_id": "P12"
+    },
+    "researcher-0006|P13|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P13.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "conditional",
+      "source_step_id": "P13"
+    },
+    "researcher-0006|P1|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P1.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0006|P2|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P2.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0006|P3|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P3.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0006|P4|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P4.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0006|P5|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P5.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0006|P6|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P6.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "researcher-0006|P7|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P7.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0006|P8|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P8.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "researcher-0006|P9|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+      "audit_exact": true,
+      "audit_verdict": "accept",
+      "lemma_ids": [
+        "researcher-0006:P9.1"
+      ],
+      "source_job_id": "researcher-0006",
+      "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+      "source_status": "proved",
+      "source_step_id": "P9"
+    },
+    "researcher-0007|P10|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P10.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "refuted",
+      "source_step_id": "P10"
+    },
+    "researcher-0007|P11|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P11.1",
+        "researcher-0007:P11.2"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "refuted",
+      "source_step_id": "P11"
+    },
+    "researcher-0007|P1|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P1.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0007|P2|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P2.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0007|P3|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P3.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0007|P4|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P4.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0007|P5|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P5.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0007|P6|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P6.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "conditional",
+      "source_step_id": "P6"
+    },
+    "researcher-0007|P7|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P7.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0007|P8|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P8.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "researcher-0007|P9|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0007:P9.1"
+      ],
+      "source_job_id": "researcher-0007",
+      "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+      "source_status": "proved",
+      "source_step_id": "P9"
+    },
+    "researcher-0008|P10|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P10.1",
+        "researcher-0008:P10.2"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P10"
+    },
+    "researcher-0008|P11|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P11.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "refuted",
+      "source_step_id": "P11"
+    },
+    "researcher-0008|P1|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P1.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0008|P2|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P2.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0008|P3|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P3.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0008|P4|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P4.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0008|P5|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P5.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0008|P6|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P6.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "researcher-0008|P7|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P7.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0008|P8|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P8.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "researcher-0008|P9|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0008:P9.1"
+      ],
+      "source_job_id": "researcher-0008",
+      "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+      "source_status": "proved",
+      "source_step_id": "P9"
+    },
+    "researcher-0009|P10|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P10.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P10"
+    },
+    "researcher-0009|P11|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P11.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P11"
+    },
+    "researcher-0009|P12|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P12.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P12"
+    },
+    "researcher-0009|P13|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P13.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P13"
+    },
+    "researcher-0009|P1|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P1.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P1"
+    },
+    "researcher-0009|P2|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P2.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P2"
+    },
+    "researcher-0009|P3|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P3.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P3"
+    },
+    "researcher-0009|P4|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P4.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P4"
+    },
+    "researcher-0009|P5|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P5.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P5"
+    },
+    "researcher-0009|P6|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P6.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P6"
+    },
+    "researcher-0009|P7|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P7.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P7"
+    },
+    "researcher-0009|P8|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P8.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P8"
+    },
+    "researcher-0009|P9|56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0009:P9.1"
+      ],
+      "source_job_id": "researcher-0009",
+      "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+      "source_status": "proved",
+      "source_step_id": "P9"
+    },
+    "researcher-0010|[P10]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P10].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P10]"
+    },
+    "researcher-0010|[P11]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P11].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P11]"
+    },
+    "researcher-0010|[P12]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P12].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P12]"
+    },
+    "researcher-0010|[P13]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P13].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P13]"
+    },
+    "researcher-0010|[P14]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P14].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "refuted",
+      "source_step_id": "[P14]"
+    },
+    "researcher-0010|[P1]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P1].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P1]"
+    },
+    "researcher-0010|[P2]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P2].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P2]"
+    },
+    "researcher-0010|[P3]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P3].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P3]"
+    },
+    "researcher-0010|[P4]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P4].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P4]"
+    },
+    "researcher-0010|[P5]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P5].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P5]"
+    },
+    "researcher-0010|[P6]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P6].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P6]"
+    },
+    "researcher-0010|[P7]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P7].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P7]"
+    },
+    "researcher-0010|[P8]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P8].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "conditional",
+      "source_step_id": "[P8]"
+    },
+    "researcher-0010|[P9]|122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605": {
+      "audit_exact": true,
+      "audit_verdict": "revise",
+      "lemma_ids": [
+        "researcher-0010:[P9].1"
+      ],
+      "source_job_id": "researcher-0010",
+      "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+      "source_status": "proved",
+      "source_step_id": "[P9]"
+    }
+  },
+  "files": [
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0001/response.json",
+      "sha256": "fa500e4a597f77f5241c624f0983a3a9c5e2ae8b42348da976251044968c0616"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0002/response.json",
+      "sha256": "163d8e97e77c5368d9d274d33554787f2700e7eddd16eb735954b0ff725a8e4a"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0003/response.json",
+      "sha256": "592f90e4483fd982519abe98c3e4cd0fdd1548273412b630a01b04943f9631bf"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0004/response.json",
+      "sha256": "5471c16d16f9a02f38819daf15412e47d127fd309ab256ea449c4b395862780f"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0005/response.json",
+      "sha256": "21948a82468a4ee57253d76d0ec23652e7c653b27121ad1847503889c255dfd1"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0006/response.json",
+      "sha256": "21707e85ea55fdb94977668650ab70bf87bb451b38372cfaf0bc70939f47cbe9"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0007/response.json",
+      "sha256": "a272510d36d678d38b5b0d9b1d7e306ff63f1bf50f7fe7c12adb487627d1ae06"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0008/response.json",
+      "sha256": "82fecea9b5f8a67b0bbd01ee335a87aa0558aca7381f5344222d1007e1925c62"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0009/response.json",
+      "sha256": "623158f11fb08aa9609d9eeaf08fea423557a501f57d48424accdd5ee4e888a7"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0010/response.json",
+      "sha256": "4bee6d75a76036f3ea7b1c884669c424e6d17abe2b5ba7b2f1cd255af10a95df"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0001/verifier-researcher-0001/audit.json",
+      "sha256": "e4675f217545f12b3d68e159f7c6ece54daf740ee7a1fea64429c15af6f9151a"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0002/verifier-researcher-0002/audit.json",
+      "sha256": "9a7cad61bb042dcaf4c4ab98539f89903353160ba5acd1c4716d41b9953c4a46"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0003/verifier-researcher-0003/audit.json",
+      "sha256": "13e26084e25b973aeeedeec4fb0a8fafd6855c2d0605115b83bbc8132679dcf7"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0004/verifier-researcher-0004/audit.json",
+      "sha256": "3812519adf58a6ee6f590f3edd83458b374db7b507bc9647389397cfa85fc0a1"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0005/verifier-researcher-0005/audit.json",
+      "sha256": "fd6e4e193090c3aa2823b96ea7ab913e3cd5d63deeb9579533395bfb6e4fb954"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0006/verifier-researcher-0006/audit.json",
+      "sha256": "5b53d226d77752f7bfa233a0219f238ecc3dbdd1b25985fa983a8b9d9704ff49"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0007/verifier-researcher-0007/audit.json",
+      "sha256": "3a917285575b3a9ca70dcb5408e12039d318ace5b2acc5be6975da9324e845f3"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0008/verifier-researcher-0008/audit.json",
+      "sha256": "c045c641d95b742d40c6af53d2209b6e2bfc39f901a85419c74a8f432d105ef3"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0009/verifier-researcher-0009/audit.json",
+      "sha256": "322cd399372615cb182120f4ff35f3ab6454a31a6f829635d3fb8d8ed5729c6f"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/reviews/researcher-0010/verifier-researcher-0010/audit.json",
+      "sha256": "c0fecd7d067019851a86fc76d3c4c4b9a0c286a85455bad8d5d6cf2f7676f14d"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/GENIUS/response.json",
+      "sha256": "fdbbdaff4440d62076fac99ed1b318cae8b6fe5bc9c91cca3c0ab00b13cf0c2d"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0001/response.json",
+      "sha256": "7d31c0366ed375ba092e3f42641ce4f30098304e2b038a33dbc4d90aacc0c16d"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0002/response.json",
+      "sha256": "d52f9d8ae88b951f51924b3848cf99a2c4c3e0d7fb4883382d29bc7cfc588b02"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0003/response.json",
+      "sha256": "3f47d9a32a8a4c95be267daa286b3994e8a9883ac4217c356fe56b8f875f4847"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0004/response.json",
+      "sha256": "a5ebd078c8ecb5a710af48f877d35c20dfa13df7399a8df7198d0ebf192e14e0"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0005/response.json",
+      "sha256": "2bc0330f13c15d1a4cd1a7d6fbc3046ebdd57bb8ad9ddd53f5bb90596390f6d7"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0006/response.json",
+      "sha256": "9aaa9d998e3674e36b3abf2de45cd1b5424b67e76c89a86e72a258c78a9a6abd"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0007/response.json",
+      "sha256": "a0a1ae2d488d84d37517fe5ca489c1ba5745eb56e0b3e14948837e9728085d42"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0008/response.json",
+      "sha256": "d866f3c47628a3332dafa7d2afe157cad8d713486c57ef1708b439598b9ed275"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0009/response.json",
+      "sha256": "2f6a9278d4a5b4fa346ff39f8987fb11f15229854e8c163c400f4fa6dab574aa"
+    },
+    {
+      "path": "research_state/campaign-10-ultra/submissions/researcher-0010/response.json",
+      "sha256": "0627a126046dedffaf8b784c774429205df72d49a0125af79a72fbe4af2ca9ad"
+    }
+  ],
+  "sha256": "9cb6461412833ae65d15cf06ff3f706998000b878ab3bd5cb7cdcdac8e32e6bc"
+}

@@ -1,1 +1,1190 @@
-[]
+[
+  {
+    "input_scale": "Supplied-table acceptance \u03b5",
+    "job_id": "GENIUS",
+    "justification": "Choosing a best-fitting degree-d polynomial on each line can only increase acceptance.",
+    "loss": "[algebraic] Zero loss; deterministic domination.",
+    "output_scale": "Arora\u2013Sudan d-success \u03b4\u2265\u03b5",
+    "stage": "AS.0 supplied table to best fit",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Local success \u03b4",
+    "job_id": "GENIUS",
+    "justification": "AS Lemmas 20\u201321 give t=\u0398((d+1)\u00b2\u03b4^\u22126), D=\u0398((d+1)^4\u03b4^\u22129) and a structured point set of density \u03b3=\u0398(\u03b4^9).",
+    "loss": "[probabilistic + algebraic] Ninth-power density loss and \u03b4^\u22129 relation-degree growth.",
+    "output_scale": "D=\u0398((d+1)^4\u03b4^\u22129), \u03b3=\u0398(\u03b4^9)",
+    "stage": "AS.1 rectangular interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Relation degree D and density \u03b3",
+    "job_id": "GENIUS",
+    "justification": "AS Lemma 22, using Theorem 34, requires p>12D^4/\u03b3\u00b2 and returns agreement \u03b3^4/(8D).",
+    "loss": "[algebraic + incidence-combinatorial] Hilbert exceptional restrictions, factor pigeonhole D^\u22121 and fourth-power density loss.",
+    "output_scale": "Agreement \u03b3^4/(8D)",
+    "stage": "AS.2 Hilbert/factor extraction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Local success \u03b4",
+    "job_id": "GENIUS",
+    "justification": "Substitution into AS Theorem 23 is quoted exactly; rewriting its field bound is this synthesis's normalization.",
+    "loss": "[algebraic] p>C(d+1)^16\u03b4^\u221254; output c\u03b4^45/(d+1)^4.",
+    "output_scale": "\u03b4\u2273(d+1)^(8/27)p^\u22121/54; not a pure \u03c1 exponent",
+    "stage": "AS.3 quoted weak theorem",
+    "status": "proved"
+  },
+  {
+    "input_scale": "AS weak decoder invoked at \u03b4\u2248\u03b5\u00b2",
+    "job_id": "GENIUS",
+    "justification": "Corollary 24 quotes only an unspecified polynomial field-size exponent. Direct substitution yields the nonoptimized sufficient power 180.",
+    "loss": "[probabilistic + list-decoding] Weak-to-high-agreement amplification.",
+    "output_scale": "Quoted linear recovery under p>C((d+1)/\u03b5)^c; reconstructed sufficient c=180",
+    "stage": "AS.4 amplification",
+    "status": "proved"
+  },
+  {
+    "input_scale": "HKSS local acceptance \u03b5",
+    "job_id": "GENIUS",
+    "justification": "Theorem 4.3's displayed invariants are \u03b3=\u03a9(\u03b5\u00b2), D=O(d/\u03b5\u00b2) and total popularity \u03bc=\u03a9(\u03b5\u00b3).",
+    "loss": "[probabilistic + algebraic] \u03b5\u00b2 structured density, \u03b5^\u22122 degree cost and \u03b5\u00b3 popularity.",
+    "output_scale": "\u03b3=\u03a9(\u03b5\u00b2), D=O(d/\u03b5\u00b2), \u03bc=\u03a9(\u03b5\u00b3)",
+    "stage": "HKSS.1 structure and interpolation",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "HKSS structured relation",
+    "job_id": "GENIUS",
+    "justification": "Theorem 4.2 quotes p>Cd/\u03b5^7 and one Q of agreement \u03a9(\u03b5^4), but the v1 proof substitutes \u03b5\u00b2-scale popularity where Theorem 4.3 establishes \u03b5\u00b3.",
+    "loss": "[algebraic + incidence-combinatorial] Discriminant cleanup and popularity; displayed accounting unresolved.",
+    "output_scale": "Quoted threshold \u03b5>(Cd/p)^(1/7), quoted agreement \u03a9(\u03b5^4)",
+    "stage": "HKSS.2 weak decoder",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Weak output h(\u03b2)=\u03a9(\u03b2^4)",
+    "job_id": "GENIUS",
+    "justification": "HKSS Lemma B.4 and Theorem 4.4 quote this list-decoding conversion.",
+    "loss": "[probabilistic + list-decoding] List size \u22642/\u03b5^8 and individual agreement \u2265\u03b5^8.",
+    "output_scale": "Quoted list threshold \u03b5\u2080\u2273(d/p)^(1/16)",
+    "stage": "HKSS.3 list conversion",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "HKSS list theorem",
+    "job_id": "GENIUS",
+    "justification": "Theorem 1.4 quotes a one-polynomial agreement \u03b5\u2212\u03b5\u2080 theorem for some unspecified \u03c4>0.",
+    "loss": "[list-decoding] Numerical exponent is not stated.",
+    "output_scale": "Linear recovery above \u03b5\u2080>(d/p)^\u03c4, \u03c4 unspecified",
+    "stage": "HKSS.4 high-agreement conversion",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "KTZ acceptance \u03b5",
+    "job_id": "GENIUS",
+    "justification": "Lemmas 3.1\u20133.2 prune to constant mass and sample a reaching family of size O(p/\u03b5).",
+    "loss": "[incidence-combinatorial + probabilistic] One inverse power of \u03b5 in the selector; otherwise constants.",
+    "output_scale": "n=|R|=O(p/\u03b5)",
+    "stage": "KTZ.1 pruning and sparse reaching",
+    "status": "proved"
+  },
+  {
+    "input_scale": "n=O(p/\u03b5) selected graph identities",
+    "job_id": "GENIUS",
+    "justification": "The (1,1,d)-weighted monomial count gives D\u00b2=\u0398(dn).",
+    "loss": "[algebraic] Square-root interpolation loss.",
+    "output_scale": "D=O(sqrt(dp/\u03b5))",
+    "stage": "KTZ.2 weighted interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Relation degree D",
+    "job_id": "GENIUS",
+    "justification": "Root extension, pointwise ramification deletion and simple-root lifting require D=O(\u03b5p).",
+    "loss": "[algebraic] The controlling D/p loss; resultant lines contribute only D\u00b2/p\u00b2.",
+    "output_scale": "sqrt(dp/\u03b5)=O(\u03b5p), hence \u03b5\u00b3=\u03a9(d/p)",
+    "stage": "KTZ.3 identity and cleanup gate",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Clean minimum-degree graph",
+    "job_id": "GENIUS",
+    "justification": "KTZ Lemmas 6.1 and 6.3 lift and propagate one Q; Lemma 6.2's mixing loss is only p^\u22121/2.",
+    "loss": "[algebraic + incidence-combinatorial] No \u03b5-power beyond the cubic gate.",
+    "output_scale": "One Q with point agreement at least \u03b5/8000",
+    "stage": "KTZ.4 lift, propagation and mixing",
+    "status": "proved"
+  },
+  {
+    "input_scale": "\u03b5\u2265C(d/p)^(1/3)",
+    "job_id": "GENIUS",
+    "justification": "KTZ Theorem 1.1 is quoted; identifying D=O(sqrt(dp/\u03b5)) versus D=O(\u03b5p) as the bottleneck is the reconstructed ledger.",
+    "loss": "[algebraic] Cubic threshold.",
+    "output_scale": "Single-polynomial linear recovery c\u03b5",
+    "stage": "KTZ.5 benchmark",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Carrier edge mass \u03b4 and line measure \u03c3",
+    "job_id": "GENIUS",
+    "justification": "Researcher-0001 obtains |R|=O(\u03c3p/\u03b4), D=O(sqrt(d\u03c3p/\u03b4)) and requires D=O(\u03b4p).",
+    "loss": "[probabilistic + algebraic] \u03b4\u00b3=\u03a9(d\u03c3/p).",
+    "output_scale": "Conditional exponent 1/2 when \u03c3=O(\u03b4); exponent 1/3 when \u03c3=1",
+    "stage": "NEW.1 support-sensitive carrier",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Connected component with minimum degree k and line measure \u03c4",
+    "job_id": "GENIUS",
+    "justification": "The accepted researcher-0002 theorem uses D=O(sqrt(d\u03c4p\u00b2/k)), k\u00b2\u2273dp and k\u00b3\u2273d\u03c4p\u00b2.",
+    "loss": "[probabilistic + algebraic] Component support replaces global support.",
+    "output_scale": "Agreement k/(800p); conditional exponent 1/2 if k=\u0398(\u03b5p), \u03c4=O(\u03b5)",
+    "stage": "NEW.2 component-sensitive decoder",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Weighted relation of degree D",
+    "job_id": "GENIUS",
+    "justification": "Researchers 0003, 0005 and 0007 sharpen identically ramified line counts to factorwise or D\u00b2/d scales under full hypotheses.",
+    "loss": "[algebraic] The per-line polar/root loss (D\u2212d)/p remains and still gives the cubic gate.",
+    "output_scale": "No unconditional exponent improvement",
+    "stage": "NEW.3 resultant, Hasse and polar refinements",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Normal multiplicity s",
+    "job_id": "GENIUS",
+    "justification": "Researcher-0004 computes \u0398(s\u00b2D) interpolation cost against only s-fold root gain.",
+    "loss": "[algebraic] Multiplicity cancels: D\u2248s sqrt(dn) and sh>D reduce to h\u00b2\u2273dn.",
+    "output_scale": "Cubic gate unchanged",
+    "stage": "NEW.4 uniform jet multiplicity",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Primitive, squarefree or absolutely irreducible relations",
+    "job_id": "GENIUS",
+    "justification": "Researcher-0006's accepted examples show that singular accepted lifts can still block a global section.",
+    "loss": "[algebraic] Separability and factor purification do not remove B_Z=0 incidence loss.",
+    "output_scale": "Mandatory simple-root cleanup",
+    "stage": "NEW.5 singular-lift obstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Graph density, covers, moments or bounded-order DRC",
+    "job_id": "GENIUS",
+    "justification": "Researchers 0008\u20130009 construct legal regular full-support carriers saturating these statistics while already admitting Q=0.",
+    "loss": "[incidence-combinatorial + probabilistic] Graph-only information cannot distinguish easy decoding from hard reaching.",
+    "output_scale": "No improved universal structural dichotomy",
+    "stage": "NEW.6 graph-only barriers",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Popularity tail u*\u2265\u03ba \u03b5^a p",
+    "job_id": "GENIUS",
+    "justification": "Researcher-0010's asymmetric gate u*\u03b5\u00b2\u2273d rearranges to \u03b5^(a+2)\u2273d/p.",
+    "loss": "[incidence-combinatorial] Conditional popularity exponent a.",
+    "output_scale": "Conditional exponent 1/(a+2), at most 1/2; universal a=1 gives 1/3",
+    "stage": "NEW.7 asymmetric popularity",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "\u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8)",
+    "job_id": "GENIUS",
+    "justification": "RD\u03b8 would replace the KTZ selector/interpolation scale D\u2248sqrt(dp/\u03b5) by a label-aware relation with D\u2264K\u03b8d while retaining \u03a9\u03b8(\u03b5) mass.",
+    "loss": "[incidence-combinatorial] This entire rank-or-decode step is open.",
+    "output_scale": "D=O\u03b8(d) or direct decoding",
+    "stage": "NEW.8 bounded-weight rank-or-decode",
+    "status": "conjectural"
+  },
+  {
+    "input_scale": "Common relation with D\u2264K\u03b8d",
+    "job_id": "GENIUS",
+    "justification": "Cleanup costs O((D/p)\u00b2+D/p), peeling costs O(D/p), and at most D/d templates survive.",
+    "loss": "[algebraic + list-decoding] Constant-factor mass loss and list size at most K\u03b8.",
+    "output_scale": "One Q with \u03a9\u03b8(\u03b5) agreement",
+    "stage": "NEW.9 component-template compression",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Carrier edge mass \u03b4 and line support \u03c3.",
+    "job_id": "researcher-0001",
+    "justification": "Deleting point vertices of degree below k0=floor(\u03b4p/100) costs at most k0/(p+1); deleting line vertices costs at most k0/p.",
+    "loss": "Less than \u03b4/50; the proof retains the weaker convenient bound \u03b4/4.",
+    "output_scale": "A graph of edge mass at least \u03b4/4, minimum degree k0, and line measure between \u03b4/4 and \u03c3.",
+    "stage": "carrier pruning",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Minimum degree k0 and selector probability \u03b8=8/k0.",
+    "job_id": "researcher-0001",
+    "justification": "For each line, coverage failure is at most exp(\u2212k0/8); a union bound over p(p+1) lines is below 1/4. Chebyshev gives size failure at most 4/E|R|<1/4.",
+    "loss": "Only constant success probability; no power of \u03b4 is lost probabilistically.",
+    "output_scale": "A deterministic selected line set satisfying coverage and two-sided size control.",
+    "stage": "Hoeffding, union, and Chebyshev audit",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Retained line measure at most \u03c3 and k0\u2265\u03b4p/200.",
+    "job_id": "researcher-0001",
+    "justification": "The selector has |R|\u226416|L0|/k0.",
+    "loss": "One inverse factor \u03b4 and one factor \u03c3.",
+    "output_scale": "100(p+1)\u2264r=|R|\u22646400\u03c3p/\u03b4.",
+    "stage": "support-sensitive selector",
+    "status": "proved"
+  },
+  {
+    "input_scale": "r selected graph identities and weighted degree D.",
+    "job_id": "researcher-0001",
+    "justification": "There are at most r(D+1) linear constraints, while dim(V_D)\u2265D\u00b3/(64d). Taking D=16(floor(sqrt(dr))+1) makes dim(V_D)>r(D+1).",
+    "loss": "Square root of dr.",
+    "output_scale": "D\u22641280 sqrt(d\u03c3p/\u03b4)+16.",
+    "stage": "weighted interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D\u2248sqrt(d\u03c3p/\u03b4) and root budget k0,k1=\u0398(\u03b4p).",
+    "job_id": "researcher-0001",
+    "justification": "Identity extension and Hensel lifting both require D=O(\u03b4p).",
+    "loss": "Combining the square-root interpolation degree with the linear root budget.",
+    "output_scale": "\u03b4\u00b3=\u03a9(d\u03c3/p).",
+    "stage": "principal cubic bottleneck",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D\u2264\u03b4p/10000.",
+    "job_id": "researcher-0001",
+    "justification": "Content lines, resultant-degenerate lines, and bad incidences cost D/[p(p+1)]+D(D\u22121)/[p(p+1)]+D/p.",
+    "loss": "The D/p term enforces the same cubic inequality; D\u00b2/p\u00b2 alone would require only \u03b4\u00b2=\u03a9(d\u03c3/p).",
+    "output_scale": "Deletion below \u03b4/16.",
+    "stage": "content and resultant deletion",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Post-deletion graph and k1=floor(\u03b4p/1000).",
+    "job_id": "researcher-0001",
+    "justification": "Second pruning removes at most k1/(p+1)+k1/p.",
+    "loss": "Less than \u03b4/500.",
+    "output_scale": "Edge mass at least \u03b4/8 and minimum degree k1.",
+    "stage": "second pruning",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Incidence mixing error 1/sqrt(p+1).",
+    "job_id": "researcher-0001",
+    "justification": "One spectral Cauchy\u2013Schwarz estimate and \u03b4\u00b2\u226510^15 d/p give 1/sqrt(p+1)<\u03b4/8000\u2264k1/(4p).",
+    "loss": "A p^\u22121/2 error, weaker than the cubic gate for d\u2265101.",
+    "output_scale": "Every surviving component has point density at least \u03b4/8000.",
+    "stage": "component mixing",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A carrier satisfying \u03b4\u00b3\u226510^15 d\u03c3/p.",
+    "job_id": "researcher-0001",
+    "justification": "Interpolation, deletion, simple-root lifting, and mixing close with the displayed constants.",
+    "loss": "Constant recovery factor 1/8000.",
+    "output_scale": "Global agreement at least \u03b4/8000; if \u03b4\u2265\u03b5/2, at least \u03b5/16000.",
+    "stage": "global recovery",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Diffuse carrier \u03c3\u22641.",
+    "job_id": "researcher-0001",
+    "justification": "Substitute \u03c3=1 into \u03b4\u00b3\u226510^15d\u03c3/p.",
+    "loss": "Cube root.",
+    "output_scale": "\u03b4\u226510^5(d/p)^(1/3).",
+    "stage": "unconditional benchmark reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Additional hypothesis \u03c3\u2264A\u03b4.",
+    "job_id": "researcher-0001",
+    "justification": "Then \u03b4\u00b3\u226510^15Ad\u03b4/p reduces to \u03b4\u00b2\u226510^15Ad/p.",
+    "loss": "Square root; the extra structural hypothesis is essential.",
+    "output_scale": "\u03b4\u2265sqrt(10^15 A d/p), a conditional exponent 1/2.",
+    "stage": "concentrated-carrier corollary",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Hypothetical universal selector r=O(\u03b4p).",
+    "job_id": "researcher-0001",
+    "justification": "It would give D\u2248sqrt(d\u03b4p), and D\u2264\u03b4p would algebraically reduce to \u03b4=\u03a9(d/p).",
+    "loss": "None beyond the interpolation baseline.",
+    "output_scale": "A putative exponent-1 route.",
+    "stage": "hypothetical optimal selector",
+    "status": "refuted"
+  },
+  {
+    "input_scale": "p independent values on one line and r=floor(log p/(4 log log p)).",
+    "job_id": "researcher-0001",
+    "justification": "A second-moment/Cauchy\u2013Schwarz calculation gives probability at least 1/65 that some value occurs exactly r times.",
+    "loss": "Constant 1/65.",
+    "output_scale": "Expected modal local agreement at least r/(65p).",
+    "stage": "modal occupancy lower bound",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Modal agreement A with E[A]\u226425r/p.",
+    "job_id": "researcher-0001",
+    "justification": "A factorial-moment union bound controls one-line maxima; McDiarmid gives Pr[A>50r/p]\u2264exp(\u22121250r\u00b2).",
+    "loss": "Exponentially small exceptional probability; no Markov inequality is used.",
+    "output_scale": "A\u226450r/p on the selected deterministic instance.",
+    "stage": "modal upper concentration",
+    "status": "proved"
+  },
+  {
+    "input_scale": "N=5253 degree-at-most-101 coefficients and a random point table.",
+    "job_id": "researcher-0001",
+    "justification": "For fixed Q, agreements are Bin(p\u00b2,1/p), so Pr[agreements\u22652p]\u2264(e/4)^p; union over p^N polynomials is at most exp(\u2212p/4).",
+    "loss": "A union factor p^5253 absorbed by the exponential tail.",
+    "output_scale": "Every total-degree-at-most-101 polynomial has agreement below 2/p.",
+    "stage": "global polynomial union bound",
+    "status": "proved"
+  },
+  {
+    "input_scale": "\u03b5 between r/(130p) and 50r/p, with r\u2192\u221e.",
+    "job_id": "researcher-0001",
+    "justification": "For arbitrary C,c>0, choose a sufficiently large prime with r\u2265max(130\u00b7101C,260/c).",
+    "loss": "Global/local ratio at most 260/r\u21920.",
+    "output_scale": "The implication \u03b5\u2265C\u00b7101/p \u21d2 Agr_101(f)\u2265c\u03b5 is false.",
+    "stage": "exact-linear obstruction",
+    "status": "refuted"
+  },
+  {
+    "input_scale": "Fixed \u03b7>0 and d=101.",
+    "job_id": "researcher-0001",
+    "justification": "(50r/p)/(101/p)^(1\u2212\u03b7)=50r/(101^(1\u2212\u03b7)p^\u03b7)\u21920.",
+    "loss": "The modal scale remains below every fixed-\u03b7 trigger.",
+    "output_scale": "No refutation of a fixed exponent 1\u2212\u03b7.",
+    "stage": "fixed-\u03b7 comparison",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Unconditional KTZ core: k=Theta(epsilon p), line support measure tau<=1",
+    "job_id": "researcher-0002",
+    "justification": "KTZ Lemma 3.2 gives |R|=O(p/epsilon); weighted interpolation gives D=O(sqrt(dp/epsilon)); extension needs D=O(epsilon p). This is a reconstruction from the proof, not a quoted exponent explanation.",
+    "loss": "One inverse power of epsilon in |R| and a square-root interpolation loss",
+    "output_scale": "epsilon^3=Omega(d/p), hence epsilon=Omega((d/p)^(1/3))",
+    "stage": "KTZ benchmark reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Local agreement epsilon",
+    "job_id": "researcher-0002",
+    "justification": "KTZ Lemma 3.1 prunes accepted incidences while retaining minimum degree k0=floor(epsilon p/100).",
+    "loss": "Absolute constant only",
+    "output_scale": "k0=Theta(epsilon p)",
+    "stage": "accepted-core pruning",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Connected accepted component with minimum degree k and line measure tau",
+    "job_id": "researcher-0002",
+    "justification": "Sample each of its line vertices with probability 8/k. Affine-line uniqueness makes coverage events independent across distinct points of a fixed target line; Chernoff plus a union bound gives simultaneous coverage.",
+    "loss": "Constant probability and constant-factor size concentration",
+    "output_scale": "|R|=Theta(tau p^2/k), hence O(tau p/epsilon) when k=Theta(epsilon p)",
+    "stage": "component-sensitive concentration",
+    "status": "proved"
+  },
+  {
+    "input_scale": "|R|=O(tau p^2/k)",
+    "job_id": "researcher-0002",
+    "justification": "The eligible weighted monomial space has dimension at least D^3/(64d), while the selected line identities impose at most |R|(D+1) constraints.",
+    "loss": "Square-root interpolation loss",
+    "output_scale": "D=O(sqrt(d tau p^2/k))",
+    "stage": "trivariate interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(d tau p^2/k)) and root supply k",
+    "job_id": "researcher-0002",
+    "justification": "More than half of every target line's accepted points are reached, so D<k/2 makes its restricted relation identically zero.",
+    "loss": "Requires k^3=Omega(d tau p^2)",
+    "output_scale": "epsilon^3=Omega(tau d/p) when k=Theta(epsilon p)",
+    "stage": "identity extension",
+    "status": "proved"
+  },
+  {
+    "input_scale": "At most D trivial lines, D(D-1) degenerate lines, and D bad points per other line",
+    "job_id": "researcher-0002",
+    "justification": "Component-local deletion divided by |E|>=k|T| is O(D/k+dp/k^2).",
+    "loss": "Requires k^2=Omega(dp), independently of tau",
+    "output_scale": "epsilon^2=Omega(d/p) when k=Theta(epsilon p)",
+    "stage": "simple-root cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Clean graph with minimum degree k1=floor(k/100)",
+    "job_id": "researcher-0002",
+    "justification": "Iterative pruning loses below 2k1/k of the original component edges; point-line mixing gives every surviving component point measure at least k1/(4p).",
+    "loss": "Absolute constant and absorbed p^(-1/2) mixing error",
+    "output_scale": "global agreement at least k/(800p)",
+    "stage": "lifting and propagation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "tau<=Lambda epsilon and k=Theta(epsilon p)",
+    "job_id": "researcher-0002",
+    "justification": "Both k^3 and k^2 budget conditions reduce to epsilon^2 p=Omega_Lambda(d).",
+    "loss": "The small-component premise is not known to follow from local agreement",
+    "output_scale": "epsilon>=C_Lambda(d/p)^(1/2), global agreement at least epsilon/160000",
+    "stage": "conditional square-root corollary",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Balanced K-color acceptance graph, epsilon in [1/(2K),2/K]",
+    "job_id": "researcher-0002",
+    "justification": "Double counting the covered point set forces any family covering half of every line to contain at least Kp/16 lines.",
+    "loss": "None; this is a lower bound",
+    "output_scale": "|R|>=p/(32epsilon)",
+    "stage": "global-cover obstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Local agreement \u03b5 on uniform point-line incidences",
+    "job_id": "researcher-0003",
+    "justification": "KTZ Lemma 3.1 retains incidence measure at least \u03b5/4 after popularity pruning.",
+    "loss": "Only absolute constant factors",
+    "output_scale": "Minimum point and line degree k0=floor(\u03b5p/100)",
+    "stage": "accepted-incidence pruning",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Minimum degree \u0398(\u03b5p)",
+    "job_id": "researcher-0003",
+    "justification": "KTZ Lemma 3.2 samples lines with probability \u0398(1/(\u03b5p)); Chernoff plus a union bound gives coverage, while Chebyshev controls sample size.",
+    "loss": "No power of \u03b5 beyond \u03b5^\u22121 in the selected-line count",
+    "output_scale": "100p\u2264|R|\u22646400p/\u03b5",
+    "stage": "sparse line selection",
+    "status": "proved"
+  },
+  {
+    "input_scale": "|R|=O(p/\u03b5), weighted monomial dimension \u0398(D^3/d), and O(D) constraints per graph line",
+    "job_id": "researcher-0003",
+    "justification": "The inequality D^3/d \u2273 |R|D gives D^2\u2273d|R|.",
+    "loss": "Square-root interpolation scale",
+    "output_scale": "D=O(sqrt(dp/\u03b5))",
+    "stage": "bivariate weighted interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Coprime weighted degrees u,v and Z-degrees r,s",
+    "job_id": "researcher-0003",
+    "justification": "The new weighted resultant lemma gives degree su+rv\u2212drs\u2264uv/d.",
+    "loss": "At most a factor-d-sharpened exceptional-line count",
+    "output_scale": "|T_common|\u2264floor(uv/d)",
+    "stage": "weighted resultant",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Squarefree primitive B of weighted degree \u03b4\u2264D<p",
+    "job_id": "researcher-0003",
+    "justification": "Prime-field vertical separability permits V=B_Z, with weighted degree at most \u03b4\u2212d.",
+    "loss": "At most D^2/d\u2212D content-trivial or identically ramified lines",
+    "output_scale": "Exceptional-line incidence loss at most (D^2/d\u2212D)/(p(p+1))",
+    "stage": "prime vertical cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(dp/\u03b5))",
+    "job_id": "researcher-0003",
+    "justification": "Substitution of the interpolation scale into the new exceptional-line bound.",
+    "loss": "O(1/(\u03b5p)); this is lower order under the cubic regime",
+    "output_scale": "D^2/(dp^2)=O(1/(\u03b5p))",
+    "stage": "exceptional-line exponent reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Every nonexceptional B_Z(L(t),P_L(t)) has degree at most D\u2212d",
+    "job_id": "researcher-0003",
+    "justification": "Ordinary univariate root counting.",
+    "loss": "At most (D\u2212d)/p=O(sqrt((d/p)/\u03b5)) incidence measure",
+    "output_scale": "O(sqrt((d/p)/\u03b5))",
+    "stage": "nonexceptional ramified-point cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Cleanup loss O(sqrt((d/p)/\u03b5))",
+    "job_id": "researcher-0003",
+    "justification": "Requiring this loss to be O(\u03b5) gives sqrt((d/p)/\u03b5)\u2272\u03b5.",
+    "loss": "Cubic compatibility condition",
+    "output_scale": "\u03b5^3\u2273d/p, equivalently \u03b5\u2273(d/p)^(1/3)",
+    "stage": "controlling threshold",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Point-line mixing error 1/sqrt(p+1)",
+    "job_id": "researcher-0003",
+    "justification": "KTZ Lemmas 2.1 and 6.2 use Cauchy-Schwarz/expander mixing; Lemma 4.1 requires 1/sqrt(p+1)\u2264\u03b5/8000.",
+    "loss": "No additional exponent once \u03b5^3p\u2273d and d\u2265101",
+    "output_scale": "A connected component with point density at least \u03b5/8000",
+    "stage": "single-polynomial recovery",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Ambient Hasse multiplicity s on M lifted points",
+    "job_id": "researcher-0003",
+    "justification": "Raw interpolation uses M*binom(s+2,3)=\u0398(Ms^3) constraints while root propagation gains a factor s.",
+    "loss": "If M\u2265\u03c1p^2 and k\u2264K\u03b5p, feasibility forces \u03b5^3>\u03c1d/(12K^3p).",
+    "output_scale": "The same 1/3 exponent barrier",
+    "stage": "multiplicity attempt",
+    "status": "proved"
+  },
+  {
+    "input_scale": "HKSS hypothesis q>Cd/\u03b5^7",
+    "job_id": "researcher-0003",
+    "justification": "Algebraic rearrangement, not a quoted exponent theorem.",
+    "loss": "Historical weak bivariate threshold",
+    "output_scale": "\u03b5>(Cd/q)^(1/7)",
+    "stage": "prior-result reconstruction",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Local agreement at least (d+1)/p and global agreement below 4/p",
+    "job_id": "researcher-0003",
+    "justification": "Random-table Chernoff bound followed by a union bound over at most p^binom(d+2,2) global polynomials.",
+    "loss": "Global/local ratio below 4/(d+1)",
+    "output_scale": "Every exponent \u03b1>1 is impossible",
+    "stage": "asymptotic ceiling counterexample",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Local agreement epsilon",
+    "job_id": "researcher-0004",
+    "justification": "KTZ Revision 1, Lemma 3.2, after constant-factor popularity pruning and random covering.",
+    "loss": "Selected family size n<=3200(p+1)/epsilon<=6400p/epsilon; each retained line has h>floor(epsilon p/100)/2 covered points.",
+    "output_scale": "n=O(p/epsilon), h=Omega(epsilon p)",
+    "stage": "Sparse covering family",
+    "status": "proved"
+  },
+  {
+    "input_scale": "n selected graph curves and ordinary vanishing",
+    "job_id": "researcher-0004",
+    "justification": "KTZ Lemmas 2.2 and 4.2 compare Theta(D^3/d) coefficients with n(D+1) equations.",
+    "loss": "D=Theta(sqrt(dn))",
+    "output_scale": "D=O(sqrt(dp/epsilon))",
+    "stage": "Ordinary weighted interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(dp/epsilon)), h=Omega(epsilon p)",
+    "job_id": "researcher-0004",
+    "justification": "KTZ Lemma 4.3 needs more than D distinct roots.",
+    "loss": "sqrt(dp/epsilon)=O(epsilon p), equivalently epsilon^3=Omega(d/p)",
+    "output_scale": "Exponent 1/3",
+    "stage": "Ordinary root transfer",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Uniform graph multiplicity s",
+    "job_id": "researcher-0004",
+    "justification": "The exact normal-jet codimension is C_s(D,d)=binom(s+1,2)(D+1)-(d+1)binom(s+1,3) when D>=d(s-1).",
+    "loss": "Theta(s^2D) conditions per selected graph",
+    "output_scale": "D=Theta(s sqrt(dn)) up to constants",
+    "stage": "Multiplicity-sensitive interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "h compatible intersections, each of graph multiplicity s",
+    "job_id": "researcher-0004",
+    "justification": "Each point supplies an s-fold root, so transfer requires sh>D.",
+    "loss": "D/s=Theta(sqrt(dn)); the multiplicity parameter cancels",
+    "output_scale": "h=Omega(sqrt(dn))",
+    "stage": "Multiplicity root transfer",
+    "status": "proved"
+  },
+  {
+    "input_scale": "n=Theta(p/epsilon), h=Theta(epsilon p) on the worst-case KTZ scales",
+    "job_id": "researcher-0004",
+    "justification": "The proved rank-blind barrier gives h^2>dn/12.",
+    "loss": "epsilon^2p^2=Omega(dp/epsilon), hence epsilon^3=Omega(d/p)",
+    "output_scale": "Still exponent 1/3",
+    "stage": "Cubic-barrier reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Interpolant degree D",
+    "job_id": "researcher-0004",
+    "justification": "KTZ Lemmas 5.1-5.2 remove O(D/p+D^2/p^2) incidence measure and require D=O(epsilon p); Lemma 6.1 also needs more than D incident lines.",
+    "loss": "These conditions reproduce, rather than improve, epsilon^3=Omega(d/p).",
+    "output_scale": "Simple-root graph suitable for lifting",
+    "stage": "Degeneracy removal and lifting",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A surviving connected component",
+    "job_id": "researcher-0004",
+    "justification": "KTZ Lemmas 6.2-6.3 use point-line mixing and simple-root propagation.",
+    "loss": "Only an absolute constant; p^(-1/2)=O(epsilon) is weaker than the cubic hypothesis for 100<d<p.",
+    "output_scale": "Quoted benchmark agreement at least epsilon/8000 in the bivariate proof",
+    "stage": "Global agreement",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Original local agreement epsilon",
+    "job_id": "researcher-0005",
+    "justification": "This is exactly the uniform affine-line/uniform-point acceptance probability.",
+    "loss": "None",
+    "output_scale": "epsilon",
+    "stage": "Test density",
+    "status": "proved"
+  },
+  {
+    "input_scale": "epsilon",
+    "job_id": "researcher-0005",
+    "justification": "KTZ revision 1, Lemma 3.2. The bound is one-sided and must not be read as n=Theta(p/epsilon).",
+    "loss": "One selector factor epsilon^(-1)",
+    "output_scale": "n <= 6400p/epsilon",
+    "stage": "KTZ line selection",
+    "status": "proved"
+  },
+  {
+    "input_scale": "n <= 6400p/epsilon",
+    "job_id": "researcher-0005",
+    "justification": "KTZ defines D=16(floor(sqrt(dn))+1).",
+    "loss": "Square-root interpolation cost",
+    "output_scale": "D <= 1280(sqrt(dp/epsilon)+1)",
+    "stage": "Weighted interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Squarefree primitive factor B of weighted degree Delta <= D",
+    "job_id": "researcher-0005",
+    "justification": "Every inseparable Z-dependent factor has weighted degree at least pd; KTZ has D<p<pd.",
+    "loss": "No density or exponent loss",
+    "output_scale": "gcd(B,B_Z)=1",
+    "stage": "Characteristic separation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(dp/epsilon)+1)",
+    "job_id": "researcher-0005",
+    "justification": "The factorwise resultant lemma removes at most O(D^2/d) lines.",
+    "loss": "O(D^2/(d p^2)) = O(1/(epsilon p)+1/(d p^2)) normalized incidences",
+    "output_scale": "Requires only epsilon^2 p = Omega(1) to be O(epsilon)",
+    "stage": "Exceptional graph lines",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(dp/epsilon)+1)",
+    "job_id": "researcher-0005",
+    "justification": "Each surviving separable graph line loses at most D-d parameter values.",
+    "loss": "O(D/p)=O(sqrt(d/(epsilon p))+1/p)",
+    "output_scale": "O(epsilon) exactly when epsilon^3 = Omega(d/p), up to constants",
+    "stage": "Simple-root point cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D and k1=floor(epsilon p/1000)",
+    "job_id": "researcher-0005",
+    "justification": "KTZ Lemma 4.1 requires D<k1/2, and later identity extension/lifting use the same scale separation.",
+    "loss": "D=O(epsilon p)",
+    "output_scale": "epsilon^3 = Omega(d/p)",
+    "stage": "Identity-extension and lifting gate",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Retained incidence graph",
+    "job_id": "researcher-0005",
+    "justification": "Deleting point vertices of degree at most one costs at most p^2 of p^2(p+1) incidences.",
+    "loss": "At most 1/(p+1)",
+    "output_scale": "Weaker than the cubic condition for d>=101",
+    "stage": "Optional point-degree pruning",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Affine incidence graph",
+    "job_id": "researcher-0005",
+    "justification": "The quoted KTZ affine mixing estimate contributes a p^(-1/2) error.",
+    "loss": "O(p^(-1/2))",
+    "output_scale": "Weaker than epsilon=Omega((d/p)^(1/3)) for d>=101",
+    "stage": "Mixing",
+    "status": "proved"
+  },
+  {
+    "input_scale": "epsilon >= C_KTZ(d/p)^(1/3)",
+    "job_id": "researcher-0005",
+    "justification": "Quoted KTZ Theorem 1.1 and its bivariate proof; the proof-level constant is 1/8000.",
+    "loss": "An absolute constant factor",
+    "output_scale": "One total-degree-at-most-d polynomial agrees on at least epsilon/8000 of F_p^2",
+    "stage": "Global decoding",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Desired exponent 1-o(1)",
+    "job_id": "researcher-0005",
+    "justification": "Neither Hasse-height stratification nor the sharper cleanup changes the dominant requirement D=O(epsilon p).",
+    "loss": "Unresolved",
+    "output_scale": "No result beyond exponent 1/3",
+    "stage": "Long-term target",
+    "status": "conjectural"
+  },
+  {
+    "input_scale": "p+1 directions, vertical multiplicity p",
+    "job_id": "researcher-0005",
+    "justification": "For Z^p-XY^(p-1), p(p+1)>pd but Frobenius support rules out a formal section.",
+    "loss": "The proposed multiplicity-weighted inference is false",
+    "output_scale": "No exponent may be derived from that inference",
+    "stage": "Hasse-multiplicity shortcut",
+    "status": "refuted"
+  },
+  {
+    "input_scale": "p prime, 101\u2264d<p, and \u03b5\u2265C(d/p)^(1/3).",
+    "job_id": "researcher-0006",
+    "justification": "Quoted from Kominers\u2013Thaler\u2013Zheng, Theorem 1.1; the bivariate proof gives the explicit recovery fraction 1/8000.",
+    "loss": "Published interpolation, mixing, derivative-root deletion, and component losses.",
+    "output_scale": "A total-degree-\u2264d polynomial Q with Pr[Q(x)=f(x)]\u2265c\u03b5.",
+    "stage": "Published benchmark",
+    "status": "proved"
+  },
+  {
+    "input_scale": "|R|\u22646400p/\u03b5 and D=16(floor(sqrt(d|R|))+1).",
+    "job_id": "researcher-0006",
+    "justification": "These are the quoted KTZ reference-set and interpolation choices. Thus D\u22641280sqrt(dp/\u03b5)+16.",
+    "loss": "The generic vertical-root budget is at most D/p\u22641280sqrt(d/(\u03b5p))+16/p.",
+    "output_scale": "Budgeting this as O(\u03b5) is ensured by \u03b5\u00b3=\u03a9(d/p), together with \u03b5p=\u03a9(1). This is an exponent reconstruction, not a separately quoted theorem.",
+    "stage": "KTZ cubic reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "An F_p-irreducible factor C of weighted degree \u03b4 and Z-degree r with k\u22652 absolute factors.",
+    "job_id": "researcher-0006",
+    "justification": "Frobenius conjugacy plus the proved weighted-resultant bound gives |T_C|\u2264(2r\u03b4-dr\u00b2)/k\u00b2\u2264\u03b4\u00b2/(4d).",
+    "loss": "For a primitive interpolant B, the sole union bound gives \u03a3\u03b4_i\u00b2/(4d)\u2264D\u00b2/(4d) discarded graph lines, or normalized line mass D\u00b2/[4d p(p+1)].",
+    "output_scale": "All remaining supported factors are absolutely irreducible.",
+    "stage": "Frobenius purification",
+    "status": "proved"
+  },
+  {
+    "input_scale": "The diagnostic KTZ envelope D\u00b2=O(dp/\u03b5).",
+    "job_id": "researcher-0006",
+    "justification": "Substitution into the exact purification loss gives O(1/(\u03b5p)).",
+    "loss": "To charge purification as O(\u03b5) requires \u03b5\u00b2p=\u03a9(1). At \u03b5=(d/p)^(1-\u03b7), this quantity is d^(2-2\u03b7)p^(2\u03b7-1).",
+    "output_scale": "Purification is cheap under the cubic benchmark but is not automatically cheap throughout the near-linear target regime.",
+    "stage": "Purification exponent consequence",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "One fixed factor B, formal graph identities, and every ramified accepted lift smooth on B=0.",
+    "job_id": "researcher-0006",
+    "justification": "At each base point, the chain rule permits only the single projective direction orthogonal to (B_X,B_Y).",
+    "loss": "At most p\u00b2 ramified accepted edges, hence normalized loss at most 1/(p+1). No union, Markov, mixing, or Cauchy\u2013Schwarz loss.",
+    "output_scale": "This loss is O(\u03b5) once \u03b5(p+1)=\u03a9(1).",
+    "stage": "Smooth ramification cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "d\u2264D<2d and B primitive, Z-dependent, with weighted degree at most D.",
+    "job_id": "researcher-0006",
+    "justification": "Then B=aZ+b, deg(a)\u2264D-d, deg(b)\u2264D, and gcd(a,b)=1. B\u00e9zout bounds V(a,b) by D(D-d) points.",
+    "loss": "Deleting all ramified base vertices costs at most D(D-d)/p\u00b2 in uniform incidence measure.",
+    "output_scale": "A stronger near-p cleanup than summing D-d roots separately on every line.",
+    "stage": "Linear-in-Z cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "101\u2264d\u2264p-2, D=d+1, s=floor((d+1)/2), and the explicit table built from B=XZ+H(Y).",
+    "job_id": "researcher-0006",
+    "justification": "There are sp fully accepted selected lines, each with exactly one ramified accepted point.",
+    "loss": "Selected-line measure s/(p+1); ramified incidence contribution s/[p(p+1)]=[s/(p+1)]\u00b7[(D-d)/p].",
+    "output_scale": "The actual test agreement \u03b5_tab is at least s/(p+1), but no bound on the best global agreement is claimed.",
+    "stage": "Sharp singular example",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A proof that still charges singular ramification by the per-line bound (D-d)/p\u2264D/p under D=O(sqrt(dp/\u03b5)).",
+    "job_id": "researcher-0006",
+    "justification": "The substitution gives O(sqrt(d/(\u03b5p))); comparing with \u03b5 reproduces \u03b5\u00b3=\u03a9(d/p).",
+    "loss": "This is conditional on using that deletion architecture and on a worst-case interpolation envelope; it is not a lower bound on every interpolant.",
+    "output_scale": "No exponent gain until singular accepted lifts receive a stronger global incidence bound.",
+    "stage": "Remaining bottleneck",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Local agreement \u03b5.",
+    "job_id": "researcher-0007",
+    "justification": "KTZ Revision 1, Lemma 3.1, prunes the accepted-incidence graph at k0=floor(\u03b5p/100).",
+    "loss": "Absolute constants only.",
+    "output_scale": "Minimum degree Theta(\u03b5p) and retained edge mass Omega(\u03b5).",
+    "stage": "KTZ dense-core pruning",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Minimum degree Theta(\u03b5p).",
+    "job_id": "researcher-0007",
+    "justification": "KTZ Lemma 3.2 uses independent line sampling, Chernoff, a union bound over p(p+1) lines, and Chebyshev.",
+    "loss": "One inverse power of \u03b5; no additional \u03b5-power from the probabilistic inequalities.",
+    "output_scale": "A selected family with |R|\u22646400p/\u03b5 and Omega(\u03b5p) covered points per retained line.",
+    "stage": "KTZ sparse cover",
+    "status": "proved"
+  },
+  {
+    "input_scale": "|R|=O(p/\u03b5), weighted monomial dimension Omega(D\u00b3/d), and O(D) constraints per graph.",
+    "job_id": "researcher-0007",
+    "justification": "Comparing D\u00b3/d with |R|D gives D\u00b2=Omega(d|R|).",
+    "loss": "Square-root interpolation scale.",
+    "output_scale": "D=O(sqrt(dp/\u03b5)).",
+    "stage": "weighted interpolation reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(dp/\u03b5)) and Theta(\u03b5p) distinct roots or incident directions.",
+    "job_id": "researcher-0007",
+    "justification": "KTZ Lemmas 4.3, 5.2, and 6.1 require D=O(\u03b5p).",
+    "loss": "sqrt(dp/\u03b5)=O(\u03b5p).",
+    "output_scale": "\u03b5\u00b3=Omega(d/p), the benchmark exponent 1/3.",
+    "stage": "controlling identity/lifting gate",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A coprime weighted pair of degrees u,v and Z-degrees r,s.",
+    "job_id": "researcher-0007",
+    "justification": "The weighted Sylvester calculation gives deg Res_Z\u2264su+rv\u2212drs\u2264uv/d.",
+    "loss": "A factor-d improvement over the ordinary uv exceptional-line estimate.",
+    "output_scale": "At most uv/d common graph-line components, counted with resultant multiplicity.",
+    "stage": "weighted resultant",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Factor C_i with polar weight \u03b3_i and line class T_i.",
+    "job_id": "researcher-0007",
+    "justification": "Exceptional lines cost at most Xi_i resultant degree; every other graph has total local polar multiplicity at most \u03b3_i.",
+    "loss": "Normalized loss at most sum_i min(|T_i|,Xi_i)/[p(p+1)]+sum_i |T_i|\u03b3_i/[p\u00b2(p+1)].",
+    "output_scale": "Factor-sensitive rather than whole-polynomial ramification accounting.",
+    "stage": "factorwise polar cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Worst-case \u03b4_i\u2264D and \u03b3_i\u2264\u03b4_i\u2212d.",
+    "job_id": "researcher-0007",
+    "justification": "Summing the resultant bounds gives at most D\u00b2/d\u2212D exceptional lines, while the point term is at most \u03c4(D\u2212d)/p.",
+    "loss": "The exceptional term becomes O(1/(\u03b5p)) after D\u00b2=O(dp/\u03b5), but the point term can still be Theta(D/p).",
+    "output_scale": "No unconditional exponent gain.",
+    "stage": "coarse factorwise envelope",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A connected cleaned factor class of minimum degree k.",
+    "job_id": "researcher-0007",
+    "justification": "Factor-specific Newton lifting and one incidence-mixing Cauchy\u2013Schwarz estimate apply when k>\u03b4_i and 1/sqrt(p+1)\u2264k/(4p).",
+    "loss": "Only a factor four in point density.",
+    "output_scale": "One total-degree-at-most-d polynomial with global agreement at least k/(4p).",
+    "stage": "conditional single-polynomial decoder",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "p\u22658d, e=ceil((dp\u00b2)^(1/3)), D=d+e, and \u03b5=e/(p+1).",
+    "job_id": "researcher-0007",
+    "justification": "e=Theta((dp\u00b2)^(1/3)); hence \u03b5=Theta((d/p)^(1/3)), D=Theta(\u03b5p), and dp/\u03b5=Theta(e\u00b2).",
+    "loss": "Every accepted incidence is a simple whole-B polar zero.",
+    "output_scale": "The whole-polynomial \u03c4(D\u2212d)/p loss equals \u03b5 exactly.",
+    "stage": "cubic-scale saturation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "The published KTZ cubic hypothesis.",
+    "job_id": "researcher-0007",
+    "justification": "KTZ Theorem 1.1 gives an unspecified absolute c; its bivariate Lemmas 6.2\u20136.3 give the explicit recovery \u03b5/8000.",
+    "loss": "Absolute constant only.",
+    "output_scale": "Existing final global agreement at least \u03b5/8000 in m=2; unchanged by this note.",
+    "stage": "final benchmark output",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Local agreement \u03b5 in the KTZ bivariate proof.",
+    "job_id": "researcher-0008",
+    "justification": "KTZ Revision 1, Lemma 3.2 gives the one-sided bound |R|\u22646400p/\u03b5 after constant-factor pruning and Chernoff/union/Chebyshev estimates.",
+    "loss": "One inverse power of \u03b5; probabilistic estimates cost only constants in the stated KTZ regime.",
+    "output_scale": "|R|=O(p/\u03b5).",
+    "stage": "Published sparse reaching family",
+    "status": "proved"
+  },
+  {
+    "input_scale": "n=|R| selected graph identities and ambient degree cap d.",
+    "job_id": "researcher-0008",
+    "justification": "KTZ weighted interpolation compares \u0398(D\u00b3/d) coefficients with at most n(D+1) equations.",
+    "loss": "Square-root interpolation loss.",
+    "output_scale": "D=O(sqrt(dn))=O(sqrt(dp/\u03b5)).",
+    "stage": "Published weighted interpolation, exponent reconstructed",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(dp/\u03b5)) and \u0398(\u03b5p) distinct usable roots or directions.",
+    "job_id": "researcher-0008",
+    "justification": "Identity extension and simple-root lifting require D=O(\u03b5p). Squaring gives dp/\u03b5=O(\u03b5\u00b2p\u00b2).",
+    "loss": "Cubic compatibility gate.",
+    "output_scale": "\u03b5\u00b3=\u03a9(d/p).",
+    "stage": "KTZ benchmark bottleneck",
+    "status": "proved"
+  },
+  {
+    "input_scale": "All p(p+1) affine lines and the legal degree d.",
+    "job_id": "researcher-0008",
+    "justification": "A Hall-factor construction produces accepted line degree d and accepted point degree d or d+1.",
+    "loss": "No averaging or parameter loss.",
+    "output_scale": "Exactly p(p+1)d accepted incidences and \u03b5=d/p.",
+    "stage": "Regular carrier construction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Coverage fraction \u03b8 and regular carrier with \u03b5=d/p.",
+    "job_id": "researcher-0008",
+    "justification": "The fractional other-line reaching optimum lies between \u03b8p(p+1)/(d+1) and \u03b8p(p+1)/(d\u22121).",
+    "loss": "One inverse power of \u03b5, with multiplicative gap (d+1)/(d\u22121)\u2264102/100.",
+    "output_scale": "Fractional and integral reaching cost \u03a9(p/\u03b5).",
+    "stage": "Sharp universal-cover obstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Acceptance density \u03b5 and accepted point degrees a_x.",
+    "job_id": "researcher-0008",
+    "justification": "The exact identity is \u0393\u2082=\u03b5\u00b2\u2212\u03b5(1\u2212\u03b5)/p+Var_x(a_x)/[p(p+1)].",
+    "loss": "One power of \u03b5 in passing from incidences to compatible ordered line pairs; no Markov or union loss.",
+    "output_scale": "\u0393\u2082\u2265\u03b5\u00b2/2 whenever \u03b5\u22652/p.",
+    "stage": "Two-line collision extraction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A component recovery argument with minimum degree k=\u0398(\u03b5p).",
+    "job_id": "researcher-0008",
+    "justification": "KTZ Lemma 2.1 contributes error 1/sqrt(p+1), which Lemma 6.2 absorbs only when \u03b5=\u03a9(p^\u22121/2).",
+    "loss": "A post-1/2 method barrier for fixed legal d.",
+    "output_scale": "For \u03b5=C(101/p)^\u03b1 and \u03b1>1/2, \u03b5sqrt(p)=C\u00b7101^\u03b1 p^(1/2\u2212\u03b1)\u21920.",
+    "stage": "Vinh/KTZ mixing audit",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A balanced component with N points, N distinct lines, and minimum degree k, within Stevens\u2013de Zeeuw Theorem 3's range.",
+    "job_id": "researcher-0008",
+    "justification": "kN\u2264I(P,L)\u226aN^(22/15) implies N\u226bk^(15/7).",
+    "loss": "This reaches the desired N=\u03a9(kp) only at k=\u03a9(p^(7/8)), where N=\u03a9(p^(15/8)) violates the theorem's N\u226ap^(15/11) characteristic range.",
+    "output_scale": "No linear-size component conclusion from this black-box bound.",
+    "stage": "Stevens\u2013de Zeeuw balanced diagnostic",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A balanced Cartesian component P=A\u00d7B with |A|=|B|=sqrt(N), N lines, and minimum degree k, within Stevens\u2013de Zeeuw Theorem 4's range.",
+    "job_id": "researcher-0008",
+    "justification": "kN\u226aN^(11/8)+N gives N\u226bk^(8/3).",
+    "loss": "This reaches N=\u03a9(kp) only at k=\u03a9(p^(3/5)), forcing N=\u03a9(p^(8/5)), outside the theorem's N\u226ap^(4/3) characteristic range.",
+    "output_scale": "Even the Cartesian theorem does not supply linear recovery in its admissible range.",
+    "stage": "Stevens\u2013de Zeeuw Cartesian diagnostic",
+    "status": "proved"
+  },
+  {
+    "input_scale": "The constructed regular table.",
+    "job_id": "researcher-0008",
+    "justification": "The single total-degree-zero polynomial Q=0 agrees with f=0 on every point and is legal under the ambient degree cap d>100.",
+    "loss": "None.",
+    "output_scale": "Global agreement 1 despite worst-scale universal reaching cost.",
+    "stage": "Sparsify-or-decode separation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Local agreement epsilon",
+    "job_id": "researcher-0009",
+    "justification": "Double counting gives mean point degree (p+1)epsilon and mean line degree p epsilon without loss.",
+    "loss": "None",
+    "output_scale": "mu_P=(p+1)epsilon and mu_L=p epsilon",
+    "stage": "degree means",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Moment order s and mean normalized degree epsilon",
+    "job_id": "researcher-0009",
+    "justification": "Independent sampling with replacement gives an ordinary power moment; Jensen yields E[(degree/n)^s]>=epsilon^s.",
+    "loss": "An exact s-th-power density loss",
+    "output_scale": "at least epsilon^s; the constructed line side attains epsilon^s exactly",
+    "stage": "with-replacement higher moments",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Ordered distinct moment order s",
+    "job_id": "researcher-0009",
+    "justification": "Conditional counting gives E[(degree)_s]/(n)_s. Discrete convexity gives the adjacent-integer envelope J_s(mean)/(n)_s.",
+    "loss": "Finite-population falling-factorial correction, retained exactly",
+    "output_scale": "For the carrier, Gamma_s^L=(d)_s/(p)_s; for fixed s<= (d+1)/2 this lies between 2^(-(s-1))epsilon^s and epsilon^s",
+    "stage": "without-replacement higher moments",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Compatibility graph induced by agreement epsilon",
+    "job_id": "researcher-0009",
+    "justification": "Its edge count is sum_x binom(a_x,2), so its average degree is at least p*mu_P(mu_P-1)/(p+1), approximately epsilon^2 p^2 when mu_P is large.",
+    "loss": "Two simultaneous acceptances, hence a quadratic epsilon scale",
+    "output_scale": "compatibility density on the order of epsilon^2 in the regular regime",
+    "stage": "auxiliary graph formation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Auxiliary moment order t",
+    "job_id": "researcher-0009",
+    "justification": "Double counting t-seed sets and common neighbors gives M_t(H)=sum_L binom(deg_H(L),t)/binom(N,t); the average-degree specialization is at least N(epsilon^2/4)^t under the stated hypotheses.",
+    "loss": "The compatibility density is raised to the t-th power",
+    "output_scale": "density-only common-neighborhood certificate N(epsilon^2/4)^t",
+    "stage": "dependent-random-choice certificate",
+    "status": "proved"
+  },
+  {
+    "input_scale": "t seed graphs and KTZ weighted interpolation degree D_t=16(floor(sqrt(dt))+1)",
+    "job_id": "researcher-0009",
+    "justification": "A target common neighbor supplies at most t distinct intersection roots. The KTZ transfer condition h>D_t therefore forces t>D_t>16sqrt(dt), hence t>256d.",
+    "loss": "At least a linear-in-d DRC moment order",
+    "output_scale": "For fixed d and epsilon=C(d/p)^(1/3), N(epsilon^2/4)^t=O(p^(2-2t/3)) tends to zero",
+    "stage": "all-common-neighbor DRC insertion",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Fixed reaching fraction theta on the connected carrier, epsilon=d/p",
+    "job_id": "researcher-0009",
+    "justification": "Capped-load double counting and uniform weights give theta p(p+1)/(d+1)<=OPT_theta<=theta p(p+1)/(d-1).",
+    "loss": "One inverse power of epsilon",
+    "output_scale": "OPT_theta=Theta(theta p/epsilon), with upper/lower ratio at most 102/100",
+    "stage": "fractional reaching barrier",
+    "status": "proved"
+  },
+  {
+    "input_scale": "KTZ pruned core at agreement epsilon",
+    "job_id": "researcher-0009",
+    "justification": "KTZ Lemma 3.2 gives |R|=O(p/epsilon); its Chernoff, union, and Chebyshev estimates cost only constants.",
+    "loss": "One inverse epsilon",
+    "output_scale": "|R|=O(p/epsilon)",
+    "stage": "KTZ selector reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "|R|=O(p/epsilon)",
+    "job_id": "researcher-0009",
+    "justification": "KTZ weighted interpolation compares Omega(D^3/d) monomials with O(|R|D) constraints.",
+    "loss": "Square root",
+    "output_scale": "D=O(sqrt(dp/epsilon))",
+    "stage": "KTZ interpolation reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(dp/epsilon)) and Theta(epsilon p) usable roots or directions",
+    "job_id": "researcher-0009",
+    "justification": "KTZ identity extension and lifting require D=O(epsilon p); squaring and rearranging gives epsilon^3=Omega(d/p).",
+    "loss": "Cubic compatibility condition",
+    "output_scale": "epsilon=Omega((d/p)^(1/3))",
+    "stage": "KTZ benchmark bottleneck",
+    "status": "proved"
+  },
+  {
+    "input_scale": "A component with minimum degree Theta(epsilon p) and line measure O(epsilon)",
+    "job_id": "researcher-0009",
+    "justification": "The verified researcher-0002 budgets reduce to epsilon^2 p=Omega(d).",
+    "loss": "Extra small-component hypothesis",
+    "output_scale": "Conditional exponent 1/2 and global agreement Omega(epsilon)",
+    "stage": "prior conditional frontier",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "Explicit connected carrier",
+    "job_id": "researcher-0009",
+    "justification": "The point table is identically zero.",
+    "loss": "None",
+    "output_scale": "One total-degree-at-most-d polynomial Q=0 has global agreement 1",
+    "stage": "constructed global output",
+    "status": "proved"
+  },
+  {
+    "input_scale": "KTZ sparsifier |R|=O(p/epsilon)",
+    "job_id": "researcher-0010",
+    "justification": "KTZ Lemmas 3.2 and 4.1; the exponent calculation is reconstructed here rather than quoted as a separate theorem.",
+    "loss": "D=O(sqrt(dp/epsilon)); requiring D=O(epsilon p)",
+    "output_scale": "epsilon^3=Omega(d/p), exponent 1/3",
+    "stage": "KTZ benchmark reconstruction",
+    "status": "proved"
+  },
+  {
+    "input_scale": "t=tau p(p+1), point minimum degree u",
+    "job_id": "researcher-0010",
+    "justification": "Independent line sampling at rate 8/u, Chernoff, and a union bound over fewer than 2p^2 lines.",
+    "loss": "Only absolute constants; 4t/u <= r <= 16t/u",
+    "output_scale": "r=Theta(tau p^2/u)",
+    "stage": "Asymmetric selector",
+    "status": "proved"
+  },
+  {
+    "input_scale": "r selected line graphs",
+    "job_id": "researcher-0010",
+    "justification": "dim V_D >= D^3/(64d) and r(D+1) homogeneous constraints.",
+    "loss": "D=16(floor(sqrt(dr))+1)",
+    "output_scale": "D=O(sqrt(d tau p^2/u))",
+    "stage": "Weighted interpolation",
+    "status": "proved"
+  },
+  {
+    "input_scale": "D=O(sqrt(d tau p^2/u)) and root supply min(u,v)",
+    "job_id": "researcher-0010",
+    "justification": "Formal identity extension needs D<v; Newton lifting needs D<u.",
+    "loss": "Both sides are controlled by w=min(u,v).",
+    "output_scale": "u w^2=Omega(d tau p^2)",
+    "stage": "Identity and lifting gate",
+    "status": "proved"
+  },
+  {
+    "input_scale": "At most pD^2+Dt exceptional accepted edges",
+    "job_id": "researcher-0010",
+    "justification": "At most D content lines, D(D-1) resultant-degenerate lines, and D derivative roots on every other line.",
+    "loss": "Relative loss at most D/v+2^14 dp/(uv).",
+    "output_scale": "Requires uv=Omega(dp), in addition to D<v.",
+    "stage": "Prime-field simple-root cleanup",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Surviving minimum degrees u/100 and v/100",
+    "job_id": "researcher-0010",
+    "justification": "Asymmetric affine incidence mixing on a surviving connected component.",
+    "loss": "Constant factor 800.",
+    "output_scale": "One Q has global agreement at least v/(800p).",
+    "stage": "Recovery",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Popularity tail mass delta_*>=epsilon/2 and threshold u_*",
+    "job_id": "researcher-0010",
+    "justification": "Pruning gives point minimum U>=u_*/3 and line minimum V>=epsilon p/16.",
+    "loss": "Substitution into the component gates.",
+    "output_scale": "u_* epsilon^2>=2^70 d implies agreement at least epsilon/12800.",
+    "stage": "Popularity-tail corollary",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "u_*>=kappa epsilon^a p, 0<=a<=1",
+    "job_id": "researcher-0010",
+    "justification": "Then u_*epsilon^2>=kappa epsilon^(a+2)p.",
+    "loss": "Threshold constant (2^70/kappa)^(1/(a+2)).",
+    "output_scale": "epsilon>=constant*(d/p)^(1/(a+2)); exponent at most 1/2",
+    "stage": "Conditional exponent translation",
+    "status": "conditional"
+  },
+  {
+    "input_scale": "R global templates carrying accepted mass delta on line measure tau",
+    "job_id": "researcher-0010",
+    "justification": "Affine mixing for each template followed by Cauchy-Schwarz.",
+    "loss": "delta<=alpha tau+sqrt(R alpha tau/(p+1)).",
+    "output_scale": "R<=delta(p+1) implies one template has agreement alpha>=delta/4.",
+    "stage": "Template popularity",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Constant-labelled lines carry mass delta on support tau",
+    "job_id": "researcher-0010",
+    "justification": "Their agreement point sets are disjoint, eliminating the template-count loss.",
+    "loss": "Affine mixing error sqrt(tau/(p+1)).",
+    "output_scale": "delta>=2sqrt(tau/(p+1)) implies a constant global polynomial has agreement at least delta/(2tau).",
+    "stage": "Constant-label branch",
+    "status": "proved"
+  },
+  {
+    "input_scale": "Modal construction epsilon=Theta(r/p), r=floor(log p/(4 log log p))",
+    "job_id": "researcher-0010",
+    "justification": "Occupancy second moment, McDiarmid, Markov over fixed star orders, and a union bound over p^5253 global polynomials.",
+    "loss": "Gamma_s<=2^(s+2)(S-1)epsilon^s and global agreement <2/p.",
+    "output_scale": "No bounded-order epsilon^(s-gamma) energy surplus is forced.",
+    "stage": "Energy-increment obstruction",
+    "status": "proved"
+  }
+]

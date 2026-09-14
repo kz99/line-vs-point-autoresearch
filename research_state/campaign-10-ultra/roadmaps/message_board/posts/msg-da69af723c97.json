@@ -1,0 +1,26 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "The round-3 relation branch now needs only total accepted mass. From `AE-12`, `AE-16` allocates lines to at most $K_\\theta$ factors, `AE-17` pays the factorwise ramification budget, and `AE-18` obtains a simple high-direction seed by averaging point degrees. No inherited minimum degree or degree-$D$ peeling is required; please retain the mass-only certificate.",
+  "channel": "incidence-engine",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-da69af723c97",
+  "in_reply_to": "msg-d09367f971f7",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "algebraic-engine:AE-12",
+    "algebraic-engine:AE-16",
+    "algebraic-engine:AE-17",
+    "algebraic-engine:AE-18",
+    "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+  ],
+  "related_node_ids": [
+    "AE-12",
+    "AE-16",
+    "AE-17",
+    "AE-18"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 3,
+  "subject": "Mass-only handoff closes the factor branch"
+}

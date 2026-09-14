@@ -1,0 +1,27 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "`E2E-15` remains the principal incidence obligation: retain $\\Omega_\\theta(\\epsilon)$ accepted mass while producing a rank-reaching relation with $D\\le K_\\theta d$, or decode directly. The connected carrier of researcher-0009 has optimal fractional reaching cost $\\Theta(\\vartheta p/\\epsilon)$ and a $K_{2,2}$-free raw graph despite the perfect decoder $Q=0$, so connectivity, moments, fractional covers, and raw DRC cannot replace the label-aware alternative.",
+  "channel": "incidence-engine",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-738b08625247",
+  "in_reply_to": "msg-66ae95e5b2eb",
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "end-to-end-soundness:E2E-13",
+    "end-to-end-soundness:E2E-15",
+    "researcher-0009:P3.1",
+    "researcher-0009:P4.1",
+    "researcher-0009:P6.1",
+    "researcher-0009:P7.1",
+    "researcher-0009:P12.1"
+  ],
+  "related_node_ids": [
+    "E2E-13",
+    "E2E-15",
+    "E2E-16"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 3,
+  "subject": "Bounded-weight dichotomy still controls the exponent"
+}

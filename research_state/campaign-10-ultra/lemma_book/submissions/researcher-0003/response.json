@@ -1,0 +1,145 @@
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [],
+      "id": "researcher-0003:P1.1",
+      "part": 1,
+      "proof_markdown": "Write $U=\\sum_{i=0}^{r}a_i(X,Y)Z^i$ and $V=\\sum_{j=0}^{s}b_j(X,Y)Z^j$. Weighted degree gives $\\deg a_i\\le u-di$ and $\\deg b_j\\le v-dj$. Every monomial in the Sylvester determinant contains $s$ coefficients of $U$ and $r$ coefficients of $V$, and the sum of their $Z$-indices is $rs$. The latter identity also follows from $\\operatorname{Res}_Z(U(X,Y,TZ),V(X,Y,TZ))=T^{rs}\\operatorname{Res}_Z(U,V)$. Hence every determinant term has $(X,Y)$-degree at most $su+rv-drs$. Finally, $u-dr\\ge0$ and $v-ds\\ge0$, so $su+rv-drs=\\frac{uv}{d}-\\frac{(u-dr)(v-ds)}{d}\\le\\frac{uv}{d}$.",
+      "source_step_id": "P1",
+      "statement_markdown": "Let $p$ be prime and $d\\ge1$. Give $\\mathbb F_p[X,Y,Z]$ the weights $\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1$ and $\\operatorname{wt}(Z)=d$. Let $U,V\\in\\mathbb F_p[X,Y,Z]$ be nonzero and coprime, with weighted degrees $u,v$ and $Z$-degrees $r,s$, respectively, where at least one of $r,s$ is positive. Then $$\\deg_{X,Y}\\operatorname{Res}_Z(U,V)\\le su+rv-drs=\\frac{uv}{d}-\\frac{(u-dr)(v-ds)}{d}\\le\\frac{uv}{d}.$$",
+      "status": "proved",
+      "title": "Weighted Sylvester degree"
+    },
+    {
+      "dependencies": [
+        "researcher-0003:P1.1"
+      ],
+      "id": "researcher-0003:P2.1",
+      "part": 1,
+      "proof_markdown": "Coprimality makes $R=\\operatorname{Res}_Z(U,V)$ nonzero. When $r,s>0$, specialization along a graph gives the common root $q_L(t)$ over $\\mathbb F_p(t)$, and therefore $R(L(t))\\equiv0$. The affine-linear equation defining $L$ consequently divides $R$. Distinct lines yield pairwise nonassociate irreducible linear factors, so the number of lines is at most $\\deg R$, which is at most $uv/d$ by the weighted Sylvester-degree bound. Since the number of lines is integral, it is at most $\\left\\lfloor uv/d\\right\\rfloor$. If, for example, $s=0$, then $V(L(t))\\equiv0$ directly, so the number of lines is at most $\\deg V\\le v\\le uv/d$, because $r>0$ implies $u\\ge d$. The case $r=0$ is symmetric. Degree-dropping specializations cause no difficulty because the resultant is used without division by a leading coefficient.",
+      "source_step_id": "P2",
+      "statement_markdown": "Under the hypotheses of the weighted Sylvester-degree lemma, let $\\mathcal T$ be a family of distinct affine lines in $\\mathbb F_p^2$. For every $L\\in\\mathcal T$, let $q_L\\in\\mathbb F_p[t]$ have degree at most $d$ and suppose $$U(L(t),q_L(t))\\equiv V(L(t),q_L(t))\\equiv0.$$ Then $$|\\mathcal T|\\le\\left\\lfloor\\frac{uv}{d}\\right\\rfloor.$$",
+      "status": "proved",
+      "title": "Common graph-line count"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0003:P3.1",
+      "part": 1,
+      "proof_markdown": "An unknown polynomial supported on the $N_d(D)$ weighted monomials restricts on each graph to a univariate polynomial of degree at most $D$. Requiring this restriction to vanish identically imposes at most $D+1$ homogeneous linear equations. Thus the $n$ graph identities impose at most $n(D+1)<N_d(D)$ equations and admit a nonzero solution $A$. If $A$ were independent of $Z$, it would be a bivariate polynomial of degree at most $D$ vanishing identically on more than $D$ distinct affine lines. Every corresponding line equation would divide $A$, which is impossible. Hence $A$ depends on $Z$. Every positive $Z$-exponent occurring in $A$ is at most $\\lfloor D/d\\rfloor<p$ and is therefore nonzero in $\\mathbb F_p$; consequently $A_Z\\ne0$.",
+      "source_step_id": "P3",
+      "statement_markdown": "Let $p$ be prime and let $1\\le d\\le D<p$. Let $\\mathcal R$ consist of $n$ distinct affine lines in $\\mathbb F_p^2$, and assign to each $L\\in\\mathcal R$ a polynomial $P_L\\in\\mathbb F_p[t]$ of degree at most $d$. Define $$N_d(D)=\\sum_{k=0}^{\\lfloor D/d\\rfloor}\\binom{D-dk+2}{2}.$$ If $n>D$ and $N_d(D)>n(D+1)$, then there exists a nonzero $A\\in\\mathbb F_p[X,Y,Z]$ of weighted degree at most $D$ such that $$A(L(t),P_L(t))\\equiv0\\qquad(L\\in\\mathcal R),$$ and $A$ depends on $Z$ with $A_Z\\ne0$.",
+      "status": "proved",
+      "title": "Weighted graph interpolation"
+    },
+    {
+      "dependencies": [
+        "researcher-0003:P3.1"
+      ],
+      "id": "researcher-0003:P4.1",
+      "part": 1,
+      "proof_markdown": "Existence and $Z$-dependence follow from the interpolation lemma. Suppose $A=P^eR$ for an irreducible $P$, with $e\\ge2$ and $P\\nmid R$. On each graph, $P(L(t),P_L(t))^eR(L(t),P_L(t))=0$ in the integral domain $\\mathbb F_p[t]$. Hence $P(L(t),P_L(t))R(L(t),P_L(t))=0$ there as well. The polynomial $PR$ remains $Z$-dependent and has smaller weighted degree than $A$, contradicting minimality. Thus $A$ is squarefree. Dividing by the coefficient content $H$ makes $B$ primitive in $Z$ and preserves squarefreeness. If $H(L(t))\\not\\equiv0$, then $H(L(t))B(L(t),P_L(t))=0$ in $\\mathbb F_p[t]$, so $B(L(t),P_L(t))\\equiv0$.",
+      "source_step_id": "P4",
+      "statement_markdown": "Let $p,d,D,\\mathcal R$, and $\\{P_L\\}_{L\\in\\mathcal R}$ satisfy the hypotheses of the weighted graph-interpolation lemma. Among the nonzero polynomials satisfying all graph identities, let $A$ have minimum weighted degree. Then $A$ is $Z$-dependent and squarefree. If $A=HB$, where $H\\in\\mathbb F_p[X,Y]$ is the coefficient content of $A$ as a polynomial in $Z$, then $B$ is primitive in $Z$ and squarefree. Moreover, for every $L\\in\\mathcal R$ with $H(L(t))\\not\\equiv0$, $$B(L(t),P_L(t))\\equiv0.$$",
+      "status": "proved",
+      "title": "Primitive squarefree reduction"
+    },
+    {
+      "dependencies": [
+        "researcher-0003:P4.1"
+      ],
+      "id": "researcher-0003:P5.1",
+      "part": 1,
+      "proof_markdown": "Factor $B$ into distinct irreducibles. If an irreducible factor $C$ divided both $B$ and $B_Z$, write $B=CE$ with $C\\nmid E$. Reducing $B_Z=C_ZE+CE_Z$ modulo $C$ shows that $C\\mid C_Z$. Since differentiation lowers the $Z$-degree, this forces $C_Z=0$. Moreover, $\\deg_ZC\\le\\deg_ZB\\le D/d<p$. In characteristic $p$, a polynomial of $Z$-degree below $p$ with zero ordinary $Z$-derivative is independent of $Z$. Thus $C\\in\\mathbb F_p[X,Y]$, so $C$ divides every coefficient of $B$ as a polynomial in $Z$, contradicting primitivity. Therefore no common irreducible factor exists. Absolute irreducibility is neither assumed nor used.",
+      "source_step_id": "P5",
+      "statement_markdown": "Let $p$ be prime and let $1\\le d\\le D<p$. Give $\\mathbb F_p[X,Y,Z]$ the weights $(1,1,d)$. If $B\\in\\mathbb F_p[X,Y,Z]$ is $Z$-dependent, squarefree, primitive as a polynomial in $Z$, and has weighted degree at most $D$, then $$\\gcd(B,B_Z)=1.$$",
+      "status": "proved",
+      "title": "Vertical separability"
+    },
+    {
+      "dependencies": [
+        "researcher-0003:P2.1",
+        "researcher-0003:P5.1"
+      ],
+      "id": "researcher-0003:P6.1",
+      "part": 1,
+      "proof_markdown": "Put $\\delta=\\operatorname{wdeg}B$ and $r=\\deg_ZB$. Then $r<p$, $\\operatorname{wdeg}B_Z\\le\\delta-d$, and $\\deg_ZB_Z=r-1$. Vertical separability makes $B$ and $B_Z$ coprime. Applying the weighted resultant calculation to them bounds the identically ramified, non-content-trivial graph lines by $$\\Delta=(2r-1)\\delta-dr^2=\\frac{\\delta^2}{d}-\\delta-\\frac{(\\delta-dr)^2}{d}\\le\\frac{\\delta^2}{d}-\\delta.$$ Let $a=\\operatorname{wdeg}A$ and $h=\\deg H$, so $a=h+\\delta\\le D$. At most $h$ distinct affine lines are content-trivial. Hence $$h+\\Delta\\le a-\\delta+\\frac{\\delta^2}{d}-\\delta\\le\\frac{a^2}{d}-a\\le\\frac{D^2}{d}-D.$$ The middle inequality follows from $$\\frac{a^2}{d}-a-\\left(a+\\frac{\\delta^2}{d}-2\\delta\\right)=(a-\\delta)\\left(\\frac{a+\\delta}{d}-2\\right)\\ge0,$$ using $a\\ge\\delta\\ge d$. On every other graph, $B_Z(L(t),P_L(t))$ is a nonzero polynomial of degree at most $\\delta-d\\le D-d$, so ordinary root counting gives at most $D-d$ roots. An exceptional line contributes at most $p$ incidences. Dividing the resulting counts by the total $p^2(p+1)$ affine point-line incidences gives the stated loss.",
+      "source_step_id": "P6",
+      "statement_markdown": "Let $p$ be prime and $1\\le d\\le D<p$. Let $A=HB\\in\\mathbb F_p[X,Y,Z]$ have weighted degree at most $D$, where $H\\in\\mathbb F_p[X,Y]$ is the $Z$-content and $B$ is $Z$-dependent, primitive, and squarefree. Let $\\mathcal T$ be a family of distinct affine lines, each carrying $P_L\\in\\mathbb F_p[t]$ of degree at most $d$, such that $A(L(t),P_L(t))\\equiv0$. Call $L$ content-trivial when $H(L(t))\\equiv0$ and identically ramified when $B_Z(L(t),P_L(t))\\equiv0$. Then at most $$\\left\\lfloor\\frac{D^2}{d}-D\\right\\rfloor$$ lines in $\\mathcal T$ are content-trivial or identically ramified. Every other $L\\in\\mathcal T$ contains at most $D-d$ values $t\\in\\mathbb F_p$ satisfying $B_Z(L(t),P_L(t))=0$. Under uniform affine point-line sampling, deleting all these lines and points loses incidence mass at most $$\\frac{D^2/d-D}{p(p+1)}+\\frac{D-d}{p}.$$",
+      "status": "proved",
+      "title": "Vertical ramification cleanup"
+    },
+    {
+      "dependencies": [
+        "researcher-0003:P5.1"
+      ],
+      "id": "researcher-0003:P7.1",
+      "part": 1,
+      "proof_markdown": "At a point where $B_Z(\\mathbf b,\\alpha)\\ne0$, two distinct irreducible factors of the squarefree polynomial $B$ cannot both vanish, since their simultaneous vanishing would force $B_Z(\\mathbf b,\\alpha)=0$. Thus exactly one factor $C$ vanishes, and $C_Z(\\mathbf b,\\alpha)\\ne0$. For each supplied graph, the factorization of $B(L(t),P_L(t))$ in the domain $\\mathbb F_p[t]$ forces some irreducible factor to vanish identically. Evaluation at $t=0$ shows that this factor must be $C$. Newton recursion at $(\\mathbf b,\\alpha)$ produces the unique total-degree-at-most-$d$ truncation $Q$ through $\\alpha$ and divides only by the nonzero field element $C_Z(\\mathbf b,\\alpha)$. Uniqueness makes $Q(L(t))=P_L(t)$ on every supplied line. The polynomial $C(X,Y,Q(X,Y))$ has total degree at most $\\delta_C$ and vanishes identically on more than $\\delta_C$ distinct lines, so it is zero. Finally, the kernel of substitution $Z\\mapsto Q(X,Y)$ is $(Z-Q)$; irreducibility therefore makes $C$ associated to $Z-Q$.",
+      "source_step_id": "P7",
+      "statement_markdown": "Let $B$ be a primitive squarefree polynomial as in the vertical-separability lemma. Suppose $(\\mathbf b,\\alpha)\\in\\mathbb F_p^2\\times\\mathbb F_p$ satisfies $B(\\mathbf b,\\alpha)=0$ and $B_Z(\\mathbf b,\\alpha)\\ne0$. Then there is a unique irreducible factor $C$ of $B$ vanishing at $(\\mathbf b,\\alpha)$. Set $\\delta_C=\\operatorname{wdeg}C$. Suppose more than $\\delta_C$ distinct affine lines through $\\mathbf b$, parameterized by $L(0)=\\mathbf b$, carry polynomials $P_L\\in\\mathbb F_p[t]$ satisfying $\\deg P_L\\le d$, $P_L(0)=\\alpha$, and $B(L(t),P_L(t))\\equiv0$. Then there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$Q(L(t))=P_L(t)$$ on every supplied line and $$C(X,Y,Q(X,Y))\\equiv0.$$ Moreover, $C$ is associated to $Z-Q$.",
+      "status": "proved",
+      "title": "Component-sensitive lifting"
+    },
+    {
+      "dependencies": [
+        "researcher-0003:P3.1",
+        "researcher-0003:P6.1",
+        "KTZ Lemmas 3.1\u20134.3 and 6.1\u20136.3"
+      ],
+      "id": "researcher-0003:P8.1",
+      "part": 1,
+      "proof_markdown": "Conditionally retaining KTZ Lemmas 3.1\u20134.3 and 6.1\u20136.3, substitute the weighted graph interpolation and vertical ramification cleanup for the corresponding interpolation and Section 5 cleanup. The new deletion bound fits within the existing KTZ Lemma 4.1 budget. The remaining accepted graph therefore has the same minimum degrees and incidence mass required by the cited lifting, mixing, and component-propagation lemmas, which yield a polynomial $Q$ with global agreement at least $\\varepsilon/8000$. The interpolation scale satisfies $D=O(\\!\\sqrt{dp/\\varepsilon})$, while the surviving point loss obeys $$\\frac{D-d}{p}=O\\!\\left(\\sqrt{\\frac{d}{\\varepsilon p}}+\\frac1p\\right).$$ Requiring this loss to be $O(\\varepsilon)$ is, up to constants in the cited parameter regime, equivalent to $\\varepsilon^3\\gtrsim d/p$. Thus the substitution preserves, but does not improve, the cubic exponent.",
+      "source_step_id": "P8",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d\\le p-1$, and let $f:\\mathbb F_p^2\\to\\mathbb F_p$ and degree-at-most-$d$ line labels $\\{P_L\\}$ have uniform point-line incidence agreement $\\varepsilon$. Assume the hypotheses and conclusions of KTZ Lemmas 3.1\u20134.3 and 6.1\u20136.3 apply, with the weighted graph interpolation and vertical ramification cleanup used at their corresponding stages. If $\\varepsilon\\ge C(d/p)^{1/3}$ for a sufficiently large absolute constant $C$, then there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]\\ge\\frac{\\varepsilon}{8000}.$$",
+      "status": "conditional",
+      "title": "KTZ chain substitution"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0003:P9.1",
+      "part": 1,
+      "proof_markdown": "Ambient Hasse multiplicity $s$ at one lifted point imposes $\\binom{s+2}{3}$ linear jet conditions. For $D\\ge d\\ge101$, $$\\dim W_D=N_d(D)\\le\\frac{2D^3}{d},\\qquad \\binom{s+2}{3}\\ge\\frac{s^3}{6}.$$ Therefore $M\\binom{s+2}{3}<\\dim W_D$ implies $(D/s)^3>Md/12$. Hasse multiplicity may be defined through powers of the lifted maximal ideal, so no factorial division is used; after substitution into a line graph, that ideal maps into $(t-t_0)$ and produces a univariate root of multiplicity at least $s$. Root propagation consequently requires $sk>D$. Thus $k>D/s$ and $k^3>Md/12$. If $M\\ge\\rho p^2$ and $k\\le K\\varepsilon p$, comparison gives $K^3\\varepsilon^3p^3>\\rho p^2d/12$, which is the claimed cubic lower bound. This argument does not rule out dependent constraints, nonuniform multiplicities, or directional jets.",
+      "source_step_id": "P9",
+      "statement_markdown": "Let $p$ be prime and let $D\\ge d\\ge101$. Let $W_D$ be the space of polynomials in $\\mathbb F_p[X,Y,Z]$ of $(1,1,d)$-weighted degree at most $D$. Suppose ambient Hasse multiplicity $s\\ge1$ is imposed at $M$ lifted points and existence is certified by $$M\\binom{s+2}{3}<\\dim W_D.$$ If multiplicity root counting on a target graph containing $k$ interpolated points requires $sk>D$, then $$k^3>\\frac{Md}{12}.$$ In particular, if $M\\ge\\rho p^2$ and $k\\le K\\varepsilon p$, then $$\\varepsilon^3>\\frac{\\rho}{12K^3}\\frac{d}{p}.$$",
+      "status": "proved",
+      "title": "Uniform multiplicity barrier"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0003:P10.1",
+      "part": 1,
+      "proof_markdown": "This claim is refuted by taking $p=409$, $d=101$, $D=202$, and $B=Z^2-XY$. The polynomial $B$ is primitive, irreducible, squarefree, and satisfies $\\gcd(B,B_Z)=1$ and $\\operatorname{wdeg}B=202<409$. At $(0,0,0)$, however, $B_Z=0$ while $\\partial_Z^{[2]}B=1$. For each projective direction $[a:b]$ for which $ab$ is a square, choose $c\\in\\mathbb F_{409}$ with $c^2=ab$ and set $L(t)=(at,bt)$ and $P_L(t)=ct$. There are $$2+\\frac{p-1}{2}=206>D$$ such directions, and every graph satisfies $B(L(t),P_L(t))\\equiv0$. Nevertheless, $B(X,Y,Q)=0$ would imply $Q^2=XY$. This is impossible in the unique factorization domain $\\mathbb F_{409}[X,Y]$, because the exponent of the irreducible factor $X$ is even in a square and odd in $XY$. Thus no polynomial $Q$ of any degree satisfies the asserted conclusion.",
+      "source_step_id": "P10",
+      "statement_markdown": "Let $p$ be prime and $1\\le d\\le D<p$. Let $B\\in\\mathbb F_p[X,Y,Z]$ be primitive, irreducible, squarefree, and of $(1,1,d)$-weighted degree at most $D$, with $\\gcd(B,B_Z)=1$. Let $(\\mathbf b,\\alpha)$ satisfy $B(\\mathbf b,\\alpha)=B_Z(\\mathbf b,\\alpha)=0$ and $\\partial_Z^{[j]}B(\\mathbf b,\\alpha)\\ne0$ for some $j\\ge2$. If more than $D$ distinct affine lines through $\\mathbf b$, parameterized by $L(0)=\\mathbf b$, carry polynomials $P_L$ with $\\deg P_L\\le d$, $P_L(0)=\\alpha$, and $B(L(t),P_L(t))\\equiv0$, then there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $Q(L(t))=P_L(t)$ on all supplied lines and $B(X,Y,Q(X,Y))\\equiv0$.",
+      "status": "refuted",
+      "title": "Higher-Hasse lifting claim"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0003:P11.1",
+      "part": 1,
+      "proof_markdown": "Choose $f$ uniformly at random. For a fixed total-degree-at-most-$d$ polynomial $Q$, the number of points on which $f$ and $Q$ agree has distribution $\\operatorname{Bin}(p^2,1/p)$ and mean $p$. A Chernoff bound gives $$\\Pr\\!\\left[\\Pr_x[f(x)=Q(x)]\\ge\\frac4p\\right]\\le e^{-(4\\log4-3)p}.$$ There are at most $p^N$ such formal polynomials. The displayed hypothesis therefore makes the union-bound probability strictly less than one, yielding a table $f$ whose agreement with every $Q$ is below $4/p$. On each affine line, interpolate the values of $f$ at any $d+1$ distinct points by a polynomial of degree at most $d$. Every line label then agrees at at least $(d+1)/p$ of its points, so the same lower bound holds under uniform affine-line sampling. Along any growing choice $d=o(\\sqrt{p/\\log p})$, the global-to-local ratio is below $4/(d+1)$ and tends to zero. For every fixed $\\alpha>1$, the local scale $d/p$ eventually dominates every fixed multiple of $(d/p)^\\alpha$, proving the asserted exponent ceiling. This does not obstruct an exponent of $1-o(1)$.",
+      "source_step_id": "P11",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d\\le p-1$, and set $N=\\binom{d+2}{2}$. If $$N\\log p<(4\\log4-3)p,$$ then there exist a point table $f:\\mathbb F_p^2\\to\\mathbb F_p$ and degree-at-most-$d$ labels on every affine line such that their uniform local agreement $\\varepsilon$ satisfies $$\\varepsilon\\ge\\frac{d+1}{p},$$ while every $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfies $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]<\\frac4p.$$ Consequently, for every fixed $\\alpha>1$ and fixed positive constants $C,c$, there are arbitrarily large such instances with $\\varepsilon\\ge C(d/p)^\\alpha$ but global agreement below $c\\varepsilon$ for every total-degree-at-most-$d$ polynomial.",
+      "status": "proved",
+      "title": "Uniform-sampling exponent ceiling"
+    },
+    {
+      "dependencies": [
+        "researcher-0003:P6.1"
+      ],
+      "id": "researcher-0003:P12.1",
+      "part": 1,
+      "proof_markdown": "This claim is refuted by the surviving nonexceptional root loss. Substituting $D=O(\\sqrt{dp/\\varepsilon})$ into the point bound from the vertical ramification cleanup gives $$\\frac{D-d}{p}=O\\!\\left(\\sqrt{\\frac{d/p}{\\varepsilon}}\\right)$$ up to the lower-order endpoint term recorded in the application. Making this loss $O(\\varepsilon)$ requires $$\\sqrt{\\frac{d/p}{\\varepsilon}}\\lesssim\\varepsilon,$$ which is equivalent, up to absolute constants, to $$\\varepsilon^3\\gtrsim\\frac{d}{p}.$$ Thus the algebraic improvement leaves the controlling exponent equal to $1/3$ rather than making it strictly larger.",
+      "source_step_id": "P12",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d\\le p-1$, let $0<\\varepsilon\\le1$, and let $d\\le D<p$ satisfy $D=O(\\sqrt{dp/\\varepsilon})$. Then there exists an exponent $\\alpha>1/3$ such that the hypothesis $\\varepsilon\\gtrsim(d/p)^\\alpha$ suffices, using the vertical ramification cleanup alone, to make its surviving loss $O(\\varepsilon)$.",
+      "status": "refuted",
+      "title": "Algebraic exponent-improvement claim"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0003",
+  "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420"
+}

@@ -1,0 +1,269 @@
+{
+  "benchmark_improved": false,
+  "counterexample_attempts": [
+    "Successful in-scope attack on the exact hashed claim: p=103 and d=D=101 with 101 parallel graph lines yields a minimum squarefree interpolant consisting entirely of Z-content, contradicting the claimed zero exceptional-line bound.",
+    "No counterexample was found to the fuller Theorem 2 after restoring n>D, N_d(D)>n(D+1), and A_Z\u22600; its algebraic proof checks.",
+    "The p=409,d=101 example B=Z^2-XY correctly refutes higher-Hasse lifting without a simple root.",
+    "The random-table construction correctly rules out exponents strictly greater than 1, but not exponent 1 or the campaign target 1-o(1).",
+    "The concentrated-direction construction has both local and global agreement \u0398(d/p), so it is not a soundness counterexample."
+  ],
+  "coverage_complete": true,
+  "dimension_verified": true,
+  "exponent_audit": [
+    {
+      "claim": "KTZ interpolation has D=O(sqrt(dp/epsilon)).",
+      "justification": "The cited bounds give |R|\u22646400p/epsilon and D=16(floor(sqrt(d|R|))+1), hence the displayed scale.",
+      "reference": "Note lines 51\u201368, 77\u201383, and 307\u2013315",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The improved exceptional-line contribution is O(1/(epsilon p)).",
+      "justification": "Substituting D^2=O(dp/epsilon) into D^2/(dp^2) gives O(1/(epsilon p)); this is genuinely a factor-d improvement over D^2/p^2.",
+      "reference": "Note lines 196\u2013221 and 327\u2013334",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The surviving ramified-point loss closes at the cubic threshold.",
+      "justification": "The loss is at most (D-d)/p=O(sqrt(d/(epsilon p))+1/p). Requiring this worst-case bound to be O(epsilon) gives epsilon^3=Omega(d/p).",
+      "reference": "Note lines 231\u2013238 and 319\u2013325",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The cubic condition is pointwise equivalent to, or necessary for, every realization of the interpolation stage.",
+      "justification": "KTZ supplies only an upper bound |R|=O(p/epsilon). Thus the cubic condition is sufficient for the uniform worst-case closure, not a pointwise necessity when the selected family is smaller. The wording should be narrowed.",
+      "reference": "Note lines 13, 83, 238, and 379",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The mixing term introduces no stronger exponent.",
+      "justification": "KTZ budgets 1/sqrt(p+1)\u2264epsilon/8000. With the sufficiently large absolute cubic constant and d\u2265101, this is absorbed.",
+      "reference": "Note line 335",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Uniform ambient multiplicity cannot improve the cubic exponent.",
+      "justification": "The displayed inequality epsilon^3>rho d/(12K^3p) is correct, but gives a cubic barrier only if rho is bounded below and K bounded above by absolute constants. For rho=Theta(epsilon), it instead gives epsilon^2=Omega(d/p).",
+      "reference": "Note lines 240\u2013272; structured exponent ledger multiplicity stage",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The application improves the benchmark exponent beyond 1/3.",
+      "justification": "It does not. Because 0<d/p<1, an exponent larger than 1/3 would be stronger. The submission obtains only the existing 1/3 threshold and correctly sets benchmark_improved=false.",
+      "reference": "Note lines 13, 225\u2013238, and 307\u2013335",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Every soundness exponent alpha>1 is impossible with linear global recovery.",
+      "justification": "For fixed alpha>1 and constants C,c, choose growing 101\u2264d=o(sqrt(p/log p)). Then (d+1)/p eventually exceeds C(d/p)^alpha, while maximum global agreement is below 4/p=o(d/p).",
+      "reference": "Note lines 290\u2013303",
+      "verdict": "valid"
+    }
+  ],
+  "fatal_obstruction": "The exact SHA-identified theorem is false because it omits the hypotheses forcing a Z-dependent interpolant. Let p=103 and d=D=101. Choose 101 horizontal lines Y=a, label one by t^101 and the others by 0. Every weighted-degree-at-most-101 interpolant has form lambda Z+b(X,Y). Comparing the t^101 coefficients on differently labelled lines forces lambda=0. Minimum interpolants are therefore scalar multiples of the squarefree polynomial H(Y)=prod_a(Y-a), of exact weighted degree D. Removing its Z-content gives B=1. All 101 graph lines are H-trivial, whereas the hashed claim bounds their number by floor(D^2/d-D)=0 and its cleanup loss by 0.",
+  "field_regime_verified": true,
+  "line_audit": [
+    {
+      "claim": "The incidence count, sampling convention, weighted substitution bound, and monomial count are correct.",
+      "justification": "There are p(p+1) affine lines and p^2(p+1) incidences; line-then-point sampling is uniform incidence sampling. Substitution respects weights (1,1,d), and the stated sum counts all allowed monomials exactly.",
+      "reference": "Note lines 17\u201349",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The KTZ parameter bounds are accurately reconstructed.",
+      "justification": "Revision 1 gives the stated k0,k1,D bounds and the slackened 100p\u2264|R|\u22646400p/epsilon estimates.",
+      "reference": "Note lines 51\u201368",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The historical claim that the active corpus contained no earlier outputs is reproducible.",
+      "justification": "The current workspace contains several submissions and leaderboard entries. The statement may describe the submission's start-time snapshot, but no immutable snapshot is identified.",
+      "reference": "Note line 73",
+      "verdict": "unclear"
+    },
+    {
+      "claim": "The weighted resultant bound su+rv-drs\u2264uv/d is correct.",
+      "justification": "Each Sylvester monomial uses s coefficients of U and r of V with aggregate Z-index rs. Since u\u2265dr and v\u2265ds, the algebraic rewrite and inequality follow.",
+      "reference": "Note lines 91\u2013109 and P1, lines 157\u2013178",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Common formal graph roots are bounded by the resultant's base degree.",
+      "justification": "Gauss's lemma makes the resultant nonzero; specialization commutes with the Sylvester determinant, and every distinct base-line equation divides the resultant. The zero-Z-degree cases follow directly.",
+      "reference": "P2, note line 180",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The full Theorem 2 stated in the note constructs a Z-dependent squarefree interpolant.",
+      "justification": "N_d(D)>n(D+1) supplies a nonzero kernel element; n>D excludes every Z-independent one. Since D<p, differentiation in Z cannot kill its positive Z-exponents. Minimum weighted degree then removes repeated factors.",
+      "reference": "Note lines 111\u2013143 and P3\u2013P4, lines 182\u2013184",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The exact hashed theorem statement includes the hypotheses needed by the cleanup bound.",
+      "justification": "It omits the line family, n>D, N_d(D)>n(D+1), the graph identities, and A_Z\u22600. The stated counterexample consequently falsifies the exact conclusion.",
+      "reference": "response.json theorem_statement, SHA-256 2fa8d5bb46d5599b19eaebfaa25ffcaf07b3f0a42546e0925c76d38849841fca",
+      "verdict": "false"
+    },
+    {
+      "claim": "Removing Z-content preserves squarefreeness and gives gcd(B,B_Z)=1.",
+      "justification": "If an irreducible C divided both B and B_Z, squarefreeness implies C_Z=0. Since deg_Z C<p, C is Z-independent and would divide every coefficient of primitive B, a contradiction.",
+      "reference": "P4\u2013P5, note lines 184\u2013186",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The exceptional-line bound is D^2/d-D.",
+      "justification": "Applying the weighted resultant to B and B_Z gives at most (2r-1)delta-dr^2\u2264delta^2/d-delta lines. Adding content lines and using delta\u2265d and a=h+delta\u2264D yields the claimed bound.",
+      "reference": "P6, note lines 188\u2013221",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The displayed identity for Delta is correctly typeset.",
+      "justification": "Note line 200 contains a literal form-feed before \u201crac\u201d instead of the LaTeX command for a fraction. The intended algebraic identity is correct but the submitted display is malformed.",
+      "reference": "Note lines 198\u2013201",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Every nonexceptional graph has at most D-d ramified points, with the stated incidence normalization.",
+      "justification": "The restricted derivative is a nonzero univariate polynomial of degree at most delta-d\u2264D-d. Summing over all nonexceptional lines and dividing by p^2(p+1) gives (D-d)/p.",
+      "reference": "Note lines 221\u2013222",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The component-sensitive simple-root lifting corollary is valid.",
+      "justification": "A nonzero B_Z value selects one irreducible factor C. Newton uniqueness identifies every supplied line root with one degree-d truncation; more than wdeg(C) line factors force C(X,Y,Q)=0, and irreducibility gives C associated to Z-Q.",
+      "reference": "Note lines 145\u2013153 and P7, line 223",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P8 fully proves the adapted KTZ pruning step.",
+      "justification": "Its conclusion follows, but the submission does not define the adapted G1 or rerun the short Lemma 5.2 calculation. One must show the new deletion costs at most epsilon/16 and subsequent degree pruning leaves mass at least epsilon/8 and minimum degree k1.",
+      "reference": "P8, note lines 225\u2013229",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The p=409 higher-Hasse counterexample is correct.",
+      "justification": "There are 2+(409-1)/2=206 qualifying directions, exceeding D=202, while Q^2=XY is impossible in the polynomial UFD.",
+      "reference": "P10, note lines 274\u2013288",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The random-table exponent ceiling is correct.",
+      "justification": "The Chernoff exponent, p^N union bound, and independent degree-d interpolation on d+1 points of each line give the stated asymptotic separation.",
+      "reference": "P11, note lines 290\u2013303",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The concentrated-direction agreement formulas are correct.",
+      "justification": "Selected directions contribute full lines; every other non-origin parallel line meets the d+1 zero lines in d+1 distinct points, while the origin line contributes one point. This yields the displayed counts.",
+      "reference": "Note lines 343\u2013359",
+      "verdict": "valid"
+    },
+    {
+      "claim": "D<p is the essential sharp separability condition.",
+      "justification": "The proof actually needs deg_Z(B)<p, which follows under the weaker weighted condition D<dp. Z^p-X demonstrates failure at weighted degree pd, not at every D\u2265p.",
+      "reference": "Note lines 361 and 381",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The characteristic audit is valid in the claimed auxiliary regime.",
+      "justification": "For every legal prime p, D<p prevents Z-exponents divisible by p; no factorial is divided by, and resultants handle degree-dropping specializations. The Newton step divides only by a certified nonzero field element.",
+      "reference": "Note lines 365\u2013375",
+      "verdict": "valid"
+    }
+  ],
+  "literature_audit": [
+    {
+      "claim": "KTZ Revision 1 proves the cubic theorem and the bivariate recovery constant 1/8000.",
+      "justification": "The official Revision 1 theorem and bivariate proof confirm uniform incidence sampling, threshold C(d/q)^(1/3), and one degree-d polynomial with agreement at least epsilon/8000. The local cached PDF is the 17-page base version, not the cited 23-page Revision 1, although the relevant bivariate content agrees. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/ktz.pdf\" purpose=\"source\"}",
+      "reference": "KTZ Theorem 1.1 and Lemmas 3.1\u20136.3; https://eccc.weizmann.ac.il/report/2026/147/revision/1/download",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The stated KTZ selection, interpolation, deletion, mixing, and propagation constants are accurate.",
+      "justification": "Revision 1 confirms |R|\u22646400p/epsilon, D\u22641280(sqrt(dp/epsilon)+1), D<min(p,k0/2,k1/2), deletion budget epsilon/16, and final component density epsilon/8000.",
+      "reference": "KTZ Lemmas 3.2, 4.1\u20134.3, 5.1\u20135.2, and 6.1\u20136.3",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P6 may be substituted directly by citing the original KTZ Lemma 5.2 unchanged.",
+      "justification": "The conclusion is valid only after an adapted pruning argument. P5\u2013P6 replace KTZ Lemmas 2.4, 2.6, 5.1, and the derivative-specific part of 5.2; the exact dependency map in the submission is incomplete.",
+      "reference": "Submission P8 and KTZ Section 5",
+      "verdict": "gap"
+    },
+    {
+      "claim": "HKSS Theorem 4.2 states q>Cd/epsilon^7 and agreement Omega(epsilon^4), while Theorem 1.4 leaves its exponent unspecified.",
+      "justification": "These statements and the algebraic 1/7 rearrangement are present in the cited v1 text. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/hkss.pdf\" purpose=\"source\"}",
+      "reference": "HKSS Theorems 1.4, 4.2, and 4.3; https://arxiv.org/abs/2311.12752",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The two reported HKSS proof cautions are genuine.",
+      "justification": "Lemma A.2 requires 2 log(q)/gamma^2\u2264r, but r=900d/gamma^2 checks this only when log(q)\u2264450d. Theorem 4.2 establishes mu=Omega(epsilon^3) and later uses epsilon^2-scale consequences. The submission appropriately does not rely on these transitions.",
+      "reference": "HKSS Lemma A.2, proof of Theorem 4.3, and proof of Theorem 4.2",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The exact HKSS dependency wording is accurate.",
+      "justification": "Theorem 4.3 uses Lemma 2.9; Theorem 4.2 invokes Lemma 3.1; Lemma 3.1 uses Newton Lemma 2.10. Saying Theorem 4.3 itself invokes all three should be corrected.",
+      "reference": "Note line 85 and structured literature dependency",
+      "verdict": "gap"
+    }
+  ],
+  "quantifier_audit": [
+    {
+      "claim": "The theorem string being audited has SHA-256 2fa8d5bb46d5599b19eaebfaa25ffcaf07b3f0a42546e0925c76d38849841fca.",
+      "justification": "Hashing the exact theorem_statement bytes, without an added newline, reproduces the required digest.",
+      "reference": "researcher-0003 response.json theorem_statement",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The substantive algebraic work is restricted to prime fields and base dimension m=2.",
+      "justification": "The theorems use F_p[X,Y,Z], all graph lines lie in F_p^2, and the KTZ application uses only its bivariate specialization. No dimension bootstrapping or extension-field advance is used.",
+      "reference": "Note lines 5, 17\u201349, 91\u2013143, and 225\u2013238",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The detailed theorem covers every integer 100<d<p.",
+      "justification": "It states 101\u2264d\u2264p-1 and works uniformly for every prime p and integer auxiliary d\u2264D<p when its interpolation hypotheses hold. No excluded low-degree case is needed.",
+      "reference": "Note lines 111\u2013124",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The exact hashed cleanup conclusion quantifies the interpolant hypotheses completely.",
+      "justification": "It does not state n>D, the dimension inequality, graph identities, or Z-dependence. These are essential, not cosmetic, as the p=103 counterexample shows.",
+      "reference": "Exact theorem_statement versus note lines 111\u2013143",
+      "verdict": "false"
+    },
+    {
+      "claim": "The sampling model is exactly uniform point-line incidence sampling.",
+      "justification": "Uniform choice among p(p+1) lines followed by a uniform point gives every one of p^2(p+1) incidences equal probability.",
+      "reference": "Note lines 19\u201329",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P9 quantifies the density parameters needed for its exponent conclusion.",
+      "justification": "It never requires rho and K to be absolute constants. Without that requirement, its inequality does not imply a universal 1/3 barrier.",
+      "reference": "Note lines 266\u2013272",
+      "verdict": "gap"
+    },
+    {
+      "claim": "P11's exponent-ceiling assertion has valid asymptotic quantifiers.",
+      "justification": "Interpreted as: for each fixed alpha>1 and fixed recovery constants, choose growing d and primes p satisfying d=o(sqrt(p/log p)). Under this interpretation the argument is valid.",
+      "reference": "Note lines 290\u2013303",
+      "verdict": "valid"
+    }
+  ],
+  "required_changes": [
+    "The exact hashed theorem cannot be accepted. A new theorem statement and therefore a new SHA must restore n>D, N_d(D)>n(D+1), the graph identities, and A_Z\u22600/Z-dependence, or explicitly assume a squarefree Z-dependent interpolant before asserting the cleanup bounds.",
+    "Qualify P9 by fixing rho\u2265rho0>0 and K\u2264K0 as absolute constants; explicitly state that sparse uniform-multiplicity sets remain unruled out.",
+    "Write the adapted KTZ Lemma 5.2 calculation defining the new pruned graph and proving its mass, minimum degree, and simple-root properties before invoking Lemmas 6.1\u20136.3.",
+    "Correct the malformed fraction at note line 200 and narrow the claimed necessity of D<p to the actual condition deg_Z(B)<p.",
+    "Correct the exact KTZ/HKSS dependency map and identify the authoritative Revision 1 artifact rather than the cached base KTZ PDF."
+  ],
+  "scope_verified": "algebraic_lemma",
+  "summary": "Reject the exact SHA-identified claim. Its weighted-resultant, vertical-separability, and cleanup arguments are correct under the fuller hypotheses in note Theorem 2, and the KTZ application remains at the benchmark exponent 1/3 with a valid route to one global polynomial. But the exact hashed theorem omits the hypotheses forcing Z-dependence and is concretely false at p=103,d=D=101. Because d/p<1, no exponent greater than 1/3 is obtained. P9 also needs a fixed-density quantifier, and P8 should spell out the adapted pruning step.",
+  "unfixable": true,
+  "verdict": "reject",
+  "verified_claim_sha256": null,
+  "verified_exponent": null
+}

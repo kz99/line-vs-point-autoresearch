@@ -1,0 +1,162 @@
+{
+  "coverage_complete": true,
+  "lemmas": [
+    {
+      "dependencies": [],
+      "id": "researcher-0005:[P1].1",
+      "part": 1,
+      "proof_markdown": "Write $C=\\sum_k c_k(X,Y)Z^k$. By the definition of $e$, every positive supported exponent $k$ is divisible by $s$, and some supported $k$ has $k/s\\ne0$ in $\\mathbb F_p$. Lucas's theorem gives $\\binom{k}{r}=0$ in $\\mathbb F_p$ whenever $0<r<s$, while $\\binom{k}{s}=k/s\\ne0$ for at least one supported exponent of minimal $p$-adic valuation. Hence all lower positive Hasse derivatives vanish and $\\partial_Z^{[s]}C\\ne0$.\n\nThe polynomial $\\partial_Z^{[s]}C$ has strictly smaller $Z$-degree than the irreducible polynomial $C$, so $\\gcd(C,\\partial_Z^{[s]}C)=1$. Moreover, $C\\in\\mathbb F_p[X,Y,Z^s]$. Since $C$ is $Z$-dependent, one of its monomials has $Z$-exponent at least $s$, and therefore $\\operatorname{wdeg}C\\ge ds$.",
+      "source_step_id": "[P1]",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$. Assign weights $\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1$ and $\\operatorname{wt}(Z)=d$. Let $C=\\sum_{k\\ge0}c_k(X,Y)Z^k\\in\\mathbb F_p[X,Y,Z]$ be irreducible and $Z$-dependent, and define\n\n$$e:=\\min\\{v_p(k):k>0,\\ c_k\\ne0\\},\\qquad s:=p^e.$$\n\nFor the Hasse derivatives determined by\n\n$$C(X,Y,Z+T)=\\sum_{r\\ge0}\\partial_Z^{[r]}C(X,Y,Z)T^r,$$\n\none has $\\partial_Z^{[r]}C=0$ for every $0<r<s$, while $\\partial_Z^{[s]}C\\ne0$, $\\gcd(C,\\partial_Z^{[s]}C)=1$, and $\\operatorname{wdeg}C\\ge ds$.",
+      "status": "proved",
+      "title": "Hasse Height"
+    },
+    {
+      "dependencies": [
+        "[P1]"
+      ],
+      "id": "researcher-0005:[P2].1",
+      "part": 1,
+      "proof_markdown": "For each $i$, the definition of the height gives $C_i=E_i(X,Y,Z^{s_i})$ for some polynomial $E_i$. The graph identity implies that $W=q(t)^{s_i}$ is a root of $E_i(L(t),W)$ in $\\mathbb F_p[t][W]$. Hence\n\n$$W-q(t)^{s_i}\\mid E_i(L(t),W).$$\n\nSubstituting $W=Z^{s_i}$ and using Frobenius gives\n\n$$Z^{s_i}-q(t)^{s_i}=(Z-q(t))^{s_i}\\mid C_i(L(t),Z),$$\n\nwhich proves the multiplicity assertion.\n\nThe ordinary product rule gives\n\n$$B_Z\\equiv c\\,C_{i,Z}\\prod_{j\\ne i}C_j\\pmod{C_i}.$$\n\nBecause the factors are distinct and irreducible, the product over $j\\ne i$ is nonzero modulo $C_i$. Thus $C_i\\mid B_Z$ exactly when $C_{i,Z}=0$. By the height conclusion from [P1], this occurs exactly when $s_i>1$. Since $B$ is squarefree, its greatest common divisor with $B_Z$ therefore has precisely the asserted factors.",
+      "source_step_id": "[P2]",
+      "statement_markdown": "Let $B=c\\prod_{i=1}^r C_i\\in\\mathbb F_p[X,Y,Z]$, where $c\\in\\mathbb F_p^\\times$ and the $C_i$ are distinct irreducible $Z$-dependent polynomials with Hasse heights $s_i$. If an affine-line parametrization $L(t)$ and a polynomial $q(t)\\in\\mathbb F_p[t]$ satisfy\n\n$$C_i(L(t),q(t))\\equiv0,$$\n\nthen\n\n$$(Z-q(t))^{s_i}\\mid C_i(L(t),Z)$$\n\nin $\\mathbb F_p[t,Z]$. Moreover, $\\gcd(B,B_Z)$ has exactly the irreducible factors $C_i$ for which $s_i>1$.",
+      "status": "proved",
+      "title": "Vertical Multiplicity"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0005:[P3].1",
+      "part": 1,
+      "proof_markdown": "Assume first that both $Z$-degrees are positive. Since $U$ and $V$ are coprime, their Sylvester resultant $R(X,Y)=\\operatorname{Res}_Z(U,V)$ is nonzero. Every determinant term contains $s$ coefficients of $U$ and $r$ coefficients of $V$. Weighted homogeneity therefore bounds its ordinary degree in $X,Y$ by\n\n$$\\deg R\\le su+rv-drs.$$\n\nThe further inequality follows from\n\n$$(u-dr)(v-ds)\\ge0,$$\n\nwhich is equivalent to $su+rv-drs\\le uv/d$.\n\nFor every $L\\in\\mathcal T$, specialization of the Sylvester determinant gives $R(L(t))\\equiv0$, because the two specialized polynomials have the common root $q_L(t)$. Thus the affine linear equation defining $L$ divides $R$. Distinct underlying lines give distinct linear factors, and a nonzero bivariate polynomial has no more distinct affine-line factors than its total degree. If one $Z$-degree is zero, the same conclusion follows directly by counting the affine-line factors of the corresponding polynomial in $X,Y$. No leading coefficient is divided out.",
+      "source_step_id": "[P3]",
+      "statement_markdown": "Let $U,V\\in\\mathbb F_p[X,Y,Z]$ be nonzero and coprime, with\n\n$$u=\\operatorname{wdeg}U,\\quad v=\\operatorname{wdeg}V,\\quad r=\\deg_ZU,\\quad s=\\deg_ZV,$$\n\nunder the weights $\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1$ and $\\operatorname{wt}(Z)=d$. Let $\\mathcal T$ be a set of distinct affine lines in $\\mathbb F_p^2$, each equipped with one polynomial $q_L$ of degree at most $d$, such that\n\n$$U(L(t),q_L(t))\\equiv V(L(t),q_L(t))\\equiv0$$\n\nin $\\mathbb F_p[t]$. Then\n\n$$|\\mathcal T|\\le su+rv-drs\\le\\frac{uv}{d}.$$",
+      "status": "proved",
+      "title": "Weighted Resultants"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "[P3]"
+      ],
+      "id": "researcher-0005:[P4].1",
+      "part": 1,
+      "proof_markdown": "The Hasse product rule and the vanishing of all positive derivatives below order $s$ give\n\n$$\\partial_Z^{[s]}G_s=\\sum_{i:s_i=s}\\left(\\partial_Z^{[s]}C_i\\right)\\prod_{\\substack{j\\ne i\\\\s_j=s}}C_j.$$\n\nModulo any factor $C_i$, only its displayed summand remains. That summand is nonzero modulo $C_i$ because $\\gcd(C_i,\\partial_Z^{[s]}C_i)=1$ and the factors are distinct. Consequently,\n\n$$\\gcd(G_s,\\partial_Z^{[s]}G_s)=1.$$\n\nThe derivative has weighted degree at most $\\Delta_s-ds$ and $Z$-degree at most $r_s-s$. Applying the weighted resultant bound with the latter $Z$-degree denoted by $r'$, its common-graph count is at most\n\n$$r'\\Delta_s+r_s(\\Delta_s-ds)-dr_sr'.$$\n\nSince $\\Delta_s-dr_s\\ge0$, this expression is maximized for $r'=r_s-s$. Substitution yields\n\n$$(r_s-s)\\Delta_s+r_s(\\Delta_s-ds)-dr_s(r_s-s)=(2r_s-s)\\Delta_s-dr_s^2.$$",
+      "source_step_id": "[P4]",
+      "statement_markdown": "Let $s$ be a fixed $p$-power, and let\n\n$$G_s:=\\prod_{i:s_i=s}C_i,\n\\qquad \\Delta_s:=\\operatorname{wdeg}G_s,\n\\qquad r_s:=\\deg_ZG_s$$\n\nfor a nonempty collection of distinct irreducible $Z$-dependent factors of Hasse height $s$. For any family of affine lines with degree-at-most-$d$ labels, the number of lines satisfying both formal identities\n\n$$G_s(L(t),q_L(t))\\equiv0,\n\\qquad\n\\partial_Z^{[s]}G_s(L(t),q_L(t))\\equiv0$$\n\nis at most\n\n$$(2r_s-s)\\Delta_s-dr_s^2.$$",
+      "status": "proved",
+      "title": "Hasse Strata"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0005:[P5].1",
+      "part": 1,
+      "proof_markdown": "For every graph line, the assumed identity is\n\n$$H(L(t))B(L(t),q_L(t))=0$$\n\nin the integral domain $\\mathbb F_p[t]$. If $H(L(t))$ is nonzero, the second factor must vanish; no pointwise division by $H$ is used. A line on which $H$ vanishes identically supplies a distinct affine linear factor of the nonzero polynomial $H$, so there are at most $h$ such lines.\n\nOn every remaining line,\n\n$$c\\prod_{i=1}^r C_i(L(t),q_L(t))=0$$\n\nin $\\mathbb F_p[t]$. The integral-domain property then forces at least one factor restriction to vanish identically.",
+      "source_step_id": "[P5]",
+      "statement_markdown": "Let\n\n$$A(X,Y,Z)=H(X,Y)B(X,Y,Z),\n\\qquad h:=\\deg H,$$\n\nwhere $H\\ne0$ and $B=c\\prod_{i=1}^rC_i$ with $c\\in\\mathbb F_p^\\times$. Let $\\mathcal T$ be a family of affine lines with degree-at-most-$d$ labels satisfying\n\n$$A(L(t),q_L(t))\\equiv0$$\n\nin $\\mathbb F_p[t]$. At most $h$ lines in $\\mathcal T$ satisfy $H(L(t))\\equiv0$. Every other line satisfies $B(L(t),q_L(t))\\equiv0$ and $C_i(L(t),q_L(t))\\equiv0$ for at least one $i$.",
+      "status": "proved",
+      "title": "Content Removal"
+    },
+    {
+      "dependencies": [
+        "[P3]",
+        "[P5]"
+      ],
+      "id": "researcher-0005:[P6].1",
+      "part": 1,
+      "proof_markdown": "If two distinct factors $C_i$ and $C_j$ vanish identically on the same graph line, the weighted resultant bound gives at most\n\n$$\\left\\lfloor\\frac{\\delta_i\\delta_j}{d}\\right\\rfloor$$\n\nsuch lines. If the unique factor is $C_i$ and its selected derivative also vanishes identically, the same bound gives at most\n\n$$\\left\\lfloor\\frac{\\delta_i(\\delta_i-\\omega_i)}{d}\\right\\rfloor$$\n\nsuch lines, because $\\operatorname{wdeg}(D_iC_i)\\le\\delta_i-\\omega_i$ and $C_i$ is coprime to its selected nonzero derivative.\n\nFor an inseparable irreducible factor, at least one of $C_{i,X}$ and $C_{i,Y}$ is nonzero. Otherwise all three ordinary partial derivatives would vanish. Every exponent would then be divisible by $p$, and perfectness of $\\mathbb F_p$ would express $C_i$ as a nontrivial $p$-th power, contradicting irreducibility.\n\nSumming the factor-pair and factor-derivative bounds gives the first inequality by a deterministic union bound. Finally,\n\n$$\\sum_i\\omega_i\\delta_i=d(\\Delta-\\iota)+\\iota$$\n\nand\n\n$$\\sum_i\\delta_i^2+\\sum_{i<j}\\delta_i\\delta_j\\le\\Delta^2.$$\n\nSubstitution into the first bound, followed by integrality of $N_{\\mathrm{exc}}$, gives the second bound.",
+      "source_step_id": "[P6]",
+      "statement_markdown": "Let\n\n$$B=c\\prod_{i=1}^rC_i,\n\\qquad \\delta_i:=\\operatorname{wdeg}C_i,\n\\qquad \\Delta:=\\sum_i\\delta_i,$$\n\nwhere the $C_i$ are distinct irreducible $Z$-dependent factors, and let\n\n$$\\iota:=\\operatorname{wdeg}\\gcd(B,B_Z)=\\sum_{C_{i,Z}=0}\\delta_i.$$\n\nFor $C_{i,Z}\\ne0$, set $D_iC_i:=C_{i,Z}$ and $\\omega_i:=d$. For $C_{i,Z}=0$, at least one member of $\\{C_{i,X},C_{i,Y}\\}$ is nonzero; choose one as $D_iC_i$ and set $\\omega_i:=1$.\n\nAmong the non-content graph lines supplied by [P5], call a line exceptional if either at least two distinct factors vanish identically on it, or exactly one factor $C_i$ vanishes identically and $D_iC_i$ also vanishes identically. The number $N_{\\mathrm{exc}}$ of exceptional lines satisfies\n\n$$N_{\\mathrm{exc}}\n\\le\n\\sum_i\\left\\lfloor\\frac{\\delta_i(\\delta_i-\\omega_i)}{d}\\right\\rfloor\n+\n\\sum_{i<j}\\left\\lfloor\\frac{\\delta_i\\delta_j}{d}\\right\\rfloor$$\n\nand\n\n$$N_{\\mathrm{exc}}\n\\le\n\\left\\lfloor\\frac{\\Delta^2-d\\Delta+(d-1)\\iota}{d}\\right\\rfloor.$$",
+      "status": "proved",
+      "title": "Exceptional Lines"
+    },
+    {
+      "dependencies": [
+        "[P6]"
+      ],
+      "id": "researcher-0005:[P7].1",
+      "part": 1,
+      "proof_markdown": "On a nonexceptional line of unique type $i$, each restriction\n\n$$D_iC_i(L(t),q_L(t))\n\\quad\\text{and}\\quad\nC_j(L(t),q_L(t))\\ \\text{for }j\\ne i$$\n\nis a nonzero polynomial in $t$. Weighted substitution bounds their respective degrees by $\\delta_i-\\omega_i$ and $\\delta_j$. Hence the union of their root sets has size at most\n\n$$(\\delta_i-\\omega_i)+\\sum_{j\\ne i}\\delta_j=\\Delta-\\omega_i,$$\n\ncapped by the $p$ available parameter values.\n\nEach removed line contributes $p$ incidences to the ambient space of $p^2(p+1)$ incidences. Multiplying each exact per-line root bound by the corresponding number of remaining lines and normalizing gives the displayed loss formula. This is a deterministic sum of root counts.\n\nFinally, there are at most $p^2$ point vertices. Removing vertices whose current degree is at most $1$ deletes at most one incidence per such vertex, so the additional normalized loss is at most\n\n$$\\frac{p^2}{p^2(p+1)}=\\frac1{p+1}.$$",
+      "source_step_id": "[P7]",
+      "statement_markdown": "Retain the notation of [P6], and suppose at most $h$ content lines and $N_{\\mathrm{exc}}$ exceptional lines have been removed. On each remaining line of unique type $i$, delete every parameter value at which $D_iC_i$ or any factor $C_j$ with $j\\ne i$ vanishes. The number deleted from that line is at most\n\n$$\\min\\{p,\\Delta-\\omega_i\\}.$$\n\nThus a separable-type line loses at most $\\min\\{p,\\Delta-d\\}$ points, and an inseparable-type line loses at most $\\min\\{p,\\Delta-1\\}$ points. If $\\sigma_{\\mathrm{sep}}$ and $\\sigma_{\\mathrm{ins}}$ are the respective numbers of remaining separable- and inseparable-type lines divided by $p(p+1)$, the deleted fraction of the ambient incidence space is at most\n\n$$\\frac{h+N_{\\mathrm{exc}}}{p(p+1)}\n+\\sigma_{\\mathrm{sep}}\\min\\left\\{1,\\frac{\\Delta-d}{p}\\right\\}\n+\\sigma_{\\mathrm{ins}}\\min\\left\\{1,\\frac{\\Delta-1}{p}\\right\\}.$$\n\nDeleting all remaining point vertices of degree at most $1$ adds at most $1/(p+1)$ to this fraction.",
+      "status": "proved",
+      "title": "Root Deletion"
+    },
+    {
+      "dependencies": [
+        "[P7]"
+      ],
+      "id": "researcher-0005:[P8].1",
+      "part": 1,
+      "proof_markdown": "Suppose two distinct retained graph lines meet at $(x,y,z)$. The deletion of roots of every other factor forces the two lines to have the same unique type $i$: if their types differed, the factor belonging to either line would vanish at the common point on the other line, and that point would have been deleted.\n\nAssume that $C_{i,Z}=0$. Differentiating the two formal graph identities along their respective direction vectors $(a,b)$ gives\n\n$$C_{i,X}(x,y,z)a+C_{i,Y}(x,y,z)b=0.$$\n\nThe two underlying affine lines are distinct and pass through the same point, so their direction vectors are independent. The two equations force\n\n$$C_{i,X}(x,y,z)=C_{i,Y}(x,y,z)=0,$$\n\ncontradicting retention of the chosen nonzero base derivative. Hence $C_i$ is separable.\n\nRetention also gives $C_{i,Z}(x,y,z)\\ne0$ and $C_j(x,y,z)\\ne0$ for every $j\\ne i$. Since $C_i(x,y,z)=0$, the product rule reduces to\n\n$$B_Z(x,y,z)=c\\,C_{i,Z}(x,y,z)\\prod_{j\\ne i}C_j(x,y,z)\\ne0.$$",
+      "source_step_id": "[P8]",
+      "statement_markdown": "In the incidence system retained after [P7], let $(x,y,z)\\in\\mathbb F_p^3$ be incident to at least two distinct retained graph lines. Then\n\n$$B(x,y,z)=0\n\\qquad\\text{and}\\qquad\nB_Z(x,y,z)\\ne0.$$",
+      "status": "proved",
+      "title": "Simple Intersections"
+    },
+    {
+      "dependencies": [
+        "[P1]",
+        "[P6]",
+        "[P7]",
+        "[P8]"
+      ],
+      "id": "researcher-0005:[P9].1",
+      "part": 1,
+      "proof_markdown": "If an irreducible $Z$-dependent factor $C_i$ satisfies $C_{i,Z}=0$, every positive $Z$-exponent in $C_i$ is divisible by $p$. Such an exponent is therefore at least $p$, and the assigned weight of the corresponding $Z$-power is at least $pd$. Hence $\\delta_i\\ge pd$. The inequality $\\Delta<pd$ excludes every such factor, so $\\iota=0$ and $\\gcd(B,B_Z)=1$.\n\nWith $\\iota=0$, the content and exceptional-line bounds give at most\n\n$$h+\\frac{\\Delta^2}{d}-\\Delta$$\n\nlines before taking the integer floor. Since $B$ is $Z$-dependent, $\\Delta\\ge d$. For fixed $a=h+\\Delta$, this convex expression is maximized at $h=0$ and $\\Delta=a$; the comparison of the two endpoints is\n\n$$\\frac{a^2}{d}-a-(a-d)=\\frac{(a-d)^2}{d}\\ge0.$$\n\nThe resulting expression $a^2/d-a$ is nondecreasing for $a\\ge d$, so $a\\le D$ gives the bound $\\lfloor D^2/d-D\\rfloor$. Every factor is separable, and the per-line deletion bound is $\\Delta-d\\le D-d$. The final simple-point conclusion follows from [P8].",
+      "source_step_id": "[P9]",
+      "statement_markdown": "Let $B=c\\prod_iC_i$ be squarefree and $Z$-dependent, with $\\Delta=\\operatorname{wdeg}B$ and $\\iota=\\operatorname{wdeg}\\gcd(B,B_Z)$. If\n\n$$\\Delta<pd,$$\n\nthen\n\n$$\\iota=0\n\\qquad\\text{and}\\qquad\n\\gcd(B,B_Z)=1.$$\n\nIf additionally $A=HB$, $h=\\deg H$, $a=h+\\Delta$, and\n\n$$a\\le D<pd,$$\n\nthen the cleanup removes at most\n\n$$\\left\\lfloor\\frac{D^2}{d}-D\\right\\rfloor$$\n\ncontent and exceptional lines in total and at most $D-d$ parameter values from every other line. Every retained point incident to at least two retained graph lines satisfies $B_Z\\ne0$.",
+      "status": "proved",
+      "title": "Automatic Separability"
+    },
+    {
+      "dependencies": [
+        "[P9]",
+        "KTZ Theorem 1.1 and Lemmas 3.2\u20136.3"
+      ],
+      "id": "researcher-0005:[P10].1",
+      "part": 1,
+      "proof_markdown": "The quoted KTZ selector and interpolation bounds are\n\n$$n\\le\\frac{6400p}{\\epsilon},\n\\qquad\nD=16\\bigl(\\lfloor\\sqrt{dn}\\rfloor+1\\bigr)\n\\le1280\\left(\\sqrt{\\frac{dp}{\\epsilon}}+1\\right),\n\\qquad\nD<p.$$\n\nSince $d\\ge101$, one has $D<p<pd$, so the cleanup lies automatically in the separable range of [P9]. Its normalized exceptional-line cost has scale\n\n$$O\\left(\\frac{D^2}{dp^2}\\right)\n=O\\left(\\frac1{\\epsilon p}+\\frac1{dp^2}\\right).$$\n\nMaking this cost $O(\\epsilon)$ requires only $\\epsilon^2p=\\Omega(1)$. By contrast, both the per-line point loss and the KTZ identity-extension condition $D<k_1/2$, where $k_1=\\lfloor\\epsilon p/1000\\rfloor$, require\n\n$$\\sqrt{\\frac{dp}{\\epsilon}}=O(\\epsilon p),$$\n\nwhich is equivalent to\n\n$$\\epsilon^3=\\Omega\\left(\\frac dp\\right).$$\n\nThe quoted affine-mixing loss $O(p^{-1/2})$ and the optional loss $1/(p+1)$ are weaker in the range $d\\ge101$. The remaining quoted KTZ lemmas therefore apply under the same cubic premise and yield a total-degree-at-most-$d$ polynomial with global agreement at least $\\epsilon/8000$.",
+      "source_step_id": "[P10]",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $f:\\mathbb F_p^2\\to\\mathbb F_p$ and degree-at-most-$d$ affine-line labels $q_L$ have local agreement\n\n$$\\epsilon:=\\Pr_{L\\in\\mathcal L,\\,x\\in L}[q_L(x)=f(x)].$$\n\nLet $C_{\\mathrm{KTZ}}$ be the absolute constant in the quoted KTZ theorem. If\n\n$$\\epsilon\\ge C_{\\mathrm{KTZ}}\\left(\\frac dp\\right)^{1/3},$$\n\nthen there exists $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that\n\n$$\\frac{|\\{(x,y)\\in\\mathbb F_p^2:Q(x,y)=f(x,y)\\}|}{p^2}\\ge\\frac{\\epsilon}{8000}.$$",
+      "status": "proved",
+      "title": "KTZ Parameter Insertion"
+    },
+    {
+      "dependencies": [
+        "[P1]"
+      ],
+      "id": "researcher-0005:[P11].1",
+      "part": 1,
+      "proof_markdown": "Regard $F$ as a polynomial in $Z$ over $\\mathbb F_p[X,Y]$. Eisenstein's criterion at the prime $X$ applies: every nonleading coefficient is divisible by $X$, while the constant coefficient $-XY^{p-1}$ is not divisible by $X^2$. Thus $F$ is irreducible in $\\mathbb F_p[X,Y,Z]$ and hence squarefree. Its weighted degree is $pd$.\n\nFormal translation gives\n\n$$F(X,Y,Z+T)=F(X,Y,Z)+T^p,$$\n\nso $F_Z=0$, all Hasse derivatives of orders $1$ through $p-1$ vanish, and $\\partial_Z^{[p]}F=1$.\n\nFor a projective direction $[a:b]$, Frobenius in $\\mathbb F_p$ gives\n\n$$q_{a,b}(t)^p=ab^{p-1}t^p.$$\n\nSince $X Y^{p-1}$ restricts to the same polynomial on $L_{a,b}(t)$,\n\n$$F(L_{a,b}(t),Z)=(Z-q_{a,b}(t))^p.$$\n\nThere are $p+1$ projective directions, so their total vertical multiplicity is $p(p+1)>pd$ because $d<p$.\n\nIf a formal series $Q$ satisfied $F(X,Y,Q)=0$, then $Q^p=XY^{p-1}$. Every monomial in a Frobenius $p$-th power in $\\mathbb F_p[[X,Y]]$ has both exponents divisible by $p$, whereas the exponent pair of $XY^{p-1}$ is $(1,p-1)$. This is impossible.",
+      "source_step_id": "[P11]",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$, with weights $\\operatorname{wt}(X)=\\operatorname{wt}(Y)=1$ and $\\operatorname{wt}(Z)=d$. Define\n\n$$F(X,Y,Z):=Z^p-XY^{p-1}.$$\n\nThen $F$ is irreducible and squarefree, $\\operatorname{wdeg}F=pd$, $F_Z=0$, $\\partial_Z^{[r]}F=0$ for $1\\le r<p$, and $\\partial_Z^{[p]}F=1$. For every $[a:b]\\in\\mathbb P^1(\\mathbb F_p)$, set\n\n$$L_{a,b}(t):=(at,bt),\n\\qquad\nq_{a,b}(t):=ab^{p-1}t.$$\n\nThen\n\n$$F(L_{a,b}(t),Z)=(Z-q_{a,b}(t))^p.$$\n\nConsequently, the multiplicity-weighted direction count is\n\n$$p(p+1)>pd=\\operatorname{wdeg}F,$$\n\nbut there is no $Q\\in\\mathbb F_p[[X,Y]]$ satisfying $F(X,Y,Q(X,Y))=0$.",
+      "status": "proved",
+      "title": "Inseparable Pencil"
+    },
+    {
+      "dependencies": [
+        "[P11]"
+      ],
+      "id": "researcher-0005:[P12].1",
+      "part": 1,
+      "proof_markdown": "On every radial line through the origin, these labels coincide with the graph labels from [P11]. Direct incidence counting is especially transparent from the rejected incidences. Every point with $y\\ne0$ is accepted on all of its incident lines. Every point $(x,0)$ with $x\\ne0$ is accepted on the horizontal axis and rejected on its other $p$ incident lines, while the origin is accepted everywhere. Thus there are $p(p-1)$ rejected incidences among $p^2(p+1)$ total incidences, and\n\n$$\\epsilon\n=1-\\frac{p(p-1)}{p^2(p+1)}\n=\\frac{p^2+1}{p(p+1)}.$$\n\nThe polynomial $Q=X$ has degree $1\\le d$. It agrees with $f$ at all $p(p-1)$ points with $y\\ne0$ and also at the origin, giving global agreement\n\n$$\\frac{p(p-1)+1}{p^2}.$$\n\nBoth agreements tend to $1$, and the exhibited global polynomial satisfies the soundness conclusion. Hence the stated counterexample claim is refuted.",
+      "source_step_id": "[P12]",
+      "statement_markdown": "Let $p$ be prime and let $101\\le d<p$. Define\n\n$$f(x,y):=xy^{p-1}.$$\n\nLabel every affine line other than the horizontal axis by the restriction of $X$, and label the horizontal axis by the constant polynomial $0$. Then this table and label family is a counterexample to affine line-versus-point soundness.",
+      "status": "refuted",
+      "title": "Soundness Counterexample Attempt"
+    },
+    {
+      "dependencies": [],
+      "id": "researcher-0005:[P13].1",
+      "part": 1,
+      "proof_markdown": "A uniformly selected affine line belongs to one of the chosen direction classes with probability $k/(p+1)$. On such a line the constant label $0$ agrees with $f$ at every point; on every other line the constant label $1$ disagrees at every point. Hence the local agreement is exactly\n\n$$\\epsilon=\\frac{k}{p+1}.$$\n\nThe total-degree-$0$ polynomial $Q=0$ agrees with $f$ at every point of $\\mathbb F_p^2$. Thus the stated obstruction claim is refuted.",
+      "source_step_id": "[P13]",
+      "statement_markdown": "Let $p$ be prime, let $101\\le d<p$, and let $0\\le k\\le p+1$. Set $f=0$, label every line in $k$ complete direction classes by the constant polynomial $0$, and label every other affine line by the constant polynomial $1$. Then concentration of all accepted incidences in those $k$ direction classes obstructs global recovery by a total-degree-at-most-$d$ polynomial.",
+      "status": "refuted",
+      "title": "Direction-Concentration Attempt"
+    }
+  ],
+  "omitted_source_step_ids": [],
+  "source_job_id": "researcher-0005",
+  "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7"
+}

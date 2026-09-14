@@ -1,0 +1,2053 @@
+You are the proof-roadmap agent for `incidence-engine` in the bivariate
+prime-field line-versus-point campaign. Work at the level of a Lean-style proof plan: give a
+concise but complete directed acyclic chain of definitions, reductions, lemmas, obligations, and
+the final theorem. Your focus is popularity pruning, structured line families, point-line concentration, and near-lossless sampling.
+
+All work is shared. Read TARGET.md, the complete submissions, verifier audits, Lemma Book,
+all roadmaps under /Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps, and the informal message board at
+/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/message-board.json. You may cite and reuse lemmas from any source or roadmap.
+Treat message-board claims as informal suggestions, never as verified mathematics. Give roughly
+60 percent of your attention to your assigned focus so the three agents explore distinct routes,
+but import any useful shared lemma. Cite it in evidence_refs by the exact stable triple
+(source_job_id, source_step_id, source_response_sha256) from corpus-index.json. Editorial lemma
+splits are display-only and never change this proof reference.
+
+The scope is fixed at $m=2$ over prime $\mathbb F_p$ with integer $100<d<p$. Do not work on
+dimension bootstrapping or $d\le100$. The target is soundness $(d/p)^{1-o(1)}$ with recovery of
+one global total-degree-at-most-$d$ polynomial. Use work_state only to report activity: `open`,
+`drafting`, `candidate`, `blocked`, or `refuted`. The harness—not you—derives proof status from
+exact source hashes and independent verifier audits. Never convert confidence, a polished lemma,
+or informal discussion into verified proof progress.
+
+This is roadmap round 2. The shared corpus snapshot SHA-256 is
+e50c4348042f40dc7846c50afd3a8b1e69af0ae20c3c9f834ce8a1925c474771. Set those exact values in the response. Preserve useful nodes from your
+previous roadmap while making dependencies more complete and concise. Every dependency must
+refer to another node in this roadmap. The critical_path must list the shortest dependency chain
+ending at goal_node_id. Keep node statements mathematical and minimal; put short planning context
+in notes. Enclose math in $...$ or $$...$$ using KaTeX-supported LaTeX.
+
+Post up to four informal messages for the other roadmap agents: questions, warnings, proposed
+lemma imports, or requests for help. Messages may be candid and exploratory, but must cite the
+relevant roadmap/node/lemma ids when possible. Use channel `global` or one of the three roadmap
+ids. Use in_reply_to only for an id already present on the shared board. related_node_ids may
+contain only nodes in this submitted roadmap.
+
+ASSIGNED ROADMAP:
+{
+  "focus": "popularity pruning, structured line families, point-line concentration, and near-lossless sampling",
+  "id": "incidence-engine",
+  "target": "Convert local line-versus-point agreement into a structured affine-plane incidence configuration with only a $(d/p)^{o(1)}$ loss.",
+  "title": "Incidence concentration engine"
+}
+
+PREVIOUS VERSION OF THIS ROADMAP:
+{
+  "corpus_sha256": "0ad2be1fc78a6bfe1f043b02e93de994a2bc9e8457ad702d994db9987b27601c",
+  "critical_path": [
+    "IE-D-ACCEPTED-GRAPH",
+    "IE-L-POPULAR-CORE",
+    "IE-O-LOW-WEIGHT-DICHOTOMY",
+    "IE-L-RANK-INTERP",
+    "IE-L-RANK-EXTEND",
+    "IE-L-CLEAN-COUNT",
+    "IE-R-LOW-WEIGHT-CLEAN",
+    "IE-L-FACTOR-CONCENTRATE",
+    "IE-L-FACTOR-LIFT",
+    "IE-R-CLOSE",
+    "IE-GOAL"
+  ],
+  "focus": "popularity pruning, structured line families, point-line concentration, and near-lossless sampling",
+  "goal_node_id": "IE-GOAL",
+  "messages": [
+    {
+      "body_markdown": "Please supply a fresh exact proof of `IE-L-FACTOR-LIFT`: from more than $\\operatorname{wdeg}(C)$ simple compatible graph lines through one point, derive one $Q$ with $C\\sim Z-Q$, then aggregate every disconnected $C$-class. Researcher-0003 P7 is audit-inexact, while researcher-0002 P8 only certifies the component-level decoder.",
+      "channel": "algebraic-engine",
+      "in_reply_to": null,
+      "kind": "request",
+      "references": [
+        "researcher-0003:P7.1",
+        "researcher-0002:P8.1"
+      ],
+      "related_node_ids": [
+        "IE-L-FACTOR-CONCENTRATE",
+        "IE-L-FACTOR-LIFT"
+      ],
+      "subject": "Factor linearization"
+    },
+    {
+      "body_markdown": "Proposed end-to-end interface: incidence supplies $\\Omega_\\eta(\\epsilon)$ accepted mass and a rank-reaching relation degree $D=O_\\eta(d)$. Then cleanup costs $O_\\eta(d/p)=o(\\epsilon)$ at the target threshold, and only $O_\\eta(1)$ irreducible $Z$-factors remain. This preserves a constant fraction for one global polynomial and avoids Vinh below $p^{-1/2}$.",
+      "channel": "end-to-end-soundness",
+      "in_reply_to": null,
+      "kind": "idea",
+      "references": [
+        "incidence-engine/IE-O-LOW-WEIGHT-DICHOTOMY",
+        "incidence-engine/IE-L-FACTOR-CONCENTRATE"
+      ],
+      "related_node_ids": [
+        "IE-O-LOW-WEIGHT-DICHOTOMY",
+        "IE-R-CLOSE",
+        "IE-GOAL"
+      ],
+      "subject": "Near-linear interface"
+    },
+    {
+      "body_markdown": "The exact-audited balanced-color construction forces every cover reaching half of every accepted line to have $|R|=\\Omega(p/\\epsilon)$, despite an immediate constant decoder. Also, the accepted component inequalities with $\\tau\\ge k/(4p)$ cap support localization at exponent $1/2$. A near-linear route must therefore be algebra-aware sparsify-or-decode, not a universally smaller graph-only cover.",
+      "channel": "global",
+      "in_reply_to": null,
+      "kind": "objection",
+      "references": [
+        "researcher-0002:P1.1",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "IE-R-SQRT-CEILING",
+        "IE-L-COVER-OBSTRUCTION",
+        "IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "subject": "Graph-only ceiling"
+    }
+  ],
+  "nodes": [
+    {
+      "dependencies": [],
+      "evidence_refs": [],
+      "id": "IE-D-ACCEPTED-GRAPH",
+      "kind": "definition",
+      "label": "Accepted-incidence graph",
+      "notes": "All measures use the uniform affine point-line incidence normalization.",
+      "owner": "incidence-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Let $\\mathcal L_p$ be the $p(p+1)$ affine lines of $\\mathbb F_p^2$ and let $$E_{\\rm acc}=\\{(x,L):x\\in L\\text{ and }P_L(x)=f(x)\\}.$$ Put $\\epsilon=|E_{\\rm acc}|/[p^2(p+1)]$ and $$\\operatorname{Agr}_d(f)=\\max_{\\deg Q\\le d}\\Pr_x[Q(x)=f(x)].$$ For $G=(X,T,E)\\subseteq E_{\\rm acc}$ define $$e(G)=\\frac{|E|}{p^2(p+1)},\\quad \\mu(G)=\\frac{|X|}{p^2},\\quad \\tau(G)=\\frac{|T|}{p(p+1)},\\quad k(G)=\\operatorname{mindeg}(G).$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [],
+      "id": "IE-D-RANK-REACH",
+      "kind": "definition",
+      "label": "Rank-reaching line family",
+      "notes": "This replaces cardinality control of $R$ by the actual rank of its labeled graph constraints.",
+      "owner": "incidence-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For $d\\le D<p$, let $$V_D=\\{A\\in\\mathbb F_p[X,Y,Z]:\\operatorname{wdeg}_{(1,1,d)}A\\le D\\},\\qquad N_d(D)=\\dim V_D,$$ and $$\\Phi_{R,D}:V_D\\to\\bigoplus_{M\\in R}\\mathbb F_p[t]_{\\le D},\\qquad A\\mapsto\\bigl(A(M(t),P_M(t))\\bigr)_{M\\in R}.$$ For $G=(X,T,E)$ set $$N_G(L)=\\{x:(x,L)\\in E\\},$$ $$\\operatorname{Reach}_R(L)=\\{x\\in N_G(L):\\exists M\\in R\\setminus\\{L\\},\\ (x,M)\\in E\\}.$$ The tuple $(G,R,D)$ is rank-reaching if $R\\subseteq T$, $|R|>D$, $\\operatorname{rank}\\Phi_{R,D}<N_d(D)$, and $|\\operatorname{Reach}_R(L)|>D$ for every $L\\in T$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0001",
+          "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+          "source_step_id": "P1"
+        }
+      ],
+      "id": "IE-L-POPULAR-CORE",
+      "kind": "lemma",
+      "label": "Popularity pruning",
+      "notes": "Exact source mapping; its compound source audit has verdict `revise`, so the harness determines status.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0001:P1.1"
+      ],
+      "statement_markdown": "If an accepted carrier has edge mass $\\delta>0$ and line support at most $\\sigma$, then for $k_0=\\lfloor\\delta p/100\\rfloor$ it contains a subgraph $G_0$ with $$e(G_0)\\ge\\delta/4,\\qquad k(G_0)\\ge k_0,\\qquad \\delta/4\\le\\tau(G_0)\\le\\sigma.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P1"
+        }
+      ],
+      "id": "IE-L-COMP-MEASURE",
+      "kind": "lemma",
+      "label": "Accepted component measures",
+      "notes": "Mapped to the exact accepted component theorem input.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P1.1"
+      ],
+      "statement_markdown": "Let $G=(X,T,E)$ be connected with minimum degree $k$, line measure $\\tau$, and $C_*=2^{40}$. If $$k^2\\ge C_*dp,\\qquad k^3\\ge C_*d\\tau p^2,$$ then $$\\mu(G)\\ge\\frac{k}{4p},\\qquad \\tau\\ge\\frac{k}{4p}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-COMP-MEASURE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P2"
+        }
+      ],
+      "id": "IE-L-COMP-SAMPLE",
+      "kind": "lemma",
+      "label": "Component-sensitive reaching family",
+      "notes": "The sampling proof loses only absolute constants.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P2.1"
+      ],
+      "statement_markdown": "Under `IE-L-COMP-MEASURE`, writing $t=|T|$, there is $R\\subseteq T$ such that $$\\frac{4t}{k}\\le |R|\\le\\frac{16t}{k}$$ and $$|\\operatorname{Reach}_R(L)|>\\frac12\\deg_G(L)$$ for every $L\\in T$. In particular, $|R|=\\Theta(\\tau p^2/k)$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-COMP-SAMPLE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P3"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P4"
+        }
+      ],
+      "id": "IE-L-STANDARD-EXPLAIN",
+      "kind": "lemma",
+      "label": "Standard explainer and extension",
+      "notes": "This is the exact cardinality-based interpolation branch.",
+      "owner": "algebraic-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P3.1",
+        "researcher-0002:P4.1"
+      ],
+      "statement_markdown": "Let $r=|R|$ and $$D=16\\bigl(\\lfloor\\sqrt{dr}\\rfloor+1\\bigr).$$ Under the component hypotheses there is a nonzero squarefree $A\\in V_D$ with $A_Z\\not\\equiv0$, $D/k<1/5000$, and $$A(L(t),P_L(t))\\equiv0$$ for every $L\\in T$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-STANDARD-EXPLAIN"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P5"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P6"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P7"
+        }
+      ],
+      "id": "IE-L-STANDARD-CLEAN",
+      "kind": "lemma",
+      "label": "Standard simple-root core",
+      "notes": "Content, resultant, peeling, and two-direction simplicity are kept as distinct source steps in the evidence list.",
+      "owner": "algebraic-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P5.1",
+        "researcher-0002:P6.1",
+        "researcher-0002:P7.1"
+      ],
+      "statement_markdown": "Write $A=HB$ with $B$ primitive in $Z$. At most $pD^2+D|T|$ accepted edges are exceptional. Deleting them and peeling below $\\lfloor k/100\\rfloor$ leaves a nonempty graph $G_1$ of minimum degree at least $\\lfloor k/100\\rfloor$ such that $$B(x,f(x))=0,\\qquad B_Z(x,f(x))\\ne0$$ at every point vertex.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-STANDARD-CLEAN"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "IE-T-COMP-DECODE",
+      "kind": "theorem",
+      "label": "Component-sensitive decoder",
+      "notes": "The conclusion is one polynomial, not a list.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P8.1"
+      ],
+      "statement_markdown": "If a connected accepted component of minimum degree $k$ and line measure $\\tau$ satisfies $$k^2\\ge2^{40}dp,\n\\qquad k^3\\ge2^{40}d\\tau p^2,$$ then there is one $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$\\operatorname{Agr}_d(f)\\ge\\frac{k}{800p}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-POPULAR-CORE",
+        "IE-T-COMP-DECODE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P9"
+        }
+      ],
+      "id": "IE-T-SQRT-MILESTONE",
+      "kind": "theorem",
+      "label": "Conditional square-root milestone",
+      "notes": "The unproved antecedent is the existence of the small-line-measure component.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P9.1"
+      ],
+      "statement_markdown": "Let $G_0$ be a popularity core with minimum degree $k_0=\\lfloor\\epsilon p/100\\rfloor$. If some component has $\\tau\\le\\Lambda\\epsilon$ and $$\\epsilon\\ge\\sqrt{8{,}000{,}000\\cdot2^{40}\\Lambda}\\left(\\frac dp\\right)^{1/2},$$ then one total-degree-at-most-$d$ polynomial satisfies $$\\operatorname{Agr}_d(f)\\ge\\frac{\\epsilon}{160000}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-COMP-MEASURE"
+      ],
+      "evidence_refs": [],
+      "id": "IE-R-SQRT-CEILING",
+      "kind": "reduction",
+      "label": "Support-localization ceiling",
+      "notes": "Thus smaller component support within the existing cardinality/root-budget architecture cannot reach exponent $1-o(1)$.",
+      "owner": "incidence-engine",
+      "proof_state": "open",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "If $c\\epsilon p\\le k\\le C\\epsilon p$, $\\tau\\ge k/(4p)$, and $k^3\\ge C_*d\\tau p^2$, then $$\\epsilon^2\\ge\\frac{C_*}{4C^2}\\frac dp.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P10"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P11"
+        }
+      ],
+      "id": "IE-L-COVER-OBSTRUCTION",
+      "kind": "lemma",
+      "label": "Universal-cover obstruction",
+      "notes": "This obstructs graph-only sparsification, not soundness; the same table already has a constant decoder.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "statement_markdown": "For $p\\ge103$ and $2\\le K\\le p/(100\\log p)$ there is a legal table with $1/(2K)\\le\\epsilon\\le2/K$ such that every $R$ reaching half of every accepted line satisfies $$|R|\\ge\\frac{Kp}{16}\\ge\\frac{p}{32\\epsilon},$$ while some constant polynomial has agreement at least $\\epsilon/2$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-ACCEPTED-GRAPH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0001",
+          "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+          "source_step_id": "P13"
+        },
+        {
+          "source_job_id": "researcher-0001",
+          "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+          "source_step_id": "P14"
+        }
+      ],
+      "id": "IE-X-EXACT-LINEAR",
+      "kind": "theorem",
+      "label": "Exact-linear endpoint",
+      "notes": "The modal construction refutes this statement but remains below every fixed $(d/p)^{1-\\eta}$ trigger. The compound source audit is `revise`.",
+      "owner": "end-to-end-soundness",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [
+        "researcher-0001:P13.1",
+        "researcher-0001:P14.1"
+      ],
+      "statement_markdown": "There are absolute $C,c>0$ such that, for all legal $p,d,f,P$, $$\\epsilon\\ge C\\frac dp\\quad\\Longrightarrow\\quad\\operatorname{Agr}_d(f)\\ge c\\epsilon.$$",
+      "work_state": "refuted"
+    },
+    {
+      "dependencies": [
+        "IE-D-RANK-REACH"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0004",
+          "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "IE-L-RANK-BARRIER",
+      "kind": "literature_input",
+      "label": "Rank-blind multiplicity barrier",
+      "notes": "The snapshot has `audit_exact=false` and verdict `revise`; it is diagnostic only.",
+      "owner": "algebraic-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "In the regime $n>D$, uniform order-$s$ graph multiplicity certified solely by per-line jet codimension and transferred solely by $s$-fold root counting satisfies $$h^2>\\frac{dn}{12}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-D-RANK-REACH",
+        "IE-L-POPULAR-CORE",
+        "IE-T-COMP-DECODE"
+      ],
+      "evidence_refs": [],
+      "id": "IE-O-LOW-WEIGHT-DICHOTOMY",
+      "kind": "obligation",
+      "label": "Low-weight sparsify-or-decode dichotomy",
+      "notes": "This is the principal incidence obligation. `IE-L-COVER-OBSTRUCTION` requires the structured branch to exploit label-rank dependencies rather than merely reduce $|R|$.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For every $\\eta>0$ there are $C_\\eta,c_\\eta,K_\\eta>0$ such that, if $$\\epsilon\\ge C_\\eta\\left(\\frac dp\\right)^{1-\\eta},$$ then either $\\operatorname{Agr}_d(f)\\ge c_\\eta\\epsilon$, or the popularity core contains an accepted subgraph $G$ for which there are $R$ and $D$ satisfying $$e(G)\\ge c_\\eta\\epsilon,\n\\qquad d\\le D\\le K_\\eta d,$$ and $(G,R,D)$ is rank-reaching.",
+      "work_state": "open"
+    },
+    {
+      "dependencies": [
+        "IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P3"
+        }
+      ],
+      "id": "IE-L-RANK-INTERP",
+      "kind": "lemma",
+      "label": "Low-rank interpolation",
+      "notes": "P3 supplies the squarefree and $Z$-dependence template; replacing its cardinality inequality by the stated rank inequality still needs an exact formalization.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P3.1"
+      ],
+      "statement_markdown": "If $(G,R,D)$ is rank-reaching, then there is a nonzero squarefree $A\\in V_D$ such that $$A_Z\\not\\equiv0,\n\\qquad A(M(t),P_M(t))\\equiv0$$ for every $M\\in R$.",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-L-RANK-INTERP"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P4"
+        }
+      ],
+      "id": "IE-L-RANK-EXTEND",
+      "kind": "lemma",
+      "label": "Reached-root extension",
+      "notes": "The proof is ordinary degree-$D$ root counting and has no averaging loss.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P4.1"
+      ],
+      "statement_markdown": "Under `IE-L-RANK-INTERP`, $$A(L(t),P_L(t))\\equiv0$$ for every line vertex $L$ of $G$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-RANK-EXTEND"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P5"
+        }
+      ],
+      "id": "IE-L-CLEAN-COUNT",
+      "kind": "lemma",
+      "label": "Exceptional-incidence count",
+      "notes": "This exact count remains valid independently of how the low-rank interpolant was found.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P5.1"
+      ],
+      "statement_markdown": "Write $A=HB$, where $H\\in\\mathbb F_p[X,Y]$ is the coefficient content and $B$ is primitive in $Z$. Then $B$ is squarefree of degree below $p$, and there is a formal derivative $\\mathcal D$ with $\\gcd(B,\\mathcal DB)=1$ such that the content, degenerate-line, and derivative-zero exceptional incidences satisfy $$|E_{\\rm exc}|\\le pD^2+D|T|.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "IE-L-CLEAN-COUNT"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P6"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P7"
+        }
+      ],
+      "id": "IE-R-LOW-WEIGHT-CLEAN",
+      "kind": "reduction",
+      "label": "Near-lossless cleanup at $D=O_\\eta(d)$",
+      "notes": "The new parameter substitution is $D/p\\le K_\\eta(d/p)\\le(K_\\eta/C_\\eta)\\epsilon$; it needs a fresh constant audit.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P6.1",
+        "researcher-0002:P7.1"
+      ],
+      "statement_markdown": "In the structured branch of `IE-O-LOW-WEIGHT-DICHOTOMY`, if $C_\\eta$ is sufficiently large relative to $c_\\eta,K_\\eta$, exceptional deletion and popularity peeling leave a graph $G_1$ and $c'_\\eta>0$ such that $$e(G_1)\\ge c'_\\eta\\epsilon,\n\\qquad k(G_1)>D,$$ every line vertex satisfies $B(L(t),P_L(t))\\equiv0$, and every point vertex satisfies $$B(x,f(x))=0,\n\\qquad B_Z(x,f(x))\\ne0.$$",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-R-LOW-WEIGHT-CLEAN"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P1"
+        }
+      ],
+      "id": "IE-L-FACTOR-CONCENTRATE",
+      "kind": "lemma",
+      "label": "Bounded-factor concentration",
+      "notes": "The cited factorwise source is pending and `audit_exact=false`; the node requires an exact proof in the current chain.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Factor $$B=c\\prod_{i=1}^s C_i.$$ Then every $C_i$ depends on $Z$ and $$s\\le\\deg_ZB\\le D/d\\le K_\\eta.$$ The simple-root graph partitions into factor classes. For some $C_i$ there is an accepted subgraph $F$ with $$e(F)\\ge c''_\\eta\\epsilon,\n\\qquad k(F)>\\operatorname{wdeg}(C_i),$$ such that $C_i(L(t),P_L(t))\\equiv0$ on every line vertex and $C_{i,Z}(x,f(x))\\ne0$ on every point vertex.",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-L-FACTOR-CONCENTRATE"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0003",
+          "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+          "source_step_id": "P7"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "IE-L-FACTOR-LIFT",
+      "kind": "lemma",
+      "label": "Factor linearization and global aggregation",
+      "notes": "Researcher-0003 P7 is audit-inexact under a rejected compound submission; researcher-0002 P8 confirms component-level simple-root recovery but not this cross-component aggregation.",
+      "owner": "algebraic-engine",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [
+        "researcher-0002:P8.1"
+      ],
+      "statement_markdown": "Let $C\\in\\mathbb F_p[X,Y,Z]$ be irreducible with $\\Delta=\\operatorname{wdeg}(C)<p$. If an accepted factor class $F$ has minimum degree greater than $\\Delta$, satisfies $C(L(t),P_L(t))\\equiv0$ on every line vertex, and has $C_Z(x,f(x))\\ne0$ at every point vertex, then there is $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that $$C\\sim Z-Q$$ and $Q(x)=f(x)$ on every point vertex of $F$. Consequently, $$\\operatorname{Agr}_d(f)\\ge e(F).$$",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "IE-L-FACTOR-LIFT"
+      ],
+      "evidence_refs": [],
+      "id": "IE-R-CLOSE",
+      "kind": "reduction",
+      "label": "Close the sparsify-or-decode branches",
+      "notes": "The direct branch is immediate; the structured branch uses only $O_\\eta(1)$ factors and therefore loses an $\\eta$-dependent constant, not a power of $d/p$.",
+      "owner": "incidence-engine",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "The dichotomy in `IE-O-LOW-WEIGHT-DICHOTOMY` and lemmas `IE-L-RANK-INTERP` through `IE-L-FACTOR-LIFT` imply constants $C'_\\eta,c'_\\eta>0$ such that $$\\epsilon\\ge C'_\\eta(d/p)^{1-\\eta}\\quad\\Longrightarrow\\quad\\operatorname{Agr}_d(f)\\ge c'_\\eta\\epsilon.$$",
+      "work_state": "blocked"
+    },
+    {
+      "dependencies": [
+        "IE-R-CLOSE"
+      ],
+      "evidence_refs": [],
+      "id": "IE-GOAL",
+      "kind": "theorem",
+      "label": "Near-linear bivariate line-versus-point soundness",
+      "notes": "Blocked principally on `IE-O-LOW-WEIGHT-DICHOTOMY` and a fresh exact audit of factor linearization. No roadmap work state is a proof-status claim.",
+      "owner": "incidence-engine",
+      "proof_state": "invalid",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For every fixed $\\eta>0$ there exist $C_\\eta,c_\\eta>0$ such that, for every prime $p$, every integer $100<d<p$, every $f:\\mathbb F_p^2\\to\\mathbb F_p$, and every degree-at-most-$d$ affine-line table, $$\\epsilon\\ge C_\\eta\\left(\\frac dp\\right)^{1-\\eta}$$ implies the existence of one $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfying $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]\\ge c_\\eta\\epsilon.$$",
+      "work_state": "blocked"
+    }
+  ],
+  "progress": {
+    "blocked": 0,
+    "invalid": 3,
+    "mapped": 12,
+    "open": 0,
+    "percent": 33,
+    "provisional": 7,
+    "total": 15,
+    "verified": 5
+  },
+  "render_validation": {
+    "math_segments": 160,
+    "messages": 3,
+    "passed": true,
+    "roadmaps": 1
+  },
+  "roadmap_id": "incidence-engine",
+  "round": 1,
+  "summary": "The exact corpus-mapped component chain gives a conditional exponent-$1/2$ decoder, while component support and universal cover arguments show that the same cardinality-based route cannot reach exponent $1-o(1)$. The proposed critical path replaces small $|R|$ by low labeled-constraint rank: preserve $\\Omega_\\eta(\\epsilon)$ accepted mass and obtain a relation of weighted degree $D=O_\\eta(d)$. Then cleanup costs only $O_\\eta(d/p)$, simple roots split the graph among $O_\\eta(1)$ factors, and one factor can yield one global polynomial with $\\Omega_\\eta(\\epsilon)$ agreement. The main open incidence node is the low-weight sparsify-or-decode dichotomy; factor linearization also needs a fresh exact proof audit.",
+  "target_statement": "Convert local line-versus-point agreement into a structured affine-plane incidence configuration with only a $(d/p)^{o(1)}$ loss.",
+  "title": "Incidence concentration engine",
+  "updated_at": "2026-09-14T09:53:26Z"
+}
+
+CURRENT SHARED MESSAGE BOARD:
+{
+  "messages": [
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Please supply a fresh exact proof of `IE-L-FACTOR-LIFT`: from more than $\\operatorname{wdeg}(C)$ simple compatible graph lines through one point, derive one $Q$ with $C\\sim Z-Q$, then aggregate every disconnected $C$-class. Researcher-0003 P7 is audit-inexact, while researcher-0002 P8 only certifies the component-level decoder.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-fe877d351d11",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "researcher-0003:P7.1",
+        "researcher-0002:P8.1"
+      ],
+      "related_node_ids": [
+        "IE-L-FACTOR-CONCENTRATE",
+        "IE-L-FACTOR-LIFT"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 1,
+      "subject": "Factor linearization"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Proposed end-to-end interface: incidence supplies $\\Omega_\\eta(\\epsilon)$ accepted mass and a rank-reaching relation degree $D=O_\\eta(d)$. Then cleanup costs $O_\\eta(d/p)=o(\\epsilon)$ at the target threshold, and only $O_\\eta(1)$ irreducible $Z$-factors remain. This preserves a constant fraction for one global polynomial and avoids Vinh below $p^{-1/2}$.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-24a8ddca1816",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "idea",
+      "references": [
+        "incidence-engine/IE-O-LOW-WEIGHT-DICHOTOMY",
+        "incidence-engine/IE-L-FACTOR-CONCENTRATE"
+      ],
+      "related_node_ids": [
+        "IE-O-LOW-WEIGHT-DICHOTOMY",
+        "IE-R-CLOSE",
+        "IE-GOAL"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 1,
+      "subject": "Near-linear interface"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "The exact-audited balanced-color construction forces every cover reaching half of every accepted line to have $|R|=\\Omega(p/\\epsilon)$, despite an immediate constant decoder. Also, the accepted component inequalities with $\\tau\\ge k/(4p)$ cap support localization at exponent $1/2$. A near-linear route must therefore be algebra-aware sparsify-or-decode, not a universally smaller graph-only cover.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-b90adad1e06b",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "researcher-0002:P1.1",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "IE-R-SQRT-CEILING",
+        "IE-L-COVER-OBSTRUCTION",
+        "IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 1,
+      "subject": "Graph-only ceiling"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "Can the incidence roadmap expose an $(\\epsilon,a)$-core as in AE-03 and ensure that any selected $T'\\subseteq T$ retains all core edges incident to each selected line? AE-18--AE-20 need the inherited lower bound $\\deg_G(L)\\ge k$; a universal smaller reaching family is ruled out by AE-14, so a decode alternative must accompany sparsification.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-c3a8161b74b3",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "algebraic-engine:AE-03",
+        "algebraic-engine:AE-14",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "AE-03",
+        "AE-14",
+        "AE-18"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Whole-line core handoff"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "AE-21 suggests a way around the $p^{-1/2}$ component-mixing floor. More than $p^2\\Delta_i$ clean edges give one point with more than $\\Delta_i$ factor-consistent directions; lifting then forces the irreducible factor $C_i$ to equal $Z-Q$. All edges assigned to $C_i$, across every component, can then be charged to the same $Q$. Please test whether this can be the end-to-end single-polynomial handoff.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-89fbc9493ca5",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "idea",
+      "references": [
+        "algebraic-engine:AE-21",
+        "researcher-0002:P7.1",
+        "researcher-0002:P8.1"
+      ],
+      "related_node_ids": [
+        "AE-19",
+        "AE-20",
+        "AE-21"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Vinh-free factor aggregation"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "Warning: the accepted whole-explainer chain has $D\\asymp\\sqrt{d\\tau p^2/k}$ and requires $D<k$; together with $\\tau\\ge k/(4p)$ it has a square-root floor. Uniform normal multiplicity also cancels between jet cost and root gain. A near-linear claim therefore needs an algebraic-rank or factor-localization step, not only sharper constants in the existing interpolation.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-5eaecd2b6afc",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-13",
+        "algebraic-engine:AE-15",
+        "researcher-0002:P1.1",
+        "researcher-0002:P3.1",
+        "researcher-0004:P8"
+      ],
+      "related_node_ids": [
+        "AE-13",
+        "AE-15",
+        "AE-18"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Whole-explainer floor"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "The factorwise polar bound in AE-17 is currently supported only by pending researcher-0007 steps. An independent proof audit of the weighted resultant multiplicity $\\Xi_i$ and help with AE-19's heavy-factor versus cross-factor-decoder dichotomy would be especially valuable.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-0410ec036845",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "algebraic-engine:AE-17",
+        "algebraic-engine:AE-19",
+        "researcher-0007:P1",
+        "researcher-0007:P5"
+      ],
+      "related_node_ids": [
+        "AE-17",
+        "AE-19",
+        "AE-20"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Audit factorwise localization"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "Please target `E2E-15`: for fixed $0<\\theta\\le1/4$, prove a label-aware dichotomy giving either one decoder or a rank-reaching relation with $D\\le K_\\theta d$. The accepted balanced-color construction shows why a universal cardinality-only reaching family cannot suffice; the direct-decode branch is essential.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-4742ea7e5286",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "E2E-13",
+        "E2E-15",
+        "E2E-16"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Bounded-weight rank-or-decode lemma"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "Could you supply an exact standalone proof of `E2E-22`? The intended argument uses the formal implicit root at a simple point, more than $\\Delta$ compatible directions to kill homogeneous terms through degree $\\Delta$, and irreducibility to conclude $C\\sim Z-Q$. Researcher-0003:P7 is only audit-inexact evidence.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-59f72b7efe64",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "algebraic-engine:AE-21",
+        "researcher-0003:P7"
+      ],
+      "related_node_ids": [
+        "E2E-21",
+        "E2E-22",
+        "E2E-23"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Audit factor linearization"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "The constant-factor bound in `E2E-21` relies essentially on $D=O_\\theta(d)$. If the incidence output only gives $D\\le A_\\theta d\\epsilon^{-\\theta/(1-\\theta)}$, then the factor list is unbounded and the earlier heavy-factor-or-cross-factor decoder remains necessary.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-c142018e645f",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-19",
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "related_node_ids": [
+        "E2E-15",
+        "E2E-21",
+        "E2E-23"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Do not weaken the bounded-weight interface"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "Keep the campaign endpoint at every fixed exponent $1-\\eta$. The modal construction refutes a uniform trigger $C d/p$ with linear recovery, but does not refute `E2E-GOAL`.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-64c475d19e59",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "researcher-0001:P13.1",
+        "researcher-0001:P14.1"
+      ],
+      "related_node_ids": [
+        "E2E-25",
+        "E2E-GOAL"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Exact-linear endpoint is false"
+    }
+  ],
+  "schema": "line-point-roadmap-message-board-v1",
+  "updated_at": "2026-09-14T09:53:26Z"
+}
+
+CORPUS RECEIPT:
+[
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0001/response.json",
+    "sha256": "fa500e4a597f77f5241c624f0983a3a9c5e2ae8b42348da976251044968c0616"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0002/response.json",
+    "sha256": "163d8e97e77c5368d9d274d33554787f2700e7eddd16eb735954b0ff725a8e4a"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0003/response.json",
+    "sha256": "592f90e4483fd982519abe98c3e4cd0fdd1548273412b630a01b04943f9631bf"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0004/response.json",
+    "sha256": "5471c16d16f9a02f38819daf15412e47d127fd309ab256ea449c4b395862780f"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0005/response.json",
+    "sha256": "21948a82468a4ee57253d76d0ec23652e7c653b27121ad1847503889c255dfd1"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0006/response.json",
+    "sha256": "21707e85ea55fdb94977668650ab70bf87bb451b38372cfaf0bc70939f47cbe9"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/lemma_book/submissions/researcher-0007/response.json",
+    "sha256": "a272510d36d678d38b5b0d9b1d7e306ff63f1bf50f7fe7c12adb487627d1ae06"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0001/verifier-researcher-0001/audit.json",
+    "sha256": "e4675f217545f12b3d68e159f7c6ece54daf740ee7a1fea64429c15af6f9151a"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0002/verifier-researcher-0002/audit.json",
+    "sha256": "9a7cad61bb042dcaf4c4ab98539f89903353160ba5acd1c4716d41b9953c4a46"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0003/verifier-researcher-0003/audit.json",
+    "sha256": "13e26084e25b973aeeedeec4fb0a8fafd6855c2d0605115b83bbc8132679dcf7"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0004/verifier-researcher-0004/audit.json",
+    "sha256": "3812519adf58a6ee6f590f3edd83458b374db7b507bc9647389397cfa85fc0a1"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0005/verifier-researcher-0005/audit.json",
+    "sha256": "fd6e4e193090c3aa2823b96ea7ab913e3cd5d63deeb9579533395bfb6e4fb954"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0006/verifier-researcher-0006/audit.json",
+    "sha256": "5b53d226d77752f7bfa233a0219f238ecc3dbdd1b25985fa983a8b9d9704ff49"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0007/verifier-researcher-0007/audit.json",
+    "sha256": "3a917285575b3a9ca70dcb5408e12039d318ace5b2acc5be6975da9324e845f3"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/reviews/researcher-0008/verifier-researcher-0008/audit.json",
+    "sha256": "c045c641d95b742d40c6af53d2209b6e2bfc39f901a85419c74a8f432d105ef3"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0001/response.json",
+    "sha256": "7d31c0366ed375ba092e3f42641ce4f30098304e2b038a33dbc4d90aacc0c16d"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0002/response.json",
+    "sha256": "d52f9d8ae88b951f51924b3848cf99a2c4c3e0d7fb4883382d29bc7cfc588b02"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0003/response.json",
+    "sha256": "3f47d9a32a8a4c95be267daa286b3994e8a9883ac4217c356fe56b8f875f4847"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0004/response.json",
+    "sha256": "a5ebd078c8ecb5a710af48f877d35c20dfa13df7399a8df7198d0ebf192e14e0"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0005/response.json",
+    "sha256": "2bc0330f13c15d1a4cd1a7d6fbc3046ebdd57bb8ad9ddd53f5bb90596390f6d7"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0006/response.json",
+    "sha256": "9aaa9d998e3674e36b3abf2de45cd1b5424b67e76c89a86e72a258c78a9a6abd"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0007/response.json",
+    "sha256": "a0a1ae2d488d84d37517fe5ca489c1ba5745eb56e0b3e14948837e9728085d42"
+  },
+  {
+    "path": "research_state/campaign-10-ultra/submissions/researcher-0008/response.json",
+    "sha256": "d866f3c47628a3332dafa7d2afe157cad8d713486c57ef1708b439598b9ed275"
+  }
+]
+
+STABLE PROOF-EVIDENCE INDEX:
+{
+  "researcher-0001|P10|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P10.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "conditional",
+    "source_step_id": "P10"
+  },
+  "researcher-0001|P11|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P11.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P11"
+  },
+  "researcher-0001|P12|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P12.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P12"
+  },
+  "researcher-0001|P13|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P13.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P13"
+  },
+  "researcher-0001|P14|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P14.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P14"
+  },
+  "researcher-0001|P15|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P15.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P15"
+  },
+  "researcher-0001|P16|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P16.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P16"
+  },
+  "researcher-0001|P17|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P17.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P17"
+  },
+  "researcher-0001|P18|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P18.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P18"
+  },
+  "researcher-0001|P19|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P19.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "refuted",
+    "source_step_id": "P19"
+  },
+  "researcher-0001|P1|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P1.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0001|P2|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P2.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0001|P3|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P3.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0001|P4|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P4.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0001|P5|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P5.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0001|P6|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P6.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0001|P7|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P7.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0001|P8|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P8.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0001|P9|c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0001:P9.1"
+    ],
+    "source_job_id": "researcher-0001",
+    "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  },
+  "researcher-0002|P10|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P10.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P10"
+  },
+  "researcher-0002|P11|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P11.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P11"
+  },
+  "researcher-0002|P1|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P1.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0002|P2|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P2.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0002|P3|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P3.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0002|P4|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P4.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0002|P5|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P5.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0002|P6|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P6.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0002|P7|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P7.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0002|P8|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P8.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0002|P9|f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0002:P9.1"
+    ],
+    "source_job_id": "researcher-0002",
+    "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+    "source_status": "conditional",
+    "source_step_id": "P9"
+  },
+  "researcher-0003|P10|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P10.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "refuted",
+    "source_step_id": "P10"
+  },
+  "researcher-0003|P11|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P11.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P11"
+  },
+  "researcher-0003|P12|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P12.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "refuted",
+    "source_step_id": "P12"
+  },
+  "researcher-0003|P1|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P1.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0003|P2|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P2.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0003|P3|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P3.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0003|P4|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P4.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0003|P5|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P5.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0003|P6|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P6.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0003|P7|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P7.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0003|P8|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P8.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "conditional",
+    "source_step_id": "P8"
+  },
+  "researcher-0003|P9|b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420": {
+    "audit_exact": false,
+    "audit_verdict": "reject",
+    "lemma_ids": [
+      "researcher-0003:P9.1"
+    ],
+    "source_job_id": "researcher-0003",
+    "source_response_sha256": "b14110027e6e43e9df36e71e0b3bcdc789b9a3d28018d7232a7481aa75bf0420",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  },
+  "researcher-0004|P1|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P1.1"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0004|P2|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P2.1"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0004|P3|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P3.1"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0004|P4|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P4.1",
+      "researcher-0004:P4.2",
+      "researcher-0004:P4.3"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0004|P5|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P5.1"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0004|P6|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P6.1"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0004|P7|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P7.1"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0004|P8|b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf": {
+    "audit_exact": false,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0004:P8.1"
+    ],
+    "source_job_id": "researcher-0004",
+    "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0005|[P10]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P10].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P10]"
+  },
+  "researcher-0005|[P11]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P11].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P11]"
+  },
+  "researcher-0005|[P12]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P12].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "refuted",
+    "source_step_id": "[P12]"
+  },
+  "researcher-0005|[P13]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P13].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "refuted",
+    "source_step_id": "[P13]"
+  },
+  "researcher-0005|[P1]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P1].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P1]"
+  },
+  "researcher-0005|[P2]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P2].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P2]"
+  },
+  "researcher-0005|[P3]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P3].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P3]"
+  },
+  "researcher-0005|[P4]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P4].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P4]"
+  },
+  "researcher-0005|[P5]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P5].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P5]"
+  },
+  "researcher-0005|[P6]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P6].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P6]"
+  },
+  "researcher-0005|[P7]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P7].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P7]"
+  },
+  "researcher-0005|[P8]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P8].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P8]"
+  },
+  "researcher-0005|[P9]|b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0005:[P9].1"
+    ],
+    "source_job_id": "researcher-0005",
+    "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+    "source_status": "proved",
+    "source_step_id": "[P9]"
+  },
+  "researcher-0006|P10|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P10.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P10"
+  },
+  "researcher-0006|P11|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P11.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P11"
+  },
+  "researcher-0006|P12|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P12.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "refuted",
+    "source_step_id": "P12"
+  },
+  "researcher-0006|P13|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P13.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "conditional",
+    "source_step_id": "P13"
+  },
+  "researcher-0006|P1|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P1.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0006|P2|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P2.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0006|P3|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P3.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0006|P4|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P4.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0006|P5|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P5.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0006|P6|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P6.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0006|P7|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P7.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0006|P8|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P8.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0006|P9|b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef": {
+    "audit_exact": true,
+    "audit_verdict": "accept",
+    "lemma_ids": [
+      "researcher-0006:P9.1"
+    ],
+    "source_job_id": "researcher-0006",
+    "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  },
+  "researcher-0007|P10|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P10.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "refuted",
+    "source_step_id": "P10"
+  },
+  "researcher-0007|P11|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P11.1",
+      "researcher-0007:P11.2"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "refuted",
+    "source_step_id": "P11"
+  },
+  "researcher-0007|P1|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P1.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0007|P2|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P2.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0007|P3|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P3.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0007|P4|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P4.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0007|P5|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P5.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0007|P6|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P6.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "conditional",
+    "source_step_id": "P6"
+  },
+  "researcher-0007|P7|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P7.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0007|P8|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P8.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0007|P9|5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [
+      "researcher-0007:P9.1"
+    ],
+    "source_job_id": "researcher-0007",
+    "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  },
+  "researcher-0008|P10|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P10"
+  },
+  "researcher-0008|P11|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "refuted",
+    "source_step_id": "P11"
+  },
+  "researcher-0008|P1|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P1"
+  },
+  "researcher-0008|P2|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P2"
+  },
+  "researcher-0008|P3|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P3"
+  },
+  "researcher-0008|P4|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P4"
+  },
+  "researcher-0008|P5|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P5"
+  },
+  "researcher-0008|P6|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P6"
+  },
+  "researcher-0008|P7|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P7"
+  },
+  "researcher-0008|P8|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P8"
+  },
+  "researcher-0008|P9|bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd": {
+    "audit_exact": true,
+    "audit_verdict": "revise",
+    "lemma_ids": [],
+    "source_job_id": "researcher-0008",
+    "source_response_sha256": "bb3beec49631e8d11ccc6b08655db7b8adf908213210af833dd95a78087710bd",
+    "source_status": "proved",
+    "source_step_id": "P9"
+  }
+}
+
+
+The previous attempt was rejected for:
+- roadmap KaTeX validation failed: incidence-engine:IE-L-CLEAN-COUNT: contains a control character
+incidence-engine:IE-L-CLEAN-COUNT: KaTeX parse error: Unexpected character: '' at position 64: …ac Dp\right)^2+̲rac Dp.

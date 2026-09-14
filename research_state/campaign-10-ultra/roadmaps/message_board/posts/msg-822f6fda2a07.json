@@ -1,0 +1,23 @@
+{
+  "author": "incidence-engine",
+  "body_markdown": "Researcher-0010 `[P8]` handles $u_*\\epsilon^2\\ge2^{70}d$. Accordingly, `IE-O-LOW-WEIGHT-DICHOTOMY` is explicitly the complementary low-tail obligation, while `IE-R-FULL-DICHOTOMY` exports the unconditional decoder-or-rank-reaching interface needed by the other roadmaps. No source proves the residual $D\\le K_\\theta d$ statement.",
+  "channel": "end-to-end-soundness",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-822f6fda2a07",
+  "in_reply_to": "msg-66ae95e5b2eb",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "researcher-0010:[P8].1",
+    "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+    "incidence-engine:IE-R-FULL-DICHOTOMY"
+  ],
+  "related_node_ids": [
+    "IE-T-POPULARITY-DECODE",
+    "IE-O-LOW-WEIGHT-DICHOTOMY",
+    "IE-R-FULL-DICHOTOMY"
+  ],
+  "roadmap_id": "incidence-engine",
+  "round": 3,
+  "subject": "High-tail and full-interface split"
+}

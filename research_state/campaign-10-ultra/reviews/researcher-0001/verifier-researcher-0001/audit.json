@@ -1,0 +1,362 @@
+{
+  "benchmark_improved": false,
+  "counterexample_attempts": [
+    "The modal construction at ambient d=101 is valid: constant modal labels give \u03b5=\u0398(log p/(p log log p)) while every total-degree-at-most-101 polynomial has agreement below 2/p. This refutes a uniform Cd/p trigger with linear recovery.",
+    "The diffuse-support example is valid: f=0 and line polynomials with d distinct roots give \u03b5=d/p and \u03c3=1, while Q=0 has perfect global agreement. It refutes inferring \u03c3=O(\u03b5), not soundness.",
+    "The homogeneous-direction construction is not an obstruction: Q=0 agrees on 1+(d+1)(p\u22121) points, matching the \u0398(d/p) local scale.",
+    "B=Z\u00b2\u2212X\u00b2 validly demonstrates branch collision where B_Z=0. It justifies simplicity for this propagation method, but not the universal necessity of deletion in every conceivable proof.",
+    "The inseparability attempt is correctly excluded: D<p prevents every positive Z-exponent divisible by p.",
+    "The near-p information-set calculation is valid and supplies a positive baseline rather than a counterexample."
+  ],
+  "coverage_complete": true,
+  "dimension_verified": true,
+  "exponent_audit": [
+    {
+      "claim": "Carrier pruning loses no power of \u03b4.",
+      "justification": "The two normalized deletion costs are k0/(p+1) and k0/p, totaling less than \u03b4/50.",
+      "reference": "Numbered note 0077\u20130081",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The selector has size r=O(\u03c3p/\u03b4) without an additional probabilistic \u03b4-loss.",
+      "justification": "Hoeffding applies to independent coverage indicators along each target line; the union bound and Chebyshev estimates give 100(p+1)\u2264r\u22646400\u03c3p/\u03b4.",
+      "reference": "Numbered note 0083\u20130093",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Weighted interpolation gives D=O(sqrt(d\u03c3p/\u03b4)).",
+      "justification": "The dimension is at least D\u00b3/(64d), while the r line identities impose at most r(D+1) equations. The chosen D satisfies D\u00b2>256dr.",
+      "reference": "Numbered note 0095\u20130103",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The constant K=10^15 forces D<\u03b4p/10000.",
+      "justification": "The premise and \u03c3\u2265\u03b4 give \u03b4\u00b2\u226510^15d/p. Hence D\u22641280\u03b4p/sqrt(10^15)+16<\u03b4p/10000; the premise also makes \u03b4p large enough to absorb the additive 16 and all floor losses.",
+      "reference": "Numbered note 0083\u20130103",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The principal gate is \u03b4\u00b3=\u03a9(d\u03c3/p).",
+      "justification": "Combining D=O(sqrt(d\u03c3p/\u03b4)) with D=O(\u03b4p) and squaring gives \u03b4\u00b3=\u03a9(d\u03c3/p).",
+      "reference": "Numbered note 0135\u20130139",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Content and resultant deletion preserve the cubic scale.",
+      "justification": "The losses are bounded by D/[p(p+1)]+D(D\u22121)/[p(p+1)]+D/p. The D/p term again requires D=O(\u03b4p); the quadratic term alone only requires \u03b4\u00b2=\u03a9(d\u03c3/p).",
+      "reference": "Numbered note 0115\u20130123, 0196",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The mixing gate is weaker than the cubic gate.",
+      "justification": "The cubic premise implies (p+1)^\u22121/2<\u03b4/8000\u2264k1/(4p). No additional exponent loss occurs.",
+      "reference": "Numbered note 0129\u20130133, 0198",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The written component-mixing proof establishes point density \u03b4/8000.",
+      "justification": "The result is correct, but the stated consequences do not themselves contradict the lower bounds; two substitutions back into e\u2264ab+u\u221a(ab) are omitted.",
+      "reference": "Numbered note 0129\u20130133",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The unconditional exponent is exactly 1/3 and is not improved.",
+      "justification": "Setting \u03c3\u22641 yields \u03b4\u226510^5(d/p)^(1/3).",
+      "reference": "Numbered note 0057, 0135\u20130139, 0200",
+      "verdict": "valid"
+    },
+    {
+      "claim": "For fixed A, \u03c3\u2264A\u03b4 yields a conditional exponent 1/2.",
+      "justification": "The sufficient condition becomes \u03b4\u00b2\u226510^15Ad/p. Because 0<d/p<1, (d/p)^(1/2)<(d/p)^(1/3), so 1/2 is stronger than 1/3, but only under the extra carrier hypothesis.",
+      "reference": "Numbered note 0057, 0141, 0201",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The modal probability exponents and exact-linear obstruction are correct.",
+      "justification": "McDiarmid gives exp(\u22121250r\u00b2); the polynomial union bound gives p^5253(e/4)^p; their exceptional probabilities are below r/(520p). The resulting global/local ratio is at most 260/r\u21920.",
+      "reference": "Numbered note 0143\u20130175, 0202\u20130204",
+      "verdict": "valid"
+    }
+  ],
+  "fatal_obstruction": null,
+  "field_regime_verified": true,
+  "line_audit": [
+    {
+      "claim": "Abstracted cubic and support-sensitive exponent chains",
+      "justification": "Both algebraic chains recompute correctly; the conditional result is clearly distinguished from an unconditional benchmark improvement.",
+      "reference": "Numbered note 0005\u20130013",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Sampling and agreement definitions",
+      "justification": "There are p(p+1) affine lines, p points per line, and p\u00b2(p+1) incidences. Uniform line-then-point sampling equals uniform point-then-incident-line sampling.",
+      "reference": "Numbered note 0017\u20130031",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ benchmark description",
+      "justification": "Revision 1 states the cubic threshold and its bivariate proof concludes with recovery \u03b5/8000.",
+      "reference": "Numbered note 0035\u20130043",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Theorem A as a standalone SHA-bound statement",
+      "justification": "Its mathematical implication checks out in the surrounding m=2 context, but the exact hashed summary omits that context and leaves A unquantified.",
+      "reference": "Numbered note 0049\u20130057; response theorem_statement",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Prime vertical-derivative lemma",
+      "justification": "Primitivity excludes base-only factors. Every remaining irreducible factor has 1\u2264deg_ZP<p, so P_Z\u22600 and P\u2224P_Z; reduction modulo each factor proves gcd(B,B_Z)=1.",
+      "reference": "Numbered note 0059, 0109\u20130113",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Modal obstruction theorem",
+      "justification": "All occupancy, concentration, union-bound, and deterministic-extraction constants hold under the stated explicit lower bound on p.",
+      "reference": "Numbered note 0061\u20130069, 0143\u20130169",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Near-p information baseline",
+      "justification": "The triangular Newton evaluation matrix is invertible, giving agreement on exactly (d+1)(d+2)/2 prescribed points.",
+      "reference": "Numbered note 0071\u20130073, 0177",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P1 carrier pruning",
+      "justification": "The normalized loss and retained edge/line measures are correct.",
+      "reference": "Numbered note 0077\u20130081",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P2 support-sensitive selector",
+      "justification": "Distinct points of a target line depend on disjoint sets of other selected lines. Hoeffding, the union bound, and Chebyshev yield the claimed deterministic selector.",
+      "reference": "Numbered note 0083\u20130093",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P3 interpolation and squarefree reduction",
+      "justification": "The dimension count, D bounds, r>D argument, A_Z\u22600, and minimum-weight squarefree reduction are sound. Defining V_D locally would improve completeness.",
+      "reference": "Numbered note 0095\u20130103",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P4 identity extension and content removal",
+      "justification": "More than D distinct shared accepted points force the identity. Division by H is correctly performed only as an integral-domain inference in F_p[t].",
+      "reference": "Numbered note 0105\u20130107",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P5 vertical coprimality",
+      "justification": "The factorwise proof is valid over every prime field in the claimed regime and needs no absolute irreducibility.",
+      "reference": "Numbered note 0109\u20130113",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P6 degenerate-root deletion",
+      "justification": "The resultant is invoked after coprimality; the line and point deletion counts are valid. The omitted statement B(x,f(x))=0 for surviving points follows from any surviving adjacent line identity but should be recorded before P7.",
+      "reference": "Numbered note 0115\u20130123",
+      "verdict": "gap"
+    },
+    {
+      "claim": "P7 Hensel lifting and single-polynomial propagation",
+      "justification": "Simple-root formal lifting uses only division by B_Z(x,f(x)). The unique branch agrees with all incident line labels; \u03a6\u2212Q has order greater than D, so B(X,Y,Q)=0, and one-variable uniqueness propagates the same fixed Q throughout a component.",
+      "reference": "Numbered note 0125\u20130127",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P8 component mixing",
+      "justification": "The conclusion is correct, but the proof omits the final upper-bound substitutions needed for both contradictions.",
+      "reference": "Numbered note 0129\u20130133",
+      "verdict": "gap"
+    },
+    {
+      "claim": "P9 exact cubic reconstruction",
+      "justification": "Every displayed exponent and comparison is correct.",
+      "reference": "Numbered note 0135\u20130139",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P10 conditional square-root corollary",
+      "justification": "\u03b4\u00b2\u226510^15Ad/p is sufficient under \u03c3\u2264A\u03b4. A must be declared fixed and the wording should not suggest equivalence.",
+      "reference": "Numbered note 0141",
+      "verdict": "gap"
+    },
+    {
+      "claim": "P11 modal occupancy lower bound",
+      "justification": "The one-symbol probability is at least 1/(8r!), the two-symbol probability is at most 1/(r!)\u00b2, and the second moment gives probability at least 1/65.",
+      "reference": "Numbered note 0143\u20130149",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P12 modal upper concentration",
+      "justification": "The factorial tail, E[M]\u226425r, Lipschitz constant 1/p\u00b2, and McDiarmid exponent \u22121250r\u00b2 are correct.",
+      "reference": "Numbered note 0151\u20130159",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P13 global union bound and extraction",
+      "justification": "For each Q the match count is Bin(p\u00b2,1/p); union over p^5253 choices and the weighted expectation argument yield the claimed deterministic table.",
+      "reference": "Numbered note 0161\u20130169",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P14 exact-linear endpoint obstruction",
+      "justification": "For every fixed C,c>0, r can be made large enough along arbitrarily large primes to satisfy the trigger and violate linear recovery. The fixed-\u03b7 comparison is also correct.",
+      "reference": "Numbered note 0171\u20130175",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P15\u2013P17 auxiliary constructions",
+      "justification": "The information set, diffuse-support example, and failed homogeneous-direction obstruction are all valid in the claimed ambient regime.",
+      "reference": "Numbered note 0177\u20130181",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P18 branch-collision conclusion",
+      "justification": "The collision is valid, but it proves necessity of simplicity for this Hensel branch-propagation argument, not for every possible proof architecture.",
+      "reference": "Numbered note 0183",
+      "verdict": "gap"
+    },
+    {
+      "claim": "P19 inseparability exclusion",
+      "justification": "A zero Z-derivative requires positive Z-exponents divisible by p; weighted degree D<p excludes them.",
+      "reference": "Numbered note 0185",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Exponent ledger and characteristic audit",
+      "justification": "The tabulated scales, prime-characteristic restrictions, and distinction between unconditional 1/3 and conditional 1/2 are accurate.",
+      "reference": "Numbered note 0187\u20130224",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Limitations and open-status claims",
+      "justification": "The note correctly states that it does not improve the unconditional benchmark and does not refute any fixed exponent 1\u2212\u03b7.",
+      "reference": "Numbered note 0226\u20130232",
+      "verdict": "valid"
+    }
+  ],
+  "literature_audit": [
+    {
+      "claim": "KTZ Theorem 1.1 gives the cubic threshold and a single total-degree-d polynomial.",
+      "justification": "Confirmed in the official Revision 1; the theorem is over arbitrary finite fields and dimensions, and specialization to q=p,m=2 is legitimate.",
+      "reference": "[KTZ Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ Lemma 2.1 supplies the 1/sqrt(p+1) incidence error.",
+      "justification": "The source's normalization agrees with the submission's point, line, and incidence measures.",
+      "reference": "[KTZ Revision 1, Lemma 2.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ Lemmas 2.2\u20132.7 and Sections 3\u20136 support the algebraic and combinatorial reconstruction.",
+      "justification": "The cited monomial count, squarefree reduction, generic derivative, resultant, Newton lifting, pruning, selection, interpolation, and component-size statements all match.",
+      "reference": "[KTZ Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download/)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The KTZ dependency list identifies the source of componentwise propagation.",
+      "justification": "The response stops at Lemmas 6.1\u20136.2, but the actual single-polynomial propagation result is Lemma 6.3.",
+      "reference": "Submission literature_dependencies entry for KTZ Sections 3\u20136",
+      "verdict": "gap"
+    },
+    {
+      "claim": "HKSS Lemmas 2.10 and 3.1 are the claimed Newton/lifting ancestry.",
+      "justification": "Both result identifiers and their stated roles are correct in arXiv v1; the FOCS 2024 publication attribution is also correct.",
+      "reference": "[HKSS arXiv v1](https://arxiv.org/html/2311.12752v1)",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The local KTZ cache is Revision 1 evidence.",
+      "justification": "The local cached PDF is the shorter base-report artifact, not the cited Revision 1. The note itself correctly warns against conflating them, so the official Revision 1 link must remain authoritative.",
+      "reference": "Numbered note 0041; .cache/references/ktz.pdf",
+      "verdict": "unclear"
+    }
+  ],
+  "quantifier_audit": [
+    {
+      "claim": "Exact claim identity",
+      "justification": "SHA-256 of the UTF-8 response.theorem_statement with no trailing newline is exactly 74b0a8eeb18a54ed0d3a54a455a6a0c1fa60df727f67bd3077fb7e97bda77a54.",
+      "reference": "researcher-0001/response.json theorem_statement",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Degree regime",
+      "justification": "For integer d, 101\u2264d<p is exactly the campaign regime 100<d<p. Every theorem and construction stays within it.",
+      "reference": "Numbered note 0017, 0049, 0061, 0071",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Dimension and field",
+      "justification": "The note globally fixes F_p\u00b2; every substantive theorem and lemma uses two base variables and a prime field. No extension-field descent or dimension bootstrap is used.",
+      "reference": "Numbered note 0017, 0214\u20130224",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Sampling convention",
+      "justification": "Uniform line then uniform point is precisely uniform incidence sampling and equals uniform point then uniform incident line.",
+      "reference": "Numbered note 0017\u20130025",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Theorem A universality",
+      "justification": "The implication applies to every prime p and integer 101\u2264d<p; for near-p parameters its premise is vacuous rather than false.",
+      "reference": "Numbered note 0049\u20130057, 0224",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Conditional parameter A",
+      "justification": "The exact SHA-bound statement does not quantify A. Calling the corollary an exponent-1/2 theorem requires A to be fixed independently of all growing parameters and instances.",
+      "reference": "response theorem_statement; numbered note 0057, 0141",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Standalone exact statement context",
+      "justification": "The hashed statement relies on adjacent fields and prior notation for m=2, f, the line table, carrier acceptance, and uniform sampling. Those restrictions are present in the note but should be incorporated into the exact claim itself.",
+      "reference": "response theorem_statement versus numbered note 0017\u20130031",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Theorem C sufficiently-large-prime quantifier",
+      "justification": "The explicit bound p\u2265max{ceil(e^32),100\u00b75253\u00b2} is ample for every occupancy, concentration, and union-bound inequality used.",
+      "reference": "Numbered note 0061\u20130069, 0143\u20130169",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Exact-linear obstruction quantifier",
+      "justification": "For every fixed C,c>0, arbitrarily large primes can be chosen with r\u2265max{130\u00b7101C,260/c}; the resulting instance violates the claimed linear recovery.",
+      "reference": "Numbered note 0069, 0171\u20130175",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Fixed-\u03b7 comparison",
+      "justification": "For every fixed \u03b7>0, 50r/[101^(1\u2212\u03b7)p^\u03b7] tends to zero, so the modal construction does not refute a fixed exponent 1\u2212\u03b7.",
+      "reference": "Numbered note 0171\u20130175",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Single-polynomial global conclusion",
+      "justification": "After completing the written P8 algebra, P7 produces one fixed total-degree-at-most-d polynomial on a component and P8 gives that component point density at least \u03b4/8000; no list-to-single conversion is missing.",
+      "reference": "Numbered note 0125\u20130133",
+      "verdict": "gap"
+    }
+  ],
+  "required_changes": [
+    "Rewrite the exact SHA-bound theorem statement so it is standalone: explicitly state m=2, f:F_p\u00b2\u2192F_p, the degree-at-most-d line table, uniform incidence sampling, and carrier definitions.",
+    "Quantify A as a fixed constant independent of p,d,f,P,\u03b4,\u03c3 when asserting the conditional exponent-1/2 corollary; describe \u03b4\u00b2\u226510^15Ad/p as a sufficient condition.",
+    "Complete P8 by substituting b<a/9 back into the mixing upper bound to contradict e\u2265\u03baa/2, and substituting a\u2264b back to contradict e\u2265\u03bab.",
+    "At the P6\u2013P7 bridge, explicitly record that B remains primitive and squarefree with degree below p, that every surviving point satisfies B(x,f(x))=0, and that \u03a6\u2212Q has order greater than D.",
+    "Change the KTZ propagation dependency from Lemmas 6.1\u20136.2 to Lemmas 6.1\u20136.3.",
+    "Qualify P18\u2019s \u201clogically necessary\u201d as necessity for the submitted simple-root Hensel/propagation architecture.",
+    "Clarify that claim_scope=\"obstruction\" refers to the modal contribution, since the compound SHA-bound statement also contains a bivariate carrier theorem and an algebraic lemma."
+  ],
+  "scope_verified": "obstruction",
+  "summary": "REVISE. The exact required SHA was audited. The core support-sensitive theorem, prime-field B_Z lemma, cubic exponent ledger, modal obstruction, and single-polynomial strategy appear mathematically correct, with no fatal counterexample. Strict acceptance fails because the exact statement leaves key context and A unquantified, P8 omits the algebra completing both mixing contradictions, the propagation citation omits KTZ Lemma 6.3, and P18 overstates the universal necessity of deletion. All defects are repairable without weakening the mathematical claim.",
+  "unfixable": false,
+  "verdict": "revise",
+  "verified_claim_sha256": "74b0a8eeb18a54ed0d3a54a455a6a0c1fa60df727f67bd3077fb7e97bda77a54",
+  "verified_exponent": "Unconditional exponent 1/3 (not improved); conditional exponent 1/2 only for fixed \u03c3\u2264A\u03b4; a uniform exact exponent-1 trigger Cd/p with linear recovery is refuted."
+}

@@ -1,0 +1,24 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "The minimal round-2 handoff no longer needs an inherited minimum-degree core. Please return a rank-reaching certificate $(G,R,D)$ with $e(G)\\ge a_\\theta\\epsilon$, $D\\le K_\\theta d$, and more than $D$ reached accepted points on every target line. AE-16 then performs global cleanup and degree-$D$ peeling.",
+  "channel": "incidence-engine",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-92b7a04a9b69",
+  "in_reply_to": "msg-c3a8161b74b3",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "algebraic-engine:AE-12",
+    "algebraic-engine:AE-16",
+    "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+    "end-to-end-soundness:E2E-15"
+  ],
+  "related_node_ids": [
+    "AE-12",
+    "AE-13",
+    "AE-16"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 2,
+  "subject": "Bounded-weight handoff replaces core handoff"
+}

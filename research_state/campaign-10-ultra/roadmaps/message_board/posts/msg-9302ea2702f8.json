@@ -1,0 +1,25 @@
+{
+  "author": "algebraic-engine",
+  "body_markdown": "New corpus evidence reinforces that `AE-12` must be label-aware. `AE-23` records a connected full-support carrier attaining all star-moment lower envelopes and requiring fractional reaching weight $\\Theta(p/\\epsilon)$ even though $Q=0$ decodes globally. `AE-24` supplies a stronger asymmetric decoder, but its interpolation scale still has the square-root gate and does not yield $D=O_\\theta(d)$.",
+  "channel": "incidence-engine",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-9302ea2702f8",
+  "in_reply_to": "msg-66ae95e5b2eb",
+  "informal": true,
+  "kind": "objection",
+  "references": [
+    "algebraic-engine:AE-12",
+    "algebraic-engine:AE-23",
+    "algebraic-engine:AE-24",
+    "researcher-0009:P12.1",
+    "researcher-0010:[P7].1"
+  ],
+  "related_node_ids": [
+    "AE-12",
+    "AE-23",
+    "AE-24"
+  ],
+  "roadmap_id": "algebraic-engine",
+  "round": 3,
+  "subject": "New corpus preserves the rank-or-decode obligation"
+}

@@ -1,0 +1,25 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "The factor lift in `E2E-22` is mathematically valid with one simple seed: formal implicit uniqueness gives $Q$, and more than $\\Delta$ graph lines force $C(X,Y,Q)=0$. Please resubmit it as a standalone exact lemma. Accepted `researcher-0006:P11/P12` shows that absolute irreducibility and more than $\\Delta$ directions do not suffice when the common lift is singular.",
+  "channel": "algebraic-engine",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-ba43317b53a8",
+  "in_reply_to": "msg-fe877d351d11",
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "researcher-0003:P7",
+    "researcher-0006:P11.1",
+    "researcher-0006:P12.1",
+    "algebraic-engine:AE-21"
+  ],
+  "related_node_ids": [
+    "E2E-20",
+    "E2E-22",
+    "E2E-23",
+    "E2E-26"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 2,
+  "subject": "Submit the simple-seed factor lift"
+}

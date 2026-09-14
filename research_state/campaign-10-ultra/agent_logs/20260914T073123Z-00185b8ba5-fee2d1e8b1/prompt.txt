@@ -1,0 +1,485 @@
+You are an independent hostile mathematical verifier. Audit submission
+researcher-0002 line by line. You did not author it. Recompute every exponent and check every
+quantifier, field hypothesis, sampling convention, literature dependency, and proof-step edge.
+Accept only the exact claim whose SHA-256 is 7351365b4d0b395c4463aec238c9c5b908663b5e0b9a631335c25dd06de17570; never silently weaken it.
+
+The campaign theorem is restricted to integer 100 < d < p. Do not raise, investigate, or score
+edge cases with d <= 100, including d=0. Verify that the submitted claim covers 100 < d < p;
+behavior outside that regime is irrelevant to the verdict.
+
+An accept requires complete coverage; a correct exponent ledger; valid handling of every prime
+characteristic in the claimed parameter regime; a proved conversion to the stated
+single-polynomial global conclusion; no required changes; and no fatal obstruction. Use reject
+with unfixable=true only for a concrete counterexample or false theorem. Use revise for repairable
+gaps. Explicitly compare the claimed exponent with 1/3, remembering that d/p<1. Reject or request
+revision if the mathematical advance
+depends on m other than 2, a non-prime field, or dimension bootstrapping: those are outside this
+campaign. Set dimension_verified and field_regime_verified true only after checking those exact
+restrictions in every theorem and lemma. Run finite sanity checks only to find errors, never to
+certify asymptotic quantifiers.
+
+SUBMISSION MANIFEST:
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "The campaign regime 100<d<p implies p>=103. Every univariate polynomial of degree at most d is therefore the unique degree-<p representative of its function on a line; t^p-t aliases are unavailable.",
+    "The interpolant has weighted degree D<p. Its allowed monomials have Z-exponent zero or not divisible by p, so a nonzero Z-dependent interpolant has nonzero formal Z-derivative.",
+    "After coefficient-gcd removal, the squarefree polynomial B has degree below p. Since F_p is perfect, an irreducible factor with all three formal partial derivatives zero would be a nontrivial p-th power, which is impossible.",
+    "No discriminant is used. Degenerate lines are controlled by a directional derivative coprime to B and the Z-resultant, giving at most D(D-1) such lines.",
+    "Division A/H is exact polynomial division by the coefficient gcd. Newton lifting divides only by B_Z(b,f(b)), retained explicitly as a nonzero field element.",
+    "Differentiating line identities does not divide by P'_L. If B_Z=0, two independent affine directions force B_X=B_Y=0, contradicting the retained nonzero directional derivative.",
+    "Interpolation uses ordinary vanishing, not hidden multiplicity conditions. Each selected line contributes at most D+1 homogeneous coefficient constraints.",
+    "All global polynomials obtained by Newton lifting have total degree at most d; individual degree is never substituted for total degree.",
+    "Chernoff and union-bound losses, the Cauchy--Schwarz mixing error p^(-1/2), exceptional-line deletion, and iterative pruning are all recorded explicitly."
+  ],
+  "claim_scope": "combinatorial_lemma",
+  "claimed_exponent": "1/2 under the explicit hypothesis that a standard pruned accepted component has line measure O(epsilon); no unconditional exponent improvement",
+  "counterexample_attempts": [
+    "Balanced-color table: independently color points and lines with K colors and use the corresponding constant as f(x) and P_L. For p/K>=100 log p, a deterministic realization has all point and line degrees Theta(p/K), yet every single family covering half of every accepted line has size Omega(Kp)=Omega(p/epsilon). This is a proved obstruction to a smaller purely graph-theoretic global reaching family.",
+    "The balanced-color table is not a soundness counterexample: one constant polynomial agrees with f on at least 1/K>=epsilon/2 of all points. It instead demonstrates the need for a sparsify-or-decode dichotomy.",
+    "Concentrated good directions: take f=Q globally, use P_L=Q|_L in s directions and P_L=Q|_L+1 elsewhere. Acceptance is s/(p+1), and the retained line component has measure Theta(epsilon), so it is compatible with the conditional square-root result.",
+    "Independent random point and line values have agreement about 1/p, below every campaign threshold because d>100. They do not falsify either the benchmark or the conditional theorem.",
+    "Inseparable-function attempts using t^p-t or p-th-power aliases fail because d<p and the proof works with degree-<p formal representatives.",
+    "When d is near p, the explicit large-constant square-root hypothesis is vacuous. This is a limitation of the result, not an obstruction to the campaign theorem."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "Unconditional KTZ core: k=Theta(epsilon p), line support measure tau<=1",
+      "justification": "KTZ Lemma 3.2 gives |R|=O(p/epsilon); weighted interpolation gives D=O(sqrt(dp/epsilon)); extension needs D=O(epsilon p). This is a reconstruction from the proof, not a quoted exponent explanation.",
+      "loss": "One inverse power of epsilon in |R| and a square-root interpolation loss",
+      "output_scale": "epsilon^3=Omega(d/p), hence epsilon=Omega((d/p)^(1/3))",
+      "stage": "KTZ benchmark reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Local agreement epsilon",
+      "justification": "KTZ Lemma 3.1 prunes accepted incidences while retaining minimum degree k0=floor(epsilon p/100).",
+      "loss": "Absolute constant only",
+      "output_scale": "k0=Theta(epsilon p)",
+      "stage": "accepted-core pruning",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Connected accepted component with minimum degree k and line measure tau",
+      "justification": "Sample each of its line vertices with probability 8/k. Affine-line uniqueness makes coverage events independent across distinct points of a fixed target line; Chernoff plus a union bound gives simultaneous coverage.",
+      "loss": "Constant probability and constant-factor size concentration",
+      "output_scale": "|R|=Theta(tau p^2/k), hence O(tau p/epsilon) when k=Theta(epsilon p)",
+      "stage": "component-sensitive concentration",
+      "status": "proved"
+    },
+    {
+      "input_scale": "|R|=O(tau p^2/k)",
+      "justification": "The eligible weighted monomial space has dimension at least D^3/(64d), while the selected line identities impose at most |R|(D+1) constraints.",
+      "loss": "Square-root interpolation loss",
+      "output_scale": "D=O(sqrt(d tau p^2/k))",
+      "stage": "trivariate interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(d tau p^2/k)) and root supply k",
+      "justification": "More than half of every target line's accepted points are reached, so D<k/2 makes its restricted relation identically zero.",
+      "loss": "Requires k^3=Omega(d tau p^2)",
+      "output_scale": "epsilon^3=Omega(tau d/p) when k=Theta(epsilon p)",
+      "stage": "identity extension",
+      "status": "proved"
+    },
+    {
+      "input_scale": "At most D trivial lines, D(D-1) degenerate lines, and D bad points per other line",
+      "justification": "Component-local deletion divided by |E|>=k|T| is O(D/k+dp/k^2).",
+      "loss": "Requires k^2=Omega(dp), independently of tau",
+      "output_scale": "epsilon^2=Omega(d/p) when k=Theta(epsilon p)",
+      "stage": "simple-root cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Clean graph with minimum degree k1=floor(k/100)",
+      "justification": "Iterative pruning loses below 2k1/k of the original component edges; point-line mixing gives every surviving component point measure at least k1/(4p).",
+      "loss": "Absolute constant and absorbed p^(-1/2) mixing error",
+      "output_scale": "global agreement at least k/(800p)",
+      "stage": "lifting and propagation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "tau<=Lambda epsilon and k=Theta(epsilon p)",
+      "justification": "Both k^3 and k^2 budget conditions reduce to epsilon^2 p=Omega_Lambda(d).",
+      "loss": "The small-component premise is not known to follow from local agreement",
+      "output_scale": "epsilon>=C_Lambda(d/p)^(1/2), global agreement at least epsilon/160000",
+      "stage": "conditional square-root corollary",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Balanced K-color acceptance graph, epsilon in [1/(2K),2/K]",
+      "justification": "Double counting the covered point set forces any family covering half of every line to contain at least Kp/16 lines.",
+      "loss": "None; this is a lower bound",
+      "output_scale": "|R|>=p/(32epsilon)",
+      "stage": "global-cover obstruction",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "For p=103, d=101, K=2, a fixed-seed balanced-color sample had acceptance 0.4999084594, line degrees 32--69, and point degrees 31--70, consistent with the nearly biregular obstruction. This computation is not used in the proof.",
+    "At d=101, the bare cube-root/square-root scales are respectively 0.993485/0.990244 for p=103, 0.464312/0.316384 for p=1009, and 0.216109/0.100464 for p=10007.",
+    "For d=p-2, the bare cube-root/square-root scales are 0.999339/0.999008 for p=1009 and 0.999933/0.999900 for p=10007. The large-constant hypotheses are correctly vacuous there.",
+    "At p=103, a table supported on 1, 2, 10, 52, or 104 good directions has exact agreement 1/104, 2/104, 10/104, 1/2, or 1, confirming that uniform line sampling does not force agreement to be spread across directions."
+  ],
+  "global_conclusion": "A component-sensitive concentration theorem is proved: a connected accepted component of minimum degree k and line measure tau decodes when k^2 is sufficiently larger than dp and k^3 is sufficiently larger than d tau p^2, yielding global agreement at least k/(800p). For a standard pruned component with tau=O(epsilon), this gives a conditional exponent 1/2 and agreement Omega(epsilon). Local agreement alone does not currently guarantee such a component, so the unconditional KTZ benchmark exponent 1/3 is not improved. A realizable balanced-color table proves that KTZ's global cover-every-line family cannot be reduced below Theta(p/epsilon) by graph theory alone.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Any finite field, arbitrary dimension; uniform incident-pair line-versus-point sampling; arbitrary degree-at-most-d line table.",
+      "paper": "Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test",
+      "result_id": "Theorem 1.1",
+      "used_for": "Quoted benchmark. Its m=2, q=p specialization is epsilon>=C(d/p)^(1/3) with one total-degree-at-most-d polynomial having agreement at least c epsilon.",
+      "version": "ECCC TR26-147, revision 1, 16 August 2026"
+    },
+    {
+      "hypotheses": "Bivariate affine incidence; weighted degree (1,1,d); explainer degree D<p; simple-root lifting.",
+      "paper": "Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test",
+      "result_id": "Lemmas 2.1--2.7, 3.1--3.2, 4.1--4.3, 5.1--5.2, and 6.1--6.3",
+      "used_for": "Point-line mixing, benchmark pruning, monomial count, squarefree and directional-derivative cleanup, resultant bound, Newton lifting, and component propagation. The tau-sensitive size calculation and component-local deletion ledger are proved in this note and are not quoted from KTZ.",
+      "version": "ECCC TR26-147, revision 1, 16 August 2026"
+    },
+    {
+      "hypotheses": "Best-fit degree-d line polynomial on each line and q>C d/epsilon^7.",
+      "paper": "Prahladh Harsha, Mrinal Kumar, Ramprasad Saptharishi, and Madhu Sudan, An Improved Line-Point Low-Degree Test",
+      "result_id": "Theorem 4.2",
+      "used_for": "Historical bivariate comparison only. The displayed q>C d/epsilon^7 condition is quoted; exponent 1/7 is its algebraic rewrite and is not used in the proof.",
+      "version": "ECCC TR23-182 / arXiv:2311.12752 v1, 21 November 2023"
+    }
+  ],
+  "next_tasks": [
+    "Prove an unconditional sparsify-or-decode dichotomy: either some accepted core component has tau=O(epsilon), or the labels in a larger component already determine a global degree-d decoder.",
+    "Investigate algebraic rank among line-graph constraints. The balanced-color obstruction defeats smaller graph covers but has very low label rank and an immediate constant decoder.",
+    "Search for a connected, nearly biregular, degree-d-realizable acceptance component with tau much larger than epsilon and no Omega(epsilon)-agreeing polynomial; such an example would directly test the remaining structural premise."
+  ],
+  "note_markdown": "# Component-sensitive line concentration and the square-root conditional regime\n\n## Abstract\n\nFor the affine line-versus-point test on $\\mathbb F_p^2$, I retain the line-support measure in the Kominers--Thaler--Zheng sparsification argument. If a connected accepted-incidence subgraph has minimum degree $k$ and its line side occupies a fraction $\\tau$ of all affine lines, then a reaching family of size $O(\\tau p^2/k)$ suffices. The resulting trivariate explainer has weighted degree $D=O(\\sqrt{d\\tau p^2/k})$. Component-local accounting shows that the proof closes under\n\n$$\nk^3\\gg d\\tau p^2\\quad\\text{and}\\quad k^2\\gg dp,\n$$\n\nand yields one total-degree-at-most-$d$ polynomial with agreement $\\Omega(k/p)$. Thus a standard pruned component with $k=\\Theta(\\epsilon p)$ and $\\tau=O(\\epsilon)$ admits the conditional square-root threshold $\\epsilon=\\Omega((d/p)^{1/2})$, with global agreement $\\Omega(\\epsilon)$.\n\nThis does not improve the unconditional $1/3$ benchmark: no argument here forces the small-component hypothesis. Moreover, a balanced-color construction using constant line polynomials proves that a single family which covers half of every accepted line can genuinely require $\\Omega(p/\\epsilon)$ lines. Hence a further improvement must be a sparsify-or-decode argument, not a uniformly smaller graph-theoretic cover.\n\n## Test and Notation\n\nFix a prime $p$ and an integer $100<d<p$; throughout $m=2$. There are $p(p+1)$ affine lines, each containing $p$ points, and every point lies on $p+1$ lines. Sampling a uniform line and then a uniform point on it is therefore the same as sampling a uniform incident pair.\n\nLet $f:\\mathbb F_p^2\\to\\mathbb F_p$, and let every affine line $L$ carry a polynomial $P_L$ of degree at most $d$. Put\n\n$$\n\\epsilon=\\Pr_{L,\\,x\\in L}[P_L(x)=f(x)].\n$$\n\nThe accepted-incidence graph has an edge $(x,L)$ exactly when $x\\in L$ and $P_L(x)=f(x)$. For a subgraph $G=(X,T,E)$, write $k=\\operatorname{mindeg}(G)$, $t=|T|$, and\n\n$$\n\\tau=\\frac{t}{p(p+1)}.\n$$\n\nAll graph degrees below are accepted degrees, not ambient incidence degrees.\n\n## Prior Results\n\nThe active corpus contained no completed submission or verifier audit at the start and end of this run; every active verified, promising, rejected, and bottleneck leaderboard was `[]`. This was checked against [the durable manifest](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json) and both campaign databases, excluding every directory named `superseded`.\n\nThe quoted benchmark is Theorem 1.1 of [Kominers--Thaler--Zheng, ECCC TR26-147, revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download): over every finite field, $\\epsilon\\ge C(d/p)^{1/3}$ implies a single total-degree-at-most-$d$ polynomial with agreement at least $c\\epsilon$.\n\nThe explanation of the cubic exponent is my reconstruction from their proof, not a quoted theorem: Lemma 3.2 gives $|R|=O(p/\\epsilon)$; Lemmas 4.1--4.3 give $D=O(\\sqrt{d|R|})=O(\\sqrt{dp/\\epsilon})$; and identity extension and later lifting require $D=O(\\epsilon p)$. Squaring gives $d p/\\epsilon=O(\\epsilon^2p^2)$, or $\\epsilon^3=\\Omega(d/p)$.\n\nFor context, Theorem 4.2 of [Harsha--Kumar--Saptharishi--Sudan](https://arxiv.org/abs/2311.12752v1) displays the condition $p>C d/\\epsilon^7$ for its weak bivariate best-fit-oracle theorem. Calling this an exponent-$1/7$ threshold is an algebraic rewrite of that displayed condition. It is not used below.\n\n## Theorem\n\n**Theorem A (proved component-sensitive decoder).** Let $C_*=2^{40}$. Suppose $G=(X,T,E)$ is a connected subgraph of the accepted-incidence graph with minimum degree $k$ and line measure $\\tau$. If\n\n$$\nk^2\\ge C_*dp,\\qquad k^3\\ge C_*d\\tau p^2,\n$$\n\nthen there is $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_x[Q(x)=f(x)]\\ge \\frac{k}{800p}.\n$$\n\nThe constant is deliberately unoptimized.\n\n**Corollary B (conditional exponent $1/2$).** Let $\\epsilon$ be the test agreement and let $G_0$ be a pruned graph supplied by KTZ Lemma 3.1, so $k_0=\\lfloor\\epsilon p/100\\rfloor$. Suppose some connected component of $G_0$ has line measure at most $\\Lambda\\epsilon$, where $\\Lambda\\ge1$. Define\n\n$$\nC_\\Lambda=\\sqrt{8{,}000{,}000\\,C_*\\Lambda}.\n$$\n\nIf $\\epsilon\\ge C_\\Lambda(d/p)^{1/2}$, then some total-degree-at-most-$d$ polynomial $Q$ satisfies\n\n$$\n\\Pr_x[Q(x)=f(x)]\\ge\\frac{\\epsilon}{160000}.\n$$\n\nThis is conditional only in the campaign sense: the implication is proved, but the extra small-component premise is not known for every table.\n\n**Proposition C (proved global-cover obstruction).** Let $p\\ge103$ be prime and let $2\\le K\\le p/(100\\log p)$. For every campaign degree $100<d<p$, there is a valid table using constant line polynomials for which\n\n$$\n\\frac1{2K}\\le\\epsilon\\le\\frac2K,\n$$\n\nall accepted point and line degrees are within a factor two of their means, and every set $R$ which reaches at least half of the accepted points of every affine line satisfies\n\n$$\n|R|\\ge\\frac{Kp}{16}\\ge\\frac{p}{32\\epsilon}.\n$$\n\nNevertheless, one constant global polynomial agrees with $f$ on at least $\\epsilon/2$ of the points.\n\n## Proof or Conditional Proof\n\n**[P1] (proved: component size).** Apply KTZ Lemma 2.1 to the point and line sides of $G$. Its exact mixing error is $\\sqrt{\\mu(X)\\mu(T)}/\\sqrt{p+1}$. The first hypothesis and $d>100$ imply $1/\\sqrt{p+1}\\le k/(4p)$. The argument of KTZ Lemma 6.2 therefore gives\n\n$$\n\\mu(X),\\tau\\ge\\frac{k}{4p}.\n$$\n\nIn particular, $t\\ge k(p+1)/4$.\n\n**[P2] (proved: component-sensitive reaching family).** Select each line of $T$ independently with probability $8/k$. For $x\\in N_G(L)$, at least $k-1$ other accepted lines pass through $x$, so $x$ is reached with probability at least $3/4$. For distinct points of a fixed affine line $L$, the relevant sets of other lines are disjoint: two such points have only $L$ as a common line. The reach indicators are consequently independent. Chernoff gives failure probability at most $e^{-\\deg_G(L)/24}\\le e^{-k/24}$ for a fixed $L$. The hypotheses imply $k\\gg\\log p$, so a union bound over fewer than $2p^2$ lines succeeds. A second Chernoff bound controls the sample size. Hence one choice $R$ has, with $r=|R|$,\n\n$$\n\\frac{4t}{k}\\le r\\le\\frac{16t}{k},\n$$\n\nand reaches more than half of $N_G(L)$ for every $L\\in T$. By [P1], $r\\ge p+1$.\n\n**[P3] (proved: interpolation).** Set\n\n$$\nD=16\\bigl(\\lfloor\\sqrt{dr}\\rfloor+1\\bigr).\n$$\n\nThen $D^2>256dr$ and\n\n$$\nD^2\\le1024dr\\le\\frac{16384dt}{k}.\n$$\n\nUsing $t=\\tau p(p+1)\\le2\\tau p^2$ and $k^3\\ge C_*d\\tau p^2$ gives $D/k<1/5000$. Thus $D<k\\le p$, while $r\u0003e p>D$.\n\nKTZ Lemma 2.2 supplies at least $D^3/(64d)$ eligible monomials of weighted degree at most $D$. Each identity $A(L(t),P_L(t))\\equiv0$ costs at most $D+1$ homogeneous conditions, and $D^2>256dr$ makes the number of variables exceed $r(D+1)$. A nonzero interpolant exists. Because $r>D$, it cannot be independent of $Z$; the allowed $Z$-exponents make $A_Z\\ne0$. Choose one of minimum weighted degree. KTZ Lemma 2.3 makes it squarefree.\n\n**[P4] (proved: extension).** If $x$ is an accepted point of $L$ reached by $M\\in R\\setminus\\{L\\}$, then $P_L(x)=f(x)=P_M(x)$ and hence $A(x,P_L(x))=0$. More than $k/2>D$ distinct such points lie on every $L\\in T$. Since $A(L(t),P_L(t))$ has degree at most $D$, it vanishes identically. No Markov loss occurs here.\n\n**[P5] (proved: characteristic-safe cleanup).** Write $A=HB$, where $H(X,Y)$ is the gcd of the coefficients of $A$ as a polynomial in $Z$. At most $D$ lines make $H|_L$ identically zero. On every other line, exact division in the domain $\\mathbb F_p[t]$ gives $B(L(t),P_L(t))\\equiv0$. The squarefree $B$ has degree below $p$. KTZ Lemma 2.4 supplies a formal directional derivative $\\mathcal D$ with $\\gcd(B,\\mathcal DB)=1$. KTZ Lemma 2.6, via the resultant, bounds lines on whose polynomial graph both vanish by $D(D-1)$. Every other line has at most $D$ accepted points where $(\\mathcal DB)(x,f(x))=0$. Thus at most\n\n$$\npD^2+Dt\n$$\n\naccepted edges are deleted.\n\n**[P6] (proved: local deletion and pruning).** Since $|E|\\ge kt$,\n\n$$\n\\frac{pD^2+Dt}{|E|}\\le\\frac{D}{k}+\\frac{16384dp}{k^2}<\\frac1{4000}.\n$$\n\nPut $k_1=\\lfloor k/100\\rfloor$. Iteratively deleting vertices of current degree below $k_1$ removes fewer than\n\n$$\nk_1(|X|+t)\\le 2(k_1/k)|E|\\le |E|/50\n$$\n\nadditional edges. A nonempty graph of minimum degree $k_1$ remains, although it may fragment.\n\n**[P7] (proved: simple roots).** At every remaining point choose two incident lines; $k_1\\ge2$. Their directions are independent in $\\mathbb F_p^2$. Differentiating their formal identities, if $B_Z(x,f(x))=0$, forces $B_X(x,f(x))=B_Y(x,f(x))=0$. This contradicts the retained condition $(\\mathcal DB)(x,f(x))\\ne0$. Hence every retained value is a simple $Z$-root. No derivative is divided by in this step.\n\n**[P8] (proved: lift, propagate, and measure).** Choose any connected component of the graph left by [P6]. Its minimum degree is $k_1>D$. KTZ Lemmas 2.7 and 6.1 lift the line roots through one point to a single total-degree-at-most-$d$ polynomial $Q$. Simple-root uniqueness propagates the same $Q$ through the component, as in KTZ Lemma 6.3; there is no factor-count loss. The first numerical hypothesis also gives $1/\\sqrt{p+1}\\le k_1/(4p)$. KTZ Lemma 6.2 then gives point measure at least\n\n$$\n\\frac{k_1}{4p}\\ge\\frac{k}{800p},\n$$\n\nproving Theorem A.\n\n**[P9] (conditional: translate to local agreement).** In Corollary B, the stated threshold makes $k_0\\ge\\epsilon p/200$. The inequality $\\epsilon^2p\\ge8{,}000{,}000C_*\\Lambda d$ implies both\n\n$$\nk_0^2\\ge C_*dp,\n\\qquad\nk_0^3\\ge C_*d(\\Lambda\\epsilon)p^2.\n$$\n\nTheorem A therefore gives agreement at least $k_0/(800p)\\ge\\epsilon/160000$. This is the exponent-$1/2$ calculation. Its only unresolved campaign premise is the existence of the component with $\\tau\\le\\Lambda\\epsilon$.\n\n**[P10] (proved: realizable balanced-color graph).** Independently color every point and every affine line uniformly from $[K]$, inject the colors into $\\mathbb F_p$, put $f(x)$ equal to the point color, and make $P_L$ the corresponding constant line color. Conditional on a vertex color, its accepted degree is binomial with mean $p/K$ on the line side or $(p+1)/K$ on the point side. A Chernoff bound followed by a union bound over fewer than $3p^2$ vertices has failure probability at most $6p^2e^{-p/(12K)}<1$. Therefore a deterministic realization with the claimed degree bounds exists. These constant line polynomials are degree at most the fixed campaign degree $d>100$; this is not an analysis of the excluded case $d=0$.\n\n**[P11] (proved: cover lower bound).** Let $S$ be the points incident to an accepted edge from $R$. The line-degree upper bound gives $|S|\\le2p|R|/K$. If every line has at least half its accepted points in $S$, summing over all $p(p+1)$ lines gives at least $p^2(p+1)/(4K)$ accepted incidences from $S$. The point-degree upper bound is $2(p+1)/K$, so $|S|\\ge p^2/8$. Hence $|R|\\ge Kp/16$. Since $\\epsilon\\ge1/(2K)$, this is at least $p/(32\\epsilon)$. Finally, $f$ takes only $K$ values, so one constant has agreement at least $1/K\\ge\\epsilon/2$.\n\n## Exponent Ledger\n\n| Stage | Input | Output/loss |\n|---|---|---|\n| KTZ reconstruction | $|R|=O(p/\\epsilon)$ | $D=O(\\sqrt{dp/\\epsilon})$; $D<\\epsilon p$ gives $\\epsilon^3\\gtrsim d/p$ |\n| Component sampling | $t=\\tau p(p+1)$, degree $k$ | $|R|=\\Theta(t/k)=\\Theta(\\tau p^2/k)$; Chernoff/union losses are constant |\n| Interpolation | $r=|R|$ | $D=\\Theta(\\sqrt{dr})=O(\\sqrt{d\\tau p^2/k})$ |\n| Extension | root supply $k$ | $D<k$ requires $k^3\\gtrsim d\\tau p^2$ |\n| Degenerate deletion | bad edges $pD^2+Dt$ | relative loss $O(dp/k^2+D/k)$, requiring $k^2\\gtrsim dp$ |\n| Mixing | minimum degree $k_1$ | $p^{-1/2}\\lesssim k_1/p$; absorbed because $d>100$ and $k^2\\gg dp$ |\n| Global agreement | surviving component | $\\Pr[Q=f]\\ge k/(800p)$; no power loss |\n| Small-component corollary | $k=\\Theta(\\epsilon p)$, $\\tau=O(\\epsilon)$ | both constraints become $\\epsilon^2\\gtrsim d/p$ |\n| Global-cover obstruction | $\\epsilon=\\Theta(1/K)$ | every uniform cover has $|R|=\\Omega(Kp)=\\Omega(p/\\epsilon)$ |\n\n## Counterexample Attempts\n\nThe balanced-color table proves that the $p/\\epsilon$ global-cover scale is not merely an artifact of independent sampling. It is an actual degree-at-most-$d$ line-versus-point table. It does not refute soundness, because a constant decoder already has agreement $\\Omega(\\epsilon)$.\n\nConcentrating all good lines in a subset of directions also does not refute the conditional result. With at least two good directions, the accepted graph is connected, has line measure $\\tau=\\epsilon$, and is governed by the planted polynomial.\n\nIndependent random tables accept with probability about $1/p$, far below the campaign range. Attempts using $t^p-t$ or other inseparable functional aliases require line degree at least $p$ and are excluded by $d<p$.\n\nAt the lower boundary $d=101$, the square-root scale decreases from about $0.9902$ at $p=103$ to $0.1005$ at $p=10007$. When $d$ approaches $p$, both cube-root and square-root scales approach one, and the large-constant hypotheses become vacuous. No near-$p$ counterexample is claimed.\n\n## Characteristic Audit\n\nThe proof is entirely over the prime field and keeps $D<p$. Formal and functional identities cannot be confused for line polynomials because $d<p$. The eligible-monomial restriction ensures $A_Z\\ne0$. Squarefreeness and perfectness rule out an inseparable irreducible factor with all partial derivatives zero. The generic derivative is chosen over $\\mathbb F_p$ using fewer than $p$ exceptional hyperplanes. Resultants, rather than discriminant division, control common line roots. Newton lifting divides only by a certified nonzero simple-root derivative. Ordinary interpolation is used with no hidden multiplicities or Hasse-derivative assumptions.\n\n## Limitations\n\nThe result does not prove that every accepted core contains a component with $\\tau=O(\\epsilon)$. A single connected component may have $\\tau$ close to one, in which case the new parameter law returns the cubic benchmark. The explicit constant $2^{40}$ is safe but intentionally very loose, making the finite nonvacuous range much smaller than the exponent notation suggests. Proposition C obstructs only a single cover required to work for every line; it does not obstruct an algebraically informed decoder or an adaptive localization argument. Finite computations above are falsification checks only and play no role in the asymptotic proof.",
+  "obstructions": [
+    "The existence of a pruned accepted component with line measure tau=O(epsilon) is not implied by local agreement in the present proof.",
+    "Balanced constant-label tables force Omega(p/epsilon) lines for any single family covering half of every accepted line, so a uniformly smaller purely graph-theoretic replacement for KTZ Lemma 3.2 is false.",
+    "The component theorem has an independent k^2=Omega(dp) cleanup requirement, imposing a square-root floor even if tau is much smaller.",
+    "For d/p larger than the reciprocal of the large absolute constant, the conditional theorem is vacuous; in particular it gives no information when d is close to p."
+  ],
+  "parameter_regime": "p prime; 100<d<p; m=2. The proved component theorem uses minimum degree k, line measure tau=|T|/[p(p+1)], C_*=2^40, k^2>=C_*dp, and k^3>=C_*d tau p^2. The exponent-1/2 corollary additionally assumes a standard pruned component with tau<=Lambda epsilon.",
+  "proof_steps": [
+    {
+      "dependencies": [
+        "KTZ Lemma 2.1",
+        "KTZ Lemma 6.2"
+      ],
+      "id": "P1",
+      "proof": "The exact affine point-line mixing inequality and minimum degree imply both component sides have normalized measure at least k/(4p), since k^2>=2^40dp and d>100 absorb the p^(-1/2) error.",
+      "statement": "Every relevant connected component has point and line measure at least k/(4p).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "Chernoff bound",
+        "uniqueness of the affine line through two points"
+      ],
+      "id": "P2",
+      "proof": "Sample component line vertices at rate 8/k. Coverage events for distinct points of a fixed line depend on disjoint line choices. Chernoff, a union bound over fewer than 2p^2 lines, and size concentration give 4|T|/k<=|R|<=16|T|/k while covering more than half of every line's accepted neighbors.",
+      "statement": "A component of line measure tau has a reaching family of size Theta(tau p^2/k).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "KTZ Lemmas 2.2, 2.3, and 2.5"
+      ],
+      "id": "P3",
+      "proof": "For D=16(floor(sqrt(d|R|))+1), the eligible weighted-monomial dimension exceeds |R|(D+1). Since |R|>D, a nonzero interpolant must depend on Z; minimum weighted degree makes it squarefree.",
+      "statement": "There is a squarefree trivariate explainer of weighted degree D=O(sqrt(d tau p^2/k)) with nonzero Z-derivative.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "Every target line has more than k/2 reached accepted points. When k^3>=2^40d tau p^2, D<k/5000, so these distinct roots force the restricted degree-D explainer to vanish identically.",
+      "statement": "The explainer identity extends from the sampled family to every component line.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P4",
+        "KTZ Lemmas 2.4 and 2.6"
+      ],
+      "id": "P5",
+      "proof": "Remove the coefficient gcd, choose a coprime directional derivative, and use the resultant. There are at most D trivial lines, D(D-1) degenerate lines, and D derivative-zero accepted points on each remaining line, for at most pD^2+D|T| deleted edges.",
+      "statement": "Trivial and degenerate roots admit a characteristic-safe, component-local deletion bound.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P5"
+      ],
+      "id": "P6",
+      "proof": "Relative exceptional-edge loss is at most D/k+16384dp/k^2<1/4000. Peeling below k1=floor(k/100) deletes below 2k1/k<=1/50 of the original edges, leaving a nonempty graph of minimum degree k1.",
+      "statement": "A nonempty clean minimum-degree subgraph survives, even though connectivity may fragment.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P6"
+      ],
+      "id": "P7",
+      "proof": "At each surviving point, differentiating identities on two independent incident directions shows that B_Z=0 would force B_X=B_Y=0, contradicting the retained nonzero directional derivative.",
+      "statement": "Every surviving point value is a simple Z-root.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P7",
+        "KTZ Lemmas 2.7, 6.1, 6.2, and 6.3"
+      ],
+      "id": "P8",
+      "proof": "Newton uniqueness lifts a degree-d bivariate root at one point and propagates it through any surviving connected component. Mixing gives that component point measure at least k1/(4p)>=k/(800p).",
+      "statement": "One total-degree-at-most-d polynomial has global agreement at least k/(800p).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "KTZ Lemma 3.1"
+      ],
+      "id": "P9",
+      "proof": "For k0=floor(epsilon p/100) and tau<=Lambda epsilon, epsilon>=sqrt(8,000,000*2^40*Lambda)*(d/p)^(1/2) implies both component-theorem inequalities and yields agreement at least epsilon/160000.",
+      "statement": "A small pruned component yields the exponent-1/2 bivariate conclusion.",
+      "status": "conditional"
+    },
+    {
+      "dependencies": [
+        "Chernoff bound"
+      ],
+      "id": "P10",
+      "proof": "Independent K-colorings of points and lines, realized as distinct field constants, simultaneously give all accepted degrees within a factor two of their means when p/K>=100 log p.",
+      "statement": "Balanced nearly biregular acceptance graphs are realizable using degree-at-most-d line tables.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P10"
+      ],
+      "id": "P11",
+      "proof": "Double counting the point set reached by R gives |S|>=p^2/8, while line-degree upper bounds give |S|<=2p|R|/K. Thus |R|>=Kp/16>=p/(32epsilon).",
+      "statement": "The global cover-every-line sparsifier scale Theta(p/epsilon) is sharp up to constants.",
+      "status": "proved"
+    }
+  ],
+  "result_status": "conditional",
+  "sampling_model": "Uniform L among all p(p+1) affine lines of F_p^2, followed by uniform x among the p points of L; equivalently, a uniform point-line incident pair.",
+  "theorem_statement": "Let C_*=2^40. If the accepted-incidence graph contains a connected subgraph of minimum degree k and line measure tau satisfying k^2>=C_*dp and k^3>=C_*d tau p^2, then some total-degree-at-most-d polynomial Q has Pr[Q=f]>=k/(800p). Consequently, if a KTZ-pruned core at local agreement epsilon has a component with tau<=Lambda epsilon, then epsilon>=sqrt(8,000,000 C_* Lambda)(d/p)^(1/2) implies Pr[Q=f]>=epsilon/160000. A separate balanced-color construction proves that a single family covering half of every accepted line may require at least p/(32epsilon) lines.",
+  "title": "Component-Sensitive Line Concentration and a Sharp Global-Cover Obstruction"
+}
+
+NUMBERED NOTE:
+0001: # Component-sensitive line concentration and the square-root conditional regime
+0002: 
+0003: ## Abstract
+0004: 
+0005: For the affine line-versus-point test on $\mathbb F_p^2$, I retain the line-support measure in the Kominers--Thaler--Zheng sparsification argument. If a connected accepted-incidence subgraph has minimum degree $k$ and its line side occupies a fraction $\tau$ of all affine lines, then a reaching family of size $O(\tau p^2/k)$ suffices. The resulting trivariate explainer has weighted degree $D=O(\sqrt{d\tau p^2/k})$. Component-local accounting shows that the proof closes under
+0006: 
+0007: $$
+0008: k^3\gg d\tau p^2\quad\text{and}\quad k^2\gg dp,
+0009: $$
+0010: 
+0011: and yields one total-degree-at-most-$d$ polynomial with agreement $\Omega(k/p)$. Thus a standard pruned component with $k=\Theta(\epsilon p)$ and $\tau=O(\epsilon)$ admits the conditional square-root threshold $\epsilon=\Omega((d/p)^{1/2})$, with global agreement $\Omega(\epsilon)$.
+0012: 
+0013: This does not improve the unconditional $1/3$ benchmark: no argument here forces the small-component hypothesis. Moreover, a balanced-color construction using constant line polynomials proves that a single family which covers half of every accepted line can genuinely require $\Omega(p/\epsilon)$ lines. Hence a further improvement must be a sparsify-or-decode argument, not a uniformly smaller graph-theoretic cover.
+0014: 
+0015: ## Test and Notation
+0016: 
+0017: Fix a prime $p$ and an integer $100<d<p$; throughout $m=2$. There are $p(p+1)$ affine lines, each containing $p$ points, and every point lies on $p+1$ lines. Sampling a uniform line and then a uniform point on it is therefore the same as sampling a uniform incident pair.
+0018: 
+0019: Let $f:\mathbb F_p^2\to\mathbb F_p$, and let every affine line $L$ carry a polynomial $P_L$ of degree at most $d$. Put
+0020: 
+0021: $$
+0022: \epsilon=\Pr_{L,\,x\in L}[P_L(x)=f(x)].
+0023: $$
+0024: 
+0025: The accepted-incidence graph has an edge $(x,L)$ exactly when $x\in L$ and $P_L(x)=f(x)$. For a subgraph $G=(X,T,E)$, write $k=\operatorname{mindeg}(G)$, $t=|T|$, and
+0026: 
+0027: $$
+0028: \tau=\frac{t}{p(p+1)}.
+0029: $$
+0030: 
+0031: All graph degrees below are accepted degrees, not ambient incidence degrees.
+0032: 
+0033: ## Prior Results
+0034: 
+0035: The active corpus contained no completed submission or verifier audit at the start and end of this run; every active verified, promising, rejected, and bottleneck leaderboard was `[]`. This was checked against [the durable manifest](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json) and both campaign databases, excluding every directory named `superseded`.
+0036: 
+0037: The quoted benchmark is Theorem 1.1 of [Kominers--Thaler--Zheng, ECCC TR26-147, revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download): over every finite field, $\epsilon\ge C(d/p)^{1/3}$ implies a single total-degree-at-most-$d$ polynomial with agreement at least $c\epsilon$.
+0038: 
+0039: The explanation of the cubic exponent is my reconstruction from their proof, not a quoted theorem: Lemma 3.2 gives $|R|=O(p/\epsilon)$; Lemmas 4.1--4.3 give $D=O(\sqrt{d|R|})=O(\sqrt{dp/\epsilon})$; and identity extension and later lifting require $D=O(\epsilon p)$. Squaring gives $d p/\epsilon=O(\epsilon^2p^2)$, or $\epsilon^3=\Omega(d/p)$.
+0040: 
+0041: For context, Theorem 4.2 of [Harsha--Kumar--Saptharishi--Sudan](https://arxiv.org/abs/2311.12752v1) displays the condition $p>C d/\epsilon^7$ for its weak bivariate best-fit-oracle theorem. Calling this an exponent-$1/7$ threshold is an algebraic rewrite of that displayed condition. It is not used below.
+0042: 
+0043: ## Theorem
+0044: 
+0045: **Theorem A (proved component-sensitive decoder).** Let $C_*=2^{40}$. Suppose $G=(X,T,E)$ is a connected subgraph of the accepted-incidence graph with minimum degree $k$ and line measure $\tau$. If
+0046: 
+0047: $$
+0048: k^2\ge C_*dp,\qquad k^3\ge C_*d\tau p^2,
+0049: $$
+0050: 
+0051: then there is $Q\in\mathbb F_p[X,Y]$ of total degree at most $d$ such that
+0052: 
+0053: $$
+0054: \Pr_x[Q(x)=f(x)]\ge \frac{k}{800p}.
+0055: $$
+0056: 
+0057: The constant is deliberately unoptimized.
+0058: 
+0059: **Corollary B (conditional exponent $1/2$).** Let $\epsilon$ be the test agreement and let $G_0$ be a pruned graph supplied by KTZ Lemma 3.1, so $k_0=\lfloor\epsilon p/100\rfloor$. Suppose some connected component of $G_0$ has line measure at most $\Lambda\epsilon$, where $\Lambda\ge1$. Define
+0060: 
+0061: $$
+0062: C_\Lambda=\sqrt{8{,}000{,}000\,C_*\Lambda}.
+0063: $$
+0064: 
+0065: If $\epsilon\ge C_\Lambda(d/p)^{1/2}$, then some total-degree-at-most-$d$ polynomial $Q$ satisfies
+0066: 
+0067: $$
+0068: \Pr_x[Q(x)=f(x)]\ge\frac{\epsilon}{160000}.
+0069: $$
+0070: 
+0071: This is conditional only in the campaign sense: the implication is proved, but the extra small-component premise is not known for every table.
+0072: 
+0073: **Proposition C (proved global-cover obstruction).** Let $p\ge103$ be prime and let $2\le K\le p/(100\log p)$. For every campaign degree $100<d<p$, there is a valid table using constant line polynomials for which
+0074: 
+0075: $$
+0076: \frac1{2K}\le\epsilon\le\frac2K,
+0077: $$
+0078: 
+0079: all accepted point and line degrees are within a factor two of their means, and every set $R$ which reaches at least half of the accepted points of every affine line satisfies
+0080: 
+0081: $$
+0082: |R|\ge\frac{Kp}{16}\ge\frac{p}{32\epsilon}.
+0083: $$
+0084: 
+0085: Nevertheless, one constant global polynomial agrees with $f$ on at least $\epsilon/2$ of the points.
+0086: 
+0087: ## Proof or Conditional Proof
+0088: 
+0089: **[P1] (proved: component size).** Apply KTZ Lemma 2.1 to the point and line sides of $G$. Its exact mixing error is $\sqrt{\mu(X)\mu(T)}/\sqrt{p+1}$. The first hypothesis and $d>100$ imply $1/\sqrt{p+1}\le k/(4p)$. The argument of KTZ Lemma 6.2 therefore gives
+0090: 
+0091: $$
+0092: \mu(X),\tau\ge\frac{k}{4p}.
+0093: $$
+0094: 
+0095: In particular, $t\ge k(p+1)/4$.
+0096: 
+0097: **[P2] (proved: component-sensitive reaching family).** Select each line of $T$ independently with probability $8/k$. For $x\in N_G(L)$, at least $k-1$ other accepted lines pass through $x$, so $x$ is reached with probability at least $3/4$. For distinct points of a fixed affine line $L$, the relevant sets of other lines are disjoint: two such points have only $L$ as a common line. The reach indicators are consequently independent. Chernoff gives failure probability at most $e^{-\deg_G(L)/24}\le e^{-k/24}$ for a fixed $L$. The hypotheses imply $k\gg\log p$, so a union bound over fewer than $2p^2$ lines succeeds. A second Chernoff bound controls the sample size. Hence one choice $R$ has, with $r=|R|$,
+0098: 
+0099: $$
+0100: \frac{4t}{k}\le r\le\frac{16t}{k},
+0101: $$
+0102: 
+0103: and reaches more than half of $N_G(L)$ for every $L\in T$. By [P1], $r\ge p+1$.
+0104: 
+0105: **[P3] (proved: interpolation).** Set
+0106: 
+0107: $$
+0108: D=16\bigl(\lfloor\sqrt{dr}\rfloor+1\bigr).
+0109: $$
+0110: 
+0111: Then $D^2>256dr$ and
+0112: 
+0113: $$
+0114: D^2\le1024dr\le\frac{16384dt}{k}.
+0115: $$
+0116: 
+0117: Using $t=\tau p(p+1)\le2\tau p^2$ and $k^3\ge C_*d\tau p^2$ gives $D/k<1/5000$. Thus $D<k\le p$, while $re p>D$.
+0118: 
+0119: KTZ Lemma 2.2 supplies at least $D^3/(64d)$ eligible monomials of weighted degree at most $D$. Each identity $A(L(t),P_L(t))\equiv0$ costs at most $D+1$ homogeneous conditions, and $D^2>256dr$ makes the number of variables exceed $r(D+1)$. A nonzero interpolant exists. Because $r>D$, it cannot be independent of $Z$; the allowed $Z$-exponents make $A_Z\ne0$. Choose one of minimum weighted degree. KTZ Lemma 2.3 makes it squarefree.
+0120: 
+0121: **[P4] (proved: extension).** If $x$ is an accepted point of $L$ reached by $M\in R\setminus\{L\}$, then $P_L(x)=f(x)=P_M(x)$ and hence $A(x,P_L(x))=0$. More than $k/2>D$ distinct such points lie on every $L\in T$. Since $A(L(t),P_L(t))$ has degree at most $D$, it vanishes identically. No Markov loss occurs here.
+0122: 
+0123: **[P5] (proved: characteristic-safe cleanup).** Write $A=HB$, where $H(X,Y)$ is the gcd of the coefficients of $A$ as a polynomial in $Z$. At most $D$ lines make $H|_L$ identically zero. On every other line, exact division in the domain $\mathbb F_p[t]$ gives $B(L(t),P_L(t))\equiv0$. The squarefree $B$ has degree below $p$. KTZ Lemma 2.4 supplies a formal directional derivative $\mathcal D$ with $\gcd(B,\mathcal DB)=1$. KTZ Lemma 2.6, via the resultant, bounds lines on whose polynomial graph both vanish by $D(D-1)$. Every other line has at most $D$ accepted points where $(\mathcal DB)(x,f(x))=0$. Thus at most
+0124: 
+0125: $$
+0126: pD^2+Dt
+0127: $$
+0128: 
+0129: accepted edges are deleted.
+0130: 
+0131: **[P6] (proved: local deletion and pruning).** Since $|E|\ge kt$,
+0132: 
+0133: $$
+0134: \frac{pD^2+Dt}{|E|}\le\frac{D}{k}+\frac{16384dp}{k^2}<\frac1{4000}.
+0135: $$
+0136: 
+0137: Put $k_1=\lfloor k/100\rfloor$. Iteratively deleting vertices of current degree below $k_1$ removes fewer than
+0138: 
+0139: $$
+0140: k_1(|X|+t)\le 2(k_1/k)|E|\le |E|/50
+0141: $$
+0142: 
+0143: additional edges. A nonempty graph of minimum degree $k_1$ remains, although it may fragment.
+0144: 
+0145: **[P7] (proved: simple roots).** At every remaining point choose two incident lines; $k_1\ge2$. Their directions are independent in $\mathbb F_p^2$. Differentiating their formal identities, if $B_Z(x,f(x))=0$, forces $B_X(x,f(x))=B_Y(x,f(x))=0$. This contradicts the retained condition $(\mathcal DB)(x,f(x))\ne0$. Hence every retained value is a simple $Z$-root. No derivative is divided by in this step.
+0146: 
+0147: **[P8] (proved: lift, propagate, and measure).** Choose any connected component of the graph left by [P6]. Its minimum degree is $k_1>D$. KTZ Lemmas 2.7 and 6.1 lift the line roots through one point to a single total-degree-at-most-$d$ polynomial $Q$. Simple-root uniqueness propagates the same $Q$ through the component, as in KTZ Lemma 6.3; there is no factor-count loss. The first numerical hypothesis also gives $1/\sqrt{p+1}\le k_1/(4p)$. KTZ Lemma 6.2 then gives point measure at least
+0148: 
+0149: $$
+0150: \frac{k_1}{4p}\ge\frac{k}{800p},
+0151: $$
+0152: 
+0153: proving Theorem A.
+0154: 
+0155: **[P9] (conditional: translate to local agreement).** In Corollary B, the stated threshold makes $k_0\ge\epsilon p/200$. The inequality $\epsilon^2p\ge8{,}000{,}000C_*\Lambda d$ implies both
+0156: 
+0157: $$
+0158: k_0^2\ge C_*dp,
+0159: \qquad
+0160: k_0^3\ge C_*d(\Lambda\epsilon)p^2.
+0161: $$
+0162: 
+0163: Theorem A therefore gives agreement at least $k_0/(800p)\ge\epsilon/160000$. This is the exponent-$1/2$ calculation. Its only unresolved campaign premise is the existence of the component with $\tau\le\Lambda\epsilon$.
+0164: 
+0165: **[P10] (proved: realizable balanced-color graph).** Independently color every point and every affine line uniformly from $[K]$, inject the colors into $\mathbb F_p$, put $f(x)$ equal to the point color, and make $P_L$ the corresponding constant line color. Conditional on a vertex color, its accepted degree is binomial with mean $p/K$ on the line side or $(p+1)/K$ on the point side. A Chernoff bound followed by a union bound over fewer than $3p^2$ vertices has failure probability at most $6p^2e^{-p/(12K)}<1$. Therefore a deterministic realization with the claimed degree bounds exists. These constant line polynomials are degree at most the fixed campaign degree $d>100$; this is not an analysis of the excluded case $d=0$.
+0166: 
+0167: **[P11] (proved: cover lower bound).** Let $S$ be the points incident to an accepted edge from $R$. The line-degree upper bound gives $|S|\le2p|R|/K$. If every line has at least half its accepted points in $S$, summing over all $p(p+1)$ lines gives at least $p^2(p+1)/(4K)$ accepted incidences from $S$. The point-degree upper bound is $2(p+1)/K$, so $|S|\ge p^2/8$. Hence $|R|\ge Kp/16$. Since $\epsilon\ge1/(2K)$, this is at least $p/(32\epsilon)$. Finally, $f$ takes only $K$ values, so one constant has agreement at least $1/K\ge\epsilon/2$.
+0168: 
+0169: ## Exponent Ledger
+0170: 
+0171: | Stage | Input | Output/loss |
+0172: |---|---|---|
+0173: | KTZ reconstruction | $|R|=O(p/\epsilon)$ | $D=O(\sqrt{dp/\epsilon})$; $D<\epsilon p$ gives $\epsilon^3\gtrsim d/p$ |
+0174: | Component sampling | $t=\tau p(p+1)$, degree $k$ | $|R|=\Theta(t/k)=\Theta(\tau p^2/k)$; Chernoff/union losses are constant |
+0175: | Interpolation | $r=|R|$ | $D=\Theta(\sqrt{dr})=O(\sqrt{d\tau p^2/k})$ |
+0176: | Extension | root supply $k$ | $D<k$ requires $k^3\gtrsim d\tau p^2$ |
+0177: | Degenerate deletion | bad edges $pD^2+Dt$ | relative loss $O(dp/k^2+D/k)$, requiring $k^2\gtrsim dp$ |
+0178: | Mixing | minimum degree $k_1$ | $p^{-1/2}\lesssim k_1/p$; absorbed because $d>100$ and $k^2\gg dp$ |
+0179: | Global agreement | surviving component | $\Pr[Q=f]\ge k/(800p)$; no power loss |
+0180: | Small-component corollary | $k=\Theta(\epsilon p)$, $\tau=O(\epsilon)$ | both constraints become $\epsilon^2\gtrsim d/p$ |
+0181: | Global-cover obstruction | $\epsilon=\Theta(1/K)$ | every uniform cover has $|R|=\Omega(Kp)=\Omega(p/\epsilon)$ |
+0182: 
+0183: ## Counterexample Attempts
+0184: 
+0185: The balanced-color table proves that the $p/\epsilon$ global-cover scale is not merely an artifact of independent sampling. It is an actual degree-at-most-$d$ line-versus-point table. It does not refute soundness, because a constant decoder already has agreement $\Omega(\epsilon)$.
+0186: 
+0187: Concentrating all good lines in a subset of directions also does not refute the conditional result. With at least two good directions, the accepted graph is connected, has line measure $\tau=\epsilon$, and is governed by the planted polynomial.
+0188: 
+0189: Independent random tables accept with probability about $1/p$, far below the campaign range. Attempts using $t^p-t$ or other inseparable functional aliases require line degree at least $p$ and are excluded by $d<p$.
+0190: 
+0191: At the lower boundary $d=101$, the square-root scale decreases from about $0.9902$ at $p=103$ to $0.1005$ at $p=10007$. When $d$ approaches $p$, both cube-root and square-root scales approach one, and the large-constant hypotheses become vacuous. No near-$p$ counterexample is claimed.
+0192: 
+0193: ## Characteristic Audit
+0194: 
+0195: The proof is entirely over the prime field and keeps $D<p$. Formal and functional identities cannot be confused for line polynomials because $d<p$. The eligible-monomial restriction ensures $A_Z\ne0$. Squarefreeness and perfectness rule out an inseparable irreducible factor with all partial derivatives zero. The generic derivative is chosen over $\mathbb F_p$ using fewer than $p$ exceptional hyperplanes. Resultants, rather than discriminant division, control common line roots. Newton lifting divides only by a certified nonzero simple-root derivative. Ordinary interpolation is used with no hidden multiplicities or Hasse-derivative assumptions.
+0196: 
+0197: ## Limitations
+0198: 
+0199: The result does not prove that every accepted core contains a component with $\tau=O(\epsilon)$. A single connected component may have $\tau$ close to one, in which case the new parameter law returns the cubic benchmark. The explicit constant $2^{40}$ is safe but intentionally very loose, making the finite nonvacuous range much smaller than the exponent notation suggests. Proposition C obstructs only a single cover required to work for every line; it does not obstruct an algebraically informed decoder or an adaptive localization argument. Finite computations above are falsification checks only and play no role in the asymptotic proof.

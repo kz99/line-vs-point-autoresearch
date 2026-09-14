@@ -1,0 +1,277 @@
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "The field is exactly the prime field F_p, with m=2 and 101\u2264d<p; no extension-field descent or dimension lift is used.",
+    "The algebraic theorem assumes weighted degree \u03b4<p. This implies deg_Z(C_i)<p for every irreducible factor, so a Z-dependent factor has nonzero ordinary Z-derivative. The exact necessary condition is deg_Z(C_i)<p.",
+    "Primitivity in Z excludes every nonconstant Z-independent factor. Absolute irreducibility is neither assumed nor needed.",
+    "No discriminant is divided by. Resultants are used as Sylvester determinants, so specialization remains valid when a leading coefficient vanishes or the specialized Z-degree drops.",
+    "Local intersection multiplicity is ord_t of the pulled-back polar. No factorial, ordinary higher derivative, or Hasse-derivative denominator is used.",
+    "The conditional Newton step divides only by a certified nonzero scalar C_{i,Z}(x,f(x)).",
+    "At d>p/2 and \u03b4<p there can be only one Z-dependent factor and it has Z-degree one. At d=p\u22121 and \u03b4=d its Z-derivative is a nonzero constant, so the ramification loss is zero.",
+    "The sharpness construction requires 2d\u2264D<p. It therefore applies at d=101, for example p=211,D=202, but is correctly excluded near d=p.",
+    "All line labels in the constructions are constant but are used under the legal ambient cap d\u2265101; no degree-zero test parameter is analyzed.",
+    "Global candidates always have total degree at most d; individual degree is never substituted."
+  ],
+  "claim_scope": "algebraic_lemma",
+  "claimed_exponent": null,
+  "counterexample_attempts": [
+    "Sharp method obstruction: for every 2d\u2264D<p, B=Z(Z\u2212H(X)) with deg H=D\u2212d has exactly D\u2212d simple whole-B polar intersections on every nonvertical zero-labelled graph. A strip-valued point table makes every accepted edge one of these intersections, attaining the full \u03c4(D\u2212d)/p incidence loss.",
+    "At p\u22658d, choosing D\u2212d=ceil((dp\u00b2)^(1/3)) places the preceding obstruction exactly at \u03b5=Theta((d/p)^(1/3)), D=Theta(sqrt(dp/\u03b5))=Theta(\u03b5p).",
+    "The same construction does not obstruct factorwise cleanup: every relevant graph belongs to C=Z and C_Z=1. It is also not a soundness counterexample, since Q=0 has agreement (D\u2212d)/p>\u03b5.",
+    "The construction does not show that a minimum-weight KTZ interpolant suffers this loss: Z itself is a lower-weight interpolant. Any assertion to that effect is refuted.",
+    "Inseparability example Z^p\u2212X has zero Z-derivative but weighted degree pd and violates \u03b4<p; it confirms that the characteristic hypothesis is substantive.",
+    "Concentrating correct labels in k direction classes gives \u03b5=k/(p+1), but Q=0 has perfect agreement and the factor Z has derivative one. It is not an obstruction.",
+    "The prior p=103,d=D=101 all-content counterexample does not satisfy the present theorem's primitive, positive-Z-degree hypothesis; it remains a warning against omitting those hypotheses."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "Local agreement \u03b5.",
+      "justification": "KTZ Revision 1, Lemma 3.1, prunes the accepted-incidence graph at k0=floor(\u03b5p/100).",
+      "loss": "Absolute constants only.",
+      "output_scale": "Minimum degree Theta(\u03b5p) and retained edge mass Omega(\u03b5).",
+      "stage": "KTZ dense-core pruning",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Minimum degree Theta(\u03b5p).",
+      "justification": "KTZ Lemma 3.2 uses independent line sampling, Chernoff, a union bound over p(p+1) lines, and Chebyshev.",
+      "loss": "One inverse power of \u03b5; no additional \u03b5-power from the probabilistic inequalities.",
+      "output_scale": "A selected family with |R|\u22646400p/\u03b5 and Omega(\u03b5p) covered points per retained line.",
+      "stage": "KTZ sparse cover",
+      "status": "proved"
+    },
+    {
+      "input_scale": "|R|=O(p/\u03b5), weighted monomial dimension Omega(D\u00b3/d), and O(D) constraints per graph.",
+      "justification": "Comparing D\u00b3/d with |R|D gives D\u00b2=Omega(d|R|).",
+      "loss": "Square-root interpolation scale.",
+      "output_scale": "D=O(sqrt(dp/\u03b5)).",
+      "stage": "weighted interpolation reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(dp/\u03b5)) and Theta(\u03b5p) distinct roots or incident directions.",
+      "justification": "KTZ Lemmas 4.3, 5.2, and 6.1 require D=O(\u03b5p).",
+      "loss": "sqrt(dp/\u03b5)=O(\u03b5p).",
+      "output_scale": "\u03b5\u00b3=Omega(d/p), the benchmark exponent 1/3.",
+      "stage": "controlling identity/lifting gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A coprime weighted pair of degrees u,v and Z-degrees r,s.",
+      "justification": "The weighted Sylvester calculation gives deg Res_Z\u2264su+rv\u2212drs\u2264uv/d.",
+      "loss": "A factor-d improvement over the ordinary uv exceptional-line estimate.",
+      "output_scale": "At most uv/d common graph-line components, counted with resultant multiplicity.",
+      "stage": "weighted resultant",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Factor C_i with polar weight \u03b3_i and line class T_i.",
+      "justification": "Exceptional lines cost at most Xi_i resultant degree; every other graph has total local polar multiplicity at most \u03b3_i.",
+      "loss": "Normalized loss at most sum_i min(|T_i|,Xi_i)/[p(p+1)]+sum_i |T_i|\u03b3_i/[p\u00b2(p+1)].",
+      "output_scale": "Factor-sensitive rather than whole-polynomial ramification accounting.",
+      "stage": "factorwise polar cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Worst-case \u03b4_i\u2264D and \u03b3_i\u2264\u03b4_i\u2212d.",
+      "justification": "Summing the resultant bounds gives at most D\u00b2/d\u2212D exceptional lines, while the point term is at most \u03c4(D\u2212d)/p.",
+      "loss": "The exceptional term becomes O(1/(\u03b5p)) after D\u00b2=O(dp/\u03b5), but the point term can still be Theta(D/p).",
+      "output_scale": "No unconditional exponent gain.",
+      "stage": "coarse factorwise envelope",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A connected cleaned factor class of minimum degree k.",
+      "justification": "Factor-specific Newton lifting and one incidence-mixing Cauchy\u2013Schwarz estimate apply when k>\u03b4_i and 1/sqrt(p+1)\u2264k/(4p).",
+      "loss": "Only a factor four in point density.",
+      "output_scale": "One total-degree-at-most-d polynomial with global agreement at least k/(4p).",
+      "stage": "conditional single-polynomial decoder",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "p\u22658d, e=ceil((dp\u00b2)^(1/3)), D=d+e, and \u03b5=e/(p+1).",
+      "justification": "e=Theta((dp\u00b2)^(1/3)); hence \u03b5=Theta((d/p)^(1/3)), D=Theta(\u03b5p), and dp/\u03b5=Theta(e\u00b2).",
+      "loss": "Every accepted incidence is a simple whole-B polar zero.",
+      "output_scale": "The whole-polynomial \u03c4(D\u2212d)/p loss equals \u03b5 exactly.",
+      "stage": "cubic-scale saturation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "The published KTZ cubic hypothesis.",
+      "justification": "KTZ Theorem 1.1 gives an unspecified absolute c; its bivariate Lemmas 6.2\u20136.3 give the explicit recovery \u03b5/8000.",
+      "loss": "Absolute constant only.",
+      "output_scale": "Existing final global agreement at least \u03b5/8000 in m=2; unchanged by this note.",
+      "stage": "final benchmark output",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "For p=1009,d=101, taking e=469 and D=570 gives D<p, \u03b5=469/1010\u22480.464356, (d/p)^(1/3)\u22480.464312, sqrt(dp/\u03b5)\u2248468.469, and \u03b5p\u2248468.536.",
+    "For p=211,d=101,D=202, each of the 44,521 nonvertical lines has exactly 101 simple polar roots. The total is 4,496,621 bad incidences and normalized mass 101/212.",
+    "At p=103,d=101, every auxiliary \u03b4<p satisfies \u03b4\u2264102<2d. Thus the quadratic two-factor saturation construction is unavailable, as required by the theorem.",
+    "At d=p\u22121 and \u03b4=d, the only possible Z-dependent primitive factor is linear in Z with constant nonzero derivative.",
+    "The computations only check arithmetic and endpoints; the theorem is proved symbolically."
+  ],
+  "global_conclusion": "A factorwise weighted-resultant and local-intersection-multiplicity lemma is proved. It removes cross-factor collisions from the vertical ramification charge and conditionally yields one global polynomial on any large cleaned factor component. An explicit legal table shows that the unfactored per-line polar bound D\u2212d, including multiplicity accounting, is exactly sharp at the cubic parameter scale. The example is reducible and has a lower-weight factor decoder, so it does not prove sharpness for KTZ's minimum interpolant and does not improve or refute the unconditional 1/3 benchmark.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Uniform incident point-line sampling over a finite field; degree-at-most-d line labels; \u03b5\u2265C(d/q)^(1/3). Specialized here to q=p, m=2, and 101\u2264d<p.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download",
+      "result_id": "Theorem 1.1",
+      "used_for": "Quoted benchmark and single-polynomial conclusion. The theorem states an unspecified c; \u03b5/8000 comes from the bivariate proof.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Coprime trivariate polynomials and affine polynomial graphs; KTZ uses ordinary total degrees.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download",
+      "result_id": "Lemmas 2.5\u20132.6 and 5.1",
+      "used_for": "Primary-source comparison for graph-line elimination and the ordinary D(D\u22121) exceptional-line bound. The weighted and factorwise formulas in this note are independently proved, not quoted.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Simple Z-root, more graph lines through a point than the relation's weighted degree, and a connected minimum-degree incidence component.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download",
+      "result_id": "Lemmas 2.1, 2.7, and 6.1\u20136.3",
+      "used_for": "Conditional factor-class Newton lifting, uniqueness propagation, incidence mixing, and conversion to one polynomial with global agreement k/(4p).",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "KTZ's pruned bivariate graph, selected family R, weighted degree D, and simple-root cleanup.",
+      "paper": "Kominers\u2013Thaler\u2013Zheng, Improved Soundness for the Line\u2013versus\u2013Point Test, https://eccc.weizmann.ac.il/report/2026/147/revision/1/download",
+      "result_id": "Lemmas 2.2\u20132.4, 3.1\u20133.2, 4.1\u20134.3, and 5.1\u20135.2",
+      "used_for": "Exact reconstruction of the cubic bottleneck. The exponent calculation is reconstructed from displayed parameters, not quoted as a separate theorem.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "A simple Z-root over a polynomial or formal-power-series ring.",
+      "paper": "Harsha\u2013Kumar\u2013Saptharishi\u2013Sudan, An Improved Line-Point Low-Degree Test, https://arxiv.org/html/2311.12752v1",
+      "result_id": "Lemmas 2.10 and 3.1",
+      "used_for": "Primary-source ancestry and cross-check for the Newton uniqueness requirement only; no HKSS quantitative conclusion is imported.",
+      "version": "arXiv:2311.12752v1, 2023-11-21"
+    }
+  ],
+  "next_tasks": [
+    "Prove a factor-consistency dichotomy: either one low-weight factor class retains minimum degree Omega(\u03b5p), or cross-factor intersections directly expose a degree-d decoder.",
+    "Determine whether a minimum-weight KTZ interpolant can realize a Theta(D\u2212d) polar loss on a diffuse, nondecodable carrier; the present saturation example cannot.",
+    "Charge transitions between differently assigned factors using local multiplicities of Res_Z(C_i,C_j), with explicit control of concurrent pencils.",
+    "Combine the accepted component-sensitive theorem with factorwise cleanup: a factor component of line measure O(\u03b5) would inherit the verified conditional exponent 1/2.",
+    "Globalize the local thickened-curve overlap length sum_{j=1}^s j\u00b2 without pairwise overcounting at points incident to many graph curves."
+  ],
+  "note_markdown": "# Factorwise Weighted-Polar Accounting and a Sharp Whole-Relation Obstruction\n\n## Abstract\n\nFix dimension two over the prime field $F_p$, with $101\u2264d<p$. I prove a factorwise weighted-resultant lemma for the polynomial graph curves appearing after bivariate interpolation. Once a primitive squarefree relation $B$ is factored, every graph line may be assigned to an irreducible factor that vanishes on it. For the assigned factor $C_i$, both identically ramified lines and finite ramification points are controlled by its own weighted degree and its own vertical polar $C_{i,Z}$, rather than by the degree of all of $B$. A cleaned connected factor class of minimum degree $k$ yields one total-degree-at-most-$d$ polynomial with global agreement at least $k/(4p)$.\n\nThe adversarial half is sharp. For every $2d\u2264D<p$, an explicit primitive squarefree relation and a legal line-versus-point table attain exactly $D-d$ simple whole-relation polar intersections on every supported line. When $p\u22658d$ the parameters may be chosen so that $\u03b5=\u0398((d/p)^{1/3})$ and $D=\u0398(sqrt(dp/\u03b5))=\u0398(\u03b5p)$. Thus raw B\u00e9zout or intersection-multiplicity accounting cannot improve the whole-$B$ ramification term. All bad roots in the example are cross-factor collisions; assigning the graphs to the factor $Z$ removes them completely. This identifies factor consistency, not a sharper unfactored root count, as the missing step. The unconditional benchmark is not improved.\n\n## Test and Notation\n\nFix a prime $p$ and an integer $101\u2264d<p$; throughout $m=2$. There are $p(p+1)$ affine lines in $F_p\u00b2$, each with $p$ points. The test chooses an affine line uniformly and then a point uniformly on it. Its incidence denominator is $p\u00b2(p+1)$.\n\nLet $f:F_p\u00b2\u2192F_p$, and let every line $L$ carry $P_L\u2208F_p[t]$ of degree at most $d$. Put\n\n$$\n\u03b5=Pr_{L,x\u2208L}[P_L(x)=f(x)].\n$$\n\nGlobal candidates always have total degree at most $d$. Give $X,Y,Z$ weights $1,1,d$. For a polynomial $F$, write $wdeg(F)$ for this weighted degree. If $\u03b3_L(t)=(L(t),P_L(t))$, then\n\n$$\ndeg_t F(\u03b3_L(t))\u2264wdeg(F).\n$$\n\nIf $F(\u03b3_L)$ is nonzero and vanishes at $t_0$, define its local graph intersection multiplicity to be $ord_{t_0}F(\u03b3_L(t))$. This is the intersection multiplicity of the parametrized graph with the divisor $F=0$ on the normalization of the graph curve.\n\nA polynomial in $F_p[X,Y,Z]$ is primitive in $Z$ when the gcd in $F_p[X,Y]$ of its $Z$-coefficients is one.\n\n## Prior Results\n\nThe active corpus contains four submissions and four audits. Researcher 0002 is verified; its component-sensitive decoder gives a conditional exponent $1/2$. Researchers 0001 and 0004 require revision; they respectively isolate support-sensitive cubic closure and a rank-blind multiplicity barrier. Researcher 0003 was rejected because its exact theorem string omitted the hypotheses forcing a genuinely $Z$-dependent primitive interpolant, although the weighted-resultant calculation in its detailed proof was judged sound under the fuller hypotheses. The campaign-300 leaderboards are empty. The data manifest is a stale pre-launch snapshot relative to the populated campaign-10 boards, so the live files were used. Every directory named `superseded` was excluded.\n\nThe quoted benchmark is [Kominers\u2013Thaler\u2013Zheng, Revision 1, Theorem 1.1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download). Its specialization to $q=p,m=2$ says that\n\n$$\n\u03b5\u2265C(d/p)^{1/3}\n$$\n\nimplies one total-degree-at-most-$d$ polynomial with agreement at least $c\u03b5$. The theorem statement leaves $c$ unspecified; Lemmas 6.2\u20136.3 in the bivariate proof give $\u03b5/8000$.\n\nKTZ Lemma 2.6 is the exact source result closest to B\u00e9zout: for coprime trivariate polynomials of ordinary total degrees $u,v$, at most $uv$ polynomial graph lines can be common zeros. It eliminates $Z$ with a resultant and invokes Lemma 2.5 on the resulting bivariate polynomial. KTZ Lemma 5.1 obtains $D(D-1)$ exceptional lines from this ordinary-degree estimate. The weighted formula and the factor assignment below are proved here; neither is quoted from KTZ.\n\nThe cubic calculation is also a reconstruction, not a quoted theorem. KTZ Lemma 3.2 gives $|R|=O(p/\u03b5)$; Lemmas 2.2 and 4.1\u20134.2 give $D=O(sqrt(dp/\u03b5))$; Lemmas 4.3, 5.2, and 6.1 require $D=O(\u03b5p)$. Therefore $\u03b5\u00b3=\u03a9(d/p)$. The resultant-line deletion alone is weaker. [HKSS Lemmas 2.10 and 3.1](https://arxiv.org/html/2311.12752v1) are used only as a source cross-check for simple-root Newton uniqueness.\n\n## Theorem\n\n**Theorem A \u2014 factorwise weighted-polar accounting.** Let $p$ be prime and $101\u2264d<p$. Let $B\u2208F_p[X,Y,Z]$ be primitive in $Z$, squarefree, of positive $Z$-degree, and of weighted degree $\u03b4<p$. Write\n\n$$\nB=c\u220f_{i=1}^s C_i\n$$\n\nas a product of distinct irreducibles over $F_p$. Put\n\n$$\n\u03b4_i=wdeg(C_i),\\quad r_i=deg_Z(C_i),\\quad \u03b3_i=wdeg(C_{i,Z}),\n$$\n\nand\n\n$$\n\u039e_i=(r_i-1)\u03b4_i+r_i\u03b3_i-dr_i(r_i-1).\n$$\n\nLet $T$ be a family of distinct affine lines with degree-at-most-$d$ labels, and let $T=\u2294_iT_i$ be a chosen partition such that\n\n$$\nC_i(L(t),P_L(t))\u22610\\qquad(L\u2208T_i).\n$$\n\nLet $e_i$ be the number of $L\u2208T_i$ for which $C_{i,Z}(L(t),P_L(t))\u22610$. Then\n\n$$\ne_i\u2264min\\{|T_i|,\u039e_i\\}.\n$$\n\nOn every other line in $T_i$,\n\n$$\nsum_{t\u2208F_p}ord_t C_{i,Z}(L(t),P_L(t))\u2264\u03b3_i.\n$$\n\nFor every point table $f$, the number of accepted incidences satisfying $C_{i(L),Z}(x,f(x))=0$ is at most\n\n$$\nsum_i\\bigl(pe_i+(|T_i|-e_i)\u03b3_i\\bigr).\n$$\n\nConsequently, its uniform-incidence measure is at most\n\n$$\nfrac{sum_i min\\{|T_i|,\u039e_i\\}}{p(p+1)}\n+\nfrac{sum_i|T_i|\u03b3_i}{p\u00b2(p+1)}.\n$$\n\nMoreover, $\u03b3_i\u2264\u03b4_i-d$ and\n\n$$\n\u039e_i\u2264(2r_i-1)\u03b4_i-dr_i\u00b2\u2264\u03b4_i\u00b2/d-\u03b4_i.\n$$\n\nWriting $\u03c4_i=|T_i|/[p(p+1)]$, $\u03c4=sum_i\u03c4_i$, and $bar\u03b4=(sum_i\u03c4_i\u03b4_i)/\u03c4$ for $\u03c4>0$, the coarser bound is\n\n$$\nfrac{\u03b4\u00b2/d-\u03b4}{p(p+1)}+frac{\u03c4(bar\u03b4-d)}p.\n$$\n\n**Corollary B \u2014 cleaned factor component.** Under Theorem A, fix $i$. Let $G=(X,T',E')$ be a connected subgraph of accepted incidences with $T'\u2286T_i$, minimum degree at least the integer $k$, and $C_{i,Z}(x,f(x))\u22600$ on every edge. If\n\n$$\nk>\u03b4_i,\\qquad frac1{sqrt(p+1)}\u2264frac{k}{4p},\n$$\n\nthen there is $Q\u2208F_p[X,Y]$ of total degree at most $d$ such that\n\n$$\nQ(x)=f(x)\\quad(x\u2208X),\\qquad Pr_x[Q(x)=f(x)]\u2265frac{k}{4p}.\n$$\n\n**Theorem C \u2014 sharpness of the whole-relation polar term.** Let $p$ be prime and let the integers satisfy\n\n$$\n101\u2264d,\\qquad 2d\u2264D<p.\n$$\n\nThere exist a primitive squarefree $B$ of weighted degree $D$, a point table, and degree-at-most-$d$ line labels such that the test agreement is\n\n$$\n\u03b5=frac{D-d}{p+1},\n$$\n\nall accepted incidences lie on nonvertical graph lines satisfying $B(L(t),P_L(t))\u22610$, and every accepted incidence is a simple zero of $B_Z(L(t),P_L(t))$. If $\u03c4=p/(p+1)$ is the measure of the nonvertical lines, then the ramified-incidence measure is exactly\n\n$$\n\u03b5=frac{\u03c4(D-d)}p.\n$$\n\nThe same graph lines admit an assignment to a factor $C$ with $C_Z=1$, and a total-degree-zero polynomial has global agreement $(D-d)/p>\u03b5$.\n\n## Proof or Conditional Proof\n\n**[P1] (proved: factor separability).** If an irreducible factor $C_i$ were independent of $Z$, it would divide every $Z$-coefficient of $B$, contradicting primitivity. Thus $r_i\u22651$. Since $r_i\u2264\u03b4_i/d\u2264\u03b4/d<p$, differentiation does not kill its leading $Z$-term. Hence $C_{i,Z}\u22600$. Irreducibility and the smaller $Z$-degree give $gcd(C_i,C_{i,Z})=1$. No absolute irreducibility is used.\n\n**[P2] (proved: weighted resultant degree).** Write\n\n$$\nU=sum_{a=0}^r u_a(X,Y)Z^a,\\qquad V=sum_{b=0}^s v_b(X,Y)Z^b\n$$\n\nwith weighted degrees $u,v$. Then $deg(u_a)\u2264u-da$ and $deg(v_b)\u2264v-db$. Every monomial of the Sylvester determinant contains $s$ coefficients of $U$, $r$ coefficients of $V$, and has aggregate coefficient-index sum $rs$. Therefore\n\n$$\ndeg_{X,Y}Res_Z(U,V)\u2264su+rv-drs.\n$$\n\nThis proof uses the determinant directly and performs no division by a leading coefficient. If one $Z$-degree is zero, the same formula is the direct degree bound for that base polynomial.\n\n**[P3] (proved: exceptional graph lines with multiplicity).** Apply [P2] to $U=C_i$ and $V=C_{i,Z}$. Their $Z$-degrees are $r_i,r_i-1$, and their weighted degrees are $\u03b4_i,\u03b3_i$. By [P1], the resultant $R_i=Res_Z(C_i,C_{i,Z})$ is nonzero and\n\n$$\ndeg R_i\u2264\u039e_i.\n$$\n\nIf both restrictions vanish identically on a graph over $L$, specialization of the Sylvester determinant vanishes identically on the base line. Its affine-linear equation divides $R_i$. More precisely, with $\u03bd_L=ord_{ell_L}(R_i)$,\n\n$$\nsum_{L\u2208T_i:C_{i,Z}|_L\u22610}\u03bd_L\u2264deg R_i\u2264\u039e_i.\n$$\n\nSince every $\u03bd_L\u22651$, this proves the exceptional-line count.\n\n**[P4] (proved: finite polar intersections).** On a nonexceptional line, the pullback\n\n$$\ng_L(t)=C_{i,Z}(L(t),P_L(t))\n$$\n\nis a nonzero polynomial of degree at most $\u03b3_i$. Its roots, counted with their orders, therefore sum to at most $\u03b3_i$. Accepted ramified incidences are a subset of these roots. This is the complete local intersection-multiplicity charge; no multiplicity is suppressed.\n\n**[P5] (proved: normalized factorwise loss).** An exceptional line contributes at most $p$ accepted incidences, and every other assigned line contributes at most $\u03b3_i$. Summing [P3]\u2013[P4] and dividing by $p\u00b2(p+1)$ gives Theorem A's exact and relaxed bounds. Differentiation lowers weighted degree by at least $d$, so $\u03b3_i\u2264\u03b4_i-d$. Substitution in $\u039e_i$ yields\n\n$$\n\u039e_i\u2264(2r_i-1)\u03b4_i-dr_i\u00b2\n=\u03b4_i\u00b2/d-\u03b4_i-(\u03b4_i-dr_i)\u00b2/d.\n$$\n\nFinally, weighted degree is additive under products, so $sum_i\u03b4_i=\u03b4$, and $sum_i\u03b4_i\u00b2\u2264\u03b4\u00b2$. This proves the coarse expression.\n\n**[P6] (conditional: one factor class decodes).** At any point of $G$, an incident graph identity and acceptance give $C_i(x,f(x))=0$; the cleaned-edge hypothesis makes this root simple. Choose a point $b$. It has at least $k>\u03b4_i$ incident lines. The simple-root Newton recursion, exactly KTZ Lemmas 2.7 and 6.1 with degree $\u03b4_i$, constructs $Q$ of total degree at most $d$, agrees with every incident line label, and satisfies $C_i(X,Y,Q)\u22610$. It divides only by $C_{i,Z}(b,f(b))$.\n\nSimple-root uniqueness propagates the same $Q$ throughout the connected component. For completeness, let $a,b_0,\u03c1$ be its normalized point, line, and edge measures, put $\u03ba=k/p$ and $u=1/sqrt(p+1)$. Minimum degree and affine incidence mixing give\n\n$$\n\u03c1\u2265\u03baa/2,\\qquad \u03c1\u2265\u03bab_0,\\qquad \u03c1\u2264ab_0+u sqrt(ab_0).\n$$\n\nIf $a<\u03ba/4$, the second and third inequalities imply $b_0<a/9$; substituting this into the upper bound contradicts $\u03c1\u2265\u03baa/2$. If $b_0<\u03ba/4$, the first and third imply $a<b_0$; substitution contradicts $\u03c1\u2265\u03bab_0$. Thus $a,b_0\u2265\u03ba/4$, proving global agreement at least $k/(4p)$. This is the only Cauchy\u2013Schwarz loss in the new decoder.\n\n**[P7] (proved: construction).** Put $e=D-d$. Choose $S\u2282F_p$ with $|S|=e$ and set\n\n$$\nH(X)=prod_{a\u2208S}(X-a),\\qquad B=Z(Z-H(X)).\n$$\n\nBecause $e\u2265d$, $wdeg(B)=max\\{2d,d+e\\}=D$. The two distinct factors $Z$ and $Z-H$ make $B$ squarefree, and its leading $Z\u00b2$ coefficient one makes it primitive.\n\nSet $f(x,y)=0$ for $x\u2208S$ and $f(x,y)=1$ otherwise. Give every nonvertical line the constant label zero and every vertical line the constant label two. Since $p>d\u2265101$, the value two differs from zero and one. Vertical lines have no accepted points. A nonvertical parameterization has $X=u+vt$ with $v\u22600$, so it contains exactly $e$ accepted points.\n\nThere are $p\u00b2$ nonvertical lines. Hence the accepted-incidence count is $ep\u00b2$, and\n\n$$\n\u03b5=frac{ep\u00b2}{p\u00b2(p+1)}=frac e{p+1}.\n$$\n\n**[P8] (proved: exact intersection saturation).** On every nonvertical zero-labelled graph,\n\n$$\nB(L(t),0)\u22610,\\qquad B_Z(L(t),0)=-H(u+vt).\n$$\n\nThe latter has exactly $e=D-d$ roots. They are simple because $H$ has distinct roots and $v\u22600$, and they are exactly the accepted parameters. Thus every accepted incidence is removed by whole-$B$ vertical cleanup and its normalized mass is\n\n$$\nfrac e{p+1}=frac{p}{p+1}frac{D-d}{p}.\n$$\n\nAt every such lifted point, $B_X=B_Y=B_Z=0$. There are $ep$ lifted singular points, each incident to $p$ accepted nonvertical graph lines, giving $ep\u00b2$ ramified incidences. Counting base points instead of incidences therefore does not save a factor. Nevertheless every relevant graph belongs to $C_1=Z$, for which $wdeg(C_1)=d$ and $C_{1,Z}=1$. Its factorwise loss is zero. Also $Q=0$ agrees with $f$ on $ep$ points, a fraction $e/p>\u03b5$.\n\n**[P9] (proved: cubic-scale choice).** Assume $p\u22658d$ and set\n\n$$\ne=ceil((dp\u00b2)^{1/3}),\\qquad D=d+e.\n$$\n\nThen $e\u22654d$, $e\u2264p/2+1$, and $D<p$. Since $(dp\u00b2)^{1/3}\u2264e\u22642(dp\u00b2)^{1/3}$ and $p\u2264p+1\u22642p$,\n\n$$\nfrac12(d/p)^{1/3}\u2264\u03b5\u22642(d/p)^{1/3}.\n$$\n\nMoreover $D=\u0398(e)=\u0398(\u03b5p)$, while\n\n$$\ndp/\u03b5=dp(p+1)/e=\u0398(e\u00b2).\n$$\n\nThus $D=\u0398(sqrt(dp/\u03b5))$. Every exponent manipulation in the sharpness claim is contained in these displayed comparisons.\n\n**[P10] (refuted: minimum-interpolant saturation).** The construction does not prove that KTZ's chosen minimum-weight interpolant pays the whole-$B$ loss. The polynomial $Z$, of weight $d<D$, already vanishes on every selected nonvertical graph and has derivative one. The construction refutes only a cleanup theorem based on an arbitrary primitive squarefree whole relation and its degree data.\n\n**[P11] (refuted as campaign obstructions: inseparability and direction concentration).** The primitive squarefree polynomial $Z^p-X$ has zero vertical derivative, but weighted degree $pd$ and is excluded by $\u03b4<p$. If correct labels are instead concentrated in exactly $k$ direction classes with $f=0$, the exact local agreement is $k/(p+1)$ and $Q=0$ agrees everywhere. Neither example refutes the factorwise theorem or the soundness benchmark.\n\n## Exponent Ledger\n\n| Stage | Input | Loss | Output |\n|---|---|---|---|\n| KTZ pruning | $\u03b5$ | constants | degree $\u0398(\u03b5p)$ |\n| KTZ selector | degree $\u0398(\u03b5p)$ | $|R|=O(p/\u03b5)$ | one inverse $\u03b5$ |\n| Interpolation | $D\u00b3/d$ coefficients vs. $|R|D$ equations | square root | $D=O(sqrt(dp/\u03b5))$ |\n| Identity and lifting | $D$ versus $\u0398(\u03b5p)$ roots | $D=O(\u03b5p)$ | $\u03b5\u00b3=\u03a9(d/p)$ |\n| Ordinary resultant | $D\u00b2$ exceptional lines | $D\u00b2/p\u00b2$ | only the weaker square-root gate |\n| Weighted resultant | $D\u00b2/d$ exceptional lines | $D\u00b2/(dp\u00b2)=O(1/(\u03b5p))$ | lower order |\n| Whole polar | $D-d$ roots per line | $\u03c4(D-d)/p$ | can equal all of $\u03b5$ |\n| Factor polar | factor weights $\u03b3_i$ | $sum_i\u03c4_i\u03b3_i/p$ | potentially smaller, but conditional |\n| Factor component | minimum degree $k$ | one mixing Cauchy\u2013Schwarz loss | agreement $k/(4p)$ |\n| Sharpness scaling | $e\u00b3\u2248dp\u00b2$ | $\u03b5=e/(p+1)$ | existing exponent $1/3$ exactly |\n| Final benchmark | cubic hypothesis | constant $1/8000$ | one degree-$d$ polynomial |\n\nNo Markov inequality, probabilistic union bound, or interpolation-multiplicity assumption appears in Theorem A or C. KTZ's selector uses Chernoff, a union bound, and Chebyshev, but those introduce constants rather than another power of $\u03b5$. Every sharpness root has local intersection multiplicity exactly one.\n\n## Counterexample Attempts\n\nTheorem C is a successful obstruction to improving the unfactored polar-root budget by B\u00e9zout or multiplicity accounting alone. It is deliberately not a soundness counterexample: it contains the explicit factor and decoder $Z=0$.\n\nThe construction also shows why replacing incidence counts by counts of singular base points is invalid. Each of the $ep$ singular lifted points supports $p$ accepted graph incidences. The resultant/discriminant is proportional to $H\u00b2$; passing to its reduced support $H=0$ loses precisely this concurrency information.\n\nThe attempted stronger conclusion about KTZ's minimum interpolant is refuted in [P10]. A genuine lower bound for that architecture must force several factors to be used by different graph lines while preventing a lower-weight content or factor relation.\n\nThe inseparability and concentrated-direction attempts are disposed of in [P11]. At the legal lower boundary, $p=1009,d=101,e=469,D=570$ realizes the cubic-scale construction. At the extreme near-p boundary $p=103,d=101$, $D<p$ forces $D<2d$, so this quadratic branch-collision construction cannot occur.\n\n## Characteristic Audit\n\n- The field is exactly $F_p$, and $d\u2265101$ makes $p$ odd.\n- The precise derivative requirement is $deg_Z(C_i)<p$; $\u03b4<p$ is a convenient sufficient hypothesis inherited from KTZ.\n- Primitivity excludes base-only factors. Factorization is over $F_p$, not its algebraic closure.\n- The resultant is never normalized to a discriminant and no leading coefficient is inverted.\n- Local multiplicities are orders in $F_p[t]$; no factorial is inverted.\n- The conditional lift divides only by a nonzero value of $C_{i,Z}$.\n- Content removal is not hidden: Theorem A starts after it, with primitive positive-$Z$-degree $B$.\n- Every sharpness root is distinct and simple. Repeated interpolation nodes or hidden Hasse multiplicities play no role.\n- At $d>p/2$, $\u03b4<p$ permits only one $Z$-dependent factor of $Z$-degree one. At $d=p-1,\u03b4=d$, its derivative is constant.\n- Constant labels in Theorem C are legal under the ambient degree cap $d\u2265101$ and do not analyze the excluded degree-zero regime.\n\n## Limitations\n\nThe factorwise lemma does not prove that one factor class retains minimum degree $\u03a9(\u03b5p)$. Lines assigned to different factors may meet at accepted points, and factorwise simplicity does not by itself propagate one polynomial across such a transition. A factor-consistency or list-to-single argument is still required.\n\nIn the worst case an active irreducible factor may have $\u03b3_i=\u0398(D-d)$, so the factorwise bound returns the original cubic gate. Independently, KTZ identity extension requires $D=O(\u03b5p)$ before the cleanup stage. Improving ramification alone therefore cannot improve the benchmark.\n\nThe sharpness construction is reducible and is not minimum-weight for its graph family. It proves exact sharpness only for black-box whole-relation cleanup. It neither proves that KTZ's selected interpolant saturates the loss nor refutes any exponent-$1-o(1)$ soundness theorem.\n\nNo finite computation is used to prove an asymptotic statement, and no claim concerns dimensions above two, extension fields, altered sampling, or individual degree.",
+  "obstructions": [
+    "Whole-polynomial B_Z charges cross-factor collisions even when the factor carrying the graph is vertically simple.",
+    "The per-line whole-polar bound D\u2212d is exactly sharp, with multiplicity-one roots, and its normalized loss can equal all local agreement at the cubic scale.",
+    "Counting singular lifted points instead of incidences fails under p-fold concurrency.",
+    "No current argument guarantees that a factor class of small weighted polar degree retains minimum degree Omega(\u03b5p).",
+    "Even perfect factorwise cleanup leaves KTZ's earlier identity-extension requirement D=O(\u03b5p).",
+    "The saturation example is not minimum-weight; proving a minimum-interpolant obstruction remains open."
+  ],
+  "parameter_regime": "Prime p; fixed dimension m=2; integer 101\u2264d<p. The factorwise theorem assumes a primitive squarefree B of positive Z-degree and (1,1,d)-weighted degree \u03b4<p, with irreducible factors C_i, factor weights \u03b4_i, Z-degrees r_i, polar weights \u03b3_i, and assigned line classes T_i. Its decoder additionally assumes a connected cleaned factor class of minimum degree k>\u03b4_i and 1/sqrt(p+1)\u2264k/(4p). The sharpness construction assumes 2d\u2264D<p; its cubic-scale specialization assumes p\u22658d and D\u2212d=ceil((dp\u00b2)^(1/3)).",
+  "proof_steps": [
+    {
+      "dependencies": [],
+      "id": "P1",
+      "proof": "Primitivity excludes every Z-independent irreducible factor. Since \u03b4<p, each positive Z-degree is below p, so formal differentiation is nonzero; irreducibility and lower Z-degree give coprimality with the derivative.",
+      "statement": "Every irreducible factor C_i depends on Z and satisfies gcd(C_i,C_{i,Z})=1.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [],
+      "id": "P2",
+      "proof": "Sylvester multihomogeneity uses s coefficients of U and r coefficients of V with aggregate Z-index rs. The coefficient degree bounds u\u2212di and v\u2212dj give deg Res_Z(U,V)\u2264su+rv\u2212drs.",
+      "statement": "The weighted resultant has base degree at most su+rv\u2212drs.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2"
+      ],
+      "id": "P3",
+      "proof": "Apply P2 to C_i and C_{i,Z}. Every common graph line supplies a distinct affine-linear factor of the nonzero resultant; summing its divisorial orders is bounded by the resultant degree Xi_i.",
+      "statement": "The assigned factor C_i has at most Xi_i identically ramified graph lines, counted with resultant multiplicity.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P4",
+      "proof": "The nonzero pullback C_{i,Z}(L(t),P_L(t)) has degree at most \u03b3_i, so the sum of its root orders is at most \u03b3_i.",
+      "statement": "Every nonexceptional assigned graph has total local polar intersection multiplicity at most \u03b3_i.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4"
+      ],
+      "id": "P5",
+      "proof": "Exceptional lines contribute at most p incidences and other lines at most \u03b3_i. Normalization and the inequalities \u03b3_i\u2264\u03b4_i\u2212d and Xi_i\u2264\u03b4_i\u00b2/d\u2212\u03b4_i give both displayed cleanup bounds.",
+      "statement": "The factorwise ramified-incidence measure obeys the exact and coarse bounds in Theorem A.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P5",
+        "KTZ Lemmas 2.1, 2.7, and 6.1\u20136.3"
+      ],
+      "id": "P6",
+      "proof": "A simple factor root at one point lifts uniquely from more than \u03b4_i incident graph lines and propagates through the connected factor component. The affine incidence mixing inequality gives point density at least k/(4p).",
+      "statement": "A connected cleaned factor class satisfying the stated degree and mixing hypotheses yields one total-degree-at-most-d polynomial with agreement at least k/(4p).",
+      "status": "conditional"
+    },
+    {
+      "dependencies": [],
+      "id": "P7",
+      "proof": "For e=D\u2212d, choose squarefree H of degree e and B=Z(Z\u2212H). The strip-valued f, zero nonvertical labels, and vertical label two give exactly e accepted points on each of p\u00b2 nonvertical lines.",
+      "statement": "The explicit table in Theorem C has local agreement (D\u2212d)/(p+1).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P7"
+      ],
+      "id": "P8",
+      "proof": "On every supported graph B_Z=\u2212H(u+vt), which has exactly D\u2212d simple roots. These are exactly the accepted points, while assignment to C=Z has derivative one.",
+      "statement": "The whole-relation polar loss equals \u03c4(D\u2212d)/p exactly, whereas the factorwise loss is zero.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P7",
+        "P8"
+      ],
+      "id": "P9",
+      "proof": "With e=ceil((dp\u00b2)^(1/3)) and p\u22658d, elementary inequalities give D<p, \u03b5=Theta((d/p)^(1/3)), D=Theta(\u03b5p), and D=Theta(sqrt(dp/\u03b5)).",
+      "statement": "The sharpness construction realizes the cubic parameter balance.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P7",
+        "P8"
+      ],
+      "id": "P10",
+      "proof": "The lower-weight polynomial Z already vanishes on all selected graphs and has vertical derivative one.",
+      "statement": "The sharpness construction forces KTZ's minimum-weight interpolant to incur the whole-relation polar loss.",
+      "status": "refuted"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P11",
+      "proof": "Z^p\u2212X violates \u03b4<p, while concentration in k directions has the perfect decoder Q=0.",
+      "statement": "Inseparability or concentrated good directions refute the factorwise theorem in the campaign regime.",
+      "status": "refuted"
+    }
+  ],
+  "result_status": "proved",
+  "sampling_model": "Choose an unparameterized affine line uniformly from the p(p+1) affine lines of F_p\u00b2, then choose a point uniformly from its p points; equivalently, sample a uniform point-line incidence.",
+  "theorem_statement": "For every prime p and integer 101\u2264d<p, let B\u2208F_p[X,Y,Z] be primitive in Z, squarefree, of positive Z-degree, and of (1,1,d)-weighted degree \u03b4<p. Factor B=c\u220fC_i, put \u03b4_i=wdeg(C_i), r_i=deg_Z(C_i), \u03b3_i=wdeg(C_{i,Z}), and Xi_i=(r_i\u22121)\u03b4_i+r_i\u03b3_i\u2212dr_i(r_i\u22121). For any disjoint assignment of labeled affine graph lines T=\u2294T_i satisfying C_i(L(t),P_L(t))\u22610, at most Xi_i lines of T_i are identically C_{i,Z}-ramified, every other assigned graph has total polar intersection multiplicity at most \u03b3_i, and the normalized accepted-incidence cleanup loss is at most sum_i min{|T_i|,Xi_i}/[p(p+1)]+sum_i |T_i|\u03b3_i/[p\u00b2(p+1)]. A connected cleaned factor class of minimum degree k>\u03b4_i with 1/sqrt(p+1)\u2264k/(4p) yields one total-degree-at-most-d polynomial with global agreement at least k/(4p). Conversely, for every 2d\u2264D<p there is an explicit legal table and primitive squarefree relation of weighted degree D for which the whole-relation polar loss is exactly (D\u2212d)/(p+1)=\u03c4(D\u2212d)/p, with every intersection simple; for p\u22658d this occurs at \u03b5=Theta((d/p)^(1/3)). The construction has a factor Z with derivative one and a degree-zero global decoder, so it is a proof-architecture obstruction rather than a soundness counterexample.",
+  "title": "Factorwise Weighted-Polar Accounting and a Sharp Whole-Relation Obstruction"
+}

@@ -1,0 +1,721 @@
+You are the dedicated Lemma Writer for a mathematical autoresearch campaign.
+Post-edit every structured proof step in submission GENIUS into a clear lemma-book entry.
+You are an editor, not a researcher or verifier. The raw submission is immutable.
+
+RULE: A lemma statement contains only its quantified objects, hypotheses, and conclusion. It contains no motivation, derivation, commentary, proof sketch, interpretation, history, or explanation; put all such material in the proof.
+
+Preserve the exact mathematical content, hypotheses, status, and dependency closure of every
+source step. Never strengthen, weaken, repair, validate, refute, or omit a claim. A refuted source
+step remains visibly refuted. You may split one source step into two or more ordered entries when
+that materially improves comprehension; give the pieces consecutive part numbers and repeat the
+same source_step_id. Move any explanation removed from a statement into proof_markdown. Retain
+all substantive proof content. Titles are short noun phrases and contain no mathematical claim.
+
+Every source proof-step id must occur in at least one output entry. Set coverage_complete=true
+and omitted_source_step_ids=[] only after checking this. Use stable ids of the form
+GENIUS:<source-step-id>.<part>. Enclose every mathematical expression in $...$ or $$...$$
+using KaTeX-supported LaTeX. Do not put mathematics in code spans, and do not leave TeX commands
+outside math delimiters. Use Markdown prose outside mathematics. The publication harness will
+reject any entry that does not parse with KaTeX.
+
+Set source_job_id to GENIUS and source_response_sha256 to 84620adb8c23cc6477928d34057606036ce96a97b6ba36faaf7a9574ed26f821.
+
+SOURCE SUBMISSION:
+{
+  "abstain_reason": null,
+  "architectures": [
+    {
+      "claimed_exponent": "Conditional 1\u2212\u03b7 for every fixed 0<\u03b7<1",
+      "core_idea": "A label-aware rank-or-decode lemma returns either a decoder immediately or an accepted rank-reaching graph carrying \u03a9\u03b8(\u03b5) mass and a relation of weighted degree D=O\u03b8(d). The relation is extended, cleaned using B_Z, and peeled. Each connected component then yields a degree-d template; all templates divide the same bounded-Z-degree relation, so one template carries \u03a9\u03b8(\u03b5) mass.",
+      "id": "A-RD",
+      "known_attacks": [
+        "Base-only kernel relations unless |R|>D is explicit.",
+        "Frobenius inseparability unless D<p is derived before differentiating.",
+        "Singular pencils with many compatible lines unless B_Z=0 incidences are removed.",
+        "Graph-only reaching covers can require \u03a9(p/\u03b5) lines even when an immediate constant decoder exists.",
+        "The uniform exact-linear Cd/p endpoint is false at the legal degree d=101."
+      ],
+      "missing_obligations": [
+        "RD\u03b8 only: prove the bounded-weight rank-or-decode dichotomy, uniformly over arbitrary line tables, with mass a\u03b8 \u03b5 and D\u2264K\u03b8d."
+      ],
+      "name": "Bounded-weight rank-or-decode with component-template compression",
+      "priority": 1,
+      "proved_components": [
+        "Near-linear parameter gate D<p.",
+        "Squarefree rank-kernel extraction and reached-root extension.",
+        "Primitive content removal and direct B_Z separability.",
+        "Exceptional-line and exceptional-point bounds followed by degree-D peeling.",
+        "Componentwise formal-implicit lifting and propagation.",
+        "Compression of all component templates to at most deg_Z B\u2264D/d possibilities.",
+        "Pigeonhole conversion from the bounded template list to one global polynomial."
+      ]
+    },
+    {
+      "claimed_exponent": "Conditional 1/2",
+      "core_idea": "Apply the accepted component-sensitive KTZ decoder to a pruned connected component whose line measure satisfies \u03c4\u2264\u039b\u03b5. Its interpolation conditions reduce to \u03b5\u00b2=\u03a9\u039b(d/p).",
+      "id": "A-COMP",
+      "known_attacks": [
+        "Local agreement alone does not force a component with \u03c4=O(\u03b5).",
+        "Full-support and cover-obstruction examples distribute accepted mass broadly."
+      ],
+      "missing_obligations": [
+        "Prove a global dichotomy producing either a decoder or a connected component with \u03c4\u2264\u039b\u03b5 while retaining \u03a9(\u03b5) mass."
+      ],
+      "name": "Component-local concentration",
+      "priority": 2,
+      "proved_components": [
+        "Accepted theorem of researcher-0002 under k\u00b2\u22652^40dp and k\u00b3\u22652^40d\u03c4p\u00b2.",
+        "One-polynomial conclusion with agreement at least k/(800p)."
+      ]
+    },
+    {
+      "claimed_exponent": "Conditional 1/(a+2), hence at most 1/2 for a\u22650",
+      "core_idea": "Exploit a point-popularity tail u*\u2265\u03ba \u03b5^a p. The asymmetric decoder closes when u*\u03b5\u00b2=\u03a9(d), giving \u03b5^(a+2)=\u03a9(d/p). The high-tail branch is compatible with A-RD and narrows its remaining incidence regime.",
+      "id": "A-TAIL",
+      "known_attacks": [
+        "The universal bound available from average degree corresponds essentially to a=1 and recovers only the cubic threshold.",
+        "Bounded-order star moments and density-only DRC do not force a stronger popularity tail."
+      ],
+      "missing_obligations": [
+        "Prove a universal tail exponent a<1, or handle the complementary low-tail regime through A-RD."
+      ],
+      "name": "Asymmetric popularity-tail decoding",
+      "priority": 3,
+      "proved_components": [
+        "Asymmetric component decoder under uv\u22652^60dp and u min(u,v)^2\u22652^60d\u03c4p\u00b2.",
+        "High-tail implication u*\u03b5\u00b2\u22652^70d gives agreement at least \u03b5/12800."
+      ]
+    }
+  ],
+  "bottleneck_map": [
+    {
+      "input_scale": "\u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8)",
+      "justification": "This is the sole new mathematical hypothesis in the selected architecture.",
+      "loss": "[incidence-combinatorial] Either direct agreement c\u03b8 \u03b5 or a rank-reaching certificate of mass a\u03b8 \u03b5 and D\u2264K\u03b8d.",
+      "output_scale": "Direct decoder, or e(G)\u2265a\u03b8 \u03b5 with D=O\u03b8(d)",
+      "stage": "A-RD.1 bounded-weight rank-or-decode",
+      "status": "conjectural"
+    },
+    {
+      "input_scale": "D\u2264K\u03b8d and \u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8)",
+      "justification": "D/p\u2264(K\u03b8/C\u03b8)\u03b5; taking C\u03b8\u22658K\u03b8/a\u03b8 gives D<p.",
+      "loss": "[algebraic] No exponent loss; only enlargement of the threshold constant.",
+      "output_scale": "D/p\u2264a\u03b8 \u03b5/8 and (D/p)^2+3D/p<a\u03b8 \u03b5/2",
+      "stage": "A-RD.2 characteristic gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Formal rank deficiency and |R|>D",
+      "justification": "A kernel element can be radicalized; more than D selected lines exclude a base-only relation.",
+      "loss": "[algebraic] None.",
+      "output_scale": "Squarefree Z-dependent A of weighted degree at most D",
+      "stage": "A-RD.3 interpolation and identity extension",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Relation identities on all target lines",
+      "justification": "Content lines, identically ramified lines, pointwise ramification, and peeling cost less than (D/p)^2+3D/p.",
+      "loss": "[algebraic] At most half of the certificate mass.",
+      "output_scale": "e(G1)\u2265a\u03b8 \u03b5/2 and minimum degree greater than D",
+      "stage": "A-RD.4 direct B_Z cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Each component of G1",
+      "justification": "A simple seed with more than D incident graph lines yields B(X,Y,Q\u0393)=0; formal uniqueness propagates Q\u0393=f through the component.",
+      "loss": "[algebraic] None within a component.",
+      "output_scale": "One degree-d polynomial Q\u0393 per component",
+      "stage": "A-RD.5 component lifting",
+      "status": "proved"
+    },
+    {
+      "input_scale": "All component polynomials Q\u0393",
+      "justification": "Every Z\u2212Q\u0393 divides B, so the number of distinct templates is at most deg_Z B\u2264D/d\u2264K\u03b8.",
+      "loss": "[list-decoding] A factor of at most K\u03b8 when selecting one template.",
+      "output_scale": "One Q with agreement at least a\u03b8 \u03b5/(2K\u03b8)",
+      "stage": "A-RD.6 list-to-one compression",
+      "status": "proved"
+    },
+    {
+      "input_scale": "RD\u03b8 for every 0<\u03b8\u22641/4",
+      "justification": "For \u03b7\u2208(0,1), take \u03b8=min(\u03b7,1/4); because d/p<1, (d/p)^(1\u2212\u03b7)\u2265(d/p)^(1\u2212\u03b8).",
+      "loss": "[probabilistic] No additional loss.",
+      "output_scale": "Threshold exponent 1\u2212\u03b7 and agreement c\u03b7 \u03b5",
+      "stage": "A-RD.7 fixed-\u03b7 closure",
+      "status": "conditional"
+    }
+  ],
+  "claimed_exponent": "Conditional 1\u2212\u03b7 for every fixed 0<\u03b7<1; the strongest unconditional exponent in the inspected corpus remains 1/3.",
+  "counterexample_attempts": [
+    "Legal base-only failure: at p=103 and d=101, researcher-0003's relation can be forced to be Z-independent. This refutes that submitted theorem and explains why |R|>D is mandatory.",
+    "Exact-linear endpoint: for d=101, modal tables have \u03b5 asymptotic to log p/(p log log p) but global degree-101 agreement below 2/p. Thus no absolute Cd/p threshold with \u03a9(\u03b5) recovery is possible.",
+    "Inseparability: Z^p\u2212X has zero Z-derivative. It is excluded in A-RD because the parameter gate proves D<p before derivatives are used.",
+    "Singular pencils: primitive absolutely irreducible relations can support more than D compatible graph lines at a singular lift without admitting any polynomial section. Direct B_Z deletion removes precisely these lifts.",
+    "Near-p degrees: when d is close to p, the asserted threshold may exceed one and become vacuous. This is honest endpoint behavior, not a proof of soundness; no assumption such as p\u2265d^c is hidden.",
+    "Adversarial constant-label tables can force every graph-only half-reaching family to have size \u03a9(p/\u03b5), even though a constant polynomial already has \u03a9(\u03b5) agreement. Therefore A-RD must contain a direct-decoder branch.",
+    "A connected full-support carrier at \u03b5=d/p has fractional reaching optimum \u0398(p/\u03b5), sharp collision behavior, and the perfect decoder Q=0. Connectivity and regularity do not defeat the selector obstruction.",
+    "Uniform normal multiplicity costs \u0398(s\u00b2D) constraints but supplies only s-fold roots; s cancels and the cubic condition remains.",
+    "The displayed density-only DRC estimate requires t>256d, while its concurrency-corrected lower bound becomes negative at the cubic scale. It supplies no route toward exponent one.",
+    "The list-to-one attack is resolved conditionally: every component template gives a distinct divisor Z\u2212Q of the same B, so there are at most D/d templates and one carries a constant fraction of the edge mass.",
+    "Finite-field calculations and the p=103 examples are used only to falsify statements or test boundary hypotheses; none is treated as asymptotic proof."
+  ],
+  "dimension": 2,
+  "evidence_ledger": [
+    {
+      "claim_id": "COVERAGE",
+      "statement": "At the 2026-09-14T10:51:19Z cutoff, all ten active submissions, all ten verifier audits, all four live leaderboards, all Lemma Book outputs, the corpus index, messages, and all completed roadmap responses through round 3 were inspected. No completed mathematical output was omitted.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/lemma_book",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps"
+      ]
+    },
+    {
+      "claim_id": "MANIFEST-DRIFT",
+      "statement": "DATA_MANIFEST is a valid 15-file launch snapshot, not a live-state hash receipt: eight listed hashes still match and seven campaign-10 files changed as the campaign completed. The live database records ten successful researchers, ten successful verifiers, and GENIUS running.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/campaign.sqlite3",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/status.json"
+      ]
+    },
+    {
+      "claim_id": "AS-PRIMARY",
+      "statement": "Arora\u2013Sudan Theorem 23 gives p>c0(d+1)^16/\u03b5^54 and global agreement at least c1\u03b5^45/(d+1)^4; Lemmas 21\u201322 and Theorem 34 are the relevant bivariate dependencies. The resulting 1/54 field exponent is an exponent reconstruction, not a pure d/p theorem.",
+      "status": "proved",
+      "supporting_paths": [
+        "https://people.csail.mit.edu/madhu/papers/1997/arora-journ.pdf",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/arora-sudan.pdf"
+      ]
+    },
+    {
+      "claim_id": "HKSS-PRIMARY",
+      "statement": "HKSS Theorem 4.2 states the field gate p>C d/\u03b5^7 and \u03a9(\u03b5^4) agreement, but the displayed proof's own mass \u03bc=\u03a9(\u03b5^3) yields \u03a9(\u03b5^6), not \u03a9(\u03b5^4). The threshold exponent 1/7 survives this arithmetic repair; the strong 1/16 list threshold does not have a clean proved reconstruction from the displayed chain.",
+      "status": "conditional",
+      "supporting_paths": [
+        "https://arxiv.org/html/2311.12752v1",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/hkss.pdf"
+      ]
+    },
+    {
+      "claim_id": "KTZ-PRIMARY",
+      "statement": "KTZ Revision 1, Theorem 1.1 proves the cubic threshold over every finite field. Its bivariate proof yields agreement \u03b5/8000. Lemmas 2.4\u20132.7, 3.1\u20133.2, 4.1\u20134.3, 5.1\u20135.2, and 6.1\u20136.3 are the exact dependencies used in the reconstruction and selected closure.",
+      "status": "proved",
+      "supporting_paths": [
+        "https://eccc.weizmann.ac.il/report/2026/147/revision/1/download",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/ktz.pdf"
+      ]
+    },
+    {
+      "claim_id": "SUB-0001",
+      "statement": "The support-sensitive cubic theorem and modal endpoint obstruction are mathematically useful, but the exact submission requires statement and propagation repairs; its overall verdict is revise.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0001/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0001/verifier-researcher-0001/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0002",
+      "statement": "The connected component decoder under k\u00b2\u22652^40dp and k\u00b3\u22652^40d\u03c4p\u00b2 is independently accepted and returns one polynomial with agreement at least k/(800p).",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0002/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0002/verifier-researcher-0002/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0003",
+      "statement": "The submitted global theorem is false: a legal p=103,d=101 construction forces every minimum interpolant to be Z-independent. Only the properly hypothesized resultant sublemmas survive.",
+      "status": "refuted",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0003/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0003/verifier-researcher-0003/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0004",
+      "statement": "After the audited integer and range qualifications, uniform graph multiplicity has an s\u00b2 interpolation cost and s root gain, so it cannot improve the cubic exponent in the rank-blind architecture.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0004/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0004/verifier-researcher-0004/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0005",
+      "statement": "The Hasse-height and factor-cleanup algebra is useful, but its bridge from the modified cleanup graph to one KTZ polynomial is missing; the weight-pd example prevents a hidden multiplicity gain.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0005/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0005/verifier-researcher-0005/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0006",
+      "statement": "Prime-field vertical separability and the weighted resultant bound are independently accepted; the same submission supplies an accepted singular-lift obstruction.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0006/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0006/verifier-researcher-0006/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0007",
+      "statement": "The factorwise polar accounting is sound after wording repairs, but still pays an O(D/p) cleanup loss and gives no exponent improvement by itself.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0007/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0007/verifier-researcher-0007/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0008",
+      "statement": "The regular full-support carrier and corrected fractional-cover optimum \u0398(p/\u03b5) are valid obstructions to incidence-blind selectors, not counterexamples to soundness.",
+      "status": "proved",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0008/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0008/verifier-researcher-0008/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0009",
+      "statement": "The exact star-moment envelopes and concurrency-corrected DRC diagnostics are valid, but the submission's positive integrality assertion is false and the displayed DRC bound becomes negative in the relevant range.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0009/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0009/verifier-researcher-0009/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SUB-0010",
+      "statement": "The asymmetric decoder and high-popularity-tail branch are sound after audited statement repairs. They yield exponent 1/(a+2) under u*\u2265\u03ba \u03b5^a p but do not supply a universal a<1.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0010/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews/researcher-0010/verifier-researcher-0010/audit.json"
+      ]
+    },
+    {
+      "claim_id": "SELECTED-CLOSURE",
+      "statement": "Given RD\u03b8 with its precise rank and reach conditions, every downstream algebraic, characteristic, cleanup, propagation, and list-to-one stage is proved.",
+      "status": "conditional",
+      "supporting_paths": [
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T103518Z-89cee6f61d-4935f2854c/response.json",
+        "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/agent_logs/20260914T103518Z-5acb046f2b-d2f34d6751/response.json",
+        "https://eccc.weizmann.ac.il/report/2026/147/revision/1/download"
+      ]
+    }
+  ],
+  "exponent_ledger": [
+    {
+      "input_scale": "Local success \u03b5",
+      "justification": "Arora\u2013Sudan Lemma 21 with t=\u0398((d+1)^2\u03b5^\u22126).",
+      "loss": "[probabilistic + incidence-combinatorial] Structured density \u03b3=\u0398(\u03b5^9) and relation degree D=\u0398((d+1)^4\u03b5^\u22129).",
+      "output_scale": "\u03b3=\u0398(\u03b5^9), D=\u0398((d+1)^4\u03b5^\u22129)",
+      "stage": "AS.1 structured-set construction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=\u0398((d+1)^4\u03b5^\u22129), \u03b3=\u0398(\u03b5^9)",
+      "justification": "Arora\u2013Sudan Lemma 22 requires p>12D^4/\u03b3\u00b2.",
+      "loss": "[algebraic] Four powers of D and two inverse powers of \u03b3.",
+      "output_scale": "p\u226b(d+1)^16\u03b5^\u221254",
+      "stage": "AS.2 Hilbert/factor gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "The AS field gate",
+      "justification": "Theorem 23 specializes to m=2.",
+      "loss": "[algebraic] Agreement \u03b3^4/(8D).",
+      "output_scale": "Global agreement \u03a9(\u03b5^45/(d+1)^4)",
+      "stage": "AS.3 one-polynomial recovery",
+      "status": "proved"
+    },
+    {
+      "input_scale": "\u03c1=d/p",
+      "justification": "Solving the quoted field gate gives \u03b5\u2273(d+1)^(8/27)p^\u22121/54.",
+      "loss": "[algebraic] Residual degree factor prevents a uniform ratio-only theorem.",
+      "output_scale": "Approximately d^(5/18)\u03c1^(1/54), not a pure \u03c1 exponent",
+      "stage": "AS.4 normalized reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Local success \u03b5",
+      "justification": "HKSS Theorem 4.3.",
+      "loss": "[probabilistic + algebraic] D=O(d/\u03b5\u00b2), Z-degree O(\u03b5^\u22122), structured-set size \u03a9(\u03b5\u00b2p\u00b2), but summed local success only \u03a9(\u03b5\u00b3p\u00b2).",
+      "output_scale": "A bounded-Z-degree relation on a structured set",
+      "stage": "HKSS.1 interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "\u03b5 and d/p",
+      "justification": "HKSS Theorem 4.2 states p>C d/\u03b5^7.",
+      "loss": "[algebraic] Seven inverse powers of \u03b5 in the field gate.",
+      "output_scale": "Stated threshold \u03b5\u226b(d/p)^(1/7)",
+      "stage": "HKSS.2 quoted weak theorem",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Summed local success \u03a9(\u03b5\u00b3p\u00b2)",
+      "justification": "The displayed proof calls quantities of order \u03b5\u00b3 by \u03b5\u00b2; retaining the displayed bounds yields \u03b5\u00b3 lines/directions and \u03b5\u00b3 roots per line.",
+      "loss": "[incidence-combinatorial] Two factors \u03b5\u00b3.",
+      "output_scale": "Repaired weak agreement \u03a9(\u03b5^6), while the 1/7 field gate survives",
+      "stage": "HKSS.3 exponent audit",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "HKSS weak agreement parameter",
+      "justification": "Theorem 4.4 states a 1/16 list threshold and list size at most 2/\u03b5^8; the appendix reconstruction uses the disputed \u03b5^4 weak output.",
+      "loss": "[list-decoding] Weak-to-strong reconstruction.",
+      "output_scale": "Quoted 1/16; repaired displayed chain suggests 1/24, not a proved replacement theorem",
+      "stage": "HKSS.4 strong/list conversion",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Local agreement \u03b5",
+      "justification": "KTZ Lemmas 3.1\u20133.2.",
+      "loss": "[probabilistic + incidence-combinatorial] Select O(p/\u03b5) lines while reaching \u03a9(\u03b5p) points on each retained line.",
+      "output_scale": "|R|=O(p/\u03b5), reach h=\u03a9(\u03b5p)",
+      "stage": "KTZ.1 sparse cover",
+      "status": "proved"
+    },
+    {
+      "input_scale": "|R|=O(p/\u03b5)",
+      "justification": "Weighted dimension N_D\u2248D\u00b3/d versus |R|(D+1) constraints.",
+      "loss": "[algebraic] D\u00b2=\u0398(d|R|).",
+      "output_scale": "D=O(sqrt(dp/\u03b5))",
+      "stage": "KTZ.2 interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(dp/\u03b5)), h=\u03a9(\u03b5p)",
+      "justification": "Root extension and lifting require D=O(h).",
+      "loss": "[algebraic + incidence-combinatorial] Compare relation degree with reached roots.",
+      "output_scale": "\u03b5\u00b3=\u03a9(d/p)",
+      "stage": "KTZ.3 cubic bottleneck",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(\u03b5p)",
+      "justification": "KTZ Lemmas 5.1\u20135.2.",
+      "loss": "[algebraic] Exceptional mass O(D/p+D\u00b2/p\u00b2)=O(\u03b5).",
+      "output_scale": "A constant fraction of accepted mass with simple roots",
+      "stage": "KTZ.4 cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Clean component",
+      "justification": "KTZ Lemmas 6.1\u20136.3 and affine-plane mixing.",
+      "loss": "[incidence-combinatorial] Absolute constant only; no list loss.",
+      "output_scale": "One polynomial, agreement at least \u03b5/8000 in the bivariate proof",
+      "stage": "KTZ.5 global recovery",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Carrier mass \u03b4 and line measure \u03c3",
+      "justification": "Researcher-0001's corrected support-sensitive condition is \u03b4\u00b3\u2273d\u03c3/p.",
+      "loss": "[incidence-combinatorial + algebraic] Dependence on carrier support.",
+      "output_scale": "If \u03c3=O(\u03b4), then \u03b4\u00b2\u2273d/p and a conditional 1/2 threshold",
+      "stage": "NEW-0001 support-sensitive carrier",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Component degree k and line measure \u03c4",
+      "justification": "Accepted researcher-0002 theorem.",
+      "loss": "[probabilistic + algebraic] k\u00b2\u2273dp and k\u00b3\u2273d\u03c4p\u00b2.",
+      "output_scale": "Agreement k/(800p); conditional exponent 1/2 when \u03c4=O(\u03b5)",
+      "stage": "NEW-0002 component decoder",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Minimum weighted interpolant",
+      "justification": "The exact submitted theorem omitted conditions excluding base-only relations.",
+      "loss": "[algebraic] Fatal Z-independence.",
+      "output_scale": "No valid exponent theorem",
+      "stage": "NEW-0003 minimum-interpolant route",
+      "status": "refuted"
+    },
+    {
+      "input_scale": "n selected lines, multiplicity s, and h reached points",
+      "justification": "Corrected jet dimension count gives D\u00b2\u2273dns\u00b2 and transfer requires sh>D.",
+      "loss": "[algebraic] The factor s cancels.",
+      "output_scale": "h\u00b2\u2273dn and the same cubic KTZ scale",
+      "stage": "NEW-0004 uniform multiplicity",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Hasse-height/factor cleanup",
+      "justification": "The weight-pd example shows that purification cannot make the cleanup cost sublinear without another structural input.",
+      "loss": "[algebraic] O(D/p) remains.",
+      "output_scale": "No exponent improvement; KTZ cubic scale retained",
+      "stage": "NEW-0005 Hasse cleanup",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "Primitive squarefree B with D<p",
+      "justification": "Accepted prime-field separability and resultant lemmas.",
+      "loss": "[algebraic] At most O(D\u00b2) identically ramified lines and O(D) bad points per other line.",
+      "output_scale": "Normalized cleanup below (D/p)\u00b2+D/p",
+      "stage": "NEW-0006 direct B_Z cleanup",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Factorwise assigned line classes",
+      "justification": "Audited weighted-polar accounting.",
+      "loss": "[algebraic] Summed factorwise ramification remains O(D/p) at bounded weight.",
+      "output_scale": "Sharper bookkeeping but no threshold exponent by itself",
+      "stage": "NEW-0007 factorwise polar",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Regular full-support accepted graph with \u03b5=d/p",
+      "justification": "The corrected fractional reaching optimum is \u0398(p/\u03b5), and the two-line collision \u03b5\u00b2 loss is sharp.",
+      "loss": "[incidence-combinatorial] Graph-only selection cannot beat the inverse-\u03b5 scale.",
+      "output_scale": "Architecture obstruction; Q=0 still gives perfect agreement",
+      "stage": "NEW-0008 cover and collision barriers",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Bounded-order star moments or density-only DRC",
+      "justification": "Transfer needs t>256d, while the concurrency correction destroys the claimed positive lower bound.",
+      "loss": "[probabilistic + incidence-combinatorial] Exponential-in-t density loss.",
+      "output_scale": "No proved cubic-scale certificate, hence no exponent improvement",
+      "stage": "NEW-0009 moment/DRC route",
+      "status": "refuted"
+    },
+    {
+      "input_scale": "Popularity u*\u2265\u03ba \u03b5^a p",
+      "justification": "The high-tail decoder requires u*\u03b5\u00b2=\u03a9(d).",
+      "loss": "[incidence-combinatorial] \u03b5^(a+2)=\u03a9(d/p).",
+      "output_scale": "Conditional exponent 1/(a+2), at most 1/2 for a\u22650",
+      "stage": "NEW-0010 asymmetric popularity",
+      "status": "conditional"
+    },
+    {
+      "input_scale": "\u03b5\u2265C\u03b8\u03c1^(1\u2212\u03b8)",
+      "justification": "Selected RD\u03b8 obligation.",
+      "loss": "[incidence-combinatorial] Must retain a\u03b8 \u03b5 mass while producing D\u2264K\u03b8d, or decode directly.",
+      "output_scale": "Bounded-weight rank-reaching certificate",
+      "stage": "A-RD incidence handoff",
+      "status": "conjectural"
+    },
+    {
+      "input_scale": "D\u2264K\u03b8d",
+      "justification": "The threshold implies D/p=O\u03b8(\u03b5\u03c1^\u03b8)\u2264a\u03b8 \u03b5/8.",
+      "loss": "[algebraic] Cleanup and peeling below (D/p)\u00b2+3D/p.",
+      "output_scale": "At least a\u03b8 \u03b5/2 clean mass",
+      "stage": "A-RD cleanup gate",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Clean relation of weight D",
+      "justification": "Each component gives a divisor Z\u2212Q of B.",
+      "loss": "[list-decoding] At most deg_ZB\u2264D/d\u2264K\u03b8 templates.",
+      "output_scale": "One template carries at least a\u03b8 \u03b5/(2K\u03b8)",
+      "stage": "A-RD component compression",
+      "status": "proved"
+    },
+    {
+      "input_scale": "All fixed \u03b8\u2208(0,1/4]",
+      "justification": "Set \u03b8=min(\u03b7,1/4).",
+      "loss": "[probabilistic] No further exponent loss.",
+      "output_scale": "Conditional exponent 1\u2212\u03b7",
+      "stage": "A-RD near-linear conclusion",
+      "status": "conditional"
+    }
+  ],
+  "field_regime": "prime",
+  "integrated_theorem": "Conditional theorem with all quantifiers. Fix \u03b8 with 0<\u03b8\u22641/4. Assume constants C\u03b8,K\u03b8\u22651 and 0<a\u03b8,c\u03b8\u22641, with C\u03b8\u22658K\u03b8/a\u03b8, have the following RD\u03b8 property: for every prime p, every integer 100<d<p, every f:F_p\u00b2\u2192F_p, every choice of affine bijections ell_L:F_p\u2192L, and every family P_L\u2208F_p[t] of degree at most d, write \u03b5=|Eacc|/[p\u00b2(p+1)], where Eacc={(ell_L(t),L):P_L(t)=f(ell_L(t))}. If \u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8), then either Agr_d(f)\u2265c\u03b8 \u03b5, or there are an accepted bipartite graph G=(X,T,E)\u2286Eacc, a set R\u2286T, and an integer D satisfying e(G)\u2265a\u03b8 \u03b5, d\u2264D\u2264K\u03b8d, |R|>D, rank \u03a6_{R,D}<dim V_D, and the following reach condition: every L\u2208T has more than D distinct incident points x for which some M\u2208R\\{L} is also incident to x in E. Here V_D consists of polynomials of (1,1,d)-weighted degree at most D and \u03a6_{R,D}(A)=(A(ell_M(t),P_M(t)))_{M\u2208R}. Under RD\u03b8, there exists one Q\u2208F_p[X,Y] of total degree at most d with Pr_x[Q(x)=f(x)]\u2265c\u03b8* \u03b5, where c\u03b8*=min(c\u03b8,a\u03b8/(2K\u03b8)). Consequently, if RD\u03b8 holds for every 0<\u03b8\u22641/4, then for every fixed 0<\u03b7<1 there are C\u03b7,c\u03b7>0 such that \u03b5\u2265C\u03b7(d/p)^(1\u2212\u03b7) implies one degree-at-most-d Q with agreement at least c\u03b7 \u03b5.",
+  "limitations": [
+    "RD\u03b8 is unproved. Therefore the near-linear exponent is conditional, not a campaign milestone.",
+    "The unconditional benchmark remains KTZ's exponent 1/3.",
+    "HKSS's displayed quantitative proof does not justify its stated \u03a9(\u03b5^4) output without repair, so it is not used as a black box.",
+    "The uniform exact-linear Cd/p endpoint is refuted; the result pursued here is only every fixed exponent 1\u2212\u03b7.",
+    "Constants may make the hypothesis vacuous when d is close to p. No nonvacuous near-p claim is inferred.",
+    "Only m=2 over prime fields and integer 100<d<p was analyzed. No d\u2264100 example was counted.",
+    "Roadmap work states and message-board suggestions were treated as informal; only proved arguments and independently audited source steps were promoted.",
+    "The manifest is a launch snapshot whose campaign-10 hashes drifted during execution; coverage used the live files and database at the stated cutoff.",
+    "Finite computations and small-field constructions serve only as falsification."
+  ],
+  "note_markdown": "# Verdict\n\nNo unconditional improvement over the cubic benchmark is proved. The strongest integrated result is the exact conditional theorem recorded above: after a bounded-weight rank-or-decode lemma, every algebraic and list-to-one stage closes with only a constant loss. The sole missing obligation is RD\u03b8.\n\n# Coverage receipt\n\nThe receipt is frozen at 2026-09-14T10:51:19Z. I inspected TARGET.md, both literature indexes, the 15-file DATA_MANIFEST launch snapshot, all ten submission packages, all ten verifier packages, the four current leaderboards, Lemma Book outputs, corpus-index.json, all completed roadmap rounds and messages, and the campaign databases. The active boards contained 109 bottleneck entries, seven promising submissions, one rejected submission, and two verified submissions. Campaign-300 remained a 301-job queued snapshot with empty boards and no submission or audit output. Every directory named superseded was excluded as instructed. Prompt-only roadmap retries and runtime stderr/cache files contained no completed mathematical claim.\n\nThe manifest itself has SHA-256 `343d75e49da76fbab487278e89e8f431ccc37bc29a2da1fafd5d4ba7ef194631`. Eight of its fifteen listed hashes still match. The seven mismatches are precisely the live campaign-10 database, indexes, status, and leaderboards, which changed as ten researchers and ten verifiers completed. This is provenance drift, not missing data.\n\n# Primary-source normalization\n\nFor Arora\u2013Sudan, the exact source is the [author's journal manuscript](https://people.csail.mit.edu/madhu/papers/1997/arora-journ.pdf): Lemmas 21\u201322, Theorem 23, Theorem 34, and Corollary 24. The 1/54 value in the ledger is my solution of the quoted field-size inequality, not a separately stated ratio exponent. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/arora-sudan.pdf\" purpose=\"source\"}\n\nFor HKSS, the exact inspected version is [arXiv v1](https://arxiv.org/html/2311.12752v1): Lemma 3.1, Theorems 4.2\u20134.4, and Appendix Lemmas B.4 and B.6. The source states the 1/7 weak gate and 1/16 list gate, but the displayed proof's \u03b5\u00b3 mass is subsequently treated as \u03b5\u00b2. The repaired \u03b5\u2076 weak output and suggested 1/24 strong threshold are reconstructions, not quoted theorems. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/hkss.pdf\" purpose=\"source\"}\n\nFor KTZ, the authoritative source is [ECCC Revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download): Theorem 1.1 and Lemmas 2.4\u20132.7, 3.1\u20133.2, 4.1\u20134.3, 5.1\u20135.2, and 6.1\u20136.3. The theorem's 1/3 threshold is quoted; the cover/interpolation/root-budget derivation in the ledger is my normalized reconstruction. The cached local copy was used only for navigation because it predates the authoritative revision. :codex-file-citation{path=\"/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/ktz.pdf\" purpose=\"source\"}\n\n# Integrated conclusion\n\nThe corpus points to a sharp separation. Algebraically, D=O\u03b8(d) is already enough: it makes characteristic problems disappear, makes the O(D/p) cleanup absorbable below \u03b5, and bounds the number of component templates by O\u03b8(1). The unresolved difficulty is entirely at the incidence handoff: produce such a bounded-weight relation while retaining \u03a9\u03b8(\u03b5) mass, or recognize and decode the structured table directly. Graph-only covers, uniform multiplicity, bounded-order moments, and the current DRC estimates have all been red-teamed and do not supply that handoff.",
+  "proof_steps": [
+    {
+      "dependencies": [],
+      "id": "P1",
+      "proof": "This is the only assumed statement. Formal rank deficiency means rank \u03a6_{R,D}<dim V_D, not merely failure of surjectivity. The graph lies inside Eacc, R\u2286T, line parametrizations are affine bijections, and all reached points are distinct.",
+      "statement": "Assume RD\u03b8 with constants C\u03b8,K\u03b8,a\u03b8,c\u03b8 and C\u03b8\u22658K\u03b8/a\u03b8.",
+      "status": "conjectural"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P2",
+      "proof": "Put \u03c1=d/p and x=D/p. From \u03b5\u2265C\u03b8\u03c1^(1\u2212\u03b8) and D\u2264K\u03b8d, x\u2264(K\u03b8/C\u03b8)\u03b5\u03c1^\u03b8\u2264a\u03b8 \u03b5/8\u22641/8. Thus D<p and x\u00b2+3x\u226425x/8\u226425a\u03b8 \u03b5/64<a\u03b8 \u03b5/2.",
+      "statement": "Every structured RD\u03b8 branch satisfies D<p and has enough budget for cleanup and peeling.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2"
+      ],
+      "id": "P3",
+      "proof": "Rank deficiency gives a nonzero A0 in ker \u03a6. Replace A0 by its squarefree radical A. Every selected-line identity survives because F_p[t] is a domain, and weighted degree does not increase. If A were Z-independent, each of the more than D distinct lines in R would divide a nonzero polynomial of total degree at most D, impossible. Hence A depends on Z. Since deg_Z A<p, A_Z is nonzero.",
+      "statement": "There is a nonzero squarefree Z-dependent A of weighted degree at most D vanishing formally on every selected graph M\u2208R.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "For a reached point x=ell_L(t)=ell_M(s), acceptedness gives P_L(t)=f(x)=P_M(s). The selected identity on M therefore gives A(x,P_L(t))=0. Each L has more than D distinct such points, while A(ell_L(t),P_L(t)) has degree at most D. Root counting forces the formal identity on L.",
+      "statement": "A vanishes formally on every line graph indexed by T.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4"
+      ],
+      "id": "P5",
+      "proof": "Write A=HB, where H\u2208F_p[X,Y] is the gcd of the Z-coefficients and B is primitive. Squarefreeness of A makes B squarefree; A_Z=HB_Z\u22600 makes B Z-dependent. If H does not vanish identically on L, the identity H|_L\u00b7B(ell_L,P_L)=0 cancels in the domain F_p[t]. At most deg H\u2264D lines are content lines.",
+      "statement": "Outside at most D content lines, a primitive squarefree Z-dependent B of weighted degree at most D vanishes on every target graph.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P5"
+      ],
+      "id": "P6",
+      "proof": "If an irreducible C divides both B and B_Z, squarefreeness forces C_Z=0. Since deg_Z C<p, C is Z-independent, contradicting primitivity; hence gcd(B,B_Z)=1. KTZ Lemma 2.6 bounds identically B_Z-ramified graph lines by D(D\u22121). Including content lines gives fewer than D\u00b2 bad lines. On every other line, B_Z(ell_L,P_L) is a nonzero polynomial of degree at most D\u2212d\u2264D. Deleting all nonsimple accepted incidences therefore costs less than (D/p)\u00b2+D/p.",
+      "statement": "Direct vertical cleanup leaves only incidences satisfying B(x,f(x))=0 and B_Z(x,f(x))\u22600.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P2",
+        "P6"
+      ],
+      "id": "P7",
+      "proof": "Iteratively delete each current point or line vertex of degree at most D. Every edge is charged once, and the total normalized peeling cost is below 2D/p. Together with P6, total loss is below (D/p)\u00b2+3D/p<a\u03b8 \u03b5/2. Thus a nonempty graph G1 remains with e(G1)\u2265a\u03b8 \u03b5/2 and minimum degree greater than D.",
+      "statement": "A clean minimum-degree graph retaining at least half the certificate mass exists.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P7"
+      ],
+      "id": "P8",
+      "proof": "In a connected component \u0393, choose a point b. More than D distinct incident lines pass through the simple root (b,f(b)). The characteristic-free formal implicit recursion, dividing only by B_Z(b,f(b)), gives a unique two-variable branch. Truncate it at total degree d to obtain Q\u0393. On every incident line this truncation equals P_L, so B(X,Y,Q\u0393) has total degree at most D and vanishes on more than D distinct lines; hence it is zero. Along an edge, Q\u0393 and P_L are two formal roots with the same simple initial value, so uniqueness makes them identical. Induction through \u0393 gives Q\u0393=f on every point vertex. This is the mechanism of KTZ Lemmas 2.5, 2.7, 6.1, and 6.3.",
+      "statement": "Every connected component \u0393 of G1 supplies Q\u0393 of total degree at most d with B(X,Y,Q\u0393)=0 and Q\u0393=f throughout \u0393.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P5",
+        "P8"
+      ],
+      "id": "P9",
+      "proof": "Polynomial division by the monic polynomial Z\u2212Q\u0393 shows that B(X,Y,Q\u0393)=0 is equivalent to Z\u2212Q\u0393 dividing B. Distinct Q\u0393 give distinct monic irreducible divisors. Consequently the number of distinct component templates is at most deg_Z B\u2264wdeg(B)/d\u2264D/d\u2264K\u03b8.",
+      "statement": "All component polynomials form a list of size at most K\u03b8.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P7",
+        "P8",
+        "P9"
+      ],
+      "id": "P10",
+      "proof": "Pigeonhole the edges of G1 by their component template. One Q carries normalized edge mass at least a\u03b8 \u03b5/(2K\u03b8). It equals f on every point incident to those edges. Since each point has at most p+1 incident affine lines, its point agreement is at least the same normalized edge mass.",
+      "statement": "The structured branch returns one Q with agreement at least a\u03b8 \u03b5/(2K\u03b8).",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P10"
+      ],
+      "id": "P11",
+      "proof": "The direct RD\u03b8 branch gives c\u03b8 \u03b5; P10 gives a\u03b8 \u03b5/(2K\u03b8) in the structured branch. Taking their minimum proves the claimed fixed-\u03b8 conditional theorem.",
+      "statement": "Under RD\u03b8, agreement is at least min(c\u03b8,a\u03b8/(2K\u03b8))\u03b5.",
+      "status": "conditional"
+    },
+    {
+      "dependencies": [
+        "P11"
+      ],
+      "id": "P12",
+      "proof": "For \u03b7\u2208(0,1), take \u03b8=min(\u03b7,1/4). Since 0<d/p<1, the \u03b7-hypothesis implies the \u03b8-hypothesis. Rename the constants from P11.",
+      "statement": "Assuming RD\u03b8 for every \u03b8\u2208(0,1/4], the threshold exponent is 1\u2212\u03b7 for every fixed \u03b7\u2208(0,1).",
+      "status": "conditional"
+    }
+  ],
+  "research_directives": [
+    "Prove RD\u03b8 first in the complementary low-popularity regime u*\u03b5\u00b2<2^70d; researcher-0010 already decodes the high-tail regime.",
+    "Make any candidate RD\u03b8 proof label-aware. Constant-label and full-support carriers rule out a purely graph-theoretic reaching selector.",
+    "Target formal restriction rank rather than selected-line cardinality; the required relation has D=O\u03b8(d), while universal covers can have size \u03a9(p/\u03b5).",
+    "Formalize P3\u2013P10 as a standalone lemma package. This would leave a single named incidence conjecture and prevent future algebraic gaps from being conflated with it.",
+    "Do not invest further in uniform normal multiplicity, fixed-order moment increments, or the current density-only DRC estimate without a genuinely new cross-line dependency.",
+    "Stress-test RD\u03b8 on the modal endpoint family and the regular full-support Q=0 family before claiming any exponent."
+  ],
+  "selected_architecture_id": "A-RD",
+  "snapshot": {
+    "coverage_complete": true,
+    "data_manifest_sha256": "343d75e49da76fbab487278e89e8f431ccc37bc29a2da1fafd5d4ba7ef194631",
+    "durable_file_count": 15,
+    "examined_paths": [
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/TARGET.md",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/references/LITERATURE.md",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/references/bibliography.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/README.md",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/campaign.sqlite3",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/jobs.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/status.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0001",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0002",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0003",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0004",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0005",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0006",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0007",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0008",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0009",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/submissions/researcher-0010",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/reviews",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/bottleneck-ledger.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/promising-results.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/rejected-results.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/leaderboards/verified-results.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/lemma_book",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/corpus-index.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/proof-roadmaps.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/message-board.json",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra/roadmaps/agent_logs",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-300-ultra",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/arora-sudan.pdf",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/hkss.pdf",
+      "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/.cache/references/ktz.pdf"
+    ],
+    "omitted_paths": [
+      "**/superseded/** \u2014 excluded exactly as instructed; provenance only.",
+      "research_state/campaign-10-ultra/**/stderr.txt and roadmaps/runtime/python-cache/** \u2014 execution noise, not durable mathematical claims.",
+      "roadmaps/agent_logs/20260914T104525Z-8c04d6e07a-16d1e8cea3 and 20260914T104936Z-66c5844669-bec2c74a83 \u2014 prompt/schema-only retries at the cutoff; no response existed.",
+      "All parameter cases d\u2264100 \u2014 excluded exactly as instructed."
+    ]
+  },
+  "title": "Integrated bivariate prime-field synthesis: a conditional 1\u2212o(1) route with one open incidence lemma"
+}

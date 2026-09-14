@@ -1,0 +1,221 @@
+{
+  "benchmark_improved": false,
+  "characteristic_audit": [
+    "All multiplicities are defined through graph-ideal powers, equivalently normal Hasse jets. No factorial or ordinary derivative is divided by.",
+    "The theorem assumes D<p. Hence every positive Z-exponent is below p, so a Z-dependent interpolant has nonzero formal Z-derivative and polynomial-function aliasing such as t^p-t cannot occur.",
+    "For genuine order s>=2 vanishing, every first derivative vanishes on each constrained graph. Global squarefreeness or a globally nonzero discriminant does not restore the simple-root condition there.",
+    "No irreducibility or absolute-irreducibility hypothesis is used. The example Y^2+Z^2 is only used as an F_103-irreducible, squarefree example.",
+    "Content division is audited explicitly: it may reduce graph multiplicity, as A=YZ and A/Y=Z demonstrate.",
+    "Adapted affine coordinates handle vertical lines without slope division. Repeated lines are deduplicated, parallel lines contribute no intersection root, and concurrent witnesses at one point do not contribute additive multiplicity.",
+    "If d>p/2 and D<p, primitive multiplicity s>=2 is impossible because D>=sd.",
+    "The inseparable example Z^p-X shows why d<p alone is insufficient if the composed weighted degree D is allowed to reach p."
+  ],
+  "claim_scope": "obstruction",
+  "claimed_exponent": null,
+  "counterexample_attempts": [
+    "Ordinary graph vanishing does not transfer multiplicity: at p=103,d=101, A=Z vanishes on M(t)=(t,0), P_M=0, but restricts to t on L(t)=(0,t), P_L=t.",
+    "Vertical Z-Hasse conditions alone are insufficient: A=X+Z^s has its Z-Hasse derivatives of orders below s vanishing on X=Z=0, yet can have a simple transverse restriction.",
+    "Content removal destroys multiplicity: A=YZ lies in (Y,Z)^2 and is squarefree with weighted degree 102<103, but its primitive part Z does not lie in (Y,Z)^2.",
+    "Squarefree and irreducible do not imply a simple root along the graph: over F_103, A=Y^2+Z^2 is squarefree and irreducible, yet all first derivatives vanish on Y=Z=0.",
+    "Inseparability beyond D<p: B=Z^p-X is absolutely irreducible and smooth but B_Z=0; B(t,t)=t^p-t vanishes at every field element without being the zero polynomial.",
+    "Concentrated directions: with f=0, P_L=0 in k directions and P_L=1 otherwise, epsilon=k/(p+1) and every point has exactly k accepting lines. This realizes the Cauchy-Schwarz squaring loss but has global polynomial Q=0, so it is not a soundness counterexample.",
+    "For arbitrary f, each line polynomial can interpolate d+1 chosen values, giving local agreement at least (d+1)/p. This confirms the natural d/p floor but does not contradict a theorem with a sufficiently large threshold constant."
+  ],
+  "dimension": 2,
+  "exponent_ledger": [
+    {
+      "input_scale": "Local agreement epsilon",
+      "justification": "KTZ Revision 1, Lemma 3.2, after constant-factor popularity pruning and random covering.",
+      "loss": "Selected family size n<=3200(p+1)/epsilon<=6400p/epsilon; each retained line has h>floor(epsilon p/100)/2 covered points.",
+      "output_scale": "n=O(p/epsilon), h=Omega(epsilon p)",
+      "stage": "Sparse covering family",
+      "status": "proved"
+    },
+    {
+      "input_scale": "n selected graph curves and ordinary vanishing",
+      "justification": "KTZ Lemmas 2.2 and 4.2 compare Theta(D^3/d) coefficients with n(D+1) equations.",
+      "loss": "D=Theta(sqrt(dn))",
+      "output_scale": "D=O(sqrt(dp/epsilon))",
+      "stage": "Ordinary weighted interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "D=O(sqrt(dp/epsilon)), h=Omega(epsilon p)",
+      "justification": "KTZ Lemma 4.3 needs more than D distinct roots.",
+      "loss": "sqrt(dp/epsilon)=O(epsilon p), equivalently epsilon^3=Omega(d/p)",
+      "output_scale": "Exponent 1/3",
+      "stage": "Ordinary root transfer",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Uniform graph multiplicity s",
+      "justification": "The exact normal-jet codimension is C_s(D,d)=binom(s+1,2)(D+1)-(d+1)binom(s+1,3) when D>=d(s-1).",
+      "loss": "Theta(s^2D) conditions per selected graph",
+      "output_scale": "D=Theta(s sqrt(dn)) up to constants",
+      "stage": "Multiplicity-sensitive interpolation",
+      "status": "proved"
+    },
+    {
+      "input_scale": "h compatible intersections, each of graph multiplicity s",
+      "justification": "Each point supplies an s-fold root, so transfer requires sh>D.",
+      "loss": "D/s=Theta(sqrt(dn)); the multiplicity parameter cancels",
+      "output_scale": "h=Omega(sqrt(dn))",
+      "stage": "Multiplicity root transfer",
+      "status": "proved"
+    },
+    {
+      "input_scale": "n=Theta(p/epsilon), h=Theta(epsilon p) on the worst-case KTZ scales",
+      "justification": "The proved rank-blind barrier gives h^2>dn/12.",
+      "loss": "epsilon^2p^2=Omega(dp/epsilon), hence epsilon^3=Omega(d/p)",
+      "output_scale": "Still exponent 1/3",
+      "stage": "Cubic-barrier reconstruction",
+      "status": "proved"
+    },
+    {
+      "input_scale": "Interpolant degree D",
+      "justification": "KTZ Lemmas 5.1-5.2 remove O(D/p+D^2/p^2) incidence measure and require D=O(epsilon p); Lemma 6.1 also needs more than D incident lines.",
+      "loss": "These conditions reproduce, rather than improve, epsilon^3=Omega(d/p).",
+      "output_scale": "Simple-root graph suitable for lifting",
+      "stage": "Degeneracy removal and lifting",
+      "status": "proved"
+    },
+    {
+      "input_scale": "A surviving connected component",
+      "justification": "KTZ Lemmas 6.2-6.3 use point-line mixing and simple-root propagation.",
+      "loss": "Only an absolute constant; p^(-1/2)=O(epsilon) is weaker than the cubic hypothesis for 100<d<p.",
+      "output_scale": "Quoted benchmark agreement at least epsilon/8000 in the bivariate proof",
+      "stage": "Global agreement",
+      "status": "proved"
+    }
+  ],
+  "field_regime": "prime",
+  "finite_sanity_checks": [
+    "At p=103,d=101, direct modular evaluation verified that A=Z has one transverse root, while YZ and Y^2+Z^2 have a double transverse root and zero gradient on the selected graph.",
+    "For p=103, -1 is a nonsquare, so Y^2+Z^2 is F_103-irreducible and squarefree; its weighted degree is 2d=202>p.",
+    "The exact counts at d=101,D=202,s=2 are N_d(D)=25960 and C_s(D,d)=507, matching the closed formula.",
+    "At p=103,d=101, the total-degree code dimension is 5253, so a triangular information set gives every point table agreement at least 5253/103^2, approximately 0.495. Thus the near-p case is a method limitation, not a theorem counterexample.",
+    "A separate arithmetic check with prime p=1000000007 and d=101 gave identical conservative normalized degree D/s=50848800 for s=1,2,4, confirming the predicted cancellation. This is only a sanity check, not an asymptotic proof."
+  ],
+  "global_conclusion": "A fully quantified transverse-jet interpolation lemma and a rigorous architecture-specific obstruction were proved. Uniform higher multiplicity cannot improve the cubic exponent when existence is certified by raw coefficient-versus-jet counting and propagation is certified by univariate root multiplicity. The result neither improves nor refutes the bivariate soundness benchmark. The only final global-agreement guarantee remains the quoted KTZ conclusion, at least epsilon/8000 in its m=2 proof.",
+  "literature_dependencies": [
+    {
+      "hypotheses": "Every finite field, uniform incident point-line sampling, arbitrary point table, degree-at-most-d line table, and epsilon>=C(d/q)^(1/3).",
+      "paper": "Kominers, Thaler, and Zheng, Improved Soundness for the Line-versus-Point Test",
+      "result_id": "Theorem 1.1",
+      "used_for": "Quoted benchmark: one total-degree-at-most-d global polynomial with agreement at least c epsilon. The m=2 proof yields epsilon/8000.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "Weighted degree (1,1,d), the sparse covering family, D<p, squarefree primitive relation, and simple roots.",
+      "paper": "Kominers, Thaler, and Zheng, Improved Soundness for the Line-versus-Point Test",
+      "result_id": "Lemmas 2.2-2.7, 3.1-3.2, 4.1-4.3, 5.1-5.2, and 6.1-6.3",
+      "used_for": "Exact source audit and reconstruction of where the cubic threshold and linear final agreement arise. The new jet lemma itself is proved independently.",
+      "version": "ECCC TR26-147, Revision 1, 2026-08-16"
+    },
+    {
+      "hypotheses": "A simple Z-root for Newton iteration; weighted interpolation over a finite field.",
+      "paper": "Harsha, Kumar, Saptharishi, and Sudan, An Improved Line-Point Low-Degree Test",
+      "result_id": "Lemmas 2.10 and 3.1; Theorems 4.2-4.3",
+      "used_for": "Comparison only: confirmation that the inherited lifting mechanism requires simple roots. No HKSS quantitative claim is used in the proof.",
+      "version": "arXiv:2311.12752v1, 2023-11-21"
+    }
+  ],
+  "next_tasks": [
+    "Prove a lower bound on the actual joint rank of jet constraints for an explicit adversarial family of line graphs; the present obstruction only covers rank-blind summation of per-line codimensions.",
+    "Investigate whether KTZ covering families force exploitable cross-line dependencies that reduce jet rank below n C_s(D,d).",
+    "Develop a singular or multiple-root lifting-and-propagation lemma that does not require B_Z(x,f(x)) to be nonzero.",
+    "Optimize nonuniform multiplicities and prove whether their weighted coverage can beat the uniform Cauchy-Schwarz barrier.",
+    "Search for a smaller worst-case covering family than O(p/epsilon); such a combinatorial gain would benefit both ordinary and multiplicity interpolation."
+  ],
+  "note_markdown": "# Uniform Normal Multiplicity Is Exponent-Neutral in the Bivariate KTZ Interpolation Step\n\n## Abstract\n\nFix a prime p and an integer 100<d<p, with dimension m=2. I prove an exact, characteristic-safe interpolation lemma for order-s vanishing along lifted line graphs. One selected graph costs \u0398(s\u00b2D) normal-jet equations inside weighted degree D, while each compatible transverse intersection contributes only an s-fold univariate root. The raw coefficient-count construction therefore requires D=\u0398(s\u221a(dn)) for n selected lines, and transfer across h covered points requires sh>D. The factor s cancels. A quantitative converse for this proof architecture gives h\u00b2>dn/12. On the worst-case KTZ scales n=\u0398(p/epsilon) and h=\u0398(epsilon p), this is exactly epsilon\u00b3=\u03a9(d/p).\n\nThis is a proved obstruction to a natural proof strategy, not a counterexample to the target theorem. It gives no new global decoder and does not improve the benchmark. Under the existing benchmark hypothesis, the only final conclusion used here is the KTZ bivariate agreement bound epsilon/8000.\n\n## Test and Notation\n\nThe test samples L uniformly among the p(p+1) affine lines of F_p\u00b2 and then samples x uniformly from L. A point table is f:F_p\u00b2\u2192F_p, and each line L has a polynomial P_L of degree at most d. Write epsilon for the resulting acceptance probability.\n\nGive X,Y,Z weights 1,1,d. For a parameterized line M(t)=b_M+t v_M, choose a transverse vector u_M and introduce adapted coordinates\n\n`(X,Y)=b_M+T v_M+S u_M,   Z=P_M(T)+W`.\n\nThis is a filtered polynomial automorphism. The lifted graph of P_M has ideal I_M=(S,W), independent of the auxiliary transverse vector. Genuine normal multiplicity s means A belongs to I_M^s; it is equivalent to vanishing of all normal Hasse coefficients S^aW^b with a+b<s.\n\nDefine\n\n`N_d(D)=sum_{j=0}^{floor(D/d)} binom(D-dj+2,2)`\n\nand\n\n`C_s(D,d)=sum_{a,b>=0, a+b<s} max(D-a-db+1,0)`.\n\nHere N_d(D) is the exact number of monomials of weighted degree at most D, and C_s(D,d) is the exact one-graph jet codimension in the full weighted space.\n\n## Prior Results\n\nThe authoritative benchmark source is [Kominers\u2013Thaler\u2013Zheng, ECCC TR26-147, Revision 1, 16 August 2026](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download). Theorem 1.1 says that epsilon>=C(d/p)^(1/3) implies one total-degree-at-most-d polynomial with agreement at least c epsilon. In the m=2 proof, Lemmas 6.2-6.3 give the explicit value epsilon/8000. The theorem statement itself records only an absolute c.\n\nThe exact reconstructed bottleneck is as follows. Lemma 3.2 supplies n=|R|=O(p/epsilon) selected lines and h=\u03a9(epsilon p) covered points on every retained line. Lemmas 2.2 and 4.2 compare \u0398(D\u00b3/d) monomials against n(D+1) equations, producing D=\u0398(\u221a(dn))=O(\u221a(dp/epsilon)). Lemma 4.3, the degeneracy deletion in Lemmas 5.1-5.2, and the lifting step in Lemma 6.1 all require D=O(epsilon p). Therefore epsilon\u00b3=\u03a9(d/p). This exponent calculation is my reconstruction from the cited lemmas, not a separately quoted KTZ theorem.\n\n[HKSS, arXiv:2311.12752v1](https://arxiv.org/html/2311.12752v1), Lemmas 2.10 and 3.1, likewise uses Newton lifting from a simple Z-root. Its Theorem 4.2 explicitly has q>C d/epsilon^7 and global agreement \u03a9(epsilon^4); the headline Theorem 1.4 leaves its exponent unspecified. I do not import its quantitative proof.\n\nAt the start of this run, both active campaigns had empty promising, rejected, bottleneck, and verified boards, and the campaign databases contained no completed submission or verifier-output path. There was therefore no prior durable claim to inherit or override. The generic cached KTZ download was not used because it is not Revision 1.\n\n## Theorem\n\n**Transverse-jet interpolation and rank-blind barrier.** Let p be prime, 100<d<p, and let R be n distinct affine lines with degree-at-most-d line polynomials. Let s>=1 and d<=D<p.\n\n1. Membership A\u2208I_M^s for every M\u2208R imposes at most n C_s(D,d) homogeneous linear equations. If N_d(D)>n C_s(D,d), a nonzero weighted-degree-at-most-D interpolant exists.\n2. If D<sn, every nonzero such interpolant depends on Z and hence has A_Z nonzero. If n>D, then every such interpolant has deg_Z A>=s and D>=sd.\n3. Let L be another affine line. Suppose h distinct points of L have witnesses M\u2208R, M\u2260L, for which the two line labels agree at the intersection. Then A(L(t),P_L(t)) has multiplicity at least s at each of those h parameters. Consequently, sh>D implies the formal identity A(L(t),P_L(t))=0.\n4. Put D_0=floor(4 sqrt(d n s(s+1)))+1. If d<=D_0<p and D_0<sh, the interpolant and transfer conclusions hold.\n5. In the KTZ regime n>D, any argument which certifies interpolation solely through N_d(D)>n C_s(D,d) and certifies transfer solely through sh>D must satisfy h\u00b2>dn/12. This bound is independent of s.\n\nFor an exact insertion of the KTZ numerical bounds, let k_0=floor(epsilon p/100), h_0=floor(k_0/2)+1, and\n\n`D_s=floor(4 sqrt((6400 d p/epsilon) s(s+1)))+1`.\n\nThe multiplicity interpolation-and-extension module is valid whenever d<=D_s<p and D_s<s h_0. Dividing the leading inequality by s leaves a factor sqrt(1+1/s), which changes only a constant. Its exponent remains epsilon\u00b3=\u03a9(d/p).\n\n## Proof\n\n[P1] **Proved.** In the adapted coordinates, write A as sum c_{a,b}(T)S^aW^b. Substitution preserves the weighted filtration because T and S have weight one and both P_M(T) and W have weight at most d. Thus deg c_{a,b}<=D-a-db.\n\n[P2] **Proved.** The condition A\u2208(S,W)^s is exactly c_{a,b}=0 for a+b<s. Equating coefficients of T gives at most max(D-a-db+1,0) scalar equations. Summing gives C_s(D,d). The quotient by (S,W)^s has the corresponding monomial basis, so this is the exact codimension for one line in the full weighted space. Across n lines, n C_s is an upper bound on joint rank; cross-line dependencies may reduce it.\n\n[P3] **Proved.** The weighted space has N_d(D) unknown coefficients. Therefore N_d(D)>n C_s(D,d) leaves a nonzero common kernel.\n\n[P4] **Proved.** If A is independent of Z, then A\u2208I_M^s forces the line equation ell_M^s to divide A. Distinct lines give pairwise nonassociate prime linear factors, so their product has degree sn. Hence D<sn rules out a Z-independent solution. Since D<p, every positive Z-exponent is below p, and the leading Z-term survives differentiation; thus A_Z is nonzero.\n\nMore generally, let z=deg_Z A<s. In adapted coordinates, the W^j coefficient is divisible by S^(s-j), hence every coefficient is divisible by S^(s-z). Thus ell_M^(s-z) divides A for every M. If n>D this is impossible unless z>=s, proving D>=sd.\n\n[P5] **Proved.** At a compatible intersection of distinct lines M and L, S_M(L(t)) is a nonzero affine-linear polynomial with a simple zero. Also W_M(L(t),P_L(t)) vanishes there because P_M and P_L take the same value. Every term in I_M^s therefore pulls back to a multiple of (t-t_0)^s. No derivative or factorial is divided by.\n\n[P6] **Proved.** The h covered points give distinct parameters on L, so their factors are coprime and their product to the s-th power divides g_L(t)=A(L(t),P_L(t)). Since deg g_L<=D, the inequality sh>D forces g_L=0.\n\n[P7] **Proved.** For D>=d, use the levels 0<=j<=floor(D/(2d)). There are more than D/(2d) levels, and each contains more than D\u00b2/8 monomials; hence N_d(D)>D\u00b3/(16d). Also C_s(D,d)<=binom(s+1,2)(D+1)<=s(s+1)D. Therefore D\u00b2>16dn s(s+1) is sufficient. The stated D_0 satisfies this strictly, while D_0<sh supplies transfer.\n\n[P8] **Proved.** Assume n>D and the raw dimension inequality. Step P4 gives D>=sd, so every term in C_s is active and\n\n`C_s(D,d)=binom(s+1,2)(D+1)-(d+1)binom(s+1,3)>=s\u00b2D/6`.\n\nFor D>=d>100, N_d(D)<=2D\u00b3/d. Hence N_d(D)>n C_s(D,d) implies D\u00b2>dns\u00b2/12. Combining this with sh>D gives h\u00b2>dn/12. With n=\u0398(p/epsilon) and h=\u0398(epsilon p), this becomes epsilon\u00b3=\u03a9(d/p).\n\nFinally, if s>=2 then every first derivative maps I_M^s into I_M^(s-1), so all first derivatives vanish on the constrained graph. Thus the jet interpolant does not itself satisfy the simple-root hypothesis needed by KTZ Lemmas 2.7 and 6.1. Taking a squarefree part or dividing Z-content may restore ordinary structure, but it generally discards the multiplicity just counted.\n\n## Exponent Ledger\n\n| Stage | Input | Loss/calculation | Output |\n|---|---|---|---|\n| KTZ sparse cover, quoted | epsilon | n=O(p/epsilon), h=\u03a9(epsilon p) | one inverse epsilon |\n| Ordinary interpolation, reconstructed | N\u2248D\u00b3/d versus nD | D\u00b2\u2248dn | D\u2248sqrt(dp/epsilon) |\n| Ordinary transfer, reconstructed | D<h\u2248epsilon p | dp/epsilon=O(epsilon\u00b2p\u00b2) | epsilon\u00b3=\u03a9(d/p) |\n| Normal jets, proved here | n\u00b7Theta(s\u00b2D) equations | D\u00b2\u2248dns\u00b2 | D\u2248s sqrt(dn) |\n| Multiple-root transfer, proved here | sh>D | h>D/s | h=Omega(sqrt(dn)) |\n| KTZ-scale insertion, proved here | n\u2248p/epsilon, h\u2248epsilon p | s cancels | epsilon\u00b3=Omega(d/p) |\n| Degeneracy deletion, quoted/reconstructed | D/p+D\u00b2/p\u00b2=O(epsilon) | same D=O(epsilon p) requirement | no new exponent |\n| Incidence mixing, quoted | p^(-1/2)=O(epsilon) | weaker in 100<d<p under the cubic hypothesis | constant agreement loss |\n| Final global output, quoted | surviving component | KTZ Lemmas 6.2-6.3 | agreement at least epsilon/8000 |\n\nThere are no hidden logarithmic, characteristic, Markov, union-bound, or Cauchy-Schwarz losses in the new deterministic lemma. In KTZ, popularity and pruning cost constants; line sampling uses Chernoff plus a union bound over p(p+1) lines; the cubic hypothesis makes epsilon p large enough for that union bound. The final component estimate uses Cauchy-Schwarz through affine-plane incidence mixing and costs only an absolute constant.\n\n## Counterexample Attempts\n\n1. **Value-only transfer fails.** At p=103,d=101, take A=Z, M(t)=(t,0), P_M=0, L(t)=(0,t), and P_L=t. The selected restriction is identically zero, but the target restriction is t and has one root. Ordinary line identity supplies no hidden multiplicity.\n2. **Vertical jets fail.** A=X+Z^s has all Z-Hasse derivatives below order s vanishing on X=Z=0, but a transverse zero-labelled graph can restrict it to t. Both normal generators must be controlled, causing the quadratic jet cost.\n3. **Content removal loses credit.** A=YZ belongs to (Y,Z)^2, is squarefree, and has weighted degree d+1=102<103. Its Z-content is Y; division gives Z and reduces the transverse root from double to simple.\n4. **Squarefree does not mean simple.** Over F_103, A=Y\u00b2+Z\u00b2 is irreducible and squarefree because -1 is nonsquare. Nevertheless its gradient vanishes on Y=Z=0, and its Z-discriminant -4Y\u00b2 vanishes on the whole selected line. Its weighted degree 202 also exhibits the primitive D>=2d cost.\n5. **Inseparability.** If D<p is dropped, Z^p-X is smooth and absolutely irreducible but has zero Z-derivative; t^p-t vanishes at all field points without being the zero polynomial.\n6. **Concentrated directions.** With f=0 and accepting lines in exactly k directions, epsilon=k/(p+1), every point has accepted degree k, and two independent incident-line acceptances occur with probability epsilon\u00b2. This tests the sharpness of the squaring/concentration loss, but Q=0 gives perfect global agreement.\n7. **Interpolation floor.** Every point table admits degree-d line polynomials agreeing at d+1 selected points per line, hence local agreement at least (d+1)/p. This supports d/p as the natural endpoint but is not a counterexample to a threshold with a larger absolute constant.\n\n## Characteristic Audit\n\nNormal multiplicity is expressed using ideal powers and Hasse coefficients, so no s! is inverted and s may cross the characteristic in the abstract definition. The working interpolation regime D<p prevents positive Z-exponents divisible by p and prevents a nonzero restriction of degree below p from vanishing at every field element. Vertical directions require no slope division.\n\nNo discriminant, irreducibility, or derivative division is used in the theorem. For downstream KTZ lifting, however, simple roots are essential. Higher graph multiplicity deliberately makes the selected graph singular. If d>p/2, D>=sd and D<p force s=1, so there is no hidden higher-multiplicity regime near d=p. The explicit p=103,d=101 checks cover both the campaign's lower boundary and a near-p instance without invoking any excluded degree.\n\n## Limitations\n\nThe obstruction is architecture-specific. It rules out an exponent gain from uniform full normal multiplicity when interpolation is justified by summing per-line jet codimensions and propagation uses only univariate root multiplicity. It does not rule out cross-line rank dependencies, nonuniform multiplicities coupled to new combinatorics, a smaller covering family, or a genuinely singular lifting theorem.\n\nThe new lemma does not construct a global degree-d polynomial and supplies no new final agreement bound. Invoking the existing KTZ theorem still gives agreement \u03a9(epsilon), explicitly epsilon/8000 in its bivariate proof, only at the existing cubic threshold. Accordingly, `benchmark_improved=false`. Finite calculations above are falsification and boundary checks only; the obstruction itself is established by the symbolic proof.",
+  "obstructions": [
+    "Uniform graph multiplicity has quadratic normal-jet cost but only linear root-multiplicity benefit.",
+    "The rank-blind coefficient-versus-equation architecture forces h^2>dn/12, independent of multiplicity.",
+    "Order at least two makes all first derivatives vanish along selected graphs, conflicting with simple-root Newton-Hensel lifting.",
+    "Squarefree reduction and content division preserve ordinary zero sets but not higher-order graph vanishing.",
+    "Under D<p, primitive multiplicity s requires D>=sd; hence no s>=2 is available when d>p/2.",
+    "Ordinary value consistency supplies no derivative or jet compatibility across an accepted intersection."
+  ],
+  "parameter_regime": "Prime p, integer 100<d<p, m=2, epsilon in (0,1], uniform affine-line/point sampling. For the new lemma: distinct selected lines R of size n, uniform integer multiplicity s>=1, weighted degree d<=D<p, and h distinct compatible intersections on a target line. The explicit construction uses D_0=floor(4 sqrt(d n s(s+1)))+1 with D_0<sh.",
+  "proof_steps": [
+    {
+      "dependencies": [],
+      "id": "P1",
+      "proof": "Choose adapted affine coordinates (T,S,W) with the lifted graph ideal (S,W). The substitution is a filtered automorphism for weights 1,1,d.",
+      "statement": "Every lifted line graph has characteristic-safe normal coordinates preserving weighted degree.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P2",
+      "proof": "Expanding A as sum c_ab(T)S^aW^b, membership in (S,W)^s is equivalent to c_ab=0 for a+b<s. Since deg c_ab<=D-a-db, the exact one-line codimension is C_s(D,d).",
+      "statement": "Order-s graph vanishing costs exactly C_s(D,d) normal-jet channels on one line and at most nC_s across n lines.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2"
+      ],
+      "id": "P3",
+      "proof": "The weighted-degree-D space has N_d(D) coefficients. If N_d(D)>nC_s(D,d), homogeneous linear algebra gives a nonzero common jet interpolant.",
+      "statement": "The coefficient-versus-jet inequality suffices for interpolation.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1",
+        "P3"
+      ],
+      "id": "P4",
+      "proof": "A Z-independent solution is divisible by the s-th power of every distinct line equation, so D>=sn. More generally, if deg_Z A=z<s, then each line equation occurs to power s-z; n>D forces z>=s and D>=sd. With D<p, any Z-dependent A has A_Z nonzero.",
+      "statement": "Nontrivial Z-dependence and the primitive degree cost are fully quantified.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P1"
+      ],
+      "id": "P5",
+      "proof": "At a compatible transverse intersection, both normal generators vanish to order at least one on the target graph. Every element of the s-th ideal power therefore pulls back to a multiple of (t-t_0)^s.",
+      "statement": "Full normal multiplicity transfers an s-fold root across one compatible intersection.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P5"
+      ],
+      "id": "P6",
+      "proof": "The h intersection parameters are distinct, the restricted polynomial has degree at most D, and the product of their s-th powers divides it. Thus sh>D forces the restriction to vanish identically.",
+      "statement": "Multiplicity root counting transfers the relation to a target line.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P2",
+        "P3",
+        "P6"
+      ],
+      "id": "P7",
+      "proof": "N_d(D)>D^3/(16d) and C_s(D,d)<=s(s+1)D for D>=d. Hence D_0=floor(4sqrt(dns(s+1)))+1 suffices; D_0<sh completes transfer.",
+      "statement": "An explicit finite-field interpolation-and-transfer parameter choice is valid.",
+      "status": "proved"
+    },
+    {
+      "dependencies": [
+        "P3",
+        "P4",
+        "P6"
+      ],
+      "id": "P8",
+      "proof": "When n>D, D>=sd and C_s(D,d)>=s^2D/6, while N_d(D)<=2D^3/d. The raw dimension inequality implies D^2>dns^2/12; sh>D then implies h^2>dn/12. Substitution of n=Theta(p/epsilon), h=Theta(epsilon p) yields epsilon^3=Omega(d/p).",
+      "statement": "Uniform multiplicity is exponent-neutral in the rank-blind KTZ interpolation/root-count architecture.",
+      "status": "proved"
+    }
+  ],
+  "result_status": "proved",
+  "sampling_model": "Choose L uniformly from the p(p+1) unparameterized affine lines of F_p^2, then choose x uniformly from the p points of L; equivalently, sample a uniform point-line incidence.",
+  "theorem_statement": "For prime p, 100<d<p, distinct selected line graphs R of size n, multiplicity s>=1, and d<=D<p, order-s graph-ideal vanishing imposes at most n C_s(D,d) equations, where C_s(D,d)=sum_{a+b<s} max(D-a-db+1,0). If N_d(D)>nC_s(D,d), with N_d(D)=sum_{j<=D/d} binom(D-dj+2,2), a nonzero interpolant exists. Each compatible transverse intersection supplies an s-fold root, so h such points transfer the identity when sh>D. The explicit choice D_0=floor(4sqrt(dns(s+1)))+1 suffices when d<=D_0<p and D_0<sh. Conversely, in the KTZ regime n>D, any proof using only this raw dimension criterion and root count must satisfy h^2>dn/12. Thus at n=Theta(p/epsilon), h=Theta(epsilon p), uniform multiplicity retains the cubic condition epsilon^3=Omega(d/p).",
+  "title": "Uniform Normal Multiplicity Is Exponent-Neutral in the Bivariate KTZ Interpolation Step"
+}

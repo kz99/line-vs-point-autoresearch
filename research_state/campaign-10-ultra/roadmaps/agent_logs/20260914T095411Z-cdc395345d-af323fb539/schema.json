@@ -1,0 +1,191 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "corpus_sha256": {
+      "type": "string"
+    },
+    "critical_path": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "focus": {
+      "type": "string"
+    },
+    "goal_node_id": {
+      "type": "string"
+    },
+    "messages": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "body_markdown": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "in_reply_to": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "question",
+              "idea",
+              "objection",
+              "request",
+              "reply"
+            ],
+            "type": "string"
+          },
+          "references": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "related_node_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "subject": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "channel",
+          "kind",
+          "subject",
+          "body_markdown",
+          "in_reply_to",
+          "related_node_ids",
+          "references"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "type": "array"
+    },
+    "nodes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "dependencies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "evidence_refs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "source_job_id": {
+                  "type": "string"
+                },
+                "source_response_sha256": {
+                  "type": "string"
+                },
+                "source_step_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source_job_id",
+                "source_step_id",
+                "source_response_sha256"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "definition",
+              "literature_input",
+              "reduction",
+              "lemma",
+              "theorem",
+              "obligation"
+            ],
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "statement_markdown": {
+            "type": "string"
+          },
+          "work_state": {
+            "enum": [
+              "open",
+              "drafting",
+              "candidate",
+              "blocked",
+              "refuted"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "statement_markdown",
+          "kind",
+          "work_state",
+          "dependencies",
+          "evidence_refs",
+          "owner",
+          "notes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "roadmap_id": {
+      "type": "string"
+    },
+    "round": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "target_statement": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "roadmap_id",
+    "corpus_sha256",
+    "round",
+    "title",
+    "focus",
+    "target_statement",
+    "summary",
+    "goal_node_id",
+    "nodes",
+    "critical_path",
+    "messages"
+  ],
+  "type": "object"
+}

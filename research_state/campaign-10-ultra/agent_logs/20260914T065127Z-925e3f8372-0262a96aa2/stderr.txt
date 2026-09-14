@@ -1,0 +1,836 @@
+2026-09-14T06:51:28.209332Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T06:51:28.209349Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-09-14T06:51:28.404313Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at "/Users/kaizheng/.codex/shell_snapshots/01a09ea3-c385-7fc2-83fe-eade0e9fbc56.1789367927717784000.sh": Os { code: 2, kind: NotFound, message: "No such file or directory" }
+OpenAI Codex v0.150.0-alpha.12.2
+--------
+workdir: /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: ultra
+reasoning summaries: none
+session id: 01a09eaf-5e2c-7d80-a7ca-2aabaf4838aa
+--------
+user
+You are researcher-0002, one of 10 independent
+mathematical research agents improving soundness of the affine line-versus-point low-degree
+test. Your assigned direction is: improve the combinatorial concentration step in the affine plane over F_p. Your mode is bottleneck-first.
+
+The repository is /Users/kaizheng/Documents/ChatGPT/Line-vs-Point. The durable corpus root is
+/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state. Begin by reading TARGET.md, references/LITERATURE.md,
+references/bibliography.json, research_state/DATA_MANIFEST.json, all prior submissions,
+leaderboards, and verifier audits. You have a read-only shell. Treat literature summaries as
+navigation aids and identify exact primary-source theorem dependencies. Distinguish quoted
+theorems from your own exponent reconstruction. Finite-field computation is useful for
+falsification but cannot prove an asymptotic soundness theorem. Ignore every directory named
+superseded: those files are retained only as provenance and are not part of the active corpus.
+
+The problem is fixed at m=2 over the prime field F_p, with integer degree 100 < d < p. Degrees
+d <= 100, including d=0, are outside the campaign scope. Do not analyze them, repair the theorem
+there, or present them as obstructions. The benchmark is the
+bivariate specialization of the Kominers--Thaler--Zheng threshold C(d/p)^(1/3), with global
+agreement Omega(local agreement). The long-term target is (d/p)^(1-o(1)). Since d/p<1, a
+larger exponent is stronger. Do genuine mathematical work: isolate one bottleneck, attempt a
+new lemma or counterexample, and write a fully quantified result.
+
+Do not work on m>2, dimension bootstrapping, extension fields, or descent: the standard
+general-dimensional lift is a routine downstream corollary and earns no campaign credit. Do not
+silently change uniform affine-line sampling, replace total degree by individual degree, assume
+fixed d, or return only a large list of candidate global polynomials.
+
+Every exponent manipulation must appear in the exponent ledger. State p,d, local agreement
+epsilon, all auxiliary parameters, and the final global agreement, with m=2 fixed. Audit division
+by derivatives, discriminants, irreducibility, interpolation multiplicities, and every
+union/Markov/Cauchy--Schwarz loss. Test adversarial tables, inseparability, concentrated good
+directions, d near p, and the lower boundary d=101. A rigorous obstruction or
+correction to the bivariate target is valuable. If the benchmark is not improved, set
+benchmark_improved=false. Set dimension=2 and field_regime=prime in the structured response.
+
+Return a standard academic Markdown note with Abstract, Test and Notation, Prior Results,
+Theorem, Proof or Conditional Proof, Exponent Ledger, Counterexample Attempts,
+Characteristic Audit, and Limitations. Number all proof steps [P1], [P2], ... and mark each as
+proved, conditional, conjectural, or refuted.
+
+2026-09-14T06:51:28.471415Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at "/Users/kaizheng/.codex/shell_snapshots/01a09ea3-c358-7cd2-9111-5d3d23470aae.1789367927707528000.sh": Os { code: 2, kind: NotFound, message: "No such file or directory" }
+2026-09-14T06:51:28.517580Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at "/Users/kaizheng/.codex/shell_snapshots/01a09ea3-c358-7782-b6b4-7a8146bbe7d2.1789367927706693000.sh": Os { code: 2, kind: NotFound, message: "No such file or directory" }
+2026-09-14T06:51:28.531331Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-14T06:51:28.550766Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-09-14T06:51:28.550778Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-09-14T06:51:28.564749Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at "/Users/kaizheng/.codex/shell_snapshots/01a09ea3-c361-7242-ac9c-6ae2eb0ecd6c.1789367927727376000.sh": Os { code: 2, kind: NotFound, message: "No such file or directory" }
+codex
+{"benchmark_improved":false,"characteristic_audit":["I’m beginning with a corpus and verifier audit, then I’ll isolate the sharpest bivariate concentration bottleneck. I’ll run three independent tracks in parallel: prior-result/exponent reconstruction, adversarial finite-plane stress tests, and a fresh combinatorial lemma attempt."],"claim_scope":"combinatorial_lemma","claimed_exponent":null,"counterexample_attempts":[],"dimension":2,"exponent_ledger":[],"field_regime":"prime","finite_sanity_checks":[],"global_conclusion":"Work in progress.","literature_dependencies":[],"next_tasks":["Read the active corpus while excluding every superseded directory.","Cross-check any invoked theorem against its primary source.","Attempt and audit a fully quantified concentration lemma."],"note_markdown":"# Research note (work in progress)\n\nCorpus audit and parallel bottleneck analysis have started.","obstructions":[],"parameter_regime":"Prime p, integer 100<d<p, m=2; uniform affine-line sampling.","proof_steps":[],"result_status":"conjectural","sampling_model":"Uniform affine-line sampling in F_p^2; precise convention to be recovered from TARGET.md.","theorem_statement":"Pending corpus audit.","title":"Affine-plane combinatorial concentration: work in progress"}
+exec
+/bin/zsh -lc "pwd && rg --files -g '"'!**/superseded/**'"' | sed -n '1,240p'" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+/Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+research_state/campaign-10-ultra/jobs.json
+research_state/campaign-10-ultra/status.json
+research_state/campaign-10-ultra/leaderboards/verified-results.json
+research_state/campaign-10-ultra/leaderboards/promising-results.json
+research_state/campaign-10-ultra/leaderboards/rejected-results.json
+research_state/campaign-10-ultra/leaderboards/bottleneck-ledger.json
+research_state/campaign-10-ultra/campaign.sqlite3
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-815b490f84-139389c83e/schema.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-815b490f84-139389c83e/prompt.txt
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-925e3f8372-0262a96aa2/schema.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-925e3f8372-0262a96aa2/prompt.txt
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-1851a95ded-115cdec338/schema.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-1851a95ded-115cdec338/prompt.txt
+research_state/README.md
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-d7de3aa5af-05f544648e/schema.json
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-d7de3aa5af-05f544648e/prompt.txt
+CONTRIBUTING.md
+CITATION.cff
+research_state/campaign-300-ultra/jobs.json
+research_state/campaign-300-ultra/status.json
+research_state/campaign-300-ultra/leaderboards/verified-results.json
+research_state/campaign-300-ultra/leaderboards/promising-results.json
+research_state/campaign-300-ultra/leaderboards/rejected-results.json
+research_state/campaign-300-ultra/leaderboards/bottleneck-ledger.json
+research_state/campaign-300-ultra/campaign.sqlite3
+configs/campaign-300-ultra.yaml
+configs/campaign-10-ultra.yaml
+src/line_point_research/__main__.py
+src/line_point_research/cli.py
+src/line_point_research/campaign.py
+src/line_point_research/agents.py
+src/line_point_research/__init__.py
+src/line_point_research/exponents.py
+research_state/DATA_MANIFEST.json
+TARGET.md
+LICENSE
+pyproject.toml
+README.md
+tests/test_core.py
+references/LITERATURE.md
+references/bibliography.json
+scripts/fetch_references.py
+scripts/build_data_manifest.py
+dashboard/pnpm-workspace.yaml
+dashboard/next.config.ts
+dashboard/vite.config.ts
+dashboard/tsconfig.json
+dashboard/components.json
+dashboard/lib/utils.ts
+dashboard/scripts/fix-github-pages-assets.mjs
+dashboard/hooks/use-mobile.ts
+dashboard/package.json
+dashboard/public/favicon.svg
+dashboard/public/research-data.json
+dashboard/components/research-console.tsx
+dashboard/components/ui/chart.tsx
+dashboard/components/ui/input-otp.tsx
+dashboard/components/ui/progress.tsx
+dashboard/components/ui/popover.tsx
+dashboard/components/ui/input-group.tsx
+dashboard/components/ui/slider.tsx
+dashboard/components/ui/card.tsx
+dashboard/components/ui/button-group.tsx
+dashboard/components/ui/tabs.tsx
+dashboard/components/ui/direction.tsx
+dashboard/components/ui/pagination.tsx
+dashboard/components/ui/alert-dialog.tsx
+dashboard/components/ui/aspect-ratio.tsx
+dashboard/components/ui/carousel.tsx
+dashboard/components/ui/context-menu.tsx
+dashboard/components/ui/skeleton.tsx
+dashboard/components/ui/attachment.tsx
+dashboard/components/ui/message-scroller.tsx
+dashboard/components/ui/input.tsx
+dashboard/components/ui/textarea.tsx
+dashboard/components/ui/select.tsx
+dashboard/components/ui/dropdown-menu.tsx
+dashboard/components/ui/collapsible.tsx
+dashboard/components/ui/spinner.tsx
+dashboard/components/ui/checkbox.tsx
+dashboard/components/ui/toast.tsx
+dashboard/components/ui/marker.tsx
+dashboard/components/ui/toggle.tsx
+dashboard/components/ui/button.tsx
+dashboard/components/ui/separator.tsx
+dashboard/components/ui/table.tsx
+dashboard/components/ui/message.tsx
+dashboard/components/ui/sidebar.tsx
+dashboard/components/ui/badge.tsx
+dashboard/components/ui/dialog.tsx
+dashboard/components/ui/kbd.tsx
+dashboard/components/ui/menubar.tsx
+dashboard/components/ui/avatar.tsx
+dashboard/components/ui/toggle-group.tsx
+dashboard/components/ui/item.tsx
+dashboard/components/ui/command.tsx
+dashboard/components/ui/radio-group.tsx
+dashboard/components/ui/breadcrumb.tsx
+dashboard/components/ui/native-select.tsx
+dashboard/components/ui/calendar.tsx
+dashboard/components/ui/switch.tsx
+dashboard/components/ui/combobox.tsx
+dashboard/components/ui/alert.tsx
+dashboard/components/ui/tooltip.tsx
+dashboard/components/ui/empty.tsx
+dashboard/components/ui/drawer.tsx
+dashboard/components/ui/bubble.tsx
+dashboard/components/ui/accordion.tsx
+dashboard/components/ui/navigation-menu.tsx
+dashboard/components/ui/label.tsx
+dashboard/components/ui/resizable.tsx
+dashboard/components/ui/scroll-area.tsx
+dashboard/components/ui/field.tsx
+dashboard/components/ui/sheet.tsx
+dashboard/components/ui/hover-card.tsx
+dashboard/pnpm-lock.yaml
+dashboard/app/globals.css
+dashboard/app/page.tsx
+dashboard/app/layout.tsx
+
+2026-09-14T06:51:59.339361Z ERROR codex_core::tools::router: error=collab spawn failed: no thread with id: 01a09eaf-5e2c-7d80-a7ca-2aabaf4838aa
+exec
+/bin/zsh -lc "sed -n '1,260p' TARGET.md; sed -n '1,320p' references/LITERATURE.md; sed -n '1,360p' references/bibliography.json; sed -n '1,360p' research_state/DATA_MANIFEST.json" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+# Research Target
+
+Let \(p\) be prime and let \(d\) be an integer satisfying \(100<d<p\). The dimension is fixed at \(m=2\). Degrees \(d\le 100\), including the degenerate case \(d=0\), are outside the campaign scope and must not be treated as obstructions to the target. A point table is a function
+
+\[
+f:\mathbb F_p^2\to\mathbb F_p.
+\]
+
+For every affine line \(L\subseteq\mathbb F_p^2\), a line table supplies a univariate polynomial \(P_L\) of degree at most \(d\), interpreted on \(L\). Define the test agreement
+
+\[
+\operatorname{Agr}_{\mathrm{LVP}}(f,P)
+=\Pr_{L,\,x\in L}[P_L(x)=f(x)],
+\]
+
+where \(L\) is uniform among affine lines and \(x\) is uniform on \(L\).
+
+## Current benchmark
+
+Kominers--Thaler--Zheng prove that there are absolute constants \(C,c>0\) such that
+
+\[
+\operatorname{Agr}_{\mathrm{LVP}}(f,P)\ge C(d/p)^{1/3}
+\]
+
+implies the existence of a total-degree-at-most-\(d\) polynomial \(Q\) satisfying
+
+\[
+\Pr_x[Q(x)=f(x)]\ge c\operatorname{Agr}_{\mathrm{LVP}}(f,P).
+\]
+
+## Target theorem
+
+The campaign seeks progress toward the following deliberately explicit research target.
+
+For every fixed \(\eta>0\), prove constants \(C_\eta,c_\eta>0\) and a fully stated admissible parameter regime with \(100<d<p\) such that
+
+\[
+\operatorname{Agr}_{\mathrm{LVP}}(f,P)
+\ge C_\eta(d/p)^{1-\eta}
+\]
+
+implies
+
+\[
+\max_{\deg Q\le d}\Pr_x[Q(x)=f(x)]
+\ge c_\eta\operatorname{Agr}_{\mathrm{LVP}}(f,P).
+\]
+
+Equivalent or stronger list-decoding conclusions are admissible only when the conversion to a single polynomial and its loss are proved.
+
+## Milestones
+
+- **Bivariate exponent improvement:** replace \(1/3\) by an explicit \(\alpha>1/3\) over prime fields.
+- **Combinatorial improvement:** strengthen the incidence/concentration stage with its full parameter range.
+- **Algebraic improvement:** strengthen the interpolation/factorization stage with complete prime-characteristic handling.
+- **Near-linear exponent:** prove \((d/p)^{1-\eta}\) for every fixed \(\eta>0\).
+- **Sharp threshold:** identify matching examples or prove a theorem at \(\Theta(d/p)\), if true.
+
+Because \(d/p<1\), a larger exponent is a stronger result: it permits smaller local agreement.
+
+The general-dimensional lift is standard once the bivariate statement is known. It is a downstream corollary, not a research milestone, and the campaign spends no agents on it.
+
+## Non-results
+
+The following do not count as achieving an exponent milestone:
+
+- a theorem only for fixed \(d\), unless clearly labeled;
+- a hidden assumption \(p\ge d^C\) that makes the stated threshold vacuous;
+- a list of many global polynomials without a proved single-polynomial conclusion;
+- an exponent obtained after suppressing characteristic- or logarithmic losses;
+- numerical success on small fields;
+- a proof for line-versus-line, plane-versus-point, or axis-parallel tests presented as a line-versus-point theorem without a proved reduction.
+- a result whose substantive advance concerns \(m\ne2\), extension fields, or dimension bootstrapping rather than the bivariate prime-field theorem.
+# Literature and Theorem Map
+
+This file is a navigation aid, not a substitute for the papers. Agents must cite exact theorem and lemma identifiers from the primary sources they actually use.
+
+The active campaign extracts only the \(m=2\), prime-field content of these papers. General-dimensional lifting is standard downstream machinery and is not an active research target.
+
+## Primary line-versus-point papers
+
+### Arora--Sudan
+
+Sanjeev Arora and Madhu Sudan, *Improved Low-Degree Testing and Its Applications*, Combinatorica 23 (2003), 365--426. DOI: [10.1007/s00493-003-0025-0](https://doi.org/10.1007/s00493-003-0025-0).
+
+The foundational low-agreement analysis of the Rubinfeld--Sudan test. For this campaign, isolate its bivariate algebraic argument over \(\mathbb F_p\), including the use of Hilbert irreducibility and its field-size requirement. Its separate dimension-bootstrapping argument is historical context only.
+
+### Harsha--Kumar--Saptharishi--Sudan (HKSS)
+
+Prahladh Harsha, Mrinal Kumar, Ramprasad Saptharishi, and Madhu Sudan, *An Improved Line-Point Low-Degree Test*, arXiv:2311.12752. [Primary preprint](https://arxiv.org/abs/2311.12752).
+
+This work replaces the black-box use of Hilbert irreducibility with a more direct bivariate factorization/interpolation analysis. Kominers--Thaler--Zheng estimate the resulting bivariate low-agreement exponent as \(1/7\); that numerical extraction should be attributed to KTZ unless independently rederived. The later lift to general dimension is routine for present purposes and is not assigned to agents.
+
+### Kominers--Thaler--Zheng (KTZ)
+
+Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, *Improved Soundness for the Line--versus--Point Test*, ECCC TR26-147, revision 1 (2026). [Primary report](https://eccc.weizmann.ac.il/report/2026/147/).
+
+The current benchmark proves a cubic threshold \(C(d/q)^{1/3}\) over every finite field, hence in particular \(C(d/p)^{1/3}\) on \(\mathbb F_p^2\), with global agreement at least a constant times the local agreement. The campaign uses only this bivariate prime-field specialization. Submissions should identify exactly which combinatorial or algebraic step forces the exponent \(1/3\).
+
+## Adjacent foundations
+
+- Ronitt Rubinfeld and Madhu Sudan, *Robust Characterizations of Polynomials with Applications to Program Testing*, SIAM Journal on Computing 25 (1996). This is the test's foundational high-agreement setting.
+- Ran Raz and Shmuel Safra, *A Sub-Constant Error-Probability Low-Degree Test, and a Sub-Constant Error-Probability PCP Characterization of NP*, STOC 1997. This is a plane-based comparison and must not be conflated with line-versus-point.
+- Irit Dinur, Prahladh Harsha, Rakesh Venkat, and Henry Yuen, *Multiplayer Parallel Repetition for Expanding Games*, including the low-degree-test context where relevant. Use only exact statements that apply to the chosen test distribution.
+
+## Questions the campaign should track
+
+1. Which inequality in the KTZ bivariate argument creates the cubic threshold?
+2. Is the loss algebraic, combinatorial, or caused by converting average line agreement into a structured set of points/directions?
+3. Can multiplicity-sensitive interpolation, Hasse derivatives, or separability arguments reduce the loss?
+4. Can a direct argument using the geometry of \(\mathbb F_p^2\) avoid a lossy intermediate lemma?
+5. What examples show that a threshold below \(\Theta(d/p)\) is impossible?
+6. Which statements fail in small prime characteristic, for \(d\ge p\), or when affine-line sampling is changed?
+
+## Citation policy
+
+- Record the paper, version/date, theorem or lemma number, hypotheses, and the exact role of every imported result.
+- Mark any reconstructed exponent as a derivation rather than a quoted theorem.
+- Do not cite survey prose for a decisive lemma when the primary paper is available.
+- Do not include paper PDFs in Git. `scripts/fetch_references.py` can populate a local ignored cache for research use.
+[
+  {
+    "authors": ["Sanjeev Arora", "Madhu Sudan"],
+    "title": "Improved Low-Degree Testing and Its Applications",
+    "year": 2003,
+    "venue": "Combinatorica 23",
+    "url": "https://doi.org/10.1007/s00493-003-0025-0",
+    "role": "foundational low-agreement line-versus-point analysis"
+  },
+  {
+    "authors": ["Prahladh Harsha", "Mrinal Kumar", "Ramprasad Saptharishi", "Madhu Sudan"],
+    "title": "An Improved Line-Point Low-Degree Test",
+    "year": 2024,
+    "venue": "arXiv:2311.12752",
+    "url": "https://arxiv.org/abs/2311.12752",
+    "role": "modern bivariate factorization and interpolation analysis"
+  },
+  {
+    "authors": ["Scott Duke Kominers", "Justin Thaler", "Kai Zhe Zheng"],
+    "title": "Improved Soundness for the Line--versus--Point Test",
+    "year": 2026,
+    "venue": "ECCC TR26-147, revision 1",
+    "url": "https://eccc.weizmann.ac.il/report/2026/147/",
+    "role": "current cubic-threshold benchmark"
+  },
+  {
+    "authors": ["Ronitt Rubinfeld", "Madhu Sudan"],
+    "title": "Robust Characterizations of Polynomials with Applications to Program Testing",
+    "year": 1996,
+    "venue": "SIAM Journal on Computing 25",
+    "url": "https://doi.org/10.1137/S0097539793255151",
+    "role": "foundational polynomial testing"
+  },
+  {
+    "authors": ["Ran Raz", "Shmuel Safra"],
+    "title": "A Sub-Constant Error-Probability Low-Degree Test, and a Sub-Constant Error-Probability PCP Characterization of NP",
+    "year": 1997,
+    "venue": "STOC 1997",
+    "url": "https://doi.org/10.1145/258533.258641",
+    "role": "plane-based comparison"
+  }
+]
+{
+  "campaigns": {
+    "campaign-10-ultra": {
+      "integrity_check": "ok",
+      "job_statuses": {
+        "queued": 11
+      },
+      "jobs": 11
+    },
+    "campaign-300-ultra": {
+      "integrity_check": "ok",
+      "job_statuses": {
+        "queued": 301
+      },
+      "jobs": 301
+    }
+  },
+  "durable_file_count": 15,
+  "files": [
+    {
+      "bytes": 547,
+      "path": "research_state/README.md",
+      "role": "documentation",
+      "sha256": "3776b8754db483faa2c7b19430500bc460cd681b0eae8ddaaf61aa8c780cd932"
+    },
+    {
+      "bytes": 20480,
+      "path": "research_state/campaign-10-ultra/campaign.sqlite3",
+      "role": "campaign_queue",
+      "sha256": "586373f4a23410d83a26acfaa9261649023d7aebd3db5c7bac14e2633b55b99b"
+    },
+    {
+      "bytes": 5021,
+      "path": "research_state/campaign-10-ultra/jobs.json",
+      "role": "campaign_index",
+      "sha256": "965d7e315c6157d4abbf0da11bb016ff2a66d37fb9eee3f1d67c3c8dce2a1dd8"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-10-ultra/leaderboards/bottleneck-ledger.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-10-ultra/leaderboards/promising-results.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-10-ultra/leaderboards/rejected-results.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-10-ultra/leaderboards/verified-results.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 514,
+      "path": "research_state/campaign-10-ultra/status.json",
+      "role": "campaign_index",
+      "sha256": "0ced80a8652182ef61eb5aabc21fd0e15491a9f5f9e16b0f07f91c46cdd2d37c"
+    },
+    {
+      "bytes": 81920,
+      "path": "research_state/campaign-300-ultra/campaign.sqlite3",
+      "role": "campaign_queue",
+      "sha256": "ca400086884a37459006b56a030fd5693faa4e6aa913e5f79a2a113bd7cee2c3"
+    },
+    {
+      "bytes": 136854,
+      "path": "research_state/campaign-300-ultra/jobs.json",
+      "role": "campaign_index",
+      "sha256": "1ced1bcabc9c95970606769d46ada1221606b75360cd5f2c638be6514ed217d1"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-300-ultra/leaderboards/bottleneck-ledger.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-300-ultra/leaderboards/promising-results.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-300-ultra/leaderboards/rejected-results.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3,
+      "path": "research_state/campaign-300-ultra/leaderboards/verified-results.json",
+      "role": "leaderboard",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 467,
+      "path": "research_state/campaign-300-ultra/status.json",
+      "role": "campaign_index",
+      "sha256": "cdd173a722f537e37d778357e51006279d772f9c5f2f0fc38e38e433a90698ca"
+    }
+  ],
+  "hash_algorithm": "sha256",
+  "schema": "line-point-research-data-manifest-v1",
+  "total_bytes": 245827
+}
+
+exec
+/bin/zsh -lc "sed -n '1,240p' research_state/README.md; sed -n '1,260p' research_state/campaign-10-ultra/status.json; sed -n '1,180p' research_state/campaign-10-ultra/jobs.json; sed -n '1,220p' research_state/campaign-300-ultra/status.json; sqlite3 research_state/campaign-10-ultra/campaign.sqlite3 '.schema'; sqlite3 research_state/campaign-10-ultra/campaign.sqlite3 'select * from jobs limit 20;'" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ exited 1 in 0ms:
+# Research State
+
+Durable campaign state is committed here. Runtime SQLite sidecars, process metadata, caches, and stop controls are ignored.
+
+The verified board is intentionally strict. A claim is promoted only after a verifier accepts the exact SHA-identified theorem, audits every quantifier and exponent loss, checks the cited literature dependencies, and finds no unresolved gap.
+
+Finite sanity checks are retained inside submissions as falsification evidence. They are never promoted independently and do not establish asymptotic soundness.
+{
+  "benchmark_exponent": "1/3",
+  "campaign_dir": "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra",
+  "counts": {
+    "queued": 7,
+    "running": 4
+  },
+  "degree_lower_bound_exclusive": 100,
+  "dimension": 2,
+  "field_regime": "prime",
+  "model": "gpt-5.6-sol",
+  "planned_agent_invocations": 22,
+  "reasoning_effort": "ultra",
+  "researcher_count": 10,
+  "roles": {
+    "genius": 1,
+    "researcher": 10
+  },
+  "target_exponent": "1-o(1)",
+  "updated_at": "2026-09-14T06:51:37Z"
+}
+[
+  {
+    "attempts": 0,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": "__swarm_reviews__",
+    "direction": "global bivariate prime-field proof synthesis toward exponent 1-o(1)",
+    "error": null,
+    "finished_at": null,
+    "id": "GENIUS",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": null,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "genius",
+    "started_at": null,
+    "status": "queued"
+  },
+  {
+    "attempts": 1,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "audit the exact bivariate prime-field cubic bottleneck in Kominers--Thaler--Zheng",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0001",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 1,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": "2026-09-14T06:51:27Z",
+    "status": "running"
+  },
+  {
+    "attempts": 1,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "improve the combinatorial concentration step in the affine plane over F_p",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0002",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 2,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": "2026-09-14T06:51:27Z",
+    "status": "running"
+  },
+  {
+    "attempts": 1,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "improve the bivariate algebraic interpolation step over F_p",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0003",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 3,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": "2026-09-14T06:51:27Z",
+    "status": "running"
+  },
+  {
+    "attempts": 1,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "multiplicity-sensitive bivariate interpolation and weighted vanishing conditions",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0004",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 4,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": "2026-09-14T06:51:27Z",
+    "status": "running"
+  },
+  {
+    "attempts": 0,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "Hasse derivatives and inseparability in small prime characteristic",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0005",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 5,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": null,
+    "status": "queued"
+  },
+  {
+    "attempts": 0,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "bivariate factorization, discriminants, and absolutely irreducible plane curves",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0006",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 6,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": null,
+    "status": "queued"
+  },
+  {
+    "attempts": 0,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "Bezout and intersection-multiplicity accounting for curves in the affine plane",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0007",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 7,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": null,
+    "status": "queued"
+  },
+  {
+    "attempts": 0,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "prime-field incidence bounds for point-line agreement configurations",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0008",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 8,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": null,
+    "status": "queued"
+  },
+  {
+    "attempts": 0,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "higher moments and dependent random choice on good incidences",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0009",
+    "max_attempts": 8,
+    "model": "gpt-5.6-sol",
+    "ordinal": 9,
+    "output_dir": null,
+    "reasoning_effort": "ultra",
+    "role": "researcher",
+    "started_at": null,
+    "status": "queued"
+  },
+  {
+    "attempts": 0,
+    "created_at": "2026-09-14T03:35:55Z",
+    "dependency": null,
+    "direction": "energy increment and popularity refinements",
+    "error": null,
+    "finished_at": null,
+    "id": "researcher-0010",
+    "max_attempts": 8,
+{
+  "benchmark_exponent": "1/3",
+  "campaign_dir": "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-300-ultra",
+  "counts": {
+    "queued": 301
+  },
+  "dimension": 2,
+  "field_regime": "prime",
+  "model": "gpt-5.6-sol",
+  "planned_agent_invocations": 602,
+  "reasoning_effort": "ultra",
+  "researcher_count": 300,
+  "roles": {
+    "genius": 1,
+    "researcher": 300
+  },
+  "target_exponent": "1-o(1)",
+  "updated_at": "2026-09-14T03:30:59Z"
+}
+CREATE TABLE campaign_meta (
+  key TEXT PRIMARY KEY, value_json TEXT NOT NULL
+);
+CREATE TABLE campaign_jobs (
+  id TEXT PRIMARY KEY, role TEXT NOT NULL, ordinal INTEGER, direction TEXT,
+  dependency TEXT, status TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0,
+  max_attempts INTEGER NOT NULL, output_dir TEXT, error TEXT,
+  model TEXT NOT NULL, reasoning_effort TEXT NOT NULL,
+  created_at TEXT NOT NULL, started_at TEXT, finished_at TEXT
+);
+Error: in prepare, no such table: jobs
+
+exec
+/bin/zsh -lc 'for db in research_state/campaign-10-ultra/campaign.sqlite3 research_state/campaign-300-ultra/campaign.sqlite3; do sqlite3 "$db" "select status,count(*) from campaign_jobs group by status; select count(*) from campaign_jobs where output_dir is not null;"; done; find research_state -type f '"\\( -iname '*audit*' -o -iname '*submission*' -o -iname '*review*' \\) -not -path '*/superseded/*' -print; find research_state -type d -not -path '*/superseded*' -maxdepth 5 -print" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+queued|7
+running|4
+0
+queued|301
+0
+research_state
+research_state/campaign-300-ultra
+research_state/campaign-300-ultra/agent_logs
+research_state/campaign-300-ultra/leaderboards
+research_state/campaign-10-ultra
+research_state/campaign-10-ultra/agent_logs
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-d7de3aa5af-05f544648e
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-1851a95ded-115cdec338
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-925e3f8372-0262a96aa2
+research_state/campaign-10-ultra/agent_logs/20260914T065127Z-815b490f84-139389c83e
+research_state/campaign-10-ultra/python-cache
+research_state/campaign-10-ultra/python-cache/Library
+research_state/campaign-10-ultra/python-cache/Library/Developer
+research_state/campaign-10-ultra/python-cache/Library/Developer/CommandLineTools
+research_state/campaign-10-ultra/python-cache/Users
+research_state/campaign-10-ultra/python-cache/Users/kaizheng
+research_state/campaign-10-ultra/python-cache/Users/kaizheng/Library
+research_state/campaign-10-ultra/python-cache/Users/kaizheng/Documents
+research_state/campaign-10-ultra/leaderboards
+
+codex
+{"benchmark_improved":false,"characteristic_audit":["The durable corpus currently contains no completed submission or verifier audit: both campaigns have zero output directories, and every active leaderboard is the empty JSON array. Thus there is no prior claimed exponent to inherit or repair.","I am now reconstructing the exact cubic loss from the primary KTZ report; this matters because the local corpus deliberately contains only citation metadata, not theorem text."],"claim_scope":"combinatorial_lemma","claimed_exponent":null,"counterexample_attempts":[],"dimension":2,"exponent_ledger":[],"field_regime":"prime","finite_sanity_checks":[],"global_conclusion":"The active corpus is a clean baseline; primary-source reconstruction is underway.","literature_dependencies":[],"next_tasks":["Extract exact KTZ bivariate definitions and inequalities.","Determine whether the concentration step can be sharpened or whether a proposed sharpening has a finite-plane obstruction."],"note_markdown":"# Research note (interim)\n\nThe active corpus has no completed prior submissions, leaderboard entries, or verifier audits. The next step is an exact primary-source reconstruction of the benchmark bottleneck.","obstructions":["No prior verifier record exists to leverage; all proof obligations must be audited from first principles."],"parameter_regime":"Prime p and integer 100<d<p, with m=2.","proof_steps":[],"result_status":"conjectural","sampling_model":"Uniform affine line L among the p(p+1) affine lines in F_p^2, followed by uniform x in L.","theorem_statement":"Pending exact benchmark reconstruction.","title":"Affine-plane combinatorial concentration audit"}
+web search: 
+web search: site:eccc.weizmann.ac.il/report/2026/147 Improved Soundness Line-versus-Point Test Kominers Thaler Zheng PDF ...
+web search: 
+web search: 
+web search: 
+web search: 
+web search: 
+web search: 
+2026-09-14T06:53:16.792873Z  WARN codex_sandboxing::violation: recorded sandbox violation: resource=filesystem backend=seatbelt reason=operation_not_permitted path=unknown
+web search: 
+web search: "Improved Soundness for the Line--versus--Point Test" Lemma ...
+web search: 
+web search: https://eccc.weizmann.ac.il/report/2026/147/revision/1/download
+web search: 
+web search: 
+web search: 
+web search: 'Lemma 3.2'
+exec
+/bin/zsh -lc "curl -L --fail --silent --show-error 'https://eccc.weizmann.ac.il/report/2026/147/revision/1/download' | pdftotext - - | sed -n '1,520p'" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+zsh:1: command not found: pdftotext
+curl: (6) Could not resolve host: eccc.weizmann.ac.il
+
+web search: 
+web search: 
+web search: 
+web search: 
+web search: 
+web search: 
+2026-09-14T06:59:56.786478Z  WARN codex_core::hook_runtime: failed to resolve parent transcript path for subagent hook parent_thread_id=01a09eaf-5e2c-7d80-a7ca-2aabaf4838aa error=invalid thread-store request: no rollout found for thread id 01a09eaf-5e2c-7d80-a7ca-2aabaf4838aa
+codex
+{"benchmark_improved":false,"characteristic_audit":["The exact cubic loss is now isolated: KTZ’s sampled family has |R|=O(p/epsilon), weighted interpolation gives D=Theta(sqrt(dp/epsilon)), and extension requires D=O(epsilon p), hence epsilon^3=Omega(d/p).","A component-sensitive refinement is emerging: if the target line set has normalized size tau, the same sampling costs |R|=O(tau p/epsilon), so D=O(sqrt(d tau p/epsilon)) and the extension condition becomes epsilon^3=Omega(tau d/p). For tau=O(epsilon), this is the conditional square-root threshold epsilon^2=Omega(d/p).","I am auditing whether exceptional-line deletion and post-deletion pruning preserve a component; local edge accounting adds the independent requirement epsilon^2=Omega(d/p), matching the square-root floor."],"claim_scope":"combinatorial_lemma","claimed_exponent":"1/2 conditional on a pruned accepted component whose line measure is O(epsilon)","counterexample_attempts":["A balanced color table with constant line polynomials appears to force Omega(p/epsilon) lines for KTZ’s cover-every-line sparsifier; I am formalizing this as an actual line-versus-point table, not merely an arbitrary graph."],"dimension":2,"exponent_ledger":[{"input_scale":"accepted component line measure tau; minimum degree k=Theta(epsilon p)","justification":"Independent line sampling at rate Theta(1/k), with disjoint choices across distinct points of a fixed affine line.","loss":"factor tau/epsilon in selected-family size","output_scale":"|R|=O(tau p/epsilon)","stage":"component-sensitive sparsification","status":"proved"},{"input_scale":"|R|=O(tau p/epsilon)","justification":"Weighted monomial dimension Omega(D^3/d) versus O(|R|D) homogeneous restrictions.","loss":"square-root interpolation cost","output_scale":"D=O(sqrt(d tau p/epsilon))","stage":"weighted interpolation","status":"proved"},{"input_scale":"D=O(sqrt(d tau p/epsilon)); k=Theta(epsilon p)","justification":"More than D shared accepted roots are needed on each target line.","loss":"D<k","output_scale":"epsilon^3=Omega(tau d/p)","stage":"identity extension","status":"proved"},{"input_scale":"tau=O(epsilon)","justification":"Substitution into epsilon^3=Omega(tau d/p).","loss":"structural small-component hypothesis","output_scale":"epsilon=Omega((d/p)^(1/2))","stage":"conditional exponent","status":"conditional"}],"field_regime":"prime","finite_sanity_checks":[],"global_conclusion":"The unconditional benchmark is not yet improved. The promising result is a component-sensitive sparsification law plus a matching obstruction to improving KTZ’s uniform-cover lemma in arbitrary realizable acceptance graphs.","literature_dependencies":[{"hypotheses":"Any finite field; bivariate affine incidence graph and weighted-degree interpolation.","paper":"Kominers--Thaler--Zheng, Improved Soundness for the Line--versus--Point Test","result_id":"Theorem 1.1; Lemmas 2.1, 2.2, 3.1, 3.2, 4.1--4.3","used_for":"Exact cubic bottleneck and the algebraic continuation framework.","version":"ECCC TR26-147, revision 1, 16 August 2026"}],"next_tasks":["Finish explicit constants and local deletion accounting for the component-sensitive theorem.","Prove the balanced-color lower bound by Chernoff plus incidence double counting.","Run finite falsification checks at d=101 and d near p, then complete the characteristic audit."],"note_markdown":"# Interim research note\n\nThe sampled-family loss refines from `p/epsilon` to `tau p/epsilon` on a line component of measure `tau`. This yields the parameter law `epsilon^3 >= C tau d/p`; a component of measure `O(epsilon)` therefore reaches the conditional exponent `1/2`. The full benchmark remains open.","obstructions":["Any unconditional improvement based only on shrinking a line family while covering half of every accepted line must confront balanced, nearly biregular acceptance graphs.","The small-component hypothesis is not guaranteed by local agreement alone; a connected accepted graph may have tau near 1."],"parameter_regime":"p prime, 100<d<p, m=2, local agreement epsilon; auxiliary component line measure tau.","proof_steps":[{"dependencies":["KTZ Lemma 3.2 sampling argument"],"id":"P1","proof":"Sampling each target line with probability Theta(1/(epsilon p)) covers a constant fraction of accepted points on every line; retaining tau in the size calculation gives O(tau p/epsilon), instead of the worst-case O(p/epsilon).","statement":"Component-sensitive line sparsification.","status":"proved"},{"dependencies":["KTZ Lemma 2.2"],"id":"P2","proof":"A weighted-degree-D relation has Omega(D^3/d) eligible monomials, while each selected line imposes at most D+1 conditions; thus D^2=Omega(d|R|) suffices.","statement":"Interpolation degree with the refined family size.","status":"proved"},{"dependencies":["P1","P2"],"id":"P3","proof":"Requiring D below the Theta(epsilon p) root supply gives epsilon^3=Omega(tau d/p).","statement":"Refined exponent law.","status":"proved"},{"dependencies":["P3","local exceptional-line accounting"],"id":"P4","proof":"The continuation to one global polynomial is being checked component-by-component; this step is not yet claimed unconditionally.","statement":"Conditional square-root bivariate decoder when tau=O(epsilon).","status":"conditional"}],"result_status":"conditional","sampling_model":"Uniform among the p(p+1) affine lines of F_p^2, then uniform among the p points on the sampled line (equivalently a uniform incident pair).","theorem_statement":"Provisional: a pruned accepted component of line measure tau admits an explainer of degree O(sqrt(d tau p/epsilon)); if tau=O(epsilon) and epsilon is a sufficiently large constant multiple of sqrt(d/p), the KTZ bivariate continuation should yield one degree-d polynomial with Omega(epsilon) agreement.","title":"Component-sensitive concentration in the affine-plane line-versus-point test"}
+2026-09-14T07:02:28.318455Z  WARN codex_sandboxing::violation: recorded sandbox violation: resource=filesystem backend=seatbelt reason=operation_not_permitted path=unknown
+exec
+/bin/zsh -lc "command -v mutool || true; command -v pdftotext || true; python3 -c \"import importlib.util; print([(m, bool(importlib.util.find_spec(m))) for m in ['pypdf','PyPDF2','pdfplumber','fitz']])\"" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+python3: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+python3: error: couldn't create cache file '/tmp/xcrun_db-wfUDX0yE' (errno=Operation not permitted)
+python3: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+python3: error: couldn't create cache file '/tmp/xcrun_db-diY2bZHo' (errno=Operation not permitted)
+[('pypdf', False), ('PyPDF2', False), ('pdfplumber', False), ('fitz', False)]
+
+2026-09-14T07:03:01.438653Z  WARN codex_core::hook_runtime: failed to resolve parent transcript path for subagent hook parent_thread_id=01a09eaf-5e2c-7d80-a7ca-2aabaf4838aa error=invalid thread-store request: no rollout found for thread id 01a09eaf-5e2c-7d80-a7ca-2aabaf4838aa
+exec
+/bin/zsh -lc 'PYTHONDONTWRITEBYTECODE=1 python3 -c $'"'import random\\np=103; d=101; K=2; random.seed(2002)\\npc=[[random.randrange(K) for y in range(p)] for x in range(p)]\\nlc=[[random.randrange(K) for b in range(p)] for m in range(p+1)]\\nld=[]; total=0\\nfor m in range(p):\\n for b in range(p):\\n  z=sum(pc[x][(m*x+b)%p]==lc[m][b] for x in range(p)); ld.append(z); total+=z\\nfor b in range(p):\\n z=sum(pc[b][y]==lc[p][b] for y in range(p)); ld.append(z); total+=z\\npd=[]\\nfor x in range(p):\\n for y in range(p):\\n  z=sum(lc[m][(y-m*x)%p]==pc[x][y] for m in range(p))+ (lc[p][x]==pc[x][y]); pd.append(z)\\nprint({\"p\":p,\"d\":d,\"K\":K,\"acceptance\":total/(p*p*(p+1)),\"line_degree_min\":min(ld),\"line_degree_max\":max(ld),\"point_degree_min\":min(pd),\"point_degree_max\":max(pd),\"line_mean\":sum(ld)/len(ld),\"point_mean\":sum(pd)/len(pd),\"cube_threshold\":(d/p)**(1/3),\"sqrt_threshold\":(d/p)**0.5})\\n# concentrated directions: f=0; P_L=0 on r directions and 1 otherwise\\nfor rdir in [1,2,10,52,104]: print(\"directions\",rdir,\"acceptance\",rdir/(p+1))'" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 183ms:
+{'p': 103, 'd': 101, 'K': 2, 'acceptance': 0.4999084594357476, 'line_degree_min': 32, 'line_degree_max': 69, 'point_degree_min': 31, 'point_degree_max': 70, 'line_mean': 51.490571321882, 'point_mean': 51.99047978131775, 'cube_threshold': 0.9934851570825894, 'sqrt_threshold': 0.9902436691399974}
+directions 1 acceptance 0.009615384615384616
+directions 2 acceptance 0.019230769230769232
+directions 10 acceptance 0.09615384615384616
+directions 52 acceptance 0.5
+directions 104 acceptance 1.0
+
+exec
+/bin/zsh -lc "PYTHONDONTWRITEBYTECODE=1 python3 -c \"cases=[(103,101),(1009,101),(10007,101),(1009,1007),(10007,10005)]; print([{ 'p':p,'d':d,'d/p':d/p,'cube':(d/p)**(1/3),'sqrt':(d/p)**.5} for p,d in cases])\"" in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+python3: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+python3: error: couldn't create cache file '/tmp/xcrun_db-JusniloO' (errno=Operation not permitted)
+python3: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+python3: error: couldn't create cache file '/tmp/xcrun_db-6gv58VsT' (errno=Operation not permitted)
+[{'p': 103, 'd': 101, 'd/p': 0.9805825242718447, 'cube': 0.9934851570825894, 'sqrt': 0.9902436691399974}, {'p': 1009, 'd': 101, 'd/p': 0.10009910802775025, 'cube': 0.4643121723035186, 'sqrt': 0.31638443076066536}, {'p': 10007, 'd': 101, 'd/p': 0.010092934945538123, 'cube': 0.21610881966460432, 'sqrt': 0.10046360010241581}, {'p': 1009, 'd': 1007, 'd/p': 0.998017839444995, 'cube': 0.999338842782469, 'sqrt': 0.999008428115096}, {'p': 10007, 'd': 10005, 'd/p': 0.9998001399020685, 'cube': 0.9999333755286346, 'sqrt': 0.9999000649575279}]
+
+collab: Wait
+web search: 
+web search: 
+web search: 
+web search: 'Bürgisser'
+codex
+{"benchmark_improved":false,"characteristic_audit":["The component-local proof now closes with explicit hypotheses. Writing k for component minimum degree and tau for its fraction of all affine lines, the two necessary budgets are k^3 >= C d tau p^2 (identity extension) and k^2 >= C d p (degenerate-line deletion).","With k=Theta(epsilon p), these become epsilon^3 >= C tau d/p and epsilon^2 >= C d/p. Thus tau=O(epsilon) gives a rigorously conditional exponent 1/2 and global agreement Omega(epsilon).","No discriminant is used. The only actual division in lifting is by B_Z(b,f(b)), explicitly retained as nonzero; division by the coefficient gcd H is exact polynomial division."],"claim_scope":"combinatorial_lemma","claimed_exponent":"1/2 under a small-component hypothesis; no unconditional improvement","counterexample_attempts":["A probabilistic balanced K-color construction with constant line polynomials gives an actual degree-at-most-d table whose acceptance graph is nearly biregular at density epsilon about 1/K. Double counting forces every single family covering half of every accepted line to have Omega(Kp)=Omega(p/epsilon) lines. This makes KTZ’s global cover-every-line sparsifier optimal up to constants without a decode-or-localize alternative."],"dimension":2,"exponent_ledger":[{"input_scale":"connected accepted component: minimum degree k, line measure tau","justification":"Sample line vertices at rate 8/k; affine uniqueness makes the trials for distinct points on one target line independent.","loss":"Chernoff plus a union bound over fewer than 2p^2 lines; constant loss only when k is much larger than log p","output_scale":"|R|=Theta(tau p^2/k)","stage":"component-sensitive sparsification","status":"proved"},{"input_scale":"|R|=O(tau p^2/k)","justification":"KTZ weighted monomial count D^3/(64d) versus at most |R|(D+1) restrictions.","loss":"square-root interpolation cost","output_scale":"D=O(sqrt(d tau p^2/k))","stage":"trivariate explainer interpolation","status":"proved"},{"input_scale":"D and k","justification":"Each target line supplies more than k/2 distinct shared accepted roots.","loss":"D<k/2","output_scale":"k^3=Omega(d tau p^2), equivalently epsilon^3=Omega(tau d/p) when k=Theta(epsilon p)","stage":"extend the explainer identity","status":"proved"},{"input_scale":"exceptional line count at most D^2 and at most D bad points on each remaining line","justification":"Component-local edge accounting gives loss ratio O(D/k+dp/k^2).","loss":"resultant/derivative deletion","output_scale":"k^2=Omega(dp), equivalently epsilon^2=Omega(d/p)","stage":"simple-root cleanup","status":"proved"},{"input_scale":"tau=O(epsilon), k=Theta(epsilon p)","justification":"Both preceding inequalities reduce to epsilon^2=Omega(d/p).","loss":"unproved structural localization hypothesis","output_scale":"epsilon=Omega((d/p)^(1/2)); global agreement Omega(epsilon)","stage":"conditional decoder","status":"conditional"}],"field_regime":"prime","finite_sanity_checks":["At p=103,d=101,K=2, a fixed-seed balanced-color sample had acceptance 0.499908, line degrees 32..69 (mean 51.49), and point degrees 31..70 (mean 51.99), consistent with the nearly biregular obstruction.","For d=101: the bare cube/square-root scales are 0.99349/0.99024 at p=103, 0.46431/0.31638 at p=1009, and 0.21611/0.10046 at p=10007. These are falsification checks only.","For d=p-2: the bare cube/square-root scales are 0.99934/0.99901 at p=1009 and 0.999933/0.999900 at p=10007; any theorem with a sufficiently large leading constant is vacuous in this near-p regime, as it should be."],"global_conclusion":"A component-sensitive concentration theorem is proved and yields exponent 1/2 with linear global agreement under the additional hypothesis that a pruned accepted component has line measure O(epsilon). The hypothesis is not forced by local agreement, so the unconditional KTZ exponent 1/3 is not improved. A realizable balanced-color table proves that KTZ’s stronger global cover-every-line family cannot be asymptotically reduced below Theta(p/epsilon) by graph theory alone.","literature_dependencies":[{"hypotheses":"Every finite field; uniform incident-pair sampling; arbitrary degree-at-most-d line table.","paper":"Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test","result_id":"Theorem 1.1","used_for":"Quoted benchmark only: epsilon >= C(d/p)^(1/3) implies one total-degree-at-most-d polynomial with agreement at least c epsilon.","version":"ECCC TR26-147, revision 1, 16 August 2026"},{"hypotheses":"Bivariate affine incidence graph; weighted degree (1,1,d); explainer degree below p.","paper":"Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test","result_id":"Lemmas 2.1--2.7 and 6.1--6.3","used_for":"Point-line mixing, monomial count, squarefree/generic derivative cleanup, resultant line bound, Newton lifting, and component propagation. The tau-sensitive sampling and local loss accounting are reconstructed and proved here, not quoted.","version":"ECCC TR26-147, revision 1, 16 August 2026"},{"hypotheses":"A simple root B(0,0,alpha)=0 with B_Z(0,0,alpha) nonzero.","paper":"Peter Buergisser, Completeness and Reduction in Algebraic Complexity Theory","result_id":"Newton iteration result cited by KTZ Lemma 2.7; KTZ notes the same form as HKSS Lemma 2.10","used_for":"Existence and uniqueness of the truncated bivariate formal root.","version":"Springer, Algorithms and Computation in Mathematics 7, 2000"}],"next_tasks":["Prove an unconditional sparsify-or-decode dichotomy: either a component has tau=O(epsilon), or the polynomial labels in a large component already determine a degree-d global decoder.","Investigate whether algebraic rank, rather than graph coverage, can reduce the effective number of constraints contributed by a balanced family of line graphs.","Seek an actual line-versus-point table with one connected, nearly biregular acceptance component and no Omega(epsilon)-agreeing polynomial; the balanced-color obstruction does not have this property."],"note_markdown":"# Interim theorem\n\nThe proof is complete modulo only the explicitly stated small-component hypothesis. A full academic note with numbered steps and audits is being assembled.","obstructions":["The small-component condition tau=O(epsilon) is not implied by the acceptance probability in the present argument.","A single global family required to cover half the accepted points of every line can genuinely require Omega(p/epsilon) lines, even when every P_L is constant.","The conditional theorem is vacuous for d/p larger than the reciprocal of its absolute constant; this includes d very near p and is a limitation, not a counterexample."],"parameter_regime":"p prime; 100<d<p; m=2; epsilon=local agreement; component minimum degree k; component line measure tau=|T|/[p(p+1)].","proof_steps":[{"dependencies":["KTZ Lemma 2.1"],"id":"P1","proof":"Mixing and minimum degree imply each side of a connected accepted component has measure at least k/(4p), once k is a sufficiently large multiple of sqrt(p).","statement":"Component-size lower bound.","status":"proved"},{"dependencies":[],"id":"P2","proof":"Independent sampling of line vertices at rate 8/k, Chernoff concentration, affine-line uniqueness, and a union bound produce one R of size Theta(tau p^2/k) covering more than half of every target line’s accepted neighbors.","statement":"Component-sensitive reaching family.","status":"proved"},{"dependencies":["P2","KTZ Lemma 2.2"],"id":"P3","proof":"Set D=16(floor(sqrt(d|R|))+1). The eligible weighted monomial dimension exceeds the number of line-identity constraints.","statement":"Low-weight trivariate explainer.","status":"proved"},{"dependencies":["P3"],"id":"P4","proof":"More than k/2>D shared accepted points force the restricted degree-D polynomial to vanish identically on every component line.","statement":"Identity extension under k^3 >> d tau p^2.","status":"proved"},{"dependencies":["KTZ Lemmas 2.3--2.6"],"id":"P5","proof":"Squarefree minimization, coefficient-gcd removal, a coprime directional derivative, and a resultant bound remove at most pD^2+tau p(p+1)D accepted edges.","statement":"Characteristic-safe simple-root cleanup.","status":"proved"},{"dependencies":["P5"],"id":"P6","proof":"The deleted fraction is O(D/k+dp/k^2); pruning below floor(k/100) costs less than 2/100 of the component edges, leaving a nonempty minimum-degree graph.","statement":"Local deletion and pruning close under k^2 >> dp.","status":"proved"},{"dependencies":["KTZ Lemmas 2.7 and 6.1--6.3","P6"],"id":"P7","proof":"Newton uniqueness lifts at one point, simple-root uniqueness propagates through a surviving component, and affine incidence mixing gives point measure at least k/(800p).","statement":"One degree-d polynomial has agreement at least k/(800p).","status":"proved"},{"dependencies":["P1--P7","small-component hypothesis tau=O(epsilon)"],"id":"P8","proof":"Substituting k=Theta(epsilon p) and tau=O(epsilon) reduces both budget inequalities to epsilon^2=Omega(d/p).","statement":"Conditional exponent-1/2 corollary.","status":"conditional"}],"result_status":"conditional","sampling_model":"Uniform L among all p(p+1) affine lines of F_p^2, then uniform x among the p points of L; equivalently uniform incident-pair sampling.","theorem_statement":"Let G be a connected subgraph of the accepted-incidence graph with minimum degree k and line measure tau. For an explicit sufficiently large absolute C (e.g. 2^40), if k^2 >= Cdp and k^3 >= Cd tau p^2, then some total-degree-at-most-d Q satisfies Pr[Q=f] >= k/(800p). Consequently, if the standard pruned graph has a component of line measure at most Lambda epsilon, then epsilon >= C_Lambda(d/p)^(1/2) implies Pr[Q=f] >= epsilon/160000.","title":"Component-sensitive line concentration and the square-root conditional regime"}
+collab: Wait
+web search: 
+web search: 'Theorem 4.2'
+collab: Wait
+collab: Wait
+collab: Wait
+exec
+/bin/zsh -lc "find research_state -type f -not -path '*/superseded/*' \\( -iname '*submission*' -o -iname '*audit*' -o -iname '*review*' \\) -print; for f in research_state/campaign-10-ultra/leaderboards/*.json research_state/campaign-300-ultra/leaderboards/*.json; do printf '%s ' \""'$f"; wc -c < "$f"; done; sqlite3 research_state/campaign-10-ultra/campaign.sqlite3 "select status,count(*) from campaign_jobs group by status; select id,status,output_dir from campaign_jobs where output_dir is not null;"' in /Users/kaizheng/Documents/ChatGPT/Line-vs-Point
+ succeeded in 0ms:
+research_state/campaign-10-ultra/leaderboards/bottleneck-ledger.json        3
+research_state/campaign-10-ultra/leaderboards/promising-results.json        3
+research_state/campaign-10-ultra/leaderboards/rejected-results.json        3
+research_state/campaign-10-ultra/leaderboards/verified-results.json        3
+research_state/campaign-300-ultra/leaderboards/bottleneck-ledger.json        3
+research_state/campaign-300-ultra/leaderboards/promising-results.json        3
+research_state/campaign-300-ultra/leaderboards/rejected-results.json        3
+research_state/campaign-300-ultra/leaderboards/verified-results.json        3
+queued|7
+running|4
+
+collab: Wait
+collab: Wait
+collab: Wait
+codex
+{"benchmark_improved":false,"characteristic_audit":["The campaign regime 100<d<p implies p>=103. Every univariate polynomial of degree at most d is therefore the unique degree-<p representative of its function on a line; t^p-t aliases are unavailable.","The interpolant has weighted degree D<p. Its allowed monomials have Z-exponent zero or not divisible by p, so a nonzero Z-dependent interpolant has nonzero formal Z-derivative.","After coefficient-gcd removal, the squarefree polynomial B has degree below p. Since F_p is perfect, an irreducible factor with all three formal partial derivatives zero would be a nontrivial p-th power, which is impossible.","No discriminant is used. Degenerate lines are controlled by a directional derivative coprime to B and the Z-resultant, giving at most D(D-1) such lines.","Division A/H is exact polynomial division by the coefficient gcd. Newton lifting divides only by B_Z(b,f(b)), retained explicitly as a nonzero field element.","Differentiating line identities does not divide by P'_L. If B_Z=0, two independent affine directions force B_X=B_Y=0, contradicting the retained nonzero directional derivative.","Interpolation uses ordinary vanishing, not hidden multiplicity conditions. Each selected line contributes at most D+1 homogeneous coefficient constraints.","All global polynomials obtained by Newton lifting have total degree at most d; individual degree is never substituted for total degree.","Chernoff and union-bound losses, the Cauchy--Schwarz mixing error p^(-1/2), exceptional-line deletion, and iterative pruning are all recorded explicitly."],"claim_scope":"combinatorial_lemma","claimed_exponent":"1/2 under the explicit hypothesis that a standard pruned accepted component has line measure O(epsilon); no unconditional exponent improvement","counterexample_attempts":["Balanced-color table: independently color points and lines with K colors and use the corresponding constant as f(x) and P_L. For p/K>=100 log p, a deterministic realization has all point and line degrees Theta(p/K), yet every single family covering half of every accepted line has size Omega(Kp)=Omega(p/epsilon). This is a proved obstruction to a smaller purely graph-theoretic global reaching family.","The balanced-color table is not a soundness counterexample: one constant polynomial agrees with f on at least 1/K>=epsilon/2 of all points. It instead demonstrates the need for a sparsify-or-decode dichotomy.","Concentrated good directions: take f=Q globally, use P_L=Q|_L in s directions and P_L=Q|_L+1 elsewhere. Acceptance is s/(p+1), and the retained line component has measure Theta(epsilon), so it is compatible with the conditional square-root result.","Independent random point and line values have agreement about 1/p, below every campaign threshold because d>100. They do not falsify either the benchmark or the conditional theorem.","Inseparable-function attempts using t^p-t or p-th-power aliases fail because d<p and the proof works with degree-<p formal representatives.","When d is near p, the explicit large-constant square-root hypothesis is vacuous. This is a limitation of the result, not an obstruction to the campaign theorem."],"dimension":2,"exponent_ledger":[{"input_scale":"Unconditional KTZ core: k=Theta(epsilon p), line support measure tau<=1","justification":"KTZ Lemma 3.2 gives |R|=O(p/epsilon); weighted interpolation gives D=O(sqrt(dp/epsilon)); extension needs D=O(epsilon p). This is a reconstruction from the proof, not a quoted exponent explanation.","loss":"One inverse power of epsilon in |R| and a square-root interpolation loss","output_scale":"epsilon^3=Omega(d/p), hence epsilon=Omega((d/p)^(1/3))","stage":"KTZ benchmark reconstruction","status":"proved"},{"input_scale":"Local agreement epsilon","justification":"KTZ Lemma 3.1 prunes accepted incidences while retaining minimum degree k0=floor(epsilon p/100).","loss":"Absolute constant only","output_scale":"k0=Theta(epsilon p)","stage":"accepted-core pruning","status":"proved"},{"input_scale":"Connected accepted component with minimum degree k and line measure tau","justification":"Sample each of its line vertices with probability 8/k. Affine-line uniqueness makes coverage events independent across distinct points of a fixed target line; Chernoff plus a union bound gives simultaneous coverage.","loss":"Constant probability and constant-factor size concentration","output_scale":"|R|=Theta(tau p^2/k), hence O(tau p/epsilon) when k=Theta(epsilon p)","stage":"component-sensitive concentration","status":"proved"},{"input_scale":"|R|=O(tau p^2/k)","justification":"The eligible weighted monomial space has dimension at least D^3/(64d), while the selected line identities impose at most |R|(D+1) constraints.","loss":"Square-root interpolation loss","output_scale":"D=O(sqrt(d tau p^2/k))","stage":"trivariate interpolation","status":"proved"},{"input_scale":"D=O(sqrt(d tau p^2/k)) and root supply k","justification":"More than half of every target line's accepted points are reached, so D<k/2 makes its restricted relation identically zero.","loss":"Requires k^3=Omega(d tau p^2)","output_scale":"epsilon^3=Omega(tau d/p) when k=Theta(epsilon p)","stage":"identity extension","status":"proved"},{"input_scale":"At most D trivial lines, D(D-1) degenerate lines, and D bad points per other line","justification":"Component-local deletion divided by |E|>=k|T| is O(D/k+dp/k^2).","loss":"Requires k^2=Omega(dp), independently of tau","output_scale":"epsilon^2=Omega(d/p) when k=Theta(epsilon p)","stage":"simple-root cleanup","status":"proved"},{"input_scale":"Clean graph with minimum degree k1=floor(k/100)","justification":"Iterative pruning loses below 2k1/k of the original component edges; point-line mixing gives every surviving component point measure at least k1/(4p).","loss":"Absolute constant and absorbed p^(-1/2) mixing error","output_scale":"global agreement at least k/(800p)","stage":"lifting and propagation","status":"proved"},{"input_scale":"tau<=Lambda epsilon and k=Theta(epsilon p)","justification":"Both k^3 and k^2 budget conditions reduce to epsilon^2 p=Omega_Lambda(d).","loss":"The small-component premise is not known to follow from local agreement","output_scale":"epsilon>=C_Lambda(d/p)^(1/2), global agreement at least epsilon/160000","stage":"conditional square-root corollary","status":"conditional"},{"input_scale":"Balanced K-color acceptance graph, epsilon in [1/(2K),2/K]","justification":"Double counting the covered point set forces any family covering half of every line to contain at least Kp/16 lines.","loss":"None; this is a lower bound","output_scale":"|R|>=p/(32epsilon)","stage":"global-cover obstruction","status":"proved"}],"field_regime":"prime","finite_sanity_checks":["For p=103, d=101, K=2, a fixed-seed balanced-color sample had acceptance 0.4999084594, line degrees 32--69, and point degrees 31--70, consistent with the nearly biregular obstruction. This computation is not used in the proof.","At d=101, the bare cube-root/square-root scales are respectively 0.993485/0.990244 for p=103, 0.464312/0.316384 for p=1009, and 0.216109/0.100464 for p=10007.","For d=p-2, the bare cube-root/square-root scales are 0.999339/0.999008 for p=1009 and 0.999933/0.999900 for p=10007. The large-constant hypotheses are correctly vacuous there.","At p=103, a table supported on 1, 2, 10, 52, or 104 good directions has exact agreement 1/104, 2/104, 10/104, 1/2, or 1, confirming that uniform line sampling does not force agreement to be spread across directions."],"global_conclusion":"A component-sensitive concentration theorem is proved: a connected accepted component of minimum degree k and line measure tau decodes when k^2 is sufficiently larger than dp and k^3 is sufficiently larger than d tau p^2, yielding global agreement at least k/(800p). For a standard pruned component with tau=O(epsilon), this gives a conditional exponent 1/2 and agreement Omega(epsilon). Local agreement alone does not currently guarantee such a component, so the unconditional KTZ benchmark exponent 1/3 is not improved. A realizable balanced-color table proves that KTZ's global cover-every-line family cannot be reduced below Theta(p/epsilon) by graph theory alone.","literature_dependencies":[{"hypotheses":"Any finite field, arbitrary dimension; uniform incident-pair line-versus-point sampling; arbitrary degree-at-most-d line table.","paper":"Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test","result_id":"Theorem 1.1","used_for":"Quoted benchmark. Its m=2, q=p specialization is epsilon>=C(d/p)^(1/3) with one total-degree-at-most-d polynomial having agreement at least c epsilon.","version":"ECCC TR26-147, revision 1, 16 August 2026"},{"hypotheses":"Bivariate affine incidence; weighted degree (1,1,d); explainer degree D<p; simple-root lifting.","paper":"Scott Duke Kominers, Justin Thaler, and Kai Zhe Zheng, Improved Soundness for the Line--versus--Point Test","result_id":"Lemmas 2.1--2.7, 3.1--3.2, 4.1--4.3, 5.1--5.2, and 6.1--6.3","used_for":"Point-line mixing, benchmark pruning, monomial count, squarefree and directional-derivative cleanup, resultant bound, Newton lifting, and component propagation. The tau-sensitive size calculation and component-local deletion ledger are proved in this note and are not quoted from KTZ.","version":"ECCC TR26-147, revision 1, 16 August 2026"},{"hypotheses":"Best-fit degree-d line polynomial on each line and q>C d/epsilon^7.","paper":"Prahladh Harsha, Mrinal Kumar, Ramprasad Saptharishi, and Madhu Sudan, An Improved Line-Point Low-Degree Test","result_id":"Theorem 4.2","used_for":"Historical bivariate comparison only. The displayed q>C d/epsilon^7 condition is quoted; exponent 1/7 is its algebraic rewrite and is not used in the proof.","version":"ECCC TR23-182 / arXiv:2311.12752 v1, 21 November 2023"}],"next_tasks":["Prove an unconditional sparsify-or-decode dichotomy: either some accepted core component has tau=O(epsilon), or the labels in a larger component already determine a global degree-d decoder.","Investigate algebraic rank among line-graph constraints. The balanced-color obstruction defeats smaller graph covers but has very low label rank and an immediate constant decoder.","Search for a connected, nearly biregular, degree-d-realizable acceptance component with tau much larger than epsilon and no Omega(epsilon)-agreeing polynomial; such an example would directly test the remaining structural premise."],"note_markdown":"# Component-sensitive line concentration and the square-root conditional regime\n\n## Abstract\n\nFor the affine line-versus-point test on $\\mathbb F_p^2$, I retain the line-support measure in the Kominers--Thaler--Zheng sparsification argument. If a connected accepted-incidence subgraph has minimum degree $k$ and its line side occupies a fraction $\\tau$ of all affine lines, then a reaching family of size $O(\\tau p^2/k)$ suffices. The resulting trivariate explainer has weighted degree $D=O(\\sqrt{d\\tau p^2/k})$. Component-local accounting shows that the proof closes under\n\n$$\nk^3\\gg d\\tau p^2\\quad\\text{and}\\quad k^2\\gg dp,\n$$\n\nand yields one total-degree-at-most-$d$ polynomial with agreement $\\Omega(k/p)$. Thus a standard pruned component with $k=\\Theta(\\epsilon p)$ and $\\tau=O(\\epsilon)$ admits the conditional square-root threshold $\\epsilon=\\Omega((d/p)^{1/2})$, with global agreement $\\Omega(\\epsilon)$.\n\nThis does not improve the unconditional $1/3$ benchmark: no argument here forces the small-component hypothesis. Moreover, a balanced-color construction using constant line polynomials proves that a single family which covers half of every accepted line can genuinely require $\\Omega(p/\\epsilon)$ lines. Hence a further improvement must be a sparsify-or-decode argument, not a uniformly smaller graph-theoretic cover.\n\n## Test and Notation\n\nFix a prime $p$ and an integer $100<d<p$; throughout $m=2$. There are $p(p+1)$ affine lines, each containing $p$ points, and every point lies on $p+1$ lines. Sampling a uniform line and then a uniform point on it is therefore the same as sampling a uniform incident pair.\n\nLet $f:\\mathbb F_p^2\\to\\mathbb F_p$, and let every affine line $L$ carry a polynomial $P_L$ of degree at most $d$. Put\n\n$$\n\\epsilon=\\Pr_{L,\\,x\\in L}[P_L(x)=f(x)].\n$$\n\nThe accepted-incidence graph has an edge $(x,L)$ exactly when $x\\in L$ and $P_L(x)=f(x)$. For a subgraph $G=(X,T,E)$, write $k=\\operatorname{mindeg}(G)$, $t=|T|$, and\n\n$$\n\\tau=\\frac{t}{p(p+1)}.\n$$\n\nAll graph degrees below are accepted degrees, not ambient incidence degrees.\n\n## Prior Results\n\nThe active corpus contained no completed submission or verifier audit at the start and end of this run; every active verified, promising, rejected, and bottleneck leaderboard was `[]`. This was checked against [the durable manifest](/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/DATA_MANIFEST.json) and both campaign databases, excluding every directory named `superseded`.\n\nThe quoted benchmark is Theorem 1.1 of [Kominers--Thaler--Zheng, ECCC TR26-147, revision 1](https://eccc.weizmann.ac.il/report/2026/147/revision/1/download): over every finite field, $\\epsilon\\ge C(d/p)^{1/3}$ implies a single total-degree-at-most-$d$ polynomial with agreement at least $c\\epsilon$.\n\nThe explanation of the cubic exponent is my reconstruction from their proof, not a quoted theorem: Lemma 3.2 gives $|R|=O(p/\\epsilon)$; Lemmas 4.1--4.3 give $D=O(\\sqrt{d|R|})=O(\\sqrt{dp/\\epsilon})$; and identity extension and later lifting require $D=O(\\epsilon p)$. Squaring gives $d p/\\epsilon=O(\\epsilon^2p^2)$, or $\\epsilon^3=\\Omega(d/p)$.\n\nFor context, Theorem 4.2 of [Harsha--Kumar--Saptharishi--Sudan](https://arxiv.org/abs/2311.12752v1) displays the condition $p>C d/\\epsilon^7$ for its weak bivariate best-fit-oracle theorem. Calling this an exponent-$1/7$ threshold is an algebraic rewrite of that displayed condition. It is not used below.\n\n## Theorem\n\n**Theorem A (proved component-sensitive decoder).** Let $C_*=2^{40}$. Suppose $G=(X,T,E)$ is a connected subgraph of the accepted-incidence graph with minimum degree $k$ and line measure $\\tau$. If\n\n$$\nk^2\\ge C_*dp,\\qquad k^3\\ge C_*d\\tau p^2,\n$$\n\nthen there is $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ such that\n\n$$\n\\Pr_x[Q(x)=f(x)]\\ge \\frac{k}{800p}.\n$$\n\nThe constant is deliberately unoptimized.\n\n**Corollary B (conditional exponent $1/2$).** Let $\\epsilon$ be the test agreement and let $G_0$ be a pruned graph supplied by KTZ Lemma 3.1, so $k_0=\\lfloor\\epsilon p/100\\rfloor$. Suppose some connected component of $G_0$ has line measure at most $\\Lambda\\epsilon$, where $\\Lambda\\ge1$. Define\n\n$$\nC_\\Lambda=\\sqrt{8{,}000{,}000\\,C_*\\Lambda}.\n$$\n\nIf $\\epsilon\\ge C_\\Lambda(d/p)^{1/2}$, then some total-degree-at-most-$d$ polynomial $Q$ satisfies\n\n$$\n\\Pr_x[Q(x)=f(x)]\\ge\\frac{\\epsilon}{160000}.\n$$\n\nThis is conditional only in the campaign sense: the implication is proved, but the extra small-component premise is not known for every table.\n\n**Proposition C (proved global-cover obstruction).** Let $p\\ge103$ be prime and let $2\\le K\\le p/(100\\log p)$. For every campaign degree $100<d<p$, there is a valid table using constant line polynomials for which\n\n$$\n\\frac1{2K}\\le\\epsilon\\le\\frac2K,\n$$\n\nall accepted point and line degrees are within a factor two of their means, and every set $R$ which reaches at least half of the accepted points of every affine line satisfies\n\n$$\n|R|\\ge\\frac{Kp}{16}\\ge\\frac{p}{32\\epsilon}.\n$$\n\nNevertheless, one constant global polynomial agrees with $f$ on at least $\\epsilon/2$ of the points.\n\n## Proof or Conditional Proof\n\n**[P1] (proved: component size).** Apply KTZ Lemma 2.1 to the point and line sides of $G$. Its exact mixing error is $\\sqrt{\\mu(X)\\mu(T)}/\\sqrt{p+1}$. The first hypothesis and $d>100$ imply $1/\\sqrt{p+1}\\le k/(4p)$. The argument of KTZ Lemma 6.2 therefore gives\n\n$$\n\\mu(X),\\tau\\ge\\frac{k}{4p}.\n$$\n\nIn particular, $t\\ge k(p+1)/4$.\n\n**[P2] (proved: component-sensitive reaching family).** Select each line of $T$ independently with probability $8/k$. For $x\\in N_G(L)$, at least $k-1$ other accepted lines pass through $x$, so $x$ is reached with probability at least $3/4$. For distinct points of a fixed affine line $L$, the relevant sets of other lines are disjoint: two such points have only $L$ as a common line. The reach indicators are consequently independent. Chernoff gives failure probability at most $e^{-\\deg_G(L)/24}\\le e^{-k/24}$ for a fixed $L$. The hypotheses imply $k\\gg\\log p$, so a union bound over fewer than $2p^2$ lines succeeds. A second Chernoff bound controls the sample size. Hence one choice $R$ has, with $r=|R|$,\n\n$$\n\\frac{4t}{k}\\le r\\le\\frac{16t}{k},\n$$\n\nand reaches more than half of $N_G(L)$ for every $L\\in T$. By [P1], $r\\ge p+1$.\n\n**[P3] (proved: interpolation).** Set\n\n$$\nD=16\\bigl(\\lfloor\\sqrt{dr}\\rfloor+1\\bigr).\n$$\n\nThen $D^2>256dr$ and\n\n$$\nD^2\\le1024dr\\le\\frac{16384dt}{k}.\n$$\n\nUsing $t=\\tau p(p+1)\\le2\\tau p^2$ and $k^3\\ge C_*d\\tau p^2$ gives $D/k<1/5000$. Thus $D<k\\le p$, while $r\u0003e p>D$.\n\nKTZ Lemma 2.2 supplies at least $D^3/(64d)$ eligible monomials of weighted degree at most $D$. Each identity $A(L(t),P_L(t))\\equiv0$ costs at most $D+1$ homogeneous conditions, and $D^2>256dr$ makes the number of variables exceed $r(D+1)$. A nonzero interpolant exists. Because $r>D$, it cannot be independent of $Z$; the allowed $Z$-exponents make $A_Z\\ne0$. Choose one of minimum weighted degree. KTZ Lemma 2.3 makes it squarefree.\n\n**[P4] (proved: extension).** If $x$ is an accepted point of $L$ reached by $M\\in R\\setminus\\{L\\}$, then $P_L(x)=f(x)=P_M(x)$ and hence $A(x,P_L(x))=0$. More than $k/2>D$ distinct such points lie on every $L\\in T$. Since $A(L(t),P_L(t))$ has degree at most $D$, it vanishes identically. No Markov loss occurs here.\n\n**[P5] (proved: characteristic-safe cleanup).** Write $A=HB$, where $H(X,Y)$ is the gcd of the coefficients of $A$ as a polynomial in $Z$. At most $D$ lines make $H|_L$ identically zero. On every other line, exact division in the domain $\\mathbb F_p[t]$ gives $B(L(t),P_L(t))\\equiv0$. The squarefree $B$ has degree below $p$. KTZ Lemma 2.4 supplies a formal directional derivative $\\mathcal D$ with $\\gcd(B,\\mathcal DB)=1$. KTZ Lemma 2.6, via the resultant, bounds lines on whose polynomial graph both vanish by $D(D-1)$. Every other line has at most $D$ accepted points where $(\\mathcal DB)(x,f(x))=0$. Thus at most\n\n$$\npD^2+Dt\n$$\n\naccepted edges are deleted.\n\n**[P6] (proved: local deletion and pruning).** Since $|E|\\ge kt$,\n\n$$\n\\frac{pD^2+Dt}{|E|}\\le\\frac{D}{k}+\\frac{16384dp}{k^2}<\\frac1{4000}.\n$$\n\nPut $k_1=\\lfloor k/100\\rfloor$. Iteratively deleting vertices of current degree below $k_1$ removes fewer than\n\n$$\nk_1(|X|+t)\\le 2(k_1/k)|E|\\le |E|/50\n$$\n\nadditional edges. A nonempty graph of minimum degree $k_1$ remains, although it may fragment.\n\n**[P7] (proved: simple roots).** At every remaining point choose two incident lines; $k_1\\ge2$. Their directions are independent in $\\mathbb F_p^2$. Differentiating their formal identities, if $B_Z(x,f(x))=0$, forces $B_X(x,f(x))=B_Y(x,f(x))=0$. This contradicts the retained condition $(\\mathcal DB)(x,f(x))\\ne0$. Hence every retained value is a simple $Z$-root. No derivative is divided by in this step.\n\n**[P8] (proved: lift, propagate, and measure).** Choose any connected component of the graph left by [P6]. Its minimum degree is $k_1>D$. KTZ Lemmas 2.7 and 6.1 lift the line roots through one point to a single total-degree-at-most-$d$ polynomial $Q$. Simple-root uniqueness propagates the same $Q$ through the component, as in KTZ Lemma 6.3; there is no factor-count loss. The first numerical hypothesis also gives $1/\\sqrt{p+1}\\le k_1/(4p)$. KTZ Lemma 6.2 then gives point measure at least\n\n$$\n\\frac{k_1}{4p}\\ge\\frac{k}{800p},\n$$\n\nproving Theorem A.\n\n**[P9] (conditional: translate to local agreement).** In Corollary B, the stated threshold makes $k_0\\ge\\epsilon p/200$. The inequality $\\epsilon^2p\\ge8{,}000{,}000C_*\\Lambda d$ implies both\n\n$$\nk_0^2\\ge C_*dp,\n\\qquad\nk_0^3\\ge C_*d(\\Lambda\\epsilon)p^2.\n$$\n\nTheorem A therefore gives agreement at least $k_0/(800p)\\ge\\epsilon/160000$. This is the exponent-$1/2$ calculation. Its only unresolved campaign premise is the existence of the component with $\\tau\\le\\Lambda\\epsilon$.\n\n**[P10] (proved: realizable balanced-color graph).** Independently color every point and every affine line uniformly from $[K]$, inject the colors into $\\mathbb F_p$, put $f(x)$ equal to the point color, and make $P_L$ the corresponding constant line color. Conditional on a vertex color, its accepted degree is binomial with mean $p/K$ on the line side or $(p+1)/K$ on the point side. A Chernoff bound followed by a union bound over fewer than $3p^2$ vertices has failure probability at most $6p^2e^{-p/(12K)}<1$. Therefore a deterministic realization with the claimed degree bounds exists. These constant line polynomials are degree at most the fixed campaign degree $d>100$; this is not an analysis of the excluded case $d=0$.\n\n**[P11] (proved: cover lower bound).** Let $S$ be the points incident to an accepted edge from $R$. The line-degree upper bound gives $|S|\\le2p|R|/K$. If every line has at least half its accepted points in $S$, summing over all $p(p+1)$ lines gives at least $p^2(p+1)/(4K)$ accepted incidences from $S$. The point-degree upper bound is $2(p+1)/K$, so $|S|\\ge p^2/8$. Hence $|R|\\ge Kp/16$. Since $\\epsilon\\ge1/(2K)$, this is at least $p/(32\\epsilon)$. Finally, $f$ takes only $K$ values, so one constant has agreement at least $1/K\\ge\\epsilon/2$.\n\n## Exponent Ledger\n\n| Stage | Input | Output/loss |\n|---|---|---|\n| KTZ reconstruction | $|R|=O(p/\\epsilon)$ | $D=O(\\sqrt{dp/\\epsilon})$; $D<\\epsilon p$ gives $\\epsilon^3\\gtrsim d/p$ |\n| Component sampling | $t=\\tau p(p+1)$, degree $k$ | $|R|=\\Theta(t/k)=\\Theta(\\tau p^2/k)$; Chernoff/union losses are constant |\n| Interpolation | $r=|R|$ | $D=\\Theta(\\sqrt{dr})=O(\\sqrt{d\\tau p^2/k})$ |\n| Extension | root supply $k$ | $D<k$ requires $k^3\\gtrsim d\\tau p^2$ |\n| Degenerate deletion | bad edges $pD^2+Dt$ | relative loss $O(dp/k^2+D/k)$, requiring $k^2\\gtrsim dp$ |\n| Mixing | minimum degree $k_1$ | $p^{-1/2}\\lesssim k_1/p$; absorbed because $d>100$ and $k^2\\gg dp$ |\n| Global agreement | surviving component | $\\Pr[Q=f]\\ge k/(800p)$; no power loss |\n| Small-component corollary | $k=\\Theta(\\epsilon p)$, $\\tau=O(\\epsilon)$ | both constraints become $\\epsilon^2\\gtrsim d/p$ |\n| Global-cover obstruction | $\\epsilon=\\Theta(1/K)$ | every uniform cover has $|R|=\\Omega(Kp)=\\Omega(p/\\epsilon)$ |\n\n## Counterexample Attempts\n\nThe balanced-color table proves that the $p/\\epsilon$ global-cover scale is not merely an artifact of independent sampling. It is an actual degree-at-most-$d$ line-versus-point table. It does not refute soundness, because a constant decoder already has agreement $\\Omega(\\epsilon)$.\n\nConcentrating all good lines in a subset of directions also does not refute the conditional result. With at least two good directions, the accepted graph is connected, has line measure $\\tau=\\epsilon$, and is governed by the planted polynomial.\n\nIndependent random tables accept with probability about $1/p$, far below the campaign range. Attempts using $t^p-t$ or other inseparable functional aliases require line degree at least $p$ and are excluded by $d<p$.\n\nAt the lower boundary $d=101$, the square-root scale decreases from about $0.9902$ at $p=103$ to $0.1005$ at $p=10007$. When $d$ approaches $p$, both cube-root and square-root scales approach one, and the large-constant hypotheses become vacuous. No near-$p$ counterexample is claimed.\n\n## Characteristic Audit\n\nThe proof is entirely over the prime field and keeps $D<p$. Formal and functional identities cannot be confused for line polynomials because $d<p$. The eligible-monomial restriction ensures $A_Z\\ne0$. Squarefreeness and perfectness rule out an inseparable irreducible factor with all partial derivatives zero. The generic derivative is chosen over $\\mathbb F_p$ using fewer than $p$ exceptional hyperplanes. Resultants, rather than discriminant division, control common line roots. Newton lifting divides only by a certified nonzero simple-root derivative. Ordinary interpolation is used with no hidden multiplicities or Hasse-derivative assumptions.\n\n## Limitations\n\nThe result does not prove that every accepted core contains a component with $\\tau=O(\\epsilon)$. A single connected component may have $\\tau$ close to one, in which case the new parameter law returns the cubic benchmark. The explicit constant $2^{40}$ is safe but intentionally very loose, making the finite nonvacuous range much smaller than the exponent notation suggests. Proposition C obstructs only a single cover required to work for every line; it does not obstruct an algebraically informed decoder or an adaptive localization argument. Finite computations above are falsification checks only and play no role in the asymptotic proof.","obstructions":["The existence of a pruned accepted component with line measure tau=O(epsilon) is not implied by local agreement in the present proof.","Balanced constant-label tables force Omega(p/epsilon) lines for any single family covering half of every accepted line, so a uniformly smaller purely graph-theoretic replacement for KTZ Lemma 3.2 is false.","The component theorem has an independent k^2=Omega(dp) cleanup requirement, imposing a square-root floor even if tau is much smaller.","For d/p larger than the reciprocal of the large absolute constant, the conditional theorem is vacuous; in particular it gives no information when d is close to p."],"parameter_regime":"p prime; 100<d<p; m=2. The proved component theorem uses minimum degree k, line measure tau=|T|/[p(p+1)], C_*=2^40, k^2>=C_*dp, and k^3>=C_*d tau p^2. The exponent-1/2 corollary additionally assumes a standard pruned component with tau<=Lambda epsilon.","proof_steps":[{"dependencies":["KTZ Lemma 2.1","KTZ Lemma 6.2"],"id":"P1","proof":"The exact affine point-line mixing inequality and minimum degree imply both component sides have normalized measure at least k/(4p), since k^2>=2^40dp and d>100 absorb the p^(-1/2) error.","statement":"Every relevant connected component has point and line measure at least k/(4p).","status":"proved"},{"dependencies":["P1","Chernoff bound","uniqueness of the affine line through two points"],"id":"P2","proof":"Sample component line vertices at rate 8/k. Coverage events for distinct points of a fixed line depend on disjoint line choices. Chernoff, a union bound over fewer than 2p^2 lines, and size concentration give 4|T|/k<=|R|<=16|T|/k while covering more than half of every line's accepted neighbors.","statement":"A component of line measure tau has a reaching family of size Theta(tau p^2/k).","status":"proved"},{"dependencies":["P2","KTZ Lemmas 2.2, 2.3, and 2.5"],"id":"P3","proof":"For D=16(floor(sqrt(d|R|))+1), the eligible weighted-monomial dimension exceeds |R|(D+1). Since |R|>D, a nonzero interpolant must depend on Z; minimum weighted degree makes it squarefree.","statement":"There is a squarefree trivariate explainer of weighted degree D=O(sqrt(d tau p^2/k)) with nonzero Z-derivative.","status":"proved"},{"dependencies":["P2","P3"],"id":"P4","proof":"Every target line has more than k/2 reached accepted points. When k^3>=2^40d tau p^2, D<k/5000, so these distinct roots force the restricted degree-D explainer to vanish identically.","statement":"The explainer identity extends from the sampled family to every component line.","status":"proved"},{"dependencies":["P4","KTZ Lemmas 2.4 and 2.6"],"id":"P5","proof":"Remove the coefficient gcd, choose a coprime directional derivative, and use the resultant. There are at most D trivial lines, D(D-1) degenerate lines, and D derivative-zero accepted points on each remaining line, for at most pD^2+D|T| deleted edges.","statement":"Trivial and degenerate roots admit a characteristic-safe, component-local deletion bound.","status":"proved"},{"dependencies":["P5"],"id":"P6","proof":"Relative exceptional-edge loss is at most D/k+16384dp/k^2<1/4000. Peeling below k1=floor(k/100) deletes below 2k1/k<=1/50 of the original edges, leaving a nonempty graph of minimum degree k1.","statement":"A nonempty clean minimum-degree subgraph survives, even though connectivity may fragment.","status":"proved"},{"dependencies":["P6"],"id":"P7","proof":"At each surviving point, differentiating identities on two independent incident directions shows that B_Z=0 would force B_X=B_Y=0, contradicting the retained nonzero directional derivative.","statement":"Every surviving point value is a simple Z-root.","status":"proved"},{"dependencies":["P7","KTZ Lemmas 2.7, 6.1, 6.2, and 6.3"],"id":"P8","proof":"Newton uniqueness lifts a degree-d bivariate root at one point and propagates it through any surviving connected component. Mixing gives that component point measure at least k1/(4p)>=k/(800p).","statement":"One total-degree-at-most-d polynomial has global agreement at least k/(800p).","status":"proved"},{"dependencies":["P1","P2","P3","P4","P5","P6","P7","P8","KTZ Lemma 3.1"],"id":"P9","proof":"For k0=floor(epsilon p/100) and tau<=Lambda epsilon, epsilon>=sqrt(8,000,000*2^40*Lambda)*(d/p)^(1/2) implies both component-theorem inequalities and yields agreement at least epsilon/160000.","statement":"A small pruned component yields the exponent-1/2 bivariate conclusion.","status":"conditional"},{"dependencies":["Chernoff bound"],"id":"P10","proof":"Independent K-colorings of points and lines, realized as distinct field constants, simultaneously give all accepted degrees within a factor two of their means when p/K>=100 log p.","statement":"Balanced nearly biregular acceptance graphs are realizable using degree-at-most-d line tables.","status":"proved"},{"dependencies":["P10"],"id":"P11","proof":"Double counting the point set reached by R gives |S|>=p^2/8, while line-degree upper bounds give |S|<=2p|R|/K. Thus |R|>=Kp/16>=p/(32epsilon).","statement":"The global cover-every-line sparsifier scale Theta(p/epsilon) is sharp up to constants.","status":"proved"}],"result_status":"conditional","sampling_model":"Uniform L among all p(p+1) affine lines of F_p^2, followed by uniform x among the p points of L; equivalently, a uniform point-line incident pair.","theorem_statement":"Let C_*=2^40. If the accepted-incidence graph contains a connected subgraph of minimum degree k and line measure tau satisfying k^2>=C_*dp and k^3>=C_*d tau p^2, then some total-degree-at-most-d polynomial Q has Pr[Q=f]>=k/(800p). Consequently, if a KTZ-pruned core at local agreement epsilon has a component with tau<=Lambda epsilon, then epsilon>=sqrt(8,000,000 C_* Lambda)(d/p)^(1/2) implies Pr[Q=f]>=epsilon/160000. A separate balanced-color construction proves that a single family covering half of every accepted line may require at least p/(32epsilon) lines.","title":"Component-Sensitive Line Concentration and a Sharp Global-Cover Obstruction"}
+tokens used
+294,827

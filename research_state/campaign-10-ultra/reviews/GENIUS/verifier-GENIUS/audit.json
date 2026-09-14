@@ -1,0 +1,288 @@
+{
+  "benchmark_improved": false,
+  "counterexample_attempts": [
+    "The legal modal family with d=101 has \u03b5=\u0398(log p/(p log log p)) and Agr\u2081\u2080\u2081(f)<2/p. Thus the trigger-free recovery sentence in P12 cannot be inferred; this does not refute the intended thresholded theorem.",
+    "For primes p\u2192\u221e, take d=D=101 and 102\u2264s<p. The exact multiplicity-constraint count stabilizes at 5254 while s\u00b2D grows, refuting the unqualified NEW.4 assertion \u0398(s\u00b2D).",
+    "At p=103,d=D=101, base-only kernel relations would break extraction absent safeguards. Here |R|>D and D<p correctly exclude them.",
+    "The inseparable relations Z^p\u2212X and Z^p\u2212XY^(p\u22121) were tested. They are excluded because the structured branch proves D<p and hence deg_Z(B)<p before differentiation.",
+    "The singular relation B=XZ+H(Y) obstructs lifting if B_Z=0 incidences remain. P7 explicitly removes every such incidence, so it is not a counterexample to P9.",
+    "Arbitrarily many connected components were tested against the global conclusion. P10 bounds distinct templates by deg_Z(B)\u2264D/d\u2264K\u03b8, so component proliferation causes no unbounded list.",
+    "For d=p\u22121, d\u2264D<p forces D=d and deg_Z(B)\u22641. No characteristic or endpoint counterexample arises; the trigger can instead be vacuous.",
+    "Finite checks were used only to falsify statements, not to establish asymptotic quantifiers."
+  ],
+  "coverage_complete": true,
+  "dimension_verified": true,
+  "exponent_audit": [
+    {
+      "claim": "KTZ gives the cubic benchmark through D=O(\u221a(dp/\u03b5)) and D=O(\u03b5p).",
+      "justification": "Squaring \u221a(dp/\u03b5)\u2264C\u03b5p gives \u03b5\u00b3=\u03a9(d/p). The bivariate proof concludes agreement \u03b5/8000.",
+      "reference": "Exponent ledger KTZ.1\u2013KTZ.5",
+      "verdict": "valid"
+    },
+    {
+      "claim": "P2 absorbs all cleanup losses under the near-linear trigger.",
+      "justification": "With \u03c1=d/p and x=D/p, x\u2264(K\u03b8/C\u03b8)\u03b5\u03c1^\u03b8\u2264a\u03b8\u03b5/8\u22641/8. Hence x\u00b2+3x\u226425x/8< a\u03b8\u03b5/2.",
+      "reference": "P2",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Arora\u2013Sudan Theorem 23 has field condition p>C(d+1)^16\u03b4^\u221254 and output c\u03b4^45/(d+1)^4.",
+      "justification": "The quoted exponents and the normalized trigger \u03b4\u2273(d+1)^(8/27)p^\u22121/54 recompute correctly.",
+      "reference": "AS.2\u2013AS.3; numbered note 0013",
+      "verdict": "valid"
+    },
+    {
+      "claim": "AS Lemmas 20\u201321 directly give D=\u0398((d+1)^4\u03b4^\u22129) and structured density \u03b3=\u0398(\u03b4^9).",
+      "justification": "The source directly supplies an O upper bound for D and an \u03a9 lower bound for density. \u0398 requires an explicitly chosen degree budget and pruning argument.",
+      "reference": "AS.1",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The reconstructed Arora\u2013Sudan amplification exponent 180 is sufficient.",
+      "justification": "The dominant displayed requirement is of \u03b5^\u2212180 type; p>C((d+1)/\u03b5)^180 is a valid, deliberately nonoptimized sufficient condition, not a quoted exponent.",
+      "reference": "AS.4",
+      "verdict": "valid"
+    },
+    {
+      "claim": "A component with k=\u0398(\u03b5p) and \u03c4=O(\u03b5) yields conditional exponent 1/2.",
+      "justification": "The gate k\u00b3=\u03a9(d\u03c4p\u00b2) becomes \u03b5\u00b2=\u03a9(d/p); the other gate k\u00b2=\u03a9(dp) is compatible.",
+      "reference": "NEW.2 / A-COMP",
+      "verdict": "valid"
+    },
+    {
+      "claim": "A popularity tail u*\u2265\u03ba\u03b5^a p yields exponent 1/(a+2), at most 1/2.",
+      "justification": "u*\u03b5\u00b2=\u03a9(d) gives \u03b5^(a+2)=\u03a9(d/p). The 'at most 1/2' conclusion requires a\u22650, which the ledger row does not itself state.",
+      "reference": "NEW.7 / A-TAIL",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Component-template compression loses only a \u03b8-dependent constant.",
+      "justification": "Each distinct Q contributes Z\u2212Q as a distinct factor of B, so there are at most D/d\u2264K\u03b8 templates; pigeonholing loses at most K\u03b8.",
+      "reference": "NEW.9; P10\u2013P11",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Uniform normal multiplicity always costs \u0398(s\u00b2D) constraints and therefore leaves the cubic gate unchanged.",
+      "justification": "This is false without D\u2265d(s\u22121). For d=D=101 and s\u2265102, the exact count is 5254, not \u0398(s\u00b2D). Even in the active range, the cubic conclusion requires a conditional simultaneous KTZ-scale envelope.",
+      "reference": "NEW.4; evidence claim R-0004",
+      "verdict": "false"
+    },
+    {
+      "claim": "The conditional exponent 1\u2212\u03b7 improves on 1/3.",
+      "justification": "Because 0<d/p<1, a larger exponent gives a lower trigger. Thus 1\u2212\u03b7 is stronger than 1/3 exactly when 0<\u03b7<2/3, equal at \u03b7=2/3, and weaker for \u03b7>2/3.",
+      "reference": "Claimed exponent; P13",
+      "verdict": "gap"
+    }
+  ],
+  "fatal_obstruction": null,
+  "field_regime_verified": true,
+  "line_audit": [
+    {
+      "claim": "The abstract distinguishes the unconditional cubic result from the RD\u03b8-conditional route.",
+      "justification": "RD\u03b8 is expressly identified as open, so no unconditional improvement is asserted.",
+      "reference": "Numbered note 0003",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The frozen corpus counts and hashes establish complete historical coverage.",
+      "justification": "The numerical inventories and manifest hashes are reproducible at the stated cutoff. The stronger assertion that every file was substantively 'inspected' is not established merely by an inventory receipt, and 'current' should be tied explicitly to the cutoff.",
+      "reference": "Numbered note 0007\u20130009; COV-1\u2013COV-2",
+      "verdict": "unclear"
+    },
+    {
+      "claim": "P0 records the algebraic KTZ facts needed downstream.",
+      "justification": "The cited bivariate lemmas provide restriction-degree bounds, common-graph-line bounds, simple-root lifting, polynomialization, and propagation.",
+      "reference": "P0",
+      "verdict": "valid"
+    },
+    {
+      "claim": "RD\u03b8 is used as an assumption rather than presented as proved.",
+      "justification": "Its conjectural status and its rank, mass, reaching, and degree hypotheses are explicit.",
+      "reference": "P1",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The structured branch proves D<p and sufficient deletion budget.",
+      "justification": "The inequalities in P2 recompute correctly for every legal prime and 100<d<p.",
+      "reference": "P2",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Rank deficiency yields a squarefree, Z-dependent kernel relation.",
+      "justification": "Radicalization preserves identities in the domain F_p[t]; |R|>D excludes a base-only relation; D<p makes a Z-dependent radical have nonzero Z-derivative.",
+      "reference": "P3",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Selected-line identities extend to all carrier lines.",
+      "justification": "Each restriction has degree at most D and has more than D distinct transferred roots.",
+      "reference": "P4",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Content removal produces a primitive squarefree relation on non-content lines.",
+      "justification": "Coefficient-content cancellation is valid in F_p[t], and at most deg(H)\u2264D affine lines divide H.",
+      "reference": "P5",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The primitive relation is vertically separable.",
+      "justification": "A common irreducible factor of B and B_Z would have zero Z-derivative; deg_Z(B)<p then makes it base-only, contradicting primitivity.",
+      "reference": "P6",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Vertical cleanup costs at most (D/p)\u00b2+D/p.",
+      "justification": "Content and formally ramified lines number at most D\u00b2 in total; all other B_Z restrictions have at most D\u2212d roots.",
+      "reference": "P7",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Peeling costs less than 2D/p.",
+      "justification": "The aggregate conclusion is correct, but the sentence 'point deletions cost below D/(p+1)' should say 'at most'; equality is possible. The combined point-plus-line loss remains strictly below 2D/p.",
+      "reference": "P8",
+      "verdict": "gap"
+    },
+    {
+      "claim": "Each clean connected component yields one degree-at-most-d polynomial template.",
+      "justification": "Minimum degree greater than D and simple-root cleanup meet the KTZ lifting hypotheses, and simple-root uniqueness propagates through the component.",
+      "reference": "P9",
+      "verdict": "valid"
+    },
+    {
+      "claim": "All component templates form a bounded list.",
+      "justification": "Evaluation at Z=Q has kernel (Z\u2212Q); hence every template supplies a distinct factor of B, and their number is at most deg_Z(B)\u2264D/d.",
+      "reference": "P10",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The bounded list converts to one global polynomial.",
+      "justification": "One template carries at least a\u03b8\u03b5/(2K\u03b8) normalized edge mass. Since a point lies on at most p+1 affine lines, its supporting point density is at least that mass.",
+      "reference": "P11",
+      "verdict": "valid"
+    },
+    {
+      "claim": "Under RD\u03b8, Agr_d(f)\u2265min(c\u03b8,a\u03b8/(2K\u03b8))\u03b5 without restating the trigger.",
+      "justification": "RD\u03b8 supplies an alternative only when \u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8). P12 and the corresponding integrated-theorem sentence omit this necessary antecedent.",
+      "reference": "P12 and integrated theorem, sentence beginning 'Under RD\u03b8'",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The fixed-\u03b7 closure follows from the fixed-\u03b8 result.",
+      "justification": "After restoring the missing trigger, \u03b8=min(\u03b7,1/4) and 0<d/p<1 imply (d/p)^(1\u2212\u03b7)\u2265(d/p)^(1\u2212\u03b8).",
+      "reference": "P13",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The selected architecture's P3\u2013P11 downstream reduction proves a single-polynomial conclusion.",
+      "justification": "The cleanup, component lifting, factor compression, and point-density conversion are sound; the conclusion remains conditional on the triggered RD\u03b8 alternative.",
+      "reference": "Numbered note 0023",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The limitations accurately deny an unconditional advance.",
+      "justification": "They restrict the claim to prime fields, dimension two, and 100<d<p, and acknowledge that RD\u03b8 is open and thresholds near d=p may be vacuous.",
+      "reference": "Numbered note 0027",
+      "verdict": "valid"
+    }
+  ],
+  "literature_audit": [
+    {
+      "claim": "The Arora\u2013Sudan numerical theorem is quoted accurately.",
+      "justification": "Theorem 23 supports the stated field-size and agreement exponents. However, calling the displayed dependency chain 'exact' omits Lemma 9, which is used by later lemmas.",
+      "reference": "Author-hosted Arora\u2013Sudan journal manuscript; numbered note 0013",
+      "verdict": "gap"
+    },
+    {
+      "claim": "HKSS v1 supports a clean proved 1/7 weak decoder and 1/16 list conversion.",
+      "justification": "Those theorem statements are printed, but the displayed proof has sampling-range, \u03b5\u00b2-versus-\u03b5\u00b3 popularity, collision-normalization, and Lemma B.4 cutoff/list-size gaps. GENIUS correctly marks these rows conditional and does not use them decisively, but its caution list is incomplete.",
+      "reference": "HKSS arXiv v1; HKSS.1\u2013HKSS.4",
+      "verdict": "gap"
+    },
+    {
+      "claim": "KTZ Revision 1 supports the bivariate cubic decoder and P0's downstream lemmas.",
+      "justification": "The lemma chain and \u03b5/8000 bivariate proof conclusion check out over F_p\u00b2.",
+      "reference": "KTZ Revision 1; P0; KTZ.1\u2013KTZ.5",
+      "verdict": "valid"
+    },
+    {
+      "claim": "KTZ Theorem 1.1 itself quotes agreement \u03b5/8000.",
+      "justification": "The theorem statement uses an unspecified absolute c; \u03b5/8000 is obtained in the bivariate proof/mechanization, not literally in the theorem statement.",
+      "reference": "Numbered note 0017; PRIMARY-KTZ",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The cached source-version distinctions are accurate.",
+      "justification": "The cached Arora\u2013Sudan file is the short version and the cached KTZ file is the base version; the authoritative sources cited for the stronger claims are different artifacts.",
+      "reference": "Numbered note 0019",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The P3\u2013P11 implication has no unresolved external dependency beyond the cited KTZ algebraic lemmas.",
+      "justification": "Every remaining step is proved directly from RD\u03b8, finite-field algebra, incidence normalization, and factor counting.",
+      "reference": "P3\u2013P11",
+      "verdict": "valid"
+    }
+  ],
+  "quantifier_audit": [
+    {
+      "claim": "The audited integrated-theorem string has the required SHA-256.",
+      "justification": "SHA-256 of the exact UTF-8 theorem string is 1da43a0542a039e3269ad385de01765c9cf74552b27a3f289d73b856334fb6fc.",
+      "reference": "response.json integrated_theorem",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The theorem covers exactly every prime p and integer 100<d<p in dimension two.",
+      "justification": "It quantifies f:F_p\u00b2\u2192F_p, two-variable Q, all affine lines of F_p\u00b2, and introduces no extension-field or dimension-bootstrapping hypothesis.",
+      "reference": "Integrated theorem opening quantifiers",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The acceptance normalization is uniform and parametrization-aware.",
+      "justification": "There are p(p+1) affine lines and p parameters per affine bijection, so p\u00b2(p+1) is exactly the number of sampled (line,t) incidences. Pr_x has the standard uniform finite-set meaning.",
+      "reference": "Definition of E_acc, \u03b5, and Agr_d",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The constants in the all-\u03b8 consequence are quantified unambiguously.",
+      "justification": "The fixed-\u03b8 opening suggests \u03b8-dependent constants, but the consequence should explicitly state \u2200\u03b8\u2208(0,1/4] \u2203C\u03b8,K\u03b8,a\u03b8,c\u03b8 with the listed dependencies; no uniformity in \u03b8 is proved.",
+      "reference": "Integrated theorem and P1",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The fixed-\u03b8 recovery conclusion includes every hypothesis under which RD\u03b8 yields information.",
+      "justification": "It omits \u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8). Below that trigger RD\u03b8 is silent, so P12 does not follow as written.",
+      "reference": "Integrated theorem middle conclusion; P12",
+      "verdict": "gap"
+    },
+    {
+      "claim": "The final fixed-\u03b7 consequence has the correct exponent-direction inequality.",
+      "justification": "For \u03c1=d/p\u2208(0,1) and \u03b7\u2265\u03b8, \u03c1^(1\u2212\u03b7)\u2265\u03c1^(1\u2212\u03b8), so the \u03b7-trigger implies the \u03b8-trigger.",
+      "reference": "P13",
+      "verdict": "valid"
+    },
+    {
+      "claim": "The final consequence is fully standalone in f and the sampling distribution.",
+      "justification": "It says 'every such line table' and relies on earlier scope for f and uniform x. This is intelligible but should be explicitly re-quantified in a frozen theorem statement.",
+      "reference": "Final sentence of integrated theorem",
+      "verdict": "gap"
+    }
+  ],
+  "required_changes": [
+    "Insert \u03b5\u2265C\u03b8(d/p)^(1\u2212\u03b8) into the fixed-\u03b8 conclusion and P12; retain it in every invocation of the structured/direct alternatives.",
+    "Write the quantifier order explicitly as \u2200\u03b8\u2208(0,1/4] \u2203C\u03b8,K\u03b8,a\u03b8,c\u03b8, and explicitly re-quantify f, the line table, and uniform x in the final consequence.",
+    "Change P8's point-deletion bound from 'below D/(p+1)' to 'at most D/(p+1)'.",
+    "Replace AS.1's unsupported \u0398 statements by the source-supported O/\u03a9 statements, or explicitly define a degree budget and prune the structured set; add Lemma 9 to the claimed exact dependency chain.",
+    "Restrict every \u0398(s\u00b2D) multiplicity assertion to D\u2265d(s\u22121), distinguish the proved raw-count cancellation from the conditional simultaneous KTZ envelope, and change NEW.4's status accordingly.",
+    "State a\u22650 in NEW.7 and explicitly say that 1\u2212\u03b7 beats 1/3 only for 0<\u03b7<2/3.",
+    "Qualify NEW.5's 'mandatory' cleanup as mandatory for the submitted simple-root Newton/propagation interface, and narrow NEW.6 to the graph-only cover/moment/DRC obstructions actually proved.",
+    "Correct the KTZ attribution: Theorem 1.1 states c\u03b5, while \u03b5/8000 is the bivariate proof conclusion; expand the HKSS caveat to include its collision and Lemma B.4 cutoff/list-size gaps.",
+    "Tie every temporal corpus claim, including 'current semantic durable corpus,' explicitly to the frozen cutoff; do not treat an inventory alone as proof of substantive inspection."
+  ],
+  "scope_verified": "proof_tool",
+  "summary": "REVISE. The exact required SHA was audited. The central P2\u2013P11 reduction is sound over F_p\u00b2 for every prime p and integer 100<d<p, including the conversion from arbitrarily many components to one degree-at-most-d polynomial. Acceptance fails because the exact fixed-\u03b8 conclusion and P12 omit the RD\u03b8 trigger, and the exponent ledger contains a concrete false unqualified \u0398(s\u00b2D) claim plus several repairable source and scope overstatements. There is no fatal counterexample to the properly thresholded conditional theorem. The unconditional verified exponent remains 1/3; conditional 1\u2212\u03b7 is an improvement only for 0<\u03b7<2/3.",
+  "unfixable": false,
+  "verdict": "revise",
+  "verified_claim_sha256": "1da43a0542a039e3269ad385de01765c9cf74552b27a3f289d73b856334fb6fc",
+  "verified_exponent": "Unconditional 1/3; conditional on triggered RD\u03b8, exponent 1\u2212\u03b7 for fixed \u03b7>0, stronger than 1/3 exactly when 0<\u03b7<2/3."
+}

@@ -1,0 +1,26 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "Round 3 can bypass the standalone seed-factor lift in `AE-19`. After `E2E-20`, apply the generic whole-relation lift componentwise. Every resulting $Q_\\Gamma$ satisfies $B(X,Y,Q_\\Gamma)=0$, so $Z-Q_\\Gamma$ divides the common $B$; hence there are at most $\\deg_ZB\\le D/d$ distinct component polynomials. Edge pigeonholing then gives one global polynomial. Please audit `E2E-21`\u2013`E2E-23` as a standalone combined lemma.",
+  "channel": "algebraic-engine",
+  "created_at": "2026-09-14T11:02:21Z",
+  "id": "msg-904f4f1a21bd",
+  "in_reply_to": "msg-463bd8d88c8e",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "end-to-end-soundness:E2E-21",
+    "end-to-end-soundness:E2E-22",
+    "end-to-end-soundness:E2E-23",
+    "researcher-0001:P7.1",
+    "algebraic-engine:AE-16",
+    "algebraic-engine:AE-19"
+  ],
+  "related_node_ids": [
+    "E2E-21",
+    "E2E-22",
+    "E2E-23"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 3,
+  "subject": "Component-template compression replaces seed-factor lift"
+}

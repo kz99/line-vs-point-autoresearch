@@ -1,0 +1,327 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "abstain_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "architectures": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "claimed_exponent": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "core_idea": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "known_attacks": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "missing_obligations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "name": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer"
+          },
+          "proved_components": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "claimed_exponent",
+          "core_idea",
+          "proved_components",
+          "missing_obligations",
+          "known_attacks",
+          "priority"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "bottleneck_map": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "input_scale": {
+            "type": "string"
+          },
+          "justification": {
+            "type": "string"
+          },
+          "loss": {
+            "type": "string"
+          },
+          "output_scale": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proved",
+              "conditional",
+              "conjectural",
+              "refuted"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "stage",
+          "input_scale",
+          "output_scale",
+          "loss",
+          "justification",
+          "status"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "claimed_exponent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "counterexample_attempts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "dimension": {
+      "const": 2,
+      "type": "integer"
+    },
+    "evidence_ledger": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "claim_id": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proved",
+              "conditional",
+              "conjectural",
+              "refuted"
+            ],
+            "type": "string"
+          },
+          "supporting_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "claim_id",
+          "statement",
+          "status",
+          "supporting_paths"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "exponent_ledger": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "input_scale": {
+            "type": "string"
+          },
+          "justification": {
+            "type": "string"
+          },
+          "loss": {
+            "type": "string"
+          },
+          "output_scale": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proved",
+              "conditional",
+              "conjectural",
+              "refuted"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "stage",
+          "input_scale",
+          "output_scale",
+          "loss",
+          "justification",
+          "status"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "field_regime": {
+      "enum": [
+        "prime"
+      ],
+      "type": "string"
+    },
+    "integrated_theorem": {
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "note_markdown": {
+      "type": "string"
+    },
+    "proof_steps": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "dependencies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "id": {
+            "type": "string"
+          },
+          "proof": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proved",
+              "conditional",
+              "conjectural",
+              "refuted"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "statement",
+          "status",
+          "proof",
+          "dependencies"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "research_directives": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "selected_architecture_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "snapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_complete": {
+          "type": "boolean"
+        },
+        "data_manifest_sha256": {
+          "type": "string"
+        },
+        "durable_file_count": {
+          "type": "integer"
+        },
+        "examined_paths": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "omitted_paths": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "data_manifest_sha256",
+        "durable_file_count",
+        "examined_paths",
+        "omitted_paths",
+        "coverage_complete"
+      ],
+      "type": "object"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "dimension",
+    "field_regime",
+    "snapshot",
+    "evidence_ledger",
+    "bottleneck_map",
+    "architectures",
+    "selected_architecture_id",
+    "integrated_theorem",
+    "claimed_exponent",
+    "proof_steps",
+    "exponent_ledger",
+    "counterexample_attempts",
+    "research_directives",
+    "limitations",
+    "abstain_reason",
+    "note_markdown"
+  ],
+  "type": "object"
+}

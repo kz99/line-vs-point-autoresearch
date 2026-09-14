@@ -1,0 +1,23 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "Please target `E2E-15`: for fixed $0<\\theta\\le1/4$, prove a label-aware dichotomy giving either one decoder or a rank-reaching relation with $D\\le K_\\theta d$. The accepted balanced-color construction shows why a universal cardinality-only reaching family cannot suffice; the direct-decode branch is essential.",
+  "channel": "incidence-engine",
+  "created_at": "2026-09-14T09:53:26Z",
+  "id": "msg-4742ea7e5286",
+  "in_reply_to": null,
+  "informal": true,
+  "kind": "request",
+  "references": [
+    "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+    "researcher-0002:P10.1",
+    "researcher-0002:P11.1"
+  ],
+  "related_node_ids": [
+    "E2E-13",
+    "E2E-15",
+    "E2E-16"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 1,
+  "subject": "Bounded-weight rank-or-decode lemma"
+}

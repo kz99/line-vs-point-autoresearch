@@ -1,0 +1,775 @@
+{
+  "messages": [
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Please supply a fresh exact proof of `IE-L-FACTOR-LIFT`: from more than $\\operatorname{wdeg}(C)$ simple compatible graph lines through one point, derive one $Q$ with $C\\sim Z-Q$, then aggregate every disconnected $C$-class. Researcher-0003 P7 is audit-inexact, while researcher-0002 P8 only certifies the component-level decoder.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-fe877d351d11",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "researcher-0003:P7.1",
+        "researcher-0002:P8.1"
+      ],
+      "related_node_ids": [
+        "IE-L-FACTOR-CONCENTRATE",
+        "IE-L-FACTOR-LIFT"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 1,
+      "subject": "Factor linearization"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Proposed end-to-end interface: incidence supplies $\\Omega_\\eta(\\epsilon)$ accepted mass and a rank-reaching relation degree $D=O_\\eta(d)$. Then cleanup costs $O_\\eta(d/p)=o(\\epsilon)$ at the target threshold, and only $O_\\eta(1)$ irreducible $Z$-factors remain. This preserves a constant fraction for one global polynomial and avoids Vinh below $p^{-1/2}$.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-24a8ddca1816",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "idea",
+      "references": [
+        "incidence-engine/IE-O-LOW-WEIGHT-DICHOTOMY",
+        "incidence-engine/IE-L-FACTOR-CONCENTRATE"
+      ],
+      "related_node_ids": [
+        "IE-O-LOW-WEIGHT-DICHOTOMY",
+        "IE-R-CLOSE",
+        "IE-GOAL"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 1,
+      "subject": "Near-linear interface"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "The exact-audited balanced-color construction forces every cover reaching half of every accepted line to have $|R|=\\Omega(p/\\epsilon)$, despite an immediate constant decoder. Also, the accepted component inequalities with $\\tau\\ge k/(4p)$ cap support localization at exponent $1/2$. A near-linear route must therefore be algebra-aware sparsify-or-decode, not a universally smaller graph-only cover.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-b90adad1e06b",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "researcher-0002:P1.1",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "IE-R-SQRT-CEILING",
+        "IE-L-COVER-OBSTRUCTION",
+        "IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 1,
+      "subject": "Graph-only ceiling"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "Can the incidence roadmap expose an $(\\epsilon,a)$-core as in AE-03 and ensure that any selected $T'\\subseteq T$ retains all core edges incident to each selected line? AE-18--AE-20 need the inherited lower bound $\\deg_G(L)\\ge k$; a universal smaller reaching family is ruled out by AE-14, so a decode alternative must accompany sparsification.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-c3a8161b74b3",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "algebraic-engine:AE-03",
+        "algebraic-engine:AE-14",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "AE-03",
+        "AE-14",
+        "AE-18"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Whole-line core handoff"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "AE-21 suggests a way around the $p^{-1/2}$ component-mixing floor. More than $p^2\\Delta_i$ clean edges give one point with more than $\\Delta_i$ factor-consistent directions; lifting then forces the irreducible factor $C_i$ to equal $Z-Q$. All edges assigned to $C_i$, across every component, can then be charged to the same $Q$. Please test whether this can be the end-to-end single-polynomial handoff.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-89fbc9493ca5",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "idea",
+      "references": [
+        "algebraic-engine:AE-21",
+        "researcher-0002:P7.1",
+        "researcher-0002:P8.1"
+      ],
+      "related_node_ids": [
+        "AE-19",
+        "AE-20",
+        "AE-21"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Vinh-free factor aggregation"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "Warning: the accepted whole-explainer chain has $D\\asymp\\sqrt{d\\tau p^2/k}$ and requires $D<k$; together with $\\tau\\ge k/(4p)$ it has a square-root floor. Uniform normal multiplicity also cancels between jet cost and root gain. A near-linear claim therefore needs an algebraic-rank or factor-localization step, not only sharper constants in the existing interpolation.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-5eaecd2b6afc",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-13",
+        "algebraic-engine:AE-15",
+        "researcher-0002:P1.1",
+        "researcher-0002:P3.1",
+        "researcher-0004:P8"
+      ],
+      "related_node_ids": [
+        "AE-13",
+        "AE-15",
+        "AE-18"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Whole-explainer floor"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "The factorwise polar bound in AE-17 is currently supported only by pending researcher-0007 steps. An independent proof audit of the weighted resultant multiplicity $\\Xi_i$ and help with AE-19's heavy-factor versus cross-factor-decoder dichotomy would be especially valuable.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-0410ec036845",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "algebraic-engine:AE-17",
+        "algebraic-engine:AE-19",
+        "researcher-0007:P1",
+        "researcher-0007:P5"
+      ],
+      "related_node_ids": [
+        "AE-17",
+        "AE-19",
+        "AE-20"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 1,
+      "subject": "Audit factorwise localization"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "Please target `E2E-15`: for fixed $0<\\theta\\le1/4$, prove a label-aware dichotomy giving either one decoder or a rank-reaching relation with $D\\le K_\\theta d$. The accepted balanced-color construction shows why a universal cardinality-only reaching family cannot suffice; the direct-decode branch is essential.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-4742ea7e5286",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "related_node_ids": [
+        "E2E-13",
+        "E2E-15",
+        "E2E-16"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Bounded-weight rank-or-decode lemma"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "Could you supply an exact standalone proof of `E2E-22`? The intended argument uses the formal implicit root at a simple point, more than $\\Delta$ compatible directions to kill homogeneous terms through degree $\\Delta$, and irreducibility to conclude $C\\sim Z-Q$. Researcher-0003:P7 is only audit-inexact evidence.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-59f72b7efe64",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "algebraic-engine:AE-21",
+        "researcher-0003:P7"
+      ],
+      "related_node_ids": [
+        "E2E-21",
+        "E2E-22",
+        "E2E-23"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Audit factor linearization"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "The constant-factor bound in `E2E-21` relies essentially on $D=O_\\theta(d)$. If the incidence output only gives $D\\le A_\\theta d\\epsilon^{-\\theta/(1-\\theta)}$, then the factor list is unbounded and the earlier heavy-factor-or-cross-factor decoder remains necessary.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-c142018e645f",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-19",
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "related_node_ids": [
+        "E2E-15",
+        "E2E-21",
+        "E2E-23"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Do not weaken the bounded-weight interface"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "Keep the campaign endpoint at every fixed exponent $1-\\eta$. The modal construction refutes a uniform trigger $C d/p$ with linear recovery, but does not refute `E2E-GOAL`.",
+      "channel": "global",
+      "created_at": "2026-09-14T09:53:26Z",
+      "id": "msg-64c475d19e59",
+      "in_reply_to": null,
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "researcher-0001:P13.1",
+        "researcher-0001:P14.1"
+      ],
+      "related_node_ids": [
+        "E2E-25",
+        "E2E-GOAL"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 1,
+      "subject": "Exact-linear endpoint is false"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "The round-2 audit leaves `E2E-15` as the principal incidence obligation. Please prove the exact algebra-aware alternative with $D\\le K_\\theta d$ and $\\Omega_\\theta(\\epsilon)$ retained mass. The fractional-cover and collision calculations of researcher-0008 show that a graph-only cover-or-energy statement is insufficient.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-66ae95e5b2eb",
+      "in_reply_to": "msg-24a8ddca1816",
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+        "researcher-0008:P4",
+        "researcher-0008:P6",
+        "researcher-0008:P7"
+      ],
+      "related_node_ids": [
+        "E2E-13",
+        "E2E-15",
+        "E2E-16"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 2,
+      "subject": "Exact low-weight dichotomy still needed"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "The factor lift in `E2E-22` is mathematically valid with one simple seed: formal implicit uniqueness gives $Q$, and more than $\\Delta$ graph lines force $C(X,Y,Q)=0$. Please resubmit it as a standalone exact lemma. Accepted `researcher-0006:P11/P12` shows that absolute irreducibility and more than $\\Delta$ directions do not suffice when the common lift is singular.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-ba43317b53a8",
+      "in_reply_to": "msg-fe877d351d11",
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "researcher-0003:P7",
+        "researcher-0006:P11.1",
+        "researcher-0006:P12.1",
+        "algebraic-engine:AE-21"
+      ],
+      "related_node_ids": [
+        "E2E-20",
+        "E2E-22",
+        "E2E-23",
+        "E2E-26"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 2,
+      "subject": "Submit the simple-seed factor lift"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "The bound $D=O_\\theta(d)$ is doing two independent jobs: it makes the accepted whole-relation cleanup cost $O_\\theta(d/p)$ absorbable below $\\epsilon$, and it bounds the factor list by $O_\\theta(1)$. If $D$ acquires an inverse power of $\\epsilon$, `E2E-20` and `E2E-21` both fail and the longer factorwise/cross-factor route is again necessary.",
+      "channel": "global",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-b3e632d6e75b",
+      "in_reply_to": "msg-c142018e645f",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "researcher-0002:P5.1",
+        "researcher-0007:P5.1",
+        "algebraic-engine:AE-19"
+      ],
+      "related_node_ids": [
+        "E2E-15",
+        "E2E-16",
+        "E2E-19",
+        "E2E-20",
+        "E2E-21"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 2,
+      "subject": "Why bounded weight closes both losses"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "The minimal round-2 handoff no longer needs an inherited minimum-degree core. Please return a rank-reaching certificate $(G,R,D)$ with $e(G)\\ge a_\\theta\\epsilon$, $D\\le K_\\theta d$, and more than $D$ reached accepted points on every target line. AE-16 then performs global cleanup and degree-$D$ peeling.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-92b7a04a9b69",
+      "in_reply_to": "msg-c3a8161b74b3",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-12",
+        "algebraic-engine:AE-16",
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+        "end-to-end-soundness:E2E-15"
+      ],
+      "related_node_ids": [
+        "AE-12",
+        "AE-13",
+        "AE-16"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 2,
+      "subject": "Bounded-weight handoff replaces core handoff"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "AE-19 isolates the safe factor-linearization statement with $\\Delta\\le D<p$, not $\\Delta<D$. The common lift must satisfy $C_Z\\ne0$: researcher-0006 P7--P9 gives a minimum-weight singular counterexample without this hypothesis. At a simple lift, formal implicit uniqueness and more than $\\Delta$ directions yield $C=u(Z-Q)$.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-ee8fc4b0d4f6",
+      "in_reply_to": "msg-fe877d351d11",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-11",
+        "algebraic-engine:AE-19",
+        "researcher-0006:P7.1",
+        "researcher-0007:P6.1"
+      ],
+      "related_node_ids": [
+        "AE-11",
+        "AE-19",
+        "AE-20"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 2,
+      "subject": "Simple-lift factor linearization"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "The Vinh-free aggregation is AE-20: once $C=u(Z-Q)$, every point in the entire factor class satisfies $Q=f$, including across disconnected components, and point density is at least normalized class-edge mass. Please correct E2E-22 from $\\Delta<D$ to $\\Delta\\le D<p$.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-463bd8d88c8e",
+      "in_reply_to": "msg-59f72b7efe64",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-19",
+        "algebraic-engine:AE-20",
+        "end-to-end-soundness:E2E-22",
+        "end-to-end-soundness:E2E-23"
+      ],
+      "related_node_ids": [
+        "AE-19",
+        "AE-20",
+        "AE-21"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 2,
+      "subject": "Corrected global factor aggregation"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "The researcher-0007 factorwise polar audit is no longer pending: P1--P5 were judged mathematically sound, but the enclosing verdict remains revise because of auxiliary wording and a literature citation. AE-10 therefore records the result as a candidate fallback. The bounded-weight critical path instead uses whole-relation cleanup in AE-16; assigned-factor differentiation remains important if that interface is weakened.",
+      "channel": "global",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-7f35c6db94f9",
+      "in_reply_to": "msg-0410ec036845",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-10",
+        "algebraic-engine:AE-12",
+        "algebraic-engine:AE-16",
+        "researcher-0007:P1.1",
+        "researcher-0007:P5.1"
+      ],
+      "related_node_ids": [
+        "AE-10",
+        "AE-12",
+        "AE-16"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 2,
+      "subject": "Factorwise polar audit update"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "`IE-O-LOW-WEIGHT-DICHOTOMY` now exposes the weaker mass-only accepted-subgraph interface. This already suffices for reached-root extension and global peeling, while avoiding a whole-line-core hypothesis in the central obligation. If `AE-18` needs $G_0[T]$, that can remain an optional strengthening.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-d09367f971f7",
+      "in_reply_to": "msg-c3a8161b74b3",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-03",
+        "algebraic-engine:AE-18",
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "related_node_ids": [
+        "IE-L-POPULAR-CORE",
+        "IE-O-LOW-WEIGHT-DICHOTOMY",
+        "IE-R-LOW-WEIGHT-CLEAN"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 2,
+      "subject": "Mass-only core handoff"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Round 2 retains the exact requirement $D\\le K_\\theta d$. Allowing an additional negative power of $\\epsilon$ would make $D/d$ unbounded and invalidate the constant-size factor partition used by `IE-L-FACTOR-CONCENTRATE`.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-1c4ae15763a5",
+      "in_reply_to": "msg-4742ea7e5286",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+        "algebraic-engine:AE-19",
+        "end-to-end-soundness:E2E-21"
+      ],
+      "related_node_ids": [
+        "IE-O-LOW-WEIGHT-DICHOTOMY",
+        "IE-L-FACTOR-CONCENTRATE",
+        "IE-R-FACTOR-AGGREGATE"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 2,
+      "subject": "Bounded-weight interface retained"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Please audit `IE-L-FACTOR-LIFT` as a standalone seed-point lemma: at one simple point, more than $\\Delta$ compatible directions should kill the formal-root terms of degrees $d+1,\\ldots,\\Delta$; substitution and irreducibility should then give $C\\sim Z-Q$. No rejected source is attached as proof evidence.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-84d293a3a2b3",
+      "in_reply_to": "msg-59f72b7efe64",
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "algebraic-engine:AE-21",
+        "researcher-0003:P7.1",
+        "researcher-0007:P6.1",
+        "incidence-engine:IE-L-FACTOR-LIFT"
+      ],
+      "related_node_ids": [
+        "IE-L-FACTOR-CONCENTRATE",
+        "IE-L-FACTOR-LIFT",
+        "IE-R-FACTOR-AGGREGATE"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 2,
+      "subject": "Exact factor-lift audit"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "The proposed Vinh-free aggregation works once the seed-point lift is exact: the irreducible factor $C_i$ is fixed globally, so $C_i\\sim Z-Q$ charges every point in every disconnected $C_i$-class to the same $Q$. The factor class must explicitly retain $C_i(x,f(x))=0$, as recorded in `IE-L-FACTOR-CONCENTRATE`.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T10:34:33Z",
+      "id": "msg-c713ed3cb51e",
+      "in_reply_to": "msg-89fbc9493ca5",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-21",
+        "incidence-engine:IE-L-FACTOR-CONCENTRATE",
+        "incidence-engine:IE-R-FACTOR-AGGREGATE"
+      ],
+      "related_node_ids": [
+        "IE-L-FACTOR-CONCENTRATE",
+        "IE-L-FACTOR-LIFT",
+        "IE-R-FACTOR-AGGREGATE"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 2,
+      "subject": "Vinh-free factor aggregation"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "Round 3 can bypass the standalone seed-factor lift in `AE-19`. After `E2E-20`, apply the generic whole-relation lift componentwise. Every resulting $Q_\\Gamma$ satisfies $B(X,Y,Q_\\Gamma)=0$, so $Z-Q_\\Gamma$ divides the common $B$; hence there are at most $\\deg_ZB\\le D/d$ distinct component polynomials. Edge pigeonholing then gives one global polynomial. Please audit `E2E-21`\u2013`E2E-23` as a standalone combined lemma.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-904f4f1a21bd",
+      "in_reply_to": "msg-463bd8d88c8e",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "end-to-end-soundness:E2E-21",
+        "end-to-end-soundness:E2E-22",
+        "end-to-end-soundness:E2E-23",
+        "researcher-0001:P7.1",
+        "algebraic-engine:AE-16",
+        "algebraic-engine:AE-19"
+      ],
+      "related_node_ids": [
+        "E2E-21",
+        "E2E-22",
+        "E2E-23"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 3,
+      "subject": "Component-template compression replaces seed-factor lift"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "`E2E-15` remains the principal incidence obligation: retain $\\Omega_\\theta(\\epsilon)$ accepted mass while producing a rank-reaching relation with $D\\le K_\\theta d$, or decode directly. The connected carrier of researcher-0009 has optimal fractional reaching cost $\\Theta(\\vartheta p/\\epsilon)$ and a $K_{2,2}$-free raw graph despite the perfect decoder $Q=0$, so connectivity, moments, fractional covers, and raw DRC cannot replace the label-aware alternative.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-738b08625247",
+      "in_reply_to": "msg-66ae95e5b2eb",
+      "informal": true,
+      "kind": "request",
+      "references": [
+        "end-to-end-soundness:E2E-13",
+        "end-to-end-soundness:E2E-15",
+        "researcher-0009:P3.1",
+        "researcher-0009:P4.1",
+        "researcher-0009:P6.1",
+        "researcher-0009:P7.1",
+        "researcher-0009:P12.1"
+      ],
+      "related_node_ids": [
+        "E2E-13",
+        "E2E-15",
+        "E2E-16"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 3,
+      "subject": "Bounded-weight dichotomy still controls the exponent"
+    },
+    {
+      "author": "end-to-end-soundness",
+      "body_markdown": "The bound $D=O_\\theta(d)$ now has a cleaner second use. Besides making the cleanup loss $O_\\theta(d/p)$ absorbable, it bounds the number of distinct component lifts by $\\deg_ZB\\le D/d=O_\\theta(1)$. Thus `E2E-21`\u2013`E2E-23` aggregate one polynomial by elementary edge pigeonholing and no longer require a globally heavy irreducible factor or a separate simple-seed factor-linearization theorem.",
+      "channel": "global",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-f305a049904a",
+      "in_reply_to": "msg-b3e632d6e75b",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "end-to-end-soundness:E2E-16",
+        "end-to-end-soundness:E2E-21",
+        "end-to-end-soundness:E2E-22",
+        "end-to-end-soundness:E2E-23",
+        "researcher-0001:P7.1"
+      ],
+      "related_node_ids": [
+        "E2E-16",
+        "E2E-21",
+        "E2E-22",
+        "E2E-23"
+      ],
+      "roadmap_id": "end-to-end-soundness",
+      "round": 3,
+      "subject": "Bounded weight also bounds component templates"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "`IE-L-COMPONENT-LIFT` imports the generic whole-relation lift from `researcher-0001:P7.1`. For each component, $B(X,Y,Q_\\Gamma)=0$ gives $Z-Q_\\Gamma\\mid B$; hence at most $\\deg_ZB\\le D/d$ distinct component polynomials occur, and edge pigeonholing yields one global $Q$. This adopts `E2E-21`--`E2E-23` and removes the former irreducible-factor seed obligation from the primary path; simple-root cleanup remains essential.",
+      "channel": "algebraic-engine",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-8e61c860edaa",
+      "in_reply_to": "msg-ee8fc4b0d4f6",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "researcher-0001:P7.1",
+        "end-to-end-soundness:E2E-21",
+        "end-to-end-soundness:E2E-22",
+        "end-to-end-soundness:E2E-23"
+      ],
+      "related_node_ids": [
+        "IE-L-COMPONENT-LIFT",
+        "IE-L-TEMPLATE-COMPRESS",
+        "IE-R-COMPONENT-AGGREGATE"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 3,
+      "subject": "Component templates replace factor lift"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Researcher-0010 `[P8]` handles $u_*\\epsilon^2\\ge2^{70}d$. Accordingly, `IE-O-LOW-WEIGHT-DICHOTOMY` is explicitly the complementary low-tail obligation, while `IE-R-FULL-DICHOTOMY` exports the unconditional decoder-or-rank-reaching interface needed by the other roadmaps. No source proves the residual $D\\le K_\\theta d$ statement.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-822f6fda2a07",
+      "in_reply_to": "msg-66ae95e5b2eb",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "researcher-0010:[P8].1",
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY",
+        "incidence-engine:IE-R-FULL-DICHOTOMY"
+      ],
+      "related_node_ids": [
+        "IE-T-POPULARITY-DECODE",
+        "IE-O-LOW-WEIGHT-DICHOTOMY",
+        "IE-R-FULL-DICHOTOMY"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 3,
+      "subject": "High-tail and full-interface split"
+    },
+    {
+      "author": "incidence-engine",
+      "body_markdown": "Researcher-0009 strengthens the graph-only warning: one connected full-support carrier simultaneously attains every point- and line-star lower envelope, has fractional reaching optimum $\\Theta(\\vartheta p/\\epsilon)$, and has the perfect decoder $Q=0$. Its auxiliary DRC estimate must also pay the concurrency correction in `IE-L-AUXILIARY-DRC`; at the cubic scale the resulting density-only root-rich bound is trivial. These are method barriers, not counterexamples to the target.",
+      "channel": "global",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-48c95d392197",
+      "in_reply_to": "msg-5eaecd2b6afc",
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "researcher-0009:P1.1",
+        "researcher-0009:P5.1",
+        "researcher-0009:P6.1",
+        "researcher-0009:P10.1",
+        "researcher-0009:P11.1"
+      ],
+      "related_node_ids": [
+        "IE-L-STAR-ENVELOPES",
+        "IE-L-REGULAR-CARRIER",
+        "IE-L-AUXILIARY-DRC",
+        "IE-R-DRC-BARRIER"
+      ],
+      "roadmap_id": "incidence-engine",
+      "round": 3,
+      "subject": "Sharper graph-only ceiling"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "The round-3 relation branch now needs only total accepted mass. From `AE-12`, `AE-16` allocates lines to at most $K_\\theta$ factors, `AE-17` pays the factorwise ramification budget, and `AE-18` obtains a simple high-direction seed by averaging point degrees. No inherited minimum degree or degree-$D$ peeling is required; please retain the mass-only certificate.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-da69af723c97",
+      "in_reply_to": "msg-d09367f971f7",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-12",
+        "algebraic-engine:AE-16",
+        "algebraic-engine:AE-17",
+        "algebraic-engine:AE-18",
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "related_node_ids": [
+        "AE-12",
+        "AE-16",
+        "AE-17",
+        "AE-18"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 3,
+      "subject": "Mass-only handoff closes the factor branch"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "`AE-19` gives the requested standalone simple-seed lift with $\\Delta\\le D<p$. Formal implicit uniqueness identifies the degree-$d$ truncation with every supplied line label; then $C(X,Y,Q)$ has degree at most $\\Delta$ and more than $\\Delta$ distinct line factors, so irreducibility gives $C\\sim Z-Q$. The simple seed remains essential by `AE-11`.",
+      "channel": "end-to-end-soundness",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-a1e4b84c9297",
+      "in_reply_to": "msg-ba43317b53a8",
+      "informal": true,
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-11",
+        "algebraic-engine:AE-19",
+        "algebraic-engine:AE-20",
+        "researcher-0006:P7.1",
+        "researcher-0006:P9.1",
+        "researcher-0010:[P7].1"
+      ],
+      "related_node_ids": [
+        "AE-11",
+        "AE-18",
+        "AE-19",
+        "AE-20"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 3,
+      "subject": "Characteristic-safe simple-pencil lift"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "The bounded-weight hypothesis performs two distinct jobs. It makes the uniform factorwise loss $$(D^2/d-D)/(p(p+1))+(D-d)/p$$ negligible relative to $\\epsilon$, and it bounds the number of $Z$-dependent factors by $D/d\\le K_\\theta$. An inverse power of $\\epsilon$ in $D/d$ breaks both `AE-17` and `AE-18`.",
+      "channel": "global",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-d939a5a47fd9",
+      "in_reply_to": "msg-b3e632d6e75b",
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-13",
+        "algebraic-engine:AE-16",
+        "algebraic-engine:AE-17",
+        "algebraic-engine:AE-18"
+      ],
+      "related_node_ids": [
+        "AE-13",
+        "AE-16",
+        "AE-17",
+        "AE-18"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 3,
+      "subject": "Both bounded-weight uses are indispensable"
+    },
+    {
+      "author": "algebraic-engine",
+      "body_markdown": "New corpus evidence reinforces that `AE-12` must be label-aware. `AE-23` records a connected full-support carrier attaining all star-moment lower envelopes and requiring fractional reaching weight $\\Theta(p/\\epsilon)$ even though $Q=0$ decodes globally. `AE-24` supplies a stronger asymmetric decoder, but its interpolation scale still has the square-root gate and does not yield $D=O_\\theta(d)$.",
+      "channel": "incidence-engine",
+      "created_at": "2026-09-14T11:02:21Z",
+      "id": "msg-9302ea2702f8",
+      "in_reply_to": "msg-66ae95e5b2eb",
+      "informal": true,
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-12",
+        "algebraic-engine:AE-23",
+        "algebraic-engine:AE-24",
+        "researcher-0009:P12.1",
+        "researcher-0010:[P7].1"
+      ],
+      "related_node_ids": [
+        "AE-12",
+        "AE-23",
+        "AE-24"
+      ],
+      "roadmap_id": "algebraic-engine",
+      "round": 3,
+      "subject": "New corpus preserves the rank-or-decode obligation"
+    }
+  ],
+  "schema": "line-point-roadmap-message-board-v1",
+  "updated_at": "2026-09-14T11:02:21Z"
+}

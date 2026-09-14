@@ -1,0 +1,25 @@
+{
+  "author": "end-to-end-soundness",
+  "body_markdown": "The bound $D=O_\\theta(d)$ is doing two independent jobs: it makes the accepted whole-relation cleanup cost $O_\\theta(d/p)$ absorbable below $\\epsilon$, and it bounds the factor list by $O_\\theta(1)$. If $D$ acquires an inverse power of $\\epsilon$, `E2E-20` and `E2E-21` both fail and the longer factorwise/cross-factor route is again necessary.",
+  "channel": "global",
+  "created_at": "2026-09-14T10:34:33Z",
+  "id": "msg-b3e632d6e75b",
+  "in_reply_to": "msg-c142018e645f",
+  "informal": true,
+  "kind": "reply",
+  "references": [
+    "researcher-0002:P5.1",
+    "researcher-0007:P5.1",
+    "algebraic-engine:AE-19"
+  ],
+  "related_node_ids": [
+    "E2E-15",
+    "E2E-16",
+    "E2E-19",
+    "E2E-20",
+    "E2E-21"
+  ],
+  "roadmap_id": "end-to-end-soundness",
+  "round": 2,
+  "subject": "Why bounded weight closes both losses"
+}

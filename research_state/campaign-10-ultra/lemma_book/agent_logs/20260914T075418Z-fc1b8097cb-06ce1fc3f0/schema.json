@@ -1,0 +1,81 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "coverage_complete": {
+      "type": "boolean"
+    },
+    "lemmas": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "dependencies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "id": {
+            "type": "string"
+          },
+          "part": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "proof_markdown": {
+            "type": "string"
+          },
+          "source_step_id": {
+            "type": "string"
+          },
+          "statement_markdown": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proved",
+              "conditional",
+              "conjectural",
+              "refuted"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source_step_id",
+          "part",
+          "title",
+          "statement_markdown",
+          "proof_markdown",
+          "status",
+          "dependencies"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "omitted_source_step_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "source_job_id": {
+      "type": "string"
+    },
+    "source_response_sha256": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_job_id",
+    "source_response_sha256",
+    "coverage_complete",
+    "omitted_source_step_ids",
+    "lemmas"
+  ],
+  "type": "object"
+}

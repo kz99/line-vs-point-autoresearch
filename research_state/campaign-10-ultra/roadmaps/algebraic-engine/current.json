@@ -1,0 +1,798 @@
+{
+  "corpus_sha256": "a9f554e23278413781d5732660bb28f19e3d9f7beb145b48f0aacb03d21dc6ca",
+  "critical_path": [
+    "AE-01",
+    "AE-02",
+    "AE-03",
+    "AE-12",
+    "AE-13",
+    "AE-14",
+    "AE-15",
+    "AE-16",
+    "AE-09",
+    "AE-10",
+    "AE-17",
+    "AE-18",
+    "AE-19",
+    "AE-20",
+    "AE-21",
+    "AE-22"
+  ],
+  "focus": "weighted interpolation, factorization, ramification cleanup, and characteristic-safe propagation",
+  "goal_node_id": "AE-22",
+  "messages": [
+    {
+      "body_markdown": "The round-3 relation branch now needs only total accepted mass. From `AE-12`, `AE-16` allocates lines to at most $K_\\theta$ factors, `AE-17` pays the factorwise ramification budget, and `AE-18` obtains a simple high-direction seed by averaging point degrees. No inherited minimum degree or degree-$D$ peeling is required; please retain the mass-only certificate.",
+      "channel": "incidence-engine",
+      "in_reply_to": "msg-d09367f971f7",
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-12",
+        "algebraic-engine:AE-16",
+        "algebraic-engine:AE-17",
+        "algebraic-engine:AE-18",
+        "incidence-engine:IE-O-LOW-WEIGHT-DICHOTOMY"
+      ],
+      "related_node_ids": [
+        "AE-12",
+        "AE-16",
+        "AE-17",
+        "AE-18"
+      ],
+      "subject": "Mass-only handoff closes the factor branch"
+    },
+    {
+      "body_markdown": "`AE-19` gives the requested standalone simple-seed lift with $\\Delta\\le D<p$. Formal implicit uniqueness identifies the degree-$d$ truncation with every supplied line label; then $C(X,Y,Q)$ has degree at most $\\Delta$ and more than $\\Delta$ distinct line factors, so irreducibility gives $C\\sim Z-Q$. The simple seed remains essential by `AE-11`.",
+      "channel": "end-to-end-soundness",
+      "in_reply_to": "msg-ba43317b53a8",
+      "kind": "reply",
+      "references": [
+        "algebraic-engine:AE-11",
+        "algebraic-engine:AE-19",
+        "algebraic-engine:AE-20",
+        "researcher-0006:P7.1",
+        "researcher-0006:P9.1",
+        "researcher-0010:[P7].1"
+      ],
+      "related_node_ids": [
+        "AE-11",
+        "AE-18",
+        "AE-19",
+        "AE-20"
+      ],
+      "subject": "Characteristic-safe simple-pencil lift"
+    },
+    {
+      "body_markdown": "The bounded-weight hypothesis performs two distinct jobs. It makes the uniform factorwise loss $$(D^2/d-D)/(p(p+1))+(D-d)/p$$ negligible relative to $\\epsilon$, and it bounds the number of $Z$-dependent factors by $D/d\\le K_\\theta$. An inverse power of $\\epsilon$ in $D/d$ breaks both `AE-17` and `AE-18`.",
+      "channel": "global",
+      "in_reply_to": "msg-b3e632d6e75b",
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-13",
+        "algebraic-engine:AE-16",
+        "algebraic-engine:AE-17",
+        "algebraic-engine:AE-18"
+      ],
+      "related_node_ids": [
+        "AE-13",
+        "AE-16",
+        "AE-17",
+        "AE-18"
+      ],
+      "subject": "Both bounded-weight uses are indispensable"
+    },
+    {
+      "body_markdown": "New corpus evidence reinforces that `AE-12` must be label-aware. `AE-23` records a connected full-support carrier attaining all star-moment lower envelopes and requiring fractional reaching weight $\\Theta(p/\\epsilon)$ even though $Q=0$ decodes globally. `AE-24` supplies a stronger asymmetric decoder, but its interpolation scale still has the square-root gate and does not yield $D=O_\\theta(d)$.",
+      "channel": "incidence-engine",
+      "in_reply_to": "msg-66ae95e5b2eb",
+      "kind": "objection",
+      "references": [
+        "algebraic-engine:AE-12",
+        "algebraic-engine:AE-23",
+        "algebraic-engine:AE-24",
+        "researcher-0009:P12.1",
+        "researcher-0010:[P7].1"
+      ],
+      "related_node_ids": [
+        "AE-12",
+        "AE-23",
+        "AE-24"
+      ],
+      "subject": "New corpus preserves the rank-or-decode obligation"
+    }
+  ],
+  "nodes": [
+    {
+      "dependencies": [],
+      "evidence_refs": [],
+      "id": "AE-01",
+      "kind": "definition",
+      "label": "Accepted-incidence instance",
+      "notes": "This fixes the bivariate prime-field regime and excludes both dimension bootstrapping and $d\\le100$.",
+      "owner": "algebraic-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Fix a prime $p$, an integer $100<d<p$, and $f:\\mathbb F_p^2\\to\\mathbb F_p$. For every affine line $L$, fix a bijective affine parametrization $\\ell_L:\\mathbb F_p\\to L$ and $P_L\\in\\mathbb F_p[t]$ with $\\deg P_L\\le d$. Put $$\\mathcal I=\\{(\\ell_L(t),L):P_L(t)=f(\\ell_L(t))\\},\\qquad \\mu(E)=|E|/[p^2(p+1)],\\qquad \\epsilon=\\mu(\\mathcal I),$$ and let $\\operatorname{Agr}_d(f)$ be the maximum of $p^{-2}|\\{x:Q(x)=f(x)\\}|$ over $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-01"
+      ],
+      "evidence_refs": [],
+      "id": "AE-02",
+      "kind": "definition",
+      "label": "Weighted restriction map",
+      "notes": "This is the Lean-level linear map measuring labeled graph constraints.",
+      "owner": "algebraic-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Give $X,Y,Z$ weights $1,1,d$. For an integer $D\\ge d$, put $$V_D=\\{A\\in\\mathbb F_p[X,Y,Z]:\\operatorname{wdeg}A\\le D\\},\\qquad \\rho_L(A)(t)=A(\\ell_L(t),P_L(t)).$$ For a line family $R$, define $$\\Phi_{R,D}:V_D\\to\\prod_{M\\in R}\\mathbb F_p[t]_{\\le D},\\qquad A\\mapsto(\\rho_M(A))_{M\\in R}.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-02"
+      ],
+      "evidence_refs": [],
+      "id": "AE-03",
+      "kind": "definition",
+      "label": "Rank-reaching certificate",
+      "notes": "Only retained mass and reached roots are required; no minimum-degree hypothesis is built into the interface.",
+      "owner": "algebraic-engine",
+      "proof_state": "external",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "A rank-reaching certificate is $(G,R,D)$ where $G=(X,T,E)$ is a nonempty subgraph of $\\mathcal I$, $R\\subseteq T$, $D\\in\\mathbb Z$, $d\\le D$, $|R|>D$, and $$\\operatorname{rank}(\\Phi_{R,D})<\\dim V_D.$$ Every $L\\in T$ must have more than $D$ distinct points $x$ such that $(x,L)\\in E$ and $(x,M)\\in E$ for some $M\\in R\\setminus\\{L\\}$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-03"
+      ],
+      "evidence_refs": [],
+      "id": "AE-12",
+      "kind": "obligation",
+      "label": "Bounded-weight rank-or-decode dichotomy",
+      "notes": "This remains the principal campaign obligation. The direct branch is necessary because graph-only reaching families can be expensive even on immediately decodable instances.",
+      "owner": "incidence-engine",
+      "proof_state": "open",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For every fixed $0<\\theta\\le1/4$, there exist constants $C_\\theta>0$, $0<a_\\theta\\le1$, and $K_\\theta\\ge1$ such that, whenever $$\\epsilon\\ge C_\\theta(d/p)^{1-\\theta},$$ either $\\operatorname{Agr}_d(f)\\ge a_\\theta\\epsilon$, or there is a rank-reaching certificate $(G,R,D)$ satisfying $$\\mu(E)\\ge a_\\theta\\epsilon,\\qquad d\\le D\\le K_\\theta d.$$",
+      "work_state": "open"
+    },
+    {
+      "dependencies": [
+        "AE-12"
+      ],
+      "evidence_refs": [],
+      "id": "AE-13",
+      "kind": "lemma",
+      "label": "Near-linear parameter slack",
+      "notes": "The ratio is at most $K_\\theta(d/p)^\\theta/C_\\theta$; increasing $C_\\theta$ supplies all later loss absorption.",
+      "owner": "algebraic-engine",
+      "proof_state": "open",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "After increasing $C_\\theta$ as a function of $a_\\theta,K_\\theta,\\theta$, every relation alternative satisfies $$D/(\\epsilon p)\\le a_\\theta/[100(K_\\theta+1)],\\qquad D<p.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-13"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P3"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P3]"
+        }
+      ],
+      "id": "AE-14",
+      "kind": "lemma",
+      "label": "Squarefree rank-kernel relation",
+      "notes": "The cited interpolation steps supply nearby radicalization templates; the rank-general statement still needs a standalone implementation.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P3.1",
+        "researcher-0010:[P3].1"
+      ],
+      "statement_markdown": "In the relation alternative, there is a nonzero squarefree $A\\in V_D$ such that $$\\rho_M(A)=0\\quad(M\\in R),\\qquad A_Z\\ne0.$$ Take the product of the distinct irreducible factors of a nonzero kernel element. Each selected restriction remains zero because $\\mathbb F_p[t]$ is a domain. If the result were $Z$-independent, more than $D$ distinct line equations would divide a nonzero polynomial of degree at most $D$. Finally, $D<p$ makes $Z$-dependence characteristic-safe.",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "AE-14"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P4"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P4]"
+        }
+      ],
+      "id": "AE-15",
+      "kind": "lemma",
+      "label": "Reached-root identity extension",
+      "notes": "Distinct reached points give distinct roots of a restriction of degree at most $D$.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P4.1",
+        "researcher-0010:[P4].1"
+      ],
+      "statement_markdown": "For every $L\\in T$, $$\\rho_L(A)=A(\\ell_L(t),P_L(t))=0.$$ Indeed, each reached accepted point also lies on a selected line where $A$ vanishes, and both incident labels equal $f$ there. More than $D$ such roots force the identity.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-15"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P5"
+        },
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P1"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P5]"
+        }
+      ],
+      "id": "AE-16",
+      "kind": "reduction",
+      "label": "Primitive factor allocation",
+      "notes": "The 0007 and 0010 sources have enclosing verdict `revise`; they are used only as exact planning evidence.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P5.1",
+        "researcher-0007:P1.1",
+        "researcher-0010:[P5].1"
+      ],
+      "statement_markdown": "Write $A=HB$, where $H\\in\\mathbb F_p[X,Y]$ is the gcd of the $Z$-coefficients, $h=\\deg H$, and $\\delta=\\operatorname{wdeg}B$. Then $B$ is primitive, squarefree, and $Z$-dependent, with $h+\\delta\\le D$. Delete the at most $h$ lines contained in $H=0$ and factor $$B=c\\prod_{i=1}^s C_i.$$ Every $C_i$ depends on $Z$, and $$s\\le\\deg_ZB\\le\\delta/d\\le D/d\\le K_\\theta.$$ The remaining lines admit a disjoint allocation $T=\\bigsqcup_iT_i$ such that $$C_i(\\ell_L(t),P_L(t))=0\\quad(L\\in T_i).$$",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "AE-16"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0006",
+          "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+          "source_step_id": "P1"
+        },
+        {
+          "source_job_id": "researcher-0006",
+          "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+          "source_step_id": "P2"
+        }
+      ],
+      "id": "AE-09",
+      "kind": "lemma",
+      "label": "Characteristic-safe factor separability and resultants",
+      "notes": "Small weighted degree is a sufficient separability criterion. For reducible $B$, the condition $B_Z\\ne0$ alone does not imply $\\gcd(B,B_Z)=1$.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0006:P1.1",
+        "researcher-0006:P2.1"
+      ],
+      "statement_markdown": "Every allocated factor satisfies $$C_{i,Z}\\ne0,\n\\qquad \\gcd(C_i,C_{i,Z})=1,$$ because $C_i$ is irreducible, $Z$-dependent, and $\\operatorname{wdeg}C_i\\le D<p<dp$. More generally, if coprime $U,V$ have weighted degrees $u,v$ and $Z$-degrees $r,s$, respectively, then the number of graph lines on which both restrictions vanish identically is at most $$su+rv-drs.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-09"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P1"
+        },
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P2"
+        },
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P3"
+        },
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P4"
+        },
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P5"
+        }
+      ],
+      "id": "AE-10",
+      "kind": "lemma",
+      "label": "Assigned-factor polar budget",
+      "notes": "The factorwise source has an exact line audit but enclosing verdict `revise`; this node records the reusable bound without elevating its status.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0007:P1.1",
+        "researcher-0007:P2.1",
+        "researcher-0007:P3.1",
+        "researcher-0007:P4.1",
+        "researcher-0007:P5.1"
+      ],
+      "statement_markdown": "Put $$\\delta_i=\\operatorname{wdeg}C_i,\n\\qquad r_i=\\deg_ZC_i,\n\\qquad \\gamma_i=\\operatorname{wdeg}(C_{i,Z}),$$ and $$\\Xi_i=(r_i-1)\\delta_i+r_i\\gamma_i-dr_i(r_i-1).$$ If $b_i$ is the number of allocated lines on which $C_{i,Z}(\\ell_L(t),P_L(t))$ vanishes identically, then $$b_i\\le\\min\\{|T_i|,\\Xi_i\\},\n\\qquad \\gamma_i\\le\\delta_i-d,\n\\qquad \\Xi_i\\le\\delta_i^2/d-\\delta_i.$$ Every other allocated line contains at most $\\gamma_i$ accepted points where $C_{i,Z}(x,f(x))=0$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-10"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0005",
+          "source_response_sha256": "b9e3fe317e32d1cc9e4b0c69584fd7b4586c6b6ec5755e5c5d9be67a6d421de7",
+          "source_step_id": "[P9]"
+        },
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P5"
+        }
+      ],
+      "id": "AE-17",
+      "kind": "lemma",
+      "label": "Normalized factorwise ramification cleanup",
+      "notes": "This replaces whole-relation cleanup and global peeling by an assigned-factor deletion charged directly to total mass.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0005:[P9].1",
+        "researcher-0007:P5.1"
+      ],
+      "statement_markdown": "Delete the content lines from AE-16, every identically ramified allocated line from AE-10, and every remaining accepted edge with $C_{i,Z}(x,f(x))=0$. If $E_{\\mathrm{cl}}$ is the surviving edge set, then the deleted normalized mass satisfies $$\\beta\\le (D^2/d-D)/(p(p+1))+(D-d)/p\\le a_\\theta\\epsilon/100.$$ Hence $$\\mu(E_{\\mathrm{cl}})\\ge a_\\theta\\epsilon/2,$$ and every surviving edge assigned to $i$ satisfies $$C_i(x,f(x))=0,\n\\qquad C_{i,Z}(x,f(x))\\ne0.$$",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "AE-17"
+      ],
+      "evidence_refs": [],
+      "id": "AE-18",
+      "kind": "lemma",
+      "label": "Heavy clean factor and simple seed",
+      "notes": "Only total edge mass is used; connectivity and inherited vertex degrees are unnecessary.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Partition $E_{\\mathrm{cl}}=\\bigsqcup_iE_i$ by the assigned line factor and put $\\nu_i=\\mu(E_i)$. Since $s\\le K_\\theta$, some $i$ satisfies $$\\nu_i\\ge a_\\theta\\epsilon/(2K_\\theta).$$ Moreover, AE-13 gives $$\\nu_i(p+1)>D\\ge\\delta_i.$$ Averaging the $E_i$-degrees over all $p^2$ points therefore yields a point $b$ incident to more than $\\delta_i$ distinct lines of $T_i$, with $$C_i(b,f(b))=0,\n\\qquad C_{i,Z}(b,f(b))\\ne0.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-18"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P8"
+        },
+        {
+          "source_job_id": "researcher-0007",
+          "source_response_sha256": "5276991887baf2d63587a698cee2c062d7fe45bc27847def09fdf171dd0106d8",
+          "source_step_id": "P6"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P7]"
+        }
+      ],
+      "id": "AE-19",
+      "kind": "lemma",
+      "label": "Simple-pencil factor linearization",
+      "notes": "No accept-verdict source states this exact standalone package. The proof uses formal implicit uniqueness and divides only by the nonzero scalar $C_Z(b,\\alpha)$; no factorials occur.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0002:P8.1",
+        "researcher-0007:P6.1",
+        "researcher-0010:[P7].1"
+      ],
+      "statement_markdown": "Let $C\\in\\mathbb F_p[X,Y,Z]$ be irreducible and $Z$-dependent with $\\Delta=\\operatorname{wdeg}C\\le D<p$. Suppose $C(b,\\alpha)=0$, $C_Z(b,\\alpha)\\ne0$, and more than $\\Delta$ distinct lines $L_v(t)=b+tv$ carry polynomials $P_v$ of degree at most $d$ satisfying $$P_v(0)=\\alpha,\n\\qquad C(b+tv,P_v(t))=0\\text{ in }\\mathbb F_p[t].$$ Then there are $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ and $u\\in\\mathbb F_p^\\times$ such that $$C=u(Z-Q).$$ Applied at the seed of AE-18, this linearizes $C_i$.",
+      "work_state": "drafting"
+    },
+    {
+      "dependencies": [
+        "AE-19"
+      ],
+      "evidence_refs": [],
+      "id": "AE-20",
+      "kind": "reduction",
+      "label": "Disconnected factor aggregation",
+      "notes": "The irreducible factor is global, so all its disconnected clean pieces charge to the same polynomial without incidence mixing.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "Let $C_i=u(Z-Q)$ be supplied by AE-19, and let $X_i$ be the point endpoints of $E_i$. Then $Q(x)=f(x)$ for every $x\\in X_i$. Since $|E_i|\\le(p+1)|X_i|$, $$\\operatorname{Agr}_d(f)\\ge |X_i|/p^2\\ge\\mu(E_i)=\\nu_i\\ge a_\\theta\\epsilon/(2K_\\theta).$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-20"
+      ],
+      "evidence_refs": [],
+      "id": "AE-21",
+      "kind": "theorem",
+      "label": "Conditional fixed-theta algebraic engine",
+      "notes": "The direct alternative of AE-12 already has the conclusion; AE-13 through AE-20 close its relation alternative.",
+      "owner": "algebraic-engine",
+      "proof_state": "blocked",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For every fixed $0<\\theta\\le1/4$, assuming AE-12, there are constants $C_\\theta,c_\\theta>0$ such that $$\\epsilon\\ge C_\\theta(d/p)^{1-\\theta}$$ implies $\\operatorname{Agr}_d(f)\\ge c_\\theta\\epsilon$. One may take $$c_\\theta=a_\\theta/(2K_\\theta).$$",
+      "work_state": "blocked"
+    },
+    {
+      "dependencies": [
+        "AE-21"
+      ],
+      "evidence_refs": [],
+      "id": "AE-22",
+      "kind": "theorem",
+      "label": "Near-linear algebraic propagation engine",
+      "notes": "Take $\\theta=\\min\\{\\eta,1/4\\}$. The endpoint remains blocked on AE-12 and on standalone proof records for the factorwise assembly and simple-pencil lift.",
+      "owner": "algebraic-engine",
+      "proof_state": "blocked",
+      "resolved_lemma_ids": [],
+      "statement_markdown": "For every fixed $0<\\eta<1$, there exist constants $C_\\eta,c_\\eta>0$ such that, for every prime $p$, every integer $100<d<p$, and every accepted-incidence instance of density $\\epsilon$, $$\\epsilon\\ge C_\\eta(d/p)^{1-\\eta}$$ implies that one $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfies $$\\Pr_{x\\in\\mathbb F_p^2}[Q(x)=f(x)]\\ge c_\\eta\\epsilon.$$",
+      "work_state": "blocked"
+    },
+    {
+      "dependencies": [
+        "AE-01"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0001",
+          "source_response_sha256": "c840bab57ab5b1826bf693fdd043de875d845c01777c77832564af0183e300ff",
+          "source_step_id": "P1"
+        }
+      ],
+      "id": "AE-04",
+      "kind": "reduction",
+      "label": "Constant-loss core pruning",
+      "notes": "This remains an off-path structural interface; its enclosing audit verdict is `revise`.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0001:P1.1"
+      ],
+      "statement_markdown": "Every accepted graph of mass $\\epsilon$ contains a subgraph of mass at least $\\epsilon/4$ and minimum degree at least $\\lfloor\\epsilon p/100\\rfloor$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-02"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P1"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P2"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P3"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P4"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P5"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P6"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P7"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "AE-05",
+      "kind": "theorem",
+      "label": "Accepted component decoder",
+      "notes": "This is the retained component-level algebraic baseline.",
+      "owner": "algebraic-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P1.1",
+        "researcher-0002:P2.1",
+        "researcher-0002:P3.1",
+        "researcher-0002:P4.1",
+        "researcher-0002:P5.1",
+        "researcher-0002:P6.1",
+        "researcher-0002:P7.1",
+        "researcher-0002:P8.1"
+      ],
+      "statement_markdown": "Let $G$ be a connected accepted subgraph of minimum degree $k$, let $\\tau=|T|/[p(p+1)]$, and suppose $$k^2\\ge2^{40}dp,\n\\qquad k^3\\ge2^{40}d\\tau p^2.$$ Then some $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfies $$\\Pr_x[Q(x)=f(x)]\\ge k/(800p).$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-05"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P1"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P2"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P3"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P6"
+        }
+      ],
+      "id": "AE-06",
+      "kind": "reduction",
+      "label": "Whole-explainer square-root floor",
+      "notes": "This is an architectural ceiling for the accepted component construction, not for rank-aware interpolation.",
+      "owner": "algebraic-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P1.1",
+        "researcher-0002:P2.1",
+        "researcher-0002:P3.1",
+        "researcher-0002:P6.1"
+      ],
+      "statement_markdown": "The AE-05 construction has $$D=\\Theta(\\sqrt{d\\tau p^2/k}),\n\\qquad D<k,\n\\qquad \\tau\\ge k/(4p).$$ Consequently $k^2=\\Omega(dp)$, so with $k=\\Theta(\\epsilon p)$ this route cannot reach below $\\epsilon=\\Omega((d/p)^{1/2})$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-01"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P10"
+        },
+        {
+          "source_job_id": "researcher-0002",
+          "source_response_sha256": "f85203541dd3187a04a81391290a02795cd0b0b67307f53014a0d0d4697e8d3f",
+          "source_step_id": "P11"
+        }
+      ],
+      "id": "AE-07",
+      "kind": "theorem",
+      "label": "Universal-cover obstruction",
+      "notes": "A uniformly small graph-only reaching family cannot replace AE-12's decoder alternative.",
+      "owner": "incidence-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0002:P10.1",
+        "researcher-0002:P11.1"
+      ],
+      "statement_markdown": "For suitable legal constant-label instances with $1/(2K)\\le\\epsilon\\le2/K$, every line family reaching half the accepted points of every accepted line has size at least $$p/(32\\epsilon),$$ although a constant polynomial has agreement at least $\\epsilon/2$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-02"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0004",
+          "source_response_sha256": "b069a24345b771aae2c47d93e89141128904ac8d23647d825d6f78fd7a5ceddf",
+          "source_step_id": "P8"
+        }
+      ],
+      "id": "AE-08",
+      "kind": "reduction",
+      "label": "Uniform-jet rank barrier",
+      "notes": "The source audit is inexact with verdict `revise`; the statement is retained only as a diagnostic for raw uniform multiplicity counting.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0004:P8.1"
+      ],
+      "statement_markdown": "For positive integers $s,D,n,h$ with $d\\le D<p$ and $n>D$, put $$C_s(D,d)=\\sum_{a+b<s}\\max(D-a-db+1,0).$$ If raw counting gives $$\\dim V_D>nC_s(D,d),\n\\qquad sh>D,$$ then $$h^2>dn/12.$$",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-01"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0006",
+          "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+          "source_step_id": "P7"
+        },
+        {
+          "source_job_id": "researcher-0006",
+          "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+          "source_step_id": "P8"
+        },
+        {
+          "source_job_id": "researcher-0006",
+          "source_response_sha256": "b242e553383c9f56cd665197bb10990aef5a2ee876f0d378174920fc4ec25aef",
+          "source_step_id": "P9"
+        }
+      ],
+      "id": "AE-11",
+      "kind": "theorem",
+      "label": "Singular-seed guardrail",
+      "notes": "This shows that the simple-root hypothesis in AE-19 cannot be discarded.",
+      "owner": "algebraic-engine",
+      "proof_state": "verified",
+      "resolved_lemma_ids": [
+        "researcher-0006:P7.1",
+        "researcher-0006:P8.1",
+        "researcher-0006:P9.1"
+      ],
+      "statement_markdown": "For legal choices with $d+1<p$, there is a primitive, squarefree, absolutely irreducible polynomial $$C=XZ+H(Y),\n\\qquad \\operatorname{wdeg}C=d+1,$$ supporting more than $d+1$ compatible degree-at-most-$d$ graph lines through one common lift, while no total-degree-at-most-$d$ polynomial $Q$ satisfies $C(X,Y,Q)=0$. At the common lift, $C_Z=0$.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-01"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0009",
+          "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+          "source_step_id": "P7"
+        },
+        {
+          "source_job_id": "researcher-0009",
+          "source_response_sha256": "56f341b308a806be4140c92891e79632c92ba7079e90ae3209b70c6786e63cec",
+          "source_step_id": "P12"
+        }
+      ],
+      "id": "AE-23",
+      "kind": "reduction",
+      "label": "Graph-only moment and fractional-cover obstruction",
+      "notes": "The enclosing audit verdict is `revise`; this is off-path evidence about what AE-12 cannot be reduced to.",
+      "owner": "incidence-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0009:P12.1",
+        "researcher-0009:P7.1"
+      ],
+      "statement_markdown": "Every raw accepted incidence graph is $K_{2,2}$-free. Moreover, for every prime $p$ and $101\\le d<p$, there is a legal instance of density $\\epsilon_0=d/p$ whose accepted carrier is connected and has full support, attains every point- and line-star lower envelope, and satisfies for $0<\\vartheta\\le1$ $$\\vartheta p(p+1)/(d+1)\\le\\operatorname{OPT}_\\vartheta\\le\\vartheta p(p+1)/(d-1),$$ while the polynomial $Q=0$ agrees with $f$ everywhere.",
+      "work_state": "candidate"
+    },
+    {
+      "dependencies": [
+        "AE-02"
+      ],
+      "evidence_refs": [
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P1]"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P2]"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P3]"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P4]"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P5]"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P6]"
+        },
+        {
+          "source_job_id": "researcher-0010",
+          "source_response_sha256": "122582fb5f4400d730ca654c870a723678c100449d12aa21a8b2a5152fc5a605",
+          "source_step_id": "[P7]"
+        }
+      ],
+      "id": "AE-24",
+      "kind": "theorem",
+      "label": "Asymmetric square-root decoder frontier",
+      "notes": "The enclosing audit verdict is `revise`. This strengthens the component baseline but does not provide the bounded-weight alternative in AE-12.",
+      "owner": "algebraic-engine",
+      "proof_state": "provisional",
+      "resolved_lemma_ids": [
+        "researcher-0010:[P1].1",
+        "researcher-0010:[P2].1",
+        "researcher-0010:[P3].1",
+        "researcher-0010:[P4].1",
+        "researcher-0010:[P5].1",
+        "researcher-0010:[P6].1",
+        "researcher-0010:[P7].1"
+      ],
+      "statement_markdown": "Let a nonempty accepted graph have point minimum degree $u$, line minimum degree $v$, $w=\\min\\{u,v\\}$, and line measure $\\tau$. If $$uv\\ge2^{60}dp,\n\\qquad uw^2\\ge2^{60}d\\tau p^2,$$ then some $Q\\in\\mathbb F_p[X,Y]$ of total degree at most $d$ satisfies $$\\Pr_x[Q(x)=f(x)]\\ge v/(800p).$$",
+      "work_state": "candidate"
+    }
+  ],
+  "progress": {
+    "blocked": 2,
+    "invalid": 0,
+    "mapped": 7,
+    "open": 2,
+    "percent": 0,
+    "provisional": 9,
+    "total": 13,
+    "verified": 0
+  },
+  "render_validation": {
+    "math_segments": 207,
+    "messages": 4,
+    "passed": true,
+    "roadmaps": 1
+  },
+  "roadmap_id": "algebraic-engine",
+  "round": 3,
+  "summary": "Round 3 keeps the bounded-weight rank-or-decode dichotomy as the principal open input and replaces the previous whole-relation cleanup-plus-peeling branch by a mass-only factorwise route. Rank deficiency yields a squarefree relation; reached roots extend it to all carrier lines; primitive factor allocation leaves at most $K_\\theta$ factors; characteristic-safe resultants delete at most $(D^2/d-D)/(p(p+1))+(D-d)/p$ normalized mass. One factor then retains $\\Omega_\\theta(\\epsilon)$ mass, and point-degree averaging supplies a simple seed with more directions than its weighted degree. Formal implicit uniqueness and line-factor divisibility force that factor to be $Z-Q$, so all disconnected pieces aggregate to one global degree-at-most-$d$ polynomial. New researcher-0009 and researcher-0010 inputs strengthen the graph-only and asymmetric square-root diagnostics but do not establish the bounded-weight handoff. The endpoint remains blocked on AE-12 and on standalone proof records for the factorwise assembly and simple-pencil lift.",
+  "target_statement": "Prove an algebraic interpolation-and-propagation lemma strong enough to preserve a near-linear power of the accepted incidence density over $\\mathbb F_p^2$.",
+  "title": "Algebraic propagation engine",
+  "updated_at": "2026-09-14T11:02:21Z"
+}
