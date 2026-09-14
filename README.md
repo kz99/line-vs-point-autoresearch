@@ -21,7 +21,7 @@ line-point-research campaign-status configs/campaign-10-ultra.yaml
 line-point-research campaign-launch configs/campaign-10-ultra.yaml
 ```
 
-Initialization and status inspection do not invoke agents. `campaign-launch` is the explicit start command. The test campaign plans 10 proof researchers, up to 10 corresponding verifiers, one `GENIUS` synthesis, and one synthesis verifier (up to 22 agent invocations).
+Initialization and status inspection do not invoke agents. `campaign-launch` is the explicit start command. The test campaign plans 10 proof researchers, up to 10 corresponding verifiers, one `GENIUS` synthesis, and one synthesis verifier (up to 22 agent invocations). Every role is hard-locked to `gpt-5.6-sol` at its highest supported reasoning level, `ultra`; campaign loading fails if the reasoning level is lowered.
 
 The separate 300-researcher production campaign remains available:
 

@@ -273,8 +273,8 @@ def load_campaign_config(path: Path | str) -> tuple[dict[str, Any], CampaignPath
     if count < 1:
         raise ValueError("campaign.researcher_count must be at least 1")
     effort = str(campaign.get("reasoning_effort", ""))
-    if effort not in {"max", "ultra"}:
-        raise ValueError("campaign.reasoning_effort must be max or ultra")
+    if effort != "ultra":
+        raise ValueError("campaign.reasoning_effort must be ultra")
     if int(campaign.get("dimension", 2)) != 2:
         raise ValueError("campaign.dimension must be exactly 2")
     if str(campaign.get("field_regime", "prime")) != "prime":

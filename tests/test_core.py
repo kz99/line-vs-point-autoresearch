@@ -139,6 +139,22 @@ campaign:
             with self.assertRaisesRegex(ValueError, "field_regime must be prime"):
                 ResearchCampaign(field_config)
 
+    def test_campaign_rejects_less_than_ultra_reasoning(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = root / "campaign.yaml"
+            config.write_text("""workspace: .
+corpus_root: ./corpus
+campaign_dir: ./state
+campaign:
+  researcher_count: 10
+  dimension: 2
+  field_regime: prime
+  reasoning_effort: max
+""")
+            with self.assertRaisesRegex(ValueError, "reasoning_effort must be ultra"):
+                ResearchCampaign(config)
+
 
 if __name__ == "__main__":
     unittest.main()
