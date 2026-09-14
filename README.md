@@ -2,7 +2,7 @@
 
 This repository is a durable proof-author, adversary, verifier, and synthesis loop for improving the soundness threshold of the affine line-versus-point low-degree test in the affine plane over a prime field.
 
-The current primary benchmark is Kominers--Thaler--Zheng's cubic threshold: local agreement
+The degree regime is fixed throughout at integer \(100<d<p\). In particular, \(d=0\) and all other bounded-degree edge cases are outside the campaign scope. The current primary benchmark is Kominers--Thaler--Zheng's cubic threshold: local agreement
 
 \[
 \varepsilon \ge C(d/p)^{1/3}
@@ -63,7 +63,7 @@ Read [TARGET.md](TARGET.md) before interpreting any claimed exponent, and [refer
 An exponent is not a theorem merely because algebraic manipulations produce it. Every submission must identify:
 
 1. the precise line and point sampling distribution;
-2. that the field is the prime field \(\mathbb F_p\) and \(0\le d<p\);
+2. that the field is the prime field \(\mathbb F_p\) and \(100<d<p\);
 3. the domains and dependencies of \(d,p,\varepsilon\), with \(m=2\) fixed;
 4. the exact global conclusion and its agreement loss;
 5. every use of interpolation, factorization, list decoding, plurality, and conversion to one global polynomial;

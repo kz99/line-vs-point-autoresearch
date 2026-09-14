@@ -1,6 +1,6 @@
 # Research Target
 
-Let \(p\) be prime and let \(0\le d<p\). The dimension is fixed at \(m=2\). A point table is a function
+Let \(p\) be prime and let \(d\) be an integer satisfying \(100<d<p\). The dimension is fixed at \(m=2\). Degrees \(d\le 100\), including the degenerate case \(d=0\), are outside the campaign scope and must not be treated as obstructions to the target. A point table is a function
 
 \[
 f:\mathbb F_p^2\to\mathbb F_p.
@@ -33,7 +33,7 @@ implies the existence of a total-degree-at-most-\(d\) polynomial \(Q\) satisfyin
 
 The campaign seeks progress toward the following deliberately explicit research target.
 
-For every fixed \(\eta>0\), prove constants \(C_\eta,c_\eta>0\) and a fully stated admissible parameter regime such that
+For every fixed \(\eta>0\), prove constants \(C_\eta,c_\eta>0\) and a fully stated admissible parameter regime with \(100<d<p\) such that
 
 \[
 \operatorname{Agr}_{\mathrm{LVP}}(f,P)

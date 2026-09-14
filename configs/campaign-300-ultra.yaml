@@ -6,6 +6,7 @@ campaign:
   researcher_count: 300
   dimension: 2
   field_regime: prime
+  degree_lower_bound_exclusive: 100
   verifier_enabled: true
   genius_enabled: true
   executable: codex

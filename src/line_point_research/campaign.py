@@ -279,6 +279,8 @@ def load_campaign_config(path: Path | str) -> tuple[dict[str, Any], CampaignPath
         raise ValueError("campaign.dimension must be exactly 2")
     if str(campaign.get("field_regime", "prime")) != "prime":
         raise ValueError("campaign.field_regime must be prime")
+    if int(campaign.get("degree_lower_bound_exclusive", 100)) != 100:
+        raise ValueError("campaign.degree_lower_bound_exclusive must be 100")
     base = config_path.parent
 
     def resolve(value: str) -> Path:
@@ -419,7 +421,8 @@ references/bibliography.json, research_state/DATA_MANIFEST.json, all prior submi
 leaderboards, and verifier audits. You have a read-only shell. Treat literature summaries as
 navigation aids and identify exact primary-source theorem dependencies. Distinguish quoted
 theorems from your own exponent reconstruction. Finite-field computation is useful for
-falsification but cannot prove an asymptotic soundness theorem."""
+falsification but cannot prove an asymptotic soundness theorem. Ignore every directory named
+superseded: those files are retained only as provenance and are not part of the active corpus."""
 
     def _research_prompt(self, row: dict[str, Any]) -> str:
         modes = ["proof-first", "bottleneck-first", "adversarial", "synthesis-first"]
@@ -430,7 +433,9 @@ test. Your assigned direction is: {row['direction']}. Your mode is {mode}.
 
 {self._corpus_instruction()}
 
-The problem is fixed at m=2 over the prime field F_p, with 0 <= d < p. The benchmark is the
+The problem is fixed at m=2 over the prime field F_p, with integer degree 100 < d < p. Degrees
+d <= 100, including d=0, are outside the campaign scope. Do not analyze them, repair the theorem
+there, or present them as obstructions. The benchmark is the
 bivariate specialization of the Kominers--Thaler--Zheng threshold C(d/p)^(1/3), with global
 agreement Omega(local agreement). The long-term target is (d/p)^(1-o(1)). Since d/p<1, a
 larger exponent is stronger. Do genuine mathematical work: isolate one bottleneck, attempt a
@@ -445,7 +450,7 @@ Every exponent manipulation must appear in the exponent ledger. State p,d, local
 epsilon, all auxiliary parameters, and the final global agreement, with m=2 fixed. Audit division
 by derivatives, discriminants, irreducibility, interpolation multiplicities, and every
 union/Markov/Cauchy--Schwarz loss. Test adversarial tables, inseparability, concentrated good
-directions, d near p, and the smallest legal prime-field parameters. A rigorous obstruction or
+directions, d near p, and the lower boundary d=101. A rigorous obstruction or
 correction to the bivariate target is valuable. If the benchmark is not improved, set
 benchmark_improved=false. Set dimension=2 and field_regime=prime in the structured response.
 
@@ -467,6 +472,9 @@ and abstain from a global theorem if material data are omitted. Reconstruct a si
 exponent ledger for the m=2 prime-field portions of Arora--Sudan, HKSS, KTZ, and every new
 architecture. Identify whether each loss is algebraic, incidence-combinatorial, probabilistic,
 or list-decoding.
+
+The scored degree regime is integer 100 < d < p. Ignore d <= 100 completely, including d=0;
+endpoint behavior there is neither a counterexample nor a research contribution for this campaign.
 
 Propose at most three compatible proof architectures. For the selected architecture, state one
 exact theorem with all quantifiers and write every dependency as a numbered proof step. A claimed
@@ -490,6 +498,10 @@ incompatible lemmas or use finite evidence as proof.
 {source_id} line by line. You did not author it. Recompute every exponent and check every
 quantifier, field hypothesis, sampling convention, literature dependency, and proof-step edge.
 Accept only the exact claim whose SHA-256 is {claim_hash}; never silently weaken it.
+
+The campaign theorem is restricted to integer 100 < d < p. Do not raise, investigate, or score
+edge cases with d <= 100, including d=0. Verify that the submitted claim covers 100 < d < p;
+behavior outside that regime is irrelevant to the verdict.
 
 An accept requires complete coverage; a correct exponent ledger; valid handling of every prime
 characteristic in the claimed parameter regime; a proved conversion to the stated
@@ -653,6 +665,8 @@ NUMBERED NOTE:
             "reasoning_effort": self.provider.reasoning_effort,
             "dimension": int(self.cfg.get("dimension", 2)),
             "field_regime": str(self.cfg.get("field_regime", "prime")),
+            "degree_lower_bound_exclusive": int(
+                self.cfg.get("degree_lower_bound_exclusive", 100)),
             "benchmark_exponent": str(self.cfg.get("benchmark_exponent", "1/3")),
             "target_exponent": str(self.cfg.get("target_exponent", "1-o(1)")),
             "researcher_count": int(self.cfg["researcher_count"]),

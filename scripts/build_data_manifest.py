@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = ROOT / "research_state"
 OUTPUT = DATA_ROOT / "DATA_MANIFEST.json"
 EXCLUDED_SUFFIXES = (".sqlite3-shm", ".sqlite3-wal")
+EXCLUDED_NAMES = {"campaign.log", "runner.json", "STOP"}
+EXCLUDED_PARTS = {"python-cache", "superseded"}
 
 
 def sha256(path: Path) -> str:
@@ -60,7 +62,9 @@ def main() -> None:
     DATA_ROOT.mkdir(parents=True, exist_ok=True)
     files = []
     for path in sorted(DATA_ROOT.rglob("*")):
-        if not path.is_file() or path == OUTPUT or path.name.endswith(EXCLUDED_SUFFIXES):
+        if (not path.is_file() or path == OUTPUT or path.name in EXCLUDED_NAMES or
+                path.name.endswith(EXCLUDED_SUFFIXES) or
+                EXCLUDED_PARTS.intersection(path.parts)):
             continue
         relative = path.relative_to(ROOT).as_posix()
         files.append({

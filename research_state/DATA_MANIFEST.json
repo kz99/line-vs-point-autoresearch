@@ -27,7 +27,7 @@
       "bytes": 20480,
       "path": "research_state/campaign-10-ultra/campaign.sqlite3",
       "role": "campaign_queue",
-      "sha256": "2f22cb030bb321c5c2b433c6f8f889c39e480b3cd48d9e9946db8f375a5ca4a8"
+      "sha256": "586373f4a23410d83a26acfaa9261649023d7aebd3db5c7bac14e2633b55b99b"
     },
     {
       "bytes": 5021,
@@ -60,10 +60,10 @@
       "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
     },
     {
-      "bytes": 462,
+      "bytes": 514,
       "path": "research_state/campaign-10-ultra/status.json",
       "role": "campaign_index",
-      "sha256": "36efa6afee3ee2976e47ac62200f93ea45732d905ce528e13177d85dded05ddd"
+      "sha256": "0ced80a8652182ef61eb5aabc21fd0e15491a9f5f9e16b0f07f91c46cdd2d37c"
     },
     {
       "bytes": 81920,
@@ -110,5 +110,5 @@
   ],
   "hash_algorithm": "sha256",
   "schema": "line-point-research-data-manifest-v1",
-  "total_bytes": 245775
+  "total_bytes": 245827
 }

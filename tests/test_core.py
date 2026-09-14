@@ -51,6 +51,7 @@ campaign:
             self.assertEqual(status["roles"]["genius"], 1)
             self.assertEqual(status["counts"]["queued"], 11)
             self.assertEqual(status["planned_agent_invocations"], 22)
+            self.assertEqual(status["degree_lower_bound_exclusive"], 100)
 
     def test_campaign_exports_dashboard_snapshot_when_present(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -132,6 +133,9 @@ campaign:
             self.assertIn("m=2 over the prime field F_p", prompt)
             self.assertIn("C(d/p)^(1/3)", prompt)
             self.assertIn("(d/p)^(1-o(1))", prompt)
+            self.assertIn("100 < d < p", prompt)
+            self.assertIn("Do not analyze them", prompt)
+            self.assertIn("Ignore every directory named\nsuperseded", prompt)
             self.assertIn("Do not work on m>2", prompt)
             self.assertIn("routine downstream corollary", prompt)
             self.assertIn("cannot prove an asymptotic", prompt)

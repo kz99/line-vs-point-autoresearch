@@ -90,6 +90,7 @@ type CampaignStatus = {
   reasoning_effort: string;
   dimension: number;
   field_regime: string;
+  degree_lower_bound_exclusive: number;
   benchmark_exponent: string;
   target_exponent: string;
   researcher_count: number;
@@ -350,6 +351,7 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
             <dl>
               <div><dt>Dimension</dt><dd>m = {data.status.dimension}</dd></div>
               <div><dt>Field</dt><dd>Prime 𝔽<sub>p</sub></dd></div>
+              <div><dt>Degree</dt><dd>{data.status.degree_lower_bound_exclusive} &lt; d &lt; p</dd></div>
               <div><dt>Model</dt><dd>{data.status.model}</dd></div>
               <div><dt>Reasoning</dt><dd>{data.status.reasoning_effort}</dd></div>
             </dl>
