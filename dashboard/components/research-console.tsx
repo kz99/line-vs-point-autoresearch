@@ -203,6 +203,11 @@ function candidateLabel(candidate: Candidate) {
 }
 
 function CandidateEntry({ candidate, rank }: { candidate: Candidate; rank: number }) {
+  const conciseExponent = Boolean(
+    candidate.claimed_exponent &&
+    /^(?:\d+(?:\/\d+)?|1[-−]o\(1\))$/.test(candidate.claimed_exponent.trim()),
+  );
+
   return (
     <article className="candidate-entry">
       <div className="candidate-rank">{String(rank).padStart(2, '0')}</div>
@@ -212,13 +217,13 @@ function CandidateEntry({ candidate, rank }: { candidate: Candidate; rank: numbe
             <p className="eyebrow">{candidateLabel(candidate)} · {candidate.job_id}</p>
             <h3>{candidate.title}</h3>
           </div>
-          <div className="exponent-mark">
+          <div className={`exponent-mark ${conciseExponent ? '' : 'exponent-mark-prose'}`}>
             <span>claimed exponent</span>
-            <strong>
-              {candidate.claimed_exponent
-                ? <InlineFormula math={`\\alpha=${candidate.claimed_exponent}`} />
-                : '—'}
-            </strong>
+            {candidate.claimed_exponent ? (
+              conciseExponent
+                ? <strong><InlineFormula math={`\\alpha=${candidate.claimed_exponent}`} /></strong>
+                : <MathCopy className="exponent-copy">{candidate.claimed_exponent}</MathCopy>
+            ) : <strong>—</strong>}
           </div>
         </div>
 
@@ -252,9 +257,9 @@ function CandidateEntry({ candidate, rank }: { candidate: Candidate; rank: numbe
                       {candidate.exponent_ledger.map((stage, index) => (
                         <tr key={`${stage.stage}-${index}`}>
                           <td>{stage.stage}</td>
-                          <td><InlineFormula math={stage.input_scale} /></td>
-                          <td><InlineFormula math={stage.output_scale} /></td>
-                          <td><InlineFormula math={stage.loss} /></td>
+                          <td><MathCopy>{stage.input_scale}</MathCopy></td>
+                          <td><MathCopy>{stage.output_scale}</MathCopy></td>
+                          <td><MathCopy>{stage.loss}</MathCopy></td>
                         </tr>
                       ))}
                     </tbody>
