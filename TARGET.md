@@ -67,6 +67,10 @@ The general-dimensional lift is standard once the bivariate statement is known. 
 
 The dedicated Lemma Writer post-edits every structured proof step without changing its mathematical content or status. It may split a source lemma into ordered pieces when that makes the logical structure easier to understand. Raw submissions remain immutable, and every edited statement is source-linked and checked deterministically with KaTeX before publication in the Lemma Book.
 
+## Proof roadmap policy
+
+Three synchronized roadmap agents maintain complete dependency DAGs for the algebraic engine, incidence engine, and end-to-end soundness chain. They share all submissions, audits, Lemma Book entries, peer roadmaps, and informal messages; each gives a majority of its attention to its assigned route. Roadmap progress is harness-derived. A node is verified only when it cites an exact source job, proof-step id, and response hash whose claim was independently accepted, and all of its dependencies are verified or external inputs. Agent work states and message-board claims never confer verification.
+
 ## Non-results
 
 The following do not count as achieving an exponent milestone:

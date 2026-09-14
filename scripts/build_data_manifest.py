@@ -27,6 +27,12 @@ def sha256(path: Path) -> str:
 
 def file_role(path: Path) -> str:
     parts = path.parts
+    if "roadmaps" in parts and "agent_logs" in parts:
+        return "roadmap_trace"
+    if "roadmaps" in parts and "message_board" in parts:
+        return "message_board"
+    if "roadmaps" in parts:
+        return "proof_roadmap"
     if "lemma_book" in parts:
         return "lemma_book"
     if "leaderboards" in parts:

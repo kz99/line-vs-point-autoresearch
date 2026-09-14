@@ -7,9 +7,9 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "validate:lemmas": "node scripts/validate-lemma-book.mjs public/research-data.json",
-    "build": "pnpm validate:lemmas && vinext build",
-    "build:pages": "pnpm validate:lemmas && GITHUB_PAGES=true vinext build && node scripts/fix-github-pages-assets.mjs",
+    "validate:math": "node scripts/validate-lemma-book.mjs public/research-data.json && node scripts/validate-roadmap-math.mjs public/research-data.json",
+    "build": "pnpm validate:math && vinext build",
+    "build:pages": "pnpm validate:math && GITHUB_PAGES=true vinext build && node scripts/fix-github-pages-assets.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "format": "oxfmt"

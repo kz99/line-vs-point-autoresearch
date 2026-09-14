@@ -11,6 +11,11 @@ from line_point_research.lemma_book import (
     canonical_sha256,
     validate_editorial_response,
 )
+from line_point_research.roadmaps import (
+    ROADMAP_DEFINITIONS,
+    RoadmapWorkshop,
+    validate_roadmap_response,
+)
 
 
 class ExponentTests(unittest.TestCase):
@@ -63,7 +68,11 @@ campaign:
             root = Path(directory)
             (root / "dashboard" / "public").mkdir(parents=True)
             (root / "dashboard" / "public" / "research-data.json").write_text(
-                json.dumps({"lemma_book": {"lemma_count": 7}}))
+                json.dumps({
+                    "lemma_book": {"lemma_count": 7},
+                    "proof_roadmaps": {"roadmaps": [1, 2, 3]},
+                    "message_board": {"messages": [1]},
+                }))
             config = root / "campaign.yaml"
             config.write_text("""workspace: .
 corpus_root: ./corpus
@@ -86,6 +95,8 @@ campaign:
             self.assertEqual(snapshot["status"]["counts"]["queued"], 11)
             self.assertEqual(snapshot["candidates"]["verified"], [])
             self.assertEqual(snapshot["lemma_book"]["lemma_count"], 7)
+            self.assertEqual(len(snapshot["proof_roadmaps"]["roadmaps"]), 3)
+            self.assertEqual(len(snapshot["message_board"]["messages"]), 1)
 
     def test_campaign_initializes_300_researchers_and_genius(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -217,6 +228,57 @@ campaign:
         errors = validate_editorial_response("researcher-0001", source, response)
         self.assertTrue(any("status changed" in error for error in errors))
         self.assertTrue(any("P2" in error for error in errors))
+
+    def test_three_shared_roadmaps_and_deterministic_progress(self):
+        self.assertEqual(len(ROADMAP_DEFINITIONS), 3)
+        self.assertEqual(len({item["id"] for item in ROADMAP_DEFINITIONS}), 3)
+        nodes, progress = RoadmapWorkshop._derive_progress([
+            {
+                "id": "R1", "kind": "lemma", "work_state": "candidate",
+                "dependencies": [],
+                "evidence_refs": [{
+                    "source_job_id": "researcher-0001", "source_step_id": "P1",
+                    "source_response_sha256": "hash",
+                }],
+            },
+            {
+                "id": "R2", "kind": "theorem", "work_state": "open",
+                "dependencies": ["R1"], "evidence_refs": [],
+            },
+        ], "R2", {
+            "researcher-0001|P1|hash": {
+                "source_status": "proved", "audit_verdict": "accept",
+                "audit_exact": True, "lemma_ids": ["researcher-0001:P1.1"],
+            },
+        })
+        self.assertEqual(progress["percent"], 50)
+        self.assertEqual(progress["verified"], 1)
+        self.assertEqual(progress["total"], 2)
+        self.assertEqual(nodes[0]["proof_state"], "verified")
+
+    def test_roadmap_requires_acyclic_complete_dependencies(self):
+        definition = ROADMAP_DEFINITIONS[0]
+        response = {
+            "roadmap_id": definition["id"],
+            "corpus_sha256": "abc",
+            "round": 1,
+            "goal_node_id": "R2",
+            "critical_path": ["R1", "R2"],
+            "nodes": [
+                {
+                    "id": "R1", "statement_markdown": "A.", "work_state": "candidate",
+                    "dependencies": [], "evidence_refs": [],
+                },
+                {
+                    "id": "R2", "statement_markdown": "B.", "work_state": "open",
+                    "dependencies": ["R1"], "evidence_refs": [],
+                },
+            ],
+        }
+        self.assertEqual(validate_roadmap_response(definition, "abc", 1, response), [])
+        response["nodes"][0]["dependencies"] = ["R2"]
+        errors = validate_roadmap_response(definition, "abc", 1, response)
+        self.assertTrue(any("cycle" in error for error in errors))
 
     def test_campaign_rejects_other_dimensions_and_field_regimes(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -7,13 +7,13 @@ import {
   CircleDashed,
   Clock3,
   FileCheck2,
-  GitBranch,
   ListTree,
+  Map,
+  MessageSquare,
   RefreshCw,
   Search,
   ShieldCheck,
   Sparkles,
-  Trophy,
   Users,
   XCircle,
 } from 'lucide-react';
@@ -110,6 +110,80 @@ type LemmaBook = {
   lemmas: LemmaEntry[];
 };
 
+type RoadmapEvidenceRef = {
+  source_job_id: string;
+  source_step_id: string;
+  source_response_sha256: string;
+};
+
+type RoadmapNode = {
+  id: string;
+  label: string;
+  statement_markdown: string;
+  kind: string;
+  work_state: string;
+  proof_state: 'verified' | 'provisional' | 'open' | 'blocked' | 'invalid' | 'external';
+  dependencies: string[];
+  evidence_refs: RoadmapEvidenceRef[];
+  resolved_lemma_ids: string[];
+  owner: string;
+  notes: string;
+};
+
+type ProofRoadmap = {
+  roadmap_id: string;
+  title: string;
+  focus: string;
+  target_statement: string;
+  summary: string;
+  goal_node_id: string;
+  nodes: RoadmapNode[];
+  critical_path: string[];
+  round: number;
+  progress: {
+    percent: number;
+    verified: number;
+    provisional: number;
+    open: number;
+    blocked: number;
+    invalid: number;
+    mapped: number;
+    total: number;
+  };
+  updated_at: string;
+};
+
+type ProofRoadmaps = {
+  model: string;
+  reasoning_effort: string;
+  status: string;
+  round: number;
+  active_roadmaps: string[];
+  roadmaps: ProofRoadmap[];
+  updated_at: string;
+};
+
+type BoardMessage = {
+  id: string;
+  author: string;
+  roadmap_id: string;
+  round: number;
+  created_at: string;
+  informal: boolean;
+  channel: string;
+  kind: string;
+  subject: string;
+  body_markdown: string;
+  in_reply_to: string | null;
+  related_node_ids: string[];
+  references: string[];
+};
+
+type MessageBoard = {
+  updated_at?: string;
+  messages: BoardMessage[];
+};
+
 type CampaignStatus = {
   campaign_dir: string;
   model: string;
@@ -137,8 +211,24 @@ export type ResearchSnapshot = {
   };
   bottlenecks: ExponentStage[];
   lemma_book?: LemmaBook;
+  proof_roadmaps?: ProofRoadmaps;
+  message_board?: MessageBoard;
   jobs: Job[];
 };
+
+type WorkspaceView = 'research' | 'lemmas' | 'roadmaps' | 'messages';
+
+const viewHashes: Record<WorkspaceView, string> = {
+  research: 'research',
+  lemmas: 'lemma-book',
+  roadmaps: 'proof-roadmaps',
+  messages: 'message-board',
+};
+
+function viewFromHash(hash: string): WorkspaceView {
+  const entry = Object.entries(viewHashes).find(([, value]) => `#${value}` === hash);
+  return (entry?.[0] as WorkspaceView | undefined) ?? 'research';
+}
 
 function normalizeMathMarkdown(source: string) {
   const repaired = source
@@ -352,11 +442,115 @@ function LemmaBookEntry({ lemma, index }: { lemma: LemmaEntry; index: number }) 
   );
 }
 
+function RoadmapCard({
+  roadmap,
+  active,
+}: {
+  roadmap: ProofRoadmap;
+  active: boolean;
+}) {
+  return (
+    <article className="roadmap-card">
+      <header className="roadmap-heading">
+        <div>
+          <p className="eyebrow">Round {roadmap.round} · {active ? 'agent working' : 'shared roadmap'}</p>
+          <h2>{roadmap.title}</h2>
+          <p>{roadmap.focus}</p>
+        </div>
+        <strong>{roadmap.progress.percent}%</strong>
+      </header>
+      <div className="roadmap-progress" aria-label={`${roadmap.progress.percent}% verified`}>
+        <span style={{ width: `${roadmap.progress.percent}%` }} />
+      </div>
+      <div className="roadmap-counts">
+        <span><strong>{roadmap.progress.verified}</strong> verified</span>
+        <span><strong>{roadmap.progress.provisional}</strong> provisional</span>
+        <span><strong>{roadmap.progress.open + roadmap.progress.blocked}</strong> open</span>
+        <span><strong>{roadmap.progress.mapped}/{roadmap.progress.total}</strong> mapped</span>
+      </div>
+      <section className="roadmap-target">
+        <p className="section-kicker">Target</p>
+        <MathCopy>{roadmap.target_statement}</MathCopy>
+      </section>
+      {roadmap.summary && <MathCopy className="roadmap-summary">{roadmap.summary}</MathCopy>}
+      {roadmap.critical_path.length > 0 && (
+        <div className="critical-path">
+          <span>Critical path</span>
+          <div>{roadmap.critical_path.map((nodeId, index) => (
+            <span key={nodeId}>{index > 0 && <i>→</i>}<code>{nodeId}</code></span>
+          ))}</div>
+        </div>
+      )}
+      {roadmap.nodes.length ? (
+        <div className="roadmap-nodes">
+          {roadmap.nodes.map((node, index) => (
+            <article className="roadmap-node" key={node.id}>
+              <div className="node-rail"><span>{String(index + 1).padStart(2, '0')}</span><i /></div>
+              <div className="node-content">
+                <header>
+                  <div><code>{node.id}</code><h3>{node.label}</h3></div>
+                  <span className={`proof-state proof-${node.proof_state}`}>{node.proof_state}</span>
+                </header>
+                <MathCopy className="node-statement">{node.statement_markdown}</MathCopy>
+                {(node.dependencies.length > 0 || node.resolved_lemma_ids.length > 0) && (
+                  <div className="node-links">
+                    {node.dependencies.length > 0 && <span>depends on {node.dependencies.join(', ')}</span>}
+                    {node.resolved_lemma_ids.length > 0 && <span>lemmas {node.resolved_lemma_ids.join(', ')}</span>}
+                  </div>
+                )}
+                {node.notes && <p className="node-notes">{node.notes}</p>}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="compact-empty"><Map /><p><strong>Dependency audit running</strong><span>The first synchronized roadmap round will appear here.</span></p></div>
+      )}
+    </article>
+  );
+}
+
+function MessageBoardView({ board }: { board?: MessageBoard }) {
+  const messages = [...(board?.messages ?? [])].reverse();
+  return (
+    <section className="panel message-board-panel">
+      <div className="panel-header">
+        <div><p className="ui-label">Shared informal channel</p><h2>Agent message board</h2></div>
+        <span>{messages.length} posts</span>
+      </div>
+      <div className="board-notice">
+        <MessageSquare aria-hidden="true" />
+        <p>Discussion is exploratory and does not count as proof. Roadmap progress moves only when a cited source lemma has an exact accepted audit.</p>
+      </div>
+      {messages.length ? (
+        <div className="message-list">
+          {messages.map((message) => (
+            <article className="message-card" key={message.id}>
+              <header>
+                <div><strong>{message.author}</strong><span>#{message.channel} · {message.kind}</span></div>
+                <time>{formatTimestamp(message.created_at)}</time>
+              </header>
+              <h3>{message.subject}</h3>
+              <MathCopy>{message.body_markdown}</MathCopy>
+              {(message.related_node_ids.length > 0 || message.references.length > 0) && (
+                <p className="message-refs">{[...message.related_node_ids, ...message.references].join(' · ')}</p>
+              )}
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="quiet-empty"><p className="eyebrow">No posts yet</p><h3>The shared board is quiet.</h3><p>The three roadmap agents will post questions, objections, and lemma requests after their first parallel round.</p></div>
+      )}
+    </section>
+  );
+}
+
 export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot }) {
   const [data, setData] = useState(initialData);
   const [refreshing, setRefreshing] = useState(false);
   const [lemmaQuery, setLemmaQuery] = useState('');
   const [lemmaStatus, setLemmaStatus] = useState('all');
+  const [activeView, setActiveView] = useState<WorkspaceView>('research');
 
   async function refresh() {
     setRefreshing(true);
@@ -372,6 +566,19 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
     const timer = window.setInterval(refresh, 10000);
     return () => window.clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const syncView = () => setActiveView(viewFromHash(window.location.hash));
+    syncView();
+    window.addEventListener('hashchange', syncView);
+    return () => window.removeEventListener('hashchange', syncView);
+  }, []);
+
+  function selectView(view: WorkspaceView) {
+    setActiveView(view);
+    window.history.replaceState(null, '', `#${viewHashes[view]}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   const candidates = [...data.candidates.verified, ...data.candidates.promising];
   const lemmas = data.lemma_book?.lemmas ?? [];
@@ -404,13 +611,13 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
   return (
     <main className="research-app" id="top">
       <header className="topbar">
-        <a className="brand" href="#top">
+        <button className="brand" type="button" onClick={() => selectView('research')}>
           <span>LP</span>
           <div>
             <strong>Line–Point</strong>
             <small>Research observatory</small>
           </div>
-        </a>
+        </button>
         <div className="topbar-state">
           <span className={active ? 'state-dot active' : 'state-dot'} />
           <span>{campaignState}</span>
@@ -424,13 +631,20 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
 
       <div className="app-layout">
         <aside className="sidebar">
-          <nav aria-label="Research dashboard sections">
-            <a href="#overview"><ListTree /> Overview</a>
-            <a href="#candidates"><Trophy /> Candidates <span>{candidates.length}</span></a>
-            <a href="#lemma-book"><BookOpen /> Lemma Book <span>{lemmas.length}</span></a>
-            <a href="#bottlenecks"><GitBranch /> Bottlenecks <span>{data.bottlenecks.length}</span></a>
-            <a href="#activity"><Users /> Researchers <span>{researchers.length}</span></a>
-          </nav>
+          <div className="sidebar-tabs" aria-label="Research workspace" role="tablist">
+            <button className={activeView === 'research' ? 'active' : ''} type="button" role="tab" aria-selected={activeView === 'research'} onClick={() => selectView('research')}>
+              <ListTree /> Research <span>{candidates.length}</span>
+            </button>
+            <button className={activeView === 'lemmas' ? 'active' : ''} type="button" role="tab" aria-selected={activeView === 'lemmas'} onClick={() => selectView('lemmas')}>
+              <BookOpen /> Lemma Book <span>{lemmas.length}</span>
+            </button>
+            <button className={activeView === 'roadmaps' ? 'active' : ''} type="button" role="tab" aria-selected={activeView === 'roadmaps'} onClick={() => selectView('roadmaps')}>
+              <Map /> Proof Roadmaps <span>{data.proof_roadmaps?.roadmaps.length ?? 3}</span>
+            </button>
+            <button className={activeView === 'messages' ? 'active' : ''} type="button" role="tab" aria-selected={activeView === 'messages'} onClick={() => selectView('messages')}>
+              <MessageSquare /> Message Board <span>{data.message_board?.messages.length ?? 0}</span>
+            </button>
+          </div>
 
           <div className="scope-card">
             <p className="ui-label">Research scope</p>
@@ -450,158 +664,162 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
         </aside>
 
         <div className="workspace">
-          <section className="mission-card" id="overview">
-            <div className="mission-topline">
-              <span className="campaign-tag">{data.campaign}</span>
-              <span>Two-variable prime-field test</span>
-            </div>
-            <div className="mission-body">
-              <div>
-                <p className="ui-label">Asymptotic objective</p>
-                <h1>Push line-vs-point soundness to the natural exponent.</h1>
-                <p className="mission-copy">A public, proof-first search for a genuine bivariate argument—without relying on the trivial general-dimension bootstrap.</p>
-              </div>
-              <div className="target-formula">
-                <DisplayFormula math={'\\text{soundness} \\leq (\\frac{d}{p})^{1-o(1)}'} />
-                <p className="benchmark-formula">Benchmark: <InlineFormula math={'(d/p)^{1/3}'} /></p>
-              </div>
-            </div>
-            <div className="metric-row">
-              <div><span>Progress</span><strong>{completed}/{researchers.length}</strong></div>
-              <div><span>Promising</span><strong>{data.candidates.promising.length}</strong></div>
-              <div><span>Verified</span><strong>{data.candidates.verified.length}</strong></div>
-              <div><span>Rejected</span><strong>{data.candidates.rejected.length}</strong></div>
-              <div><span>Lemmas</span><strong>{lemmas.length}</strong></div>
-            </div>
-            <div className="progress-track" aria-label={`${progress}% of researchers completed`}><span style={{ width: `${progress}%` }} /></div>
-            <div className="pipeline" aria-label="Research review pipeline">
-              <span><Users /> Researcher</span><i>→</i><span><FileCheck2 /> Proof note</span><i>→</i><span><ShieldCheck /> Verifier</span><i>→</i><span><BookOpen /> Lemma Writer</span>
-            </div>
-          </section>
-
-          <div className="content-grid">
-            <div className="main-column">
-              <section className="panel" id="candidates">
-                <div className="panel-header">
-                  <div><p className="ui-label">Proof leaderboard</p><h2>Candidate arguments</h2></div>
-                  <span>{candidates.length} total</span>
+          {activeView === 'research' && (
+            <>
+              <section className="mission-card">
+                <div className="mission-topline">
+                  <span className="campaign-tag">{data.campaign}</span>
+                  <span>Two-variable prime-field test</span>
                 </div>
-                <div className="candidate-list">
-                  {candidates.length ? candidates.map((candidate, index) => (
-                    <CandidateEntry key={candidate.job_id} candidate={candidate} rank={index + 1} />
-                  )) : <EmptyCandidates />}
+                <div className="mission-body">
+                  <div>
+                    <p className="ui-label">Asymptotic objective</p>
+                    <h1>Push line-vs-point soundness to the natural exponent.</h1>
+                    <p className="mission-copy">A public, proof-first search for a genuine bivariate argument—without relying on the trivial general-dimension bootstrap.</p>
+                  </div>
+                  <div className="target-formula">
+                    <DisplayFormula math={'\\text{soundness} \\leq (\\frac{d}{p})^{1-o(1)}'} />
+                    <p className="benchmark-formula">Benchmark: <InlineFormula math={'(d/p)^{1/3}'} /></p>
+                  </div>
+                </div>
+                <div className="metric-row">
+                  <div><span>Progress</span><strong>{completed}/{researchers.length}</strong></div>
+                  <div><span>Promising</span><strong>{data.candidates.promising.length}</strong></div>
+                  <div><span>Verified</span><strong>{data.candidates.verified.length}</strong></div>
+                  <div><span>Rejected</span><strong>{data.candidates.rejected.length}</strong></div>
+                  <div><span>Lemmas</span><strong>{lemmas.length}</strong></div>
+                </div>
+                <div className="progress-track" aria-label={`${progress}% of researchers completed`}><span style={{ width: `${progress}%` }} /></div>
+                <div className="pipeline" aria-label="Research review pipeline">
+                  <span><Users /> Researcher</span><i>→</i><span><FileCheck2 /> Proof note</span><i>→</i><span><ShieldCheck /> Verifier</span><i>→</i><span><BookOpen /> Lemma Writer</span>
                 </div>
               </section>
 
-              <section className="panel lemma-book" id="lemma-book">
-                <div className="panel-header lemma-book-header">
-                  <div><p className="ui-label">Typeset reference</p><h2>Lemma Book</h2></div>
-                  <span>{data.lemma_book?.edited_source_count ?? 0}/{data.lemma_book?.source_count ?? 0} notes polished</span>
-                </div>
-                <div className="lemma-rule">
-                  <BookOpen aria-hidden="true" />
-                  <p><strong>Statement rule.</strong> {data.lemma_book?.editorial_rule ?? 'Statements contain only hypotheses and conclusions; explanation belongs in the proof.'}</p>
-                </div>
-                <div className="lemma-tools">
-                  <div className="lemma-search">
-                    <Search aria-hidden="true" />
-                    <Input
-                      value={lemmaQuery}
-                      onChange={(event) => setLemmaQuery(event.target.value)}
-                      placeholder="Search lemmas, statements, or sources"
-                      aria-label="Search the lemma book"
-                    />
-                  </div>
-                  <div className="lemma-filters" aria-label="Filter lemmas by status">
-                    {['all', 'proved', 'conditional', 'conjectural', 'refuted'].map((status) => (
-                      <Button
-                        key={status}
-                        type="button"
-                        size="sm"
-                        variant={lemmaStatus === status ? 'default' : 'outline'}
-                        onClick={() => setLemmaStatus(status)}
-                      >
-                        {status}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-                {visibleLemmas.length ? (
-                  <div className="lemma-list">
-                    {visibleLemmas.map((lemma, index) => (
-                      <LemmaBookEntry key={lemma.id} lemma={lemma} index={index} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="compact-empty"><BookOpen /><p><strong>No matching lemmas</strong><span>The Lemma Writer publishes entries only after deterministic math-rendering checks.</span></p></div>
-                )}
-              </section>
+              <div className="content-grid">
+                <div className="main-column">
+                  <section className="panel">
+                    <div className="panel-header">
+                      <div><p className="ui-label">Proof leaderboard</p><h2>Candidate arguments</h2></div>
+                      <span>{candidates.length} total</span>
+                    </div>
+                    <div className="candidate-list">
+                      {candidates.length ? candidates.map((candidate, index) => (
+                        <CandidateEntry key={candidate.job_id} candidate={candidate} rank={index + 1} />
+                      )) : <EmptyCandidates />}
+                    </div>
+                  </section>
 
-              <section className="panel" id="bottlenecks">
-                <div className="panel-header">
-                  <div><p className="ui-label">Loss accounting</p><h2>Exponent bottlenecks</h2></div>
-                  <span>{data.bottlenecks.length} recorded</span>
+                  <section className="panel">
+                    <div className="panel-header">
+                      <div><p className="ui-label">Loss accounting</p><h2>Exponent bottlenecks</h2></div>
+                      <span>{data.bottlenecks.length} recorded</span>
+                    </div>
+                    {data.bottlenecks.length ? (
+                      <div className="bottleneck-list">
+                        {data.bottlenecks.map((item, index) => (
+                          <article key={`${item.stage}-${index}`}>
+                            <span>{String(index + 1).padStart(2, '0')}</span>
+                            <div>
+                              <h3>{item.stage}</h3>
+                              <div className="ledger-flow">
+                                <div className="ledger-term"><span>Input</span><MathCopy>{item.input_scale}</MathCopy></div>
+                                <span className="ledger-arrow" aria-hidden="true">→</span>
+                                <div className="ledger-term"><span>Output</span><MathCopy>{item.output_scale}</MathCopy></div>
+                              </div>
+                              <div className="ledger-loss"><span>Loss</span><MathCopy>{item.loss}</MathCopy></div>
+                              <MathCopy className="muted-copy">{item.justification}</MathCopy>
+                            </div>
+                            <em>{item.status}</em>
+                          </article>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="compact-empty"><ListTree /><p><strong>No loss ledger yet</strong><span>The first submitted proof will populate this section.</span></p></div>
+                    )}
+                  </section>
                 </div>
-                {data.bottlenecks.length ? (
-                  <div className="bottleneck-list">
-                    {data.bottlenecks.map((item, index) => (
-                      <article key={`${item.stage}-${index}`}>
-                        <span>{String(index + 1).padStart(2, '0')}</span>
-                        <div>
-                          <h3>{item.stage}</h3>
-                          <div className="ledger-flow">
-                            <div className="ledger-term">
-                              <span>Input</span>
-                              <MathCopy>{item.input_scale}</MathCopy>
-                            </div>
-                            <span className="ledger-arrow" aria-hidden="true">→</span>
-                            <div className="ledger-term">
-                              <span>Output</span>
-                              <MathCopy>{item.output_scale}</MathCopy>
-                            </div>
-                          </div>
-                          <div className="ledger-loss">
-                            <span>Loss</span>
-                            <MathCopy>{item.loss}</MathCopy>
-                          </div>
-                          <MathCopy className="muted-copy">{item.justification}</MathCopy>
-                        </div>
-                        <em>{item.status}</em>
+
+                <aside className="activity-column">
+                  <section className="panel activity-panel">
+                    <div className="panel-header">
+                      <div><p className="ui-label">Live queue</p><h2>Researchers</h2></div>
+                      <span>{data.status.counts.queued ?? 0} queued</span>
+                    </div>
+                    {genius && (
+                      <article className="genius-card">
+                        <div className="genius-title"><Sparkles /><span>GENIUS</span><em>{genius.status}</em></div>
+                        <p>{genius.direction}</p>
                       </article>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="compact-empty"><ListTree /><p><strong>No loss ledger yet</strong><span>The first submitted proof will populate this section.</span></p></div>
-                )}
-              </section>
-            </div>
+                    )}
+                    <div className="job-list">
+                      {researchers.map((job) => (
+                        <article key={job.id} className={`job-row job-${job.status}`}>
+                          <div className="job-state">{jobIcon(job.status)}</div>
+                          <div><strong>{job.id.replace('researcher-', 'R')}</strong><p>{job.direction}</p></div>
+                          <span>{job.status}</span>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                </aside>
+              </div>
+            </>
+          )}
 
-            <aside className="activity-column" id="activity">
-              <section className="panel activity-panel">
-                <div className="panel-header">
-                  <div><p className="ui-label">Live queue</p><h2>Researchers</h2></div>
-                  <span>{data.status.counts.queued ?? 0} queued</span>
+          {activeView === 'lemmas' && (
+            <section className="panel lemma-book single-view">
+              <div className="panel-header lemma-book-header">
+                <div><p className="ui-label">Typeset reference</p><h2>Lemma Book</h2></div>
+                <span>{data.lemma_book?.edited_source_count ?? 0}/{data.lemma_book?.source_count ?? 0} notes polished</span>
+              </div>
+              <div className="lemma-rule">
+                <BookOpen aria-hidden="true" />
+                <p><strong>Statement rule.</strong> {data.lemma_book?.editorial_rule ?? 'Statements contain only hypotheses and conclusions; explanation belongs in the proof.'}</p>
+              </div>
+              <div className="lemma-tools">
+                <div className="lemma-search">
+                  <Search aria-hidden="true" />
+                  <Input value={lemmaQuery} onChange={(event) => setLemmaQuery(event.target.value)} placeholder="Search lemmas, statements, or sources" aria-label="Search the lemma book" />
                 </div>
-
-                {genius && (
-                  <article className="genius-card">
-                    <div className="genius-title"><Sparkles /><span>GENIUS</span><em>{genius.status}</em></div>
-                    <p>{genius.direction}</p>
-                  </article>
-                )}
-
-                <div className="job-list">
-                  {researchers.map((job) => (
-                    <article key={job.id} className={`job-row job-${job.status}`}>
-                      <div className="job-state">{jobIcon(job.status)}</div>
-                      <div><strong>{job.id.replace('researcher-', 'R')}</strong><p>{job.direction}</p></div>
-                      <span>{job.status}</span>
-                    </article>
+                <div className="lemma-filters" aria-label="Filter lemmas by status">
+                  {['all', 'proved', 'conditional', 'conjectural', 'refuted'].map((status) => (
+                    <Button key={status} type="button" size="sm" variant={lemmaStatus === status ? 'default' : 'outline'} onClick={() => setLemmaStatus(status)}>{status}</Button>
                   ))}
                 </div>
-              </section>
-            </aside>
-          </div>
+              </div>
+              {visibleLemmas.length ? (
+                <div className="lemma-list">{visibleLemmas.map((lemma, index) => <LemmaBookEntry key={lemma.id} lemma={lemma} index={index} />)}</div>
+              ) : (
+                <div className="compact-empty"><BookOpen /><p><strong>No matching lemmas</strong><span>The Lemma Writer publishes entries only after deterministic math-rendering checks.</span></p></div>
+              )}
+            </section>
+          )}
+
+          {activeView === 'roadmaps' && (
+            <section className="single-view roadmap-view">
+              <header className="view-header">
+                <div>
+                  <p className="ui-label">Lean-style dependency ledgers</p>
+                  <h1>Proof Roadmaps</h1>
+                  <p>Three agents maintain distinct proof routes over one shared lemma corpus. Progress is computed from exact source hashes and independent audits, never from an agent’s confidence.</p>
+                </div>
+                <div className="view-status">
+                  <span className={data.proof_roadmaps?.status === 'running' ? 'state-dot active' : 'state-dot'} />
+                  <strong>{data.proof_roadmaps?.status ?? 'queued'}</strong>
+                  <small>{data.proof_roadmaps?.reasoning_effort ?? 'ultra'} reasoning</small>
+                </div>
+              </header>
+              <div className="roadmap-grid">
+                {(data.proof_roadmaps?.roadmaps ?? []).map((roadmap) => (
+                  <RoadmapCard key={roadmap.roadmap_id} roadmap={roadmap} active={data.proof_roadmaps?.active_roadmaps.includes(roadmap.roadmap_id) ?? false} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {activeView === 'messages' && (
+            <div className="single-view"><MessageBoardView board={data.message_board} /></div>
+          )}
 
           <footer><span>Public snapshot · {data.campaign}</span><span>KaTeX-enabled proof rendering</span></footer>
         </div>

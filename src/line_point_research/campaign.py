@@ -18,6 +18,7 @@ import yaml
 
 from .agents import AgentError, CommandAgentProvider
 from .exponents import is_stronger_fixed_exponent
+from .snapshot import update_dashboard_sections
 
 
 def utc_timestamp() -> str:
@@ -751,13 +752,6 @@ NUMBERED NOTE:
         dashboard_public = self.paths.workspace / "dashboard" / "public"
         if not dashboard_public.is_dir():
             return
-        snapshot_path = dashboard_public / "research-data.json"
-        existing_lemma_book = None
-        if snapshot_path.exists():
-            try:
-                existing_lemma_book = json.loads(snapshot_path.read_text()).get("lemma_book")
-            except json.JSONDecodeError:
-                existing_lemma_book = None
 
         board_dir = self.paths.campaign_dir / "leaderboards"
 
@@ -811,9 +805,7 @@ NUMBERED NOTE:
             "bottlenecks": load_board("bottleneck-ledger"),
             "jobs": dashboard_jobs,
         }
-        if existing_lemma_book is not None:
-            snapshot["lemma_book"] = existing_lemma_book
-        snapshot_path.write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
+        update_dashboard_sections(self.paths.workspace, snapshot, replace_base=True)
 
     def run(self) -> dict[str, Any]:
         self.initialize()

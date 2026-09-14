@@ -13,6 +13,7 @@ from typing import Any
 
 from .agents import AgentError, CommandAgentProvider
 from .campaign import load_campaign_config, utc_timestamp
+from .snapshot import update_dashboard_sections
 
 
 LEMMA_STATEMENT_RULE = (
@@ -263,8 +264,6 @@ SOURCE SUBMISSION:
         return sorted(root.glob("*/response.json")) if root.exists() else []
 
     def export_snapshot(self) -> dict[str, Any]:
-        snapshot_path = self.paths.workspace / "dashboard" / "public" / "research-data.json"
-        snapshot = json.loads(snapshot_path.read_text()) if snapshot_path.exists() else {}
         lemmas: list[dict[str, Any]] = []
         edited_sources = 0
         source_paths = self.source_paths()
@@ -297,10 +296,9 @@ SOURCE SUBMISSION:
             "updated_at": utc_timestamp(),
             "lemmas": lemmas,
         }
-        snapshot["lemma_book"] = payload
-        snapshot_path.write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
         (self.root / "lemma-book.json").write_text(
             json.dumps(payload, indent=2, sort_keys=True) + "\n")
+        update_dashboard_sections(self.paths.workspace, {"lemma_book": payload})
         return payload
 
     def run(self, watch: bool = False) -> dict[str, Any]:
