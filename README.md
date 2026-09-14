@@ -43,6 +43,17 @@ Results live under `research_state/campaign-10-ultra/` for the test or `research
 - `leaderboards/`: promising, verified, and rejected claims plus a bottleneck ledger;
 - `campaign.sqlite3`: the durable job queue.
 
+## Research dashboard
+
+The dashboard in `dashboard/` is a live reading interface for the active campaign. It refreshes every ten seconds and shows progress, the verified-first candidate leaderboard, theorem claims, exponent ledgers, full mathematical notes, verifier reports, bottlenecks, and the searchable researcher queue. Every campaign status export refreshes `dashboard/public/research-data.json` automatically.
+
+```bash
+cd dashboard
+pnpm dev
+```
+
+Open the printed local URL while a campaign is running. The interface is read-only and cannot launch, stop, or mutate a campaign.
+
 Read [TARGET.md](TARGET.md) before interpreting any claimed exponent, and [references/LITERATURE.md](references/LITERATURE.md) before launching agents.
 
 ## Safety and proof policy

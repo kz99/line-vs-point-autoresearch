@@ -52,6 +52,32 @@ campaign:
             self.assertEqual(status["counts"]["queued"], 11)
             self.assertEqual(status["planned_agent_invocations"], 22)
 
+    def test_campaign_exports_dashboard_snapshot_when_present(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "dashboard" / "public").mkdir(parents=True)
+            config = root / "campaign.yaml"
+            config.write_text("""workspace: .
+corpus_root: ./corpus
+campaign_dir: ./state
+campaign:
+  researcher_count: 10
+  dimension: 2
+  field_regime: prime
+  verifier_enabled: true
+  genius_enabled: true
+  model: gpt-5.6-sol
+  reasoning_effort: ultra
+""")
+            campaign = ResearchCampaign(config)
+            campaign.initialize()
+            snapshot = json.loads(
+                (root / "dashboard" / "public" / "research-data.json").read_text())
+            self.assertEqual(snapshot["campaign"], "state")
+            self.assertEqual(len(snapshot["jobs"]), 11)
+            self.assertEqual(snapshot["status"]["counts"]["queued"], 11)
+            self.assertEqual(snapshot["candidates"]["verified"], [])
+
     def test_campaign_initializes_300_researchers_and_genius(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -669,6 +669,7 @@ NUMBERED NOTE:
         (self.paths.campaign_dir / "jobs.json").write_text(
             json.dumps(rows, indent=2, sort_keys=True) + "\n")
         self._export_leaderboards(rows)
+        self._export_dashboard_snapshot(payload, rows)
         return payload
 
     def _export_leaderboards(self, rows: list[dict[str, Any]]) -> None:
@@ -719,6 +720,67 @@ NUMBERED NOTE:
         ):
             (board_dir / f"{name}.json").write_text(
                 json.dumps(data, indent=2, sort_keys=True) + "\n")
+
+    def _export_dashboard_snapshot(
+            self, status: dict[str, Any], rows: list[dict[str, Any]]) -> None:
+        dashboard_public = self.paths.workspace / "dashboard" / "public"
+        if not dashboard_public.is_dir():
+            return
+
+        board_dir = self.paths.campaign_dir / "leaderboards"
+
+        def load_board(name: str) -> list[dict[str, Any]]:
+            path = board_dir / f"{name}.json"
+            return json.loads(path.read_text()) if path.exists() else []
+
+        def enrich(entry: dict[str, Any]) -> dict[str, Any]:
+            job_id = str(entry["job_id"])
+            submission_dir = self.paths.campaign_dir / "submissions" / job_id
+            response_path = submission_dir / "response.json"
+            note_path = submission_dir / "note.md"
+            response = json.loads(response_path.read_text()) if response_path.exists() else {}
+            audit_path = (self.paths.campaign_dir / "reviews" / job_id /
+                          f"verifier-{job_id}" / "audit.json")
+            audit = json.loads(audit_path.read_text()) if audit_path.exists() else None
+            return {
+                **entry,
+                "parameter_regime": response.get("parameter_regime", ""),
+                "sampling_model": response.get("sampling_model", ""),
+                "global_conclusion": response.get("global_conclusion", ""),
+                "proof_steps": response.get("proof_steps", []),
+                "exponent_ledger": response.get("exponent_ledger", []),
+                "limitations": response.get("limitations", response.get("obstructions", [])),
+                "note_markdown": note_path.read_text() if note_path.exists() else "",
+                "audit": audit,
+            }
+
+        candidate_groups = {
+            "verified": [enrich(entry) for entry in load_board("verified-results")],
+            "promising": [enrich(entry) for entry in load_board("promising-results")],
+            "rejected": [enrich(entry) for entry in load_board("rejected-results")],
+        }
+        dashboard_jobs = [{
+            "id": row["id"],
+            "role": row["role"],
+            "ordinal": row["ordinal"],
+            "direction": row["direction"],
+            "status": row["status"],
+            "attempts": row["attempts"],
+            "max_attempts": row["max_attempts"],
+            "started_at": row["started_at"],
+            "finished_at": row["finished_at"],
+            "error": row["error"],
+        } for row in rows]
+        snapshot = {
+            "schema": "line-point-research-dashboard-v1",
+            "campaign": self.paths.campaign_dir.name,
+            "status": status,
+            "candidates": candidate_groups,
+            "bottlenecks": load_board("bottleneck-ledger"),
+            "jobs": dashboard_jobs,
+        }
+        (dashboard_public / "research-data.json").write_text(
+            json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
 
     def run(self) -> dict[str, Any]:
         self.initialize()
