@@ -308,7 +308,7 @@ export function ResearchConsole({ initialData }: { initialData: ResearchSnapshot
   async function refresh() {
     setRefreshing(true);
     try {
-      const response = await fetch(`/research-data.json?t=${Date.now()}`, { cache: 'no-store' });
+      const response = await fetch(`./research-data.json?t=${Date.now()}`, { cache: 'no-store' });
       if (response.ok) setData((await response.json()) as ResearchSnapshot);
     } finally {
       setRefreshing(false);

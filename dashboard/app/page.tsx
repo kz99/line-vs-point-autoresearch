@@ -1,6 +1,8 @@
 import snapshot from '../public/research-data.json';
 import { ResearchConsole, type ResearchSnapshot } from '@/components/research-console';
 
+export const dynamic = 'force-static';
+
 export default function Home() {
   return <ResearchConsole initialData={snapshot as ResearchSnapshot} />;
 }

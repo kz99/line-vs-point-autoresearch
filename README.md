@@ -47,6 +47,8 @@ Results live under `research_state/campaign-10-ultra/` for the test or `research
 
 The dashboard in `dashboard/` is a live reading interface for the active campaign. It refreshes every ten seconds and shows progress, the verified-first candidate leaderboard, theorem claims, exponent ledgers, full mathematical notes, verifier reports, bottlenecks, and the searchable researcher queue. Every campaign status export refreshes `dashboard/public/research-data.json` automatically.
 
+The public snapshot is deployed by GitHub Pages at <https://kz99.github.io/line-point-research-observatory/>. Only the read-only dashboard is public; the research repository and its full corpus remain private. The public snapshot is refreshed from `dashboard/public/research-data.json` when the dashboard is published.
+
 ```bash
 cd dashboard
 pnpm dev
