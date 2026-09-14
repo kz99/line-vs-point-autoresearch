@@ -62,6 +62,8 @@ campaign:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / "dashboard" / "public").mkdir(parents=True)
+            (root / "dashboard" / "public" / "research-data.json").write_text(
+                json.dumps({"lemma_book": {"lemma_count": 7}}))
             config = root / "campaign.yaml"
             config.write_text("""workspace: .
 corpus_root: ./corpus
@@ -83,6 +85,7 @@ campaign:
             self.assertEqual(len(snapshot["jobs"]), 11)
             self.assertEqual(snapshot["status"]["counts"]["queued"], 11)
             self.assertEqual(snapshot["candidates"]["verified"], [])
+            self.assertEqual(snapshot["lemma_book"]["lemma_count"], 7)
 
     def test_campaign_initializes_300_researchers_and_genius(self):
         with tempfile.TemporaryDirectory() as directory:
