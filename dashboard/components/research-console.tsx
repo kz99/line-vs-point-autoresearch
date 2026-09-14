@@ -19,7 +19,6 @@ import {
 import ReactMarkdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
-import { BlockMath, InlineMath } from 'react-katex';
 
 import { Button } from '@/components/ui/button';
 
@@ -147,11 +146,27 @@ function MathCopy({ children, className = '' }: { children: string; className?: 
 }
 
 function DisplayFormula({ math }: { math: string }) {
-  return <BlockMath math={stripMathDelimiters(math)} />;
+  return (
+    <div className="display-formula">
+      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+        {`$$${stripMathDelimiters(math)}$$`}
+      </ReactMarkdown>
+    </div>
+  );
 }
 
 function InlineFormula({ math }: { math: string }) {
-  return <InlineMath math={stripMathDelimiters(math)} />;
+  return (
+    <span className="inline-formula">
+      <ReactMarkdown
+        remarkPlugins={[remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+        components={{ p: ({ children }) => <>{children}</> }}
+      >
+        {`$${stripMathDelimiters(math)}$`}
+      </ReactMarkdown>
+    </span>
+  );
 }
 
 function formatTimestamp(value: string) {
