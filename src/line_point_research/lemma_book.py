@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -169,12 +170,20 @@ SOURCE SUBMISSION:
         script = self.paths.workspace / "dashboard" / "scripts" / "validate-lemma-book.mjs"
         if not script.exists():
             raise AgentError(f"missing deterministic lemma renderer: {script}")
+        node = shutil.which("node")
+        if node is None:
+            pnpm = shutil.which("pnpm")
+            bundled = (Path(pnpm).resolve().parents[2] / "node" / "bin" / "node") if pnpm else None
+            if bundled and bundled.exists():
+                node = str(bundled)
+        if node is None:
+            raise AgentError("node executable not found for deterministic KaTeX validation")
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
             json.dump(response, handle)
             temporary = Path(handle.name)
         try:
             completed = subprocess.run(
-                ["node", str(script), str(temporary)],
+                [node, str(script), str(temporary)],
                 cwd=self.paths.workspace / "dashboard",
                 text=True,
                 stdout=subprocess.PIPE,
