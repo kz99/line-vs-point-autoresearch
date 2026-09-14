@@ -14,6 +14,17 @@ This project deliberately does **not** rank finite experiments as mathematical p
 
 ## Quick start
 
+The initialized 10-researcher test campaign is the recommended first run:
+
+```bash
+line-point-research campaign-status configs/campaign-10-ultra.yaml
+line-point-research campaign-launch configs/campaign-10-ultra.yaml
+```
+
+Initialization and status inspection do not invoke agents. `campaign-launch` is the explicit start command. The test campaign plans 10 proof researchers, up to 10 corresponding verifiers, one `GENIUS` synthesis, and one synthesis verifier (up to 22 agent invocations).
+
+The separate 300-researcher production campaign remains available:
+
 ```bash
 python -m pip install -e .
 python -m unittest discover -s tests -v
@@ -22,9 +33,9 @@ line-point-research campaign-status configs/campaign-300-ultra.yaml
 line-point-research campaign-launch configs/campaign-300-ultra.yaml
 ```
 
-The production campaign queues 300 independent proof researchers, one verifier per successful submission, a global `GENIUS` synthesis job, and a verifier for the synthesis. Four workers run concurrently. Every job is durable and resumable through SQLite.
+The production campaign queues 300 independent proof researchers, one verifier per successful submission, a global `GENIUS` synthesis job, and a verifier for the synthesis. Four workers run concurrently. Every job is durable and resumable through SQLite. The two campaign directories are independent, so testing cannot consume or alter the production queue.
 
-Results live under `research_state/campaign-300-ultra/`:
+Results live under `research_state/campaign-10-ultra/` for the test or `research_state/campaign-300-ultra/` for production:
 
 - `submissions/`: academic notes and structured theorem manifests;
 - `reviews/`: hostile line-by-line proof audits;

@@ -1,0 +1,19 @@
+{
+  "benchmark_exponent": "1/3",
+  "campaign_dir": "/Users/kaizheng/Documents/ChatGPT/Line-vs-Point/research_state/campaign-10-ultra",
+  "counts": {
+    "queued": 11
+  },
+  "dimension": 2,
+  "field_regime": "prime",
+  "model": "gpt-5.6-sol",
+  "planned_agent_invocations": 22,
+  "reasoning_effort": "ultra",
+  "researcher_count": 10,
+  "roles": {
+    "genius": 1,
+    "researcher": 10
+  },
+  "target_exponent": "1-o(1)",
+  "updated_at": "2026-09-14T03:35:55Z"
+}

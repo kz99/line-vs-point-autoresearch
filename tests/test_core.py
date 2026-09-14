@@ -28,6 +28,30 @@ class ProviderTests(unittest.TestCase):
 
 
 class CampaignTests(unittest.TestCase):
+    def test_campaign_initializes_10_researcher_trial(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = root / "campaign.yaml"
+            config.write_text("""workspace: .
+corpus_root: ./corpus
+campaign_dir: ./state
+campaign:
+  researcher_count: 10
+  dimension: 2
+  field_regime: prime
+  verifier_enabled: true
+  genius_enabled: true
+  model: gpt-5.6-sol
+  reasoning_effort: ultra
+""")
+            campaign = ResearchCampaign(config)
+            campaign.initialize()
+            status = campaign.export_status()
+            self.assertEqual(status["roles"]["researcher"], 10)
+            self.assertEqual(status["roles"]["genius"], 1)
+            self.assertEqual(status["counts"]["queued"], 11)
+            self.assertEqual(status["planned_agent_invocations"], 22)
+
     def test_campaign_initializes_300_researchers_and_genius(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

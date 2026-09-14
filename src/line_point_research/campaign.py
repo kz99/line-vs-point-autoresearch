@@ -270,8 +270,8 @@ def load_campaign_config(path: Path | str) -> tuple[dict[str, Any], CampaignPath
         raise ValueError("campaign configuration must be a YAML mapping")
     campaign = config.get("campaign", {})
     count = int(campaign.get("researcher_count", 0))
-    if count < 300:
-        raise ValueError("campaign.researcher_count must be at least 300")
+    if count < 1:
+        raise ValueError("campaign.researcher_count must be at least 1")
     effort = str(campaign.get("reasoning_effort", ""))
     if effort not in {"max", "ultra"}:
         raise ValueError("campaign.reasoning_effort must be max or ultra")
